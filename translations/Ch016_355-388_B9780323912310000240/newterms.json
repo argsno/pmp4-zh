@@ -1,0 +1,32 @@
+[
+  {
+    "en": "linear classifier",
+    "zh": "线性分类器",
+    "note": "§16.1 背景开头与关键词；感知机即一类线性分类器"
+  },
+  {
+    "en": "artificial neural network",
+    "zh": "人工神经网络",
+    "note": "§16.1 背景首段；深度学习分支的定义语"
+  },
+  {
+    "en": "feature extractor",
+    "zh": "特征提取器",
+    "note": "§16.1 训练模型；层级化特征提取器；与 feature map（特征图，见术语表）区分"
+  },
+  {
+    "en": "feedforward network",
+    "zh": "前馈网络",
+    "note": "§16.1 多层分类器；亦见“深度前馈网络”；与 forward propagation（前向传播，见术语表）区分"
+  },
+  {
+    "en": "fully connected layer",
+    "zh": "全连接层",
+    "note": "§16.2 卷积神经网络；LeNet-5 三类层之一，图 16.8 等反复出现"
+  },
+  {
+    "en": "OCR",
+    "zh": "光学字符识别（OCR）",
+    "note": "§16.1 背景；应用示例，全称+缩写，缩写同权"
+  }
+]

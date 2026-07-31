@@ -4,3 +4,11 @@ __pycache__/
 
 # Derived EPUB extraction (regenerate by unzipping the .epub source)
 epub_extract/
+
+# Translation skeletons for out-of-scope pages (spec §Out of Scope): never
+# translated, so the extract step's skeletons are working residue, not data.
+translations/Cover/
+translations/Contents/
+translations/Copyright_iv_B978032391231000029X/
+translations/Index_537-551_B978032391231000032X/
+translations/Title_page/
