@@ -1,0 +1,6 @@
+# Python bytecode / cache
+__pycache__/
+*.pyc
+
+# Derived EPUB extraction (regenerate by unzipping the .epub source)
+epub_extract/

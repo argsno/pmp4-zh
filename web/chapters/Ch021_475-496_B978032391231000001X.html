@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">Programming Massively Parallel Processors, 4th Edition</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="Front Matter">
+      <option value="Cover.html">Cover image</option>
+      <option value="Title_page.html">Title page</option>
+      <option value="Contents.html">Table of Contents</option>
+      <option value="Copyright_iv_B978032391231000029X.html">Copyright</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">Dedication</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">Foreword</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">Acknowledgments</option>
+    </optgroup>
+    <optgroup label="Preface">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">Preface</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">How to use the book</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">A two-phased approach</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">Tying it all together: the final project</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">The design document</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">The project report and symposium</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">Class competition</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">Course resources</option>
+    </optgroup>
+    <optgroup label="Chapter 1. Introduction">
+      <option value="Ch001_1-19_B9780323912310000069.html">Chapter 1. Introduction</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">Abstract</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">Chapter Outline</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 Heterogeneous parallel computing</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 Why more speed or parallelism?</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 Speeding up real applications</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 Challenges in parallel programming</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 Related parallel programming interfaces</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 Overarching goals</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 Organization of the book</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">References</option>
+    </optgroup>
+    <optgroup label="Part I: Fundamental Concepts">
+      <option value="Part1.html">Part I: Fundamental Concepts</option>
+    </optgroup>
+    <optgroup label="Chapter 2. Heterogeneous data parallel computing">
+      <option value="Ch002_23-46_B9780323912310000148.html">Chapter 2. Heterogeneous data parallel computing</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">Abstract</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">Chapter Outline</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 Data parallelism</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C program structure</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 A vector addition kernel</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 Device global memory and data transfer</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 Kernel functions and threading</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 Calling kernel functions</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 Compilation</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 Summary</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">Exercises</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">References</option>
+    </optgroup>
+    <optgroup label="Chapter 3. Multidimensional grids and data">
+      <option value="Ch003_47-68_B9780323912310000045.html">Chapter 3. Multidimensional grids and data</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">Abstract</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">Chapter Outline</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 Multidimensional grid organization</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 Mapping threads to multidimensional data</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 Image blur: a more complex kernel</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 Matrix multiplication</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 Summary</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">Exercises</option>
+    </optgroup>
+    <optgroup label="Chapter 4. Compute architecture and scheduling">
+      <option value="Ch004_69-92_B9780323912310000033.html">Chapter 4. Compute architecture and scheduling</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">Abstract</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">Chapter Outline</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 Architecture of a modern GPU</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 Block scheduling</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 Synchronization and transparent scalability</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 Warps and SIMD hardware</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 Control divergence</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 Warp scheduling and latency tolerance</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 Resource partitioning and occupancy</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 Querying device properties</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 Summary</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">Exercises</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">References</option>
+    </optgroup>
+    <optgroup label="Chapter 5. Memory architecture and data locality">
+      <option value="Ch005_93-121_B9780323912310000185.html">Chapter 5. Memory architecture and data locality</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">Abstract</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">Chapter Outline</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 Importance of memory access efficiency</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA memory types</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 Tiling for reduced memory traffic</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 A tiled matrix multiplication kernel</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 Boundary checks</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 Impact of memory usage on occupancy</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 Summary</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">Exercises</option>
+    </optgroup>
+    <optgroup label="Chapter 6. Performance considerations">
+      <option value="Ch006_123-147_B9780323912310000161.html">Chapter 6. Performance considerations</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">Abstract</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">Chapter Outline</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 Memory coalescing</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 Hiding memory latency</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 Thread coarsening</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 A checklist of optimizations</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 Knowing your computation’s bottleneck</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 Summary</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">Exercises</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">References</option>
+    </optgroup>
+    <optgroup label="Part II: Parallel Patterns">
+      <option value="Part2.html">Part II: Parallel Patterns</option>
+    </optgroup>
+    <optgroup label="Chapter 7. Convolution: An introduction to constant memory and caching">
+      <option value="Ch007_151-171_B9780323912310000082.html">Chapter 7. Convolution: An introduction to constant memory and caching</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">Abstract</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">Chapter Outline</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 Background</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 Parallel convolution: a basic algorithm</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 Constant memory and caching</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 Tiled convolution with halo cells</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 Tiled convolution using caches for halo cells</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 Summary</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">Exercises</option>
+    </optgroup>
+    <optgroup label="Chapter 8. Stencil">
+      <option value="Ch008_173-189_B9780323912310000173.html">Chapter 8. Stencil</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">Abstract</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">Chapter Outline</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 Background</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 Parallel stencil: a basic algorithm</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 Shared memory tiling for stencil sweep</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 Thread coarsening</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 Register tiling</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 Summary</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">Exercises</option>
+    </optgroup>
+    <optgroup label="Chapter 9. Parallel histogram: An introduction to atomic operations and privatization">
+      <option value="Ch009_191-210_B978032391231000015X.html">Chapter 9. Parallel histogram: An introduction to atomic operations and privatization</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">Abstract</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">Chapter Outline</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 Background</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 Atomic operations and a basic histogram kernel</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 Latency and throughput of atomic operations</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 Privatization</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 Coarsening</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 Aggregation</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 Summary</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">Exercises</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">References</option>
+    </optgroup>
+    <optgroup label="Chapter 10. Reduction: And minimizing divergence">
+      <option value="Ch010_211-233_B9780323912310000239.html">Chapter 10. Reduction: And minimizing divergence</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">Abstract</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">Chapter Outline</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 Background</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 Reduction trees</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 A simple reduction kernel</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 Minimizing control divergence</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 Minimizing memory divergence</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 Minimizing global memory accesses</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 Hierarchical reduction for arbitrary input length</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 Thread coarsening for reduced overhead</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 Summary</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">Exercises</option>
+    </optgroup>
+    <optgroup label="Chapter 11. Prefix sum (scan): An introduction to work efficiency in parallel algorithms">
+      <option value="Ch011_235-261_B9780323912310000227.html">Chapter 11. Prefix sum (scan): An introduction to work efficiency in parallel algorithms</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">Abstract</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">Chapter Outline</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 Background</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 Parallel scan with the Kogge-Stone algorithm</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 Speed and work efficiency consideration</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 Parallel scan with the Brent-Kung algorithm</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 Coarsening for even more work efficiency</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 Segmented parallel scan for arbitrary-length inputs</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 Single-pass scan for memory access efficiency</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 Summary</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">Exercises</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">References</option>
+    </optgroup>
+    <optgroup label="Chapter 12. Merge: An introduction to dynamic input data identification">
+      <option value="Ch012_263-289_B9780323912310000252.html">Chapter 12. Merge: An introduction to dynamic input data identification</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">Abstract</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">Chapter Outline</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 Background</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 A sequential merge algorithm</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 A parallelization approach</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 Co-rank function implementation</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 A basic parallel merge kernel</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 A tiled merge kernel to improve coalescing</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 A circular buffer merge kernel</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 Thread coarsening for merge</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 Summary</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">Exercises</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">References</option>
+    </optgroup>
+    <optgroup label="Part III: Advanced Patterns and Applications">
+      <option value="Part3.html">Part III: Advanced Patterns and Applications</option>
+    </optgroup>
+    <optgroup label="Chapter 13. Sorting">
+      <option value="Ch013_293-310_B9780323912310000197.html">Chapter 13. Sorting</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">Abstract</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">Chapter Outline</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 Background</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 Radix sort</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 Parallel radix sort</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 Optimizing for memory coalescing</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 Choice of radix value</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 Thread coarsening to improve coalescing</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 Parallel merge sort</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 Other parallel sort methods</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 Summary</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">Exercises</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">References</option>
+    </optgroup>
+    <optgroup label="Chapter 14. Sparse matrix computation">
+      <option value="Ch014_311-329_B9780323912310000100.html">Chapter 14. Sparse matrix computation</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">Abstract</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">Chapter Outline</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 Background</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 A simple SpMV kernel with the COO format</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 Grouping row nonzeros with the CSR format</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 Improving memory coalescing with the ELL format</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 Regulating padding with the hybrid ELL-COO format</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 Reducing control divergence with the JDS format</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 Summary</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">Exercises</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">References</option>
+    </optgroup>
+    <optgroup label="Chapter 15. Graph traversal">
+      <option value="Ch015_331-354_B9780323912310000112.html">Chapter 15. Graph traversal</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">Abstract</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">Chapter Outline</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 Background</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 Breadth-first search</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 Vertex-centric parallelization of breadth-first search</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 Edge-centric parallelization of breadth-first search</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 Improving efficiency with frontiers</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 Reducing contention with privatization</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 Other optimizations</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 Summary</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">Exercises</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">References</option>
+    </optgroup>
+    <optgroup label="Chapter 16. Deep learning">
+      <option value="Ch016_355-388_B9780323912310000240.html">Chapter 16. Deep learning</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">Abstract</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">Chapter Outline</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 Background</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 Convolutional neural networks</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 Convolutional layer: a CUDA inference kernel</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 Formulating a convolutional layer as GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 CUDNN library</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 Summary</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">Exercises</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">References</option>
+    </optgroup>
+    <optgroup label="Chapter 17. Iterative magnetic resonance imaging reconstruction">
+      <option value="Ch017_391-414_B9780323912310000124.html">Chapter 17. Iterative magnetic resonance imaging reconstruction</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">Abstract</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">Chapter Outline</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 Background</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 Iterative reconstruction</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 Computing FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 Summary</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">Exercises</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">References</option>
+    </optgroup>
+    <optgroup label="Chapter 18. Electrostatic potential map">
+      <option value="Ch018_415-431_B9780323912310000094.html">Chapter 18. Electrostatic potential map</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">Abstract</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">Chapter Outline</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 Background</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 Scatter versus gather in kernel design</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 Thread coarsening</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 Memory coalescing</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 Cutoff binning for data size scalability</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 Summary</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">Exercises</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">References</option>
+    </optgroup>
+    <optgroup label="Chapter 19. Parallel programming and computational thinking">
+      <option value="Ch019_433-446_B9780323912310000021.html">Chapter 19. Parallel programming and computational thinking</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">Abstract</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">Chapter Outline</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 Goals of parallel computing</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 Algorithm selection</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 Problem decomposition</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 Computational thinking</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 Summary</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">References</option>
+    </optgroup>
+    <optgroup label="Part IV: Advanced Practices">
+      <option value="Part4.html">Part IV: Advanced Practices</option>
+    </optgroup>
+    <optgroup label="Chapter 20. Programming a heterogeneous computing cluster: An introduction to CUDA streams">
+      <option value="Ch020_449-473_B9780323912310000070.html">Chapter 20. Programming a heterogeneous computing cluster: An introduction to CUDA streams</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">Abstract</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">Chapter Outline</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 Background</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 A running example</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 Message passing interface basics</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 Message passing interface point-to-point communication</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 Overlapping computation and communication</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 Message passing interface collective communication</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA aware message passing interface</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 Summary</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">Exercises</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">References</option>
+    </optgroup>
+    <optgroup label="Chapter 21. CUDA dynamic parallelism">
+      <option value="Ch021_475-496_B978032391231000001X.html" selected>Chapter 21. CUDA dynamic parallelism</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">Abstract</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">Chapter Outline</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 Background</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 Dynamic parallelism overview</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 An example: Bezier curves</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 A recursive example: quadtrees</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 Important considerations</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 Summary</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">Exercises</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 Support code for quadtree example</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">References</option>
+    </optgroup>
+    <optgroup label="Chapter 22. Advanced practices and future evolution">
+      <option value="Ch022_499-513_B9780323912310000136.html">Chapter 22. Advanced practices and future evolution</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">Abstract</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">Chapter Outline</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 Model of host/device interaction</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 Kernel execution control</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 Memory bandwidth and compute throughput</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 Programming environment</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 Future outlook</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">References</option>
+    </optgroup>
+    <optgroup label="Chapter 23. Conclusion and outlook">
+      <option value="Ch023_515-518_B9780323912310000203.html">Chapter 23. Conclusion and outlook</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">Abstract</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">Chapter Outline</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 Goals revisited</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 Future outlook</option>
+    </optgroup>
+    <optgroup label="Appendix A. Numerical considerations">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">Appendix A. Numerical considerations</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 Floating-point data representation</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 Representable numbers</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 Special bit patterns and precision in IEEE format</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 Arithmetic accuracy and rounding</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 Algorithm considerations</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 Linear solvers and numerical stability</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 Summary</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">Exercises</option>
+    </optgroup>
+    <optgroup label="Back Matter">
+      <option value="Index_537-551_B978032391231000032X.html">Index</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">Home</a>
+      <a class="navbtn" href="Ch020_449-473_B9780323912310000070.html#st0070">&#8249; Prev</a>
+    <a class="navbtn" href="Ch021_475-496_B978032391231000001X.html#st0010">Next &#8250;</a>
+
+    </div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter">
+<a id="Ch021_475-496_B978032391231000001X"></a><div id="page_475" aria-label="Page 475" epub:type="pagebreak" role="doc-pagebreak"></div><header>
+<div id="CN"><a id="Ch021_475-496_B978032391231000001Xtitl"></a>Chapter 21</div><h1 class="chaptitle" epub:type="title" id="tit0010">CUDA dynamic parallelism</h1><address><p class="chapau">With special contributions from Juan Gómez-Luna</p></address>
+</header><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">Abstract</h2><p class="abspara" id="sp0070">This chapter introduces CUDA dynamic parallelism, an extension to the CUDA programming model that enables a CUDA kernel to create more thread grids by calling other kernels. Dynamic parallelism allows algorithms that dynamically discover new work to prepare and launch grids without burdening the host or resorting to complex software techniques. The chapter starts with a simple pattern that benefits from dynamic parallelism. It then uses two advanced examples, Bezier Curve calculation and Quad Tree construction, to illustrate some of the important subtleties and details that programmers will likely encounter when using dynamic parallelism in real applications. It ends with important considerations regarding the practical use of dynamic parallelism, including memory data visibility, pending launch pool configuration, streams, and nesting depth.</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">Keywords</h3><p class="keywords">Dynamic work discovery; irregular work distribution; time-space work variation; grid launch; streams; synchronization; recursive kernel calls</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">Chapter Outline</h2><a id="li0010"></a><p class="chapoutlhd">Outline</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">21.1 Background</a> 476</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">21.2 Dynamic parallelism overview</a> 478</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">21.3 An example: Bezier curves</a> 481</li>
+<li class="chapoutl1" id="o0025"><a id="p0045"></a><a href="#s0045">21.4 A recursive example: quadtrees</a> 484</li>
+<li class="chapoutl1" id="o0030"><a id="p0050"></a><a href="#s0050">21.5 Important considerations</a> 490</li>
+<li class="chapoutl1" id="o0035"><a id="p0075"></a><a href="#s0075">21.6 Summary</a> 492</li>
+<li class="chapoutl1" id="u0050"><a id="p0080"></a><a href="#s0080">Exercises</a> 493</li>
+<li class="chapoutl1" id="u0060"><a id="p0090"></a><a href="#s0085">A21.1 Support code for quadtree example</a> 495</li>
+<li class="chapoutl1" id="u0055"><a id="p0085"></a><a href="#bibliog0010">References</a> 497</li>
+</ul>
+</div></nav>
+<p id="p0095" class="textfl"><a id="P475"></a>CUDA dynamic parallelism is an extension to the CUDA programming model that enables a kernel to call other kernels, thereby allowing threads executing on the device to launch new grids of threads. In early versions of CUDA, grids could be launched only from the host code. Algorithms that involved recursion, irregular loop structures, time-space variation, or other constructs that do not fit a flat and single level of parallelism needed to be implemented with multiple kernel calls from the host, which increases the burden on the host, the amount of host-device communication, and the total execution time. In some cases, programmers resort to loop serialization and other awkward techniques to support these algorithmic needs at the cost of software maintainability. The support for dynamic parallelism allows algorithms that dynamically discover new work to prepare and launch new grids without burdening the host or impacting the software maintainability. This chapter describes the extended capabilities of CUDA that enable dynamic parallelism, including the modifications and additions to the CUDA programming interface, as well as guidelines and best practices for exploiting this added capacity.<span id="page_476" aria-label="Page 476" epub:type="pagebreak" role="doc-pagebreak"></span></p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">21.1 Background</h2><p id="p0100" class="textfl">Many real-world applications employ algorithms that have either a variation of work across space or a dynamically varying amount of work performed over time. For example, <a href="#f0010">Fig. 21.1</a> shows a turbulence simulation example in which the level of required modeling details varies across both space and time. As the combustion flow moves from left to right, the range of activities and intensity increases. The level of details required to model the right side of the model is much higher than that for the left side of the model. On one hand, using a fixed fine grid would incur too much work for no gain for the left side of the model. On the other hand, using a fixed coarse grid would sacrifice too much accuracy for the right side of the model. Ideally, one should use fine grids for the parts of the model that require more details and coarse grids for the parts that do not.</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F00001Xf21-01-9780323912310.jpg" class="img" alt="image" width="1375" height="980"/><figcaption class="figleg"><span class="fignum">Figure 21.1</span> <a id="sp0010"></a>Fixed versus dynamic grids for a turbulence simulation model.</figcaption></figure></div><p id="p0105" class="text">Thus far, we have assumed that all kernels are called from the host code. The amount of work done by a thread grid is predetermined in calling the kernel function. With the single-program, multiple-data programming style for the kernel code, it is tedious if not extremely difficult to have thread blocks use different grid spacing. As a result, this limitation favors the use of a fixed and uniform (regular) grid system. To achieve the desired accuracy, such a fixed grid <span id="page_477" aria-label="Page 477" epub:type="pagebreak" role="doc-pagebreak"></span>approach, as illustrated in the upper right portion of <a href="#f0010">Fig. 21.1</a>, typically needs to accommodate the most demanding parts of the model and maintain unnecessary extra data as well as perform unnecessary extra work in parts that do not require as much detail.</p>
+<p id="p0110" class="text">A more desirable approach is shown as the dynamic grid in the lower right portion of <a href="#f0010">Fig. 21.1</a>. As the simulation algorithm detects fast-changing simulation quantities in some areas of the model, it refines the grid in those areas to achieve the desired level of accuracy. Such refinement does not need to be done for the areas that do not exhibit such intensive activity. Thus the algorithm can dynamically direct more computational resources to the areas of the model that benefit from additional work.</p>
+<p id="p0115" class="text"><a href="#f0015">Fig. 21.2</a> shows a conceptual comparison of behavior between a system without dynamic parallelism and another one with dynamic parallelism with respect to the simulation model in <a href="#f0010">Fig. 21.1</a>. Without dynamic parallelism the host thread must launch all grids. If new work is discovered, such as refining an area in the model during the execution of a grid, the grid needs to terminate, report back to the host, and have the host launch new grids. This is illustrated in <a href="#f0015">Fig. 21.2A</a>, in which the host launches a grid, receives information from this grid after its termination, and launches subsequent grids for any new work that is discovered by the completed grid. The figure depicts the subsequent grids as being launched one after the other; however, sophisticated optimizations may be applied, such as <span id="page_478" aria-label="Page 478" epub:type="pagebreak" role="doc-pagebreak"></span>launching independent grids in different streams or combining them so that they can run in parallel.</p>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F00001Xf21-02-9780323912310.jpg" class="img" alt="image" width="1374" height="842"/><figcaption class="figleg"><span class="fignum">Figure 21.2</span> <a id="sp0015"></a>Grid launch patterns for algorithms with dynamic work variation, (A) without and (B) with dynamic parallelism.</figcaption></figure></div><p id="p0120" class="text"><a href="#f0015">Fig. 21.2B</a> shows that with dynamic parallelism the threads that discover new work can just go ahead and launch grids to do the work. In our example, when a thread discovers that an area in the model needs to be refined, it can launch a new grid to perform the computation on the refined area without the overhead of terminating the grid, reporting back to the host, and having the host launch the new grid.</p></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">21.2 Dynamic parallelism overview</h2><p id="p0125" class="textfl">From the perspective of programmers, dynamic parallelism means that they can write a statement within a kernel that calls another kernel function. In <a href="#f0020">Fig. 21.3</a> the main function (host code) launches three kernels: A, B, and C. These are kernel calls in the host code, as we have been assuming throughout this book. What is new in <a href="#f0020">Fig. 21.3</a> is that one of the kernels, B, calls three kernels X, Y, and Z. This would have been illegal in early CUDA systems that do not support dynamic parallelism.<span id="page_479" aria-label="Page 479" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F00001Xf21-03-9780323912310.jpg" class="img" alt="image" width="1374" height="956"/><figcaption class="figleg"><span class="fignum">Figure 21.3</span> <a id="sp0020"></a>A simple example of a kernel (B) launching three kernels (X, Y, and Z).</figcaption></figure></div><p id="p0130" class="text">The syntax for calling a kernel from inside of a kernel is the same as that for calling a kernel from the host code:</p><div class="pageavoid"><figure class="fig" id="f0070"><img src="../images/F00001Xu21-01-9780323912310.jpg" class="img" alt="image" width="895" height="40"/></figure></div><a id="li0025"></a><div><ul>
+<li class="bulllist" id="u0065">• <a id="p0135"></a><span class="inlinecode">Dg</span> is of type <span class="inlinecode">dim3</span> and specifies the dimensions and size of the grid.</li>
+<li class="bulllist" id="u0070">• <a id="p0140"></a><span class="inlinecode">Db</span> is of type <span class="inlinecode">dim3</span> and specifies the dimensions and size of each thread block.</li>
+<li class="bulllist" id="u0075">• <a id="p0145"></a><span class="inlinecode">Ns</span> is of type <span class="inlinecode">size_t</span> and specifies the number of bytes of shared memory that are dynamically allocated per-thread block for this call, which is in addition to the statically allocated shared memory. <span class="inlinecode">Ns</span> is an optional argument that defaults to 0.</li>
+<li class="bulllist" id="u0080">• <a id="p0150"></a><span class="inlinecode">S</span> is of type <span class="inlinecode">cudaStream_t</span> and specifies the stream associated with this call. The stream must have been allocated in the same thread block in which the call is being made. <span class="inlinecode">S</span> is an optional argument that defaults to 0. Streams were discussed in <a href="Ch020_449-473_B9780323912310000070.html#Ch020_449-473_B9780323912310000070">Chapter 20</a>, Programming a Heterogeneous Computing Cluster.</li>
+</ul>
+</div>
+<p id="p0155" class="text">To demonstrate how dynamic parallelism can be used, we provide simple examples of kernels without and with dynamic parallelism. The examples are based on a hypothetical parallel algorithm that does not compute useful results but provides a conceptually simple computational pattern that recurs in many applications. It serves to illustrate the difference between the two approaches and how one can use the dynamic parallelism to extract more parallelism while reducing control flow divergence when the amount of work done by each thread in an algorithm can vary dynamically.</p>
+<p id="p0160" class="text"><a href="#f0025">Fig. 21.4</a> shows a simple example kernel coded without dynamic parallelism. In this example, each thread of the kernel performs some computation (line 05), then loops over a list of data elements for which it is responsible (line 07), and performs another computation for each data element (line 08).</p>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F00001Xf21-04-9780323912310.jpg" class="img" alt="image" width="1365" height="346"/><figcaption class="figleg"><span class="fignum">Figure 21.4</span> <a id="sp0025"></a>A simple example of a hypothetical parallel algorithm coded in CUDA without dynamic parallelism.</figcaption></figure></div><p id="p0165" class="text">This computation pattern recurs frequently in many applications. For example, in graph search, each thread could visit a vertex and then loop over a list of <span id="page_480" aria-label="Page 480" epub:type="pagebreak" role="doc-pagebreak"></span>neighboring vertices. The reader should find this kernel structure similar to that of the vertex-centric BFS kernel in <a href="Ch015_331-354_B9780323912310000112.html#f0075">Figure 15.14</a>. For another example, in sparse matrix computations, each thread could first identify the starting location of a row of nonzero elements and loop over the nonzero values. In simulations such as the example at the beginning of this chapter, each thread could first process a coarse grid element and then loop over finer grid elements if there is a need for refining the grid.</p>
+<p id="p0170" class="text">There are two main problems with writing applications in the style shown in <a href="#f0025">Fig. 21.4</a>. First, if the work in the loop (lines 07–09) can be profitably performed in parallel, then we have missed out on an opportunity to extract more parallelism from the application. Second, if the number of iterations in the loop varies significantly between threads in the same warp, then the resulting control divergence can degrade the performance of the program.</p>
+<p id="p0175" class="text"><a href="#f0030">Fig. 21.5</a> shows a version of the same program that uses dynamic parallelism. In this version the original kernel is separated into two: a parent kernel and a child kernel. The parent kernel starts off the same as the original kernel, executed by a grid of threads that are referred to as the parent grid. Instead of looping, the parent kernel calls a child kernel to continue the work (lines 07–08). The child kernel is executed by grids of threads called the child grids, which perform the work (line 18, <a href="#f0030">Fig. 21.5</a>) that was originally performed inside the loop body (lines 07–09, <a href="#f0025">Fig. 21.4</a>).</p>
+<div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F00001Xf21-05-9780323912310.jpg" class="img" alt="image" width="1374" height="667"/><figcaption class="figleg"><span class="fignum">Figure 21.5</span> <a id="sp0030"></a>A revised example using CUDA dynamic parallelism.</figcaption></figure></div><p id="p0180" class="text">Writing the program in this way addresses both problems that were mentioned about the original code. First, the loop iterations are now executed in parallel by the child kernel threads instead of serially by the original kernel thread. Thus we have extracted more parallelism from the program. Second, each thread now executes a single loop iteration, which results in better load balance and eliminates <span id="page_481" aria-label="Page 481" epub:type="pagebreak" role="doc-pagebreak"></span>control divergence. Although these two goals could have been achieved by the programmer rewriting the kernels differently, for example, by using an edge-centric breadth-first implementation, such transformations for some applications can be awkward, complicated, and error prone. Dynamic parallelism provides an easy way to express such computational patterns.</p></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">21.3 An example: Bezier curves</h2><p id="p0185" class="textfl">We now show an example that is a more interesting and useful case: the adaptive subdivision of spline curves. This example illustrates the case of having a variable amount of child grid launches, according to the workload. The example is to calculate Bezier curves (<a href="#bib1" role="doc-biblioref" epub:type="biblioref" id="BIB_1">Bezier Curves</a>), which are frequently used in computer graphics to draw smooth, intuitive curves that are defined by a set of <em>control points</em>, which are typically defined by a user.</p>
+<p id="p0190" class="text">Mathematically, a Bezier curve is defined by a set of control points <strong>P</strong><sub>0</sub> through <strong>P</strong><sub><em>n</em></sub>, where <em>n</em> is called the control point’s <em>order</em> (<em>n</em>=1 for linear, 2 for quadratic, 3 for cubic, etc.). The first and last control points are always the end points of the curve; however, the intermediate control points (if any) generally do not lie on the curve.</p><section><a id="s0025"></a><h3 class="h2hd" id="st0040">Linear Bezier curves</h3><p id="p0195" class="textfl">Given two control points <strong>P</strong><sub>0</sub> and <strong>P</strong><sub>1</sub>, a linear Bezier curve is simply a straight line connecting these two points. The coordinates of the points on the curve are given by the following linear interpolation formula:</p>
+<p class="hiddenClass"><math><mi mathvariant="bold">B</mi><mrow><mfenced open="(" close=")"><mrow><mi>t</mi></mrow></mfenced></mrow><mo>=</mo><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>+</mo><mi>t</mi><mrow><mfenced open="(" close=")"><mrow><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>−</mo><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></mfenced></mrow><mo>=</mo><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></mfenced></mrow><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>+</mo><mi>t</mi><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>,</mo><mspace width="1em"></mspace><mi>t</mi><mo>∈</mo><mo>[</mo><mn>0</mn><mo>,</mo><mspace width="1em"></mspace><mn>1</mn><mo>]</mo></math></p><div class="showClass" id="eqn1"><img src="../images/F00001Xsi1.png" class="img" alt="image" width="266" height="11"/></div></section><section><a id="s0030"></a><h3 class="h2hd" id="st0045">Quadratic Bezier curves</h3><p id="p0200" class="textfl">A quadratic Bezier curve is defined by three control points <strong>P</strong><sub>0</sub>, <strong>P</strong><sub>1</sub>, and <strong>P</strong><sub>2</sub>. The points on a quadratic curve are defined as a linear interpolation of corresponding points on the linear Bezier curves from <strong>P</strong><sub>0</sub> to <strong>P</strong><sub>1</sub> and from <strong>P</strong><sub>1</sub> to <strong>P</strong><sub>2</sub>. The calculation of the coordinates of points on the curve is expressed by the following formula:</p>
+<p class="hiddenClass"><math><mi mathvariant="bold">B</mi><mrow><mfenced open="(" close=")"><mrow><mi>t</mi></mrow></mfenced></mrow><mo>=</mo><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></mfenced></mrow><mrow><mfenced open="[" close="]"><mrow><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></mfenced></mrow><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>+</mo><mi>t</mi><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></mfenced></mrow><mo>+</mo><mi>t</mi><mo>[</mo><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></mfenced></mrow><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>+</mo><mi>t</mi><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>2</mn></mrow></msub><mo mathvariant="bold">]</mo><mo>,</mo><mspace width="1em"></mspace><mi>t</mi><mo>∈</mo><mo>[</mo><mn>0</mn><mo>,</mo><mspace width="1em"></mspace><mn>1</mn><mo>]</mo><mo>,</mo></math></p><div class="showClass" id="eqn2"><img src="../images/F00001Xsi2.png" class="img" alt="image" width="312" height="11"/></div><p class="textfl">which can be simplified into the following formula:</p>
+<p class="hiddenClass"><math><mi mathvariant="bold">B</mi><mrow><mfenced open="(" close=")"><mrow><mi>t</mi></mrow></mfenced></mrow><mo>=</mo><msup><mrow><mo>(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo>)</mo></mrow><mrow><mn>2</mn></mrow></msup><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>+</mo><mn>2</mn><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></mfenced></mrow><mi>t</mi><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>+</mo><msup><mrow><mi>t</mi></mrow><mrow><mn>2</mn></mrow></msup><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>,</mo><mspace width="1em"></mspace><mi>t</mi><mo>∈</mo><mrow><mfenced open="[" close="]"><mrow><mn>0</mn><mo>,</mo><mspace width="1em"></mspace><mn>1</mn></mrow></mfenced></mrow><mo>.</mo></math></p><div class="showClass" id="eqn3"><img src="../images/F00001Xsi3.png" class="img" alt="image" width="250" height="13"/></div></section><section><a id="s0035"></a><h3 class="h2hd" id="st0050">Bezier curve calculation (without dynamic parallelism)</h3><p id="p0205" class="textfl"><a href="#f0035">Fig. 21.6</a> shows part of a CUDA C program that calculates the coordinates of points on a Bezier curve. The <span class="inlinecode">computeBezierLines</span> kernel starting at line 13 is <span id="page_482" aria-label="Page 482" epub:type="pagebreak" role="doc-pagebreak"></span>designed to use a block to calculate the curve points for a set of three control points (of the quadratic Bezier formula). Each thread block first computes a measure of the curvature of the curve defined by the three control points. Intuitively, the larger the curvature, the more points it takes to draw a smooth quadratic Bezier curve for the three control points. This defines the amount of work to be done by each block. This is reflected in lines 20 and 21, in which the total number of points to be calculated by the current thread block is proportional to the curvature value.</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F00001Xf21-06-9780323912310.jpg" class="img" alt="image" width="1374" height="1211"/><figcaption class="figleg"><span class="fignum">Figure 21.6</span> <a id="sp0035"></a>Bezier curve calculation without dynamic parallelism.</figcaption></figure></div><p id="p0210" class="text">In the for-loop in line 24, all threads calculate a consecutive set of Bezier curve points in each iteration. The detailed calculation in the loop body is based on the formula that we presented earlier. The key point is that the number of iterations taken by threads in a block can be very different from the number taken by threads in another block. Depending on the scheduling policy, such variation of the amount of work done by each thread block can result in decreased utilization of streaming multiprocessors (SMs) and thus reduced performance.<span id="page_483" aria-label="Page 483" epub:type="pagebreak" role="doc-pagebreak"></span></p></section><section><a id="s0040"></a><h3 class="h2hd" id="st0055">Bezier curve calculation (with dynamic parallelism)</h3><p id="p0215" class="textfl"><a href="#f0040">Fig. 21.7</a> shows a Bezier curve calculation code using dynamic parallelism. It breaks the <span class="inlinecode">computeBezierLines</span> kernel in <a href="#f0035">Fig. 21.6</a> into two kernels. The first part, <span class="inlinecode">computeBezierLines_parent</span>, discovers the amount of work to be done for each control point. The second part, <span class="inlinecode">computeBezierLines_child</span>, performs the calculation.</p>
+<div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F00001Xf21-07-9780323912310.jpg" class="img" alt="image" width="1374" height="1324"/><figcaption class="figleg"><span class="fignum">Figure 21.7</span> <a id="sp0040"></a>Bezier calculation with dynamic parallelism.</figcaption></figure></div><p id="p0220" class="text">With the new organization the amount of work that is done for each set of control points by the <span class="inlinecode">computeBezierLines_parent</span> kernel is much smaller than that for the original <span class="inlinecode">computeBezierLines</span> kernel. Therefore we use one thread to do this work in <span class="inlinecode">computeBezierLines_parent</span> rather than using one block in <span class="inlinecode">computeBezierLines</span>. In line 58, we need to launch only one thread per set of control points. This is reflected by dividing the <span class="inlinecode">N_LINES</span> by <span class="inlinecode">BLOCK_DIM</span> to form the number of blocks in the kernel launch configuration.<span id="page_484" aria-label="Page 484" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<p id="p0225" class="text">There are two key differences between the <span class="inlinecode">computeBezierLines_parent</span> kernel and the <span class="inlinecode">computeBezierLines</span> kernel. First, the index that is used to access the control points is formed on a thread basis (line 08 in <a href="#f0040">Fig. 21.7</a>) rather than a block basis (line 14 in <a href="#f0035">Fig. 21.6</a>). This is because the work for each control point is done by a thread rather than a block, as we mentioned earlier in the chapter. Second, the memory for storing the calculated Bezier curve points is dynamically determined and allocated in line 15 in <a href="#f0040">Fig. 21.7</a>. This allows the code to assign just enough memory to each set of control points to be placed in the <span class="inlinecode">bLines</span> variable. Note that in <a href="#f0035">Fig. 21.6</a>, each <span class="inlinecode">BezierLine</span> element is declared with the maximum possible number of points (line 09). On the other hand, the declaration in <a href="#f0040">Fig. 21.7</a> has only a pointer to a dynamically allocated storage. Allowing a kernel to call the <span class="inlinecode">cudaMalloc()</span> function can lead to substantial reduction of memory usage for situations in which the curvature of control points varies significantly.</p>
+<p id="p0230" class="text">Once a thread of the <span class="inlinecode">computeBezierLines_parent</span> kernel has determined the amount of work needed by its set of control points, it calls the <span class="inlinecode">computeBezierLines_child</span> kernel and launches a child grid to do the work (line 19 in <a href="#f0040">Fig. 21.7</a>). In our example, every thread from the parent grid creates a new grid for its assigned set of control points. This way, the work that is done by each thread block is balanced. The amount of work that is done by each child grid varies.</p>
+<p id="p0235" class="text">Dynamic parallelism kernel calls have the same asynchronous semantics as kernel calls from the host. That is, once the child kernel has been called, the parent thread that called it may proceed to execute the subsequent code without waiting for the child grid to complete. If the parent thread wishes to wait for its child grid to complete, it must perform an explicit synchronization similar to what a host thread would do. If no explicit synchronization is made, then the thread can finish executing, but there is an implicit synchronization at the end. The implicit synchronization ensures that all child grids have terminated before the parent grid terminates. We refer the reader to the CUDA C++ Programming Guide for more details about the semantics of parent-child grid synchronization (<a href="#bib3" role="doc-biblioref" epub:type="biblioref">NVIDIA Corporation, 2021</a>).</p>
+<p id="p0240" class="text">After <span class="inlinecode">computeBezierLines_parent</span> terminates, the memory allocated inside the kernel using <span class="inlinecode">cudaMalloc</span> still needs to be freed. For this reason, an additional kernel <span class="inlinecode">freeVertexMem</span> is implemented (lines 42–47) to be called by the host. This kernel frees all storage allocated to the vertices in the <span class="inlinecode">bLines_d</span> data structure in parallel (line 61). This kernel is necessary because vertex storage allocated on the device by a device kernel has to be freed by a device kernel. We refer the reader to the CUDA C++ Programming Guide for more details about the use of <span class="inlinecode">cudaMalloc</span> and <span class="inlinecode">cudaFree</span> on the device (<a href="#bib3" role="doc-biblioref" epub:type="biblioref">NVIDIA Corporation, 2021</a>).</p></section></section><section><a id="s0045"></a><h2 class="h1hd" id="st0060">21.4 A recursive example: quadtrees</h2><p id="p0245" class="textfl">Dynamic parallelism also allows programmers to implement recursive algorithms. In this section we illustrate the use of dynamic parallelism for implementing recursion with a <em>quadtree</em> (<a href="#bib2" role="doc-biblioref" epub:type="biblioref" id="BIB_2">Finkel and Bentley, 1974</a>). Quadtrees partition a two-dimensional space by recursively subdividing it into four equally sized <em>quadrants</em>. Each quadrant <span id="page_485" aria-label="Page 485" epub:type="pagebreak" role="doc-pagebreak"></span>is considered to be a <em>node</em> of the quadtree and contains a number of points. If the number of points in a quadrant is greater than a fixed minimum, the quadrant will be recursively subdivided into four more quadrants, that is, four child nodes.</p>
+<p id="p0250" class="text"><a href="#f0045">Fig. 21.8</a> illustrates the construction of a quadtree with dynamic parallelism. In this implementation, one node (quadrant) is assigned to one block. Initially (depth=0), one block (block 0) is assigned the entire two-dimensional space (root node of the <span id="page_486" aria-label="Page 486" epub:type="pagebreak" role="doc-pagebreak"></span>quadtree), which contains all points. It divides the space into four quadrants and launches one block for each quadrant (depth=1). These child blocks (blocks 00 through 03) will again subdivide their quadrants if they contain more points than a fixed minimum. In this example we assume that the minimum is two; thus blocks 00 and 02 do not launch children. Blocks 01 and 03 launch a grid with four blocks each.</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F00001Xf21-08-9780323912310.jpg" class="img" alt="image" width="1375" height="1568"/><figcaption class="figleg"><span class="fignum">Figure 21.8</span> <a id="sp0045"></a>Quadtree example. Each block is assigned to one quadrant. If the number of points in a quadrant is more than two, the block launches four child blocks. Shadowed blocks are active blocks in each level of depth.</figcaption></figure></div><p id="p0255" class="text">As the flow graph in the right-hand side of <a href="#f0045">Fig. 21.8</a> shows, a block first checks whether the number of points in its quadrant is greater than the minimum required for further division and whether the maximum depth has not been reached. If either of the conditions fails, the work for the quadrant is complete, and the block returns. Otherwise, the block computes the center of the bounding box that surrounds its quadrant. The center is in the middle of four new quadrants. The number of points in each of them is counted. A four-element scan operation is used to compute the offsets to the locations where the points will be stored. Then the points are reordered so that those points in the same quadrant are grouped together and placed into their section of the point storage. Finally, the block launches a child grid with four blocks, one for each of the four new quadrants.</p>
+<p id="p0260" class="text"><a href="#f0050">Fig. 21.9</a> continues the small example in <a href="#f0045">Fig. 21.8</a> and illustrates in detail how the points are reordered at each level of depth. For the example we assume that each quadrant must have more than two points to be further divided. The algorithm uses two buffers to store the points and reorder them. The points should be in buffer 0 at the end of the algorithm. Thus it might be necessary to swap the buffer contents before leaving if the points are in buffer 1 when the terminating condition is met.</p>
+<div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F00001Xf21-09-9780323912310.jpg" class="img" alt="image" width="1374" height="602"/><figcaption class="figleg"><span class="fignum">Figure 21.9</span> <a id="sp0050"></a>Quadtree example. At each level of depth, a block groups all points in the same quadrant together. (A) shows the initial input list in Buffer 0, (B) The list after being rearranged into four sublists that correspond to the four quadrants, (C) shows the list after being rearranged to reflect the second-level quadrants, (D) shows the list after being rearranged to reflect the third-level quadrant, (E) the final list is copied into Buffer 0 for return to the caller.</figcaption></figure></div><p id="p0265" class="text">In the initial kernel call from the host code (for depth=0), block 0 is assigned all the points that reside in buffer 0, shown in <a href="#f0050">Fig. 21.9A</a>. Block 0 further divides <span id="page_487" aria-label="Page 487" epub:type="pagebreak" role="doc-pagebreak"></span>the quadrant into four child quadrants, groups together all points in the same child quadrant, and stores the points according to the quadrants into buffer 1, as shown in <a href="#f0050">Fig. 21.9B</a>. Its four children, block 00 to block 03, are assigned each of the four new quadrants, shown as marked ranges in <a href="#f0050">Fig. 21.9B</a>. Blocks 00 and 02 will not launch children, since the number of points in their respective assigned quadrant is only 2. Blocks 01 and 03 reorder their points to group those in the same quadrant and launch four child blocks each, as shown in <a href="#f0050">Fig. 21.9C</a>. Blocks 010, 011, 012, 013, 030, 031, and 032 do not launch children (they have two or fewer points) and do not need to swap points (they are already in buffer 0). Only block 033 reorders its points and launches four blocks, as shown in <a href="#f0050">Fig. 21.9D</a>. Blocks 0330 to 0333 will exit after swapping their points to buffer 0, which can be seen in <a href="#f0050">Fig. 21.9E</a>.</p>
+<p id="p0270" class="text">The kernel code in <a id="Bf0055" href="#f0055">Fig. 21.10</a> implements the flow graph from <a href="#f0045">Fig. 21.8</a>. The quadtree is implemented with a node array, in which each element contains all the <span id="page_488" aria-label="Page 488" epub:type="pagebreak" role="doc-pagebreak"></span>pertinent information for one node of the quadtree (definition given in <a href="#s0085">Appendix A21.1</a>). As the quadtree is constructed, new nodes will be created and placed into the array during the execution of the kernels. The kernel code assumes that the <span class="inlinecode">node</span> parameter points to the next available location in the node array.</p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F00001Xf21-10-9780323912310.jpg" class="img" alt="image" width="1375" height="1295"/><figcaption class="figleg"><span class="fignum"><a href="#Bf0055">Figure 21.10</a></span> <a id="sp0055"></a>Quadtree with dynamic parallelism: recursive kernel (support code in <a href="#s0085">Appendix A210.1</a>).</figcaption></figure>
+</div>
+<p id="p0275" class="text">Every block starts by checking the number of points in its node (quadrant). A point is a pair of floats representing <span class="inlinecode">x</span> and <span class="inlinecode">y</span> coordinates (definition in <a href="#s0085">Appendix A21.1</a>). If the number of points is less than or equal to the minimum or if the maximum depth is reached (line 11), the block will exit. The maximum depth may be specified on the basis of application requirements or hardware constraints (see <a href="Ch012_263-289_B9780323912310000252.html#s0030">Section 12.5</a>). Before exiting, the block may need to write its points from buffer 1 <span id="page_489" aria-label="Page 489" epub:type="pagebreak" role="doc-pagebreak"></span>to buffer 0 if necessary. This is because the output is expected in buffer 0 after the quadtree is complete. The transfer of points from buffer 1 to buffer 0 is done in the device function <span class="inlinecode">check_num_points_and_depth()</span> shown in <a href="#f0060">Fig. 21.11</a>.</p>
+<div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F00001Xf21-11a-9780323912310.jpg" class="img" alt="image" width="1375" height="1436"/><img src="../images/F00001Xf21-11b-9780323912310.jpg" class="img" alt="image" width="1371" height="1461"/><figcaption class="figleg"><span class="fignum">Figure 21.11</span> <a id="sp0060"></a>Quadtree with dynamic parallelism: device functions (support code in <a href="#s0085">Appendix A21.1</a>).</figcaption></figure>
+</div>
+<p id="p0280" class="text">Next, the center of the bounding box is computed (line 17). A bounding box is defined by its top-left and bottom-right corners. The coordinates of the top-left and the bottom-right corner points of the bounding box for the current node are given as part of the node data by the caller. The coordinates of the center are computed as the coordinates of the middle point between these two corner points. The definition of a bounding box (including function <span class="inlinecode">compute_center()</span>) is given in <a href="#s0085">Appendix A21.1</a>.<span id="page_490" aria-label="Page 490" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<p id="p0285" class="text">As the center separates the four quadrants, one can determine which quadrant each point in the current node belongs to by comparing it with the center point. The number of points in each quadrant are counted (line 26). The device function <span class="inlinecode">count_points_in_children()</span> can be found in <a href="#f0060">Fig. 21.11</a>. These are simplified for clarity reasons. The threads of the block collaboratively go through the range of points and use atomic operations to update the counters in shared memory for each quadrant.</p>
+<p id="p0290" class="text">The device function <span class="inlinecode">scan_for_offsets()</span> is called then (line 29). As can be seen in <a href="#f0060">Fig. 21.11</a>, it performs a scan on the four counters in shared memory. Then it adds the global offset of the parent quadrant to these values to derive the starting offset for each quadrant’s group in the buffer.</p>
+<p id="p0295" class="text">Using the quadrants’ offsets, the points are reordered with <span class="inlinecode">reorder_points()</span> (line 32). For simplicity this device function (<a href="#f0060">Fig. 21.11</a>) uses an atomic operation on one of the four quadrant counters to derive the location for placing each point.</p>
+<p id="p0300" class="text">Finally, the last thread of the block (line 35) determines the next available location in the node array for children nodes (line 37), prepares the new node contents for the child quadrants (line 40), and launches one child kernel with four thread blocks (line 43). The device function <span class="inlinecode">prepare_children()</span> prepares the new node contents for the children by setting the limits of the children’s bounding boxes and the range of points in each quadrant. The <span class="inlinecode">prepare_children()</span> function can be found in Figure 13.14 (line 75).</p>
+<p id="p0305" class="text">The rest of the definitions can be found in <a href="#s0085">Appendix A21.1</a>.</p></section><section><a id="s0050"></a><h2 class="h1hd" id="st0065">21.5 Important considerations</h2><p id="p0310" class="textfl">In this section we will briefly explain some important considerations for the execution behavior of programs that use dynamic parallelism. It is important for a programmer to understand these considerations well in order to use dynamic parallelism confidently.</p><section><a id="s0055"></a><h3 class="h2hd" id="st0070">Memory and data visibility</h3><p id="p0315" class="textfl">When a parent thread passes a memory pointer to a child grid, it must ensure that the memory being pointed to is accessible to the child grid so that the child grid does not attempt to access invalid memory. The memory that can be accessed by both parent threads and their child grids includes global memory, constant memory, and texture memory. A parent thread should not pass pointers to local memory or shared memory to their child grids because local memory and shared memory are private to the thread and the thread block, respectively.</p>
+<p id="p0320" class="text">Besides ensuring that the memory that is passed by the parent thread to the child grid is accessible to the child grid, programmers must also be aware of when the data written to that memory by a parent thread will be visible to the <span id="page_491" aria-label="Page 491" epub:type="pagebreak" role="doc-pagebreak"></span>child grid and vice versa. There are two points in the execution at which the parent thread and the child grid have the same view of memory: when the parent thread launches the child grid and when the child grid completes as signaled by the completion of a synchronization API call by the parent thread. In other words, when a parent thread launches a child grid, any updates to memory prior to that launch will be seen by the child grid, but there is no such guarantee for updates after that launch. Also, there is no guarantee that any updates to memory made by the child grid will be visible to the parent thread until after the parent thread has synchronized on the completion of the child grid.</p>
+<p id="p0325" class="text">We refer the reader to the CUDA C++ Programming Guide for more details about memory and data visibility between parent threads and child grids (<a href="#bib3" role="doc-biblioref" epub:type="biblioref">NVIDIA Corporation, 2021</a>).</p></section><section><a id="s0060"></a><h3 class="h2hd" id="st0075">Pending launch pool configuration</h3><p id="p0330" class="textfl">The pending launch pool is a buffer that tracks the kernels that are executing or waiting to be executed. This pool is allocated a fixed amount of space, thereby supporting a fixed number of pending kernel calls (2048 by default). If this number is exceeded, a virtualized pool is used, leading to a significant slowdown, which can be an order of magnitude or more. To avoid this slowdown, the programmer can increase the size of the fixed pool by executing the <span class="inlinecode">cudaDeviceSetLimit()</span> API call from the host function to set the <span class="inlinecode">cudaLimitDevRuntimePendingLaunchCount</span> configuration.</p>
+<p id="p0335" class="text">For example, in the Bezier curve calculation in <a href="#s0020">Section 21.3</a>, if <span class="inlinecode">N_LINES</span> is set to 4096, then 4096 child grids will be launched, so half of the launches will use the virtualized pool. This will incur a significant performance penalty. However, if the fixed-size pool is set to 4096, the execution time will be reduced substantially.</p>
+<p id="p0340" class="text">As a general recommendation, the size of the fixed-size pool should be set to the expected number of launched grids (if it exceeds the default size). In the Bezier curves example we would call <span class="inlinecode">cudaDeviceSetLimit(cudaLimitDevRuntimePendingLaunchCount, N_LINES)</span> before calling the <span class="inlinecode">computeBezierLines_parent()</span> kernel.</p></section><section><a id="s0065"></a><h3 class="h2hd" id="st0080">Streams</h3><p id="p0345" class="textfl">Just as host code can use streams to execute kernels concurrently, device threads can use streams in launching grids with dynamic parallelism. The scope of a stream is private to the block in which the stream was created. When a stream is not specified in a kernel call, the default NULL stream in the block is used by all threads. This means that all grids that are launched in the same block will be serialized even if they were launched by different threads. However, it is often the case that grids launched by different threads in a block are independent and can be executed concurrently. Therefore programmers must be careful to explicitly use different streams in each thread if they wish to avoid the performance penalty from serialization.<span id="page_492" aria-label="Page 492" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<p id="p0350" class="text">The Bezier curves example in <a href="#s0020">Section 21.3</a> launches as many child grids as there are parent threads in the <span class="inlinecode">computeBezierLines_parent()</span> kernel (line 19 in <a href="#f0040">Fig. 21.7</a>). If the default NULL stream is used, all the grids that are launched by the same parent block will be serialized. Thus using the default NULL stream in launching the <span class="inlinecode">computeBezierLines_child()</span> kernel can result in a drastic reduction in parallelism compared to the original kernel without dynamic parallelism.</p>
+<p id="p0355" class="text">If more concurrency is desired, named streams must be created and used in each thread. <a id="Bf0065" href="#f0065">Fig. 21.12</a> shows the code that should replace line 19 in <a href="#f0040">Fig. 21.7</a>. With this code, kernels that are launched from the same thread block will be placed in different streams and can run concurrently. This would better utilize all SMs, leading to a considerable reduction in the execution time.</p>
+<div class="pageavoid"><figure class="fig" id="f0065"><img src="../images/F00001Xf21-12-9780323912310.jpg" class="img" alt="image" width="1373" height="281"/><figcaption class="figleg"><span class="fignum"><a href="#Bf0065">Figure 21.12</a></span> <a id="sp0065"></a>Child kernel launch with named streams.</figcaption></figure></div></section><section><a id="s0070"></a><h3 class="h2hd" id="st0085">Nesting depth</h3><p id="p0360" class="textfl">Kernels that are launched with dynamic parallelism may themselves call other kernels, which may in turn call other kernels, and so on. We saw an example of such a kernel in the quadtree application in <a href="Ch012_263-289_B9780323912310000252.html#s0025">Section 12.4</a>. Each subordinate launch is considered a new <em>nesting level</em>, and the total number of levels that are reached is called the <em>nesting depth</em>. The maximum nesting depth supported by current hardware is 24 levels. For this reason, kernels such as the one in the quadtree example should check this limit before deciding whether to make a dynamic launch.</p>
+<p id="p0365" class="text">In the presence of parent-child synchronization there are additional constraints on the nesting depth due to the amount of memory required by the system to store the state of the parent grid. This constraint is referred to as the <em>synchronization depth</em>. We refer the reader to the CUDA C++ Programming Guide for more details about the nesting depth and synchronization depth (<a href="#bib3" role="doc-biblioref" epub:type="biblioref">NVIDIA Corporation, 2021</a>).</p></section></section><section><a id="s0075"></a><h2 class="h1hd" id="st0090">21.6 Summary</h2><p id="p0370" class="textfl">CUDA dynamic parallelism extends the CUDA programming model to allow kernels to call other kernels. This allows each thread to dynamically discover work and launch new grids according to the amount of work that is newly discovered. <span id="page_493" aria-label="Page 493" epub:type="pagebreak" role="doc-pagebreak"></span>It also supports dynamic allocation of device memory by threads. As we showed in the Bezier curve calculation example, these extensions can lead to better work balance across threads and blocks as well as more efficient memory usage. CUDA Dynamic Parallelism also helps programmers to implement recursive algorithms, as the quadtree example shows.</p>
+<p id="p0375" class="text">Besides ensuring better work balance, dynamic parallelism offers many advantages in terms of programmability. However, it is important to keep in mind that launching grids with a small number of threads could lead to severe underutilization of the GPU resources. A general recommendation is launching child grids with many blocks, or at least blocks with many threads if the number of blocks is small.</p>
+<p id="p0380" class="text">Similarly, nested parallelism, which can be seen as a form of tree processing, provides higher performance when tree nodes are thick (that is, each node deploys many threads) and/or when the branch degree is large (i.e., each parent node has many children). As the nesting depth is limited in hardware, only relatively shallow trees can be implemented efficiently.</p>
+<p id="p0385" class="text">To use dynamic parallelism effectively, programmers need to understand details such as visibility of memory contents, pending launch count, and streams. Careful use of memory and streams between parents and children in dynamic parallelism is critical for the correct execution and achieving the expected level of parallelism in launching child grids.</p></section><section><a id="s0080"></a><h2 class="h1hd" id="st0095">Exercises</h2><a id="p0390"></a><a id="li0030"></a><div><ol>
+<li class="numlista" id="o0040">1. <a id="p0395"></a>Which of the following statements are true for the Bezier curves example?<a id="li0035"></a><ol>
+<li class="numlist1a" id="o0045">a. <a id="p0400"></a>If <span class="inlinecode">N_LINES</span>=1024 and <span class="inlinecode">BLOCK_DIM</span>=64, the number of child kernels that are launched will be 16.</li>
+<li class="numlist1a" id="o0050">b. <a id="p0405"></a>If <span class="inlinecode">N_LINES</span>=1024, the fixed-size pool should be reduced from 2048 (the default) to 1024 to get the best performance.</li>
+<li class="numlist1a" id="o0055">c. <a id="p0410"></a>If <span class="inlinecode">N_LINES</span>=1024 and <span class="inlinecode">BLOCK_DIM</span>=64 and per-thread streams are used, a total of 16 streams will be deployed.</li>
+</ol></li>
+<li class="numlista" id="o0060">2. <a id="p0415"></a>Consider a two-dimensional organization of 64 equidistant points. It is classified with a quadtree. What will be the maximum depth of the quadtree (including the root node)?<a id="li0040"></a><ol>
+<li class="numlist1a" id="o0065">a. <a id="p0420"></a>21</li>
+<li class="numlist1a" id="o0070">b. <a id="p0425"></a>4</li>
+<li class="numlist1a" id="o0075">c. <a id="p0430"></a>64</li>
+<li class="numlist1a" id="o0080">d. <a id="p0435"></a>16</li>
+</ol></li>
+<li class="numlista" id="o0085">3. <a id="p0440"></a>For the same quadtree, what will be the total number of child kernel launches?<a id="li0045"></a><ol>
+<li class="numlist1a" id="o0090">a. <a id="p0445"></a>21</li>
+<li class="numlist1a" id="o0095">b. <a id="p0450"></a>4<span id="page_494" aria-label="Page 494" epub:type="pagebreak" role="doc-pagebreak"></span></li>
+<li class="numlist1a" id="o0100">c. <a id="p0455"></a>64</li>
+<li class="numlist1a" id="o0105">d. <a id="p0460"></a>16</li>
+</ol></li>
+<li class="numlista" id="o0110">4. <a id="p0465"></a><strong>True or False:</strong> Parent kernels can define new <span class="inlinecode">__constant__</span> variables that will be inherited by child kernels.</li>
+<li class="numlista" id="o0115">5. <a id="p0470"></a><strong>True or False:</strong> Child kernels can access their parents’ shared and local memories.</li>
+<li class="numlista" id="o0120">6. <a id="p0475"></a>Six blocks of 256 threads run the following parent kernel:<div class="pageavoid"><figure class="fig" id="f0075"><img src="../images/F00001Xu21-02-9780323912310.jpg" class="img" alt="image" width="1372" height="309"/></figure></div>How many child kernels could run concurrently?<a id="li0050"></a><ol>
+<li class="numlist1a" id="o0125">a. <a id="p0485"></a>1536</li>
+<li class="numlist1a" id="o0130">b. <a id="p0490"></a>256</li>
+<li class="numlist1a" id="o0135">c. <a id="p0495"></a>6</li>
+<li class="numlist1a" id="o0140">d. <a id="p0500"></a>1</li>
+</ol></li>
+</ol></div><p class="textfl"><span id="page_495" aria-label="Page 495" epub:type="pagebreak" role="doc-pagebreak"></span></p></section><section><a id="s0085"></a><h2 class="h1hd" id="st0105">A21.1 Support code for quadtree example</h2><a id="p0505"></a><div class="pageavoid"><figure class="fig" id="f0080"><img src="../images/F00001Xu21-03-1-9780323912310.jpg" class="img" alt="image" width="1374" height="1775"/></figure></div><p class="textfl"><span id="page_496" aria-label="Page 496" epub:type="pagebreak" role="doc-pagebreak"></span></p><div class="pageavoid"><figure class="fig" id="f9080"><img src="../images/F00001Xu21-03-2-9780323912310.jpg" class="img" alt="image" width="1375" height="1887"/></figure></div><div class="pageavoid"><figure class="fig" id="f9085"><img src="../images/F00001Xu21-03-3-9780323912310.jpg" class="img" alt="image" width="1373" height="760"/></figure></div></section><footer><section aria-label="bibliography"><a id="bibliog0010"></a><h2 class="reftitle" id="st0100">References</h2><section><p class="reflist" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib1"><a aria-label="noteref" href="#BIB_1">Bezier Curves</a> Bezier Curves, <a href="http://en.wikipedia.org/wiki/B%C3%A9zier_curve">http://en.wikipedia.org/wiki/B%C3%A9zier_curve</a>.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib2"><a aria-label="noteref" href="#BIB_2">Finkel and Bentley, 1974</a> Finkel RA, Bentley JL. <cite>Quad trees: a data structure for retrieval on composite keys</cite>. <cite><em>Acta Inform.</em></cite> 1974;4(1):1–9.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib3">NVIDIA Corporation, 2021 NVIDIA Corporation, 2021. CUDA C++ programming guide, March.</p></section></section></footer></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>
