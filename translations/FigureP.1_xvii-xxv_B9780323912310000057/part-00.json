@@ -1,0 +1,155 @@
+{
+  "page": "FigureP.1_xvii-xxv_B9780323912310000057",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Preface",
+      "zh": "序言"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[3]/p[1]",
+      "en": "Wen-mei W. Hwu, David B. Kirk and Izzat El Hajj",
+      "zh": "Wen-mei W. Hwu、David B. Kirk 与 Izzat El Hajj"
+    },
+    {
+      "id": "p0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "We are proud to introduce to you the fourth edition of 【1】Programming Massively Parallel Processors: A Hands-on Approach【/1】.",
+      "zh": "我们很荣幸向你介绍【1】《大规模并行处理器编程：实践方法》【/1】第 4 版。"
+    },
+    {
+      "id": "p0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "Mass market computing systems that combine multicore CPUs and many-thread GPUs have brought terascale computing to laptops and exascale computing to clusters. Armed with such computing power, we are at the dawn of the widespread use of computational experiments in the science, engineering, medical, and business disciplines. We are also witnessing the wide adoption of GPU computing in key industry vertical markets, such as finance, e-commerce, oil and gas, and manufacturing. Breakthroughs in these disciplines will be achieved by using computational experiments that are of unprecedented levels of scale, accuracy, safety, controllability, and observability. This book provides a critical ingredient for this vision: teaching parallel programming to millions of graduate and undergraduate students so that computational thinking and parallel programming skills will become as pervasive as calculus skills.",
+      "zh": "把多核 CPU 与多线程 GPU 结合在一起的大众市场计算系统，已经把万亿次级（terascale）计算带到了笔记本电脑上，把百亿亿次级（exascale）计算带到了集群上。有了这样的算力，我们正站在计算实验在科学、工程、医学和商业等学科中广泛普及的黎明时分。我们也正见证 GPU 计算在金融、电子商务、石油天然气、制造业等重要垂直行业市场中被广泛采用。这些学科中的突破，将依靠在规模、精度、安全性、可控性和可观测性上都达到前所未有水平的计算实验来实现。本书为这一愿景提供了一项关键要素：向数以百万计的研究生和本科生教授并行编程，使计算思维和并行编程技能像微积分技能一样普及。"
+    },
+    {
+      "id": "p0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[3]",
+      "en": "The primary target audience of this book consists of graduate and undergraduate students in all science and engineering disciplines in which computational thinking and parallel programming skills are needed to achieve breakthroughs. The book has also been used successfully by industry professional developers who need to refresh their parallel computing skills and keep up to date with ever-increasing speed of technology evolution. These professional developers work in fields such as machine learning, network security, autonomous vehicles, computational financing, data analytics, cognitive computing, mechanical engineering, civil engineering, electrical engineering, bioengineering, physics, chemistry, astronomy, and geography, and they use computation to advance their fields. Thus these developers are both experts in their domains and programmers. The book takes the approach of teaching parallel programming by building up an intuitive understanding of the techniques. We assume that the reader has at least some basic C programming experience. We use CUDA C, a parallel programming environment that is supported on NVIDIA GPUs. There are more than 1 billion of these processors in the hands of consumers and professionals, and more than 400,000 programmers are actively using CUDA. The applications that you will develop as part of your learning experience will be runnable by a very large user community.",
+      "zh": "本书的主要目标读者，是所有理工科专业的研究生和本科生——在这些学科中，要取得突破就需要计算思维和并行编程技能。业界的专业开发者也已成功地使用本书，他们需要更新自己的并行计算技能，跟上不断加快的技术演进步伐。这些专业开发者活跃在机器学习、网络安全、自动驾驶汽车、计算金融、数据分析、认知计算、机械工程、土木工程、电气工程、生物工程、物理、化学、天文和地理等领域，他们用计算来推动各自领域的发展。因此，这些开发者既是各自领域的专家，也是程序员。本书采取的教学方式，是通过建立对相关技术的直观理解来教授并行编程。我们假设读者至少具备一些基本的 C 语言编程经验。我们使用 CUDA C，这是一种在 NVIDIA GPU 上得到支持的并行编程环境。这类处理器已有超过 10 亿块掌握在消费者和专业人士手中，另有超过 40 万名程序员在积极使用 CUDA。你在学习过程中开发的应用程序，将能够被一个极其庞大的用户群体运行。"
+    },
+    {
+      "id": "p0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[4]",
+      "en": "Since the third edition came out in 2016, we have received numerous comments from our readers and instructors. Many of them told us about the existing features they value. Others gave us ideas about how we should expand the book’s contents to make it even more valuable. Furthermore, the hardware and software for heterogeneous parallel computing have advanced tremendously since 2016. In the hardware arena, three more generations of GPU computing architectures, namely, Volta, Turing, and Ampere, have been introduced since the third edition. In the software domain, CUDA 9 through CUDA 11 have allowed programmers to access new hardware and system features. New algorithms have also been developed. Accordingly, we added four new chapters and rewrote a substantial number of the existing chapters.",
+      "zh": "自第 3 版于 2016 年问世以来，我们收到了读者和授课教师的大量意见。其中许多人告诉我们，他们看重书中已有的哪些特点；另一些人则就如何扩充本书内容、使其更有价值提出了想法。此外，自 2016 年以来，异构并行计算的硬件与软件都有了巨大的进步。在硬件方面，第 3 版之后又推出了三代 GPU 计算架构，即 Volta、Turing 和 Ampere。在软件方面，从 CUDA 9 到 CUDA 11 让程序员能够使用新的硬件与系统特性。新的算法也不断涌现。相应地，我们新增了四章，并重写了相当多的既有章节。"
+    },
+    {
+      "id": "p0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[5]",
+      "en": "The four newly added chapters include one new foundational chapter, namely, 【1】Chapter 4【/1】 (Compute Architecture and Scheduling), and three new parallel patterns and applications chapters: 【2】Chapter 8【/2】 (Stencil), 【3】Chapter 10【/3】 (Reduction and Minimizing Divergence), and 【4】Chapter 13【/4】 (Sorting). Our motivation for adding these chapters is as follows:",
+      "zh": "新增的四章中，有一章是基础性章节，即【1】第 4 章【/1】（计算体系结构与调度）；另外三章讲的是新的并行模式与应用：【2】第 8 章【/2】（模板）、【3】第 10 章【/3】（归约与最小化发散）和【4】第 13 章【/4】（排序）。我们增加这几章的动机如下："
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[4]/ul[1]/li[1]",
+      "en": "• 【1】Chapter 4【/1】 (Compute Architecture and Scheduling): In the previous edition the discussions on architecture and scheduling considerations were scattered across multiple chapters. In this edition, 【2】Chapter 4【/2】 consolidates these discussions into one focused chapter that serves as a centralized reference for readers who are particularly interested in this topic.",
+      "zh": "• 【1】第 4 章【/1】（计算体系结构与调度）：在上一版中，关于体系结构与调度方面的讨论散落在多个章节里。本版把这些讨论汇集到【2】第 4 章【/2】这一专门的章节中，为特别关注这一主题的读者提供集中的参考。"
+    },
+    {
+      "id": "u0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[4]/ul[1]/li[2]",
+      "en": "• 【1】Chapter 8【/1】 (Stencil): In the previous edition the stencil pattern was briefly mentioned in the convolution chapter in light of the similarities between the two patterns. In this edition, 【2】Chapter 8【/2】 provides a more thorough treatment of the stencil pattern, emphasizing the mathematical background behind the computation and aspects that make it different from convolution, thereby enabling additional optimizations. The chapter also provides an example of handling three-dimensional grids and data.",
+      "zh": "• 【1】第 8 章【/1】（模板）：在上一版中，由于模板模式与卷积模式的相似性，模板模式只在讲卷积的一章里被简要提及。本版的【2】第 8 章【/2】对模板模式作了更透彻的处理，强调计算背后的数学背景，以及它与卷积的不同之处——正是这些不同之处带来了额外的优化空间。该章还给出了一个处理三维网格与数据的示例。"
+    },
+    {
+      "id": "u0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[4]/ul[1]/li[3]",
+      "en": "• 【1】Chapter 10【/1】 (Reduction and Minimizing Divergence): In the previous edition the reduction pattern was briefly presented in the performance considerations chapter. In this edition, 【2】Chapter 10【/2】 provides a more complete presentation of the reduction pattern with an incremental approach to applying the optimizations and a more thorough analysis of the associated performance tradeoffs.",
+      "zh": "• 【1】第 10 章【/1】（归约与最小化发散）：在上一版中，归约模式只在讲性能考量的一章里被简要介绍。本版的【2】第 10 章【/2】更完整地介绍了归约模式，以循序渐进的方式施加各项优化，并更透彻地分析相应的性能权衡。"
+    },
+    {
+      "id": "u0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[4]/ul[1]/li[4]",
+      "en": "• 【1】Chapter 13【/1】 (Sorting): In the previous edition, merge sort was briefly alluded to in the chapter on the merge pattern. In this edition, 【2】Chapter 13【/2】 presents radix sort as a noncomparison sort algorithm that is highly amenable to GPU parallelization and follows an incremental approach to optimizing it and analyzing the performance tradeoffs. Merge sort is also discussed in this chapter.",
+      "zh": "• 【1】第 13 章【/1】（排序）：在上一版中，归并排序只在讲归并模式的一章里被略微提及。本版的【2】第 13 章【/2】把基数排序作为一种非常适合 GPU 并行化的非比较排序算法来讲解，并循序渐进地对它进行优化、分析其中的性能权衡。归并排序也在本章中讨论。"
+    },
+    {
+      "id": "p0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[6]",
+      "en": "In addition to the newly added chapters, all chapters have been revised, and some chapters have been substantially rewritten. These chapters include the following:",
+      "zh": "除新增的章节外，所有章节都作了修订，其中一些还被大幅重写。这些章节包括："
+    },
+    {
+      "id": "u0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[5]/ul[1]/li[1]",
+      "en": "• 【1】Chapter 6【/1】 (Performance Considerations): Some architecture considerations that were previously in this chapter were moved to the new 【2】Chapter 4【/2】, and the reduction example was moved to the new 【3】Chapter 10【/3】. In their place, this chapter was rewritten to provide a more thorough handling of thread granularity considerations and, more notably, to provide a checklist of common performance optimization strategies and the performance bottlenecks that each strategy tackles. This checklist is referred to throughout the rest of the textbook as we optimize the code for implementing various parallel patterns and applications. The goal is to reinforce a systematic and incremental methodology for optimizing the performance of parallel programs.",
+      "zh": "• 【1】第 6 章【/1】（性能考量）：原先放在本章中的一些体系结构考量被移到了新的【2】第 4 章【/2】，归约的例子被移到了新的【3】第 10 章【/3】。取而代之的是，本章经过重写，更透彻地讨论了线程粒度方面的考量；更值得一提的是，本章给出了一份常见性能优化策略的清单，并说明每种策略针对的是哪一类性能瓶颈。在本书余下的部分中，每当我们为实现各种并行模式与应用而优化代码时，都会引用这份清单。其目的是强化一套系统而循序渐进的并行程序性能优化方法。"
+    },
+    {
+      "id": "u0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[5]/ul[1]/li[2]",
+      "en": "• 【1】Chapter 7【/1】 (Convolution): In the previous edition the chapter on the convolution pattern used a one-dimensional convolution as a running example, with a brief handling of two-dimensional convolutions toward the end. In this edition this chapter was rewritten to focus more on two-dimensional convolution from the start. This change allows us to address the complexity and intricacies of higher-dimensional tiling and equip the readers with a better background for learning convolutional neural networks in 【2】Chapter 16【/2】.",
+      "zh": "• 【1】第 7 章【/1】（卷积）：在上一版中，讲卷积模式的一章以一维卷积作为贯穿全章的例子，直到接近末尾才简要处理二维卷积。本版重写了这一章，从一开始就更多地聚焦于二维卷积。这一改动使我们得以讨论高维分块的复杂与微妙之处，也让读者在【2】第 16 章【/2】学习卷积神经网络时具备更好的基础。"
+    },
+    {
+      "id": "u0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[5]/ul[1]/li[3]",
+      "en": "• 【1】Chapter 9【/1】 (Parallel Histogram): In the previous edition the chapter on the histogram pattern applied the thread coarsening optimization from the start and combined the privatization optimization with the use of shared memory. In this edition this chapter was rewritten to follow a more incremental approach to performance optimization. The initial implementation that is now presented does not apply thread coarsening. Privatization and the use of shared memory for the private bins are distinguished as two separate optimizations, the former aimed at reducing contention of atomics and the latter aimed at reducing access latency. Thread coarsening is applied after privatization, since one major benefit of coarsening is to reduce the number of private copies committed to the public copy. The new organization of the chapter is more consistent with the systematic and incremental approach to performance optimization that is followed throughout the book. We also moved the chapter to precede the chapters on the reduction and scan patterns in order to introduce atomic operations sooner, since they are used in multiblock reduction and single-pass scan kernels.",
+      "zh": "• 【1】第 9 章【/1】（并行直方图）：在上一版中，讲直方图模式的一章从一开始就施加了线程粗化优化，并把私有化优化与共享内存的使用揉在了一起。本版重写了这一章，采用更循序渐进的性能优化路径。现在给出的初始实现并不使用线程粗化。私有化，与为私有分箱使用共享内存，被区分为两项独立的优化：前者旨在减少原子操作的竞争，后者旨在降低访问延迟。线程粗化放在私有化之后施加，因为粗化的一大好处正是减少提交到公共副本的私有副本数量。这样的章节组织方式，与全书贯穿始终的系统而循序渐进的性能优化思路更为一致。我们还把这一章前移到讲归约模式和扫描模式的章节之前，以便更早引入原子操作，因为多线程块归约核函数和单遍扫描核函数都要用到它们。"
+    },
+    {
+      "id": "u0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[5]/ul[1]/li[4]",
+      "en": "• 【1】Chapter 14【/1】 (Sparse Matrix Computation): In this edition this chapter was rewritten to follow a more systematic approach for analyzing the tradeoffs between different sparse matrix storage formats. The beginning of the chapter introduces a list of considerations that go into the design of different sparse matrix storage formats. This list of design considerations is then used throughout the chapter to systematically analyze the tradeoffs between the different formats.",
+      "zh": "• 【1】第 14 章【/1】（稀疏矩阵计算）：本版重写了这一章，采用更系统的方法来分析不同稀疏矩阵存储格式之间的权衡。章首列出了设计各种稀疏矩阵存储格式时需要斟酌的一系列因素，随后全章都用这份设计考量清单来系统地分析不同格式之间的权衡。"
+    },
+    {
+      "id": "u0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[5]/ul[1]/li[5]",
+      "en": "• 【1】Chapter 15【/1】 (Graph Traversal): In the previous edition the chapter on graph traversal focused on a particular BFS parallelization strategy. In this edition this chapter was significantly expanded to cover a more comprehensive set of alternative parallelization strategies and to analyze the tradeoffs between them. These strategies include vertex-centric push-based, vertex-centric pull-based, edge-centric, and linear algebraic implementations in addition to the original implementation, which was the vertex-centric push-based frontier-based implementation. The classification of these alternatives is not unique to BFS but applies to parallelizing graph algorithms in general.",
+      "zh": "• 【1】第 15 章【/1】（图遍历）：在上一版中，讲图遍历的一章只聚焦于一种特定的 BFS 并行化策略。本版大幅扩充了这一章，覆盖了一整套更为全面的可选并行化策略，并分析它们之间的权衡。除原有的实现（即基于前沿的面向顶点推送式实现）之外，这些策略还包括面向顶点的推送式实现、面向顶点的拉取式实现、面向边的实现以及线性代数式的实现。这些方案的分类并非 BFS 独有，而是普遍适用于图算法的并行化。"
+    },
+    {
+      "id": "u0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[5]/ul[1]/li[6]",
+      "en": "• 【1】Chapter 16【/1】 (Deep Learning): In this edition this chapter was rewritten to provide a comprehensive yet intuitive theoretical background for understanding modern neural networks. The background makes it easier for the reader to fully understand the computational components of neural networks, such as fully connected layers, activation, and convolutional layers. It also removes some of the common barriers to understanding the kernel functions for training a convolutional neural network.",
+      "zh": "• 【1】第 16 章【/1】（深度学习）：本版重写了这一章，为理解现代神经网络提供了全面而又直观的理论背景。这些背景知识让读者更容易透彻理解神经网络中的各种计算组件，如全连接层、激活和卷积层。它还打破了理解卷积神经网络训练核函数时常见的一些屏障。"
+    },
+    {
+      "id": "u0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[5]/ul[1]/li[7]",
+      "en": "• 【1】Chapter 19【/1】 (Parallel Programming and Computational Thinking): In the previous edition this chapter discussed algorithm selection and problem decomposition while drawing examples from the chapters on iterative MRI reconstruction and electrostatic potential map. In this edition the chapter was revised to draw examples from many more chapters, serving as a concluding chapter for Parts I and II. The discussion of problem decomposition was particularly expanded to introduce the generalizations of output-centric decomposition and input-centric decomposition and to discuss the tradeoffs between them, using many examples.",
+      "zh": "• 【1】第 19 章【/1】（并行编程与计算思维）：在上一版中，这一章讨论算法选择与问题分解，例子取自迭代式磁共振成像重建和静电势图两章。本版修订了这一章，从更多章节中取材举例，使其成为第一部分和第二部分的总结性章节。其中对问题分解的讨论作了特别扩充，引入了面向输出的分解与面向输入的分解这两种更一般的视角，并用大量例子讨论二者之间的权衡。"
+    },
+    {
+      "id": "u0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[5]/ul[1]/li[8]",
+      "en": "• 【1】Chapter 21【/1】 (CUDA Dynamic Parallelism): In the previous edition this chapter went into many programming details relating to the semantics of different programming constructs and API calls in the context of dynamic parallelism. In this edition the focus of the chapter has shifted more toward the application examples, with the other programming details discussed more briefly while referring interested readers to the CUDA programming guide.",
+      "zh": "• 【1】第 21 章【/1】（CUDA 动态并行）：在上一版中，这一章深入讨论了动态并行语境下各种编程结构和 API 调用的语义等大量编程细节。本版把这一章的重心更多地转向应用示例，其他编程细节只作简要讨论，并请有兴趣的读者参阅 CUDA 编程指南。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[7]",
+      "en": "While making all these improvements, we tried to preserve the features that seem to contribute most to the book’s popularity. First, we keep our explanations as intuitive as possible. While it is tempting to formalize some of the concepts, especially when we cover the basic parallel algorithms, we have striven to keep all our explanations intuitive and practical. Second, we keep the book as concise as possible. Although it is tempting to keep adding new material, we wanted to minimize the number of pages a reader needs to go through to learn all the key concepts. We accomplished this by moving the previous chapter on numerical considerations to the appendix. While numerical considerations are an extremely important aspect of parallel computing, we found that a substantial amount of the content in the chapter was already familiar to many of our readers who come from a computer science or computational science background. For this reason we preferred to dedicate more space to covering additional parallel patterns.",
+      "zh": "在作出这些改进的同时，我们也努力保留那些似乎最能让本书广受欢迎的特点。第一，我们让讲解尽可能直观。把某些概念形式化固然很有诱惑力——在讲基本并行算法时尤其如此——但我们仍力求让所有讲解都保持直观和实用。第二，我们让本书尽可能精炼。不断添加新材料固然很有诱惑力，但我们希望把读者为掌握全部关键概念而需要翻阅的页数降到最少。为此，我们把上一版中讲数值考量的一章移到了附录。数值考量固然是并行计算中极为重要的一个方面，但我们发现，这一章中相当一部分内容，对许多具有计算机科学或计算科学背景的读者来说已经并不陌生。因此，我们更愿意把篇幅用来介绍更多的并行模式。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[8]",
+      "en": "In addition to adding new chapters and substantially rewriting others since the previous edition, we have also organized the book into four major parts. This organization is illustrated in 【1】Fig. P.1【/1】. The first part introduces the fundamental concepts behind parallel programming, the GPU architecture, and performance analysis and optimization. The second part applies these concepts by covering six common computation patterns and showing how they can be parallelized and optimized. Each parallel pattern also introduces a new programming feature or technique. The third part introduces additional advanced patterns and applications and continues to apply the optimizations that are practiced in the second part. However, it puts more emphasis on exploring alternative forms of problem decomposition to parallelize a computation and analyzes the tradeoffs between different decompositions and their associated data structures. Finally, the fourth part exposes the reader to advanced practices and programming features.",
+      "zh": "除了自上一版以来新增章节、大幅重写另一些章节之外，我们还把全书组织为四大部分，如【1】图 P.1【/1】所示。第一部分介绍并行编程背后的基本概念、GPU 体系结构，以及性能分析与优化。第二部分讲解六种常见的计算模式，展示如何把它们并行化并加以优化，从而把这些概念应用起来；每一种并行模式同时还会引入一项新的编程特性或技术。第三部分介绍更多高级模式与应用，并继续运用第二部分中练习过的各项优化；不过，它更强调探索对一项计算进行并行化时可以采用的不同问题分解形式，并分析不同分解方式及其相应数据结构之间的权衡。最后，第四部分让读者接触高级实践与编程特性。"
+    },
+    {
+      "id": "n0022",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[6]/figure[1]/figcaption[1]",
+      "en": "【1】Figure P.1【/1】 Organization of the book.",
+      "zh": "【1】图 P.1【/1】 本书的组织结构。"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "How to use the book",
+      "zh": "如何使用本书"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "We would like to offer some of our experience in teaching courses with this book. Since 2006 we have taught multiple types of courses: in one-semester format and in one-week intensive format. The original ECE498AL course has become a permanent course known as ECE408 or CS483 at the University of Illinois at Urbana-Champaign. We started to write up some of the early chapters of this book when we offered ECE498AL the second time. The first four chapters were also tested in an MIT class taught by Nicolas Pinto in the spring of 2009. Since then, we have used the book for numerous offerings of ECE408 as well as the Coursera Heterogeneous Parallel Programming course and the VSCSE and PUMPS summer schools.",
+      "zh": "我们愿意分享一些用本书开课的经验。自 2006 年以来，我们讲授过多种形式的课程：一个学期的常规形式，以及为期一周的强化形式。最初的 ECE498AL 课程，如今已成为伊利诺伊大学厄巴纳-香槟分校的常设课程，课号为 ECE408 或 CS483。我们是在第二次开设 ECE498AL 时，开始动笔撰写本书最早的几章的。前四章还曾在 2009 年春季，用于 Nicolas Pinto 在麻省理工学院讲授的一门课上试讲。此后，我们在 ECE408 的多次开课中使用本书，也把它用于 Coursera 上的 Heterogeneous Parallel Programming 课程，以及 VSCSE 和 PUMPS 暑期学校。"
+    }
+  ]
+}

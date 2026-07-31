@@ -1,0 +1,107 @@
+{
+  "page": "FigureP.1_xvii-xxv_B9780323912310000057",
+  "nodes": [
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h2[1]",
+      "en": "A two-phased approach",
+      "zh": "两阶段方法"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Most of the chapters in the book are designed to be covered in approximately a single 75-minute lecture each. The chapters that may need two 75-minute lectures to be fully covered are 【1】Chapter 11【/1】 (Prefix Sum (Scan)), 【2】Chapter 14【/2】 (Sparse Matrix Computation), and 【3】Chapter 15【/3】 (Graph Traversal). In ECE408 the lectures, programming assignments, and final project are paced with each other and are organized into two phases.",
+      "zh": "本书大多数章节的设计，都是每章大约用一次 75 分钟的课讲完。可能需要两次 75 分钟的课才能讲透的章节有：【1】第 11 章【/1】（前缀和（扫描））、【2】第 14 章【/2】（稀疏矩阵计算）和【3】第 15 章【/3】（图遍历）。在 ECE408 中，讲课、编程作业和期末项目的进度彼此配合，并组织为两个阶段。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[2]",
+      "en": "In the first phase, which consists of Parts I and II of this book, students learn about fundamentals and basic patterns, and they practice the skills that they learn via guided programming assignments. This phase consists of 12 chapters and typically takes around seven weeks. Each week, students work on a programming assignment corresponding to that week’s lectures. For example, in the first week, a lecture based on 【1】Chapter 2【/1】 is dedicated to teaching the basic CUDA memory/threading model, the CUDA extensions to the C language, and the basic programming tools. After that lecture, students can write a simple vector addition code in a couple of hours.",
+      "zh": "第一阶段由本书的第一部分和第二部分组成，学生在其中学习基础知识与基本模式，并通过有指导的编程作业来练习所学的技能。这一阶段包含 12 章，通常需要七周左右。每一周，学生完成一次与当周讲课内容相对应的编程作业。例如，第一周有一次基于【1】第 2 章【/1】的课，专门讲授基本的 CUDA 内存/线程模型、CUDA 对 C 语言的扩展，以及基本的编程工具。上完这次课，学生就能在几小时内写出一段简单的向量加法代码。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[3]",
+      "en": "The following 2 weeks include a series of four lectures based on 【1】Chapters 3【/1】 through 【2】6【/2】 that give students the conceptual understanding of the CUDA memory model, the CUDA thread execution model, GPU hardware performance features, and modern computer system architecture. During these two weeks, students work on different implementations of matrix-matrix multiplication in which they see how the performance of their implementations increases dramatically throughout this period. In the remaining four weeks, the lectures cover common data-parallel programming patterns that are needed to develop a high-performance parallel application based on 【3】Chapters 7【/3】 through 【4】12【/4】. Throughout these weeks, students complete assignments on convolution, histogram, reduction, and prefix sum. By the end of the first phase, students should be quite comfortable with parallel programming and should be ready to implement more advanced code with less handholding.",
+      "zh": "接下来的 2 周包含基于【1】第 3 章【/1】至【2】第 6 章【/2】的四次系列讲课，让学生在概念层面理解 CUDA 内存模型、CUDA 线程执行模型、GPU 硬件性能特性以及现代计算机系统体系结构。在这两周里，学生会写出矩阵-矩阵乘法的多种实现，并亲眼看到自己实现的性能在这段时间里急剧提升。在余下的四周里，讲课内容依据【3】第 7 章【/3】至【4】第 12 章【/4】，覆盖开发高性能并行应用所需的常见数据并行编程模式。在这几周中，学生要完成关于卷积、直方图、归约和扫描（prefix sum）的作业。到第一阶段结束时，学生应当已经相当熟悉并行编程，并做好准备，在较少的手把手指导下实现更高级的代码。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[4]",
+      "en": "In the second phase, which consists of Parts III and IV, students learn about advanced patterns and applications while they work on a final project that involves accelerating an advanced pattern or application. They also learn about advanced practices that they may find useful when finalizing their projects. Although we do not usually assign weekly programming assignments during this phase, the project typically has a weekly milestone to help the students pace themselves. Depending on the duration and format of the course, instructors may not be able to cover all the chapters in this phase and may need to skip some. Instructors might also choose to replace some lectures with guest lectures, paper discussion sessions, or lectures that support the final project. For this reason, 【1】Fig. P.1【/1】 uses arrows to indicate the dependences between chapters to assist instructors in selecting what chapters they can skip or reorder to customize the course for their particular context.",
+      "zh": "第二阶段由第三部分和第四部分组成，学生在其中学习高级模式与应用，同时着手一个期末项目——为某个高级模式或应用做加速。他们还会学到在为项目收尾时可能用得上的高级实践。虽然这一阶段我们通常不再布置每周的编程作业，但项目一般会设置每周的里程碑，帮助学生把握节奏。根据课程的时长和形式，授课教师未必能讲完这一阶段的所有章节，可能需要跳过一些。教师也可以选择用客座讲座、论文研讨或支持期末项目的课时来替换部分讲课。为此，【1】图 P.1【/1】用箭头标出了章节之间的依赖关系，以帮助教师选择哪些章节可以跳过或重新排序，从而针对自己的具体情况定制课程。"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "Tying it all together: the final project",
+      "zh": "融会贯通：期末项目"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "While the lectures, labs, and chapters of this book help to lay the intellectual foundation for the students, what brings the learning experience together is the final project. The final project is so important to the full-semester course that it is prominently positioned in the course and commands nearly two months’ worth of focus. It incorporates five innovative aspects: mentoring, workshop, clinic, final report, and symposium. While much of the information about the final project is available in the Illinois-NVIDIA GPU Teaching Kit, we would like to offer the reasoning behind the design of these aspects.",
+      "zh": "讲课、实验和本书的各个章节为学生打下知识基础，而真正把整个学习体验融为一体的，是期末项目。期末项目对整学期的课程如此重要，以至于它在课程中占据突出位置，需要投入将近两个月的精力。它包含五个富有创新性的环节：导师指导、研讨班、答疑诊所、期末报告和研讨会。关于期末项目的许多信息都可以在 Illinois-NVIDIA GPU Teaching Kit 中找到，不过我们还是想说明一下这几个环节在设计上的考量。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "Students are encouraged to base their final projects on problems that represent current challenges in the research community. To seed the process, the instructors should recruit several computational science research groups to propose problems and serve as mentors. The mentors are asked to contribute a one- to two-page project specification sheet that briefly describes the significance of the application, what the mentor would like to accomplish with the student teams on the application, the technical skills (particular types of math, physics, and chemistry courses) that are required to understand and work on the application, and a list of web and traditional resources on which students can draw for technical background, general information, and building blocks, along with specific URLs or FTP paths to particular implementations and coding examples. These project specification sheets also provide students with learning experiences in defining their own research projects later in their careers. Several examples are available in the Illinois-NVIDIA GPU Teaching Kit.",
+      "zh": "我们鼓励学生把期末项目建立在能代表研究界当前挑战的问题之上。为了让这一过程有个起点，授课教师应当邀请若干计算科学研究组提出问题并担任导师。我们请导师提供一到两页的项目说明书，简要说明该应用的意义、导师希望与学生团队在该应用上完成什么、理解并开展这项工作所需的技术技能（具体是哪几类数学、物理和化学课程），以及一份网络与传统资源的清单——学生可以从中获取技术背景、一般信息和可复用的基础构件——并附上指向具体实现和代码示例的 URL 或 FTP 路径。这些项目说明书也让学生获得一次学习经历，为他们日后在职业生涯中自行定义研究项目做好准备。若干示例可在 Illinois-NVIDIA GPU Teaching Kit 中找到。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "The design document",
+      "zh": "设计文档"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "Once the students have decided on a project and formed a team, they are required to submit a design document for the project. This helps them to think through the project steps before they jump into it. The ability to do such planning will be important to their later career success. The design document should discuss the background and motivation for the project, the application-level objectives and potential impact, the main features of the end application, an overview of their design, an implementation plan, their performance goals, a verification plan and acceptance test, and a project schedule.",
+      "zh": "学生一旦确定了项目并组好团队，就必须为项目提交一份设计文档。这有助于他们在动手之前把项目的各个步骤想清楚。这种做规划的能力，对他们日后的职业成功很重要。设计文档应当讨论项目的背景与动机、应用层面的目标与潜在影响、最终应用的主要特性、设计概览、实现计划、性能目标、验证方案与验收测试，以及项目进度安排。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "The project report and symposium",
+      "zh": "项目报告与研讨会"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "Students are required to submit a project report on their team’s key findings. We also recommend a whole-day class symposium. During the symposium, students use presentation slots proportional to the size of the teams. During the presentation the students highlight the best parts of their project report for the benefit of the whole class. The presentation accounts for a significant part of the students’ grades. Each student must answer questions that are directed to the student individually, so different grades can be assigned to individuals in the same team. The symposium is an opportunity for students to learn to produce a concise presentation that motivates their peers to read a full paper.",
+      "zh": "学生必须提交一份项目报告，说明本团队的关键发现。我们还建议安排一整天的课堂研讨会。研讨会上，各团队的报告时长按团队规模按比例分配。在报告中，学生向全班重点展示项目报告中最出彩的部分。报告成绩在学生的总成绩中占相当大的比重。每个学生都必须回答专门向其本人提出的问题，因此同一团队中的不同成员可以得到不同的分数。研讨会也是一次机会，让学生学会做出简洁的报告，激发同学去阅读完整的论文。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "Class competition",
+      "zh": "课堂竞赛"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "In 2016 the enrollment level of ECE408 far exceeded the level that could be accommodated by the final project process. As a result, we moved from the final project to a class competition. At the midpoint of the semester we announce a competition challenge problem. We use one lecture to explain the competition challenge problem and the rules that will be used for ranking the teams. All student submissions are auto-graded and ranked. The final ranking of each team is determined by the execution time, correctness, and clarity of their parallel code. The students do a demo of their solution at the end of the semester and submit a final report. This compromise preserves some of the benefits of final projects when the class size makes final projects infeasible.",
+      "zh": "2016 年，ECE408 的选课人数远远超出了期末项目流程所能容纳的规模。于是，我们把期末项目改成了课堂竞赛。在学期过半时，我们公布一道竞赛挑战题。我们用一次课来讲解这道竞赛挑战题，以及对各团队排名所依据的规则。学生提交的所有作品都会被自动评分和排名。每个团队的最终排名，由其并行代码的执行时间、正确性和清晰度决定。学期末，学生对自己的方案做一次演示，并提交一份结课报告。当班级规模使期末项目难以实施时，这一折中办法保留了期末项目的部分好处。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "Course resources",
+      "zh": "课程资源"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "The Illinois-NVIDIA GPU Teaching Kit is a publicly available resource that contains lecture slides and recordings, lab assignments, final project guidelines, and sample project specifications for instructors who use this book for their classes. In addition, we are in the process of making the courses of the Illinois undergraduate-level and graduate-level offerings based on this book publicly available. While this book provides the intellectual contents for these classes, the additional material will be crucial in achieving the overall education goals.",
+      "zh": "Illinois-NVIDIA GPU Teaching Kit 是一份公开可用的资源，面向用本书授课的教师，其中包含讲课幻灯片与录像、实验作业、期末项目指南以及项目说明书样例。此外，我们正在着手把伊利诺伊大学基于本书开设的本科生和研究生课程也向公众开放。本书为这些课程提供了知识内容，而这些额外材料对于达成整体的教学目标同样至关重要。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "Finally, we encourage you to submit your feedback. We would like to hear from you if you have any ideas for improving this book. We would like to know how we can improve the supplementary online material. Of course, we also like to know what you liked about the book. We look forward to hearing from you.",
+      "zh": "最后，我们鼓励你把反馈提交给我们。如果你对改进本书有任何想法，我们很愿意听到。我们也想知道，配套的在线材料还能如何改进。当然，我们同样想知道你喜欢本书的哪些地方。我们期待你的来信。"
+    }
+  ]
+}

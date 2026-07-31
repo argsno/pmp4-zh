@@ -4,8 +4,15 @@
 
 **Blocked by:** 03 — the engine emits the nav / switch markup and the `zh-trans` class this ticket styles.
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Chinese body text uses a CJK-friendly font stack and comfortable line height across both the zh and bilingual pages.
-- [ ] Bilingual Chinese blocks are visually distinct (left rule + faint background) and remain readable on mobile.
-- [ ] Every page carries a working `EN / 中 / 对照` switch that stays on the same chapter; the zh nav shows Chinese labels, the bilingual nav shows English + Chinese titles; option `value` attributes are never changed.
+- [x] Chinese body text uses a CJK-friendly font stack and comfortable line height across both the zh and bilingual pages.
+- [x] Bilingual Chinese blocks are visually distinct (left rule + faint background) and remain readable on mobile.
+- [x] Every page carries a working `EN / 中 / 对照` switch that stays on the same chapter; the zh nav shows Chinese labels, the bilingual nav shows English + Chinese titles; option `value` attributes are never changed.
+
+**Notes:**
+- English-site switch deferred to ticket 09 (per user decision).
+- CJK font: sans-serif stack (PingFang SC / Microsoft YaHei / Noto Sans CJK SC), Latin faces first.
+- `web/chinese.css` imported via `@import` from `topnav.css` (renderer cannot touch `<head>`).
+- All rules scoped to `[lang="zh-CN"]` or `.zh-trans` — zero visual impact on English pages.
+- `!important` used throughout to out-specify override_v1.css's `#book-content #sbo-rt-content p { font-family ... !important }`.

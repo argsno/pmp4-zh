@@ -1,0 +1,155 @@
+{
+  "page": "Ch001_1-19_B9780323912310000069",
+  "nodes": [
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "One might ask why there is such a large peak performance gap between many-threaded GPUs and multicore CPUs. The answer lies in the differences in the fundamental design philosophies between the two types of processors, as illustrated in 【1】Fig. 1.1【/1】. The design of a CPU, as shown in 【2】Fig. 1.1A【/2】, is optimized for sequential code performance. The arithmetic units and operand data delivery logic are designed to minimize the effective latency of arithmetic operations at the cost of increased use of chip area and power per unit. Large last-level on-chip caches are designed to capture frequently accessed data and convert some of the long-latency memory accesses into short-latency cache accesses. Sophisticated branch prediction logic and execution control logic are used to mitigate the latency of conditional branch instructions. By reducing the latency of operations, the CPU hardware reduces the execution latency of each individual thread. However, the low-latency arithmetic units, sophisticated operand delivery logic, large cache memory, and control logic consume chip area and power that could otherwise be used to provide more arithmetic execution units and memory access channels. This design approach is commonly referred to as latency-oriented design.",
+      "zh": "有人可能会问，为什么多线程 GPU 与多核 CPU 之间的峰值性能差距会如此之大。答案在于这两类处理器在基本设计理念上的差异，如【1】Fig. 1.1【/1】所示。如【2】Fig. 1.1A【/2】所示，CPU 的设计针对串行代码的性能做了优化。其算术单元和操作数传送逻辑的设计目标，是把算术运算的有效延迟降到最低，代价是每个单元占用更多的芯片面积和功耗。大容量的末级片上缓存用于捕获频繁访问的数据，把一部分长延迟的内存访问转化为短延迟的缓存访问。复杂的分支预测逻辑和执行控制逻辑则用来缓解条件分支指令的延迟。通过降低各类操作的延迟，CPU 硬件降低了每个线程的执行延迟。然而，低延迟的算术单元、复杂的操作数传送逻辑、大容量缓存和控制逻辑，都会占用芯片面积和功耗，而这些资源本可以用来提供更多的算术执行单元和内存访问通道。这种设计思路通常称为面向延迟的设计。"
+    },
+    {
+      "id": "n0026",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 1.1【/1】 CPUs and GPUs have fundamentally different design philosophies: (A) CPU design is latency oriented; (B) GPU design is throughput-oriented.",
+      "zh": "【1】Figure 1.1【/1】 CPU 与 GPU 有着根本不同的设计理念：（A）CPU 的设计面向延迟；（B）GPU 的设计面向吞吐量。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "The design philosophy of the GPUs, on the other hand, has been shaped by the fast-growing video game industry, which exerts tremendous economic pressure for the ability to perform a massive number of floating-point calculations and memory accesses per video frame in advanced games. This demand motivates GPU vendors to look for ways to maximize the chip area and power budget dedicated to floating-point calculations and memory access throughput.",
+      "zh": "另一方面，GPU 的设计理念则由高速增长的电子游戏产业所塑造：高级游戏要求每一视频帧都能完成海量的浮点计算和内存访问，这带来了巨大的经济压力。这一需求促使 GPU 厂商想方设法，把尽可能多的芯片面积和功耗预算投入到浮点计算与内存访问吞吐量上。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "The need for performing a massive number of floating-point calculations per second in graphics applications for tasks such as viewpoint transformations and object rendering is quite intuitive. Additionally, the need for performing a massive number of memory accesses per second is just as important and perhaps even more important. The speed of many graphics applications is limited by the rate at which data can be delivered from the memory system into the processors and vice versa. A GPU must be capable of moving extremely large amounts of data into and out of graphics frame buffers in its DRAM (dynamic random-access memory) because such movement is what makes video displays rich and satisfying to gamers. The relaxed memory model (the way in which various system software, applications, and I/O devices expect their memory accesses to work) that is commonly accepted by game applications also makes it easier for the GPUs to support massive parallelism in accessing memory.",
+      "zh": "在图形应用中，视点变换、物体渲染等任务需要每秒完成海量浮点计算，这一点很容易理解。此外，每秒完成海量内存访问的需求同样重要，甚至可能更为重要。许多图形应用的速度，受限于数据在内存系统与处理器之间往返传送的速率。GPU 必须能够把极其庞大的数据量搬入和搬出其 DRAM（动态随机存取存储器）中的图形帧缓冲区，因为正是这种搬运让视频画面丰富、令玩家满意。游戏应用普遍接受的宽松内存模型（即各类系统软件、应用和 I/O 设备对其内存访问行为的预期方式），也让 GPU 更容易支持大规模并行的内存访问。"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[7]",
+      "en": "In contrast, general-purpose processors must satisfy requirements from legacy operating systems, applications, and I/O devices that present more challenges to supporting parallel memory accesses and thus make it more difficult to increase the throughput of memory accesses, commonly referred to as 【1】memory bandwidth【/1】. As a result, graphics chips have been operating at approximately 10 times the memory bandwidth of contemporaneously available CPU chips, and we expect that GPUs will continue to be at an advantage in terms of memory bandwidth for some time.",
+      "zh": "相比之下，通用处理器必须满足既有操作系统、应用和 I/O 设备提出的种种要求，这些要求给支持并行内存访问带来了更多挑战，也使提高内存访问吞吐量（通常称为【1】内存带宽【/1】）变得更加困难。结果是，图形芯片的内存带宽一直约为同期 CPU 芯片的 10 倍，而且我们预计在未来一段时间内，GPU 在内存带宽方面仍将保持优势。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[8]",
+      "en": "An important observation is that reducing latency is much more expensive than increasing throughput in terms of power and chip area. For example, one can double the arithmetic throughput by doubling the number of arithmetic units at the cost of doubling the chip area and power consumption. However, reducing the arithmetic latency by half may require doubling the current at the cost of more than doubling the chip area used and quadrupling the power consumption. Therefore the prevailing solution in GPUs is to optimize for the execution throughput of massive numbers of threads rather than reducing the latency of individual threads. This design approach saves chip area and power by allowing pipelined memory channels and arithmetic operations to have long latency. The reduction in area and power of the memory access hardware and arithmetic units allows the GPU designers to have more of them on a chip and thus increase the total execution throughput. 【1】Fig. 1.1【/1】 visually illustrates the difference in the design approaches by showing a smaller number of larger arithmetic units and a smaller number of memory channels in the CPU design in 【2】Fig. 1.1A【/2】, in contrast to the larger number of smaller arithmetic units and a larger number of memory channels in 【3】Fig. 1.1B【/3】.",
+      "zh": "一个重要的观察是：就功耗和芯片面积而言，降低延迟远比提高吞吐量昂贵。例如，把算术单元的数量翻倍就可以让算术吞吐量翻倍，代价是芯片面积和功耗翻倍。然而，要把算术延迟减半，可能需要把电流加倍，代价是所用芯片面积增加一倍以上、功耗变为四倍。因此，GPU 中通行的做法是针对海量线程的执行吞吐量进行优化，而不是降低单个线程的延迟。这种设计思路允许流水化的内存通道和算术运算具有较长的延迟，从而节省芯片面积和功耗。内存访问硬件与算术单元在面积和功耗上的缩减，使 GPU 设计者能够在一块芯片上放置更多这样的单元，进而提高总的执行吞吐量。【1】Fig. 1.1【/1】直观地展示了两种设计思路的差异：【2】Fig. 1.1A【/2】中的 CPU 设计采用较少而较大的算术单元和较少的内存通道，与之相对，【3】Fig. 1.1B【/3】中则是数量更多但更小的算术单元和更多的内存通道。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[9]",
+      "en": "The application software for these GPUs is expected to be written with a large number of parallel threads. The hardware takes advantage of the large number of threads to find work to do when some of them are waiting for long-latency memory accesses or arithmetic operations. Small cache memories in 【1】Fig. 1.1B【/1】 are provided to help control the bandwidth requirements of these applications so that multiple threads that access the same memory data do not all need to go to the DRAM. This design style is commonly referred to as throughput-oriented design, as it strives to maximize the total execution throughput of a large number of threads while allowing individual threads to take a potentially much longer time to execute.",
+      "zh": "为这些 GPU 编写的应用软件，需要包含大量并行线程。当其中一部分线程在等待长延迟的内存访问或算术运算时，硬件可以利用数量众多的线程找到其他可做的工作。【1】Fig. 1.1B【/1】中的小容量缓存用于帮助控制这类应用的带宽需求，使访问同一内存数据的多个线程不必都去访问 DRAM。这种设计风格通常称为面向吞吐量的设计，因为它力求最大化大量线程的总执行吞吐量，同时允许单个线程的执行时间可能长得多。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[10]",
+      "en": "It should be clear that GPUs are designed as parallel, throughput-oriented computing engines, and they will not perform well on some tasks on which CPUs are designed to perform well. For programs that have one or very few threads, CPUs with lower operation latencies can achieve much higher performance than GPUs. When a program has a large number of threads, GPUs with higher execution throughput can achieve much higher performance than CPUs. Therefore one should expect that many applications use both CPUs and GPUs, executing the sequential parts on the CPU and the numerically intensive parts on the GPUs. This is why the Compute Unified Device Architecture (CUDA) programming model, introduced by NVIDIA in 2007, is designed to support joint CPU-GPU execution of an application.",
+      "zh": "显然，GPU 被设计成并行的、面向吞吐量的计算引擎，因此在某些 CPU 本就擅长的任务上表现不佳。对于只有一个或极少线程的程序，操作延迟更低的 CPU 能取得远高于 GPU 的性能；而当程序拥有大量线程时，执行吞吐量更高的 GPU 就能取得远高于 CPU 的性能。因此可以预料，许多应用会同时使用 CPU 和 GPU：把串行部分放在 CPU 上执行，把数值密集的部分放在 GPU 上执行。这正是 NVIDIA 于 2007 年推出的 Compute Unified Device Architecture（CUDA）编程模型被设计为支持应用的 CPU-GPU 协同执行的原因。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[11]",
+      "en": "It is also important to note that speed is not the only decision factor when application developers choose the processors for running their applications. Several other factors can be even more important. First and foremost, the processors of choice must have a very large presence in the marketplace, referred to as the 【1】installed base【/1】 of the processor. The reason is very simple. The cost of software development is best justified by a very large customer population. Applications that run on a processor with a small market presence will not have a large customer base. This has been a major problem with traditional parallel computing systems that have negligible market presence compared to general-purpose microprocessors. Only a few elite applications that are funded by the government and large corporations have been successfully developed on these traditional parallel computing systems. This has changed with many-thread GPUs. Because of their popularity in the PC market, GPUs have been sold by the hundreds of millions. Virtually all desktop PCs and high-end laptops have GPUs in them. There are more than 1 billion CUDA-enabled GPUs in use to date. Such a large market presence has made these GPUs economically attractive targets for application developers.",
+      "zh": "还要注意的是，应用开发者在为自己的应用挑选处理器时，速度并不是唯一的决定因素，另有几个因素甚至可能更为重要。首要的一点是，所选处理器必须在市场上占有很大份额，这被称为该处理器的【1】装机量【/1】。原因很简单：软件开发的成本，只有靠庞大的客户群体才最划算。运行在市场份额很小的处理器上的应用，不会拥有庞大的客户基础。对传统并行计算系统而言，这一直是个大问题——与通用微处理器相比，它们的市场份额微不足道。在这些传统并行计算系统上，只有少数由政府和大公司资助的重要应用被成功开发出来。多线程 GPU 的出现改变了这一局面。由于在 PC 市场上广受欢迎，GPU 的销量已达数亿。几乎所有台式 PC 和高端笔记本电脑中都装有 GPU。迄今为止，投入使用的支持 CUDA 的 GPU 已超过 10 亿块。如此庞大的市场存量，使这些 GPU 成为对应用开发者极具经济吸引力的目标。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[12]",
+      "en": "Another important decision factor is practical form factors and easy accessibility. Until 2006, parallel software applications ran on data center servers or departmental clusters. But such execution environments tend to limit the use of these applications. For example, in an application such as medical imaging, it is fine to publish a paper based on a 64-node cluster machine. But actual clinical applications on Magnetic Resonance Imaging (MRI) machines have been based on some combination of a PC and special hardware accelerators. The simple reason is that manufacturers such as GE and Siemens cannot sell MRIs that require racks of computer server boxes in clinical settings, while this is common in academic departmental settings. In fact, the National Institutes of Health (NIH) refused to fund parallel programming projects for some time; they believed that the impact of parallel software would be limited because huge cluster-based machines would not work in the clinical setting. Today, many companies ship MRI products with GPUs, and the NIH funds research using GPU computing.",
+      "zh": "另一个重要的决定因素是实用的外形尺寸与易获取性。在 2006 年之前，并行软件应用都运行在数据中心服务器或部门级集群上，而这类执行环境往往限制了这些应用的使用。例如在医学影像这类应用中，基于一台 64 节点的集群机器发表论文是没问题的，但磁共振成像（MRI）设备上真正的临床应用，一直是基于 PC 与专用硬件加速器的某种组合。原因很简单：GE、西门子这样的厂商无法把需要成排服务器机柜的 MRI 设备卖到临床场景中，尽管这在高校院系环境中很常见。事实上，美国国立卫生研究院（NIH）曾有一段时间拒绝资助并行编程项目；他们认为并行软件的影响有限，因为基于大型集群的机器在临床环境中行不通。如今，许多公司出售配备 GPU 的 MRI 产品，NIH 也资助使用 GPU 计算的研究。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[13]",
+      "en": "Until 2006, graphics chips were very difficult to use because programmers had to use the equivalent of graphics API (application programming interface) functions to access the processing units, meaning that OpenGL or Direct3D techniques were needed to program these chips. Stated more simply, a computation must be expressed as a function that paints a pixel in some way in order to execute on these early GPUs. This technique was called GPGPU, for general purpose programming using a GPU. Even with a higher-level programming environment, the underlying code still needs to fit into the APIs that are designed to paint pixels. These APIs limit the kinds of applications that one can actually write for early GPUs. Consequently, GPGPU did not become a widespread programming phenomenon. Nonetheless, this technology was sufficiently exciting to inspire some heroic efforts and excellent research results.",
+      "zh": "在 2006 年之前，图形芯片非常难用，因为程序员必须借助图形 API（应用程序编程接口）函数之类的手段来访问其处理单元，也就是说，要用 OpenGL 或 Direct3D 技术来给这些芯片编程。说得更直白些，一段计算必须表达成“以某种方式给像素上色”的函数，才能在这些早期 GPU 上执行。这种技术被称为 GPGPU，即使用 GPU 进行通用编程。即便有了更高层的编程环境，底层代码仍然必须套进那些为像素上色而设计的 API。这些 API 限制了人们真正能为早期 GPU 编写的应用种类。因此，GPGPU 并未成为一种普及的编程现象。尽管如此，这项技术仍然足够激动人心，激发出一些了不起的努力和出色的研究成果。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[14]",
+      "en": "Everything changed in 2007 with the release of CUDA (【1】NVIDIA, 2007【/1】). CUDA did not represent software changes alone; additional hardware was added to the chip. NVIDIA actually devoted silicon area to facilitate the ease of parallel programming. In the G80 and its successor chips for parallel computing, GPGPU programs no longer go through the graphics interface at all. Instead, a new general-purpose parallel programming interface on the silicon chip serves the requests of CUDA programs. The general-purpose programming interface greatly expands the types of applications that one can easily develop for GPUs. All the other software layers were redone as well so that the programmers can use the familiar C/C++ programming tools.",
+      "zh": "2007 年，随着 CUDA 的发布（【1】NVIDIA, 2007【/1】），一切都改变了。CUDA 不只代表软件上的变化，芯片上还增加了额外的硬件。NVIDIA 确实拿出了硅片面积来降低并行编程的难度。在面向并行计算的 G80 及其后续芯片中，GPGPU 程序完全不必再经过图形接口，取而代之的是硅片上一个新的通用并行编程接口，直接服务于 CUDA 程序的请求。这个通用编程接口极大地拓宽了人们能够轻松为 GPU 开发的应用类型。其他所有软件层也一并重做，使程序员可以使用熟悉的 C/C++ 编程工具。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[15]",
+      "en": "While GPUs are an important class of computing devices in heterogeneous parallel computing, there are other important types of computing devices that are used as accelerators in heterogeneous computing systems. For example, field-programmable gate arrays have been widely used to accelerate networking applications. The techniques covered in this book using GPUs as the learning vehicle also apply to the programming tasks for these accelerators.",
+      "zh": "虽然 GPU 是异构并行计算中一类重要的计算设备，但异构计算系统中还有其他重要类型的计算设备被用作加速器。例如，现场可编程门阵列已被广泛用于加速网络应用。本书以 GPU 为学习载体所讲的技术，同样适用于这些加速器的编程工作。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "1.2 Why more speed or parallelism?",
+      "zh": "1.2 为什么需要更高的速度或并行性？"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "As we stated in 【1】Section 1.1【/1】, the main motivation for massively parallel programming is for applications to enjoy continued speed increases in future hardware generations. As we will discuss in the chapters on parallel patterns, advanced patterns, and applications (Parts II and III, 【2】Chapters 7【/2】 through 【3】19【/3】), when an application is suitable for parallel execution, a good implementation on a GPU can achieve a speed up of more than 100 times over sequential execution on a single CPU core. If the application includes what we call “data parallelism,” it is often possible to achieve a 10× speedup with just a few hours of work.",
+      "zh": "正如我们在【1】Section 1.1【/1】中所说，大规模并行编程的主要动因，是让应用能够在未来的硬件世代中持续享受速度提升。正如我们将在讲解并行模式、高级模式与应用的各章（Parts II 和 III，【2】Chapters 7【/2】 至 【3】19【/3】）中讨论的那样，当一个应用适合并行执行时，它在 GPU 上的良好实现可以比在单个 CPU 核心上串行执行快 100 倍以上。如果应用中包含我们所说的“数据并行”，那么往往只需几个小时的工作，就能获得 10× 的加速比。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "One might ask why applications will continue to demand increased speed. Many applications that we have today seem to be running quite fast enough. Despite the myriad of computing applications in today’s world, many exciting mass market applications of the future are what we previously considered supercomputing applications, or superapplications. For example, the biology research community is moving more and more into the molecular level. Microscopes, arguably the most important instrument in molecular biology, used to rely on optics or electronic instrumentation. However, there are limitations to the molecular-level observations that we can make with these instruments. These limitations can be effectively addressed by incorporating a computational model to simulate the underlying molecular activities with boundary conditions set by traditional instrumentation. With simulation we can measure even more details and test more hypotheses than can ever be imagined with traditional instrumentation alone. These simulations will continue to benefit from increasing computing speeds in the foreseeable future in terms of the size of the biological system that can be modeled and the length of reaction time that can be simulated within a tolerable response time. These enhancements will have tremendous implications for science and medicine.",
+      "zh": "有人可能会问，为什么应用还会不断要求更高的速度？我们今天拥有的许多应用似乎已经跑得足够快了。然而，尽管当今世界的计算应用五花八门，未来许多令人兴奋的大众市场应用，正是我们过去所认为的超级计算应用，或者说超级应用。例如，生物学研究界正越来越深入地走向分子层面。显微镜大概是分子生物学中最重要的仪器，它过去一直依赖光学或电子学手段。然而，用这些仪器所能做出的分子级观测是有限的。要有效突破这些限制，可以引入一个计算模型，在传统仪器所设定的边界条件下模拟底层的分子活动。借助仿真，我们能够测量到更多细节、检验更多假设，其数量之多是仅凭传统仪器所无法想象的。在可预见的未来，这些仿真将继续从计算速度的提升中受益：能够建模的生物系统规模更大，能够在可容忍的响应时间内仿真的反应时长也更长。这些进步将对科学和医学产生巨大影响。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "For applications such as video and audio coding and manipulation, consider our satisfaction with digital high-definition (HD) TV in comparison to older NTSC TV. Once we experience the level of details in the picture on an HDTV, it is very hard to go back to older technology. But consider all the processing that is needed for that HDTV. It is a highly parallel process, as are three-dimensional (3D) imaging and visualization. In the future, new functionalities such as view synthesis and high-resolution display of low-resolution videos will demand more computing power in the TV. At the consumer level, we will begin to see an increasing number of video and image-processing applications that improve the focus, lighting, and other key aspects of the pictures and videos.",
+      "zh": "对于视频和音频编码与处理这类应用，不妨想想我们对数字高清（HD）电视相比老式 NTSC 电视的满意程度。一旦体验过 HDTV 画面的细节水平，就很难再回到旧技术。但也要想想 HDTV 所需的全部处理量——那是一个高度并行的过程，三维（3D）成像与可视化也是如此。未来，视点合成、低分辨率视频的高分辨率显示等新功能，会要求电视具备更强的计算能力。在消费级层面，我们将看到越来越多改善画面对焦、光照及其他关键要素的视频与图像处理应用。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "Among the benefits that are offered by more computing speed are much better user interfaces. Smartphone users now enjoy a much more natural interface with high-resolution touch screens that rival a large-screen TV. Undoubtedly, future versions of these devices will incorporate sensors and displays with 3D perspectives, applications that combine virtual and physical space information for enhanced usability, and voice and computer vision–based interfaces, requiring even more computing speed.",
+      "zh": "更高的计算速度所带来的好处之一，是大为改善的用户界面。智能手机用户如今享有远为自然的交互方式，其高分辨率触摸屏足以媲美大屏电视。毫无疑问，这些设备的未来版本将会集成具有 3D 视角的传感器和显示屏、把虚拟空间与物理空间信息结合起来以提升可用性的应用，以及基于语音和计算机视觉的界面，而这些都需要更高的计算速度。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "Similar developments are underway in consumer electronic gaming. In the past, driving a car in a game was simply a prearranged set of scenes. If your car bumped into an obstacle, the course of your vehicle did not change; only the game score changed. Your wheels were not bent or damaged, and it was no more difficult to drive, even if you lost a wheel. With increased computing speed, the games can be based on dynamic simulation rather than prearranged scenes. We can expect to experience more of these realistic effects in the future. Accidents will damage your wheels, and your online driving experience will be much more realistic. The ability to accurately model physical phenomena has already inspired the concept of 【1】digital twins【/1】, in which physical objects have accurate models in the simulated space so that stress testing and deterioration prediction can be thoroughly conducted at much lower cost. Realistic modeling and simulation of physics effects are known to demand very large amounts of computing power.",
+      "zh": "消费电子游戏领域也在发生类似的演进。过去，在游戏中开车不过是一组事先编排好的场景。如果你的车撞上障碍物，车辆的行进路线并不会改变，改变的只有游戏得分。车轮不会变形或损坏，即便掉了一个轮子，驾驶也不会变得更难。随着计算速度的提高，游戏可以建立在动态仿真而非事先编排的场景之上。可以预期，未来我们会体验到更多这类逼真效果：事故会损坏你的车轮，你的在线驾驶体验也会真实得多。精确建模物理现象的能力，已经催生了【1】数字孪生【/1】的概念——物理对象在仿真空间中拥有精确的模型，从而能以低得多的成本充分开展压力测试和劣化预测。众所周知，逼真地建模和仿真物理效应需要极大的计算能力。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "An important example of new applications that have been enabled by drastically increased computing throughput is deep learning based on artificial neural networks. While neural networks have been actively researched since the 1970s, they have been ineffective in practical applications because it takes too much labeled data and too much computation to train these networks. The rise of the Internet offered a tremendous number of labeled pictures, and the rise of GPUs offered a surge of computing throughput. As a result, there has been a fast adoption of neural network–based applications in computer vision and natural language processing since 2012. This adoption has revolutionized computer vision and natural language processing applications and triggered fast development of self-driving cars and home assistant devices.",
+      "zh": "计算吞吐量的急剧提升所催生的新应用中，一个重要例子是基于人工神经网络的深度学习。虽然神经网络自 20 世纪 70 年代以来一直是活跃的研究课题，但在实际应用中一直收效不佳，因为训练这些网络需要太多带标注的数据和太多计算。互联网的兴起提供了数量惊人的带标注图片，GPU 的兴起则带来了计算吞吐量的激增。结果是，自 2012 年以来，基于神经网络的应用在计算机视觉和自然语言处理领域被迅速采纳。这一采纳彻底改变了计算机视觉与自然语言处理应用，并触发了自动驾驶汽车和家庭助理设备的快速发展。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "All the new applications that we mentioned involve simulating and/or representing a physical and concurrent world in different ways and at different levels, with tremendous amounts of data being processed. With this huge quantity of data, much of the computation can be done on different parts of the data in parallel, although they will have to be reconciled at some point. In most cases, effective management of data delivery can have a major impact on the achievable speed of a parallel application. While techniques for doing so are often well known to a few experts who work with such applications on a daily basis, the vast majority of application developers can benefit from a more intuitive understanding and practical working knowledge of these techniques.",
+      "zh": "我们提到的所有新应用，都涉及以不同方式、在不同层次上仿真和/或表示一个物理的、并发的世界，并处理海量数据。面对如此巨量的数据，大部分计算可以在数据的不同部分上并行完成，尽管在某个时刻它们必须被汇总协调。在大多数情况下，有效管理数据的传送会对并行应用可达到的速度产生重大影响。虽然做到这一点的技术往往为少数每天与此类应用打交道的专家所熟知，但绝大多数应用开发者仍能从对这些技术更直观的理解和更实用的操作知识中获益。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "We aim to present the data management techniques in an intuitive way to application developers whose formal education may not be in computer science or computer engineering. We also aim to provide many practical code examples and hands-on exercises that help the reader to acquire working knowledge, which requires a practical programming model that facilitates parallel implementation and supports proper management of data delivery. CUDA offers such a programming model and has been well tested by a large developer community.",
+      "zh": "我们希望以直观的方式，把数据管理技术呈现给那些正规教育背景可能并非计算机科学或计算机工程的应用开发者。我们还希望提供大量实用的代码示例和动手习题，帮助读者获得可操作的知识，而这需要一个便于并行实现、并支持妥善管理数据传送的实用编程模型。CUDA 正提供了这样一个编程模型，并已经过庞大开发者社区的充分检验。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "1.3 Speeding up real applications",
+      "zh": "1.3 加速真实应用"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "How much speedup can we expect from parallelizing an application? The definition of 【1】speedup【/1】 for an application by computing system A over computing system B is the ratio of the time used to execute the application in system B over the time used to execute the same application in system A. For example, if an application takes 10 seconds to execute in system A but takes 200 seconds to execute in System B, the speedup for the execution by system A over system B would be 200/10=20, which is referred to as a 20× (20 times) speedup.",
+      "zh": "并行化一个应用能带来多大的加速？某应用在计算系统 A 上相对计算系统 B 的【1】加速比【/1】，定义为在系统 B 上执行该应用所用时间与在系统 A 上执行同一应用所用时间之比。例如，若某应用在系统 A 上执行需要 10 秒，而在系统 B 上执行需要 200 秒，那么系统 A 相对系统 B 的加速比就是 200/10=20，称为 20×（20 倍）加速比。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "The speedup that is achievable by a parallel computing system over a serial computing system depends on the portion of the application that can be parallelized. For example, if the percentage of time spent in the part that can be parallelized is 30%, a 100× speedup of the parallel portion will reduce the total execution time of the application by no more than 29.7%. That is, the speedup for the entire application will be only about 1/(1−0.297)=1.42×. In fact, even infinite amount of speedup in the parallel portion can only slash 30% off the execution time, achieving no more than 1.43× speedup. The fact that the level of speedup that one can achieve through parallel execution can be severely limited by the parallelizable portion of the application is referred to as Amdahl’s Law (【1】Amdahl, 2013【/1】). On the other hand, if 99% of the execution time is in the parallel portion, a 100× speedup of the parallel portion will reduce the application execution to 1.99% of the original time. This gives the entire application a 50× speedup. Therefore it is very important that an application has the vast majority of its execution in the parallel portion for a massively parallel processor to effectively speed up its execution.",
+      "zh": "并行计算系统相对串行计算系统所能达到的加速比，取决于应用中可并行化部分所占的比例。例如，如果花在可并行化部分上的时间占比为 30%，那么把并行部分加速 100× 也只能把应用的总执行时间减少不到 29.7%。也就是说，整个应用的加速比只有大约 1/(1−0.297)=1.42×。事实上，即使并行部分获得无限大的加速，也最多只能砍掉 30% 的执行时间，整体加速比不超过 1.43×。通过并行执行所能达到的加速水平会被应用中可并行化的部分严重限制，这一事实被称为阿姆达尔定律（【1】Amdahl, 2013【/1】）。另一方面，如果 99% 的执行时间处于并行部分，那么把并行部分加速 100× 就能把应用的执行时间压缩到原来的 1.99%，从而使整个应用获得 50× 的加速比。因此，要让大规模并行处理器有效加速某个应用的执行，该应用的绝大部分执行时间都处于并行部分就非常重要。"
+    }
+  ]
+}

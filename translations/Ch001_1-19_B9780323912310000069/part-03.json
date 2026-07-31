@@ -1,0 +1,113 @@
+{
+  "page": "Ch001_1-19_B9780323912310000069",
+  "nodes": [
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[5]",
+      "en": "Much technical knowledge will be required to achieve these goals, so we will cover quite a few principles and patterns (【1】Mattson et al., 2004【/1】) of parallel programming in this book. We will not be teaching these principles and patterns on their own. We will teach them in the context of parallelizing useful applications. We cannot cover all of them, however, so we have selected the most useful and well-proven techniques to cover in detail. In fact, the current edition has a significantly expanded number of chapters on parallel patterns. We are now ready to give you a quick overview of the rest of the book.",
+      "zh": "要实现这些目标，需要大量的技术知识，因此本书将涵盖相当多的并行编程原理与模式（【1】Mattson et al., 2004【/1】）。我们不会孤立地讲授这些原理与模式，而是把它们放在并行化实用应用的背景中来讲解。不过，我们不可能涵盖全部，因此精选了最有价值、也最经过验证的技术来详细展开。事实上，本版大幅扩充了关于并行模式的章节数量。现在，我们准备为你快速概览本书的其余部分。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "1.7 Organization of the book",
+      "zh": "1.7 本书结构"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[1]",
+      "en": "This book is organized into four parts. Part I covers fundamental concepts in parallel programming, data parallelism, GPUs, and performance optimization. These foundational chapters equip the reader with the basic knowledge and skills that are necessary for becoming a GPU programmer. Part II covers primitive parallel patterns, and Part III covers more advanced parallel patterns and applications. These two parts apply the knowledge and skills that were learned in the first part and introduce other GPU architecture features and optimization techniques as the need for them arises. The final part, Part IV, introduces advanced practices to complete the knowledge of readers who would like to become expert GPU programmers.",
+      "zh": "本书分为四个部分。第一部分涵盖并行编程、数据并行、GPU 以及性能优化的基础概念。这些基础性章节为读者提供了成为 GPU 程序员所必需的基本知识与技能。第二部分涵盖基础的并行模式，第三部分涵盖更高级的并行模式与应用。这两部分应用了在第一部分中学到的知识与技能，并在需要之时引入其他的 GPU 体系结构特性与优化技术。最后一部分，即第四部分，介绍高级实践，以补全那些希望成为专家级 GPU 程序员的读者的知识体系。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[2]",
+      "en": "Part I on fundamental concepts consists of 【1】Chapters 2【/1】–【2】6【/2】. 【3】Chapter 2【/3】, Heterogeneous Data Parallel Computing, introduces data parallelism and CUDA C programming. The chapter relies on the fact that the reader has had previous experience with C programming. It first introduces CUDA C as a simple, small extension to C that supports heterogeneous CPU/GPU computing and the widely used single-program, multiple-data parallel programming model. It then covers the thought processes that are involved in (1) identifying the part of application programs to be parallelized, (2) isolating the data to be used by the parallelized code, using an API function to allocate memory on the parallel computing device, (3) using an API function to transfer data to the parallel computing device, (4) developing the parallel part into a kernel function that will be executed by parallel threads, (5) launching a kernel function for execution by parallel threads, and (6) eventually transferring the data back to the host processor with an API function call. We use a running example of vector addition to illustrate these concepts. While the objective of Chapter is to teach enough concepts of the CUDA C programming model so that the reader can write a simple parallel CUDA C program, it covers several basic skills that are needed to develop a parallel application based on any parallel programming interface.",
+      "zh": "关于基础概念的第一部分，由【1】第 2 章【/1】–【2】6 章【/2】组成。【3】第 2 章【/3】“异构数据并行计算”介绍数据并行与 CUDA C 编程。该章基于读者已有 C 语言编程经验这一前提。它首先将 CUDA C 介绍为 C 语言的一个简单、小巧的扩展，该扩展支持异构的 CPU/GPU 计算以及广泛使用的单程序多数据并行编程模型。接着，它涵盖了在以下过程中所涉及的思路：（1）辨识应用中需要被并行化的部分，（2）隔离出并行化代码所要使用的数据，借助 API 函数在并行计算设备上分配内存，（3）使用 API 函数把数据传送到并行计算设备，（4）把并行部分发展成为将由并行线程执行的核函数，（5）启动核函数交由并行线程执行，以及（6）最终通过一次 API 函数调用把数据传回主机处理器。我们用一个贯穿始终的向量加法示例来阐释这些概念。虽然该章的目标是讲授足够的 CUDA C 编程模型概念，使读者能够编写简单的并行 CUDA C 程序，但它也涵盖了基于任何并行编程接口来开发并行应用所需的若干基本技能。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[3]",
+      "en": "【1】Chapter 3【/1】, Multidimensional Grids and Data, presents more details of the parallel execution model of CUDA, particularly as it relates to handling multidimensional data using multidimensional organizations of threads. It gives enough insight into the creation, organization, resource binding, and data binding of threads to enable the reader to implement sophisticated computation using CUDA C.",
+      "zh": "【1】第 3 章【/1】“多维网格与数据”更详尽地阐述了 CUDA 的并行执行模型，尤其是它与使用线程的多维组织来处理多维数据相关的部分。它使读者深入领会线程的创建、组织、资源绑定与数据绑定，从而能够用 CUDA C 实现复杂的计算。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[4]",
+      "en": "【1】Chapter 4【/1】, Compute Architecture and Scheduling, introduces the GPU architecture, with a focus on how the computational cores are organized and how threads are scheduled to execute on these cores. Various architecture considerations are discussed, with their implications on the performance of code that is executed on the GPU architecture. These include concepts such as transparent scalability, SIMD execution and control divergence, multithreading and latency tolerance, and occupancy, all of which are defined and discussed in the chapter.",
+      "zh": "【1】第 4 章【/1】“计算体系结构与调度”介绍 GPU 体系结构，重点在于计算核心是如何组织的，以及线程是如何被调度到这些核心上执行的。书中讨论了各种体系结构方面的考量，以及它们对运行于 GPU 体系结构上的代码性能的影响。这些概念包括透明可扩展性、SIMD 执行与控制发散、多线程与延迟容忍，以及占用率——所有这些概念都在该章中加以定义和讨论。"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[5]",
+      "en": "【1】Chapter 5【/1】, Memory Architecture and Data Locality, extends 【2】Chapter 4【/2】, Compute Architecture and Scheduling, by discussing the memory architecture of a GPU. It also discusses the special memories that can be used to hold CUDA variables for managing data delivery and improving program execution speed. We introduce the CUDA language features that allocate and use these memories. Appropriate use of these memories can drastically improve the data access throughput and help to alleviate the traffic congestion in the memory system.",
+      "zh": "【1】第 5 章【/1】“内存体系结构与数据局部性”通过讨论 GPU 的内存体系结构，对【2】第 4 章【/2】“计算体系结构与调度”做了延伸。它还讨论了可用于保存 CUDA 变量、以管理数据交付并提升程序执行速度的特殊内存。我们介绍分配与使用这些内存的 CUDA 语言特性。恰当地使用这些内存，能够大幅改善数据访问的吞吐量，并有助于缓解内存系统中的流量拥塞。"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[6]",
+      "en": "【1】Chapter 6【/1】, Performance Considerations, presents several important performance considerations in current CUDA hardware. In particular, it gives more details about desirable patterns of thread execution and memory accesses. These details form the conceptual basis for programmers to reason about the consequences of their decisions on organizing their computation and data. The chapter concludes with a checklist of common optimization strategies that GPU programmers often use to optimize any computation pattern. This checklist will be used throughout the next two parts of the book to optimize various parallel patterns and applications.",
+      "zh": "【1】第 6 章【/1】“性能考量”介绍了当前 CUDA 硬件中若干重要的性能考量。具体而言，它更详细地说明了线程执行与内存访问的理想模式。这些细节构成了程序员推理其计算与数据组织决策所带来后果的概念基础。该章以一个清单作结，列出 GPU 程序员常用来优化各类计算模式的通用优化策略。这份清单将在本书接下来的两部分中，被用来优化各种并行模式与应用。"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[7]",
+      "en": "Part II on primitive parallel patterns consists of 【1】Chapters 7【/1】–【2】12【/2】. 【3】Chapter 7【/3】, Convolution, presents convolution, a frequently used parallel computing pattern that is rooted in digital signal processing and computer vision and requires careful management of data access locality. We also use this pattern to introduce constant memory and caching in modern GPUs. 【4】Chapter 8【/4】, Stencil, presents stencil, a pattern that is similar to convolution but is rooted in solving differential equations and has specific features that present unique opportunities for further optimization of data access locality. We also use this pattern to introduce 3D organizations of threads and data and to showcase an optimization introduced in 【5】Chapter 6【/5】, Performance Considerations, that targets thread granularity.",
+      "zh": "关于基础并行模式的第二部分，由【1】第 7 章【/1】–【2】12 章【/2】组成。【3】第 7 章【/3】“卷积”介绍卷积——这是一种频繁使用的并行计算模式，根植于数字信号处理与计算机视觉，并且需要谨慎管理数据访问的局部性。我们也借助这一模式来引入现代 GPU 中的常量内存与缓存。【4】第 8 章【/4】“模板”介绍模板——这是一种类似于卷积的模式，但根植于微分方程的求解，并具有一些独特特征，为进一步优化数据访问局部性提供了机会。我们也借助这一模式来引入线程与数据的三维组织，并展示【5】第 6 章【/5】“性能考量”中引入的一种针对线程粒度的优化。"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[8]",
+      "en": "【1】Chapter 9【/1】, Parallel Histogram, covers histogram, a pattern that is widely used in statistical data analysis as well as pattern recognition in large datasets. We also use this pattern to introduce atomic operations as a means for coordinating concurrent updates to shared data and the privatization optimization, which reduces the overhead of these operations. 【2】Chapter 10【/2】, Reduction and Minimizing Divergence, introduces the reduction tree pattern, which is used to summarize a collection of input data. We also use this pattern to demonstrate the impact of control divergence on performance and show techniques for how this impact can be mitigated. 【3】Chapter 11【/3】, Prefix Sum (Scan), presents prefix sum, or scan, an important parallel computing pattern that coverts inherently sequential computation into parallel computation. We also use this pattern to introduce the concept of work efficiency in parallel algorithms. Finally, 【4】Chapter 12【/4】, Merge, covers parallel merge, a widely used pattern in divide-and-concur work-partitioning strategies. We also use this chapter to introduce dynamic input data identification and organization.",
+      "zh": "【1】第 9 章【/1】“并行直方图”介绍直方图——这是一种在统计数据分析和大规模数据集的模式识别中广泛使用的模式。我们也借助这一模式来引入原子操作，作为协调对共享数据的并发更新的手段，以及私有化这一优化——它能降低这些操作的开销。【2】第 10 章【/2】“归约与最小化发散”介绍归约树模式，该模式用于对一组输入数据进行汇总。我们也借助这一模式来展示控制发散对性能的影响，并演示缓解这种影响的技术。【3】第 11 章【/3】“前缀和（扫描）”介绍前缀和（亦即扫描）——这是一种重要的并行计算模式，把本质上顺序的计算转化为并行计算。我们也借助这一模式来引入并行算法中工作效率的概念。最后，【4】第 12 章【/4】“归并”介绍并行归并——这是一种在分而治之的工作划分策略中广泛使用的模式。我们也借助这一章来引入动态输入数据的识别与组织。"
+    },
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[9]",
+      "en": "Part III on advanced parallel patterns and applications is similar in spirit to Part II, but the patterns that are covered are more elaborate and often include more application context. Thus these chapters are less focused on introducing new techniques or features and more focused on application-specific considerations. For each application we start by identifying alternative ways of formulating the basic structure of the parallel execution and follow up with reasoning about the advantages and disadvantages of each alternative. We then go through the steps of code transformation that are needed to achieve high performance. These chapters help the readers to put all the materials from the previous chapters together and support them as they take on their own application development projects.",
+      "zh": "关于高级并行模式与应用的第三部分，在精神上与第二部分相似，但所涵盖的模式更为精细，且常常包含更多的应用背景。因此，这些章节较少聚焦于引入新技术或新特性，而更多聚焦于特定应用的考量。对于每一个应用，我们都从辨识构建并行执行基本结构的不同方式入手，进而推理每种方案的优劣。然后，我们走完为取得高性能所需的代码变换的各个步骤。这些章节帮助读者把前面各章的材料融会贯通，并在他们着手自己的应用开发项目时提供支持。"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[10]",
+      "en": "Part III consists of 【1】Chapters 13【/1】–【2】19【/2】. 【3】Chapter 13【/3】, Sorting, presents two forms of parallel sorting: radix sort and merge sort. This advanced pattern leverages more primitive patterns that were covered in previous chapters, particularly prefix sum and parallel merge. 【4】Chapter 14【/4】, Sparse Matrix Computation, presents sparse matrix computation, which is widely used for processing very large datasets. The chapter introduces the reader to the concepts of rearranging data for more efficient parallel access: data compression, padding, sorting, transposition, and regularization. 【5】Chapter 15【/5】, Graph Traversal, introduces graph algorithms and how graph search can be efficiently implemented in GPU programming. Many different strategies are presented for parallelizing graph algorithms, and the impact of the graph structure on the choice of best algorithm is discussed. These strategies build on the more primitive patterns, such as histogram and merge.",
+      "zh": "第三部分由【1】第 13 章【/1】–【2】19 章【/2】组成。【3】第 13 章【/3】“排序”介绍两种形式的并行排序：基数排序与归并排序。这一高级模式利用了前面章节中涵盖的更基础的几种模式，尤其是前缀和（扫描）与并行归并。【4】第 14 章【/4】“稀疏矩阵计算”介绍稀疏矩阵计算，它在处理超大规模数据集时被广泛使用。该章向读者引入为了更高效的并行访问而对数据进行重排的概念：数据压缩、填充、排序、转置与规整化。【5】第 15 章【/5】“图遍历”介绍图算法，以及图搜索如何能在 GPU 编程中高效地实现。书中给出了许多用于并行化图算法的不同策略，并讨论了图的结构对最优算法选择的影响。这些策略建立在直方图与归并等更基础的几种模式之上。"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[11]",
+      "en": "【1】Chapter 16【/1】, Deep Learning, covers deep learning, which is becoming an extremely important area for GPU computing. We introduce the efficient implementation of convolutional neural networks and leave more in-depth discussion to other sources. The efficient implementation of the convolution neural networks leverages techniques such as tiling and patterns such as convolution. 【2】Chapter 17【/2】, Iterative Magnetic Resonance Imaging Reconstruction, covers non-Cartesian MRI reconstruction and how to leverage techniques such as loop fusion and scatter-to-gather transformations to enhance parallelism and reduce synchronization overhead. 【3】Chapter 18【/3】, Electrostatic Potential Map, covers molecular visualization and analysis, which benefit from techniques to handle irregular data by applying lessons learned from sparse matrix computation.",
+      "zh": "【1】第 16 章【/1】“深度学习”涵盖深度学习——它正成为 GPU 计算中极为重要的一个领域。我们介绍卷积神经网络的高效实现，并把更深入的讨论留给其他资料。卷积神经网络的高效实现，借助了诸如分块之类的技术以及诸如卷积之类的模式。【2】第 17 章【/2】“迭代式磁共振成像重建”涵盖非笛卡尔 MRI 重建，以及如何借助循环融合与分散—汇聚变换等技术来提升并行性、降低同步开销。【3】第 18 章【/3】“静电势图”涵盖分子可视化与分析——它们得益于从稀疏矩阵计算中学到的经验、用以处理不规则数据的技术。"
+    },
+    {
+      "id": "p0370",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[12]",
+      "en": "【1】Chapter 19【/1】, Parallel Programming and Computational Thinking, introduces computational thinking, the art of formulating and solving computational problems in ways that are more amenable to HPC. It does so by covering the concept of organizing the computation tasks of a program so that they can be done in parallel. We start by discussing the translational process of organizing abstract scientific, problem-specific concepts into computational tasks, which is an important first step in producing high-quality application software, serial or parallel. The chapter then discusses parallel algorithm structures and their effects on application performance, which is grounded in the performance tuning experience with CUDA. Although we do not go into the implementation details of these alternative parallel programming styles, we expect that the readers will be able to learn to program in any of them with the foundation that they gain in this book. We also present a high-level case study to show the opportunities that can be seen through creative computational thinking.",
+      "zh": "【1】第 19 章【/1】“并行编程与计算思维”介绍计算思维——即以更契合 HPC 的方式来表述并求解计算问题的艺术。它通过涵盖这样一种概念来做到这一点：把程序的计算任务组织起来，使它们能够并行完成。我们首先讨论把抽象的科学性的、针对具体问题的概念，组织转化为计算任务的翻译过程——这是产出高质量应用软件（无论串行还是并行）的重要第一步。该章接着讨论并行算法的结构及其对应用性能的影响，这建立在 CUDA 的性能调优经验之上。尽管我们不去深入这些不同并行编程风格的实现细节，但我们期望读者凭借在本书中所打下的基础，能够学会用其中任何一种风格来编程。我们还给出一个高层次的案例研究，以展示通过富有创造性的计算思维所能看到的机遇。"
+    },
+    {
+      "id": "p0375",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[13]",
+      "en": "Part IV on advanced practices consists of 【1】Chapters 20【/1】–【2】22【/2】. 【3】Chapter 20【/3】, Programming a Heterogeneous Computing Cluster, covers CUDA programming on heterogeneous clusters, in which each compute node consists of both CPUs and GPUs. We discuss the use of MPI alongside CUDA to integrate both internode computing and intranode computing and the resulting communication issues and practices. 【4】Chapter 21【/4】, CUDA Dynamic Parallelism, covers dynamic parallelism, which is the ability of the GPU to dynamically create work for itself based on the data or program structure rather than always waiting for the CPU to do so. 【5】Chapter 22【/5】, Advanced Practices and Future Evolution, goes through a list of miscellaneous advanced features and practices that are important for CUDA programmers to be aware of. These include topics such as zero-copy memory, unified virtual memory, simultaneous execution of multiple kernels, function calls, exception handling, debugging, profiling, double-precision support, configurable cache/scratchpad sizes, and others. For example, early versions of CUDA provided limited shared memory capability between the CPU and the GPU. The programmers needed to explicitly manage the data transfer between CPU and GPU. However, current versions of CUDA support features such as unified virtual memory and zero-copy memory that enable seamless sharing of data between CPUs and GPUs. With such support, a CUDA programmer can declare variables and data structures as shared between CPU and GPU. The runtime hardware and software maintain coherence and automatically perform optimized data transfer operations on behalf of the programmer on a need basis. Such support significantly reduces the programming complexity that is involved in overlapping data transfer with computation and I/O activities. In the introductory part of the textbook, we use the APIs for explicit data transfer so that reader gets a better understanding of what happens under the hood. We later introduce unified virtual memory and zero-copy memory in 【6】Chapter 22【/6】, Advanced Practices and Future Evolution.",
+      "zh": "关于高级实践的第四部分，由【1】第 20 章【/1】–【2】22 章【/2】组成。【3】第 20 章【/3】“异构计算集群编程”涵盖异构集群上的 CUDA 编程，其中每个计算节点都同时包含 CPU 与 GPU。我们讨论如何将 MPI 与 CUDA 结合使用，以整合节点间计算与节点内计算，以及由此产生的通信问题与实践。【4】第 21 章【/4】“CUDA 动态并行”涵盖动态并行——即 GPU 能够基于数据或程序结构为自己动态地创建工作，而不必总是等待 CPU 来这样做。【5】第 22 章【/5】“高级实践与未来演进”梳理了一系列杂项的、但对 CUDA 程序员而言很重要的高级特性与实践。这些主题包括零拷贝内存、统一虚拟内存、多个核函数的同时执行、函数调用、异常处理、调试、性能剖析、双精度支持、可配置的缓存/便笺存储器大小，等等。例如，早期版本的 CUDA 在 CPU 与 GPU 之间只提供有限的共享内存能力。程序员需要显式地管理 CPU 与 GPU 之间的数据传输。然而，当前版本的 CUDA 支持诸如统一虚拟内存与零拷贝内存等特性，使 CPU 与 GPU 之间能够无缝地共享数据。借助这样的支持，CUDA 程序员可以把变量与数据结构声明为在 CPU 与 GPU 之间共享。运行时硬件与软件维护一致性，并代表程序员按需自动执行经过优化的数据传输操作。这种支持显著降低了把数据传输与计算及 I/O 活动重叠在一起时所涉及的编程复杂度。在教材的入门部分，我们使用用于显式数据传输的 API，以便读者更好地理解底层实际发生的情况。随后，我们在【6】第 22 章【/6】“高级实践与未来演进”中引入统一虚拟内存与零拷贝内存。"
+    },
+    {
+      "id": "p0380",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[14]",
+      "en": "Although the chapters throughout this book are based on CUDA, they help the readers to build up the foundation for parallel programming in general. We believe that humans understand best when we learn from concrete examples. That is, we must first learn the concepts in the context of a particular programming model, which provides us with solid footing when we generalize our knowledge to other programming models. As we do so, we can draw on our concrete experience from the CUDA examples. In-depth experience with CUDA also enables us to gain maturity, which will help us to learn concepts that may not even be pertinent to the CUDA model.",
+      "zh": "尽管本书各章都以 CUDA 为基础，但它们帮助读者打下并行编程的总体基础。我们相信，人最好的理解来自于具体的例子。也就是说，我们必须首先在某个特定编程模型的背景中学习这些概念，这为我们把知识推广到其他编程模型时提供了坚实的立足点。在此过程中，我们可以借鉴从 CUDA 实例中得来的具体经验。对 CUDA 的深入经验，也能使我们获得成熟度，从而有助于我们学习那些甚至可能并不属于 CUDA 模型的概念。"
+    },
+    {
+      "id": "p0385",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[15]",
+      "en": "【1】Chapter 23【/1】, Conclusion and Outlook, offers concluding remarks and an outlook for the future of massively parallel programming. We first revisit our goals and summarize how the chapters fit together to help achieve the goals. We then conclude with a prediction that these fast advances in massively parallel computing will make it one of the most exciting areas in the coming decade.",
+      "zh": "【1】第 23 章【/1】“结论与展望”给出总结性评述，并对大规模并行编程的未来做出展望。我们首先重述我们的目标，并总结各章如何彼此配合以帮助实现这些目标。最后，我们以这样一个预测作结：大规模并行计算中的这些快速进展，将使之成为未来十年中最令人兴奋的领域之一。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    }
+  ]
+}

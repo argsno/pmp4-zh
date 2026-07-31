@@ -1,0 +1,155 @@
+{
+  "page": "Ch016_355-388_B9780323912310000240",
+  "nodes": [
+    {
+      "id": "p0560",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
+      "en": "We make an important observation that the patches of input feature map pixels for calculating different pixels of the output feature map overlap with each other, owing to the nature of convolution. This means that each input feature map pixel is replicated multiple times as we produce the expanded input feature matrix. For example, the center pixel of each 3 × 3 input feature map is used four times to compute the four pixels of an output feature, so it will be duplicated four times. The middle pixel on each edge is used two times, so it will be duplicated two times. The four pixels at corners of each input feature are used only one time and will not need to be duplicated. Therefore the total number of pixels in the expanded input feature matrix section is 4*1 + 2*4 + 1*4 = 16. Since each original input feature map has only nine pixels, the GEMM formulation incurs an expansion ratio of 16/9 = 1.8 for representing input feature maps.",
+      "zh": "我们得出一个重要的观察：由于卷积的特性，用于计算输出特征图不同像素的输入特征图像素块彼此重叠。这意味着，在生成展开的输入特征矩阵时，每个输入特征图像素被复制多次。例如，每个 3×3 输入特征图的中心像素被使用四次以计算一个输出特征的四个像素，因此它会被复制四次。每条边上的中间像素被使用两次，因此会被复制两次。每个输入特征图四个角上的四个像素只被使用一次，因此不需要复制。因此，展开的输入特征矩阵段中的像素总数为 4*1 + 2*4 + 1*4 = 16。由于每个原始输入特征图只有九个像素，GEMM 表述在表示输入特征图时带来了 16/9 = 1.8 的展开比。"
+    },
+    {
+      "id": "p0565",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[12]",
+      "en": "In general, the size of the unrolled input feature map matrix can be derived from the number of input feature map elements that are required to generate each output feature map element. The height, or the number of rows, of the expanded matrix is the number of input feature elements contributing to each output feature map element, which is C*K*K: each output element is the convolution of K*K elements from each input feature map and there are C input feature maps. In our example, the K is 2 since the filter bank is 2 × 2 and there are three input feature maps. Thus the height of the expanded matrix should be 3*2*2 = 12, which is exactly the height of the matrix shown in 【1】Fig. 16.16【/1】.",
+      "zh": "一般而言，展开的输入特征图矩阵的大小可以由生成每个输出特征图元素所需的输入特征图元素数量推导出来。展开矩阵的高度（即行数）是贡献于每个输出特征图元素的输入特征元素数量，即 C*K*K：每个输出元素是来自每个输入特征图的 K*K 个元素的卷积，共有 C 个输入特征图。在我们的示例中，K 为 2，因为滤波器组是 2×2，且有三个输入特征图。因此展开矩阵的高度应为 3*2*2 = 12，这正好等于【1】图 16.16【/1】所示矩阵的高度。"
+    },
+    {
+      "id": "p0570",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[13]",
+      "en": "The width, or the number columns, of the expanded matrix is the number of elements in each output feature map. If each output feature map is an H_out × W_out matrix, the number of columns of the expanded matrix is H_out*W_out. In our example, each output feature map is a 2 × 2 matrix, yielding four columns in the expanded matrix. Note that the number of output feature maps 【1】M【/1】 does not play into the duplication. This is because all output feature maps are computed from the same expanded input feature map matrix.",
+      "zh": "展开矩阵的宽度（即列数）是每个输出特征图中的元素数量。如果每个输出特征图是一个 H_out×W_out 矩阵，那么展开矩阵的列数就是 H_out*W_out。在我们的示例中，每个输出特征图是一个 2×2 矩阵，因而展开矩阵有四列。请注意，输出特征图的数量【1】M【/1】并不影响复制，这是因为所有输出特征图都是从同一个展开的输入特征图矩阵计算出来的。"
+    },
+    {
+      "id": "p0575",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[14]",
+      "en": "The ratio of expansion for the input feature maps is the size of the expanded matrix over the total size of the original input feature maps. The reader should verify that the expansion ratio is as follows:",
+      "zh": "输入特征图的展开比，是展开矩阵的大小与原始输入特征图总大小之比。读者应当验证展开比如下："
+    },
+    {
+      "id": "n0154",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[16]",
+      "en": "where H_in and W_in are the height and width, respectively, of each input feature map. In our example the ratio is (3*2*2*2*2)/(3*3*3) = 16/9. In general, if the input feature maps and output feature maps are much larger than the filter banks, the ratio of expansion will approach K*K.",
+      "zh": "其中 H_in 和 W_in 分别是每个输入特征图的高度和宽度。在我们的示例中，比值为 (3*2*2*2*2)/(3*3*3) = 16/9。一般而言，如果输入特征图和输出特征图比滤波器组大得多，则展开比将趋近于 K*K。"
+    },
+    {
+      "id": "p0580",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[17]",
+      "en": "The filter banks are represented as a filter bank matrix in a fully linearized layout, in which each row contains all weight values that are needed to produce one output feature map. The height of the filter bank matrix is the number of output feature maps (【1】M【/1】). Computing different output feature maps involves sharing a single expanded input feature map matrix. The width of the filter bank matrix is the number of weight values that are needed for generating each output feature map element, which is C*K*K. Recall that there is no duplication when placing the weight values into the filter bank matrix. For example, the filter bank matrix is simply a concatenated arrangement of the six filter banks in 【2】Fig. 16.16【/2】.",
+      "zh": "滤波器组以完全线性化的布局表示为一个滤波器组矩阵，其中每一行包含生成一个输出特征图所需的所有权重值。滤波器组矩阵的高度是输出特征图的数量（【1】M【/1】）。计算不同的输出特征图涉及共享同一个展开的输入特征图矩阵。滤波器组矩阵的宽度是生成每个输出特征图元素所需的权重值数量，即 C*K*K。回想一下，将权重值放入滤波器组矩阵时不存在重复。例如，滤波器组矩阵只是【2】图 16.16【/2】中六个滤波器组的拼接排列。"
+    },
+    {
+      "id": "p0585",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[18]",
+      "en": "When we multiply the filter bank matrix 【1】W【/1】 by the expanded input matrix X_unrolled, the output feature maps are computed as a matrix 【2】Y【/2】 of height 【3】M【/3】 and width H_out*W_out. That is, each row of 【4】Y【/4】 is a complete output feature map.",
+      "zh": "当我们将滤波器组矩阵【1】W【/1】乘以展开的输入矩阵 X_unrolled 时，输出特征图被计算为一个矩阵【2】Y【/2】，其高度为【3】M【/3】、宽度为 H_out*W_out。也就是说，【4】Y【/4】的每一行都是一个完整的输出特征图。"
+    },
+    {
+      "id": "p0590",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[19]",
+      "en": "Let’s discuss now how we can implement this algorithm in CUDA. Let’s first discuss the data layout. We can start from the layout of the input and output matrices.",
+      "zh": "现在我们来讨论如何在 CUDA 中实现这一算法。让我们先讨论数据布局。我们可以从输入和输出矩阵的布局入手。"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[5]/ol[1]/li[1]",
+      "en": "1. We assume that the input feature map samples in a minibatch will be supplied in the same way as those for the basic CUDA kernel. It is organized as an N × C × H × W array, where N is the number of samples in a minibatch, C is the number of input feature maps, H is the height of each input feature map, and W is the width of each input feature map.",
+      "zh": "1. 我们假设小批量中的输入特征图样本将以与基础 CUDA 核函数相同的方式提供。它被组织为一个 N×C×H×W 数组，其中 N 是小批量中样本的数量，C 是输入特征图的数量，H 是每个输入特征图的高度，W 是每个输入特征图的宽度。"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[5]/ol[1]/li[2]",
+      "en": "2. As we showed in 【1】Fig. 16.16【/1】, the matrix multiplication will naturally produce an output Y stored as an M × (H_out*W_out) array. This is what the original basic CUDA kernel would produce.",
+      "zh": "2. 正如我们在【1】图 16.16【/1】中所展示的，矩阵乘法会自然地产生一个存储为 M×(H_out*W_out) 数组的输出 Y。这正是原始的基础 CUDA 核函数会产生的输出。"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[5]/ol[1]/li[3]",
+      "en": "3. Since the filter bank matrix does not involve duplication of weight values, we assume that it will be prepared ahead of time and organized as an M × C × K【1】2【/1】 array as illustrated in 【2】Fig. 16.16【/2】.",
+      "zh": "3. 由于滤波器组矩阵不涉及权重值的重复，我们假设它会提前准备好，并组织为一个 M×C×K【1】2【/1】数组，如【2】图 16.16【/2】所示。"
+    },
+    {
+      "id": "p0610",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[20]",
+      "en": "The preparation of the unrolled input feature map matrix X_unroll is more complex. Since each expansion increases the size of input by up to K【1】2【/1】 times, the expansion ratio can be very large for typical K values of 5 or larger. The memory footprint for keeping all sample input feature maps for a minibatch can be prohibitively large. To reduce the memory footprint, we will allocate only one buffer for X_unrolled [C*K*K*H_out*W_out]. We will reuse this buffer by looping over samples in the minibatch. During each iteration we convert the sample input feature map from its original form into the unrolled matrix.",
+      "zh": "展开的输入特征图矩阵 X_unroll 的准备过程更为复杂。由于每次展开都会使输入的大小最多增加 K【1】2【/1】倍，对于典型的 K 值为 5 或更大的情况，展开比可能会非常大。为小批量中的所有样本输入特征图保留内存的占用可能会大得难以承受。为了减少内存占用，我们将仅为 X_unrolled [C*K*K*H_out*W_out] 分配一个缓冲区。我们将通过对小批量中的样本进行循环来复用这个缓冲区。在每次迭代中，我们将样本输入特征图从原始形式转换为展开矩阵。"
+    },
+    {
+      "id": "p0615",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[21]",
+      "en": "【1】Fig. 16.17【/1】 shows a sequential function that produces the X_unroll array by gathering and duplicating the elements of an input feature map X. The function uses five levels of loops. The innermost two levels of for-loop (w and h, lines 08–13) place one input feature map element for each of the output feature map elements. The next two levels (p and q, lines 06–14) repeat the process for each of the K*K filter matrix elements. The outermost loop repeats the process of all input feature maps. This implementation is conceptually straightforward and can be quite easily parallelized since the loops do not impose dependencies among their iterations. Also, successive iterations of the innermost loop (w, lines 10–13) read from a localized tile of one of the input feature maps in X and write into sequential locations (same row in X_unroll) in the expanded matrix X_unroll. This should result in efficient memory bandwidth usage on a CPU.",
+      "zh": "【1】图 16.17【/1】 展示了一个顺序函数，它通过收集和复制输入特征图 X 的元素来生成 X_unroll 数组。该函数使用了五级循环。最内层的两个 for 循环（w 和 h，第 08–13 行）为每个输出特征图元素放置一个输入特征图元素。接下来两级（p 和 q，第 06–14 行）对 K*K 个滤波器矩阵的每个元素重复该过程。最外层循环对所有输入特征图重复该过程。这种实现在概念上很直接，并且由于循环之间没有施加迭代间的依赖关系，可以相当容易地并行化。此外，最内层循环（w，第 10–13 行）的连续迭代从 X 中某个输入特征图的局部分块读取数据，并写入展开矩阵 X_unroll 中的连续位置（X_unroll 中的同一行）。这应当在 CPU 上带来高效的内存带宽利用率。"
+    },
+    {
+      "id": "n0163",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[6]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 16.17【/1】 A C function that generates the unrolled X matrix. The array accesses are in multidimensional indexing form for clarity and need to be linearized for the code to be compilable.",
+      "zh": "【1】图 16.17【/1】 一个生成展开 X 矩阵的 C 函数。为了清晰起见，数组访问采用多维索引形式，并且需要线性化才能使代码可编译。"
+    },
+    {
+      "id": "p0620",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[22]",
+      "en": "We are now ready to design a CUDA kernel which implements the input feature map unrolling. Each CUDA thread will be responsible for gathering (K*K) input elements from one input feature map for one element of an output feature map. The total number of threads will be (C * H_out * W_out). We will use one-dimensional thread blocks and extract multidimensional indices from the linearized thread index.",
+      "zh": "现在我们准备设计一个实现输入特征图展开的 CUDA 核函数。每个 CUDA 线程将负责从一个输入特征图为输出特征图的一个元素收集 (K*K) 个输入元素。线程总数为 (C * H_out * W_out)。我们将使用一维线程块，并从线性化的线程索引中提取多维索引。"
+    },
+    {
+      "id": "p0625",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[23]",
+      "en": "【1】Fig. 16.18【/1】 shows an implementation of the unroll kernel. Note that each thread will build a K*K section of a column, shown as a shaded box in the Input Features X_Unrolled array in 【2】Fig. 16.16【/2】. Each such section contains all elements of a patch of the input feature map X from channel c, required for performing a convolution operation with the corresponding filter to produce one element of output Y.",
+      "zh": "【1】图 16.18【/1】 展示了一个展开核函数的实现。请注意，每个线程将构建一列中 K*K 的一段，如【2】图 16.16【/2】中“输入特征 X_Unrolled”数组里阴影方框所示。每一个这样的段都包含输入特征图 X 在通道 c 上的一个块的所有元素，这些元素是与相应滤波器进行卷积操作以产生输出 Y 的一个元素所必需的。"
+    },
+    {
+      "id": "n0166",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[7]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 16.18【/1】 A CUDA kernel implementation for unrolling input feature maps. The array accesses are in multidimensional indexing form for clarity and need to be linearized for the code to be compilable.",
+      "zh": "【1】图 16.18【/1】 用于展开输入特征图的 CUDA 核函数实现。为了清晰起见，数组访问采用多维索引形式，并且需要线性化才能使代码可编译。"
+    },
+    {
+      "id": "p0630",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[24]",
+      "en": "Comparing the loop structures of 【1】Figs. 16.17【/1】 and 【2】16.18【/2】 shows that the innermost two loop levels in 【3】Fig. 16.17【/3】 have been changed into outer level loops in 【4】Fig. 16.18【/4】. This interchange allows the work for collecting the input elements that are needed for calculating output elements to be done in parallel by multiple threads. Furthermore, having each thread collect all input feature map elements from an input feature map that are needed for generating an output generates a coalesced memory write pattern. As illustrated in 【5】Fig. 16.16【/5】, adjacent threads will be writing adjacent X_unroll elements in a row as they all move vertically to complete their sections. The read access patterns to X are similar and can be analyzed by an inspection of the w_out values for adjacent threads. We leave the detailed analysis of the read access pattern as an exercise.",
+      "zh": "比较【1】图 16.17【/1】与【2】图 16.18【/2】的循环结构可以看出，【3】图 16.17【/3】中最内层的两个循环层级在【4】图 16.18【/4】中变成了外层循环。这种交换使得收集计算输出元素所需输入元素的工作可以由多个线程并行完成。此外，让每个线程收集生成一个输出所需的、来自某个输入特征图的所有输入特征图元素，会产生合并的内存写入模式。如【5】图 16.16【/5】所示，相邻线程在垂直移动完成各自的段时，会写入 X_unroll 中同一行相邻的元素。对 X 的读取访问模式与此类似，可以通过检查相邻线程的 w_out 值来分析。我们将读取访问模式的详细分析留作练习。"
+    },
+    {
+      "id": "p0635",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[25]",
+      "en": "An important high-level assumption is that we keep the input feature maps, filter bank weights, and output feature maps in the device memory. The filter bank matrix is prepared once and stored in the device global memory for use by all input feature maps. For each sample in the minibatch, we launch the unroll_Kernel to prepare an expanded matrix and launch a matrix multiplication kernel, as outlined in 【1】Fig. 16.16【/1】.",
+      "zh": "一个重要的高层假设是：我们将输入特征图、滤波器组权重和输出特征图都保留在设备内存中。滤波器组矩阵只准备一次，并存储在设备全局内存中，供所有输入特征图使用。对于小批量中的每个样本，我们启动 unroll_Kernel 来准备一个展开矩阵，并启动一个矩阵乘法核函数，如【1】图 16.16【/1】所概述。"
+    },
+    {
+      "id": "p0640",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[26]",
+      "en": "Implementing convolutions with matrix multiplication can be very efficient, since matrix multiplication is highly optimized on all hardware platforms. Matrix multiplication is especially fast on GPUs because it has a high ratio of floating-point operations per byte of global memory data access. This ratio increases as the matrices get larger, meaning that matrix multiplication is less efficient on small matrices. Accordingly, this approach to convolution is most effective when it creates large matrices for multiplication.",
+      "zh": "用矩阵乘法实现卷积可以非常高效，因为矩阵乘法在所有硬件平台上都经过了高度优化。矩阵乘法在 GPU 上尤其快，因为它在每次全局内存数据访问的字节数上具有很高的浮点运算比率。这个比率随着矩阵变大而增加，这意味着矩阵乘法在小矩阵上效率较低。因此，这种卷积方法在生成为乘法所用的大矩阵时最为有效。"
+    },
+    {
+      "id": "p0645",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[27]",
+      "en": "As we mentioned earlier, the filter bank matrix is an M × (C*K*K) matrix and the expanded input feature map matrix is a (C*K*K) × (H_out*W_out) matrix. Note that except for the height of the filter bank matrix, the sizes of all dimensions depend on products of the parameters to the convolution, not the parameters themselves. While individual parameters can be small, their products tend to be large. For example, it is often true that in early layers of a convolutional network, C is small, but H_out and W_out are large. On the other hand, at the end of the network, C is large, but H_out and W_out are small. Hence the product C*H_out*W_out is usually large for all layers. This means that the sizes of the matrices tend to be consistently large for all layers, and so the performance using this approach tends to be high.",
+      "zh": "正如我们前面提到的，滤波器组矩阵是一个 M×(C*K*K) 矩阵，而展开的输入特征图矩阵是一个 (C*K*K)×(H_out*W_out) 矩阵。请注意，除了滤波器组矩阵的高度之外，所有维度的大小都取决于卷积参数的乘积，而不是参数本身。虽然单个参数可能很小，但它们的乘积往往很大。例如，在卷积网络的早期层中，C 通常很小，但 H_out 和 W_out 很大；而在网络的末端，C 很大，但 H_out 和 W_out 很小。因此，对于所有层，乘积 C*H_out*W_out 通常都很大。这意味着矩阵的大小对于所有层往往都一致地很大，因此这种方法的性能往往较高。"
+    },
+    {
+      "id": "p0650",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[28]",
+      "en": "One disadvantage of forming the expanded input feature map matrix is that it involves duplicating the input data up to K*K times, which can require the allocation of a prohibitively large amount of memory. To work around this limitation, implementations such as the one shown in 【1】Fig. 16.16【/1】 materialize the X_unroll matrix piece by piece, for example, by forming the expanded input feature map matrix and calling matrix multiplication iteratively for each sample of the minibatch. However, this limits the parallelism in the implementation, and can sometimes lead to cases where the matrix multiplications are too small to effectively utilize the GPU. Another disadvantage of this formulation is that it lowers the computational intensity of the convolutions because X_unroll must be written and read, in addition to reading X itself, requiring significantly more memory traffic than the direct approach. Accordingly, the highest performance implementation has even more complex arrangements in realizing the unrolling algorithm to both maximize GPU utilization while keeping the reading from DRAM minimal. We will come back to this point when we present the CUDNN approach in the next section.",
+      "zh": "构成展开的输入特征图矩阵的一个缺点是，它涉及将数据最多复制 K*K 次，这可能需要分配大得难以承受的内存。为了规避这一限制，如【1】图 16.16【/1】所示的那些实现会逐块地具体化 X_unroll 矩阵，例如，通过构造展开的输入特征图矩阵，并对小批量中的每个样本迭代地调用矩阵乘法。然而，这限制了实现中的并行性，并且有时会导致矩阵乘法太小而无法有效利用 GPU 的情况。这种表述的另一个缺点是，它降低了卷积的算术强度，因为除了读取 X 本身之外，还必须写入和读取 X_unroll，这比直接方法需要多得多的内存流量。因此，最高性能的实现在展开算法的实现上有着更为复杂的安排，以在最大化 GPU 利用率的同时将来自 DRAM 的读取降到最低。我们将在下一节介绍 CUDNN 方法时回到这一点。"
+    },
+    {
+      "id": "st0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "16.5 CUDNN library",
+      "zh": "16.5 CUDNN 库"
+    },
+    {
+      "id": "p0655",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "CUDNN is a library of optimized routines for implementing deep learning primitives. It was designed to make it much easier for deep learning frameworks to take advantage of GPUs. It provides a flexible and easy-to-use C-language deep learning API that integrates neatly into existing deep learning frameworks (e.g., Caffe, Tensorflow, Theano, Torch). The library requires that input and output data be resident in the GPU device memory, as we discussed in the previous section. This requirement is analogous to that of cuBLAS.",
+      "zh": "CUDNN 是一个包含用于实现深度学习原语的优化例程的库。它的设计目标是让深度学习框架更容易利用 GPU。它提供了一个灵活且易用的 C 语言深度学习 API，可整洁地集成到现有的深度学习框架中（例如 Caffe、Tensorflow、Theano、Torch）。该库要求输入和输出数据驻留在 GPU 设备内存中，正如我们在上一节中所讨论的。这一要求与 cuBLAS 类似。"
+    },
+    {
+      "id": "p0660",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "The library is thread-safe in that its routines can be called from different host threads. Convolutional routines for the forward and backward paths use a common descriptor that encapsulates the attributes of the layer. Tensors and filters are accessed through opaque descriptors, with the flexibility to specify the tensor layout using arbitrary strides along each dimension. The most important computational primitive in CNN is a special form of batched convolution. In this section we describe the forward form of this convolution. The CUDNN parameters that govern this convolution are listed 【1】Table 16.1【/1】.",
+      "zh": "该库是线程安全的，因为其例程可以从不同的主机线程调用。前向和反向路径的卷积例程使用一个共同的、封装了层属性的描述符。张量和滤波器通过不透明描述符访问，并可以灵活地沿每个维度使用任意步长来指定张量布局。CNN 中最重要的计算原语是一种特殊形式的批处理卷积。在本节中，我们描述这种卷积的前向形式。控制这一卷积的 CUDNN 参数列于【1】表 16.1【/1】。"
+    }
+  ]
+}

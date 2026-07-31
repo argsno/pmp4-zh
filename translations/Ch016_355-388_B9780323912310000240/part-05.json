@@ -1,0 +1,155 @@
+{
+  "page": "Ch016_355-388_B9780323912310000240",
+  "nodes": [
+    {
+      "id": "p0465",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "The innermost three loop levels, the c-loop (over the input feature maps or channels) and the nested p-q-loops (over the weights in a filter bank), also offer a significant level of parallelism. However, to parallelize them, one would need to use atomic operations in accumulating into the 【1】Y【/1】 elements, since different iterations of these loop levels can perform read-modify-write on the same 【2】Y【/2】 elements. Therefore we will keep these loops serial unless we really need more parallelism.",
+      "zh": "最内层的三个循环层级，即 c 循环（遍历输入特征图或通道）和嵌套的 p-q 循环（遍历滤波器组中的权重），也提供了相当程度的并行性。然而，要将它们并行化，在对【1】Y【/1】元素的累加中需要使用原子操作，因为这些循环层级的不同迭代可能在同一【2】Y【/2】元素上执行读-改-写。因此，除非确实还需要更多并行性，否则我们将保持这些循环串行。"
+    },
+    {
+      "id": "p0470",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "Assuming that we exploit the four levels of “easy” parallelism (【1】n【/1】, 【2】m【/2】, 【3】h【/3】, 【4】w【/4】) in the convolutional layer, the total number of parallel iterations is the product N*M*H_out*W_out. This high degree of available parallelism makes the convolutional layer an excellent candidate for GPU acceleration. We can easily design a kernel with thread organizations that are designed to capture the parallelism.",
+      "zh": "假设我们利用卷积层中四个层级的“易并行”部分（【1】n【/1】、【2】m【/2】、【3】h【/3】、【4】w【/4】），则并行迭代的总数为 N*M*H_out*W_out 的乘积。这种高度可用的并行性使得卷积层成为 GPU 加速的绝佳候选。我们可以轻松地设计一个具有线程组织的核函数，以捕获这种并行性。"
+    },
+    {
+      "id": "p0475",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "We first need to make some high-level design decisions about the thread organization. Assume that we will have each thread compute one element of one output feature map. We will use 2D thread blocks, in which each thread block computes a tile of TILE_WIDTH × TILE_WIDTH pixels in one output feature map. For example, if we set TILE_WIDTH = 16, we would have a total of 256 threads per block. This captures part of the nested h-w-loop level parallelism in processing the pixels of each output feature map.",
+      "zh": "我们首先需要就线程组织做出一些高层的设计决策。假设让每个线程计算一个输出特征图中的一个元素。我们将使用二维线程块，其中每个线程块计算一个输出特征图中 TILE_WIDTH×TILE_WIDTH 像素的一个瓦片。例如，如果设 TILE_WIDTH = 16，那么每个块将共有 256 个线程。这捕获了处理每个输出特征图像素时嵌套 h-w 循环层级并行性的一部分。"
+    },
+    {
+      "id": "p0480",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "Blocks can be organized into a 3D grid in several different ways. Each option designates the grid dimensions to capture the 【1】n【/1】, 【2】m【/2】, and 【3】h【/3】-【4】w【/4】 parallelism in different combinations. We will present the details of one of the options and leave it as an exercise for the reader to explore different options and evaluate the potential pros and cons of each option. The option that we present in detail is as follows:",
+      "zh": "线程块可以以几种不同的方式组织成三维网格。每一种方案都指定网格的维度，以不同组合来捕获【1】n【/1】、【2】m【/2】以及【3】h【/3】-【4】w【/4】的并行性。我们将详细介绍其中一种方案的细节，并将其余不同方案以及评估各方案潜在的优缺点留作练习。我们详细给出的方案如下："
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/ol[1]/li[1]",
+      "en": "1. The first dimension (【1】X【/1】) corresponds to the (【2】M【/2】) output features maps covered by each block.",
+      "zh": "1. 第一个维度（【1】X【/1】）对应于每个线程块所覆盖的（【2】M【/2】）个输出特征图。"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/ol[1]/li[2]",
+      "en": "2. The second dimension (【1】Y【/1】) reflects the location of a block’s output tile inside the output feature map.",
+      "zh": "2. 第二个维度（【1】Y【/1】）反映了一个线程块的输出分块在输出特征图中的位置。"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/ol[1]/li[3]",
+      "en": "3. The third dimension (【1】Z【/1】) in the grid corresponds to samples (N) in the minibatch.",
+      "zh": "3. 网格中的第三个维度（【1】Z【/1】）对应于小批量中的样本（N）。"
+    },
+    {
+      "id": "p0500",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "【1】Fig. 16.13【/1】 shows the host code that launches a kernel based on the thread organization proposed above. The number of blocks in the 【2】X【/2】 and 【3】Z【/3】 dimensions of the grid are straightforward; They are simply 【4】M【/4】, the number of output feature maps, and 【5】N【/5】, the number of samples in a minibatch. The arrangement in the 【6】Y【/6】 dimension is a little more complex and is illustrated in 【7】Fig. 16.14【/7】. Ideally, we would like to dedicate two dimensions of the grid indices to the vertical and horizontal tile indices for simplicity. However, we have only one dimension for both, since we are using 【8】X【/8】 for the output feature map index and 【9】Z【/9】 for the sample index in a minibatch. Therefore we linearize the tile indices to encode both the horizontal and vertical tile indices of output feature map tiles.",
+      "zh": "【1】图 16.13【/1】 展示了基于上述线程组织启动核函数的主机代码。网格【2】X【/2】和【3】Z【/3】维度上的线程块数量是很直接的：它们分别是【4】M【/4】（输出特征图的数量）和【5】N【/5】（小批量中样本的数量）。【6】Y【/6】维度上的安排则稍微复杂一些，如【7】图 16.14【/7】所示。理想情况下，为了简单起见，我们希望将网格索引的两个维度专用于垂直和水平分块索引。然而，由于我们用【8】X【/8】表示输出特征图索引、用【9】Z【/9】表示小批量中的样本索引，我们只有一个维度可用。因此，我们将分块索引线性化，以同时编码输出特征图分块的水平和垂直分块索引。"
+    },
+    {
+      "id": "n0133",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 16.13【/1】 Host code for launching a convolutional layer kernel.",
+      "zh": "【1】图 16.13【/1】 用于启动卷积层核函数的主机代码。"
+    },
+    {
+      "id": "n0134",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 16.14【/1】 Mapping output feature map tiles to blocks in the 【2】X【/2】-【3】Y【/3】 dimension of the grid.",
+      "zh": "【1】图 16.14【/1】 将输出特征图分块映射到网格【2】X【/2】-【3】Y【/3】维度的线程块。"
+    },
+    {
+      "id": "p0505",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "In the example in 【1】Fig. 16.14【/1】, each sample has four output feature maps (【2】M【/2】 = 4), and each output feature map consists of 2 × 2 tiles (H_grid = 2 in line 02 and W_grid = 2 in line 03) of 16 × 16 = 256 pixels each. The grid organization assigns each block to calculate one of these tiles.",
+      "zh": "在【1】图 16.14【/1】的示例中，每个样本有四个输出特征图（【2】M【/2】 = 4），每个输出特征图由 2×2 个分块组成（第 02 行中 H_grid = 2，第 03 行中 W_grid = 2），每个分块有 16×16 = 256 个像素。网格组织将每个线程块分配给计算这些分块中的一个。"
+    },
+    {
+      "id": "p0510",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "We have already assigned each output feature map to the 【1】X【/1】 dimension, which is reflected as the four blocks in the 【2】X【/2】 dimension, each corresponding to one of the output feature maps. As shown in the bottom of 【3】Fig. 16.14【/3】, we linearize the four tiles in each output feature map and assign them to the blocks in the 【4】Y【/4】 dimension. Thus tiles (0, 0), (0, 1), (1, 0), and (1, 1) are mapped using row-major order to the blocks with blockIdx.y values 0, 1, 2, and 3, respectively. Thus the total number of bocks in the 【5】Y【/5】 dimension is 4 (T = H_grid*W_grid = 4 in line 04). Thus we will launch a grid with gridDim (4, 4, 【6】N【/6】) in lines 06–07.",
+      "zh": "我们已经将每个输出特征图分配给【1】X【/1】维度，这体现为【2】X【/2】维度上的四个线程块，每个对应一个输出特征图。如【3】图 16.14【/3】底部所示，我们将每个输出特征图中的四个分块线性化，并将它们分配给【4】Y【/4】维度上的线程块。于是分块 (0, 0)、(0, 1)、(1, 0) 和 (1, 1) 按行主序分别映射到 blockIdx.y 值为 0、1、2、3 的线程块。因此【5】Y【/5】维度上的线程块总数为 4（第 04 行中 T = H_grid*W_grid = 4）。于是我们将在第 06–07 行启动一个 gridDim 为 (4, 4, 【6】N【/6】) 的网格。"
+    },
+    {
+      "id": "p0515",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "【1】Fig. 16.15【/1】 shows a kernel based on the thread organization above. Note that in the code, we use multidimensional indices in array accesses for clarity. We leave it to the reader to translate this pseudo-code into regular C, assuming that 【2】X【/2】, 【3】Y【/3】, and 【4】W【/4】 must be accessed via linearized indexing based on row-major layout (【5】Chapter 3【/5】, Multidimensional Grids and Data).",
+      "zh": "【1】图 16.15【/1】 展示了基于上述线程组织的核函数。请注意，为了清晰起见，代码中在数组访问时使用了多维索引。我们将这段伪代码转换为常规 C 代码的工作留给了读者，假设【2】X【/2】、【3】Y【/3】和【4】W【/4】必须通过基于行主序布局的线性化索引来访问（【5】第 3 章【/5】（多维网格与数据））。"
+    },
+    {
+      "id": "n0138",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 16.15【/1】 Kernel for the forward path of a convolutional layer.",
+      "zh": "【1】图 16.15【/1】 卷积层前向路径的核函数。"
+    },
+    {
+      "id": "p0520",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[10]",
+      "en": "Each thread starts by generating the 【1】n【/1】 (batch), 【2】m【/2】 (feature map), 【3】h【/3】 (vertical), and 【4】w【/4】 (horizontal) indices of its assigned output feature map pixel. The 【5】n【/5】 (line 06) and 【6】m【/6】 (line 03) indices are straightforward, given the host code. For the 【7】h【/7】 index calculation in line 04, the blockIdx.y value is first divided by W_grid to recover the tile index in the vertical direction, as illustrated in 【8】Fig. 16.13【/8】. This tile index is then expanded by the TILE_WIDTH and added to the threadIdx.y to form the actual vertical pixel index into the output feature map (line 04). The derivation of the horizontal pixel index is similar (line 05).",
+      "zh": "每个线程首先生成其所分配的输出特征图像素的【1】n【/1】（批次）、【2】m【/2】（特征图）、【3】h【/3】（垂直）和【4】w【/4】（水平）索引。给定主机代码，【5】n【/5】（第 06 行）和【6】m【/6】（第 03 行）索引是直接的。对于第 04 行中的【7】h【/7】索引计算，首先将 blockIdx.y 值除以 W_grid 以恢复垂直方向的瓦片索引，如【8】图 16.13【/8】所示。然后将该瓦片索引乘以 TILE_WIDTH 并加到 threadIdx.y 上，形成输出特征图中实际的垂直像素索引（第 04 行）。水平像素索引的推导类似（第 05 行）。"
+    },
+    {
+      "id": "p0525",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[11]",
+      "en": "The kernel in 【1】Fig. 16.15【/1】 has a high degree of parallelism but consumes too much global memory bandwidth. As in the convolution pattern discussions in 【2】Chapter 7【/2】, Convolution, the execution speed of the kernel will be limited by the global memory bandwidth. As we also saw in 【3】Chapter 7【/3】, Convolution, we can use constant memory caching and shared memory tiling to dramatically reduce the global memory traffic and improve the execution speed of the kernel. These optimizations to the convolution inference kernel are left as an exercise for the reader.",
+      "zh": "【1】图 16.15【/1】中的核函数具有高度的并行性，但消耗了过多的全局内存带宽。正如在【2】第 7 章【/2】（卷积）关于卷积模式的讨论中所指出的，该核函数的执行速度将受限于全局内存带宽。正如我们在【3】第 7 章【/3】（卷积）中也看到的，我们可以使用常量内存缓存和共享内存分块来大幅减少全局内存流量并提高核函数的执行速度。这些针对卷积推理核函数的优化留作练习。"
+    },
+    {
+      "id": "st0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "16.4 Formulating a convolutional layer as GEMM",
+      "zh": "16.4 将卷积层表示为 GEMM"
+    },
+    {
+      "id": "p0530",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "We can build an even faster convolutional layer by representing it as an equivalent matrix multiplication operation and then using a highly efficient GEMM (general matrix multiply) kernel from the CUDA linear algebra library cuBLAS. This method was proposed by 【1】Chellapilla et al. (2006)【/1】. The central idea is unfolding and duplicating input feature map pixels in such a way that all elements that are needed to compute one output feature map pixel will be stored as one sequential column of the matrix that is thus produced. This formulates the forward operation of the convolutional layer to one large matrix multiplication.【2】【3】3【/3】【/2】",
+      "zh": "我们可以通过将卷积层表示为一个等价的矩阵乘法操作，然后使用来自 CUDA 线性代数库 cuBLAS 的高效 GEMM（通用矩阵乘法）核函数，来构建更快的卷积层。该方法由【1】Chellapilla et al. (2006)【/1】提出。其核心思想是对输入特征图的像素进行展开和复制，使得计算一个输出特征图像素所需的所有元素都存储为由此生成的矩阵的一列连续数据。这将卷积层的前向操作表述为一次大型矩阵乘法。【2】【3】3【/3】【/2】"
+    },
+    {
+      "id": "p0535",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "Consider a small example convolutional layer that takes as input 【1】C【/1】 = 3 feature maps, each of which is of size 3 × 3, and produces 【2】M【/2】 = 2 output features, each of which is of size 2 × 2, as shown in 【3】Fig. 16.5【/3】 and again, for convenience, at the top of 【4】Fig. 16.16【/4】. It uses 【5】M【/5】 × 【6】C【/6】 = 6 filter banks, each of which is 2 × 2. The matrix version of this layer will be constructed in the following way.",
+      "zh": "考虑一个小的示例卷积层，它接受【1】C【/1】 = 3 个特征图作为输入，每个大小为 3×3，并产生【2】M【/2】 = 2 个输出特征（每个大小为 2×2），如【3】图 16.5【/3】所示，并出于方便再次展示在【4】图 16.16【/4】顶部。它使用【5】M【/5】 × 【6】C【/6】 = 6 个滤波器组，每个大小为 2×2。该层的矩阵版本将按以下方式构造。"
+    },
+    {
+      "id": "n0144",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 16.16【/1】 Formulation of convolutional layer as GEMM.",
+      "zh": "【1】图 16.16【/1】 将卷积层表示为 GEMM。"
+    },
+    {
+      "id": "p0540",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "First, we will rearrange all input pixels. Since the results of the convolutions are summed across input features, the input features can be concatenated into one large matrix. Each input feature map becomes a section of rows in the large matrix. As shown in 【1】Fig. 16.16【/1】, input feature maps 0, 1, and 2 become the top, middle, and bottom sections, respectively, of the “input features X_unrolled” matrix.",
+      "zh": "首先，我们将重新排列所有输入像素。由于卷积的结果是在各输入特征上求和的，因此输入特征可以被拼接成一个大矩阵。每个输入特征图成为这个大矩阵中的一段行。如【1】图 16.16【/1】所示，输入特征图 0、1、2 分别成为“输入特征 X_unrolled”矩阵的顶、中、底三段。"
+    },
+    {
+      "id": "p0545",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "The rearrangement is done so that each column of the resulting matrix contains all the input values necessary to compute one element of an output feature. For example, in 【1】Fig. 16.16【/1】, all the input feature pixels that are needed for calculating the value at (0, 0) of output feature map 0 are circled in the input feature maps:",
+      "zh": "进行这样的重排，是为了使结果矩阵的每一列都包含计算一个输出特征元素所需的所有输入值。例如，在【1】图 16.16【/1】中，计算输出特征图 0 的 (0, 0) 处的值所需的所有输入特征像素，都在输入特征图中以圆圈标出："
+    },
+    {
+      "id": "n0147",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "where the first term of each inner product is a vector formed by linearizing the patch of 【1】x【/1】 pixels circled in 【2】Fig. 16.16【/2】. The second term is a vector that is formed by linearizing the filter bank that is used for the convolution. In both cases, linearization is done by using the row-major order. It is also clear that we can reformulate the three inner products into one inner product:",
+      "zh": "其中每个内积的第一项是一个向量，由【1】x【/1】像素块线性化得到，该像素块在【2】图 16.16【/2】中圆圈标出。第二项是一个向量，由用于卷积的滤波器组线性化得到。在这两种情况下，线性化都采用行主序。同样清楚的是，我们可以将这三个内积重新表述为一个内积："
+    },
+    {
+      "id": "p0550",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "As shown in the bottom of 【1】Fig. 16.16【/1】, the concatenated vector from the filter banks becomes row 0 of the filter matrix, and the concatenated vector from the input feature maps becomes column 0 of the input feature map unrolled matrix. During matrix multiplication the row of the filter bank matrix and the column of the input feature matrix will produce one pixel of the output feature map.",
+      "zh": "如【1】图 16.16【/1】底部所示，来自滤波器组的拼接向量成为滤波器矩阵的第 0 行，而来自输入特征图的拼接向量成为输入特征图展开矩阵的第 0 列。在矩阵乘法过程中，滤波器组矩阵的行与输入特征矩阵的列将生成输出特征图的一个像素。"
+    },
+    {
+      "id": "p0555",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
+      "en": "Note that matrix multiplication of the 2 × 12 filter matrix and the 12 × 8 input feature map matrix produces a 2 × 8 output feature map matrix. The top section of the output feature map matrix is the linearized form of output feature map 0, and the bottom is output feature map 1. Both are already in row-major order, so they can be used as individual input feature maps for the next layer. As for the filter banks, each row of the filter matrix is simply the row-major order view of the original filter bank. Thus the filter matrix is simply the concatenation of all the original filter banks. There is no physical rearrangement or relocation of filter elements that are involved.",
+      "zh": "请注意，2×12 的滤波器矩阵与 12×8 的输入特征图矩阵之间的矩阵乘法，会产生一个 2×8 的输出特征图矩阵。输出特征图矩阵的顶部是输出特征图 0 的线性化形式，底部是输出特征图 1。两者都已经按行主序排列，因此可以作为下一层的独立输入特征图使用。至于滤波器组，滤波器矩阵的每一行只是原始滤波器组的行主序视图。因此滤波器矩阵只是所有原始滤波器组的拼接。其中不涉及滤波器元素的任何物理重排或重定位。"
+    }
+  ]
+}

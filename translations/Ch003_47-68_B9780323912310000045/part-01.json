@@ -1,0 +1,155 @@
+{
+  "page": "Ch003_47-68_B9780323912310000045",
+  "nodes": [
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[11]",
+      "en": "We now turn our attention to the configuration of blocks. Each block is organized into a 3D array of threads. Two-dimensional (2D) blocks can be created by setting 【1】blockDim.z【/1】 to 1. One-dimension blocks can be created by setting both 【2】blockDim.y【/2】 and 【3】blockDim.z【/3】 to 1, as in the 【4】vectorAddkernel【/4】 example. As we mentioned before, all blocks in a grid have the same dimensions and sizes. The number of threads in each dimension of a block is specified by the second execution configuration parameter at the kernel call. Within the kernel this configuration parameter can be accessed as the 【5】x【/5】, 【6】y【/6】, and 【7】z【/7】 fields of 【8】blockDim【/8】.",
+      "zh": "现在把注意力转向线程块的配置。每个线程块被组织成线程的 3D 数组。把【1】blockDim.z【/1】设为 1 即可创建二维（2D）线程块；把【2】blockDim.y【/2】和【3】blockDim.z【/3】都设为 1 即可创建一维线程块，正如【4】vectorAddkernel【/4】例子中那样。如前所述，一个网格中的所有线程块具有相同的维度和大小。线程块每一维上的线程数由核函数调用时的第二个执行配置参数指定。在核函数内部，该配置参数可通过【8】blockDim【/8】的【5】x【/5】、【6】y【/6】、【7】z【/7】字段访问。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[12]",
+      "en": "The total size of a block in current CUDA systems is limited to 1024 threads. These threads can be distributed across the three dimensions in any way as long as the total number of threads does not exceed 1024. For example, 【1】blockDim【/1】 values of (512, 1, 1), (8, 16, 4), and (32, 16, 2) are all allowed, but (32, 32, 2) is not allowed because the total number of threads would exceed 1024.",
+      "zh": "在当前的 CUDA 系统中，一个线程块的总大小上限为 1024 个线程。只要线程总数不超过 1024，这些线程可以按任意方式分布到三个维度上。例如，【1】blockDim【/1】取值为 (512, 1, 1)、(8, 16, 4) 和 (32, 16, 2) 都是允许的，但 (32, 32, 2) 不被允许，因为线程总数会超过 1024。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[13]",
+      "en": "A grid and its blocks do not need to have the same dimensionality. A grid can have higher dimensionality than its blocks and vice versa. For example, 【1】Fig. 3.1【/1】 shows a small toy grid example with a 【2】gridDim【/2】 of (2, 2, 1) and a 【3】blockDim【/3】 of (4, 2, 2). Such a grid can be created with the following host code:",
+      "zh": "网格与其线程块不必具有相同的维数。网格的维数可以高于其线程块的维数，反之亦然。例如，【1】图 3.1【/1】给出了一个小型的玩具网格例子，其【2】gridDim【/2】为 (2, 2, 1)，【3】blockDim【/3】为 (4, 2, 2)。这样的网格可以用下面的主机代码创建："
+    },
+    {
+      "id": "n0028",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[6]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 3.1【/1】 A multidimensional example of CUDA grid organization.",
+      "zh": "【1】图 3.1【/1】 CUDA 网格组织的一个多维示例"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[14]",
+      "en": "The grid in 【1】Fig. 3.1【/1】 consists of four blocks organized into a 2×2 array. Each block is labeled with (【2】blockIdx.y【/2】, 【3】blockIdx.x【/3】). For example, block (1,0) has 【4】blockIdx.y【/4】=1 and 【5】blockIdx.x【/5】=0. Note that the ordering of the block and thread labels is such that highest dimension comes first. This notation uses an ordering that is the reverse of that used in the C statements for setting configuration parameters, in which the lowest dimension comes first. This reversed ordering for labeling blocks works better when we illustrate the mapping of thread coordinates into data indexes in accessing multidimensional data.",
+      "zh": "【1】图 3.1【/1】中的网格由四个线程块组成，排列成 2×2 的数组。每个线程块用 (【2】blockIdx.y【/2】, 【3】blockIdx.x【/3】) 标记。例如，线程块 (1,0) 的【4】blockIdx.y【/4】=1，【5】blockIdx.x【/5】=0。注意，线程块和线程标记的排列次序是最高维在前。这种记法所用的次序与 C 语言中设置配置参数的语句所用的次序相反，后者是最低维在前。在说明访问多维数据时线程坐标到数据索引的映射时，这种反向的线程块标记次序更为好用。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[15]",
+      "en": "Each 【1】threadIdx【/1】 also consists of three fields: the x coordinate 【2】threadId.x【/2】, the y coordinate 【3】threadIdx.y【/3】, and the z coordinate 【4】threadIdx.z【/4】. 【5】Fig. 3.1【/5】 illustrates the organization of threads within a block. In this example, each block is organized into 4×2×2 arrays of threads. Since all blocks within a grid have the same dimensions, we show only one of them. 【6】Fig. 3.1【/6】 expands block (1,1) to show its 16 threads. For example, thread (1,0,2) has 【7】threadIdx.z【/7】=1, 【8】threadIdx.y【/8】=0, and 【9】threadIdx.x【/9】=2. Note that in this example we have 4 blocks of 16 threads each, with a grand total of 64 threads in the grid. We use these small numbers to keep the illustration simple. Typical CUDA grids contain thousands to millions of threads.",
+      "zh": "每个【1】threadIdx【/1】同样由三个字段组成：x 坐标【2】threadId.x【/2】、y 坐标【3】threadIdx.y【/3】和 z 坐标【4】threadIdx.z【/4】。【5】图 3.1【/5】展示了线程块内线程的组织方式。在这个例子中，每个线程块被组织成 4×2×2 的线程数组。由于网格内的所有线程块维度相同，图中只展示其中一个。【6】图 3.1【/6】把线程块 (1,1) 展开，显示其中的 16 个线程。例如，线程 (1,0,2) 的【7】threadIdx.z【/7】=1，【8】threadIdx.y【/8】=0，【9】threadIdx.x【/9】=2。注意，在这个例子中我们有 4 个线程块，每块 16 个线程，网格中共计 64 个线程。采用这样小的数值是为了让图示保持简单。典型的 CUDA 网格包含数千至数百万个线程。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "3.2 Mapping threads to multidimensional data",
+      "zh": "3.2 将线程映射到多维数据"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "The choice of 1D, 2D, or 3D thread organizations is usually based on the nature of the data. For example, pictures are a 2D array of pixels. Using a 2D grid that consists of 2D blocks is often convenient for processing the pixels in a picture. 【1】Fig. 3.2【/1】 shows such an arrangement for processing a 62×761F1F【2】【3】2【/3】【/2】 picture P (62 pixels in the vertical or y direction and 76 pixels in the horizontal or x direction). Assume that we decided to use a 16×16 block, with 16 threads in the x direction and 16 threads in the y direction. We will need four blocks in the y direction and five blocks in the x direction, which results in 4×5=20 blocks, as shown in 【4】Fig. 3.2【/4】. The heavy lines mark the block boundaries. The shaded area depicts the threads that cover pixels. Each thread is assigned to process a pixel whose y and x coordinates are derived from its 【5】blockIdx【/5】, 【6】blockDim【/6】, 【7】and threadIdx【/7】 variable values:",
+      "zh": "选择 1D、2D 还是 3D 的线程组织，通常取决于数据本身的性质。例如，图片是像素的 2D 数组。用由 2D 线程块构成的 2D 网格来处理图片中的像素往往很方便。【1】图 3.2【/1】展示了处理一幅 62×76【2】【3】2【/3】【/2】图片 P 的这样一种安排（垂直方向或 y 方向 62 个像素，水平方向或 x 方向 76 个像素）。假设我们决定采用 16×16 的线程块，x 方向 16 个线程，y 方向 16 个线程。那么 y 方向需要 4 个线程块，x 方向需要 5 个线程块，共得到 4×5=20 个线程块，如【4】图 3.2【/4】所示。粗线标出线程块的边界。阴影区域表示覆盖像素的线程。每个线程被指派处理一个像素，该像素的 y 坐标和 x 坐标由此线程的【5】blockIdx【/5】、【6】blockDim【/6】【7】和 threadIdx【/7】变量的值导出："
+    },
+    {
+      "id": "n0033",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 3.2【/1】 Using a 2D thread grid to process a 62×76 picture P.",
+      "zh": "【1】图 3.2【/1】 用 2D 线程网格处理 62×76 的图片 P"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "For example, the Pin element to be processed by thread (0,0) of block (1,0) can be identified as follows:",
+      "zh": "例如，由线程块 (1,0) 的线程 (0,0) 处理的 Pin 元素可按如下方式确定："
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "Note that in 【1】Fig. 3.2【/1】 we have two extra threads in the y direction and four extra threads in the x direction. That is, we will generate 64×80 threads to process 62×76 pixels. This is similar to the situation in which a 1000-element vector is processed by the 1D kernel 【2】vecAddKernel【/2】 in 【3】Fig. 2.9【/3】 using four 256-thread blocks. Recall that an if-statement in 【4】Fig. 2.10【/4】 is needed to prevent the extra 24 threads from taking effect. Similarly, we should expect that the picture-processing kernel function will have if-statements to test whether the thread’s vertical and horizontal indices fall within the valid range of pixels.",
+      "zh": "注意，在【1】图 3.2【/1】中，y 方向多出两个线程，x 方向多出四个线程。也就是说，我们将生成 64×80 个线程来处理 62×76 个像素。这类似于【3】图 2.9【/3】中用四个 256 线程的线程块、以 1D 核函数【2】vecAddKernel【/2】处理 1000 个元素的向量的情形。回想一下，【4】图 2.10【/4】中需要一条 if 语句来阻止多出的 24 个线程产生作用。同样，可以预料处理图片的核函数中也会有 if 语句，用来检验线程的垂直索引和水平索引是否落在像素的有效范围内。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "We assume that the host code uses an integer variable n to track the number of pixels in the y direction and another integer variable m to track the number of pixels in the x direction. We further assume that the input picture data has been copied to the device global memory and can be accessed through a pointer variable 【1】Pin_d【/1】. The output picture has been allocated in the device memory and can be accessed through a pointer variable 【2】Pout_d【/2】. The following host code can be used to call a 2D kernel 【3】colorToGrayscaleConversion【/3】 to process the picture, as follows:",
+      "zh": "我们假设主机代码用一个整型变量 n 记录 y 方向的像素数，用另一个整型变量 m 记录 x 方向的像素数。进一步假设输入图片数据已复制到设备全局内存中，可通过指针变量【1】Pin_d【/1】访问；输出图片已在设备内存中分配，可通过指针变量【2】Pout_d【/2】访问。下面的主机代码可用于调用 2D 核函数【3】colorToGrayscaleConversion【/3】来处理这幅图片："
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "In this example we assume for simplicity that the dimensions of the blocks are fixed at 16×16. The dimensions of the grid, on the other hand, depend on the dimensions of the picture. To process a 1500×2000 (3-million-pixel) picture, we would generate 11,750 blocks: 94 in the y direction and 125 in the x direction. Within the kernel function, references to 【1】gridDim.x【/1】, 【2】gridDim.y【/2】, 【3】blockDim.x【/3】, and 【4】blockDim.y【/4】 will result in 125, 94, 16, and 16, respectively.",
+      "zh": "为简单起见，本例假设线程块的维度固定为 16×16；而网格的维度则取决于图片的尺寸。要处理一幅 1500×2000（300 万像素）的图片，将生成 11,750 个线程块：y 方向 94 个，x 方向 125 个。在核函数内部，对【1】gridDim.x【/1】、【2】gridDim.y【/2】、【3】blockDim.x【/3】和【4】blockDim.y【/4】的引用将分别得到 125、94、16 和 16。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[9]",
+      "en": "Before we show the kernel code, we first need to understand how C statements access elements of dynamically allocated multidimensional arrays. Ideally, we would like to access 【1】Pin_d【/1】 as a 2D array in which an element at row j and column i can be accessed as 【2】Pin_d[j][i]【/2】. However, the ANSI C standard on the basis of which CUDA C was developed requires the number of columns in 【3】Pin【/3】 to be known at compile time for 【4】Pin【/4】 to be accessed as a 2D array. Unfortunately, this information is not known at compile time for dynamically allocated arrays. In fact, part of the reason why one uses dynamically allocated arrays is to allow the sizes and dimensions of these arrays to vary according to the data size at runtime. Thus the information on the number of columns in a dynamically allocated 2D array is not known at compile time by design. As a result, programmers need to explicitly linearize, or “flatten,” a dynamically allocated 2D array into an equivalent 1D array in the current CUDA C.",
+      "zh": "在给出核函数代码之前，先要理解 C 语句如何访问动态分配的多维数组的元素。理想情况下，我们希望把【1】Pin_d【/1】当作 2D 数组来访问，用【2】Pin_d[j][i]【/2】访问第 j 行第 i 列的元素。然而，CUDA C 所依据的 ANSI C 标准要求：只有在编译时已知【3】Pin【/3】的列数，才能把【4】Pin【/4】当作 2D 数组来访问。遗憾的是，对动态分配的数组而言，这一信息在编译时是未知的。事实上，使用动态分配数组的部分原因，正是要让这些数组的大小和维度在运行时随数据规模变化。因此，动态分配的 2D 数组的列数信息，在设计上就注定无法在编译时得知。于是，在当前的 CUDA C 中，程序员需要显式地把动态分配的 2D 数组线性化（或者说“压平”）为一个等价的 1D 数组。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[10]",
+      "en": "In reality, all multidimensional arrays in C are linearized. This is due to the use of a “flat” memory space in modern computers (see the “Memory Space” sidebar). In the case of statically allocated arrays, the compilers allow the programmers to use higher-dimensional indexing syntax, such as 【1】Pin_d[j][i]【/1】, to access their elements. Under the hood, the compiler linearizes them into an equivalent 1D array and translates the multidimensional indexing syntax into a 1D offset. In the case of dynamically allocated arrays, the current CUDA C compiler leaves the work of such translation to the programmers, owing to lack of dimensional information at compile time.",
+      "zh": "实际上，C 语言中所有的多维数组都会被线性化。这是因为现代计算机采用“平坦”的内存空间（参见“内存空间”专栏）。对于静态分配的数组，编译器允许程序员使用高维索引语法（例如【1】Pin_d[j][i]【/1】）来访问其元素。在底层，编译器把它们线性化为等价的 1D 数组，并把多维索引语法翻译成 1D 偏移量。而对于动态分配的数组，由于编译时缺少维度信息，当前的 CUDA C 编译器把这一翻译工作留给了程序员。"
+    },
+    {
+      "id": "n0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[6]/p[1]",
+      "en": "Memory Space",
+      "zh": "内存空间"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[6]/p[2]",
+      "en": "【1】A memory space is a simplified view of how a processor accesses its memory in modern computers. A memory space is usually associated with each running application. The data to be processed by an application and instructions executed for the application are stored in locations in its memory space. Each location typically can accommodate a byte and has an address. Variables that require multiple bytes—4 bytes for float and 8 bytes for double—are stored in consecutive byte locations. When accessing a data value from the memory space, the processor gives the starting address (address of the starting byte location) and the number of bytes needed【/1】.",
+      "zh": "【1】内存空间是对现代计算机中处理器如何访问其内存的一种简化视图。通常，每个正在运行的应用程序都关联着一个内存空间。应用程序要处理的数据以及为该程序执行的指令，都存放在其内存空间中的各个位置上。每个位置通常可容纳一个字节，并有一个地址。需要多个字节的变量——float 占 4 字节，double 占 8 字节——存放在连续的字节位置上。当从内存空间访问一个数据值时，处理器给出起始地址（起始字节位置的地址）和所需的字节数【/1】。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[6]/p[3]",
+      "en": "【1】Most modern computers have at least 4G byte-sized locations, where each G is 1,073,741,824 (2【/1】【2】【3】30【/3】【/2】【4】). All locations are labeled with an address that ranges from 0 to the largest number used. Since there is only one address for every location, we say that the memory space has a “flat” organization. As a result, all multidimensional arrays are ultimately “flattened” into equivalent one-dimensional arrays. While a C programmer can use multidimensional array syntax to access an element of a multidimensional array, the compiler translates these accesses into a base pointer that points to the beginning element of the array, along with a one-dimensional offset calculated from these multidimensional indices【/4】.",
+      "zh": "【1】大多数现代计算机至少拥有 4G 个字节大小的位置，其中每个 G 是 1,073,741,824（2【/1】【2】【3】30【/3】【/2】【4】）。所有位置都用地址标记，地址范围从 0 到所用到的最大数。由于每个位置只有一个地址，我们说内存空间具有“平坦”的组织形式。因此，所有多维数组最终都会被“压平”为等价的一维数组。虽然 C 程序员可以用多维数组语法访问多维数组的元素，但编译器会把这些访问翻译成一个指向数组首元素的基指针，加上由这些多维索引计算出的一维偏移量【/4】。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[12]",
+      "en": "There are at least two ways in which a 2D array can be linearized. One is to place all elements of the same row into consecutive locations. The rows are then placed one after another into the memory space. This arrangement, called the 【1】row-major layout【/1】, is illustrated in 【2】Fig. 3.3【/2】. To improve readability, we use M【3】j,i【/3】 to denote an element of M at the jth row and the ith column. M【4】j,i【/4】 is equivalent to the C expression M[j][i] but slightly more readable. 【5】Fig. 3.3【/5】 shows an example in which a 4×4 matrix M is linearized into a 16-element 1D array, with all elements of row 0 first, followed by the four elements of row 1, and so on. Therefore the 1D equivalent index for an element of M at row j and column i is j*4+i. The j*4 term skips over all elements of the rows before row j. The i term then selects the right element within the section for row j. For example, the 1D index for M【6】2,1【/6】 is 2*4+1=9. This is illustrated in 【7】Fig. 3.3【/7】, in which M【8】9【/8】 is the 1D equivalent to M【9】2,1【/9】. This is the way in which C compilers linearize 2D arrays.",
+      "zh": "把 2D 数组线性化至少有两种方式。一种是把同一行的所有元素放在连续的位置上，然后把各行一行接一行地放入内存空间。这种排列称为【1】行主序布局【/1】，如【2】图 3.3【/2】所示。为提高可读性，我们用 M【3】j,i【/3】表示 M 中第 j 行第 i 列的元素。M【4】j,i【/4】等价于 C 表达式 M[j][i]，但略微更易读。【5】图 3.3【/5】给出一个例子：一个 4×4 的矩阵 M 被线性化为 16 个元素的 1D 数组，先是第 0 行的全部元素，接着是第 1 行的四个元素，依此类推。因此，M 中第 j 行第 i 列元素的 1D 等价索引为 j*4+i。其中 j*4 一项跳过第 j 行之前各行的所有元素，i 一项再在第 j 行的区段内选出正确的元素。例如，M【6】2,1【/6】的 1D 索引为 2*4+1=9。这一点在【7】图 3.3【/7】中有所展示：其中 M【8】9【/8】就是 M【9】2,1【/9】的 1D 等价形式。C 编译器正是以这种方式线性化 2D 数组的。"
+    },
+    {
+      "id": "n0044",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 3.3【/1】 Row-major layout for a 2D C array. The result is an equivalent 1D array accessed by an index expression j*Width+i for an element that is in the jth row and ith column of an array of Width elements in each row.",
+      "zh": "【1】图 3.3【/1】 2D C 数组的行主序布局。对于每行有 Width 个元素的数组，其第 j 行第 i 列的元素在所得的等价 1D 数组中由索引表达式 j*Width+i 访问"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[13]",
+      "en": "Another way to linearize a 2D array is to place all elements of the same column in consecutive locations. The columns are then placed one after another into the memory space. This arrangement, called the 【1】column-major layout【/1】, is used by FORTRAN compilers. Note that the column-major layout of a 2D array is equivalent to the row-major layout of its transposed form. We will not spend more time on this except to mention that readers whose primary previous programming experience was with FORTRAN should be aware that CUDA C uses the row-major layout rather than the column-major layout. Also, many C libraries that are designed to be used by FORTRAN programs use the column-major layout to match the FORTRAN compiler layout. As a result, the manual pages for these libraries usually tell the users to transpose the input arrays if they call these libraries from C programs.",
+      "zh": "把 2D 数组线性化的另一种方式，是把同一列的所有元素放在连续的位置上，然后把各列一列接一列地放入内存空间。这种排列称为【1】列主序布局【/1】，FORTRAN 编译器采用的就是它。注意，2D 数组的列主序布局等价于其转置形式的行主序布局。这里不再多花篇幅，只提醒一点：此前主要使用 FORTRAN 编程的读者应当注意，CUDA C 使用的是行主序布局而非列主序布局。此外，许多供 FORTRAN 程序使用的 C 库为与 FORTRAN 编译器的布局保持一致，也采用列主序布局。因此，这些库的手册通常会告诉用户：若从 C 程序中调用它们，需要先把输入数组转置。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[14]",
+      "en": "We are now ready to study the source code of 【1】colorToGrayscaleConversion【/1】, shown in 【2】Fig. 3.4【/2】. The kernel code uses the following equation to convert each color pixel to its grayscale counterpart:",
+      "zh": "现在可以来研究【2】图 3.4【/2】中所示的【1】colorToGrayscaleConversion【/1】源代码了。该核函数代码用下面的公式把每个彩色像素转换为对应的灰度像素："
+    },
+    {
+      "id": "n0047",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[9]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 3.4【/2】【/1】 Source code of 【3】colorToGrayscaleConversion【/3】 with 2D thread mapping to data.",
+      "zh": "【1】【2】图 3.4【/2】【/1】 【3】colorToGrayscaleConversion【/3】的源代码，采用 2D 的线程到数据映射"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[16]",
+      "en": "There are a total of 【1】blockDim.x*gridDim.x【/1】 threads in the horizontal direction. Similar to the 【2】vecAddKernel【/2】 example, the following expression generates every integer value from 0 to 【3】blockDim.x*gridDim.x–1【/3】 (line 06):",
+      "zh": "水平方向上共有【1】blockDim.x*gridDim.x【/1】个线程。与【2】vecAddKernel【/2】的例子类似，下面的表达式（第 06 行）会生成从 0 到【3】blockDim.x*gridDim.x–1【/3】的每一个整数值："
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[17]",
+      "en": "We know that 【1】gridDim.x*blockDim.x【/1】 is greater than or equal to width (【2】m【/2】 value passed in from the host code). We have at least as many threads as the number of pixels in the horizontal direction. We also know that there are at least as many threads as the number of pixels in the vertical direction. Therefore as long as we test and make sure that only the threads with both row and column values are within range, that is, 【3】(col&lt;width) &amp;&amp; (row&lt;height)【/3】, we will be able to cover every pixel in the picture (line 07).",
+      "zh": "我们知道【1】gridDim.x*blockDim.x【/1】大于或等于 width（由主机代码传入的【2】m【/2】值）。也就是说，线程数至少与水平方向的像素数一样多；同样，线程数也至少与垂直方向的像素数一样多。因此，只要加以检验，确保只有 row 和 col 两个值都在范围内的线程才参与，即【3】(col&lt;width) &amp;&amp; (row&lt;height)【/3】，我们就能覆盖图片中的每一个像素（第 07 行）。"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "page": "Ch016_355-388_B9780323912310000240",
+  "nodes": [
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[1]/p[3]",
+      "en": "This error function has the nice property that the error value is always positive as long as there is any difference, positive or negative, between the values of 【1】y【/1】 and 【2】t【/2】. If we need to sum up the error across many input data points, both positive and negative differences will contribute to the total rather than canceling each other out. One can also define the error as the absolute value of the difference, among many other options. As we will see, the coefficient 【M3】【M4】 simplifies the computation involved in solving the model parameters.",
+      "zh": "这个误差函数有一个很好的性质：只要 【1】y【/1】 与 【2】t【/2】 的取值之间存在任何差异（无论正负），误差值总是正的。如果需要把许多输入数据点上的误差累加起来，正的差异和负的差异都会对总和有贡献，而不会互相抵消。当然，也可以把误差定义为差值的绝对值，此外还有许多别的选择。我们将会看到，系数 【M3】【M4】 简化了求解模型参数时所涉及的计算。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[2]/h4[1]",
+      "en": "Stochastic gradient descent",
+      "zh": "随机梯度下降"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[2]/p[1]",
+      "en": "The training process will attempt to find the model parameter values that minimize the sum of the error function values for all the training data points. This can be done with a 【1】stochastic gradient descent【/1】 approach, which repeatedly runs different permutations of the input dataset through the classifier, evolves the parameter values, and checks whether the parameter values have converged in that their values have stabilized and changed less than a threshold since the last iteration. Once the parameter values converge, the training process ends.",
+      "zh": "训练过程会试图找到一组模型参数取值，使所有训练数据点上误差函数值之和最小。这可以用【1】随机梯度下降【/1】方法来完成：它反复把输入数据集的不同排列送过分类器，让参数取值不断演化，并检查参数取值是否已经收敛，即其取值是否已经稳定、自上一次迭代以来的变化小于某个阈值。一旦参数取值收敛，训练过程即告结束。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[3]/h4[1]",
+      "en": "Epoch",
+      "zh": "轮次"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[3]/p[1]",
+      "en": "During each iteration of the training process, called an 【1】epoch【/1】, the training input dataset is first randomly shuffled, that is, permutated, before it is fed to the classifier. This randomization of the input data ordering helps to avoid suboptimal solutions. For each input data element, its classifier output 【2】y【/2】 value is compared with the label data to generate the error function value. In our perceptron example, if a data label is (class) 1 and the classifier output is (class) −1, the error function value using 【M3】【M4】 would be 2. If the error function value is larger than a threshold, a backpropagation operation is activated to make changes to the parameters so that the inference error can be reduced.",
+      "zh": "在训练过程的每一次迭代（称为一个【1】轮次【/1】）中，训练输入数据集会先被随机打乱（即重新排列），然后再送入分类器。对输入数据的顺序做这种随机化，有助于避免陷入次优解。对每个输入数据元素，把它的分类器输出 【2】y【/2】 值与标签数据相比较，得到误差函数值。在我们的感知机例子中，如果某个数据的标签是（类别）1 而分类器输出是（类别）−1，那么用 【M3】【M4】 算出的误差函数值就是 2。如果误差函数值大于某个阈值，就会触发一次反向传播操作来修改参数，从而减小推理误差。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[4]/h4[1]",
+      "en": "Backpropagation",
+      "zh": "反向传播"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[4]/p[1]",
+      "en": "The idea of backpropagation is to start with the error function and look back into the classifier and identify the way in which each parameter contributes to the error function value (【1】LeCun et al., 1990【/1】). If the error function value increases when a parameter’s value increases for a data element, we should decrease the parameter value so that the error function value can decrease for this data point. Otherwise, we should increase the parameter value to reduce the error function value for the data point. Mathematically, the rate and direction in which a function’s value changes as one of its input variables changes are the partial derivative of the function over the variable. For a perceptron the model parameters and the input data points are considered input variables for the purpose of calculating the partial derivatives of the error function. Therefore the backpropagation operation will need to derive the partial derivative values of the error function over the model parameters for each input data element that triggers the backpropagation operation.",
+      "zh": "反向传播的思路是：从误差函数出发，回过头去审视分类器内部，弄清每个参数是以何种方式对误差函数值产生影响的（【1】LeCun et al., 1990【/1】）。如果对某个数据元素而言，某参数的取值增大会使误差函数值增大，我们就应当减小该参数的取值，从而使这个数据点上的误差函数值下降；反之，则应当增大该参数的取值，以减小该数据点上的误差函数值。在数学上，函数值随它的某个输入变量变化而变化的速率和方向，就是该函数对这个变量的偏导数。对感知机而言，在计算误差函数的偏导数时，模型参数和输入数据点都被视为输入变量。因此，对于每一个触发反向传播操作的输入数据元素，反向传播操作都需要求出误差函数对各模型参数的偏导数值。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[4]/p[2]",
+      "en": "Let us use the perceptron 【M1】【M2】 to illustrate the backpropagation operation. Assume error function 【M3】【M4】 and that the backpropagation is triggered by a training input data element (5, 2). The goal is to modify the 【M5】【M6】, and 【M7】【M8】 values so that the perceptron will more likely classify (5, 2) correctly. That is, we need to derive the values of partial derivatives 【M9】【M10】, 【M11】【M12】, and 【M13】【M14】 in order to make changes to the 【M15】【M16】, and 【M17】【M18】 values.",
+      "zh": "让我们用感知机 【M1】【M2】 来说明反向传播操作。假设误差函数为 【M3】【M4】，并且反向传播由一个训练输入数据元素 (5, 2) 触发。目标是修改 【M5】【M6】 和 【M7】【M8】 的取值，使感知机更有可能把 (5, 2) 分类正确。也就是说，我们需要求出偏导数 【M9】【M10】、【M11】【M12】 和 【M13】【M14】 的值，以便据此改动 【M15】【M16】 和 【M17】【M18】 的取值。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[5]/h4[1]",
+      "en": "Chain rule",
+      "zh": "链式法则"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[5]/p[1]",
+      "en": "We see that 【1】E【/1】 is a function of 【2】y【/2】 and 【3】y【/3】 is a function of 【M4】【M5】, and 【M6】【M7】. Thus we can use the chain rule to derive these partial derivatives. For 【M8】【M9】",
+      "zh": "可以看到，【1】E【/1】 是 【2】y【/2】 的函数，而 【3】y【/3】 又是 【M4】【M5】 和 【M6】【M7】 的函数。因此我们可以用链式法则来求这些偏导数。对于 【M8】【M9】"
+    },
+    {
+      "id": "n0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[5]/p[3]",
+      "en": "【M1】【M2】 is straightforward:",
+      "zh": "【M1】【M2】 是直截了当的："
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[5]/p[5]",
+      "en": "However, we face a challenge with 【M1】【M2】 Note that the sign function is not a differentiable function, as it is not continuous at 0. To solve this problem, the machine learning community commonly use a smoother version of the sign function that is differentiable near zero and close to the sign function value for x values away from 0. A simple example of such a smoother version is the sigmoid function 【M3】【M4】. For 【5】x【/5】 values that are negative with large absolute value, the sigmoid expression is dominated by the 【M6】【M7】 terms, and the sigmoid function value will be approximately −1. For 【8】x【/8】 values that are positive with large absolute values, the 【M9】【M10】 terms diminish, and the function value will be approximately 1. For 【11】x【/11】 values that are close to 0, the function value increases rapidly from near −1 to near 1. Thus the sigmoid function closely approximates the behavior of a sign function and yet is continuous differentiable for all 【12】x【/12】 values. With this change from sign to sigmoid, the perceptron is 【M13】【M14】. We can express 【M15】【M16】 as 【M17】【M18】 using the chain rule with an intermediate variable 【M19】【M20】. Based on calculus manipulation, 【M21】【M22】 is simply 【M23】【M24】 and",
+      "zh": "然而，我们在【M1】【M2】上面临着一个挑战。请注意，符号函数不是可微函数，因为它在 0 处不连续。为了解决这个问题，机器学习界通常使用符号函数的一个更平滑的版本，该版本在零附近可微，并且在远离 0 的 x 值处接近符号函数的值。这种更平滑版本的一个简单例子是 sigmoid 函数【M3】【M4】。对于绝对值很大的负【5】x【/5】值，sigmoid 表达式由【M6】【M7】项主导，sigmoid 函数值将近似为 −1。对于绝对值很大的正【8】x【/8】值，【M9】【M10】项趋于消失，函数值将近似为 1。对于接近 0 的【11】x【/11】值，函数值从接近 −1 迅速增加到接近 1。因此，sigmoid 函数在行为上非常接近符号函数，并且对所有【12】x【/12】值都是连续可微的。随着从符号函数改为 sigmoid 函数，感知机变成了【M13】【M14】。我们可以将【M15】【M16】表示为【M17】【M18】，这是借助链式法则、使用一个中间变量【M19】【M20】来实现的。根据微积分运算，【M21】【M22】其实就是【M23】【M24】，并且"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[5]/p[7]",
+      "en": "Putting it all together, we have",
+      "zh": "把这些合到一起，我们得到"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[5]/p[9]",
+      "en": "Similarly,",
+      "zh": "类似地，"
+    },
+    {
+      "id": "n0064",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[5]/p[12]",
+      "en": "where",
+      "zh": "其中"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[5]/p[14]",
+      "en": "It should be clear that all the three partial derivative values can be completely determined by the combination of the input data (【M1】【M2】, 【M3】【M4】 and 【5】t【/5】) and the current values of the model parameters (【M6】【M7】 and 【M8】【M9】 The final step for the backpropagation is to modify the parameter values. Recall that the partial derivative of a function over a variable gives the direction and rate of change in the function value as the variable changes its value. If the partial derivative of the error function over a parameter has a positive value given the combination of input data and current parameter values, we want to decrease the value of the parameter so that the error function value will decrease. On the other hand, if the partial derivative of the error function of the variable has a negative value, we want to increase the value of the parameter so that the error function value will decrease.",
+      "zh": "不难看出，这三个偏导数的值完全可以由输入数据（【M1】【M2】、【M3】【M4】 和 【5】t【/5】）与模型参数的当前取值（【M6】【M7】 和 【M8】【M9】 的组合确定下来。反向传播的最后一步是修改参数的取值。回想一下，函数对某个变量的偏导数给出的是：当该变量改变取值时，函数值变化的方向和速率。若在给定的输入数据与当前参数取值组合下，误差函数对某参数的偏导数为正值，我们就要减小该参数的取值，使误差函数值下降；反之，若误差函数对该变量的偏导数为负值，我们就要增大该参数的取值，同样使误差函数值下降。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[6]/h4[1]",
+      "en": "Learning rate",
+      "zh": "学习率"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[6]/p[1]",
+      "en": "Numerically, we would like to make bigger changes to the parameters to whose change the error function is more sensitive, that is, when the absolute value of the partial derivative of the error function over this parameter is a large value. These considerations lead to us to subtract from each parameter a value that is proportional to the partial derivative of the error function over that parameter. This is accomplished by multiplying the partial derivatives with a constant 【M1】【M2】, called the learning rate constant in machine learning, before it is subtracted from the parameter value. The larger 【M3】【M4】 is, the faster the values of the parameters evolve so the solution can potentially be reached with fewer iterations. However, large 【M5】【M6】 also increases the chance of instability and prevents the parameter values from converging to a solution. In our perceptron example, the modifications to the parameters are as follows:",
+      "zh": "在数值上，对于那些误差函数对其变化更为敏感的参数（也就是误差函数对该参数的偏导数绝对值较大的参数），我们希望做更大的改动。基于这些考虑，我们从每个参数中减去一个与误差函数对该参数偏导数成正比的量。具体做法是：先把偏导数乘以一个常数 【M1】【M2】（在机器学习中称为学习率常数），再从参数值中减去。【M3】【M4】 越大，参数取值演化得越快，因而有可能用更少的迭代次数达到解；但 【M5】【M6】 过大也会增大不稳定的可能性，使参数取值无法收敛到一个解。在我们的感知机例子中，对参数的修改如下："
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[6]/p[5]",
+      "en": "For the rest of this chapter we will use a generic symbol θ to represent the model parameters in formula and expressions. That is, we will represent the three expressions above with one generic expression:",
+      "zh": "在本章余下的部分中，我们将在公式和表达式里用一个通用符号 θ 来表示模型参数。也就是说，我们用一个通用表达式来代表上面三个表达式："
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[6]/p[7]",
+      "en": "The reader should understand that for each of these generic expressions one can replace θ with any of the parameters to apply the expression to the parameter.",
+      "zh": "读者应当明白，对于这类通用表达式，把其中的 θ 换成任意一个参数，就能把该表达式应用到那个参数上。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[7]/h4[1]",
+      "en": "Minibatch",
+      "zh": "小批量"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[7]/p[1]",
+      "en": "In practice, because the backtracking process is quite expensive, it is not triggered by individual data points whose inference result differs from its label. Rather, after the inputs are randomly shuffled in an epoch, they are divided into segments called 【1】minibatches【/1】. The training process runs an entire minibatch through the inference and accumulates their error function values. If the total error in the minibatch is too large, backpropagation is triggered for the minibatch. During backpropagation the inference results of each data point in the minibatch are checked, and if it is not correct, the data is used to derive partial derivative values that are used to modify the model parameter values as described above.",
+      "zh": "在实践中，由于回溯过程代价相当高，它并不是由推理结果与标签不符的单个数据点触发的。相反，在一个轮次中把输入随机打乱之后，会把它们划分成若干段，称为【1】小批量【/1】。训练过程把整个小批量送过推理，并累加它们的误差函数值。如果该小批量的总误差过大，就对这个小批量触发反向传播。在反向传播过程中，会逐一检查小批量中每个数据点的推理结果；若某个结果不正确，就用该数据求出偏导数值，并按上面所述用它们修改模型参数的取值。"
+    },
+    {
+      "id": "st0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[8]/h4[1]",
+      "en": "Training multilayer classifiers",
+      "zh": "训练多层分类器"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[8]/p[1]",
+      "en": "For multilayer classifiers the backpropagation starts with the last layer and modifies the parameter values in that layer as we discussed above. The question is how we should modify the parameters of the previous layers. Keep in mind that we can derive 【M1】【M2】 based on 【M3】【M4】, as we have demonstrated for the final layer. Once we have 【M5】【M6】 for the previous layer, we have everything we need to calculate the modifications to the parameters in that layer.",
+      "zh": "对于多层分类器，反向传播从最后一层开始，并修改该层中的参数值，如上所述。问题是我们应当如何修改前面各层的参数。请记住，正如我们在最后一层所演示的，我们可以推导出【M1】【M2】，这是基于【M3】【M4】的。一旦我们得到前一层的【M5】【M6】，我们就具备了计算该层参数修改量所需的全部信息。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[8]/p[2]",
+      "en": "A simple and yet important observation is that the output of the previous layer is also the input to the final layer. Therefore 【M1】【M2】 of the previous layer is really the 【M3】【M4】 of the final layer. Therefore the key is to derive 【M5】【M6】 for the final layer after we modify the parameter values of the final layer. As we can see below, 【M7】【M8】 is not that different from 【M9】【M10】, that is, 【M11】【M12】.",
+      "zh": "一个简单却重要的观察是：前一层的输出同时也是最后一层的输入。因此，前一层的 【M1】【M2】 其实就是最后一层的 【M3】【M4】。于是关键就在于，在修改完最后一层的参数取值之后，求出该层的 【M5】【M6】。正如下面将要看到的，【M7】【M8】 与 【M9】【M10】 相差不大，即 【M11】【M12】。"
+    }
+  ]
+}

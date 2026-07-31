@@ -1,0 +1,155 @@
+{
+  "page": "Ch016_355-388_B9780323912310000240",
+  "nodes": [
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "The reader is referred to a large body of literature on the mathematical background and practical solutions to the various tasks of machine learning. The purpose of the chapter is to introduce the computation kernels that are involved in the neural network approach to the classification task. A concrete understanding of these kernels will allow the reader to understand and develop kernels for deep learning approaches to other machine learning tasks. Therefore in this section we will go into details about the classification task to establish the background knowledge that is needed to understand neural networks. Mathematically, a classifier is a function 【1】f【/1】 that maps an input to 【2】k【/2】 categories or labels:",
+      "zh": "关于机器学习各类任务的数学背景与实用解法，已有大量文献，读者可自行参阅。本章的目的是介绍用神经网络方法处理分类任务时所涉及的计算核函数。对这些核函数有具体的理解，将使读者能够理解并开发面向其他机器学习任务的深度学习核函数。因此，本节将详细讨论分类任务，以建立理解神经网络所需的背景知识。从数学上说，分类器是一个函数 【1】f【/1】，它把一个输入映射到 【2】k【/2】 个类别或标签上："
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "The function 【1】f【/1】 is parameterized by θ that maps input vector x to numerical code y, that is,",
+      "zh": "函数 【1】f【/1】 由 θ 参数化，它把输入向量 x 映射为数值编码 y，即："
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[7]",
+      "en": "The parameter θ is commonly referred to as the 【1】model【/1】. It encapsulates weights that are learned from data. This definition of θ is best illustrated with a concrete example. Let us consider a linear classifier called a 【2】perceptron【/2】 (【3】Rosenblatt, 1957【/3】): 【M4】【M5】, where W is vector of weights of the same length as 【6】x【/6】 and 【7】b【/7】 is a bias constant. The sign function returns value 1 if its input is positive, 0 if its input is 0, and −1 if its input is negative. That is, the sign function as a classifier activates, that is, finalizes, the mapping of the input value into three categories:{−1, 0, 1}; therefore it is often called the 【8】activation【/8】 function. Activation functions introduce nonlinearity into an otherwise linear function of a perceptron. In this case, the model θ is the combination of the vector 【9】W【/9】 and the constant 【10】b【/10】. The structure of the model is a sign function whose input is a linear expression of input 【11】x【/11】 elements where the coefficients are elements of 【12】W【/12】, and the constant is 【13】b【/13】.",
+      "zh": "参数 θ 通常称为【1】模型【/1】。它封装了从数据中学到的权重。要说明 θ 的这一定义，最好用一个具体的例子。让我们考虑一种称为【2】感知机【/2】的线性分类器（【3】Rosenblatt, 1957【/3】）：【M4】【M5】，其中 W 是与 【6】x【/6】 等长的权重向量，【7】b【/7】 是一个偏置常数。sign 函数在输入为正时返回 1，输入为 0 时返回 0，输入为负时返回 −1。也就是说，sign 函数作为分类器，激活（即最终确定）了把输入值映射到 {−1, 0, 1} 这三个类别的过程；因此它常被称为【8】激活【/8】函数。激活函数为感知机中原本是线性的函数引入了非线性。在这个例子中，模型 θ 就是向量 【9】W【/9】 与常数 【10】b【/10】 的组合。模型的结构是一个 sign 函数，其输入是输入 【11】x【/11】 各元素的线性表达式，式中的系数是 【12】W【/12】 的各元素，常数是 【13】b【/13】。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[8]",
+      "en": "【1】Fig. 16.1【/1】 shows a perceptron example in which each input is a two-dimensional (2D) vector 【M2】【M3】. The linear perceptron’s model θ consists of a weight vector 【M4】【M5】 and a bias constant 【6】b【/6】. As shown in 【7】Fig. 16.1【/7】, the linear expression 【M8】【M9】 defines a line in the 【M10】【M11】 space that cuts the space into two parts: the part in which all points make the expression greater than zero and the part in which all points make the expression less than zero. All points on the line make the expression equal to 0.",
+      "zh": "【1】图 16.1【/1】给出了一个感知机的例子，其中每个输入都是一个二维（2D）向量 【M2】【M3】。这个线性感知机的模型 θ 由一个权重向量 【M4】【M5】 和一个偏置常数 【6】b【/6】 组成。如【7】图 16.1【/7】所示，线性表达式 【M8】【M9】 在 【M10】【M11】 空间中定义了一条直线，它把该空间切成两部分：一部分中的所有点使该表达式大于零，另一部分中的所有点使该表达式小于零。直线上的所有点则使该表达式等于 0。"
+    },
+    {
+      "id": "n0029",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 16.1【/1】 A perceptron linear classifier example in which the input is a two-dimensional vector.",
+      "zh": "【1】图 16.1【/1】 输入为二维向量的感知机线性分类器示例。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[9]",
+      "en": "Visually, given a combination of 【M1】【M2】 and 【3】b【/3】 values, we can draw a line in the 【M4】【M5】 space, as shown in 【6】Fig. 16.1【/6】. For example, for a perceptron whose model is 【M7】【M8】, we can easily draw a line by connecting the two intersection points with the 【M9】【M10】 axis (【M11】【M12】, 0) = (3, 0)) and the 【M13】【M14】 axis ((0, 【M15】【M16】) = (0, 2)). The line thus drawn corresponds to the equation 【M17】【M18】 + 【M19】【M20】 − 6 = 0 With this drawing, we can easily visualize the outcome of input points: Any point above the line (shown as blue dots in 【21】Fig. 16.1【/21】) is classified as class 1, any point on the line is classified as class 0, and any point below the line (shown as orange dots in 【22】Fig. 16.1【/22】) is classified as class −1.",
+      "zh": "直观地看，给定一组 【M1】【M2】 和 【3】b【/3】 的取值，我们就能在 【M4】【M5】 空间中画出一条直线，如【6】图 16.1【/6】所示。例如，对于模型为 【M7】【M8】 的感知机，只要连接它与 【M9】【M10】 轴的交点 (【M11】【M12】, 0) = (3, 0)) 和与 【M13】【M14】 轴的交点 ((0, 【M15】【M16】) = (0, 2))，就能轻松画出这条直线。这样画出的直线对应于方程 【M17】【M18】 + 【M19】【M20】 − 6 = 0。有了这张图，我们就很容易直观地看出输入点的分类结果：直线上方的任何点（在【21】图 16.1【/21】中显示为蓝点）被分为类别 1，直线上的任何点被分为类别 0，直线下方的任何点（在【22】图 16.1【/22】中显示为橙点）被分为类别 −1。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[10]",
+      "en": "The process of computing the class for an input is commonly referred to as 【1】inference【/1】 for the classifier. In the case of a perceptron we simply plug the input coordinate values into 【M2】【M3】 In our example, if the input point is (5, −1), we can perform inference by plugging its coordinates into the perceptron function:",
+      "zh": "为一个输入计算类别的过程，通常称为分类器的【1】推理【/1】。就感知机而言，我们只需把输入的坐标值代入 【M2】【M3】 在我们的例子中，如果输入点是 (5, −1)，就可以把它的坐标代入感知机函数来完成推理："
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[12]",
+      "en": "Therefore (5, −1) is classified to class 1, that is, it is among the blue dots.",
+      "zh": "因此 (5, −1) 被分为类别 1，也就是说，它属于蓝点。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/h3[1]",
+      "en": "Multilayer classifiers",
+      "zh": "多层分类器"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[1]",
+      "en": "Linear classifiers are useful when there is a way to draw hyperplanes (i.e., lines in a 2D space and planes in a three-dimensional [3D] space) that partition the space into regions and thus define each class of data points. Ideally, each class of data points should occupy exactly one such region. For example, in a 2D, 2-class classifier, we need to be able to draw a line that separates points of one class from those of the other. Unfortunately, this is not always feasible.",
+      "zh": "当存在某种办法画出若干超平面（即二维空间中的直线、三维（3D）空间中的平面），把空间划分成若干区域，从而界定出每一类数据点时，线性分类器就很有用。理想情况下，每一类数据点应当恰好占据一个这样的区域。例如，在一个二维、两类的分类器中，我们需要能够画出一条直线，把一类的点与另一类的点分开。遗憾的是，这并不总是可行。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[2]",
+      "en": "Consider the classifiers in 【1】Fig. 16.2【/1】. Assume that all input’s coordinates fall in the range of [0, 1]. The classifier should classify all points whose 【M2】【M3】 and 【M4】【M5】 values are both greater than 0.5 (points that fall in the upper right quadrant of the domain) as class 1 and the rest as class −1. This classifier could be approximately implemented with a line like that shown in 【6】Fig. 16.2(A)【/6】. For example, a line 【M7】【M8】 + 【M9】【M10】−3 = 0 would classify most of the points properly. However, some of the orange points whose 【M11】【M12】 and 【M13】【M14】 are both greater than 0.5 but the sum is less than 1.5, for example, (0.55, 0.65), would be misclassified into class −1 (blue). This is because any line will necessarily either cut away part of the upper right quadrant or include part of the rest of the domain. There is no single line that can properly classify all possible inputs.",
+      "zh": "考虑【1】图 16.2【/1】中的分类器。假设所有输入的坐标都落在 [0, 1] 区间内。该分类器应当把 【M2】【M3】 和 【M4】【M5】 的取值都大于 0.5 的所有点（即落在定义域右上象限中的点）分为类别 1，其余的点分为类别 −1。这个分类器可以用一条直线来近似实现，如【6】图 16.2(A)【/6】所示。例如，直线 【M7】【M8】 + 【M9】【M10】−3 = 0 就能正确分类大多数点。然而，有些橙色的点，其 【M11】【M12】 和 【M13】【M14】 都大于 0.5，但两者之和小于 1.5，例如 (0.55, 0.65)，就会被错分到类别 −1（蓝色）。这是因为任何一条直线都必然要么切掉右上象限的一部分，要么把定义域其余部分的一块包含进来。没有任何单独一条直线能够正确分类所有可能的输入。"
+    },
+    {
+      "id": "n0036",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 16.2【/1】 A multilayer perceptron example.",
+      "zh": "【1】图 16.2【/1】 多层感知机示例。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[3]",
+      "en": "A 【1】multilayer perceptron【/1】 (MLP) allows the use of multiple lines to implement more complex classification patterns. In a multilayer perceptron, each layer consists of one or more perceptrons. The outputs of perceptrons in one layer are the inputs to those in the next layer. An interesting and useful property is that while the inputs to the first layer have an infinite number of possible values, the output of the first layer and thus the input to the second layer can have only a modest number of possible values. For example, if the perceptron from 【2】Fig. 16.1【/2】 was used as a first layer, its outputs would be restricted to {−1, 0, 1}.",
+      "zh": "【1】多层感知机【/1】（MLP）允许使用多条直线来实现更复杂的分类模式。在多层感知机中，每一层由一个或多个感知机组成。某一层中各感知机的输出，就是下一层中各感知机的输入。一个有趣而有用的性质是：虽然第一层的输入有无穷多种可能取值，但第一层的输出（也就是第二层的输入）只有为数不多的几种可能取值。例如，如果把【2】图 16.1【/2】中的感知机用作第一层，它的输出就只能取 {−1, 0, 1}。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[4]",
+      "en": "【1】Fig. 16.2(B)【/1】 shows a two-layer perceptron that can precisely implement the desired classification pattern. The first layer consists of two perceptrons. The first one, 【M2】【M3】, classifies all points whose 【M4】【M5】 coordinate is greater than 0.5 as class 1; that is, the output value is 1. The rest of the points are classified as either class −1 or class 0. The second classifier in the first layer, 【M6】【M7】, classifies all points whose 【M8】【M9】 coordinate is greater than 0.5 into class 1. The rest of the points are classified as class −1.",
+      "zh": "【1】图 16.2(B)【/1】给出了一个两层感知机，它能够精确实现所需的分类模式。第一层由两个感知机组成。第一个感知机 【M2】【M3】 把 【M4】【M5】 坐标大于 0.5 的所有点分为类别 1，即输出值为 1；其余的点被分为类别 −1 或类别 0。第一层中的第二个分类器 【M6】【M7】 把 【M8】【M9】 坐标大于 0.5 的所有点分为类别 1，其余的点被分为类别 −1。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[5]",
+      "en": "Therefore the output of the first layer (【M1】【M2】, 【M3】【M4】) can only be one of the following nine possibilities: (−1, −1), (−1, 0), (−1,1), (0, −1) (0, 0) (0, 1) (1, −1), (1, 0), (1,1). That is, there are only nine possible input pair values to the second layer. Out of these nine possibilities, (1, 1) is special. All the original input points in the orange category are mapped to (1, 1) by the first layer. Therefore we can use a simple perceptron in the second layer to draw a line between (1, 1) and the eight other possible points in the 【M5】【M6】-【M7】【M8】 space, shown in 【9】Fig. 16.2B【/9】. This can be done by a line 【M10】【M11】 + 【M12】【M13】 − 3 = 0 or many other lines that are small variations of it.",
+      "zh": "因此第一层的输出 (【M1】【M2】, 【M3】【M4】) 只可能是下列九种情形之一：(−1, −1), (−1, 0), (−1,1), (0, −1) (0, 0) (0, 1) (1, −1), (1, 0), (1,1)。也就是说，送入第二层的输入对只有九种可能取值。在这九种可能中，(1, 1) 是特殊的：橙色类别中所有原始输入点都被第一层映射到了 (1, 1)。因此，我们可以在第二层用一个简单的感知机，在 【M5】【M6】-【M7】【M8】 空间中于 (1, 1) 与其余八个可能点之间画一条直线，如【9】图 16.2B【/9】所示。这可以用直线 【M10】【M11】 + 【M12】【M13】 − 3 = 0，或与之只有微小差别的许多其他直线来完成。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[6]",
+      "en": "Let us use the (0.55, 0.65) input that was misclassified by the single-layer perceptron in 【1】Fig. 16.2A【/1】. When processed by the two-layer perceptron, the upper perceptron of first layer in 【2】Fig. 16.2B【/2】 generates 【M3】【M4】 and the lower perceptron generates 【M5】【M6】. On the basis of these input values, the perceptron in the second layer generates 【M7】【M8】, the correct classification for (0.55, 0.65).",
+      "zh": "让我们仍用【1】图 16.2A【/1】中被单层感知机错分的输入 (0.55, 0.65) 来说明。由两层感知机处理时，【2】图 16.2B【/2】中第一层上方的感知机产生 【M3】【M4】，下方的感知机产生 【M5】【M6】。基于这些输入值，第二层的感知机产生 【M7】【M8】，这正是 (0.55, 0.65) 的正确分类。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[7]",
+      "en": "Note that a two-layer perceptron still has significant limitations. For example, assume that we need to build a perceptron to classify the input points shown in 【1】Fig. 16.3A【/1】. The values of the orange input points can result in input values (−1, −1) or (1, 1) to the second layer. We see that there is no way to draw a single line to properly classify the points in the second layer. We show in 【2】Fig. 16.2B【/2】 that we can add another line by adding another perceptron in the second layer. The function would be 【M3】【M4】 or small variations of it. The reader should verify that all blue points in 【5】Fig. 16.3B【/5】 will be mapped to the (−1, −1) in the 【M6】【M7】-【M8】【M9】 space. Whereas (1, 1) and (−1, −1) in the 【M10】【M11】 space are mapped to (1, −1) and (−1, 1) in the 【M12】【M13】 space. Now we can draw a line 【M14】【M15】 or small variations of it to properly classify the points, as shown in 【16】Fig. 16.3C【/16】. Obviously, if we need to partition the input domain into more regions, we might need even more layers to perform proper classification.",
+      "zh": "要注意，两层感知机仍有明显的局限。例如，假设我们需要构建一个感知机来分类【1】图 16.3A【/1】中所示的输入点。橙色输入点的取值会使第二层得到输入值 (−1, −1) 或 (1, 1)。可以看到，在第二层中无法画出单独一条直线来正确分类这些点。我们在【2】图 16.2B【/2】中表明，可以在第二层再加一个感知机，从而增加一条直线。该函数为 【M3】【M4】 或与之只有微小差别的形式。读者应当验证：【5】图 16.3B【/5】中所有蓝点都会被映射到 【M6】【M7】-【M8】【M9】 空间中的 (−1, −1)，而 【M10】【M11】 空间中的 (1, 1) 和 (−1, −1) 则被映射到 【M12】【M13】 空间中的 (1, −1) 和 (−1, 1)。现在我们可以画一条直线 【M14】【M15】 或与之只有微小差别的直线来正确分类这些点，如【16】图 16.3C【/16】所示。显然，如果需要把输入定义域划分成更多区域，可能就需要更多的层才能完成正确的分类。"
+    },
+    {
+      "id": "n0042",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 16.3【/1】 Need for perceptrons with more than two layers.",
+      "zh": "【1】图 16.3【/1】 需要层数多于两层的感知机。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[8]",
+      "en": "Layer 1 in 【1】Fig. 16.2B【/1】 is a small example of a fully connected layer, in which every output (【M2】【M3】) is a function of every input 【M4】【M5】. In general, in a fully connected layer, every one of the m outputs is a function of all the n inputs. All the weights of a fully connected layer form an m × n weight matrix W, where each of the m rows is the weight vector (of size n elements) to be applied to the input vector (of size n elements) to produce one of the m outputs. Therefore the process of evaluating all the outputs from the inputs of a fully connected layer is a matrix-vector multiplication. As we will see, fully connected layers are core components of many types of neural networks, and we will further study the GPU implementations.",
+      "zh": "【1】图 16.2B【/1】中的第 1 层是全连接层的一个小例子，其中每个输出（【M2】【M3】）都是每个输入 【M4】【M5】 的函数。一般来说，在全连接层中，m 个输出中的每一个都是全部 n 个输入的函数。全连接层的所有权重构成一个 m × n 的权重矩阵 W，其中 m 行中的每一行都是一个权重向量（含 n 个元素），用于作用在输入向量（含 n 个元素）上，以产生 m 个输出中的一个。因此，从全连接层的输入求出全部输出的过程，就是一次矩阵-向量乘法。我们将会看到，全连接层是许多类型的神经网络的核心组成部分，后面还将进一步研究它们的 GPU 实现。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[9]",
+      "en": "Fully connected layers become extremely expensive when m and n become large. The main reason is that a fully connected layer requires an m × n weight matrix. For example, in an image recognition application, n is the number of pixels in the input image, and m is the number of classifications that need to be performed on the input pixels. In this case, n is in the millions for high-resolution images, and m can be in the hundreds or more depending on the variety of objects that need to be recognized. Also, the objects can be of different scales and orientations in the images; many classifiers may need to be in place to deal with these variations. Feeding all these classifiers with all inputs is both expensive and likely wasteful.",
+      "zh": "当 m 和 n 变大时，全连接层的代价会变得极其高昂。主要原因在于全连接层需要一个 m × n 的权重矩阵。例如，在图像识别应用中，n 是输入图像的像素数，m 是需要对这些输入像素执行的分类的数目。在这种情况下，对于高分辨率图像，n 达到数百万；而 m 可能是数百甚至更多，取决于需要识别的物体种类的多少。此外，物体在图像中还可能有不同的尺度和朝向，可能需要设置许多分类器来应对这些变化。把全部输入都送给所有这些分类器，既昂贵又很可能造成浪费。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[10]",
+      "en": "Convolutional layers reduce the cost of fully connected layers by reducing the number of inputs each classifier takes and sharing the same weights across classifiers. In a convolutional layer, each classifier takes only a patch of the input image and performs convolution on the pixels in the patch based on the weights. The output is called an output feature map, since each pixel in the output is the activation result of a classifier. Sharing weights across classifiers allows the convolutional layers to have large numbers of classifiers, that is, large m values, without an excessive number of weights. Computationally, this can be implemented as a 2D convolution. However, this approach effectively applies the same classifier to a different part of an image. One can have different sets of weights applied to the same input and generate multiple output feature maps, as we will see later in this chapter.",
+      "zh": "卷积层通过减少每个分类器所取的输入数目、并让各分类器共享同一组权重，来降低全连接层的代价。在卷积层中，每个分类器只取输入图像的一小块，并根据权重对这一小块中的像素做卷积。其输出称为输出特征图，因为输出中的每个像素都是某个分类器的激活结果。让各分类器共享权重，使得卷积层可以拥有大量分类器（即很大的 m 值），而权重数目不会过多。在计算上，这可以实现为一次二维卷积。不过，这种做法实际上是把同一个分类器应用到图像的不同部位。我们可以对同一输入应用不同的权重组，生成多个输出特征图，本章后面会看到这一点。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/h3[1]",
+      "en": "Training models",
+      "zh": "训练模型"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/p[1]",
+      "en": "So far, we have assumed that the model parameters used by a classifier are somehow available. Now we turn to training, or the process of using data to determine the values of the model parameters θ, including the weights 【M1】【M2】 and the bias 【3】b【/3】. For simplicity we will assume supervised training, in which input data labeled with desired output values are used to determine the weight and bias values. Other training modalities, such as semisupervised and reinforcement learning, have also been developed to reduce the reliance on labeled data. The reader is referred to the literature to understand how training can be accomplished under such circumstances.",
+      "zh": "到目前为止，我们一直假定分类器所用的模型参数已经以某种方式给定了。现在我们转向训练，即利用数据来确定模型参数 θ（包括权重 【M1】【M2】 和偏置 【3】b【/3】）取值的过程。为简单起见，我们假定采用有监督训练，即用标注了期望输出值的输入数据来确定权重和偏置的取值。人们还发展出了半监督学习、强化学习等其他训练方式，以减少对标注数据的依赖。读者可参阅相关文献，了解在那些情形下如何完成训练。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[1]/h4[1]",
+      "en": "Error function",
+      "zh": "误差函数"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[1]/p[1]",
+      "en": "In general, training treats the model parameters as unknown variables and solves an inverse problem given the labeled input data. In the perceptron example in 【1】Fig. 16.1【/1】, each data point that is used for training would be labeled with its desired classification result: −1, 0, or 1. The training process typically starts with an initial guess of the 【M2】【M3】 and 【4】b【/4】 values and performs inference on the input data and generates classification results. These classification results are compared to the labels. An error function, sometimes referred to as a cost function, is defined to quantify the difference between the classification result and the corresponding label for each data point. For example, assume that 【5】y【/5】 is the classification output class and 【6】t【/6】 is the label. The following is an example error function:",
+      "zh": "一般来说，训练把模型参数视为未知量，并在给定标注输入数据的条件下求解一个逆问题。在【1】图 16.1【/1】的感知机例子中，每个用于训练的数据点都会标注上它期望的分类结果：−1、0 或 1。训练过程通常先对 【M2】【M3】 和 【4】b【/4】 的取值做一个初始猜测，然后对输入数据执行推理并产生分类结果。这些分类结果会与标签进行比较。人们定义一个误差函数（有时也称代价函数）来量化每个数据点的分类结果与其对应标签之间的差异。例如，假设 【5】y【/5】 是分类输出的类别，【6】t【/6】 是标签，下面就是一个误差函数的例子："
+    }
+  ]
+}

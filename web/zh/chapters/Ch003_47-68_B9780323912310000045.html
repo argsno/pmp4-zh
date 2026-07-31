@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="zh-CN" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="前言部分">
+      <option value="Cover.html">封面图</option>
+      <option value="Title_page.html">标题页</option>
+      <option value="Contents.html">目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">致谢</option>
+    </optgroup>
+    <optgroup label="序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">课程资源</option>
+    </optgroup>
+    <optgroup label="第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第一部分：基本概念">
+      <option value="Part1.html">第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html">第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">参考文献</option>
+    </optgroup>
+    <optgroup label="第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html" selected>第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html">第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html">第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">习题</option>
+    </optgroup>
+    <optgroup label="第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第二部分：并行模式">
+      <option value="Part2.html">第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html">第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html">第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">习题</option>
+    </optgroup>
+    <optgroup label="第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html">第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第三部分：高级模式与应用">
+      <option value="Part3.html">第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html">第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html">第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">参考文献</option>
+    </optgroup>
+    <optgroup label="第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">参考文献</option>
+    </optgroup>
+    <optgroup label="第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html">第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">参考文献</option>
+    </optgroup>
+    <optgroup label="第四部分：高级实践">
+      <option value="Part4.html">第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html">第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">参考文献</option>
+    </optgroup>
+    <optgroup label="第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">参考文献</option>
+    </optgroup>
+    <optgroup label="第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Ch002_23-46_B9780323912310000148.html#st0090">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch003_47-68_B9780323912310000045.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/Ch003_47-68_B9780323912310000045.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch003_47-68_B9780323912310000045.html">对照</a></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter" id="c0003">
+<a id="Ch003_47-68_B9780323912310000045"></a><div id="page_47" aria-label="Page 47" epub:type="pagebreak" role="doc-pagebreak"></div><div id="CN"><a id="Ch003_47-68_B9780323912310000045titl"></a>Chapter 3</div><h1 class="chaptitle" epub:type="title" id="tit0010">多维网格与数据</h1><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0075">本章介绍 CUDA 中线程组织方式以及线程到数据映射的关键概念。首先概述 CUDA 线程、线程块与网格的多维组织；随后详细说明如何利用线程索引和线程块索引把线程映射到数据的不同部分，并以一个二维（2D）图像彩色转灰度的例子和一个 2D 图像模糊的例子加以说明。本章最后给出一个矩阵乘法的例子，本书后续部分将大量使用该例子。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">核函数执行配置参数；多维数组；多维网格；线性化；多维线程块；行主序布局；列主序布局；线程-数据映射；矩阵乘法；内积</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">概要</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">3.1 多维网格组织</a> 47</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">3.2 将线程映射到多维数据</a> 51</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">3.3 图像模糊：一个更复杂的核函数</a> 58</li>
+<li class="chapoutl1" id="o0025"><a id="p0025"></a><a href="#s0025">3.4 矩阵乘法</a> 62</li>
+<li class="chapoutl1" id="o0030"><a id="p0030"></a><a href="#s0030">3.5 小结</a> 66</li>
+<li class="chapoutl1" id="u0010"><a id="p0035"></a><a href="#s0035">习题</a> 67</li>
+</ul>
+</div></nav>
+<p id="p0625" class="textfl"><a id="P47"></a>在<a href="Ch002_23-46_B9780323912310000148.html#Ch002_23-46_B9780323912310000148">第 2 章</a>“异构数据并行计算”中，我们学习了编写一个简单的 CUDA C++ 程序：通过调用核函数启动一维线程网格，对一维数组的元素进行运算。核函数规定了网格中每个线程各自执行的语句。本章将更一般地考察线程的组织方式，并学习如何用线程和线程块来处理多维数组。全章将使用多个例子，包括把彩色图像转换为灰度图像、对图像做模糊处理，以及矩阵乘法。在后续章节讨论 GPU 体系结构、内存组织和性能优化之前，这些例子还有助于读者熟悉对数据并行的推理方式。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">3.1 多维网格组织</h2><p id="p0040" class="textfl"><span id="page_48" aria-label="Page 48" epub:type="pagebreak" role="doc-pagebreak"></span>在 CUDA 中，网格内的所有线程执行同一个核函数，它们依靠坐标（即线程索引）彼此区分，并确定各自应处理的数据部分。正如我们在<a href="Ch002_23-46_B9780323912310000148.html#Ch002_23-46_B9780323912310000148">第 2 章</a>“异构数据并行计算”中所见，这些线程被组织成两级层次结构：一个网格由一个或多个线程块组成，每个线程块由一个或多个线程组成。同一线程块中的所有线程共享相同的线程块索引，该索引可通过 <span class="inlinecode">blockIdx</span>（内置）变量访问。每个线程还有一个线程索引，可通过 <span class="inlinecode">threadIdx</span>（内置）变量访问。当线程执行核函数时，对 <span class="inlinecode">blockIdx</span> 和 <span class="inlinecode">threadIdx</span> 变量的引用返回该线程的坐标。核函数调用语句中的执行配置参数指定网格的维度以及每个线程块的维度。这些维度可通过 <span class="inlinecode">gridDim</span> 和 <span class="inlinecode">blockDim</span>（内置）变量获得。</p>
+<p id="p0045" class="text">一般来说，网格是线程块的三维（3D）数组，而每个线程块是线程的 3D 数组。调用核函数时，程序需要指定网格和线程块在每一维上的大小。它们通过核函数调用语句的执行配置参数（位于<span class="inlinecode">&lt;&lt;&lt;</span>…<span class="inlinecode">&gt;&gt;&gt;</span>之内）来指定。第一个执行配置参数以线程块的数目指定网格的维度，第二个以线程的数目指定每个线程块的维度。每个这样的参数都具有 <span class="inlinecode">dim3</span> 类型，它是由 <span class="inlinecode">x</span>、<span class="inlinecode">y</span>、<span class="inlinecode">z</span> 三个元素构成的整型向量类型。这三个元素指定三个维度的大小。程序员可以把未使用维度的大小设为 1，从而使用少于三个的维度。</p>
+<p id="p0050" class="text">例如，下面的主机代码可用于调用 <span class="inlinecode">vecAddkernel()</span>核函数，并生成一个由 32 个线程块组成的 1D 网格，其中每个线程块由 128 个线程组成。该网格中的线程总数为 128*32=4096：</p>
+<div class="pageavoid"><figure class="fig" id="f010"><img src="../images/F000045u03-01-9780323912310.jpg" class="img" alt="image" width="855" height="195"/></figure>
+</div>
+<p id="p0070" class="text">注意，<span class="inlinecode">dimBlock</span> 和 <span class="inlinecode">dimGrid</span> 是由程序员定义的主机代码变量。只要类型为 <span class="inlinecode">dim3</span>，这些变量可以取任何合法的 C 变量名。例如，下面的语句与上面的语句达到相同的效果：</p>
+<div class="pageavoid"><figure class="fig" id="f015"><img src="../images/F000045u03-02-9780323912310.jpg" class="img" alt="image" width="856" height="200"/></figure>
+</div>
+<p id="p0090" class="text">网格和线程块的维度也可以由其他变量计算得到。例如，<a href="Ch002_23-46_B9780323912310000148.html#f0065">图 2.12</a> 中的核函数调用可以写成如下形式：</p>
+<div class="pageavoid"><figure class="fig" id="f020"><img src="../images/F000045u03-03-9780323912310.jpg" class="img" alt="image" width="855" height="195"/></figure>
+</div>
+<p id="p0110" class="text"><span id="page_49" aria-label="Page 49" epub:type="pagebreak" role="doc-pagebreak"></span>这使得线程块的数目可以随向量的大小而变化，从而让网格拥有足够的线程覆盖所有向量元素。在这个例子中，程序员选择把线程块大小固定为 256。核函数调用时变量 n 的取值将决定网格的维度。如果 n 等于 1000，网格将由 4 个线程块组成；如果 n 等于 4000，网格将有 16 个线程块。在这两种情况下，线程都足以覆盖全部向量元素。网格一旦启动，网格和线程块的维度就保持不变，直到整个网格执行完毕。</p>
+<p id="p0115" class="text">为方便起见，CUDA 为使用一维（1D）网格和线程块调用核函数提供了一种特殊的简写形式。不必使用 dim3 变量，可以直接用算术表达式来指定 1D 网格和线程块的配置。此时，CUDA 编译器只是把该算术表达式当作 x 维度，并假定 y 维度和 z 维度均为 1。由此得到<a href="Ch002_23-46_B9780323912310000148.html#f0065">图 2.12</a> 中所示的核函数调用语句：</p>
+<div class="pageavoid"><figure class="fig" id="f025"><img src="../images/F000045u03-04-9780323912310.jpg" class="img" alt="image" width="1091" height="102"/></figure>
+</div>
+<p id="p0125" class="text">熟悉 C++ 的读者会意识到，这种针对 1D 配置的“简写”约定利用了 C++ 构造函数与默认参数的工作方式。<span class="inlinecode">dim3</span> 构造函数各参数的默认值均为 1。当在期望 <span class="inlinecode">dim3</span> 的位置只传入单个值时，该值会传给构造函数的第一个参数，而第二个和第三个参数取默认值 1。其结果是一个 1D 网格或线程块，其 x 维度的大小为传入的值，y 维度和 z 维度的大小均为 1。</p>
+<p id="p0130" class="text">在核函数内部，变量 <span class="inlinecode">gridDim</span> 和 <span class="inlinecode">blockDim</span> 的 x 字段会根据执行配置参数的值预先初始化。例如，如果 n 等于 4000，在 <span class="inlinecode">vectAddkernel</span> 核函数中对 <span class="inlinecode">gridDim.x</span> 和 <span class="inlinecode">blockDim.x</span> 的引用将分别得到 16 和 256。注意，与主机代码中的 <span class="inlinecode">dim3</span> 变量不同，核函数内部这些变量的名字是 CUDA C 规范的一部分，不能更改。也就是说，<span class="inlinecode">gridDim</span> 和 <span class="inlinecode">blockDim</span> 是核函数中的内置变量，始终分别反映网格和线程块的维度。</p>
+<p id="p0135" class="text">在 CUDA C 中，<span class="inlinecode">gridDim.x</span> 的允许取值为 1 至 2<sup>31</sup> − 1，<sup><a aria-label="noteref" href="#fn1" id="Cfn1">1</a></sup> 而 <span class="inlinecode">gridDim.y</span> 和 <span class="inlinecode">gridDim.z</span> 的允许取值为 1 至 2<sup>16</sup> − 1（65,535）。线程块中的所有线程共享相同的 <span class="inlinecode">blockIdx.x</span>、<span class="inlinecode">blockIdx.y</span> 和 <span class="inlinecode">blockIdx.z</span> 值。在各线程块之间，<span class="inlinecode">blockIdx.x</span> 的取值范围为 0 至 <span class="inlinecode">gridDim.x-1</span>，<span class="inlinecode">blockIdx.y</span> 的取值范围为 0 至 <span class="inlinecode">gridDim.y-1</span>，<span class="inlinecode">blockIdx.z</span> 的取值范围为 0 至 <span class="inlinecode">gridDim.z-1</span>。</p>
+<p id="p0140" class="text">现在把注意力转向线程块的配置。每个线程块被组织成线程的 3D 数组。把 <span class="inlinecode">blockDim.z</span> 设为 1 即可创建二维（2D）线程块；把 <span class="inlinecode">blockDim.y</span> 和 <span class="inlinecode">blockDim.z</span> 都设为 1 即可创建一维线程块，正如 <span class="inlinecode">vectorAddkernel</span> 例子中那样。如前所述，一个网格中的所有线程块具有相同的维度和大小。线程块每一维上的线程数由核函数调用时的第二个执行配置参数指定。在核函数内部，该配置参数可通过 <span class="inlinecode">blockDim</span> 的 <span class="inlinecode">x</span>、<span class="inlinecode">y</span>、<span class="inlinecode">z</span> 字段访问。</p>
+<p id="p0145" class="text"><span id="page_50" aria-label="Page 50" epub:type="pagebreak" role="doc-pagebreak"></span>在当前的 CUDA 系统中，一个线程块的总大小上限为 1024 个线程。只要线程总数不超过 1024，这些线程可以按任意方式分布到三个维度上。例如，<span class="inlinecode">blockDim</span> 取值为 (512, 1, 1)、(8, 16, 4) 和 (32, 16, 2) 都是允许的，但 (32, 32, 2) 不被允许，因为线程总数会超过 1024。</p>
+<p id="p0150" class="text">网格与其线程块不必具有相同的维数。网格的维数可以高于其线程块的维数，反之亦然。例如，<a href="#f0010">图 3.1</a> 给出了一个小型的玩具网格例子，其 <span class="inlinecode">gridDim</span> 为 (2, 2, 1)，<span class="inlinecode">blockDim</span> 为 (4, 2, 2)。这样的网格可以用下面的主机代码创建：</p>
+<div class="pageavoid"><figure class="fig" id="f030"><img src="../images/F000045u03-05-9780323912310.jpg" class="img" alt="image" width="1005" height="165"/></figure>
+</div>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F000045f03-01-9780323912310.jpg" class="img" alt="image" width="999" height="875"/><figcaption class="figleg"><a id="sp0010"></a><span class="fignum">图 3.1</span> CUDA 网格组织的一个多维示例</figcaption></figure></div><p id="p0170" class="text"><a href="#f0010">图 3.1</a> 中的网格由四个线程块组成，排列成 2×2 的数组。每个线程块用 (<span class="inlinecode">blockIdx.y</span>, <span class="inlinecode">blockIdx.x</span>) 标记。例如，线程块 (1,0) 的 <span class="inlinecode">blockIdx.y</span>=1，<span class="inlinecode">blockIdx.x</span>=0。注意，线程块和线程标记的排列次序是最高维在前。这种记法所用的次序与 C 语言中设置配置参数的语句所用的次序相反，后者是最低维在前。在说明访问多维数据时线程坐标到数据索引的映射时，这种反向的线程块标记次序更为好用。</p>
+<p id="p0175" class="text"><span id="page_51" aria-label="Page 51" epub:type="pagebreak" role="doc-pagebreak"></span>每个 <span class="inlinecode">threadIdx</span> 同样由三个字段组成：x 坐标 <span class="inlinecode">threadId.x</span>、y 坐标 <span class="inlinecode">threadIdx.y</span> 和 z 坐标 <span class="inlinecode">threadIdx.z</span>。<a href="#f0010">图 3.1</a> 展示了线程块内线程的组织方式。在这个例子中，每个线程块被组织成 4×2×2 的线程数组。由于网格内的所有线程块维度相同，图中只展示其中一个。<a href="#f0010">图 3.1</a> 把线程块 (1,1) 展开，显示其中的 16 个线程。例如，线程 (1,0,2) 的 <span class="inlinecode">threadIdx.z</span>=1，<span class="inlinecode">threadIdx.y</span>=0，<span class="inlinecode">threadIdx.x</span>=2。注意，在这个例子中我们有 4 个线程块，每块 16 个线程，网格中共计 64 个线程。采用这样小的数值是为了让图示保持简单。典型的 CUDA 网格包含数千至数百万个线程。</p></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">3.2 将线程映射到多维数据</h2><p id="p0180" class="textfl"><span id="page_52" aria-label="Page 52" epub:type="pagebreak" role="doc-pagebreak"></span>选择 1D、2D 还是 3D 的线程组织，通常取决于数据本身的性质。例如，图片是像素的 2D 数组。用由 2D 线程块构成的 2D 网格来处理图片中的像素往往很方便。<a href="#f0015">图 3.2</a> 展示了处理一幅 62×76<sup><a aria-label="noteref" href="#fn2" id="Cfn2">2</a></sup> 图片 P 的这样一种安排（垂直方向或 y 方向 62 个像素，水平方向或 x 方向 76 个像素）。假设我们决定采用 16×16 的线程块，x 方向 16 个线程，y 方向 16 个线程。那么 y 方向需要 4 个线程块，x 方向需要 5 个线程块，共得到 4×5=20 个线程块，如<a href="#f0015">图 3.2</a> 所示。粗线标出线程块的边界。阴影区域表示覆盖像素的线程。每个线程被指派处理一个像素，该像素的 y 坐标和 x 坐标由此线程的 <span class="inlinecode">blockIdx</span>、<span class="inlinecode">blockDim</span> <span class="inlinecode">和 threadIdx</span> 变量的值导出：</p>
+<p class="hiddenClass"><math><mi mathvariant="normal">Vertical</mi><mspace width=".5em"></mspace><mo stretchy="false">(</mo><mi mathvariant="normal">row</mi><mo stretchy="false">)</mo><mspace width=".5em"></mspace><mi mathvariant="normal">row</mi><mspace width=".5em"></mspace><mi mathvariant="normal">coordinate</mi><mo>=</mo><mi mathvariant="normal">blockIdx</mi><mo>.</mo><mi mathvariant="normal">y</mi><mo>*</mo><mi mathvariant="normal">blockDim</mi><mo>.</mo><mi mathvariant="normal">y</mi><mo>+</mo><mi mathvariant="normal">threadIdx</mi><mo>.</mo><mi mathvariant="normal">y</mi></math></p>
+<div class="showClass" id="eqn1"><img src="../images/F000045si1.png" class="img" alt="image" width="346" height="11"/>
+</div>
+<p class="hiddenClass"><math><mi mathvariant="normal">Horizontal</mi><mspace width=".5em"></mspace><mo stretchy="false">(</mo><mi mathvariant="normal">Column</mi><mo stretchy="false">)</mo><mspace width=".5em"></mspace><mi mathvariant="normal">coordinate</mi><mo>=</mo><mi mathvariant="normal">blockIdx</mi><mo>.</mo><mi mathvariant="normal">x</mi><mo>*</mo><mi mathvariant="normal">blockDim</mi><mo>.</mo><mi mathvariant="normal">x</mi><mo>+</mo><mi mathvariant="normal">threadIdx</mi><mo>.</mo><mi mathvariant="normal">x</mi></math></p>
+<div class="showClass" id="eqn1a"><img src="../images/F000045si2.png" class="img" alt="image" width="355" height="11"/>
+</div>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F000045f03-02-9780323912310.jpg" class="img" alt="image" width="1299" height="843"/><figcaption class="figleg"><a id="sp0015"></a><span class="fignum">图 3.2</span> 用 2D 线程网格处理 62×76 的图片 P</figcaption></figure></div><p id="p0190" class="text">例如，由线程块 (1,0) 的线程 (0,0) 处理的 Pin 元素可按如下方式确定：</p>
+<p class="hiddenClass"><math><msub><mrow><mi mathvariant="normal">Pin</mi></mrow><mrow><mi mathvariant="normal">blockIdx</mi><mo>.</mo><mi mathvariant="normal">y</mi><mo>*</mo><mi mathvariant="normal">blockDim</mi><mo>.</mo><mi mathvariant="normal">y</mi><mo>+</mo><mi mathvariant="normal">threadIdx</mi><mo>.</mo><mi>y</mi><mo>,</mo><mtext>blockIdx</mtext><mo>.</mo><mi mathvariant="normal">x</mi><mo>*</mo><mi mathvariant="normal">blockDim</mi><mo>.</mo><mi mathvariant="normal">x</mi><mo>+</mo><mi mathvariant="normal">threadIdx</mi><mo>.</mo><mi mathvariant="normal">x</mi></mrow></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">Pin</mi></mrow><mrow><mn>1</mn><mo>*</mo><mn>16</mn><mo>+</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>*</mo><mn>16</mn><mo>+</mo><mn>0</mn></mrow></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">Pin</mi></mrow><mrow><mn>16</mn><mo>,</mo><mn>0</mn></mrow></msub></math></p><div class="showClass" id="eqn2"><img src="../images/F000045si3.png" class="img" alt="image" width="397" height="12"/></div><p id="p0195" class="text">注意，在<a href="#f0015">图 3.2</a> 中，y 方向多出两个线程，x 方向多出四个线程。也就是说，我们将生成 64×80 个线程来处理 62×76 个像素。这类似于<a href="Ch002_23-46_B9780323912310000148.html#f0050">图 2.9</a> 中用四个 256 线程的线程块、以 1D 核函数 <span class="inlinecode">vecAddKernel</span> 处理 1000 个元素的向量的情形。回想一下，<a href="Ch002_23-46_B9780323912310000148.html#f0055">图 2.10</a> 中需要一条 if 语句来阻止多出的 24 个线程产生作用。同样，可以预料处理图片的核函数中也会有 if 语句，用来检验线程的垂直索引和水平索引是否落在像素的有效范围内。</p>
+<p id="p0200" class="text">我们假设主机代码用一个整型变量 n 记录 y 方向的像素数，用另一个整型变量 m 记录 x 方向的像素数。进一步假设输入图片数据已复制到设备全局内存中，可通过指针变量 <span class="inlinecode">Pin_d</span> 访问；输出图片已在设备内存中分配，可通过指针变量 <span class="inlinecode">Pout_d</span> 访问。下面的主机代码可用于调用 2D 核函数 <span class="inlinecode">colorToGrayscaleConversion</span> 来处理这幅图片：</p>
+<div class="pageavoid"><figure class="fig" id="f035"><img src="../images/F000045u03-06-9780323912310.jpg" class="img" alt="image" width="1094" height="195"/></figure>
+</div>
+<p id="p0225" class="text">为简单起见，本例假设线程块的维度固定为 16×16；而网格的维度则取决于图片的尺寸。要处理一幅 1500×2000（300 万像素）的图片，将生成 11,750 个线程块：y 方向 94 个，x 方向 125 个。在核函数内部，对 <span class="inlinecode">gridDim.x</span>、<span class="inlinecode">gridDim.y</span>、<span class="inlinecode">blockDim.x</span> 和 <span class="inlinecode">blockDim.y</span> 的引用将分别得到 125、94、16 和 16。</p>
+<p id="p0230" class="text"><span id="page_53" aria-label="Page 53" epub:type="pagebreak" role="doc-pagebreak"></span>在给出核函数代码之前，先要理解 C 语句如何访问动态分配的多维数组的元素。理想情况下，我们希望把 <span class="inlinecode">Pin_d</span> 当作 2D 数组来访问，用 <span class="inlinecode">Pin_d[j][i]</span>访问第 j 行第 i 列的元素。然而，CUDA C 所依据的 ANSI C 标准要求：只有在编译时已知 <span class="inlinecode">Pin</span> 的列数，才能把 <span class="inlinecode">Pin</span> 当作 2D 数组来访问。遗憾的是，对动态分配的数组而言，这一信息在编译时是未知的。事实上，使用动态分配数组的部分原因，正是要让这些数组的大小和维度在运行时随数据规模变化。因此，动态分配的 2D 数组的列数信息，在设计上就注定无法在编译时得知。于是，在当前的 CUDA C 中，程序员需要显式地把动态分配的 2D 数组线性化（或者说“压平”）为一个等价的 1D 数组。</p>
+<p id="p0235" class="text">实际上，C 语言中所有的多维数组都会被线性化。这是因为现代计算机采用“平坦”的内存空间（参见“内存空间”专栏）。对于静态分配的数组，编译器允许程序员使用高维索引语法（例如 <span class="inlinecode">Pin_d[j][i]</span>）来访问其元素。在底层，编译器把它们线性化为等价的 1D 数组，并把多维索引语法翻译成 1D 偏移量。而对于动态分配的数组，由于编译时缺少维度信息，当前的 CUDA C 编译器把这一翻译工作留给了程序员。</p>
+<div class="boxg1" id="b0010">
+<p class="b1title"><a id="sp0080"></a>内存空间</p>
+<p id="p0240" class="b1textfl"><em>内存空间是对现代计算机中处理器如何访问其内存的一种简化视图。通常，每个正在运行的应用程序都关联着一个内存空间。应用程序要处理的数据以及为该程序执行的指令，都存放在其内存空间中的各个位置上。每个位置通常可容纳一个字节，并有一个地址。需要多个字节的变量——float 占 4 字节，double 占 8 字节——存放在连续的字节位置上。当从内存空间访问一个数据值时，处理器给出起始地址（起始字节位置的地址）和所需的字节数</em>。</p>
+<p id="p0245" class="b1text"><em>大多数现代计算机至少拥有 4G 个字节大小的位置，其中每个 G 是 1,073,741,824（2</em><sup><em>30</em></sup><em>）。所有位置都用地址标记，地址范围从 0 到所用到的最大数。由于每个位置只有一个地址，我们说内存空间具有“平坦”的组织形式。因此，所有多维数组最终都会被“压平”为等价的一维数组。虽然 C 程序员可以用多维数组语法访问多维数组的元素，但编译器会把这些访问翻译成一个指向数组首元素的基指针，加上由这些多维索引计算出的一维偏移量</em>。</p>
+</div>
+<p class="text"><span id="page_54" aria-label="Page 54" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<p id="p0250" class="text">把 2D 数组线性化至少有两种方式。一种是把同一行的所有元素放在连续的位置上，然后把各行一行接一行地放入内存空间。这种排列称为<em>行主序布局</em>，如<a href="#f0020">图 3.3</a> 所示。为提高可读性，我们用 M<sub>j,i</sub> 表示 M 中第 j 行第 i 列的元素。M<sub>j,i</sub> 等价于 C 表达式 M[j][i]，但略微更易读。<a href="#f0020">图 3.3</a> 给出一个例子：一个 4×4 的矩阵 M 被线性化为 16 个元素的 1D 数组，先是第 0 行的全部元素，接着是第 1 行的四个元素，依此类推。因此，M 中第 j 行第 i 列元素的 1D 等价索引为 j*4+i。其中 j*4 一项跳过第 j 行之前各行的所有元素，i 一项再在第 j 行的区段内选出正确的元素。例如，M<sub>2,1</sub> 的 1D 索引为 2*4+1=9。这一点在<a href="#f0020">图 3.3</a> 中有所展示：其中 M<sub>9</sub> 就是 M<sub>2,1</sub> 的 1D 等价形式。C 编译器正是以这种方式线性化 2D 数组的。</p>
+<div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F000045f03-03-9780323912310.jpg" class="img" alt="image" width="1354" height="796"/><figcaption class="figleg"><a id="sp0020"></a><span class="fignum">图 3.3</span> 2D C 数组的行主序布局。对于每行有 Width 个元素的数组，其第 j 行第 i 列的元素在所得的等价 1D 数组中由索引表达式 j*Width+i 访问</figcaption></figure></div><p id="p0255" class="text"><span id="page_55" aria-label="Page 55" epub:type="pagebreak" role="doc-pagebreak"></span>把 2D 数组线性化的另一种方式，是把同一列的所有元素放在连续的位置上，然后把各列一列接一列地放入内存空间。这种排列称为<em>列主序布局</em>，FORTRAN 编译器采用的就是它。注意，2D 数组的列主序布局等价于其转置形式的行主序布局。这里不再多花篇幅，只提醒一点：此前主要使用 FORTRAN 编程的读者应当注意，CUDA C 使用的是行主序布局而非列主序布局。此外，许多供 FORTRAN 程序使用的 C 库为与 FORTRAN 编译器的布局保持一致，也采用列主序布局。因此，这些库的手册通常会告诉用户：若从 C 程序中调用它们，需要先把输入数组转置。</p>
+<p id="p0260" class="text">现在可以来研究<a id="Bf0025" href="#f0025">图 3.4</a> 中所示的 <span class="inlinecode">colorToGrayscaleConversion</span> 源代码了。该核函数代码用下面的公式把每个彩色像素转换为对应的灰度像素：</p>
+<p class="hiddenClass"><math><mi>L</mi><mo>=</mo><mn>0.21</mn><mo>*</mo><mi>r</mi><mo>+</mo><mn>0.72</mn><mo>*</mo><mi>g</mi><mo>+</mo><mn>0.07</mn><mo>*</mo><mi>b</mi></math></p>
+<div class="showClass" id="eqn3"><img src="../images/F000045si4.png" class="img" alt="image" width="142" height="11"/>
+</div>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F000045f03-04-9780323912310.jpg" class="img" alt="image" width="1374" height="738"/><figcaption class="figleg"><a id="sp0025"></a><span class="fignum"><a href="#Bf0025">图 3.4</a></span> <span class="inlinecode">colorToGrayscaleConversion</span> 的源代码，采用 2D 的线程到数据映射</figcaption></figure></div><p id="p0265" class="text">水平方向上共有 <span class="inlinecode">blockDim.x*gridDim.x</span> 个线程。与 <span class="inlinecode">vecAddKernel</span> 的例子类似，下面的表达式（第 06 行）会生成从 0 到 <span class="inlinecode">blockDim.x*gridDim.x–1</span> 的每一个整数值：</p><div class="pageavoid"><figure class="fig" id="f040"><img src="../images/F000045u03-07-9780323912310.jpg" class="img" alt="image" width="907" height="94"/></figure></div><p id="p0275" class="text">我们知道 <span class="inlinecode">gridDim.x*blockDim.x</span> 大于或等于 width（由主机代码传入的 <span class="inlinecode">m</span> 值）。也就是说，线程数至少与水平方向的像素数一样多；同样，线程数也至少与垂直方向的像素数一样多。因此，只要加以检验，确保只有 row 和 col 两个值都在范围内的线程才参与，即<span class="inlinecode">(col&lt;width) &amp;&amp; (row&lt;height)</span>，我们就能覆盖图片中的每一个像素（第 07 行）。</p>
+<p id="p0280" class="text"><span id="page_56" aria-label="Page 56" epub:type="pagebreak" role="doc-pagebreak"></span>由于每行有 <span class="inlinecode">width</span> 个像素，位于第 <span class="inlinecode">row</span> 行、第 <span class="inlinecode">col</span> 列的像素，其 1D 索引可以生成为 <span class="inlinecode">row*width+col</span>（第 10 行）。这个 1D 索引 <span class="inlinecode">grayOffset</span> 就是 <span class="inlinecode">Pout</span> 的像素索引，因为输出灰度图像中的每个像素占 1 字节（unsigned char）。仍以 62×76 的图像为例，由线程块 (1,0) 的线程 (0,0) 计算的 <span class="inlinecode">Pout</span> 像素，其线性化 1D 索引由下面的公式给出：</p>
+<p class="hiddenClass"><math><mtable columnalign="left"><mtr><mtd><msub><mrow><mi mathvariant="normal">Pout</mi></mrow><mrow><mi mathvariant="normal">blockIdx</mi><mo>.</mo><mi mathvariant="normal">y</mi><mo>*</mo><mi mathvariant="normal">blockDim</mi><mo>.</mo><mi mathvariant="normal">y</mi><mo>+</mo><mi mathvariant="normal">threadIdx</mi><mo>.</mo><mi mathvariant="normal">y</mi><mo>,</mo><mi mathvariant="normal">blockIdx</mi><mo>.</mo><mi mathvariant="normal">x</mi><mo>*</mo><mi mathvariant="normal">blockDim</mi><mo>.</mo><mi mathvariant="normal">x</mi><mo>+</mo><mi mathvariant="normal">threadIdx</mi><mo>.</mo><mi mathvariant="normal">x</mi></mrow></msub></mtd></mtr><mtr><mtd><mo>=</mo><msub><mrow><mi mathvariant="normal">Pout</mi></mrow><mrow><mn>1</mn><mo>*</mo><mn>16</mn><mo>+</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>*</mo><mn>16</mn><mo>+</mo><mn>0</mn></mrow></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">Pout</mi></mrow><mrow><mn>16</mn><mo>,</mo><mn>0</mn></mrow></msub><mo>=</mo><mi mathvariant="normal">Pout</mi><mrow><mo stretchy="true">[</mo><mrow><mn>16</mn><mo>*</mo><mn>76</mn><mo>+</mo><mn>0</mn></mrow><mo stretchy="true">]</mo></mrow><mo>=</mo><mi mathvariant="normal">Pout</mi><mrow><mo stretchy="true">[</mo><mrow><mn>1216</mn></mrow><mo stretchy="true">]</mo></mrow></mtd></mtr></mtable></math></p><div class="showClass" id="eqn4"><img src="../images/F000045si5.png" class="img" alt="image" width="299" height="25"/></div><p id="p0285" class="text">至于 <span class="inlinecode">Pin</span>，需要把灰度像素索引乘以 3<sup><a aria-label="noteref" href="#fn3" id="Cfn3">3</a></sup>（第 13 行），因为每个彩色像素以三个元素 (r, g, b) 存储，每个元素占 1 字节。由此得到的 <span class="inlinecode">rgbOffset</span> 给出该彩色像素在 <span class="inlinecode">Pin</span> 数组中的起始位置。我们从 <span class="inlinecode">Pin</span> 数组中三个连续的字节位置读出 <span class="inlinecode">r</span>、<span class="inlinecode">g</span>、<span class="inlinecode">b</span> 值（第 14–16 行），计算灰度像素值，再用 <span class="inlinecode">grayOffset</span> 把该值写入 <span class="inlinecode">Pout</span> 数组（第 19 行）。仍以 62×76 的图像为例，由线程块 (1,0) 的线程 (0,0) 处理的 <span class="inlinecode">Pin</span> 像素，其第一个分量的线性化 1D 索引可用下面的公式算出：</p>
+<p class="hiddenClass"><math><mtable columnalign="left"><mtr><mtd><msub><mrow><mi mathvariant="normal">Pin</mi></mrow><mrow><mi mathvariant="normal">blockIdx</mi><mo>.</mo><mi mathvariant="normal">y</mi><mo>*</mo><mi mathvariant="normal">blockDim</mi><mo>.</mo><mi mathvariant="normal">y</mi><mo>+</mo><mi mathvariant="normal">threadIdx</mi><mo>.</mo><mi mathvariant="normal">y</mi><mo>,</mo><mi mathvariant="normal">blockIdx</mi><mo>.</mo><mi mathvariant="normal">x</mi><mo>*</mo><mi mathvariant="normal">blockDim</mi><mo>.</mo><mi mathvariant="normal">x</mi><mo>+</mo><mi mathvariant="normal">threadIdx</mi><mo>.</mo><mi mathvariant="normal">x</mi></mrow></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">Pin</mi></mrow><mrow><mn>1</mn><mo>*</mo><mn>16</mn><mo>+</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>*</mo><mn>16</mn><mo>+</mo><mn>0</mn></mrow></msub></mtd></mtr><mtr><mtd><mo>=</mo><msub><mrow><mi mathvariant="normal">Pin</mi></mrow><mrow><mn>16</mn><mo>,</mo><mn>0</mn></mrow></msub><mo>=</mo><mi mathvariant="normal">Pin</mi><mrow><mo stretchy="true">[</mo><mrow><mn>16</mn><mo>*</mo><mn>76</mn><mo>*</mo><mn>3</mn><mo>+</mo><mn>0</mn></mrow><mo stretchy="true">]</mo></mrow><mo>=</mo><mi mathvariant="normal">Pin</mi><mrow><mo stretchy="true">[</mo><mrow><mn>3648</mn></mrow><mo stretchy="true">]</mo></mrow></mtd></mtr></mtable></math></p>
+<div class="showClass" id="eqn5"><img src="../images/F000045si6.png" class="img" alt="image" width="353" height="26"/>
+</div>
+<p id="p0290" class="text">所访问的数据是从字节偏移 3648 开始的 3 个字节。</p>
+<p id="p0295" class="text"><a href="#f0030">图 3.5</a> 展示了 <span class="inlinecode">colorToGrayscaleConversion</span> 处理 62×76 示例时的执行过程。假设线程块为 16×16，调用 <span class="inlinecode">colorToGrayscaleConversion</span> 核函数会生成 64×80 个线程。网格将有 4×5=20 个线程块：垂直方向 4 个，水平方向 5 个。线程块的执行行为分为四种不同情形，在<a href="#f0030">图 3.5</a> 中显示为四块阴影区域。</p>
+<div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F000045f03-05-9780323912310.jpg" class="img" alt="image" width="1299" height="853"/><figcaption class="figleg"><a id="sp0030"></a><span class="fignum">图 3.5</span> 用 16×16 的线程块覆盖 76×62 的图片</figcaption></figure></div><p id="p0300" class="text">第一块区域在<a href="#f0030">图 3.5</a> 中标为 1，由覆盖图片大部分像素的 12 个线程块中的线程组成。这些线程的 <span class="inlinecode">col</span> 值和 <span class="inlinecode">row</span> 值都在范围内；它们全都通过 if 语句的检验，处理图片中深色阴影区域的像素。也就是说，每个线程块中全部 16×16=256 个线程都会处理像素。</p>
+<p id="p0305" class="text"><span id="page_57" aria-label="Page 57" epub:type="pagebreak" role="doc-pagebreak"></span>第二块区域在<a href="#f0030">图 3.5</a> 中标为 2，包含中等阴影区域内三个线程块中的线程，它们覆盖图片右上部的像素。虽然这些线程的 <span class="inlinecode">row</span> 值总在范围内，但其中一些线程的 <span class="inlinecode">col</span> 值超过了 <span class="inlinecode">m</span> 的取值 76。这是因为水平方向的线程数总是程序员所选 <span class="inlinecode">blockDim.x</span> 值（这里是 16）的整数倍，而覆盖 76 个像素所需的 16 的最小倍数是 80。结果，每行中有 12 个线程的 <span class="inlinecode">col</span> 值落在范围内，会处理像素；每行余下的 4 个线程的 <span class="inlinecode">col</span> 值超出范围，因而不满足 if 语句的条件，不会处理任何像素。总体来看，这些线程块中每块 16×16=256 个线程里有 12×16=192 个会处理像素。</p>
+<p id="p0310" class="text">第三块区域在<a href="#f0030">图 3.5</a> 中标为 3，对应覆盖图片中等阴影区域的左下方四个线程块。虽然这些线程的 <span class="inlinecode">col</span> 值总在范围内，但其中一些线程的 <span class="inlinecode">row</span> 值超过了 <span class="inlinecode">n</span> 的取值 62。这是因为垂直方向的线程数总是程序员所选 <span class="inlinecode">blockDim.y</span> 值（这里是 16）的整数倍，而覆盖 62 所需的 16 的最小倍数是 64。结果，每列中有 14 个线程的 row 值落在范围内，会处理像素；每列余下的 2 个线程无法通过 if 语句，不会处理任何像素。总体来看，256 个线程中有 16×14=224 个会处理像素。</p>
+<p id="p0315" class="text">第四块区域在<a href="#f0030">图 3.5</a> 中标为 4，包含覆盖图片右下方浅色阴影区域的线程。与区域 2 类似，最上面 14 行中每行有 4 个线程的 <span class="inlinecode">col</span> 值超出范围；与区域 3 类似，该线程块最下面整整两行的 row 值超出范围。总体来看，16×16=256 个线程中只有 14×12=168 个会处理像素。</p>
+<p id="p0320" class="text">只要在线性化数组时再加入一个维度，就可以很容易地把对 2D 数组的讨论推广到 3D 数组。做法是把数组的每个“平面”一个接一个地放入地址空间。假设程序员用变量 <span class="inlinecode">m</span> 和 <span class="inlinecode">n</span> 分别记录 3D 数组的列数和行数，调用核函数时还需要确定 <span class="inlinecode">blockDim.z</span> 和 <span class="inlinecode">gridDim.z</span> 的取值。在核函数中，数组索引将涉及另一个全局索引：</p>
+<div class="pageavoid"><figure class="fig" id="f045"><img src="../images/F000045u03-08-9780323912310.jpg" class="img" alt="image" width="980" height="91"/></figure>
+</div>
+<p class="text"><span id="page_58" aria-label="Page 58" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<p id="p0330" class="text">对 3D 数组 <span class="inlinecode">P</span> 的线性化访问形式为 <span class="inlinecode">P[plane*m*n+row*m+col]</span>。处理 3D 数组 <span class="inlinecode">P</span> 的核函数需要检查 <span class="inlinecode">plane</span>、<span class="inlinecode">row</span> 和 <span class="inlinecode">col</span> 这三个全局索引是否都落在数组的有效范围内。3D 数组在 CUDA 核函数中的使用，将在<a href="Ch008_173-189_B9780323912310000173.html#Ch008_173-189_B9780323912310000173">第 8 章</a>“模板”中结合模板模式作进一步探讨。</p></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">3.3 图像模糊：一个更复杂的核函数</h2><p id="p0335" class="textfl">我们已经研究了 <span class="inlinecode">vecAddkernel</span> 和 <span class="inlinecode">colorToGrayscaleConversion</span>，其中每个线程只对一个数组元素执行少量算术运算。这些核函数很好地达成了各自的目的：说明 CUDA C 程序的基本结构以及数据并行执行的概念。读到这里，读者自然会提出一个显而易见的问题：CUDA C 程序中的所有线程都只是彼此独立地执行这样简单而平凡的运算吗？答案是否定的。在真实的 CUDA C 程序中，线程往往要对其数据执行复杂的运算，并且需要彼此协作。接下来的几章将处理越来越复杂、体现这些特点的例子。我们先从一个图像模糊函数开始。</p>
+<p id="p0340" class="text">图像模糊在平滑像素值突变的同时，保留对识别图像关键特征至关重要的边缘。<a id="Bf0035" href="#f0035">图 3.6</a> 展示了图像模糊的效果。简单地说，就是把图像变模糊。在人眼看来，模糊后的图像往往会淡化细节，呈现出“大局”印象，也就是图片中的主要主题对象。在计算机图像处理算法中，图像模糊的一个常见用途是用周围干净的像素值修正有问题的像素值，从而降低图像中噪声和颗粒状渲染效果的影响。在计算机视觉中，图像模糊可以让边缘检测和目标识别算法聚焦于主题对象，而不至于被海量的细粒度对象所拖累。在显示方面，有时会通过模糊图像的其余部分来突出图像中的某一特定区域。</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F000045f03-06-9780323912310.jpg" class="img" alt="image" width="902" height="296"/><figcaption class="figleg"><a id="sp0035"></a><span class="fignum"><a href="#Bf0035">图 3.6</a></span> 原始图像（<em>左</em>）与模糊后的版本（<em>右</em>）</figcaption></figure></div><p id="p0345" class="text"><span id="page_59" aria-label="Page 59" epub:type="pagebreak" role="doc-pagebreak"></span>从数学上说，图像模糊函数把输出图像中某个像素的值，计算为输入图像中包含该像素在内的一片像素块的加权和。正如我们将在<a href="Ch007_151-171_B9780323912310000082.html#Ch007_151-171_B9780323912310000082">第 7 章</a>“卷积”中学到的，这类加权和的计算属于<em>卷积</em>模式。本章采用一种简化的做法：对围绕目标像素（并包含该像素）的 N×N 像素块取简单平均值。为使算法保持简单，我们不会依据像素与目标像素的距离为其取值分配权重。实际上，在诸如高斯模糊之类的卷积模糊方法中，施加这样的权重是相当常见的。</p>
+<p id="p0350" class="text"><a href="#f0040">图 3.7</a> 给出了使用 3×3 像素块进行图像模糊的例子。在计算 (row, col) 位置上的输出像素值时，可以看到该像素块以位于 (row, col) 位置的输入像素为中心。这个 3×3 像素块横跨三行（row-1、row、row+1）和三列（col-1、col、col+1）。例如，计算 (25, 50) 处输出像素所用的九个像素，其坐标为 (24, 49)、(24, 50)、(24, 51)、(25, 49)、(25, 50)、(25, 51)、(26, 49)、(26, 50) 和 (26, 51)。</p>
+<div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F000045f03-07-9780323912310.jpg" class="img" alt="image" width="1298" height="862"/><figcaption class="figleg"><a id="sp0040"></a><span class="fignum">图 3.7</span> 每个输出像素是输入图像中其自身与周围一片像素块的平均值</figcaption></figure></div><p id="p0355" class="text"><span id="page_60" aria-label="Page 60" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0045">图 3.8</a> 给出了一个图像模糊核函数。与 <span class="inlinecode">colorToGrayscaleConversion</span> 所用的策略类似，我们让每个线程计算一个输出像素，也就是说，线程到输出数据的映射保持不变。因此在核函数开头可以看到熟悉的 <span class="inlinecode">col</span> 和 <span class="inlinecode">row</span> 索引计算（第 03–04 行），也可以看到熟悉的 if 语句，它按图像的高度和宽度验证 <span class="inlinecode">col</span> 和 <span class="inlinecode">row</span> 是否都在有效范围内（第 05 行）。只有 <span class="inlinecode">col</span> 和 <span class="inlinecode">row</span> 索引都落在取值范围内的线程才被允许参与执行。</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F000045f03-08-9780323912310.jpg" class="img" alt="image" width="1374" height="918"/><figcaption class="figleg"><a id="sp0045"></a><span class="fignum">图 3.8</span> 一个图像模糊核函数</figcaption></figure></div><p id="p0360" class="text">如<a href="#f0040">图 3.7</a> 所示，<span class="inlinecode">col</span> 和 <span class="inlinecode">row</span> 的值同时也给出了用于计算该线程输出像素的那片输入像素块的中心像素位置。<a href="#f0045">图 3.8</a> 中的嵌套 for 循环（第 10–11 行）遍历像素块中的所有像素。我们假设程序中定义了常量 <span class="inlinecode">BLUR_SIZE</span>。<span class="inlinecode">BLUR_SIZE</span> 的取值按如下方式设定：<span class="inlinecode">BLUR_SIZE</span> 给出像素块每一侧的像素数（半径），而 <span class="inlinecode">2*BLUR_SIZE+1</span> 给出像素块在一个维度上的像素总数。例如，对 3×3 的像素块，<span class="inlinecode">BLUR_SIZE</span> 设为 1；而对 7×7 的像素块，<span class="inlinecode">BLUR_SIZE</span> 设为 3。外层循环遍历像素块的各行；对每一行，内层循环遍历像素块的各列。</p>
+<p id="p0365" class="text"><span id="page_61" aria-label="Page 61" epub:type="pagebreak" role="doc-pagebreak"></span>在 3×3 像素块的例子中，<span class="inlinecode">BLUR_SIZE</span> 为 1。对于计算输出像素 (25, 50) 的线程，在外层循环的第一次迭代中，<span class="inlinecode">curRow</span> 变量为 <span class="inlinecode">row-BLUR_SIZE=</span>(25−1)=24。因此在外层循环的第一次迭代中，内层循环遍历第 24 行的像素块像素。内层循环借助 curCol 变量，从列 <span class="inlinecode">col-BLUR_SIZE</span>=50–1=49 迭代到 <span class="inlinecode">col+BLUR_SIZE</span>=51。所以外层循环第一次迭代中处理的像素是 (24, 49)、(24, 50) 和 (24, 51)。读者应自行验证：在外层循环的第二次迭代中，内层循环遍历像素 (25, 49)、(25, 50) 和 (25, 51)；最后，在外层循环的第三次迭代中，内层循环遍历像素 (26, 49)、(26, 50) 和 (26, 51)。</p>
+<p id="p0370" class="text">第 16 行利用 <span class="inlinecode">curRow</span> 和 <span class="inlinecode">curCol</span> 的线性化索引，访问本次迭代所访问的输入像素的值，并把该像素值累加到累加和变量 <span class="inlinecode">pixVal</span> 中。第 17 行通过递增 <span class="inlinecode">pixels</span> 变量，记录下又有一个像素值被加入累加和这一事实。像素块中的所有像素处理完毕后，第 22 行用 <span class="inlinecode">pixVal</span> 的值除以 <span class="inlinecode">pixels</span> 的值，算出像素块中各像素的平均值，并利用 <span class="inlinecode">row</span> 和 <span class="inlinecode">col</span> 的线性化索引把结果写入其输出像素。</p>
+<p id="p0375" class="text">第 15 行包含一条条件语句，用于守护第 16 行和第 17 行的执行。例如，在计算靠近图像边缘的输出像素时，像素块可能会超出输入图像的有效范围。<a href="#f0050">图 3.9</a> 以 3×3 像素块为例说明了这种情形。在情形 1 中，正在被模糊的是左上角的像素，预期像素块中的九个像素有五个在输入图像中并不存在。此时输出像素的 <span class="inlinecode">row</span> 值和 <span class="inlinecode">col</span> 值分别为 0 和 0。在嵌套循环执行期间，九次迭代的 <span class="inlinecode">curRow</span> 和 <span class="inlinecode">curCol</span> 取值依次为 (−1,−1)、(−1,0)、(−1,1)、(0,−1)、(0,0)、(0,1)、(1,−1)、(1,0) 和 (1,1)。注意，对图像之外的那五个像素，至少有一个取值小于 0。if 语句中的 <span class="inlinecode">curRow&lt;0</span> 和 <span class="inlinecode">curCol&lt;0</span> 条件会捕捉到这些取值，并跳过第 16 行和第 17 行的执行。结果，只有四个有效像素的值被累加到累加和变量中；<span class="inlinecode">pixels</span> 的值也正确地只递增了四次，使第 22 行能正确算出平均值。</p>
+<div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F000045f03-09-9780323912310.jpg" class="img" alt="image" width="504" height="471"/><figcaption class="figleg"><a id="sp0050"></a><span class="fignum">图 3.9</span> 处理图像边缘附近像素的边界条件</figcaption></figure></div><p id="p0380" class="text"><span id="page_62" aria-label="Page 62" epub:type="pagebreak" role="doc-pagebreak"></span>读者应逐一分析<a href="#f0050">图 3.9</a> 中的其他情形，并考察 <span class="inlinecode">blurKernel</span> 中嵌套循环的执行行为。注意，大多数线程都能在输入图像内找到其所分配的 3×3 像素块中的全部像素，它们会累加全部九个像素。然而，对于四个角上的像素，负责的线程只会累加四个像素；对于四条边上的其他像素，负责的线程会累加六个像素。正是这些差异，才使得有必要用变量 <span class="inlinecode">pixels</span> 记录实际累加的像素数目。</p></section><section><a id="s0025"></a><h2 class="h1hd" id="st0040">3.4 矩阵乘法</h2><p id="p0385" class="textfl">矩阵-矩阵乘法，简称矩阵乘法，是基本线性代数子程序（Basic Linear Algebra Subprograms，BLAS）标准的重要组成部分（参见“线性代数函数”补充栏）。它是许多线性代数求解器（如 LU 分解）的基础，也是使用卷积神经网络（CNN）进行深度学习时的一项重要计算，这将在<a href="Ch016_355-388_B9780323912310000240.html#Ch016_355-388_B9780323912310000240">第 16 章</a>“深度学习”中详细讨论。</p>
+<div class="boxg1" id="b0015">
+<p class="b1title"><a id="sp0085"></a>线性代数函数</p>
+<p id="p0390" class="b1textfl"><em>线性代数运算在科学与工程应用中被广泛使用。基本线性代数子程序（BLAS）是发布基本代数运算库的事实标准，其中的线性代数函数分为三个层级。层级越高，函数所执行的运算数量越多。第 1 层函数执行形如 <strong>y=</strong>α<strong>x+y</strong> 的向量运算，其中 <strong>x</strong> 和 <strong>y</strong> 是向量，α 是标量。我们的向量加法例子就是 α=1 时第 1 层函数的一个特例。第 2 层函数执行形如 <strong>y=</strong>α<strong>Ax+</strong>β<strong>y</strong> 的矩阵-向量运算，其中 <strong>A</strong> 是矩阵，<strong>x</strong> 和 <strong>y</strong> 是向量，α 和 β 是标量。我们将在稀疏线性代数中研究一种第 2 层函数。第 3 层函数执行形如 <strong>C=</strong>α<strong>AB+</strong>β<strong>C</strong> 的矩阵-矩阵运算，其中 <strong>A、B</strong></em> 和 <em><strong>C</strong> 是矩阵，α</em><em>与 β 是标量。我们的矩阵-矩阵乘法例子就是 α=1 且 β=0 时第 3 层函数的一个特例。这些 BLAS 函数之所以重要，是因为它们被用作更高层代数函数（如线性方程组求解器和特征值分析）的基本构件。正如后面将要讨论的，BLAS 函数的不同实现，其性能在串行计算机和并行计算机上都可能相差若干个数量级</em>。</p>
+</div>
+<p id="p0395" class="text">一个 I×j（i 行 j 列）矩阵 <span class="inlinecode">M</span> 与一个 j×k 矩阵 <span class="inlinecode">N</span> 相乘，产生一个 I×k 矩阵 <span class="inlinecode">P</span>。执行矩阵乘法时，输出矩阵 <span class="inlinecode">P</span> 的每个元素都是 <span class="inlinecode">M</span> 的某一行与 <span class="inlinecode">N</span> 的某一列的内积。我们将继续沿用如下约定：P<sub>row, col</sub> 表示垂直方向第 row 个位置、水平方向第 col 个位置上的元素。如<a href="#f0055">图 3.10</a> 所示，P<sub>row,col</sub>（P 中的小方块）是由 <span class="inlinecode">M</span> 的第 row 行构成的向量（在 <span class="inlinecode">M</span> 中显示为一条水平条带）与由 <span class="inlinecode">N</span> 的第 col 列构成的向量（在 <span class="inlinecode">N</span> 中显示为一条垂直条带）的内积。两个向量的内积，有时也称为点积，是各向量元素乘积之和。即，</p>
+<p class="hiddenClass"><math><msub><mrow><mi mathvariant="normal">P</mi></mrow><mrow><mi mathvariant="normal">row</mi><mo>,</mo><mi mathvariant="normal">col</mi></mrow></msub><mo>=</mo><mo>∑</mo><mspace width=".5em"></mspace><msub><mrow><mi mathvariant="normal">M</mi></mrow><mrow><mi mathvariant="normal">row</mi><mo>,</mo><mi mathvariant="normal">k</mi></mrow></msub><mo>*</mo><msub><mrow><mi mathvariant="normal">N</mi></mrow><mrow><mi mathvariant="normal">k</mi><mo>,</mo><mi mathvariant="normal">col</mi></mrow></msub><mspace width="1em"></mspace><mspace width="1em"></mspace><mi mathvariant="normal">for</mi><mspace width=".5em"></mspace><mi mathvariant="normal">k</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width=".5em"></mspace><mn>1</mn><mo>,</mo><mi>…</mi><mi mathvariant="normal">Width</mi><mo>−</mo><mn>1</mn></math></p>
+<div class="showClass" id="eqn6"><img src="../images/F000045si7.png" class="img" alt="image" width="287" height="17"/>
+</div>
+<p class="text"><span id="page_63" aria-label="Page 63" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F000045f03-10-9780323912310.jpg" class="img" alt="image" width="1199" height="1114"/><figcaption class="figleg"><a id="sp0055"></a><span class="fignum">图 3.10</span> 通过对 P 分块，使用多个线程块进行矩阵乘法</figcaption></figure></div><p id="p0400" class="text">例如，在<a href="#f0055">图 3.10</a> 中，假设 row=1 且 col=5，</p>
+<p class="hiddenClass"><math><msub><mrow><mi mathvariant="normal">P</mi></mrow><mrow><mn>1</mn><mo>,</mo><mn>5</mn></mrow></msub><mo>=</mo><msub><mrow><mi mathvariant="normal">M</mi></mrow><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msub><mo>*</mo><msub><mrow><mi mathvariant="normal">N</mi></mrow><mrow><mn>0</mn><mo>,</mo><mn>5</mn></mrow></msub><mo>+</mo><msub><mrow><mi mathvariant="normal">M</mi></mrow><mrow><mn>1</mn><mo>,</mo><mn>1</mn></mrow></msub><mo>*</mo><msub><mrow><mi mathvariant="normal">N</mi></mrow><mrow><mn>1</mn><mo>,</mo><mn>5</mn></mrow></msub><mo>+</mo><msub><mrow><mi mathvariant="normal">M</mi></mrow><mrow><mn>1</mn><mo>,</mo><mn>2</mn></mrow></msub><mo>*</mo><msub><mrow><mi mathvariant="normal">N</mi></mrow><mrow><mn>2</mn><mo>,</mo><mn>5</mn></mrow></msub><mo>+</mo><mi>…</mi><mo>.</mo><mo>+</mo><msub><mrow><mi mathvariant="normal">M</mi></mrow><mrow><mn>1</mn><mo>,</mo><mi mathvariant="normal">Width</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>*</mo><msub><mrow><mi mathvariant="normal">N</mi></mrow><mrow><mi mathvariant="normal">Width</mi><mo>−</mo><mn>1</mn><mo>,</mo><mn>5</mn></mrow></msub></math></p>
+<div class="showClass" id="eqn7"><img src="../images/F000045si8.png" class="img" alt="image" width="345" height="12"/>
+</div>
+<p id="p0405" class="text">要用 CUDA 实现矩阵乘法，我们可以把网格中的线程映射到输出矩阵 <span class="inlinecode">P</span> 的元素上，所采用的方法与 <span class="inlinecode">colorToGrayscaleConversion</span> 中的相同。也就是说，每个线程负责计算一个 <span class="inlinecode">P</span> 元素。每个线程所要计算的 <span class="inlinecode">P</span> 元素的行索引和列索引与之前相同：</p>
+<div class="pageavoid"><figure class="fig" id="f050"><img src="../images/F000045u03-09-9780323912310.jpg" class="img" alt="image" width="876" height="89"/></figure>
+</div>
+<p id="p0415" class="text">以及</p>
+<div class="pageavoid"><figure class="fig" id="f055"><img src="../images/F000045u03-10-9780323912310.jpg" class="img" alt="image" width="871" height="90"/></figure>
+</div>
+<p id="p0425" class="text"><span id="page_64" aria-label="Page 64" epub:type="pagebreak" role="doc-pagebreak"></span>在这种一一对应的映射下，线程索引 <span class="inlinecode">row</span> 和 <span class="inlinecode">col</span> 同时也是其输出元素的行索引和列索引。<a href="#f0060">图 3.11</a> 给出了基于这一线程-数据映射的核函数源代码。读者应当立刻看出熟悉的模式：计算 <span class="inlinecode">row</span> 和 <span class="inlinecode">col</span>（第 03–04 行），以及用 if 语句检测 <span class="inlinecode">row</span> 和 <span class="inlinecode">col</span> 是否都在范围内（第 05 行）。这些语句与 <span class="inlinecode">colorToGrayscaleConversion</span> 中的对应语句几乎完全相同。唯一显著的差别在于，我们做了一个简化假设：<span class="inlinecode">matrixMulKernel</span> 只需处理方阵，因此把 <span class="inlinecode">width</span> 和 <span class="inlinecode">height</span> 都替换为 <span class="inlinecode">Width</span>。这种线程-数据映射实际上把 <span class="inlinecode">P</span> 划分为若干分块，其中之一在<a href="#f0055">图 3.10</a> 中显示为浅色方块。每个线程块负责计算其中一个分块。</p>
+<div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F000045f03-11-9780323912310.jpg" class="img" alt="image" width="1372" height="420"/><figcaption class="figleg"><a id="sp0060"></a><span class="fignum">图 3.11</span> 用一个线程计算一个 P 元素的矩阵乘法核函数</figcaption></figure></div><p id="p0430" class="text">现在我们把注意力转向每个线程所做的工作。回想一下，P<sub>row,col</sub> 是作为 <span class="inlinecode">M</span> 的第 row 行与 <span class="inlinecode">N</span> 的第 col 列的内积计算出来的。在<a href="#f0060">图 3.11</a> 中，我们用一个 for 循环来执行这一内积运算。进入循环之前，我们把局部变量 <span class="inlinecode">Pvalue</span> 初始化为 0（第 06 行）。循环的每次迭代访问 <span class="inlinecode">M</span> 的第 row 行中的一个元素和 <span class="inlinecode">N</span> 的第 col 列中的一个元素，把两个元素相乘，并将乘积累加到 <span class="inlinecode">Pvalue</span> 中（第 08 行）。</p>
+<p id="p0435" class="text">我们先关注 for 循环中对 <span class="inlinecode">M</span> 元素的访问。<span class="inlinecode">M</span> 按行主序布局线性化为一个等价的 1D 数组。也就是说，<span class="inlinecode">M</span> 的各行从第 0 行开始，在内存空间中依次排列。因此第 1 行的起始元素是 <span class="inlinecode">M[1*Width]</span>，因为需要先计入第 0 行的全部元素。一般而言，第 row 行的起始元素是 <span class="inlinecode">M[row*Width]</span>。由于一行中的所有元素都存放在连续位置上，第 row 行的第 k 个元素位于 <span class="inlinecode">M[row*Width+k]</span>。<a href="#f0060">图 3.11</a>（第 08 行）中使用的正是这一线性化数组偏移量。</p>
+<p id="p0440" class="text">现在我们把注意力转向对 N 的访问。如<a href="#f0060">图 3.11</a> 所示，第 col 列的起始元素就是第 0 行的第 col 个元素，即 <span class="inlinecode">N[col]</span>。要访问第 col 列中的下一个元素，需要跳过一整行，这是因为同一列的下一个元素就是下一行中的相同元素。因此，第 col 列的第 k 个元素是 <span class="inlinecode">N[k*Width+col]</span>（第 08 行）。</p>
+<p id="p0445" class="text"><span id="page_65" aria-label="Page 65" epub:type="pagebreak" role="doc-pagebreak"></span>执行退出 for 循环后，所有线程的 <span class="inlinecode">P</span> 元素值都保存在各自的 <span class="inlinecode">Pvalue</span> 变量中。随后，每个线程使用等价的 1D 索引表达式 <span class="inlinecode">row*Width+col</span> 写入自己的 <span class="inlinecode">P</span> 元素（第 10 行）。同样，这种索引模式与 <span class="inlinecode">colorToGrayscaleConversion</span> 核函数中所用的相似。</p>
+<p id="p0450" class="text">下面我们用一个小例子来说明矩阵乘法核函数的执行过程。<a id="Bf0065" href="#f0065">图 3.12</a> 给出了一个 BLOCK_WIDTH=2 的 4×4 的 P。虽然这样小的矩阵和线程块规模并不现实，但它们使我们能够把整个例子放进一幅图中。<span class="inlinecode">P</span> 矩阵被划分为四个分块，每个线程块计算一个分块。为此，我们创建由 2×2 线程数组构成的线程块，每个线程计算一个 <span class="inlinecode">P</span> 元素。在这个例子中，线程块 (0,0) 的线程 (0,0) 计算 P<sub>0,0</sub>，而线程块 (1,0) 的线程 (0,0) 计算 P<sub>2,0</sub>。</p>
+<div class="pageavoid"><figure class="fig" id="f0065"><img src="../images/F000045f03-12-9780323912310.jpg" class="img" alt="image" width="999" height="644"/><figcaption class="figleg"><a id="sp0065"></a><span class="fignum"><a href="#Bf0065">图 3.12</a></span> <span class="inlinecode">matrixMulKernel</span> 的一个小型执行示例</figcaption></figure></div><p id="p0455" class="text"><span class="inlinecode">matrixMulKernel</span> 中的 <span class="inlinecode">row</span> 和 <span class="inlinecode">col</span> 索引标识线程所要计算的 <span class="inlinecode">P</span> 元素。row 索引同时标识 <span class="inlinecode">M</span> 的行，col 索引标识 <span class="inlinecode">N</span> 的列，二者作为该线程的输入值。<a id="Bf0070" href="#f0070">图 3.13</a> 说明了每个线程块中的乘法操作。对于这个小型矩阵乘法例子，线程块 (0,0) 中的线程产生四个点积。线程块 (0,0) 中线程 (1,0) 的 <span class="inlinecode">row</span> 和 <span class="inlinecode">col</span> 索引分别为 0*0+1=1 和 0*0+0=0。因此该线程映射到 P<sub>1,0</sub>，并计算 <span class="inlinecode">M</span> 的第 1 行与 <span class="inlinecode">N</span> 的第 0 列的点积。</p>
+<div class="pageavoid"><figure class="fig" id="f0070"><img src="../images/F000045f03-13-9780323912310.jpg" class="img" alt="image" width="749" height="736"/><figcaption class="figleg"><a id="sp0070"></a><span class="fignum"><a href="#Bf0070">图 3.13</a></span> 一个线程块的矩阵乘法操作</figcaption></figure></div><p id="p0460" class="text"><span id="page_66" aria-label="Page 66" epub:type="pagebreak" role="doc-pagebreak"></span>让我们逐步走一遍线程块 (0,0) 中线程 (0,0) 对<a href="#f0060">图 3.11</a> 中 for 循环的执行过程。在第 0 次迭代（k=0）时，<span class="inlinecode">row*Width+k=</span>0*4+0=0，<span class="inlinecode">k*Width+col=</span>0*4+0=0。因此所访问的输入元素是 <span class="inlinecode">M[0]</span>和 <span class="inlinecode">N[0]</span>，它们是 M<sub>0,0</sub> 和 N<sub>0,0</sub> 的 1D 等价形式。注意，它们确实是 <span class="inlinecode">M</span> 第 0 行和 <span class="inlinecode">N</span> 第 0 列的第 0 个元素。在第 1 次迭代（k=1）时，<span class="inlinecode">row*Width+k</span>=0*4+1=1，<span class="inlinecode">k*Width+col</span>=1*4+0=4。因此我们访问的是 <span class="inlinecode">M[1]</span>和 <span class="inlinecode">N[4]</span>，它们是 M<sub>0,1</sub> 和 N<sub>1,0</sub> 的 1D 等价形式。它们是 <span class="inlinecode">M</span> 第 0 行和 <span class="inlinecode">N</span> 第 0 列的第 1 个元素。在第 2 次迭代（k=2）时，<span class="inlinecode">row*Width+k</span>=0*4+2=2，<span class="inlinecode">k*Width+col</span>=2*4+0=8，由此得到 <span class="inlinecode">M[2]</span>和 <span class="inlinecode">N[8]</span>。因此所访问的元素是 M<sub>0,2</sub> 和 N<sub>2,0</sub> 的 1D 等价形式。最后，在第 3 次迭代（k=3）时，<span class="inlinecode">row*Width+k</span>=0*4+3=3，<span class="inlinecode">k*Width+col</span>= 3*4+0=12，由此得到 <span class="inlinecode">M[3]</span>和 <span class="inlinecode">N[12]</span>，即 M<sub>0,3</sub> 和 N<sub>3,0</sub> 的 1D 等价形式。至此我们已经验证，对于线程块 (0,0) 中的线程 (0,0)，该 for 循环执行的是 M 的第 0 行与 N 的第 0 列之间的内积。循环结束后，该线程写入 <span class="inlinecode">P[row*Width+col]</span>，即 <span class="inlinecode">P[0]</span>。这是 P<sub>0,0</sub> 的 1D 等价形式，因此线程块 (0,0) 中的线程 (0,0) 成功计算了 <span class="inlinecode">M</span> 的第 0 行与 <span class="inlinecode">N</span> 的第 0 列之间的内积，并把结果存入 P<sub>0,0</sub>。</p>
+<p id="p0465" class="text">我们把手工执行并验证线程块 (0,0) 中其他线程或其他线程块中线程的 for 循环，留作读者的练习。</p>
+<p id="p0470" class="text">由于网格的大小受每个网格的最大线程块数和每个线程块的最大线程数限制，<span class="inlinecode">matrixMulKernel</span> 所能处理的最大输出矩阵 <span class="inlinecode">P</span> 的规模也会受到这些约束的限制。当需要计算超出该限制的输出矩阵时，可以把输出矩阵划分为若干子矩阵，使每个子矩阵的规模都能被一个网格覆盖，并用主机代码为每个子矩阵启动一个不同的网格。另一种做法是修改核函数代码，让每个线程计算更多的 <span class="inlinecode">P</span> 元素。本书后面将探讨这两种方案。</p></section><section><a id="s0030"></a><h2 class="h1hd" id="st0045">3.5 小结</h2><p id="p0475" class="textfl"><span id="page_67" aria-label="Page 67" epub:type="pagebreak" role="doc-pagebreak"></span>CUDA 的网格和线程块是多维的，最多可达三维。网格和线程块的多维性便于组织线程，使其映射到多维数据上。核函数执行配置参数定义网格及其线程块的维度。<span class="inlinecode">blockIdx</span> 和 <span class="inlinecode">threadIdx</span> 中的唯一坐标使网格中的线程能够标识自身以及各自的数据域。程序员有责任在核函数中使用这些变量，以便线程能够正确地确定所要处理的那部分数据。在访问多维数据时，程序员往往必须把多维索引线性化为一个 1D 偏移量，原因是 C 语言中动态分配的多维数组通常按行主序布局存储为 1D 数组。我们使用复杂度递增的例子，让读者熟悉用多维网格处理多维数组的具体机制。这些技能将是理解并行模式及其相关优化技术的基础。</p></section><section><a id="s0035"></a><h2 class="h1hd" id="st0050">习题</h2><a id="p0480"></a><a id="li0015"></a><div><ol>
+<li class="numlista" id="o0035"><a id="p0485"></a><a id="li0020"></a>1. 在本章中，我们实现了一个矩阵乘法核函数，其中每个线程生成一个输出矩阵元素。在本问题中，你将实现不同的矩阵-矩阵乘法核函数并对它们进行比较。<ol>
+<li class="numlist1a" id="o0040"><a id="p0490"></a>a. 编写一个核函数，使每个线程生成一个输出矩阵行。为该设计填写执行配置参数。</li>
+<li class="numlist1a" id="o0045"><a id="p0495"></a>b. 编写一个核函数，使每个线程生成一个输出矩阵列。为该设计填写执行配置参数。</li>
+<li class="numlist1a" id="o0050"><a id="p0500"></a>c. 分析这两种核函数设计的优缺点。</li>
+</ol></li>
+<li class="numlista" id="o0055"><a id="p0505"></a>2. 矩阵-向量乘法以一个输入矩阵 B 和一个向量 C 为输入，产生一个输出向量 A。输出向量 A 的每个元素是输入矩阵 B 的一行与 C 的点积，即 A[i]=∑<sup>j</sup> B[i][j]+C[j]。为简单起见，我们只处理元素为单精度浮点数的方阵。编写一个矩阵-向量乘法核函数，以及可以用四个参数调用的主机桩函数：指向输出矩阵的指针、指向输入矩阵的指针、指向输入向量的指针，以及每个维度中的元素个数。使用一个线程来计算一个输出向量元素。</li>
+<li class="numlista" id="o0060"><a id="p0510"></a><a id="li0025"></a>3. 考虑以下 CUDA 核函数及其调用它的对应主机函数：<div class="pageavoid"><figure class="fig" id="f060"><img src="../images/F000045u03-11-9780323912310.jpg" class="img" alt="image" width="1128" height="487"/></figure></div><ol>
+<li class="numlist1a" id="o0065"><a id="p0585"></a>a. 每个线程块中的线程数是多少？</li>
+<li class="numlist1a" id="o0070"><a id="p0590"></a><span id="page_68" aria-label="Page 68" epub:type="pagebreak" role="doc-pagebreak"></span>b. 网格中的线程数是多少？</li>
+<li class="numlist1a" id="o0075"><a id="p0595"></a>c. 网格中的线程块数是多少？</li>
+<li class="numlist1a" id="o0080"><a id="p0600"></a>d. 执行第 05 行代码的线程数是多少？</li>
+</ol></li>
+<li class="numlista" id="o0085"><a id="p0605"></a><a id="li0030"></a>4. 考虑一个宽度为 400、高度为 500 的二维矩阵。该矩阵存储为一维数组。指出位于第 20 行、第 10 列的矩阵元素的数组下标：<ol>
+<li class="numlist1a" id="o0090"><a id="p0610"></a>a. 若矩阵按行主序布局存储。</li>
+<li class="numlist1a" id="o0095"><a id="p0615"></a>b. 若矩阵按列主序布局存储。</li>
+</ol></li>
+<li class="numlista" id="o0100"><a id="p0620"></a>5. 考虑一个宽度为 400、高度为 500、深度为 300 的三维张量。该张量按行主序布局存储为一维数组。指出位于 x=10、y=20、z=5 的张量元素的数组下标。</li>
+</ol></div></section><footer><section epub:type="rearnotes"><div class="ftnote"><hr/><p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn1"><a id="ntp0010"></a><a href="#Cfn1"><sup>1</sup></a> 计算能力低于 3.0 的设备允许 blockIdx.x 的取值范围为 1 到 2<sup>16</sup> − 1。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn2"><a id="ntp0015"></a><a href="#Cfn2"><sup>2</sup></a> 我们将按降序引用多维数据的维度：先是 z 维度，然后是 y 维度，依此类推。例如，对于一幅在垂直（y）维度上有 n 个像素、在水平（x）维度上有 m 个像素的图像，我们将其称为 n × m 图像。这符合 C 语言多维数组的索引约定。例如，为了简洁，我们可以在正文和图示中将 P[y][x] 记为 P<sub>y,x</sub>。遗憾的是，这种顺序与 gridDim 和 blockDim 维度中数据维度的排列顺序相反。当我们基于一个要由其线程处理的多维数组来定义线程网格的维度时，这种差异尤其容易令人困惑。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn3"><a id="ntp0020"></a><a href="#Cfn3"><sup>3</sup></a> 我们假设 CHANNELS 是一个值为 3 的常量，其定义在核函数之外。</p>
+</div></section></footer></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>

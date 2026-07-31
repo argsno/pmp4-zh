@@ -1,0 +1,37 @@
+[
+  {
+    "en": "inner product",
+    "zh": "内积",
+    "note": "§3.4 通篇；与已有词条 dot product（点积）并列出现，原文明确区分二者说法，故单列"
+  },
+  {
+    "en": "Basic Linear Algebra Subprograms (BLAS)",
+    "zh": "基本线性代数子程序（BLAS）",
+    "note": "§3.4 及“线性代数函数”补充栏；缩写 BLAS 保留英文"
+  },
+  {
+    "en": "LU decomposition",
+    "zh": "LU 分解",
+    "note": "§3.4 开头，作为线性代数求解器的例子"
+  },
+  {
+    "en": "square matrix",
+    "zh": "方阵",
+    "note": "§3.4 matrixMulKernel 的简化假设；习题 2"
+  },
+  {
+    "en": "submatrix",
+    "zh": "子矩阵",
+    "note": "§3.4 结尾，超出网格上限时对输出矩阵的划分"
+  },
+  {
+    "en": "stub function",
+    "zh": "桩函数",
+    "note": "习题 2，host stub function"
+  },
+  {
+    "en": "eigenvalue analysis",
+    "zh": "特征值分析",
+    "note": "“线性代数函数”补充栏，BLAS 的上层应用"
+  }
+]

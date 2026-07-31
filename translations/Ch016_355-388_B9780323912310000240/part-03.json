@@ -1,0 +1,155 @@
+{
+  "page": "Ch016_355-388_B9780323912310000240",
+  "nodes": [
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[8]/p[3]",
+      "en": "【M1】【M2】 can be simply reused from the derivations for the parameters. 【M3】【M4】 is also quite straightforward since the inputs play the same role as the parameters as far as y is concerned. We simply need to do a partial derivative of the intermediate function 【5】k【/5】 with respect to the inputs. For our perceptron example, we have",
+      "zh": "【M1】【M2】 可以直接复用对参数所做的推导。【M3】【M4】 也相当简单，因为就 y 而言，输入所起的作用与参数相同。我们只需对中间函数 【5】k【/5】 关于输入求偏导数即可。对我们的感知机例子，有"
+    },
+    {
+      "id": "n0076",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[8]/p[6]",
+      "en": "where 【M1】【M2】. In the perceptron example in 【3】Fig. 16.2【4】B【/4】【/3】, 【M5】【M6】 of the final layer (layer 2) is 【M7】【M8】, output of the top perceptron of layer 1 and 【M9】【M10】 is 【M11】【M12】, output of the bottom perceptron of layer 1. Now we are ready to proceed with the calculation of 【M13】【M14】 for the two perceptrons in the previous layer. Obviously, this process can be repeated if there are more layers.",
+      "zh": "其中 【M1】【M2】。在【3】图 16.2【4】B【/4】【/3】的感知机例子中，最后一层（第 2 层）的 【M5】【M6】 就是 【M7】【M8】，即第 1 层上方感知机的输出；【M9】【M10】 就是 【M11】【M12】，即第 1 层下方感知机的输出。现在我们可以着手计算前一层中两个感知机的 【M13】【M14】 了。显然，如果层数更多，这个过程还可以继续重复下去。"
+    },
+    {
+      "id": "st0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[9]/h4[1]",
+      "en": "Feedforward networks",
+      "zh": "前馈网络"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/section[9]/p[1]",
+      "en": "By connecting layers of classifiers and feeding the output of each layer to the next, we form a feedforward network. 【1】Fig. 16.2【2】B【/2】【/1】 shows an example of a two-layer feedforward network. All our discussions on inference with and training of multilayer perceptrons (MLP) assume this property. In a feedforward network, all outputs of an earlier layer go to one or more of the later layers. There are no connections from a later layer output to an earlier layer input. Therefore the backpropagation can simply iterate from the final stage backwards with no complications caused by feedback loops.",
+      "zh": "把一层层分类器连接起来，并把每一层的输出送入下一层，就构成了一个前馈网络。【1】图 16.2【2】B【/2】【/1】给出了一个两层前馈网络的例子。我们关于多层感知机（MLP）的推理与训练的全部讨论，都以这一性质为前提。在前馈网络中，较早一层的所有输出都通向后面的一层或多层；不存在从较后层的输出连回较早层输入的连接。因此，反向传播只需从最后一级向后逐级迭代即可，不会因反馈回路而变得复杂。"
+    },
+    {
+      "id": "st0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "16.2 Convolutional neural networks",
+      "zh": "16.2 卷积神经网络"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "A deep learning procedure (【1】LeCun et al., 2015【/1】) uses a hierarchy of feature extractors to learn complex features, which can achieve more accurate pattern recognition results if there is enough training data to allow the system to properly train the parameters of all the layers of feature extractors to automatically discover an adequate number of relevant patterns. There is one category of deep learning procedures that are easier to train and that can be generalized much better than others. These deep learning procedures are based on a particular type of feedforward network called the convolutional neural network (CNN).",
+      "zh": "深度学习方法（【1】LeCun et al., 2015【/1】）使用层级化的特征提取器来学习复杂特征。只要训练数据足够多，使系统能够充分训练各层特征提取器的参数，从而自动发现足够数量的相关模式，这类方法就能获得更准确的模式识别结果。有一类深度学习方法比其他方法更容易训练，泛化能力也好得多，它们基于一种称为卷积神经网络（CNN）的特殊前馈网络。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "The CNN was invented in late 1980s (【1】LeCun et al., 1998【/1】). By the early 1990s, CNNs had been applied to automated speech recognition, optical character recognition (OCR), handwriting recognition, and face recognition (【2】LeCun et al., 1990【/2】). However, until the late 1990s the mainstream of computer vision and that of automated speech recognition had been based on carefully engineered features. The amount of labeled data was insufficient for a deep learning system to compete with recognition or classification functions crafted by human experts. It was a common belief that it was computationally infeasible to automatically build hierarchical feature extractors that have enough layers to perform better than human-defined application-specific feature extractors.",
+      "zh": "CNN 发明于 20 世纪 80 年代末（【1】LeCun et al., 1998【/1】）。到 90 年代初，CNN 已被用于自动语音识别、光学字符识别（OCR）、手写识别和人脸识别（【2】LeCun et al., 1990【/2】）。然而，直到 90 年代末，计算机视觉与自动语音识别的主流方法一直建立在精心设计的人工特征之上。当时标注数据的数量还不足以让深度学习系统与人类专家精心打造的识别或分类函数相抗衡。人们普遍认为，要自动构建层数足够多、性能超过人工定义的应用专用特征提取器的层级化特征提取器，在计算上是不可行的。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "Interest in deep feedforward networks was revived around 2006 by a group of researchers who introduced unsupervised learning methods that could create multilayer, hierarchical feature detectors without requiring labeled data (【1】Hinton et al., 2006【/1】, 【2】Raina et al., 2009【/2】). The first major application of this approach was in speech recognition. The breakthrough was made possible by GPUs that allowed researchers to train networks ten times faster than traditional CPUs. This advancement, coupled with the massive amount of media data available online, drastically elevated the position of deep learning approaches. Despite their success in speech, CNN were largely ignored in the field of computer vision until 2012.",
+      "zh": "2006 年前后，一批研究者提出了无监督学习方法，无须标注数据就能构建多层的层级化特征检测器，从而重新点燃了人们对深度前馈网络的兴趣（【1】Hinton et al., 2006【/1】，【2】Raina et al., 2009【/2】）。这一方法的第一个重要应用是语音识别。这项突破得益于 GPU：它让研究者训练网络的速度比传统 CPU 快十倍。这一进展，加上网上可得的海量媒体数据，使深度学习方法的地位大幅提升。尽管在语音领域取得了成功，CNN 在计算机视觉领域却一直到 2012 年都基本上无人问津。"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "In 2012 a group of researchers from the University of Toronto trained a large, deep convolutional neural network to classify 1000 different classes in the ILSVRC contest (【1】Krizhevsky et al., 2012【/1】). The network was huge by the norms of the time: It had approximately 60 million parameters and 650,000 neurons. It was trained on 1.2 million high-resolution images from the ImageNet database. The network was trained in only one week on two GPUs using a CUDA-based convolutional neural network library written by Alex Krizhevsky (【2】Krizhevsky【/2】). The network achieved breakthrough results with a winning test error rate of 15.3%. In comparison, the second-place team that used the traditional computer vision algorithms had an error rate of 26.2%. This success triggered a revolution in computer vision, and CNN became a mainstream tool in computer vision, natural language processing, reinforcement learning, and many other traditional machine learning areas.",
+      "zh": "2012 年，多伦多大学的一组研究者训练了一个大型深度卷积神经网络，用于在 ILSVRC 竞赛中区分 1000 个不同的类别（【1】Krizhevsky et al., 2012【/1】）。以当时的标准衡量，这个网络非常庞大：它约有 6000 万个参数和 65 万个神经元，并在来自 ImageNet 数据库的 120 万张高分辨率图像上训练。借助 Alex Krizhevsky 编写的基于 CUDA 的卷积神经网络库（【2】Krizhevsky【/2】），该网络在两块 GPU 上仅用一周就完成了训练。这个网络取得了突破性的成绩，以 15.3% 的测试错误率夺冠；相比之下，使用传统计算机视觉算法的第二名队伍错误率为 26.2%。这一成功引发了计算机视觉领域的一场革命，CNN 由此成为计算机视觉、自然语言处理、强化学习以及许多其他传统机器学习领域的主流工具。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "This section presents the sequential implementation of CNN inference and training. We will use LeNet-5, the network that was designed in the late 1980s for digit recognition (【1】LeCun et al., 1990【/1】). As shown in 【2】Fig. 16.4【/2】, LeNet-5 is composed of three types of layers: convolutional layers, subsampling layers, and fully connected layers. These three types of layers continue to be the key components of today’s neural networks. We will consider the logical design and sequential implementation of each type of layer. The input to the network is shown as a gray image with a handwritten digit represented as a 2D 32 × 32 pixel array. The last layer computes the output, which is the probability that the original image belongs to each one of the ten classes (digits) that the network is set up to recognize.",
+      "zh": "本节给出 CNN 推理与训练的串行实现。我们将使用 LeNet-5，这是 20 世纪 80 年代末为数字识别而设计的网络（【1】LeCun et al., 1990【/1】）。如【2】图 16.4【/2】所示，LeNet-5 由三类层组成：卷积层、池化层（subsampling layer）和全连接层。这三类层至今仍是当今神经网络的关键组成部分。我们将逐一考察每一类层的逻辑设计和串行实现。网络的输入显示为一幅灰度图像，其中的手写数字表示为 32 × 32 的二维像素阵列。最后一层计算输出，即原始图像属于该网络所要识别的十个类别（数字）中各个类别的概率。"
+    },
+    {
+      "id": "n0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 16.4【/1】 LeNet-5, a convolutional neural network for handwritten digit recognition. The letter A in the input should be classified as none of the ten classes (digits).",
+      "zh": "【1】图 16.4【/1】 LeNet-5，一个用于手写数字识别的卷积神经网络。输入中的字母 A 不应被归入这十个类别（数字）中的任何一个。"
+    },
+    {
+      "id": "st0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/h3[1]",
+      "en": "Convolutional neural network inference",
+      "zh": "卷积神经网络推理"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[1]",
+      "en": "The computation in a convolutional network is organized as a sequence of layers. We will call inputs to and outputs from layers 【1】feature maps【/1】 or simply 【2】features【/2】. For example, in 【3】Fig. 16.4【/3】 the computation of the C1 convolutional layer at the input end of the network is organized to generate six output feature maps from the INPUT pixel array. The output to be produced for input feature maps consists of pixels, each of which is produced by performing a convolution between a small local patch of the feature map pixels produced by the previous layer (INPUT in the case of C1) and a set of weights (i.e., convolution filters as defined in 【4】Chapter 7【/4】: Convolution) called a 【5】filter bank【/5】. The convolution result is then fed into an activation function such as sigmoid to produce an output pixel in the output feature map. One can think of the convolutional layer for each pixel of an output feature map as a perceptron whose inputs are the patch of pixels in the input feature maps. That is, the value of each output pixel is the sum of convolution results from the corresponding patches in all input feature maps.",
+      "zh": "卷积网络中的计算被组织为一系列层。我们将层的输入和输出称为【1】特征图【/1】，或简称为【2】特征【/2】。例如，在【3】图 16.4【/3】中，位于网络输入端的 C1 卷积层的计算被组织为从 INPUT 像素数组生成六个输出特征图。为输入特征图生成的输出由像素组成，其中每个像素是通过对前一层（在 C1 的情况下为 INPUT）所产生的特征图像素的一个小的局部块，与一组权重（即【4】第 7 章【/4】（卷积）中所定义的卷积滤波器，称为【5】滤波器组【/5】）进行卷积而产生的。然后卷积结果被送入一个诸如 sigmoid 的激活函数，以在输出特征图中产生一个输出像素。可以将输出特征图中每个像素的卷积层看作一个感知机，其输入是输入特征图中的像素块。也就是说，每个输出像素的值是所有输入特征图中相应块的卷积结果之和。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[2]",
+      "en": "【1】Fig. 16.5【/1】 shows a small convolutional layer example. There are three input feature maps, two output feature maps, and six filter banks. Different pairs of input and output feature map pairs in a layer use different filter banks. Since there are three input feature maps and two output feature maps in 【2】Fig. 16.5【/2】, we need 3 × 2 = 6 filter banks. For the C3 layer of LeNet in 【3】Fig. 16.4【/3】 there are six input feature maps and 16 output feature maps. Thus a total of 6 × 16 = 96 filter banks are used in C3.",
+      "zh": "【1】图 16.5【/1】给出了一个小的卷积层例子。其中有三幅输入特征图、两幅输出特征图和六个滤波器组。层内不同的输入-输出特征图配对使用不同的滤波器组。由于【2】图 16.5【/2】中有三幅输入特征图和两幅输出特征图，我们需要 3 × 2 = 6 个滤波器组。对于【3】图 16.4【/3】中 LeNet 的 C3 层，有六幅输入特征图和 16 幅输出特征图，因此 C3 中共使用 6 × 16 = 96 个滤波器组。"
+    },
+    {
+      "id": "n0089",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 16.5【/1】 Forward propagation path of a convolutional layer.",
+      "zh": "【1】图 16.5【/1】 卷积层的前向传播路径。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[3]",
+      "en": "【1】Fig. 16.5B【/1】 illustrates more details of the calculations done by a convolutional layer. We omitted the activation function for the output pixels for simplicity. We show that each output feature map is the sum of convolutions of all input feature maps. For example, the upper left corner element of output feature map 0 (value 14) is calculated as the convolution between the circled patch of input feature maps and the corresponding filter banks:",
+      "zh": "【1】图 16.5B【/1】更详细地展示了卷积层所做的计算。为简单起见，我们省略了输出像素上的激活函数。图中表明，每幅输出特征图都是所有输入特征图上卷积结果之和。例如，输出特征图 0 左上角的元素（值为 14），就是把各输入特征图中圈出的小块与对应的滤波器组做卷积算出来的："
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[5]",
+      "en": "One can also think of the three input maps as a 3D input feature map and the three filter banks as a 3D filter bank. Each output feature map is simply the 3D convolution result of the 3D input feature map and the 3D filter bank. In 【1】Fig. 16.5B【/1】 the three 2D filter banks on the left form a 3D filter bank, and the three on the right form a second 3D filter bank. In general, if a convolutional layer has 【2】n【/2】 input feature maps and 【3】m【/3】 output feature maps, 【4】n*m【/4】 different 2D filter banks will be used. One can also think about these filter banks as 【5】m【/5】 3D filter banks. Although not shown in 【6】Fig. 16.4【/6】, all 2D filter banks used in LeNet-5 are 5×5 convolution filters.",
+      "zh": "也可以把这三幅输入图看作一幅三维输入特征图，把三个滤波器组看作一个三维滤波器组。这样，每幅输出特征图就只是该三维输入特征图与该三维滤波器组的三维卷积结果。在【1】图 16.5B【/1】中，左边的三个二维滤波器组构成一个三维滤波器组，右边的三个构成第二个三维滤波器组。一般来说，如果一个卷积层有 【2】n【/2】 幅输入特征图和 【3】m【/3】 幅输出特征图，就要用到 【4】n*m【/4】 个不同的二维滤波器组；也可以把这些滤波器组看作 【5】m【/5】 个三维滤波器组。虽然【6】图 16.4【/6】中没有画出，LeNet-5 中用到的所有二维滤波器组都是 5×5 的卷积滤波器。"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[6]",
+      "en": "Recall from 【1】Chapter 7【/1】, Convolution, that generating a convolution output image from an input image and a convolution filter requires one to make assumptions about the “ghost cells.” Instead of making such assumptions, the LeNet-5 design simply uses two elements at the edge of each dimension as ghost cells. This reduces the size of each dimension by four: two at the top, two at the bottom, two at the left, and two at the right. As a result, we see that for layer C1, the 32 × 32 INPUT image results in an output feature map that is a 28 × 28 image. 【2】Fig. 16.4【/2】 illustrates this computation by showing that a pixel in the C1 layer is generated from a square (5 × 5, although not explicitly shown) patch of INPUT pixels.",
+      "zh": "回想【1】第 7 章【/1】“卷积”中讲过，要由一幅输入图像和一个卷积滤波器生成卷积输出图像，需要对“幽灵单元”做出某种假设。LeNet-5 的设计没有做这类假设，而是直接把每个维度边缘处的两个元素当作幽灵单元。这使每个维度的尺寸减少四：上边两个、下边两个、左边两个、右边两个。于是可以看到，对 C1 层而言，32 × 32 的 INPUT 图像得到的输出特征图是一幅 28 × 28 的图像。【2】图 16.4【/2】展示了 C1 层中的一个像素是由 INPUT 像素中一个正方形小块（5 × 5，尽管图中未明确画出）生成的，从而说明了这一计算。"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[7]",
+      "en": "We assume that the input feature maps are stored in a 3D array X[C, H, W], where C is the number of input feature maps, H is the height of each input map image, and W is the width of each input map image. That is, the highest-dimension index selects one of the feature maps (often referred to as channels), and the indices of the lower two dimensions select one of the pixels in an input feature map. For example, the input feature maps for the C1 layer are stored in X[1, 32, 32], since there is only one input feature map (INPUT in 【1】Fig. 16.4【/1】) that consists of 32 pixels in each of the x and y dimensions. This also reflects the fact that one can think of the 2D input feature maps to a layer altogether as forming a 3D input feature map.",
+      "zh": "我们假设输入特征图存放在一个三维数组 X[C, H, W] 中，其中 C 是输入特征图的数目，H 是每幅输入图的高度，W 是每幅输入图的宽度。也就是说，最高维的索引选出其中一幅特征图（这些特征图常被称为通道），较低两维的索引则选出一幅输入特征图中的某个像素。例如，C1 层的输入特征图存放在 X[1, 32, 32] 中，因为只有一幅输入特征图（【1】图 16.4【/1】中的 INPUT），它在 x 和 y 两个维度上各有 32 个像素。这也体现了这样一个事实：可以把送入某一层的各二维输入特征图整体看作构成了一幅三维输入特征图。"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[8]",
+      "en": "The output feature maps of a convolutional layer are also stored in a 3D array Y[M, H − K + 1, W − K + 1], where M is the number of output feature maps and K is the height (and width) of each 2D filter. For example, the output feature maps for the C1 layer are stored in Y[6, 28, 28], since C1 generates six output feature maps using 5×5 filters. The filter banks are stored in a four-dimensional array W[M, C, K, K].【1】【2】1【/2】【/1】 There are M × C filter banks. Filter bank W[m, c,_,_] is used when using input feature map X[c,_,_] to calculate output feature map Y[m,_,_]. Recall that each output feature map is the sum of convolutions of all input feature maps. Therefore we can consider the forward propagation path of a convolutional layer as set of M 3D convolutions in which each 3D convolution is specified by a 3D filter bank that is a C × K × K submatrix of W.",
+      "zh": "卷积层的输出特征图同样存放在一个三维数组 Y[M, H − K + 1, W − K + 1] 中，其中 M 是输出特征图的数目，K 是每个二维滤波器的高度（也是宽度）。例如，C1 层的输出特征图存放在 Y[6, 28, 28] 中，因为 C1 用 5×5 的滤波器生成六幅输出特征图。滤波器组存放在一个四维数组 W[M, C, K, K] 中。【1】【2】1【/2】【/1】共有 M × C 个滤波器组。用输入特征图 X[c,_,_] 计算输出特征图 Y[m,_,_] 时，所使用的是滤波器组 W[m, c,_,_]。回想一下，每幅输出特征图都是所有输入特征图上卷积结果之和。因此，可以把卷积层的前向传播路径看作 M 次三维卷积的集合，其中每次三维卷积都由一个三维滤波器组指定，该滤波器组是 W 的一个 C × K × K 子矩阵。"
+    },
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[9]",
+      "en": "【1】Fig. 16.6【/1】 shows a sequential C implementation of the forward propagation path of a convolutional layer. Each iteration of the outermost (【2】m【/2】) for-loop (lines 04–12) generates an output feature map. Each iteration of the next two levels (【3】h【/3】 and 【4】w【/4】) of for-loops (lines 05–12) generates one pixel of the current output feature map. The innermost three loop levels (lines 08–11) perform the 3D convolution between the input feature maps and the 3D filter banks.",
+      "zh": "【1】图 16.6【/1】给出了卷积层前向传播路径的一个串行 C 语言实现。最外层（【2】m【/2】）for 循环（第 04–12 行）的每一次迭代生成一幅输出特征图。接下来两层（【3】h【/3】 和 【4】w【/4】）for 循环（第 05–12 行）的每一次迭代生成当前输出特征图中的一个像素。最内层的三重循环（第 08–11 行）执行输入特征图与三维滤波器组之间的三维卷积。"
+    },
+    {
+      "id": "n0096",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 16.6【/2】【/1】 A C implementation of the forward propagation path of a convolutional layer.",
+      "zh": "【1】【2】图 16.6【/2】【/1】 卷积层前向传播路径的 C 语言实现。"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[10]",
+      "en": "The output feature maps of a convolutional layer typically go through a subsampling layer (also known as a pooling layer). A subsampling layer reduces the size of image maps by combining pixels. For example, in 【1】Fig. 16.4【/1】, subsampling layer S2 takes the six input feature maps of size 28 × 28 and generates six feature maps of size 14 × 14. Each pixel in a subsampling output feature map is generated from a 2 × 2 neighborhood in the corresponding input feature map. The values of these four pixels are averaged to form one pixel in the output feature map. The output of a subsampling layer has the same number of output feature maps as the previous layer, but each map has half the number of rows and columns. For example, the number of output feature maps (six) of the subsampling layer S2 is the same as the number of its input feature maps, or the output feature maps of the convolutional layer C1.",
+      "zh": "卷积层的输出特征图通常还要经过一个池化层（subsampling layer，也称 pooling layer）。池化层通过合并像素来缩小图的尺寸。例如，在【1】图 16.4【/1】中，池化层 S2 接收六幅 28 × 28 的输入特征图，生成六幅 14 × 14 的特征图。池化输出特征图中的每个像素都由对应输入特征图中一个 2 × 2 的邻域生成：把这四个像素的值取平均，构成输出特征图中的一个像素。池化层输出的特征图数目与前一层相同，但每幅图的行数和列数都减半。例如，池化层 S2 的输出特征图数目（六幅）与它的输入特征图数目相同，也就是与卷积层 C1 的输出特征图数目相同。"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[11]",
+      "en": "【1】Fig. 16.7【/1】 shows a sequential C implementation of the forward propagation path of a subsampling layer. Each iteration of the outermost (【2】m【/2】) for-loop (lines 02–11) generates an output feature map. The next two levels (【3】h【/3】 and 【4】w【/4】) of for-loops (lines 03–11) generates individual pixels of the current output map. The two innermost for-loops (lines 06–09) sum up the pixels in the neighborhood. K is equal to 2 in our LeNet-5 subsampling example in 【5】Fig. 16.4【/5】. A bias value b[m] that is specific to each output feature map is then added to each output feature map, and the sum goes through a sigmoid activation function. The reader should recognize that each output pixel is generated by the equivalent of a perceptron that takes four of the input pixels in each feature map as its input and generates a pixel in the corresponding output feature map. ReLU is another frequently used activation function that is a simple nonlinear filter that passes only nonnegative values: Y = X, if X ≥ 0 and 0 otherwise.",
+      "zh": "【1】图 16.7【/1】给出了池化层前向传播路径的一个串行 C 语言实现。最外层（【2】m【/2】）for 循环（第 02–11 行）的每一次迭代生成一幅输出特征图。接下来两层（【3】h【/3】 和 【4】w【/4】）for 循环（第 03–11 行）生成当前输出图中的各个像素。最内层的两重 for 循环（第 06–09 行）把邻域内的像素求和。在【5】图 16.4【/5】所示的 LeNet-5 池化例子中，K 等于 2。随后，为每幅输出特征图各加上一个专属于它的偏置值 b[m]，其和再经过一个 sigmoid 激活函数。读者应当看出，每个输出像素都是由一个等价的感知机生成的：它以每幅特征图中的四个输入像素为输入，生成对应输出特征图中的一个像素。ReLU 是另一种常用的激活函数，它是一个简单的非线性滤波器，只让非负值通过：若 X ≥ 0 则 Y = X，否则为 0。"
+    },
+    {
+      "id": "n0099",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 16.7【/2】【/1】 A sequential C implementation of the forward propagation path of a subsampling layer. The layer also includes an activation function, which is included in a convolutional layer if there is no subsampling layer after the convolutional layer.",
+      "zh": "【1】【2】图 16.7【/2】【/1】 池化层前向传播路径的串行 C 语言实现。该层还包含一个激活函数；若某个卷积层之后没有池化层，则该激活函数就并入这个卷积层中。"
+    }
+  ]
+}

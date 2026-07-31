@@ -19,6 +19,7 @@ import sys
 
 from .document import Document
 from .glossary import load_glossary
+from .landing import LANDING_FILE, render_landing
 from .nav import nav_labels
 from .render import extract, render
 
@@ -144,6 +145,7 @@ def _build(args, write):
     nav = _read_nav(root / NAV_FILE)
 
     done, failed = 0, 0
+    provisioned = set()
     for path in _pages(web, args.only):
         page_html = _read(path)
         translations = _page_translations(page_html, path.stem, nav,
@@ -159,14 +161,32 @@ def _build(args, write):
         if write:
             for site, html in (("zh", result.zh_html),
                                ("bilingual", result.bilingual_html)):
-                if done == 1:       # nothing rendered, nothing to house it in
+                if site not in provisioned:   # house assets once per site
                     _provision(web, site)
+                    provisioned.add(site)
+                _write_landing(web, site, nav)
                 (web / site / "chapters" / path.name).write_text(
                     html, encoding="utf-8")
 
     print("%s: %d page(s) ok, %d skipped"
           % ("render" if write else "validate", done, failed))
     return 1 if failed else 0
+
+
+def _write_landing(web, site, nav):
+    """The site's own landing page, in its own language.
+
+    Written as a real file, which is also what stops `_provision` from linking
+    `index.html` back to the English one — and why it must never be written
+    *through* such a link, which would overwrite the English landing page.
+    """
+    source = web / LANDING_FILE
+    if not source.exists():
+        return
+    target = web / site / LANDING_FILE
+    if target.is_symlink():           # _provision may have linked it to English
+        target.unlink()
+    target.write_text(render_landing(_read(source), nav, site), encoding="utf-8")
 
 
 def _page_translations(page_html, stem, nav, stored, fill_english):
@@ -197,7 +217,8 @@ def _provision(web, site):
     root = web / site
     (root / "chapters").mkdir(parents=True, exist_ok=True)
     for entry in sorted(web.iterdir()):
-        if entry.name in SITES or entry.name == "chapters":
+        if entry.name in SITES or entry.name == "chapters" \
+                or entry.name == LANDING_FILE:
             continue
         link, target = root / entry.name, os.path.join("..", entry.name)
         if link.is_symlink():

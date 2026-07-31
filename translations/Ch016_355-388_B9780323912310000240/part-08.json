@@ -1,0 +1,137 @@
+{
+  "page": "Ch016_355-388_B9780323912310000240",
+  "nodes": [
+    {
+      "id": "n0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[11]/td[2]",
+      "en": "Width of zero padding",
+      "zh": "零填充的宽度"
+    },
+    {
+      "id": "p0665",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "There are two inputs to the convolution:",
+      "zh": "卷积有两个输入："
+    },
+    {
+      "id": "o0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/ol[1]/li[1]",
+      "en": "1. D is a four-dimensional N × C × H × W tensor, which contains the input data.【1】【2】4【/2】【/1】",
+      "zh": "1. D 是一个四维的 N×C×H×W 张量，其中包含输入数据。【1】【2】4【/2】【/1】"
+    },
+    {
+      "id": "o0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/ol[1]/li[2]",
+      "en": "2. F is a four-dimensional K × C × R × S tensor, which contains the convolutional filters.",
+      "zh": "2. F 是一个四维的 K×C×R×S 张量，其中包含卷积滤波器。"
+    },
+    {
+      "id": "p0680",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "The input data array (tensor) D ranges over N samples in a minibatch, C input feature maps per sample, H rows per input feature map, and W columns per input feature map. The filters range over K output feature maps, C input feature maps, R rows per filter bank, and S columns per filter bank. The output is also a four-dimensional tensor O that ranges over N samples in the minibatch, K output feature maps, P rows per output feature map, and Q columns per output feature map, where P = f(H; R; u; pad_h) and Q = f(W; S; v; pad_w), meaning that the height and width of the output feature maps depend on the input feature map and filter bank height and width, along with padding and striding choices. The striding parameters u and v allow the user to reduce the computational load by computing only a subset of the output pixels. The padding parameters allow the user to specify how many rows or columns of 0 entries are appended to each feature map for improved memory alignment and/or vectorized execution.",
+      "zh": "输入数据数组（张量）D 覆盖小批量中的 N 个样本、每个样本的 C 个输入特征图、每个输入特征图的 H 行以及每个输入特征图的 W 列。滤波器覆盖 K 个输出特征图、C 个输入特征图、每个滤波器组的 R 行以及每个滤波器组的 S 列。输出同样是一个四维张量 O，覆盖小批量中的 N 个样本、K 个输出特征图、每个输出特征图的 P 行以及每个输出特征图的 Q 列，其中 P = f(H; R; u; pad_h)，Q = f(W; S; v; pad_w)，这意味着输出特征图的高度和宽度取决于输入特征图和滤波器组的高度与宽度，以及填充和步长的选择。步长参数 u 和 v 允许用户通过只计算输出像素的一个子集来减少计算负载。填充参数允许用户指定向每个特征图追加多少行或多少列 0 元素，以改善内存对齐和/或向量化执行。"
+    },
+    {
+      "id": "p0685",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "CUDNN (【1】Chetlur et al., 2014【/1】) supports multiple algorithms for implementing a convolutional layer: matrix multiplication–based GEMM (【2】Tan et al., 2011【/2】) and Winograd (【3】Lavin &amp; Scott, 2016【/3】), FFT-based (【4】Vasilache et al., 2014【/4】), and so on. The GEMM-based algorithm to implement the convolutions with a matrix multiplication is similar to the approach presented in 【5】Section 16.4【/5】. As we discussed at the end of 【6】Section 16.4【/6】, materializing the expanded input feature matrix in global memory can be costly in terms of both global memory space and bandwidth consumption. CUDNN avoids this problem by lazily generating and loading the expanded input feature map matrix X_unroll into on-chip memory only, rather than by gathering it in off-chip memory before calling a matrix multiplication routine. NVIDIA provides a matrix multiplication–based routine that achieves a high utilization of the maximal theoretical floating-point throughput on GPUs. The algorithm for this routine is similar to the algorithm described by 【7】Tan et al. (2011)【/7】. Fixed-size submatrices of the input matrices A and B are successively read into on-chip memory and are then used to compute a submatrix of the output matrix C. All indexing complexities that are imposed by the convolution are handled in the management of tiles in this routine. We compute on tiles of A and B while fetching the next tiles of A and B from off-chip memory into on-chip caches and other memories. This technique hides the memory latency that is associated with the data transfer, allowing the matrix multiplication computation to be limited only by the time it takes to perform the arithmetic calculations.",
+      "zh": "CUDNN（【1】Chetlur et al., 2014【/1】）支持多种用于实现卷积层的算法：基于矩阵乘法的 GEMM（【2】Tan et al., 2011【/2】）和 Winograd（【3】Lavin &amp; Scott, 2016【/3】）、基于 FFT 的（【4】Vasilache et al., 2014【/4】）等等。这种基于 GEMM、用矩阵乘法实现卷积的算法，与【5】16.4 节【/5】中给出的方法类似。正如我们在【6】16.4 节【/6】末尾所讨论的，在全局内存中具体化展开的输入特征图矩阵，在全局内存空间和带宽消耗两方面都可能代价高昂。CUDNN 通过将展开的输入特征图矩阵 X_unroll 惰性生成并仅加载到片上内存中，而不是在调用矩阵乘法例程之前将其收集到片外内存中，从而避免了这一问题。NVIDIA 提供了一个基于矩阵乘法的例程，能够在 GPU 上高度利用最大理论浮点吞吐量。该例程的算法与【7】Tan et al. (2011)【/7】所描述的算法类似。输入矩阵 A 和 B 的固定大小子矩阵被依次读入片上内存，然后用于计算输出矩阵 C 的一个子矩阵。卷积所带来的所有索引复杂性，都在这个例程的分块管理中得到处理。我们在 A 和 B 的分块上进行计算，同时将 A 和 B 的下一个分块从片外内存取到片上缓存及其他内存中。这一技术隐藏了与数据传输相关的内存延迟，使得矩阵乘法计算只受执行算术运算所需时间的限制。"
+    },
+    {
+      "id": "p0690",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
+      "en": "Since the tiling that is required for the matrix multiplication routine is independent of any parameters from the convolution, the mapping between the tile boundaries of X_unroll and the convolution problem is nontrivial. Accordingly, the CUDNN approach entails computing this mapping and using it to load the correct elements of A and B into on-chip memories. This happens dynamically as the computation proceeds, which allows the CUDNN convolution implementation to exploit optimized infrastructure for matrix multiplication. It requires additional indexing arithmetic compared to a matrix multiplication, but it fully leverages the computational engine of matrix multiplication to perform the work. After the computation is complete, CUDNN performs the required tensor transposition to store the result in the user’s desired data layout.",
+      "zh": "由于矩阵乘法例程所需的分块划分与卷积的任何参数无关，X_unroll 的分块边界与卷积问题之间的映射并非易事。因此，CUDNN 方法需要计算这一映射，并利用它将 A 和 B 的正确元素加载到片上内存中。这是随着计算推进动态进行的，这使得 CUDNN 的卷积实现能够利用针对矩阵乘法的优化基础设施。与矩阵乘法相比，它需要额外的索引算术，但它充分利用了矩阵乘法的计算引擎来完成工作。计算完成后，CUDNN 执行所需的张量转置，以将结果存储为用户期望的数据布局。"
+    },
+    {
+      "id": "st0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "16.6 Summary",
+      "zh": "16.6 本章小结"
+    },
+    {
+      "id": "p0695",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "This chapter started with a brief introduction to machine learning. It then dove more deeply into the classification task and introduced perceptrons, a type of linear classifier that is foundational for understanding modern CNN. We discussed how the forward inference and backward propagation training passes are implemented for both single-layer and MLP. In particular, we discussed the need for differentiable activation functions and how the model parameters can be updated through chain rules in a multilayer perceptron network during the training process.",
+      "zh": "本章以对机器学习的简要介绍开始。随后它更深入地探讨分类任务，并引入了感知机——一种对理解现代 CNN 具有基础意义的线性分类器。我们讨论了前向推理和反向传播训练过程在单层网络和多层感知机（MLP）中是如何实现的。特别是，我们讨论了可微激活函数的必要性，以及模型参数在训练过程中如何通过一个多层感知机网络中的链式法则进行更新。"
+    },
+    {
+      "id": "p0700",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "Based on the conceptual and mathematical understanding of perceptrons, we presented a basic convolutional neural network and the implementation of its major types of layers. These layers can be viewed as special cases and/or simple adaptations of perceptrons. We then built on the convolution pattern in 【1】Chapter 7【/1】, Convolution, to present a CUDA kernel implementation of the convolutional layer, the most computationally intensive layer of CNN.",
+      "zh": "在了对感知机的概念性和数学性理解的基础上，我们介绍了一个基础的卷积神经网络（CNN）及其主要类型层的实现。这些层可以看作感知机的特例和/或简单适配。接着，我们基于【1】第 7 章【/1】（卷积）中的卷积模式，给出了卷积层——CNN 中计算最密集的层——的一个 CUDA 核函数实现。"
+    },
+    {
+      "id": "p0705",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "We then presented techniques for formulating convolutional layers as matrix multiplications by unrolling the input feature maps into a matrix. The conversion allows the convolutional layers to benefit from highly optimized GEMM libraries for GPUs. We also presented the C and CUDA implementations of the unrolling procedure for the input matrix and discussed the pros and cons of the unrolling approach.",
+      "zh": "接着，我们介绍了通过将输入特征图展开为矩阵，从而将卷积层表述为矩阵乘法的技术。这一转换使卷积层能够受益于针对 GPU 的高度优化的 GEMM 库。我们还介绍了针对输入矩阵的展开过程的 C 与 CUDA 实现，并讨论了展开方法的优缺点。"
+    },
+    {
+      "id": "p0710",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[4]",
+      "en": "We ended the chapter with an overview of the CUDNN library, which is used by most deep learning frameworks. Users of these frameworks can benefit from the highly optimized layer implementations without writing CUDA kernels themselves.",
+      "zh": "我们以对 CUDNN 库的概述结束了本章，该库被大多数深度学习框架所使用。这些框架的用户可以在不自己编写 CUDA 核函数的情况下，受益于高度优化的层实现。"
+    },
+    {
+      "id": "st0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]",
+      "en": "1. Implement the forward pass for the pooling layer described in 【1】Section 16.2【/1】.",
+      "zh": "1. 实现【1】16.2 节【/1】中描述的池化层的前向计算。"
+    },
+    {
+      "id": "o0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]",
+      "en": "2. We used an [N × C × H × W] layout for input and output features. Can we reduce the memory bandwidth by changing it to an [N × H × W × C] layout? What are potential benefits of using a [C × H × W × N] layout?",
+      "zh": "2. 我们对输入和输出特征使用了 [N×C×H×W] 布局。我们能否通过将其改为 [N×H×W×C] 布局来减少内存带宽？使用 [C×H×W×N] 布局有哪些潜在的好处？"
+    },
+    {
+      "id": "o0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]",
+      "en": "3. Implement the backward pass for the convolutional layer described in 【1】Section 16.2【/1】.",
+      "zh": "3. 实现【1】16.2 节【/1】中描述的卷积层的反向计算。"
+    },
+    {
+      "id": "o0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[4]",
+      "en": "4. Analyze the read access pattern to X in the unroll_Kernel in 【1】Fig. 16.18【/1】 and show whether the memory reads that are done by adjacent threads can be coalesced.",
+      "zh": "4. 分析【1】图 16.18【/1】中 unroll_Kernel 里对 X 的读取访问模式，并说明相邻线程所做的存储器读取能否被合并。"
+    },
+    {
+      "id": "st0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    },
+    {
+      "id": "fn2",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[1]",
+      "en": "【1】【2】1【/2】【/1】Note that W is used for both the width of images and the name of the filter bank (weight) matrix. In each case the usage should be clear from the context.",
+      "zh": "【1】【2】1【/2】【/1】请注意，W 既用于表示图像的宽度，也用于表示滤波器组（权重）矩阵的名称。在每种情况下，其用法都应能从上下文看清。"
+    },
+    {
+      "id": "fn3",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[2]",
+      "en": "【1】【2】2【/2】【/1】If we work by the “optimization book,” we should return used samples back to the training set and then build a new minibatch by randomly picking the next samples. In practice, we iterate sequentially over the whole training set. In machine learning, a pass through the training set is called an 【3】epoch【/3】. Then we shuffle the whole training set and start the next epoch.",
+      "zh": "【1】【2】2【/2】【/1】如果我们严格按“优化手册”来做，应当把用过的样本放回训练集，然后通过随机挑选下一批样本来构建一个新的小批量。在实践中，我们按顺序遍历整个训练集。在机器学习中，遍历一遍训练集称为一个【3】轮次【/3】。然后我们将整个训练集打乱，并开始下一个轮次。"
+    },
+    {
+      "id": "fn4",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[3]",
+      "en": "【1】【2】3【/2】【/1】See also 【3】https://petewarden.com/2015/04/20/why-gemm-is-at-the-heart-of-deep-learning/【/3】 for a very detailed explanation.",
+      "zh": "【1】【2】3【/2】【/1】另见【3】https://petewarden.com/2015/04/20/why-gemm-is-at-the-heart-of-deep-learning/【/3】以了解非常详尽的解释。"
+    },
+    {
+      "id": "fn5",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[4]",
+      "en": "【1】【2】4【/2】【/1】【3】Tensor【/3】 is a mathematical term for arrays that have more than two dimensions. In mathematics, matrices have only two dimensions. Arrays with three or more dimensions are called tensors. For the purpose of this book, a T-dimensional tensor can be treated simply as a T-dimensional array.",
+      "zh": "【1】【2】4【/2】【/1】【3】张量【/3】是一个数学术语，指具有两个以上维度的数组。在数学中，矩阵只有两个维度。具有三个或更多维度的数组称为张量。就本书而言，一个 T 维张量可以简单地视为一个 T 维数组。"
+    }
+  ]
+}

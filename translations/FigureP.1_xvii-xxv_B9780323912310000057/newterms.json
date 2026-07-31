@@ -1,0 +1,27 @@
+[
+  {
+    "en": "terascale",
+    "zh": "万亿次级",
+    "note": "折叠自原文 terascale computing（p0015）。中文用 万亿次级（terascale），取短词条，与 Ch001 的 terascale 词条一致；加长的 terascale computing→万亿次级计算 会令本页 p0015 校验失败（§5 子串匹配已覆盖）。"
+  },
+  {
+    "en": "exascale",
+    "zh": "百亿亿次级",
+    "note": "折叠自原文 exascale computing（p0015）。中文用 百亿亿次级（exascale），取短词条，与 Ch001 的 exascale 词条一致。"
+  },
+  {
+    "en": "Volta / Turing / Ampere",
+    "zh": "保留英文（GPU 架构代号）",
+    "note": "p0025 列举第 3 版之后的三代 GPU 架构。§5.1 已收 Fermi / Kepler / Pascal，此三代同属架构代号，处理方式一致。"
+  },
+  {
+    "en": "noncomparison sort",
+    "zh": "非比较排序",
+    "note": "u0025（第 13 章简介）：radix sort 被称作 noncomparison sort algorithm。与 §5.5 已有的 comparison-based sorting（基于比较的排序）成对。"
+  },
+  {
+    "en": "fully connected layer",
+    "zh": "全连接层",
+    "note": "u0055（第 16 章简介）与卷积层、池化层并列。§5.8 已收 convolutional layer / pooling layer，缺此项。"
+  }
+]

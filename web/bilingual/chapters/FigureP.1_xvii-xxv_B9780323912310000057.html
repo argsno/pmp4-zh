@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="Front Matter / 前言部分">
+      <option value="Cover.html">Cover image / 封面图</option>
+      <option value="Title_page.html">Title page / 标题页</option>
+      <option value="Contents.html">Table of Contents / 目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">Copyright / 版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">Dedication / 献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">Foreword / 前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">Acknowledgments / 致谢</option>
+    </optgroup>
+    <optgroup label="Preface / 序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html" selected>Preface / 序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">How to use the book / 如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">A two-phased approach / 两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">Tying it all together: the final project / 融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">The design document / 设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">The project report and symposium / 项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">Class competition / 课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">Course resources / 课程资源</option>
+    </optgroup>
+    <optgroup label="Chapter 1. Introduction / 第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">Chapter 1. Introduction / 第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">Abstract / 摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 Heterogeneous parallel computing / 1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 Why more speed or parallelism? / 1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 Speeding up real applications / 1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 Challenges in parallel programming / 1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 Related parallel programming interfaces / 1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 Overarching goals / 1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 Organization of the book / 1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Part I: Fundamental Concepts / 第一部分：基本概念">
+      <option value="Part1.html">Part I: Fundamental Concepts / 第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="Chapter 2. Heterogeneous data parallel computing / 第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html">Chapter 2. Heterogeneous data parallel computing / 第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">Abstract / 摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 Data parallelism / 2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C program structure / 2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 A vector addition kernel / 2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 Device global memory and data transfer / 2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 Kernel functions and threading / 2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 Calling kernel functions / 2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 Compilation / 2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 Summary / 2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">Exercises / 习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 3. Multidimensional grids and data / 第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html">Chapter 3. Multidimensional grids and data / 第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">Abstract / 摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 Multidimensional grid organization / 3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 Mapping threads to multidimensional data / 3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 Image blur: a more complex kernel / 3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 Matrix multiplication / 3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 Summary / 3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">Exercises / 习题</option>
+    </optgroup>
+    <optgroup label="Chapter 4. Compute architecture and scheduling / 第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html">Chapter 4. Compute architecture and scheduling / 第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">Abstract / 摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 Architecture of a modern GPU / 4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 Block scheduling / 4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 Synchronization and transparent scalability / 4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 Warps and SIMD hardware / 4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 Control divergence / 4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 Warp scheduling and latency tolerance / 4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 Resource partitioning and occupancy / 4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 Querying device properties / 4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 Summary / 4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">Exercises / 习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 5. Memory architecture and data locality / 第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html">Chapter 5. Memory architecture and data locality / 第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">Abstract / 摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 Importance of memory access efficiency / 5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA memory types / 5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 Tiling for reduced memory traffic / 5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 A tiled matrix multiplication kernel / 5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 Boundary checks / 5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 Impact of memory usage on occupancy / 5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 Summary / 5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">Exercises / 习题</option>
+    </optgroup>
+    <optgroup label="Chapter 6. Performance considerations / 第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">Chapter 6. Performance considerations / 第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">Abstract / 摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 Memory coalescing / 6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 Hiding memory latency / 6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 Thread coarsening / 6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 A checklist of optimizations / 6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 Knowing your computation’s bottleneck / 6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 Summary / 6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">Exercises / 习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Part II: Parallel Patterns / 第二部分：并行模式">
+      <option value="Part2.html">Part II: Parallel Patterns / 第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="Chapter 7. Convolution: An introduction to constant memory and caching / 第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">Chapter 7. Convolution: An introduction to constant memory and caching / 第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">Abstract / 摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">Chapter Outline / 本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 Background / 7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 Parallel convolution: a basic algorithm / 7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 Constant memory and caching / 7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 Tiled convolution with halo cells / 7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 Tiled convolution using caches for halo cells / 7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 Summary / 7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">Exercises / 习题</option>
+    </optgroup>
+    <optgroup label="Chapter 8. Stencil / 第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html">Chapter 8. Stencil / 第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">Abstract / 摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 Background / 8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 Parallel stencil: a basic algorithm / 8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 Shared memory tiling for stencil sweep / 8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 Thread coarsening / 8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 Register tiling / 8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 Summary / 8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">Exercises / 习题</option>
+    </optgroup>
+    <optgroup label="Chapter 9. Parallel histogram: An introduction to atomic operations and privatization / 第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html">Chapter 9. Parallel histogram: An introduction to atomic operations and privatization / 第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">Abstract / 摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 Background / 9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 Atomic operations and a basic histogram kernel / 9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 Latency and throughput of atomic operations / 9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 Privatization / 9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 Coarsening / 9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 Aggregation / 9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 Summary / 9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">Exercises / 习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 10. Reduction: And minimizing divergence / 第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">Chapter 10. Reduction: And minimizing divergence / 第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">Abstract / 摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 Background / 10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 Reduction trees / 10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 A simple reduction kernel / 10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 Minimizing control divergence / 10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 Minimizing memory divergence / 10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 Minimizing global memory accesses / 10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 Hierarchical reduction for arbitrary input length / 10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 Thread coarsening for reduced overhead / 10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 Summary / 10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">Exercises / 习题</option>
+    </optgroup>
+    <optgroup label="Chapter 11. Prefix sum (scan): An introduction to work efficiency in parallel algorithms / 第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">Chapter 11. Prefix sum (scan): An introduction to work efficiency in parallel algorithms / 第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">Abstract / 摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 Background / 11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 Parallel scan with the Kogge-Stone algorithm / 11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 Speed and work efficiency consideration / 11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 Parallel scan with the Brent-Kung algorithm / 11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 Coarsening for even more work efficiency / 11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 Segmented parallel scan for arbitrary-length inputs / 11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 Single-pass scan for memory access efficiency / 11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 Summary / 11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">Exercises / 习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 12. Merge: An introduction to dynamic input data identification / 第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html">Chapter 12. Merge: An introduction to dynamic input data identification / 第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">Abstract / 摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 Background / 12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 A sequential merge algorithm / 12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 A parallelization approach / 12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 Co-rank function implementation / 12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 A basic parallel merge kernel / 12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 A tiled merge kernel to improve coalescing / 12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 A circular buffer merge kernel / 12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 Thread coarsening for merge / 12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 Summary / 12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">Exercises / 习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Part III: Advanced Patterns and Applications / 第三部分：高级模式与应用">
+      <option value="Part3.html">Part III: Advanced Patterns and Applications / 第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="Chapter 13. Sorting / 第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">Chapter 13. Sorting / 第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">Abstract / 摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 Background / 13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 Radix sort / 13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 Parallel radix sort / 13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 Optimizing for memory coalescing / 13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 Choice of radix value / 13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 Thread coarsening to improve coalescing / 13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 Parallel merge sort / 13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 Other parallel sort methods / 13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 Summary / 13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">Exercises / 习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 14. Sparse matrix computation / 第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html">Chapter 14. Sparse matrix computation / 第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">Abstract / 摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 Background / 14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 A simple SpMV kernel with the COO format / 14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 Grouping row nonzeros with the CSR format / 14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 Improving memory coalescing with the ELL format / 14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 Regulating padding with the hybrid ELL-COO format / 14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 Reducing control divergence with the JDS format / 14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 Summary / 14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">Exercises / 习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 15. Graph traversal / 第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html">Chapter 15. Graph traversal / 第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">Abstract / 摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 Background / 15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 Breadth-first search / 15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 Vertex-centric parallelization of breadth-first search / 15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 Edge-centric parallelization of breadth-first search / 15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 Improving efficiency with frontiers / 15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 Reducing contention with privatization / 15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 Other optimizations / 15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 Summary / 15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">Exercises / 习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 16. Deep learning / 第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">Chapter 16. Deep learning / 第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">Abstract / 摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 Background / 16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 Convolutional neural networks / 16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 Convolutional layer: a CUDA inference kernel / 16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 Formulating a convolutional layer as GEMM / 16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 CUDNN library / 16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 Summary / 16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">Exercises / 习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 17. Iterative magnetic resonance imaging reconstruction / 第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html">Chapter 17. Iterative magnetic resonance imaging reconstruction / 第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">Abstract / 摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 Background / 17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 Iterative reconstruction / 17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 Computing FHD / 17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 Summary / 17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">Exercises / 习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 18. Electrostatic potential map / 第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">Chapter 18. Electrostatic potential map / 第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">Abstract / 摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 Background / 18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 Scatter versus gather in kernel design / 18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 Thread coarsening / 18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 Memory coalescing / 18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 Cutoff binning for data size scalability / 18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 Summary / 18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">Exercises / 习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 19. Parallel programming and computational thinking / 第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">Chapter 19. Parallel programming and computational thinking / 第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">Abstract / 摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 Goals of parallel computing / 19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 Algorithm selection / 19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 Problem decomposition / 19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 Computational thinking / 19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 Summary / 19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Part IV: Advanced Practices / 第四部分：高级实践">
+      <option value="Part4.html">Part IV: Advanced Practices / 第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="Chapter 20. Programming a heterogeneous computing cluster: An introduction to CUDA streams / 第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">Chapter 20. Programming a heterogeneous computing cluster: An introduction to CUDA streams / 第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">Abstract / 摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 Background / 20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 A running example / 20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 Message passing interface basics / 20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 Message passing interface point-to-point communication / 20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 Overlapping computation and communication / 20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 Message passing interface collective communication / 20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA aware message passing interface / 20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 Summary / 20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">Exercises / 习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 21. CUDA dynamic parallelism / 第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html">Chapter 21. CUDA dynamic parallelism / 第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">Abstract / 摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 Background / 21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 Dynamic parallelism overview / 21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 An example: Bezier curves / 21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 A recursive example: quadtrees / 21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 Important considerations / 21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 Summary / 21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">Exercises / 习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 Support code for quadtree example / A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 22. Advanced practices and future evolution / 第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">Chapter 22. Advanced practices and future evolution / 第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">Abstract / 摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">Chapter Outline / 本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 Model of host/device interaction / 22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 Kernel execution control / 22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 Memory bandwidth and compute throughput / 22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 Programming environment / 22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 Future outlook / 22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">References / 参考文献</option>
+    </optgroup>
+    <optgroup label="Chapter 23. Conclusion and outlook / 第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">Chapter 23. Conclusion and outlook / 第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">Abstract / 摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">Chapter Outline / 本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 Goals revisited / 23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 Future outlook / 23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="Appendix A. Numerical considerations / 附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">Appendix A. Numerical considerations / 附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 Floating-point data representation / A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 Representable numbers / A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 Special bit patterns and precision in IEEE format / A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 Arithmetic accuracy and rounding / A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 Algorithm considerations / A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 Linear solvers and numerical stability / A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 Summary / A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">Exercises / 习题</option>
+    </optgroup>
+    <optgroup label="Back Matter / 后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">Index / 索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">&#8249; 上一页</a>
+    <a class="navbtn" href="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/FigureP.1_xvii-xxv_B9780323912310000057.html">EN</a><a class="langbtn" href="../../zh/chapters/FigureP.1_xvii-xxv_B9780323912310000057.html">中</a><span class="langbtn active">对照</span></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-preface" epub:type="preface" id="PRE1">
+<div id="page_xvii" aria-label="Page xvii" epub:type="pagebreak" role="doc-pagebreak"></div>
+<div id="CN">
+<a id="FigureP.1_xvii-xxv_B9780323912310000057titl"></a></div><h1 class="fmtitle" id="tit0010">Preface</h1><h1 class="fmtitle zh-trans" lang="zh-CN">序言</h1><div><p class="fmauthor">Wen-mei W. Hwu, David B. Kirk and Izzat El Hajj</p><p class="fmauthor zh-trans" lang="zh-CN">Wen-mei W. Hwu、David B. Kirk 与 Izzat El Hajj</p></div><p id="p0010" class="textfl"><a id="Pxvii"></a>We are proud to introduce to you the fourth edition of <em>Programming Massively Parallel Processors: A Hands-on Approach</em>.</p><p class="textfl zh-trans" lang="zh-CN">我们很荣幸向你介绍<em>《大规模并行处理器编程：实践方法》</em>第 4 版。</p>
+<p id="p0015" class="text">Mass market computing systems that combine multicore CPUs and many-thread GPUs have brought terascale computing to laptops and exascale computing to clusters. Armed with such computing power, we are at the dawn of the widespread use of computational experiments in the science, engineering, medical, and business disciplines. We are also witnessing the wide adoption of GPU computing in key industry vertical markets, such as finance, e-commerce, oil and gas, and manufacturing. Breakthroughs in these disciplines will be achieved by using computational experiments that are of unprecedented levels of scale, accuracy, safety, controllability, and observability. This book provides a critical ingredient for this vision: teaching parallel programming to millions of graduate and undergraduate students so that computational thinking and parallel programming skills will become as pervasive as calculus skills.</p><p class="text zh-trans" lang="zh-CN">把多核 CPU 与多线程 GPU 结合在一起的大众市场计算系统，已经把万亿次级（terascale）计算带到了笔记本电脑上，把百亿亿次级（exascale）计算带到了集群上。有了这样的算力，我们正站在计算实验在科学、工程、医学和商业等学科中广泛普及的黎明时分。我们也正见证 GPU 计算在金融、电子商务、石油天然气、制造业等重要垂直行业市场中被广泛采用。这些学科中的突破，将依靠在规模、精度、安全性、可控性和可观测性上都达到前所未有水平的计算实验来实现。本书为这一愿景提供了一项关键要素：向数以百万计的研究生和本科生教授并行编程，使计算思维和并行编程技能像微积分技能一样普及。</p>
+<p id="p0020" class="text">The primary target audience of this book consists of graduate and undergraduate students in all science and engineering disciplines in which computational thinking and parallel programming skills are needed to achieve breakthroughs. The book has also been used successfully by industry professional developers who need to refresh their parallel computing skills and keep up to date with ever-increasing speed of technology evolution. These professional developers work in fields such as machine learning, network security, autonomous vehicles, computational financing, data analytics, cognitive computing, mechanical engineering, civil engineering, electrical engineering, bioengineering, physics, chemistry, astronomy, and geography, and they use computation to advance their fields. Thus these developers are both experts in their domains and programmers. The book takes the approach of teaching parallel programming by building up an intuitive understanding of the techniques. We assume that the reader has at least some basic C programming experience. We use CUDA C, a parallel programming environment that is supported on NVIDIA GPUs. There are more than 1 billion of these processors in the hands of consumers and professionals, and more than 400,000 programmers are actively using CUDA. The applications that you will develop as part of your learning experience will be runnable by a very large user community.</p><p class="text zh-trans" lang="zh-CN">本书的主要目标读者，是所有理工科专业的研究生和本科生——在这些学科中，要取得突破就需要计算思维和并行编程技能。业界的专业开发者也已成功地使用本书，他们需要更新自己的并行计算技能，跟上不断加快的技术演进步伐。这些专业开发者活跃在机器学习、网络安全、自动驾驶汽车、计算金融、数据分析、认知计算、机械工程、土木工程、电气工程、生物工程、物理、化学、天文和地理等领域，他们用计算来推动各自领域的发展。因此，这些开发者既是各自领域的专家，也是程序员。本书采取的教学方式，是通过建立对相关技术的直观理解来教授并行编程。我们假设读者至少具备一些基本的 C 语言编程经验。我们使用 CUDA C，这是一种在 NVIDIA GPU 上得到支持的并行编程环境。这类处理器已有超过 10 亿块掌握在消费者和专业人士手中，另有超过 40 万名程序员在积极使用 CUDA。你在学习过程中开发的应用程序，将能够被一个极其庞大的用户群体运行。</p>
+<p id="p0025" class="text">Since the third edition came out in 2016, we have received numerous comments from our readers and instructors. Many of them told us about the existing features they value. Others gave us ideas about how we should expand the book’s contents to make it even more valuable. Furthermore, the hardware and software for heterogeneous parallel computing have advanced tremendously since 2016. In the hardware arena, three more generations of GPU computing architectures, namely, Volta, Turing, and Ampere, have been introduced since the third edition. <span id="page_xviii" aria-label="Page xviii" epub:type="pagebreak" role="doc-pagebreak"></span>In the software domain, CUDA 9 through CUDA 11 have allowed programmers to access new hardware and system features. New algorithms have also been developed. Accordingly, we added four new chapters and rewrote a substantial number of the existing chapters.</p><p class="text zh-trans" lang="zh-CN">自第 3 版于 2016 年问世以来，我们收到了读者和授课教师的大量意见。其中许多人告诉我们，他们看重书中已有的哪些特点；另一些人则就如何扩充本书内容、使其更有价值提出了想法。此外，自 2016 年以来，异构并行计算的硬件与软件都有了巨大的进步。在硬件方面，第 3 版之后又推出了三代 GPU 计算架构，即 Volta、Turing 和 Ampere。在软件方面，从 CUDA 9 到 CUDA 11 让程序员能够使用新的硬件与系统特性。新的算法也不断涌现。相应地，我们新增了四章，并重写了相当多的既有章节。</p>
+<p id="p0030" class="text">The four newly added chapters include one new foundational chapter, namely, <a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">Chapter 4</a> (Compute Architecture and Scheduling), and three new parallel patterns and applications chapters: <a href="Ch008_173-189_B9780323912310000173.html#Ch008_173-189_B9780323912310000173">Chapter 8</a> (Stencil), <a href="Ch010_211-233_B9780323912310000239.html#Ch010_211-233_B9780323912310000239">Chapter 10</a> (Reduction and Minimizing Divergence), and <a href="Ch013_293-310_B9780323912310000197.html#Ch013_293-310_B9780323912310000197">Chapter 13</a> (Sorting). Our motivation for adding these chapters is as follows:<a id="li0010"></a></p><p class="text zh-trans" lang="zh-CN">新增的四章中，有一章是基础性章节，即<a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>（计算体系结构与调度）；另外三章讲的是新的并行模式与应用：<a href="Ch008_173-189_B9780323912310000173.html#Ch008_173-189_B9780323912310000173">第 8 章</a>（模板）、<a href="Ch010_211-233_B9780323912310000239.html#Ch010_211-233_B9780323912310000239">第 10 章</a>（归约与最小化发散）和<a href="Ch013_293-310_B9780323912310000197.html#Ch013_293-310_B9780323912310000197">第 13 章</a>（排序）。我们增加这几章的动机如下：</p><div><ul><li class="bulllist" id="u0010">• <a id="p0035"></a><a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">Chapter 4</a> (Compute Architecture and Scheduling): In the previous edition the discussions on architecture and scheduling considerations were scattered across multiple chapters. In this edition, <a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">Chapter 4</a> consolidates these discussions into one focused chapter that serves as a centralized reference for readers who are particularly interested in this topic.</li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>（计算体系结构与调度）：在上一版中，关于体系结构与调度方面的讨论散落在多个章节里。本版把这些讨论汇集到<a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>这一专门的章节中，为特别关注这一主题的读者提供集中的参考。</li><li class="bulllist" id="u0015">• <a id="p0040"></a><a href="Ch008_173-189_B9780323912310000173.html#Ch008_173-189_B9780323912310000173">Chapter 8</a> (Stencil): In the previous edition the stencil pattern was briefly mentioned in the convolution chapter in light of the similarities between the two patterns. In this edition, <a href="Ch008_173-189_B9780323912310000173.html#Ch008_173-189_B9780323912310000173">Chapter 8</a> provides a more thorough treatment of the stencil pattern, emphasizing the mathematical background behind the computation and aspects that make it different from convolution, thereby enabling additional optimizations. The chapter also provides an example of handling three-dimensional grids and data.</li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch008_173-189_B9780323912310000173.html#Ch008_173-189_B9780323912310000173">第 8 章</a>（模板）：在上一版中，由于模板模式与卷积模式的相似性，模板模式只在讲卷积的一章里被简要提及。本版的<a href="Ch008_173-189_B9780323912310000173.html#Ch008_173-189_B9780323912310000173">第 8 章</a>对模板模式作了更透彻的处理，强调计算背后的数学背景，以及它与卷积的不同之处——正是这些不同之处带来了额外的优化空间。该章还给出了一个处理三维网格与数据的示例。</li><li class="bulllist" id="u0020">• <a id="p0045"></a><a href="Ch010_211-233_B9780323912310000239.html#Ch010_211-233_B9780323912310000239">Chapter 10</a> (Reduction and Minimizing Divergence): In the previous edition the reduction pattern was briefly presented in the performance considerations chapter. In this edition, <a href="Ch010_211-233_B9780323912310000239.html#Ch010_211-233_B9780323912310000239">Chapter 10</a> provides a more complete presentation of the reduction pattern with an incremental approach to applying the optimizations and a more thorough analysis of the associated performance tradeoffs.</li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch010_211-233_B9780323912310000239.html#Ch010_211-233_B9780323912310000239">第 10 章</a>（归约与最小化发散）：在上一版中，归约模式只在讲性能考量的一章里被简要介绍。本版的<a href="Ch010_211-233_B9780323912310000239.html#Ch010_211-233_B9780323912310000239">第 10 章</a>更完整地介绍了归约模式，以循序渐进的方式施加各项优化，并更透彻地分析相应的性能权衡。</li><li class="bulllist" id="u0025">• <a id="p0050"></a><a href="Ch013_293-310_B9780323912310000197.html#Ch013_293-310_B9780323912310000197">Chapter 13</a> (Sorting): In the previous edition, merge sort was briefly alluded to in the chapter on the merge pattern. In this edition, <a href="Ch013_293-310_B9780323912310000197.html#Ch013_293-310_B9780323912310000197">Chapter 13</a> presents radix sort as a noncomparison sort algorithm that is highly amenable to GPU parallelization and follows an incremental approach to optimizing it and analyzing the performance tradeoffs. Merge sort is also discussed in this chapter.</li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch013_293-310_B9780323912310000197.html#Ch013_293-310_B9780323912310000197">第 13 章</a>（排序）：在上一版中，归并排序只在讲归并模式的一章里被略微提及。本版的<a href="Ch013_293-310_B9780323912310000197.html#Ch013_293-310_B9780323912310000197">第 13 章</a>把基数排序作为一种非常适合 GPU 并行化的非比较排序算法来讲解，并循序渐进地对它进行优化、分析其中的性能权衡。归并排序也在本章中讨论。</li></ul>
+</div>
+<p id="p0055" class="text">In addition to the newly added chapters, all chapters have been revised, and some chapters have been substantially rewritten. These chapters include the following:<a id="li0015"></a></p><p class="text zh-trans" lang="zh-CN">除新增的章节外，所有章节都作了修订，其中一些还被大幅重写。这些章节包括：</p>
+<div>
+<ul><li class="bulllist" id="u0030">• <a id="p0060"></a><a href="Ch006_123-147_B9780323912310000161.html#Ch006_123-147_B9780323912310000161">Chapter 6</a> (Performance Considerations): Some architecture considerations that were previously in this chapter were moved to the new <a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">Chapter 4</a>, and the reduction example was moved to the new <a href="Ch010_211-233_B9780323912310000239.html#Ch010_211-233_B9780323912310000239">Chapter 10</a>. In their place, this chapter was rewritten to provide a more thorough handling of thread granularity considerations and, more notably, to provide a checklist of common performance optimization strategies and the performance bottlenecks <span id="page_xix" aria-label="Page xix" epub:type="pagebreak" role="doc-pagebreak"></span>that each strategy tackles. This checklist is referred to throughout the rest of the textbook as we optimize the code for implementing various parallel patterns and applications. The goal is to reinforce a systematic and incremental methodology for optimizing the performance of parallel programs.</li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch006_123-147_B9780323912310000161.html#Ch006_123-147_B9780323912310000161">第 6 章</a>（性能考量）：原先放在本章中的一些体系结构考量被移到了新的<a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>，归约的例子被移到了新的<a href="Ch010_211-233_B9780323912310000239.html#Ch010_211-233_B9780323912310000239">第 10 章</a>。取而代之的是，本章经过重写，更透彻地讨论了线程粒度方面的考量；更值得一提的是，本章给出了一份常见性能优化策略的清单，并说明每种策略针对的是哪一类性能瓶颈。在本书余下的部分中，每当我们为实现各种并行模式与应用而优化代码时，都会引用这份清单。其目的是强化一套系统而循序渐进的并行程序性能优化方法。</li><li class="bulllist" id="u0035">• <a id="p0065"></a><a href="Ch007_151-171_B9780323912310000082.html#Ch007_151-171_B9780323912310000082">Chapter 7</a> (Convolution): In the previous edition the chapter on the convolution pattern used a one-dimensional convolution as a running example, with a brief handling of two-dimensional convolutions toward the end. In this edition this chapter was rewritten to focus more on two-dimensional convolution from the start. This change allows us to address the complexity and intricacies of higher-dimensional tiling and equip the readers with a better background for learning convolutional neural networks in <a href="Ch016_355-388_B9780323912310000240.html#Ch016_355-388_B9780323912310000240">Chapter 16</a>.</li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch007_151-171_B9780323912310000082.html#Ch007_151-171_B9780323912310000082">第 7 章</a>（卷积）：在上一版中，讲卷积模式的一章以一维卷积作为贯穿全章的例子，直到接近末尾才简要处理二维卷积。本版重写了这一章，从一开始就更多地聚焦于二维卷积。这一改动使我们得以讨论高维分块的复杂与微妙之处，也让读者在<a href="Ch016_355-388_B9780323912310000240.html#Ch016_355-388_B9780323912310000240">第 16 章</a>学习卷积神经网络时具备更好的基础。</li><li class="bulllist" id="u0040">• <a id="p0070"></a><a href="Ch009_191-210_B978032391231000015X.html#Ch009_191-210_B978032391231000015X">Chapter 9</a> (Parallel Histogram): In the previous edition the chapter on the histogram pattern applied the thread coarsening optimization from the start and combined the privatization optimization with the use of shared memory. In this edition this chapter was rewritten to follow a more incremental approach to performance optimization. The initial implementation that is now presented does not apply thread coarsening. Privatization and the use of shared memory for the private bins are distinguished as two separate optimizations, the former aimed at reducing contention of atomics and the latter aimed at reducing access latency. Thread coarsening is applied after privatization, since one major benefit of coarsening is to reduce the number of private copies committed to the public copy. The new organization of the chapter is more consistent with the systematic and incremental approach to performance optimization that is followed throughout the book. We also moved the chapter to precede the chapters on the reduction and scan patterns in order to introduce atomic operations sooner, since they are used in multiblock reduction and single-pass scan kernels.</li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch009_191-210_B978032391231000015X.html#Ch009_191-210_B978032391231000015X">第 9 章</a>（并行直方图）：在上一版中，讲直方图模式的一章从一开始就施加了线程粗化优化，并把私有化优化与共享内存的使用揉在了一起。本版重写了这一章，采用更循序渐进的性能优化路径。现在给出的初始实现并不使用线程粗化。私有化，与为私有分箱使用共享内存，被区分为两项独立的优化：前者旨在减少原子操作的竞争，后者旨在降低访问延迟。线程粗化放在私有化之后施加，因为粗化的一大好处正是减少提交到公共副本的私有副本数量。这样的章节组织方式，与全书贯穿始终的系统而循序渐进的性能优化思路更为一致。我们还把这一章前移到讲归约模式和扫描模式的章节之前，以便更早引入原子操作，因为多线程块归约核函数和单遍扫描核函数都要用到它们。</li><li class="bulllist" id="u0045">• <a id="p0075"></a><a href="Ch014_311-329_B9780323912310000100.html#Ch014_311-329_B9780323912310000100">Chapter 14</a> (Sparse Matrix Computation): In this edition this chapter was rewritten to follow a more systematic approach for analyzing the tradeoffs between different sparse matrix storage formats. The beginning of the chapter introduces a list of considerations that go into the design of different sparse matrix storage formats. This list of design considerations is then used throughout the chapter to systematically analyze the tradeoffs between the different formats.</li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch014_311-329_B9780323912310000100.html#Ch014_311-329_B9780323912310000100">第 14 章</a>（稀疏矩阵计算）：本版重写了这一章，采用更系统的方法来分析不同稀疏矩阵存储格式之间的权衡。章首列出了设计各种稀疏矩阵存储格式时需要斟酌的一系列因素，随后全章都用这份设计考量清单来系统地分析不同格式之间的权衡。</li><li class="bulllist" id="u0050">• <a id="p0080"></a><a href="Ch015_331-354_B9780323912310000112.html#Ch015_331-354_B9780323912310000112">Chapter 15</a> (Graph Traversal): In the previous edition the chapter on graph traversal focused on a particular BFS parallelization strategy. In this edition this chapter was significantly expanded to cover a more comprehensive set of alternative parallelization strategies and to analyze the tradeoffs between them. These strategies include vertex-centric push-based, vertex-centric pull-based, edge-centric, and linear algebraic implementations in addition to the original implementation, which was the vertex-centric push-based frontier-based implementation. The classification of these alternatives is not unique to BFS but applies to parallelizing graph algorithms in general.<span id="page_xx" aria-label="Page xx" epub:type="pagebreak" role="doc-pagebreak"></span></li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch015_331-354_B9780323912310000112.html#Ch015_331-354_B9780323912310000112">第 15 章</a>（图遍历）：在上一版中，讲图遍历的一章只聚焦于一种特定的 BFS 并行化策略。本版大幅扩充了这一章，覆盖了一整套更为全面的可选并行化策略，并分析它们之间的权衡。除原有的实现（即基于前沿的面向顶点推送式实现）之外，这些策略还包括面向顶点的推送式实现、面向顶点的拉取式实现、面向边的实现以及线性代数式的实现。这些方案的分类并非 BFS 独有，而是普遍适用于图算法的并行化。</li><li class="bulllist" id="u0055">• <a id="p0085"></a><a href="Ch016_355-388_B9780323912310000240.html#Ch016_355-388_B9780323912310000240">Chapter 16</a> (Deep Learning): In this edition this chapter was rewritten to provide a comprehensive yet intuitive theoretical background for understanding modern neural networks. The background makes it easier for the reader to fully understand the computational components of neural networks, such as fully connected layers, activation, and convolutional layers. It also removes some of the common barriers to understanding the kernel functions for training a convolutional neural network.</li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch016_355-388_B9780323912310000240.html#Ch016_355-388_B9780323912310000240">第 16 章</a>（深度学习）：本版重写了这一章，为理解现代神经网络提供了全面而又直观的理论背景。这些背景知识让读者更容易透彻理解神经网络中的各种计算组件，如全连接层、激活和卷积层。它还打破了理解卷积神经网络训练核函数时常见的一些屏障。</li><li class="bulllist" id="u0060">• <a id="p0090"></a><a href="Ch019_433-446_B9780323912310000021.html#Ch019_433-446_B9780323912310000021">Chapter 19</a> (Parallel Programming and Computational Thinking): In the previous edition this chapter discussed algorithm selection and problem decomposition while drawing examples from the chapters on iterative MRI reconstruction and electrostatic potential map. In this edition the chapter was revised to draw examples from many more chapters, serving as a concluding chapter for Parts I and II. The discussion of problem decomposition was particularly expanded to introduce the generalizations of output-centric decomposition and input-centric decomposition and to discuss the tradeoffs between them, using many examples.</li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch019_433-446_B9780323912310000021.html#Ch019_433-446_B9780323912310000021">第 19 章</a>（并行编程与计算思维）：在上一版中，这一章讨论算法选择与问题分解，例子取自迭代式磁共振成像重建和静电势图两章。本版修订了这一章，从更多章节中取材举例，使其成为第一部分和第二部分的总结性章节。其中对问题分解的讨论作了特别扩充，引入了面向输出的分解与面向输入的分解这两种更一般的视角，并用大量例子讨论二者之间的权衡。</li><li class="bulllist" id="u0065">• <a id="p0095"></a><a href="Ch021_475-496_B978032391231000001X.html#Ch021_475-496_B978032391231000001X">Chapter 21</a> (CUDA Dynamic Parallelism): In the previous edition this chapter went into many programming details relating to the semantics of different programming constructs and API calls in the context of dynamic parallelism. In this edition the focus of the chapter has shifted more toward the application examples, with the other programming details discussed more briefly while referring interested readers to the CUDA programming guide.</li><li class="bulllist zh-trans" lang="zh-CN">• <a href="Ch021_475-496_B978032391231000001X.html#Ch021_475-496_B978032391231000001X">第 21 章</a>（CUDA 动态并行）：在上一版中，这一章深入讨论了动态并行语境下各种编程结构和 API 调用的语义等大量编程细节。本版把这一章的重心更多地转向应用示例，其他编程细节只作简要讨论，并请有兴趣的读者参阅 CUDA 编程指南。</li></ul>
+</div>
+<p id="p0100" class="text">While making all these improvements, we tried to preserve the features that seem to contribute most to the book’s popularity. First, we keep our explanations as intuitive as possible. While it is tempting to formalize some of the concepts, especially when we cover the basic parallel algorithms, we have striven to keep all our explanations intuitive and practical. Second, we keep the book as concise as possible. Although it is tempting to keep adding new material, we wanted to minimize the number of pages a reader needs to go through to learn all the key concepts. We accomplished this by moving the previous chapter on numerical considerations to the appendix. While numerical considerations are an extremely important aspect of parallel computing, we found that a substantial amount of the content in the chapter was already familiar to many of our readers who come from a computer science or computational science background. For this reason we preferred to dedicate more space to covering additional parallel patterns.</p><p class="text zh-trans" lang="zh-CN">在作出这些改进的同时，我们也努力保留那些似乎最能让本书广受欢迎的特点。第一，我们让讲解尽可能直观。把某些概念形式化固然很有诱惑力——在讲基本并行算法时尤其如此——但我们仍力求让所有讲解都保持直观和实用。第二，我们让本书尽可能精炼。不断添加新材料固然很有诱惑力，但我们希望把读者为掌握全部关键概念而需要翻阅的页数降到最少。为此，我们把上一版中讲数值考量的一章移到了附录。数值考量固然是并行计算中极为重要的一个方面，但我们发现，这一章中相当一部分内容，对许多具有计算机科学或计算科学背景的读者来说已经并不陌生。因此，我们更愿意把篇幅用来介绍更多的并行模式。</p>
+<p id="p0105" class="text">In addition to adding new chapters and substantially rewriting others since the previous edition, we have also organized the book into four major parts. This organization is illustrated in <a href="#f0010">Fig. P.1</a>. The first part introduces the fundamental concepts behind parallel programming, the GPU architecture, and performance analysis and optimization. The second part applies these concepts by covering six common computation patterns and showing how they can be parallelized and optimized. Each parallel pattern also introduces a new programming feature or technique. The third part introduces additional advanced patterns and applications <span id="page_xxi" aria-label="Page xxi" epub:type="pagebreak" role="doc-pagebreak"></span>and continues to apply the optimizations that are practiced in the second part. However, it puts more emphasis on exploring alternative forms of problem decomposition to parallelize a computation and analyzes the tradeoffs between different decompositions and their associated data structures. Finally, the fourth part exposes the reader to advanced practices and programming features.<span id="page_xxii" aria-label="Page xxii" epub:type="pagebreak" role="doc-pagebreak"></span></p><p class="text zh-trans" lang="zh-CN">除了自上一版以来新增章节、大幅重写另一些章节之外，我们还把全书组织为四大部分，如<a href="#f0010">图 P.1</a> 所示。第一部分介绍并行编程背后的基本概念、GPU 体系结构，以及性能分析与优化。第二部分讲解六种常见的计算模式，展示如何把它们并行化并加以优化，从而把这些概念应用起来；每一种并行模式同时还会引入一项新的编程特性或技术。第三部分介绍更多高级模式与应用，并继续运用第二部分中练习过的各项优化；不过，它更强调探索对一项计算进行并行化时可以采用的不同问题分解形式，并分析不同分解方式及其相应数据结构之间的权衡。最后，第四部分让读者接触高级实践与编程特性。</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F000057f01-01-9780323912310.jpg" class="img" alt="image" width="1370" height="1762"/><figcaption class="figleg"><span class="fignum">Figure P.1</span> <a id="sp0010"></a>Organization of the book.</figcaption><figcaption class="figleg zh-trans" lang="zh-CN"><span class="fignum">图 P.1</span> 本书的组织结构。</figcaption></figure></div><section><a id="s0010"></a><h2 class="h1hd" id="st0010">How to use the book</h2><h2 class="h1hd zh-trans" lang="zh-CN">如何使用本书</h2><p id="p0110" class="textfl">We would like to offer some of our experience in teaching courses with this book. Since 2006 we have taught multiple types of courses: in one-semester format and in one-week intensive format. The original ECE498AL course has become a permanent course known as ECE408 or CS483 at the University of Illinois at Urbana-Champaign. We started to write up some of the early chapters of this book when we offered ECE498AL the second time. The first four chapters were also tested in an MIT class taught by Nicolas Pinto in the spring of 2009. Since then, we have used the book for numerous offerings of ECE408 as well as the Coursera Heterogeneous Parallel Programming course and the VSCSE and PUMPS summer schools.</p><p class="textfl zh-trans" lang="zh-CN">我们愿意分享一些用本书开课的经验。自 2006 年以来，我们讲授过多种形式的课程：一个学期的常规形式，以及为期一周的强化形式。最初的 ECE498AL 课程，如今已成为伊利诺伊大学厄巴纳-香槟分校的常设课程，课号为 ECE408 或 CS483。我们是在第二次开设 ECE498AL 时，开始动笔撰写本书最早的几章的。前四章还曾在 2009 年春季，用于 Nicolas Pinto 在麻省理工学院讲授的一门课上试讲。此后，我们在 ECE408 的多次开课中使用本书，也把它用于 Coursera 上的 Heterogeneous Parallel Programming 课程，以及 VSCSE 和 PUMPS 暑期学校。</p></section><section><a id="s0015"></a><h2 class="h1hd" id="st0015">A two-phased approach</h2><h2 class="h1hd zh-trans" lang="zh-CN">两阶段方法</h2><p id="p0115" class="textfl">Most of the chapters in the book are designed to be covered in approximately a single 75-minute lecture each. The chapters that may need two 75-minute lectures to be fully covered are <a href="Ch011_235-261_B9780323912310000227.html#Ch011_235-261_B9780323912310000227">Chapter 11</a> (Prefix Sum (Scan)), <a href="Ch014_311-329_B9780323912310000100.html#Ch014_311-329_B9780323912310000100">Chapter 14</a> (Sparse Matrix Computation), and <a href="Ch015_331-354_B9780323912310000112.html#Ch015_331-354_B9780323912310000112">Chapter 15</a> (Graph Traversal). In ECE408 the lectures, programming assignments, and final project are paced with each other and are organized into two phases.</p><p class="textfl zh-trans" lang="zh-CN">本书大多数章节的设计，都是每章大约用一次 75 分钟的课讲完。可能需要两次 75 分钟的课才能讲透的章节有：<a href="Ch011_235-261_B9780323912310000227.html#Ch011_235-261_B9780323912310000227">第 11 章</a>（前缀和（扫描））、<a href="Ch014_311-329_B9780323912310000100.html#Ch014_311-329_B9780323912310000100">第 14 章</a>（稀疏矩阵计算）和<a href="Ch015_331-354_B9780323912310000112.html#Ch015_331-354_B9780323912310000112">第 15 章</a>（图遍历）。在 ECE408 中，讲课、编程作业和期末项目的进度彼此配合，并组织为两个阶段。</p>
+<p id="p0120" class="text">In the first phase, which consists of Parts I and II of this book, students learn about fundamentals and basic patterns, and they practice the skills that they learn via guided programming assignments. This phase consists of 12 chapters and typically takes around seven weeks. Each week, students work on a programming assignment corresponding to that week’s lectures. For example, in the first week, a lecture based on <a href="Ch002_23-46_B9780323912310000148.html#Ch002_23-46_B9780323912310000148">Chapter 2</a> is dedicated to teaching the basic CUDA memory/threading model, the CUDA extensions to the C language, and the basic programming tools. After that lecture, students can write a simple vector addition code in a couple of hours.</p><p class="text zh-trans" lang="zh-CN">第一阶段由本书的第一部分和第二部分组成，学生在其中学习基础知识与基本模式，并通过有指导的编程作业来练习所学的技能。这一阶段包含 12 章，通常需要七周左右。每一周，学生完成一次与当周讲课内容相对应的编程作业。例如，第一周有一次基于<a href="Ch002_23-46_B9780323912310000148.html#Ch002_23-46_B9780323912310000148">第 2 章</a>的课，专门讲授基本的 CUDA 内存/线程模型、CUDA 对 C 语言的扩展，以及基本的编程工具。上完这次课，学生就能在几小时内写出一段简单的向量加法代码。</p>
+<p id="p0125" class="text">The following 2 weeks include a series of four lectures based on <a href="Ch003_47-68_B9780323912310000045.html#c0003">Chapters 3</a> through <a href="Ch006_123-147_B9780323912310000161.html#c0006">6</a> that give students the conceptual understanding of the CUDA memory model, the CUDA thread execution model, GPU hardware performance features, and modern computer system architecture. During these two weeks, students work on different implementations of matrix-matrix multiplication in which they see how the performance of their implementations increases dramatically throughout this period. In the remaining four weeks, the lectures cover common data-parallel programming patterns that are needed to develop a high-performance parallel application based on <a href="Ch007_151-171_B9780323912310000082.html#c0007">Chapters 7</a> through <a href="Ch012_263-289_B9780323912310000252.html#c0012">12</a>. Throughout these weeks, students complete assignments on convolution, histogram, reduction, and prefix sum. By the end of the first phase, students should be quite comfortable with <span id="page_xxiii" aria-label="Page xxiii" epub:type="pagebreak" role="doc-pagebreak"></span>parallel programming and should be ready to implement more advanced code with less handholding.</p><p class="text zh-trans" lang="zh-CN">接下来的 2 周包含基于<a href="Ch003_47-68_B9780323912310000045.html#c0003">第 3 章</a>至<a href="Ch006_123-147_B9780323912310000161.html#c0006">第 6 章</a>的四次系列讲课，让学生在概念层面理解 CUDA 内存模型、CUDA 线程执行模型、GPU 硬件性能特性以及现代计算机系统体系结构。在这两周里，学生会写出矩阵-矩阵乘法的多种实现，并亲眼看到自己实现的性能在这段时间里急剧提升。在余下的四周里，讲课内容依据<a href="Ch007_151-171_B9780323912310000082.html#c0007">第 7 章</a>至<a href="Ch012_263-289_B9780323912310000252.html#c0012">第 12 章</a>，覆盖开发高性能并行应用所需的常见数据并行编程模式。在这几周中，学生要完成关于卷积、直方图、归约和扫描（prefix sum）的作业。到第一阶段结束时，学生应当已经相当熟悉并行编程，并做好准备，在较少的手把手指导下实现更高级的代码。</p>
+<p id="p0130" class="text">In the second phase, which consists of Parts III and IV, students learn about advanced patterns and applications while they work on a final project that involves accelerating an advanced pattern or application. They also learn about advanced practices that they may find useful when finalizing their projects. Although we do not usually assign weekly programming assignments during this phase, the project typically has a weekly milestone to help the students pace themselves. Depending on the duration and format of the course, instructors may not be able to cover all the chapters in this phase and may need to skip some. Instructors might also choose to replace some lectures with guest lectures, paper discussion sessions, or lectures that support the final project. For this reason, <a href="#f0010">Fig. P.1</a> uses arrows to indicate the dependences between chapters to assist instructors in selecting what chapters they can skip or reorder to customize the course for their particular context.</p><p class="text zh-trans" lang="zh-CN">第二阶段由第三部分和第四部分组成，学生在其中学习高级模式与应用，同时着手一个期末项目——为某个高级模式或应用做加速。他们还会学到在为项目收尾时可能用得上的高级实践。虽然这一阶段我们通常不再布置每周的编程作业，但项目一般会设置每周的里程碑，帮助学生把握节奏。根据课程的时长和形式，授课教师未必能讲完这一阶段的所有章节，可能需要跳过一些。教师也可以选择用客座讲座、论文研讨或支持期末项目的课时来替换部分讲课。为此，<a href="#f0010">图 P.1</a> 用箭头标出了章节之间的依赖关系，以帮助教师选择哪些章节可以跳过或重新排序，从而针对自己的具体情况定制课程。</p></section><section><a id="s0020"></a><h2 class="h1hd" id="st0020">Tying it all together: the final project</h2><h2 class="h1hd zh-trans" lang="zh-CN">融会贯通：期末项目</h2>
+<p id="p0135" class="textfl">While the lectures, labs, and chapters of this book help to lay the intellectual foundation for the students, what brings the learning experience together is the final project. The final project is so important to the full-semester course that it is prominently positioned in the course and commands nearly two months’ worth of focus. It incorporates five innovative aspects: mentoring, workshop, clinic, final report, and symposium. While much of the information about the final project is available in the Illinois-NVIDIA GPU Teaching Kit, we would like to offer the reasoning behind the design of these aspects.</p><p class="textfl zh-trans" lang="zh-CN">讲课、实验和本书的各个章节为学生打下知识基础，而真正把整个学习体验融为一体的，是期末项目。期末项目对整学期的课程如此重要，以至于它在课程中占据突出位置，需要投入将近两个月的精力。它包含五个富有创新性的环节：导师指导、研讨班、答疑诊所、期末报告和研讨会。关于期末项目的许多信息都可以在 Illinois-NVIDIA GPU Teaching Kit 中找到，不过我们还是想说明一下这几个环节在设计上的考量。</p>
+<p id="p0140" class="text">Students are encouraged to base their final projects on problems that represent current challenges in the research community. To seed the process, the instructors should recruit several computational science research groups to propose problems and serve as mentors. The mentors are asked to contribute a one- to two-page project specification sheet that briefly describes the significance of the application, what the mentor would like to accomplish with the student teams on the application, the technical skills (particular types of math, physics, and chemistry courses) that are required to understand and work on the application, and a list of web and traditional resources on which students can draw for technical background, general information, and building blocks, along with specific URLs or FTP paths to particular implementations and coding examples. These project specification sheets also provide students with learning experiences in defining their own research projects later in their careers. Several examples are available in the Illinois-NVIDIA GPU Teaching Kit.<span id="page_xxiv" aria-label="Page xxiv" epub:type="pagebreak" role="doc-pagebreak"></span></p><p class="text zh-trans" lang="zh-CN">我们鼓励学生把期末项目建立在能代表研究界当前挑战的问题之上。为了让这一过程有个起点，授课教师应当邀请若干计算科学研究组提出问题并担任导师。我们请导师提供一到两页的项目说明书，简要说明该应用的意义、导师希望与学生团队在该应用上完成什么、理解并开展这项工作所需的技术技能（具体是哪几类数学、物理和化学课程），以及一份网络与传统资源的清单——学生可以从中获取技术背景、一般信息和可复用的基础构件——并附上指向具体实现和代码示例的 URL 或 FTP 路径。这些项目说明书也让学生获得一次学习经历，为他们日后在职业生涯中自行定义研究项目做好准备。若干示例可在 Illinois-NVIDIA GPU Teaching Kit 中找到。</p></section><section><a id="s0025"></a><h2 class="h1hd" id="st0025">The design document</h2><h2 class="h1hd zh-trans" lang="zh-CN">设计文档</h2>
+<p id="p0145" class="textfl">Once the students have decided on a project and formed a team, they are required to submit a design document for the project. This helps them to think through the project steps before they jump into it. The ability to do such planning will be important to their later career success. The design document should discuss the background and motivation for the project, the application-level objectives and potential impact, the main features of the end application, an overview of their design, an implementation plan, their performance goals, a verification plan and acceptance test, and a project schedule.</p><p class="textfl zh-trans" lang="zh-CN">学生一旦确定了项目并组好团队，就必须为项目提交一份设计文档。这有助于他们在动手之前把项目的各个步骤想清楚。这种做规划的能力，对他们日后的职业成功很重要。设计文档应当讨论项目的背景与动机、应用层面的目标与潜在影响、最终应用的主要特性、设计概览、实现计划、性能目标、验证方案与验收测试，以及项目进度安排。</p></section><section><a id="s0030"></a><h2 class="h1hd" id="st0030">The project report and symposium</h2><h2 class="h1hd zh-trans" lang="zh-CN">项目报告与研讨会</h2>
+<p id="p0150" class="textfl">Students are required to submit a project report on their team’s key findings. We also recommend a whole-day class symposium. During the symposium, students use presentation slots proportional to the size of the teams. During the presentation the students highlight the best parts of their project report for the benefit of the whole class. The presentation accounts for a significant part of the students’ grades. Each student must answer questions that are directed to the student individually, so different grades can be assigned to individuals in the same team. The symposium is an opportunity for students to learn to produce a concise presentation that motivates their peers to read a full paper.</p><p class="textfl zh-trans" lang="zh-CN">学生必须提交一份项目报告，说明本团队的关键发现。我们还建议安排一整天的课堂研讨会。研讨会上，各团队的报告时长按团队规模按比例分配。在报告中，学生向全班重点展示项目报告中最出彩的部分。报告成绩在学生的总成绩中占相当大的比重。每个学生都必须回答专门向其本人提出的问题，因此同一团队中的不同成员可以得到不同的分数。研讨会也是一次机会，让学生学会做出简洁的报告，激发同学去阅读完整的论文。</p></section><section><a id="s0035"></a><h2 class="h1hd" id="st0035">Class competition</h2><h2 class="h1hd zh-trans" lang="zh-CN">课堂竞赛</h2>
+<p id="p0155" class="textfl">In 2016 the enrollment level of ECE408 far exceeded the level that could be accommodated by the final project process. As a result, we moved from the final project to a class competition. At the midpoint of the semester we announce a competition challenge problem. We use one lecture to explain the competition challenge problem and the rules that will be used for ranking the teams. All student submissions are auto-graded and ranked. The final ranking of each team is determined by the execution time, correctness, and clarity of their parallel code. The students do a demo of their solution at the end of the semester and submit a final report. This compromise preserves some of the benefits of final projects when the class size makes final projects infeasible.</p><p class="textfl zh-trans" lang="zh-CN">2016 年，ECE408 的选课人数远远超出了期末项目流程所能容纳的规模。于是，我们把期末项目改成了课堂竞赛。在学期过半时，我们公布一道竞赛挑战题。我们用一次课来讲解这道竞赛挑战题，以及对各团队排名所依据的规则。学生提交的所有作品都会被自动评分和排名。每个团队的最终排名，由其并行代码的执行时间、正确性和清晰度决定。学期末，学生对自己的方案做一次演示，并提交一份结课报告。当班级规模使期末项目难以实施时，这一折中办法保留了期末项目的部分好处。</p></section><section><a id="s0040"></a><h2 class="h1hd" id="st0040">Course resources</h2><h2 class="h1hd zh-trans" lang="zh-CN">课程资源</h2>
+<p id="p0160" class="textfl">The Illinois-NVIDIA GPU Teaching Kit is a publicly available resource that contains lecture slides and recordings, lab assignments, final project guidelines, and <span id="page_xxv" aria-label="Page xxv" epub:type="pagebreak" role="doc-pagebreak"></span>sample project specifications for instructors who use this book for their classes. In addition, we are in the process of making the courses of the Illinois undergraduate-level and graduate-level offerings based on this book publicly available. While this book provides the intellectual contents for these classes, the additional material will be crucial in achieving the overall education goals.</p><p class="textfl zh-trans" lang="zh-CN">Illinois-NVIDIA GPU Teaching Kit 是一份公开可用的资源，面向用本书授课的教师，其中包含讲课幻灯片与录像、实验作业、期末项目指南以及项目说明书样例。此外，我们正在着手把伊利诺伊大学基于本书开设的本科生和研究生课程也向公众开放。本书为这些课程提供了知识内容，而这些额外材料对于达成整体的教学目标同样至关重要。</p>
+<p id="p0165" class="text">Finally, we encourage you to submit your feedback. We would like to hear from you if you have any ideas for improving this book. We would like to know how we can improve the supplementary online material. Of course, we also like to know what you liked about the book. We look forward to hearing from you.</p><p class="text zh-trans" lang="zh-CN">最后，我们鼓励你把反馈提交给我们。如果你对改进本书有任何想法，我们很愿意听到。我们也想知道，配套的在线材料还能如何改进。当然，我们同样想知道你喜欢本书的哪些地方。我们期待你的来信。</p></section></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>

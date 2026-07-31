@@ -1,0 +1,155 @@
+{
+  "page": "Ch001_1-19_B9780323912310000069",
+  "nodes": [
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "Researchers have achieved speedups of more than 100× for some applications. However, this is typically achieved only after extensive optimization and tuning after the algorithms have been enhanced so that more than 99.9% of the application work is in the parallel portion.",
+      "zh": "研究人员已经在某些应用上实现了超过 100× 的加速比。然而，这通常只有在算法经过增强、使超过 99.9% 的应用工作量都落在并行部分之后，再经过大量的优化与调优才能实现。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "Another important factor for the achievable level of speedup for applications is how fast data can be accessed from and written to the memory. In practice, straightforward parallelization of applications often saturates the memory (DRAM) bandwidth, resulting in only about a 10× speedup. The trick is to figure out how to get around memory bandwidth limitations, which involves doing one of many transformations to utilize specialized GPU on-chip memories to drastically reduce the number of accesses to the DRAM. However, one must further optimize the code to get around limitations such as limited on-chip memory capacity. An important goal of this book is to help the reader to fully understand these optimizations and become skilled in using them.",
+      "zh": "影响应用所能达到的加速比水平的另一个重要因素，是数据从内存读出和写入内存的速度。在实践中，对应用直接进行并行化往往会使内存（DRAM）带宽饱和，结果只能获得大约 10× 的加速比。诀窍在于找出绕开内存带宽限制的方法，这需要进行各类变换，以利用 GPU 专门的片上内存，从而大幅减少对 DRAM 的访问次数。然而，人们还必须进一步优化代码，以绕开诸如片上内存容量有限之类的限制。本书的一个重要目标，就是帮助读者充分理解这些优化技术，并熟练地运用它们。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "Keep in mind that the level of speedup that is achieved over single-core CPU execution can also reflect the suitability of the CPU to the application. In some applications, CPUs perform very well, making it harder to speed up performance using a GPU. Most applications have portions that can be much better executed by the CPU. One must give the CPU a fair chance to perform and make sure that the code is written so that GPUs 【1】complement【/1】 CPU execution, thus properly exploiting the heterogeneous parallel computing capabilities of the combined CPU/GPU system. As of today, mass market computing systems that combine multicore CPUs and many-core GPUs have brought terascale computing to laptops and exascale computing to clusters.",
+      "zh": "请注意，相对于单核 CPU 执行所能达到的加速比，也反映出 CPU 对该应用的适配程度。在某些应用中，CPU 表现非常出色，使得用 GPU 来提升性能变得更加困难。大多数应用都有一些部分更适合由 CPU 来执行。必须给 CPU 一个公平发挥的机会，并确保代码编写成让 GPU 能够【1】补充【/1】CPU 的执行，从而妥善地利用组合式 CPU/GPU 系统的异构并行计算能力。时至今日，将多核心 CPU 与众核心 GPU 相结合的面向大众市场的计算系统，已把万亿次级计算带到了笔记本电脑，把百亿亿次级计算带到了计算集群。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "【1】Fig. 1.2【/1】 illustrates the main parts of a typical application. Much of a real application’s code tends to be sequential. These sequential parts are illustrated as the “pit” area of the peach; trying to apply parallel computing techniques to these portions is like biting into the peach pit—not a good feeling! These portions are very hard to parallelize. CPUs tend to do a very good job on these portions. The good news is that although these portions can take up a large portion of the code, they tend to account for only a small portion of the execution time of superapplications.",
+      "zh": "【1】图 1.2【/1】展示了一个典型应用的主要组成部分。真实应用的代码大多倾向于顺序执行。这些顺序部分被表示为桃子的“核”区域；试图对这些部分应用并行计算技术，就好比咬到桃核——感觉可不好！这些部分非常难以并行化。CPU 往往在这些部分上表现得很好。好消息是，尽管这些部分可能占据代码的很大一部分，但它们通常只占超级应用执行时间的很小一部分。"
+    },
+    {
+      "id": "n0054",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 1.2【/1】 Coverage of sequential and parallel application portions. The sequential portions and the traditional (single-core) CPU coverage portions overlap with each other. The previous GPGPU technique offers very limited coverage of the data parallel portions, since it is limited to computations that can be formulated into painting pixels. The obstacles refer to the power constraints that make it hard to extend single-core CPUs to cover more of the data parallel portions.",
+      "zh": "【1】图 1.2【/1】 顺序与并行应用部分的覆盖范围。顺序部分与传统（单核心）CPU 覆盖范围相互重叠。早期的 GPGPU 技术对数据并行部分的覆盖非常有限，因为它仅限于能够表述为绘制像素的计算。这些障碍指代的是功耗约束，正是这些约束使得单核心 CPU 难以扩展以覆盖更多的数据并行部分。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "Then come what we call the “peach flesh” portions. These portions are easy to parallelize, as are some early graphics applications. Parallel programming in heterogeneous computing systems can drastically improve the speed of these applications. As illustrated in 【1】Fig. 1.2【/1】, early GPGPU programming interfaces cover only a small portion of the peach flesh section, which is analogous to a small portion of the most exciting applications. As we will see, the CUDA programming interface is designed to cover a much larger section of the peach flesh of exciting applications. Parallel programming models and their underlying hardware are still evolving at a fast pace to enable efficient parallelization of even larger sections of applications.",
+      "zh": "接下来是所谓的“果肉”部分。这些部分很容易并行化，一些早期的图形应用也是如此。在异构计算系统中进行并行编程，能够大幅提升这些应用的速度。如【1】图 1.2【/1】所示，早期的 GPGPU 编程接口只覆盖了果肉部分的很小一块，这类似于最令人兴奋的应用的很小一部分。正如我们将看到的，CUDA 编程接口的设计目标是覆盖令人兴奋的应用的果肉中更大得多的部分。并行编程模型及其底层硬件仍在快速演进，以使应用中更大范围的区域也能高效地并行化。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "1.4 Challenges in parallel programming",
+      "zh": "1.4 并行编程中的挑战"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "What makes parallel programming hard? Someone once said that if you do not care about performance, parallel programming is very easy. You can literally write a parallel program in an hour. But then why bother to write a parallel program if you do not care about performance?",
+      "zh": "是什么让并行编程变得困难？有人曾说，如果你不在乎性能，并行编程就非常容易。你真能在一个小时内写出一个并行程序。但既然你不在乎性能，又何必费心去写并行程序呢？"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "This book addresses several challenges in achieving high performance in parallel programming. First and foremost, it can be challenging to design parallel algorithms with the same level of algorithmic (computational) complexity as that of sequential algorithms. Many parallel algorithms perform the same amount of work as their sequential counterparts. However, some parallel algorithms do more work than their sequential counterparts. In fact, sometimes they may do so much more work that they ended up running slower for large input datasets. This is especially a problem because fast processing of large input datasets is an important motivation for parallel programming.",
+      "zh": "本书探讨了在并行编程中取得高性能所面临的若干挑战。首先也是最重要的一点，设计出在算法（计算）复杂度上与顺序算法处于同一水平的并行算法，可能颇具挑战性。许多并行算法与其顺序版本执行相同数量的工作。然而，有些并行算法比其顺序版本做更多的工作。事实上，有时它们做的工作多出太多，以至于在处理大规模输入数据集时反而运行得更慢。这尤其是个问题，因为快速处理大规模输入数据集正是并行编程的重要动机。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "For example, many real-world problems are most naturally described with mathematical recurrences. Parallelizing these problems often requires nonintuitive ways of thinking about the problem and may require redundant work during execution. There are important algorithm primitives, such as prefix sum, that can facilitate the conversion of sequential, recursive formulation of the problems into more parallel forms. We will more formally introduce the concept of 【1】work efficiency【/1】 and will illustrate the methods and tradeoffs that are involved in designing parallel algorithms that achieve the same level of computational complexity as their sequential counterparts, using important parallel patterns such as prefix sum in 【2】Chapter 11【/2】, Prefix Sum (Scan).",
+      "zh": "例如，许多现实世界的问题最自然地是用数学递推来描述的。将这些问题并行化，往往需要以非直觉的方式来思考，并且在执行过程中可能需要冗余的工作。有一些重要的算法原语，例如前缀和（扫描），能够帮助把问题的顺序式、递归式的表述转化为更具并行性的形式。我们将更正式地引入【1】工作效率【/1】这一概念，并借助重要的并行模式——例如【2】第 11 章【/2】“前缀和（扫描）”中所介绍的前缀和——来说明，如何设计出在算法复杂度上与其顺序版本相当的并行算法，以及其中的方法与权衡。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "Second, the execution speed of many applications is limited by memory access latency and/or throughput. We refer to these applications as memory bound; by contrast, compute bound applications are limited by the number of instructions performed per byte of data. Achieving high-performance parallel execution in memory-bound applications often requires methods for improving memory access speed. We will introduce optimization techniques for memory accesses in 【1】Chapter 5【/1】, Memory Architecture and Data Locality and 【2】Chapter 6【/2】, Performance Considerations, and will apply these techniques in several chapters on parallel patterns and applications.",
+      "zh": "其次，许多应用的执行速度受限于内存访问的延迟和/或吞吐量。我们把这类应用称为访存受限（的）；相比之下，计算受限的应用则受限于每字节数据所执行的指令条数。在访存受限的应用中实现高性能的并行执行，常常需要改善内存访问速度的方法。我们将在【1】第 5 章【/1】“内存体系结构与数据局部性”与【2】第 6 章【/2】“性能考量”中介绍针对内存访问的优化技术，并将这些技术应用于若干关于并行模式与应用的章节中。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "Third, the execution speed of parallel programs is often more sensitive to the input data characteristics than is the case for their sequential counterparts. Many real-world applications need to deal with inputs with widely varying characteristics, such as erratic or unpredictable data sizes and uneven data distributions. These variations in sizes and distributions can cause uneven amount of work to be assigned to the parallel threads and can significantly reduce the effectiveness of parallel execution. The performance of parallel programs can sometimes vary dramatically with these characteristics. We will introduce techniques for regularizing data distributions and/or dynamically refining the number of threads to address these challenges in the chapters that introduce parallel patterns and applications.",
+      "zh": "第三，并行程序的执行速度往往比其顺序版本更容易受到输入数据特征的影响。许多现实应用需要处理特征差异很大的输入，例如大小不定或难以预测的数据量，以及不均匀的数据分布。这些在大小与分布上的变化，会导致分配给各个并行线程的工作量不均匀，从而显著降低并行执行的有效性。并行程序的性能有时会随着这些特征而剧烈波动。在介绍并行模式与应用的章节中，我们将引入一些技术，通过对数据分布进行规整化、以及动态地精细调整线程数量，来应对这些挑战。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "Fourth, some applications can be parallelized while requiring little collaboration across different threads. These applications are often referred to as 【1】embarrassingly parallel【/1】. Other applications require threads to collaborate with each other, which requires using 【2】synchronization operations【/2】 such as barriers or atomic operations. These synchronization operations impose overhead on the application because threads will often find themselves waiting for other threads instead of performing useful work. We will discuss various strategies for reducing this synchronization overhead throughout this book.",
+      "zh": "第四，有些应用可以并行化，却几乎不需要不同线程之间的协作。这类应用常被称为【1】易并行（的）【/1】。另一些应用则要求线程彼此协作，这就要用到【2】同步操作【/2】，例如屏障或原子操作。这些同步操作会给应用带来开销，因为线程常常发现自己是在等待其他线程，而不是在做有用的工作。我们将在全书中讨论各种用以降低这种同步开销的策略。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "Fortunately, most of these challenges have been addressed by researchers. There are also common patterns across application domains that allow us to apply solutions that were derived in one domain to challenges in other domains. This is the primary reason why we will be presenting key techniques for addressing these challenges in the context of important parallel computation patterns and applications.",
+      "zh": "幸运的是，研究人员已经解决了这些挑战中的大部分。不同应用领域之间也存在着一些共同的模式，使我们可以把一个领域中所得到的解决方案，应用到其他领域的挑战上。这正是我们之所以要在重要的并行计算模式与应用的背景下，介绍应对这些挑战的关键技术的主要原因。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "1.5 Related parallel programming interfaces",
+      "zh": "1.5 相关的并行编程接口"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "Many parallel programming languages and models have been proposed in the past several decades (【1】Mattson et al., 2004【/1】). The ones that are the most widely used are OpenMP (【2】Open, 2005【/2】) for shared memory multiprocessor systems and Message Passing Interface (MPI) (【3】MPI, 2009【/3】) for scalable cluster computing. Both have become standardized programming interfaces supported by major computer vendors.",
+      "zh": "在过去几十年中，人们提出了许多并行编程语言与模型（【1】Mattson et al., 2004【/1】）。其中使用最为广泛的是用于共享内存多处理器系统的 OpenMP（【2】Open, 2005【/2】），以及用于可扩展集群计算的消息传递接口（MPI）（【3】MPI, 2009【/3】）。二者都已成为由主要计算机厂商支持的标准化编程接口。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "An OpenMP implementation consists of a compiler and a runtime. A programmer specifies directives (commands) and pragmas (hints) about a loop to the OpenMP compiler. With these directives and pragmas, OpenMP compilers generate parallel code. The runtime system supports the execution of the parallel code by managing parallel threads and resources. OpenMP was originally designed for CPU execution and has been extended to support GPU execution. The major advantage of OpenMP is that it provides compiler automation and runtime support for abstracting away many parallel programming details from programmers. Such automation and abstraction can help to make the application code more portable across systems produced by different vendors as well as different generations of systems from the same vendor. We refer to this property as 【1】performance portability【/1】. However, effective programming in OpenMP still requires the programmer to understand all the detailed parallel programming concepts that are involved. Because CUDA gives programmers explicit control of these parallel programming details, it is an excellent learning vehicle even for someone who would like to use OpenMP as their primary programming interface. Furthermore, from our experience, OpenMP compilers are still evolving and improving. Many programmers will likely need to use CUDA-style interfaces for parts in which OpenMP compilers fall short.",
+      "zh": "OpenMP 的实现由一个编译器和一个运行时组成。程序员向 OpenMP 编译器给出关于某个循环的指示符（命令）与编译指示（提示）。借助这些指示符与编译指示，OpenMP 编译器便生成并行代码。运行时系统通过管理并行线程与资源，来支持这些并行代码的执行。OpenMP 最初是为 CPU 执行而设计的，后来被扩展以支持 GPU 执行。OpenMP 的主要优势在于，它提供了编译器自动化与运行时支持，把许多并行编程的细节从程序员那里抽象掉。这样的自动化与抽象，有助于使应用代码在由不同厂商生产的系统、以及同一厂商不同代的系统之间更具可移植性。我们把这一性质称为【1】性能可移植性【/1】。然而，要在 OpenMP 中有效地编程，程序员仍然需要理解其中涉及的所有并行编程细节。由于 CUDA 让程序员能显式控制这些并行编程细节，即便对那些希望以 OpenMP 作为主要编程接口的人来说，它也是一种极佳的学习载体。此外，根据我们的经验，OpenMP 编译器仍在不断演进和改进。许多程序员很可能还需要在 OpenMP 编译器力有不逮的部分，使用 CUDA 风格的接口。"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "On the other hand, MPI is a programming interface in which computing nodes in a cluster do not share memory (【1】MPI, 2009【/1】). All data sharing and interaction must be done through explicit message passing. MPI has been widely used in HPC. Applications written in MPI have run successfully on cluster computing systems with more than 100,000 nodes. Today, many HPC clusters employ heterogeneous CPU/GPU nodes. The amount of effort that is needed to port an application into MPI can be quite high, owing to the lack of shared memory across computing nodes. The programmer needs to perform domain decomposition to partition the input and output data across individual nodes. On the basis of the domain decomposition, the programmer also needs to call message sending and receiving functions to manage the data exchange between nodes. CUDA, by contrast, provides shared memory for parallel execution in the GPU to address this difficulty. While CUDA is an effective interface with each node, most application developers need to use MPI to program at the cluster level. Furthermore, there has been increasing support for multi-GPU programming in CUDA via APIs such as the NVIDIA Collective Communications Library (NCCL). It is therefore important that a parallel programmer in HPC understands how to do joint MPI/CUDA programming in modern computing clusters employing multi-GPU nodes, a topic that is presented in 【2】Chapter 20【/2】, Programming a Heterogeneous Computing Cluster.",
+      "zh": "另一方面，MPI 是一种编程接口，其中的集群计算节点之间并不共享内存（【1】MPI, 2009【/1】）。所有的数据共享与交互都必须通过显式的消息传递来完成。MPI 在 HPC 中得到了广泛应用。用 MPI 编写的应用已经成功地运行在拥有超过 100,000 个节点的集群计算系统上。如今，许多 HPC 集群都采用异构的 CPU/GPU 节点。由于缺乏跨计算节点的共享内存，把一个应用移植到 MPI 所需的工作量可能相当大。程序员需要进行区域分解，以在各个节点之间划分输入与输出数据。在区域分解的基础上，程序员还需要调用消息发送与接收函数，来管理节点之间的数据交换。相比之下，CUDA 为 GPU 中的并行执行提供共享内存，从而化解了这一困难。虽然 CUDA 对每个节点而言都是一种高效的接口，但大多数应用开发者仍需要使用 MPI 在集群层面编程。此外，CUDA 通过 NVIDIA 集合通信库（NCCL）等 API，对多 GPU 编程的支持也在不断增强。因此，HPC 中的并行程序员理解如何在采用多 GPU 节点的现代计算集群中进行 MPI/CUDA 联合编程，就显得十分重要，这一主题将在【2】第 20 章【/2】“异构计算集群编程”中介绍。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "In 2009, several major industry players, including Apple, Intel, AMD/ATI, and NVIDIA, jointly developed a standardized programming model called Open Compute Language (OpenCL) (【1】The Khronos Group, 2009【/1】). Similar to CUDA, the OpenCL programming model defines language extensions and runtime APIs to allow programmers to manage parallelism and data delivery in massively parallel processors. In comparison to CUDA, OpenCL relies more on APIs and less on language extensions. This allows vendors to quickly adapt their existing compilers and tools to handle OpenCL programs. OpenCL is a standardized programming model in that applications that are developed in OpenCL can run correctly without modification on all processors that support the OpenCL language extensions and API. However, one will likely need to modify the applications to achieve high performance for a new processor.",
+      "zh": "2009 年，包括 Apple、Intel、AMD/ATI 和 NVIDIA 在内的几家主要行业厂商，共同开发了一种称为开放计算语言（OpenCL）的标准化编程模型（【1】The Khronos Group, 2009【/1】）。与 CUDA 类似，OpenCL 编程模型定义了语言扩展与运行时 API，使程序员能够在大规模并行处理器中管理并行性与数据交付。与 CUDA 相比，OpenCL 更多地依赖 API，而较少依赖语言扩展。这使得各厂商能够快速调整其现有的编译器与工具来处理 OpenCL 程序。OpenCL 是一种标准化编程模型，因为用 OpenCL 开发的应用，可以在所有支持 OpenCL 语言扩展与 API 的处理器上不经修改地正确运行。然而，若要针对新的处理器获得高性能，人们往往仍需对应用进行修改。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "Those who are familiar with both OpenCL and CUDA know that there is a remarkable similarity between the key concepts and features of OpenCL and those of CUDA. That is, a CUDA programmer can learn OpenCL programming with minimal effort. More important, virtually all techniques that are learned in using CUDA can be easily applied to OpenCL programming.",
+      "zh": "那些同时熟悉 OpenCL 与 CUDA 的人都知道，OpenCL 的关键概念与特性同 CUDA 之间有着惊人的相似之处。也就是说，一名 CUDA 程序员可以用极少的精力学会 OpenCL 编程。更重要的是，在使用 CUDA 过程中学到的几乎所有技术，都可以轻松地应用于 OpenCL 编程。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "1.6 Overarching goals",
+      "zh": "1.6 总体目标"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "Our primary goal is to teach you, the reader, how to program massively parallel processors to achieve high performance. Therefore much of the book is dedicated to the techniques for developing high-performance parallel code. Our approach will not require a great deal of hardware expertise. Nevertheless, you will need to have a good conceptual understanding of the parallel hardware architectures to be able to reason about the performance behavior of your code. Therefore we are going to dedicate some pages to the intuitive understanding of essential hardware architecture features and many pages to techniques for developing high-performance parallel programs. In particular, we will focus on computational thinking (【1】Wing, 2006【/1】) techniques that will enable you to think about problems in ways that are amenable to high-performance execution on massively parallel processors.",
+      "zh": "我们的首要目标，是教会作为读者的你如何为大规模并行处理器编程，以取得高性能。因此本书的大部分内容都致力于开发高性能并行代码的技术。我们的方法不需要太多硬件方面的专门知识。不过，你仍需要对并行硬件体系结构有良好的概念性理解，方能对你的代码性能表现做出合理的推断。因此，我们将用一些篇幅来直观地理解关键的硬件体系结构特性，并用大量篇幅来介绍开发高性能并行程序的技术。具体而言，我们将聚焦于计算思维（【1】Wing, 2006【/1】）技术，它能使你以适合在大规模并行处理器上高性能执行的方式来思考问题。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "High-performance parallel programming on most processors requires some knowledge of how the hardware works. It will probably take many years to build tools and machines that will enable programmers to develop high-performance code without this knowledge. Even if we have such tools, we suspect that programmers who have knowledge of the hardware will be able to use the tools much more effectively than those who do not. For this reason we dedicate 【1】Chapter 4【/1】, Compute Architecture and Scheduling, to introduce the fundamentals of the GPU architecture. We also discuss more specialized architecture concepts as part of our discussions of high-performance parallel programming techniques.",
+      "zh": "在大多数处理器上进行高性能并行编程，都需要一些关于硬件如何运作的知识。要构建出能让程序员在没有这些知识的情况下也能开发出高性能代码的工具与机器，恐怕还需要很多年。即便有了这样的工具，我们猜想，了解硬件的程序员会比不了解的程序员更有效地运用这些工具。出于这个原因，我们专门用【1】第 4 章【/1】“计算体系结构与调度”来介绍 GPU 体系结构的基础知识。在讨论高性能并行编程技术的过程中，我们也会探讨一些更专门的体系结构概念。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "Our second goal is to teach parallel programming for correct functionality and reliability, which constitutes a subtle issue in parallel computing. Programmers who have worked on parallel systems in the past know that achieving initial performance is not enough. The challenge is to achieve it in such a way that you can debug the code and support users. The CUDA programming model encourages the use of simple forms of barrier synchronization, memory consistency, and atomicity for managing parallelism. In addition, it provides an array of powerful tools that allow one to debug not only the functional aspects, but also the performance bottlenecks. We will show that by focusing on data parallelism, one can achieve both high performance and high reliability in one’s applications.",
+      "zh": "我们的第二个目标，是讲授为了正确的功能与可靠性而进行的并行编程，这在并行计算中是的一个微妙问题。曾在并行系统上工作过的程序员都知道，仅仅达到初期的性能是不够的。挑战在于：要达到这样的性能，同时还能够调试代码并支持用户。CUDA 编程模型鼓励使用简单形式的屏障同步、内存一致性以及原子性来管理并行性。此外，它还提供了一系列强大的工具，使人们不仅能调试功能方面的问题，也能调试性能瓶颈。我们将说明，通过聚焦于数据并行，人们可以在自己的应用中同时实现高性能与高可靠性。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[4]",
+      "en": "Our third goal is scalability across future hardware generations by exploring approaches to parallel programming such that future machines, which will be more and more parallel, can run your code faster than today’s machines. We want to help you to master parallel programming so that your programs can scale up to the level of performance of new generations of machines. The key to such scalability is to regularize and localize memory data accesses to minimize consumption of critical resources and conflicts in updating data structures. Therefore the techniques for developing high-performance parallel code are also important for ensuring future scalability of applications.",
+      "zh": "我们的第三个目标，是通过探索并行编程的方法，实现跨未来硬件代际的可扩展性，使得未来那些并行程度越来越高的机器，能够比今天的机器更快地运行你的代码。我们希望帮助你掌握并行编程，使你的程序能够扩展到新一代机器的性能水平。这种可扩展性的关键在于：对内存数据访问进行规整化与局部化，以尽量减少关键资源的消耗以及对数据结构进行更新时的冲突。因此，开发高性能并行代码的技术，对于确保应用未来的可扩展性同样十分重要。"
+    }
+  ]
+}

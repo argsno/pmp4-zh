@@ -1,0 +1,155 @@
+{
+  "page": "Ch003_47-68_B9780323912310000045",
+  "nodes": [
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[18]",
+      "en": "Since there are 【1】width【/1】 pixels in each row, we can generate the 1D index for the pixel at row 【2】row【/2】 and column 【3】col【/3】 as 【4】row*width+col【/4】 (line 10). This 1D index 【5】grayOffset【/5】 is the pixel index for 【6】Pout【/6】 since each pixel in the output grayscale image is 1 byte (unsigned char). Using our 62×76 image example, the linearized 1D index of the 【7】Pout【/7】 pixel calculated by thread (0,0) of block (1,0) with the following formula:",
+      "zh": "由于每行有【1】width【/1】个像素，位于第【2】row【/2】行、第【3】col【/3】列的像素，其 1D 索引可以生成为【4】row*width+col【/4】（第 10 行）。这个 1D 索引【5】grayOffset【/5】就是【6】Pout【/6】的像素索引，因为输出灰度图像中的每个像素占 1 字节（unsigned char）。仍以 62×76 的图像为例，由线程块 (1,0) 的线程 (0,0) 计算的【7】Pout【/7】像素，其线性化 1D 索引由下面的公式给出："
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[20]",
+      "en": "As for 【1】Pin【/1】, we need to multiply the gray pixel index by 32F2F【2】【3】3【/3】【/2】 (line 13), since each colored pixel is stored as three elements (r, g, b), each of which is 1 byte. The resulting 【4】rgbOffset【/4】 gives the starting location of the color pixel in the 【5】Pin【/5】 array. We read the 【6】r【/6】, 【7】g【/7】, and 【8】b【/8】 value from the three consecutive byte locations of the 【9】Pin【/9】 array (lines 14–16), perform the calculation of the grayscale pixel value, and write that value into the 【10】Pout【/10】 array using 【11】grayOffset【/11】 (line 19). In our 62×76 image example the linearized 1D index of the first component of the 【12】Pin【/12】 pixel that is processed by thread (0,0) of block (1,0) can be calculated with the following formula:",
+      "zh": "至于【1】Pin【/1】，需要把灰度像素索引乘以 3【2】【3】3【/3】【/2】（第 13 行），因为每个彩色像素以三个元素 (r, g, b) 存储，每个元素占 1 字节。由此得到的【4】rgbOffset【/4】给出该彩色像素在【5】Pin【/5】数组中的起始位置。我们从【9】Pin【/9】数组中三个连续的字节位置读出【6】r【/6】、【7】g【/7】、【8】b【/8】值（第 14–16 行），计算灰度像素值，再用【11】grayOffset【/11】把该值写入【10】Pout【/10】数组（第 19 行）。仍以 62×76 的图像为例，由线程块 (1,0) 的线程 (0,0) 处理的【12】Pin【/12】像素，其第一个分量的线性化 1D 索引可用下面的公式算出："
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[22]",
+      "en": "The data that is being accessed is the 3 bytes starting at byte offset 3648.",
+      "zh": "所访问的数据是从字节偏移 3648 开始的 3 个字节。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[23]",
+      "en": "【1】Fig. 3.5【/1】 illustrates the execution of 【2】colorToGrayscaleConversion【/2】 in processing our 62×76 example. Assuming 16×16 blocks, calling the 【3】colorToGrayscaleConversion【/3】 kernel generates 64×80 threads. The grid will have 4×5=20 blocks: four in the vertical direction and five in the horizontal direction. The execution behavior of blocks will fall into one of four different cases, shown as four shaded areas in 【4】Fig. 3.5【/4】.",
+      "zh": "【1】图 3.5【/1】展示了【2】colorToGrayscaleConversion【/2】处理 62×76 示例时的执行过程。假设线程块为 16×16，调用【3】colorToGrayscaleConversion【/3】核函数会生成 64×80 个线程。网格将有 4×5=20 个线程块：垂直方向 4 个，水平方向 5 个。线程块的执行行为分为四种不同情形，在【4】图 3.5【/4】中显示为四块阴影区域。"
+    },
+    {
+      "id": "n0054",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[13]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 3.5【/1】 Covering a 76×62 picture with 16×16 blocks.",
+      "zh": "【1】图 3.5【/1】 用 16×16 的线程块覆盖 76×62 的图片"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[24]",
+      "en": "The first area, marked 1 in 【1】Fig. 3.5【/1】, consists of the threads that belong to the 12 blocks covering the majority of pixels in the picture. Both 【2】col【/2】 and 【3】row【/3】 values of these threads are within range; all these threads pass the if-statement test and process pixels in the dark-shaded area of the picture. That is all 16×16=256 threads in each block will process pixels.",
+      "zh": "第一块区域在【1】图 3.5【/1】中标为 1，由覆盖图片大部分像素的 12 个线程块中的线程组成。这些线程的【2】col【/2】值和【3】row【/3】值都在范围内；它们全都通过 if 语句的检验，处理图片中深色阴影区域的像素。也就是说，每个线程块中全部 16×16=256 个线程都会处理像素。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[25]",
+      "en": "The second area, marked 2 in 【1】Fig. 3.5【/1】, contains the threads that belong to the three blocks in the medium-shaded area covering the upper-right pixels of the picture. Although the 【2】row【/2】 values of these threads are always within range, the 【3】col【/3】 values of some of them exceed the 【4】m【/4】 value of 76. This is because the number of threads in the horizontal direction is always a multiple of the 【5】blockDim.x【/5】 value chosen by the programmer (16 in this case). The smallest multiple of 16 needed to cover 76 pixels is 80. As a result, 12 threads in each row will find their 【6】col【/6】 values within range and will process pixels. The remaining four threads in each row will find their 【7】col【/7】 values out of range and thus will fail the if-statement condition. These threads will not process any pixels. Overall, 12×16=192 of the 16×16=256 threads in each of these blocks will process pixels.",
+      "zh": "第二块区域在【1】图 3.5【/1】中标为 2，包含中等阴影区域内三个线程块中的线程，它们覆盖图片右上部的像素。虽然这些线程的【2】row【/2】值总在范围内，但其中一些线程的【3】col【/3】值超过了【4】m【/4】的取值 76。这是因为水平方向的线程数总是程序员所选【5】blockDim.x【/5】值（这里是 16）的整数倍，而覆盖 76 个像素所需的 16 的最小倍数是 80。结果，每行中有 12 个线程的【6】col【/6】值落在范围内，会处理像素；每行余下的 4 个线程的【7】col【/7】值超出范围，因而不满足 if 语句的条件，不会处理任何像素。总体来看，这些线程块中每块 16×16=256 个线程里有 12×16=192 个会处理像素。"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[26]",
+      "en": "The third area, marked 3 in 【1】Fig. 3.5【/1】, accounts for the four lower-left blocks covering the medium-shaded area of the picture. Although the 【2】col【/2】 values of these threads are always within range, the 【3】row【/3】 values of some of them exceed the 【4】n【/4】 value of 62. This is because the number of threads in the vertical direction is always a multiple of the 【5】blockDim.y【/5】 value chosen by the programmer (16 in this case). The smallest multiple of 16 to cover 62 is 64. As a result, 14 threads in each column will find their row values within range and will process pixels. The remaining two threads in each column will not pas the if-statement and will not process any pixels. Overall, 16×14=224 of the 256 threads will process pixels.",
+      "zh": "第三块区域在【1】图 3.5【/1】中标为 3，对应覆盖图片中等阴影区域的左下方四个线程块。虽然这些线程的【2】col【/2】值总在范围内，但其中一些线程的【3】row【/3】值超过了【4】n【/4】的取值 62。这是因为垂直方向的线程数总是程序员所选【5】blockDim.y【/5】值（这里是 16）的整数倍，而覆盖 62 所需的 16 的最小倍数是 64。结果，每列中有 14 个线程的 row 值落在范围内，会处理像素；每列余下的 2 个线程无法通过 if 语句，不会处理任何像素。总体来看，256 个线程中有 16×14=224 个会处理像素。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[27]",
+      "en": "The fourth area, marked 4 in 【1】Fig. 3.5【/1】, contains the threads that cover the lower right, lightly shaded area of the picture. Like Area 2, 4 threads in each of the top 14 rows will find their 【2】col【/2】 values out of range. Like Area 3, the entire bottom two rows of this block will find their row values out of range. Overall, only 14×12=168 of the 16×16=256 threads will process pixels.",
+      "zh": "第四块区域在【1】图 3.5【/1】中标为 4，包含覆盖图片右下方浅色阴影区域的线程。与区域 2 类似，最上面 14 行中每行有 4 个线程的【2】col【/2】值超出范围；与区域 3 类似，该线程块最下面整整两行的 row 值超出范围。总体来看，16×16=256 个线程中只有 14×12=168 个会处理像素。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[28]",
+      "en": "We can easily extend our discussion of 2D arrays to 3D arrays by including another dimension when we linearize the array. This is done by placing each “plane” of the array one after another into the address space. Assume that the programmer uses variables 【1】m【/1】 and 【2】n【/2】 to track the number of columns and rows, respectively, in a 3D array. The programmer also needs to determine the values of 【3】blockDim.z【/3】 and 【4】gridDim.z【/4】 when calling a kernel. In the kernel the array index will involve another global index:",
+      "zh": "只要在线性化数组时再加入一个维度，就可以很容易地把对 2D 数组的讨论推广到 3D 数组。做法是把数组的每个“平面”一个接一个地放入地址空间。假设程序员用变量【1】m【/1】和【2】n【/2】分别记录 3D 数组的列数和行数，调用核函数时还需要确定【3】blockDim.z【/3】和【4】gridDim.z【/4】的取值。在核函数中，数组索引将涉及另一个全局索引："
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[30]",
+      "en": "The linearized access to a 3D array 【1】P【/1】 will be in the form of 【2】P[plane*m*n+row*m+col]【/2】. A kernel processing the 3D 【3】P【/3】 array needs to check whether all the three global indices, 【4】plane【/4】, 【5】row【/5】, and 【6】col【/6】, fall within the valid range of the array. The use of 3D arrays in CUDA kernels will be further studies for the stencil pattern in 【7】Chapter 8【/7】, Stencil.",
+      "zh": "对 3D 数组【1】P【/1】的线性化访问形式为【2】P[plane*m*n+row*m+col]【/2】。处理 3D 数组【3】P【/3】的核函数需要检查【4】plane【/4】、【5】row【/5】和【6】col【/6】这三个全局索引是否都落在数组的有效范围内。3D 数组在 CUDA 核函数中的使用，将在【7】第 8 章【/7】“模板”中结合模板模式作进一步探讨。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "3.3 Image blur: a more complex kernel",
+      "zh": "3.3 图像模糊：一个更复杂的核函数"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "We have studied 【1】vecAddkernel【/1】 and 【2】colorToGrayscaleConversion【/2】, in which each thread performs only a small number of arithmetic operations on one array element. These kernels serve their purposes well: to illustrate the basic CUDA C program structure and data parallel execution concepts. At this point, the reader should ask the obvious question: Do all threads in CUDA C programs perform only such simple and trivial operations independently of each other? The answer is no. In real CUDA C programs, threads often perform complex operations on their data and need to cooperate with each other. For the next few chapters we are going to work on increasingly complex examples that exhibit these characteristics. We will start with an image-blurring function.",
+      "zh": "我们已经研究了【1】vecAddkernel【/1】和【2】colorToGrayscaleConversion【/2】，其中每个线程只对一个数组元素执行少量算术运算。这些核函数很好地达成了各自的目的：说明 CUDA C 程序的基本结构以及数据并行执行的概念。读到这里，读者自然会提出一个显而易见的问题：CUDA C 程序中的所有线程都只是彼此独立地执行这样简单而平凡的运算吗？答案是否定的。在真实的 CUDA C 程序中，线程往往要对其数据执行复杂的运算，并且需要彼此协作。接下来的几章将处理越来越复杂、体现这些特点的例子。我们先从一个图像模糊函数开始。"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "Image blurring smoothes out abrupt variation of pixel values while preserving the edges that are essential for recognizing the key features of the image. 【1】Fig. 3.6【/1】 illustrates the effect of image blurring. Simply stated, we make the image blurry. To human eyes, a blurred image tends to obscure the fine details and present the “big picture” impression, or the major thematic objects in the picture. In computer image-processing algorithms a common use case of image blurring is to reduce the impact of noise and granular rendering effects in an image by correcting problematic pixel values with the clean surrounding pixel values. In computer vision, image blurring can be used to allow edge detection and object recognition algorithms to focus on thematic objects rather than being bogged down by a massive quantity of fine-grained objects. In displays, image blurring is sometimes used to highlight a particular part of the image by blurring the rest of the image.",
+      "zh": "图像模糊在平滑像素值突变的同时，保留对识别图像关键特征至关重要的边缘。【1】图 3.6【/1】展示了图像模糊的效果。简单地说，就是把图像变模糊。在人眼看来，模糊后的图像往往会淡化细节，呈现出“大局”印象，也就是图片中的主要主题对象。在计算机图像处理算法中，图像模糊的一个常见用途是用周围干净的像素值修正有问题的像素值，从而降低图像中噪声和颗粒状渲染效果的影响。在计算机视觉中，图像模糊可以让边缘检测和目标识别算法聚焦于主题对象，而不至于被海量的细粒度对象所拖累。在显示方面，有时会通过模糊图像的其余部分来突出图像中的某一特定区域。"
+    },
+    {
+      "id": "n0064",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 3.6【/2】【/1】 An original image (【3】left【/3】) and a blurred version (【4】right【/4】).",
+      "zh": "【1】【2】图 3.6【/2】【/1】 原始图像（【3】左【/3】）与模糊后的版本（【4】右【/4】）"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "Mathematically, an image-blurring function calculates the value of an output image pixel as a weighted sum of a patch of pixels encompassing the pixel in the input image. As we will learn in 【1】Chapter 7【/1】, Convolution, the computation of such weighted sums belongs to the 【2】convolution【/2】 pattern. We will be using a simplified approach in this chapter by taking a simple average value of the N×N patch of pixels surrounding, and including, our target pixel. To keep the algorithm simple, we will not place a weight on the value of any pixel based on its distance from the target pixel. In practice, placing such weights is quite common in convolution blurring approaches, such as Gaussian blur.",
+      "zh": "从数学上说，图像模糊函数把输出图像中某个像素的值，计算为输入图像中包含该像素在内的一片像素块的加权和。正如我们将在【1】第 7 章【/1】“卷积”中学到的，这类加权和的计算属于【2】卷积【/2】模式。本章采用一种简化的做法：对围绕目标像素（并包含该像素）的 N×N 像素块取简单平均值。为使算法保持简单，我们不会依据像素与目标像素的距离为其取值分配权重。实际上，在诸如高斯模糊之类的卷积模糊方法中，施加这样的权重是相当常见的。"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "【1】Fig. 3.7【/1】 shows an example of image blurring using a 3×3 patch. When calculating an output pixel value at (row, col) position, we see that the patch is centered at the input pixel located at the (row, col) position. The 3×3 patch spans three rows (row-1, row, row+1) and three columns (col-1, col, col+1). For example, the coordinates of the nine pixels for calculating the output pixel at (25, 50) are (24, 49), (24, 50), (24, 51), (25, 49), (25, 50), (25, 51), (26, 49), (26, 50), and (26, 51).",
+      "zh": "【1】图 3.7【/1】给出了使用 3×3 像素块进行图像模糊的例子。在计算 (row, col) 位置上的输出像素值时，可以看到该像素块以位于 (row, col) 位置的输入像素为中心。这个 3×3 像素块横跨三行（row-1、row、row+1）和三列（col-1、col、col+1）。例如，计算 (25, 50) 处输出像素所用的九个像素，其坐标为 (24, 49)、(24, 50)、(24, 51)、(25, 49)、(25, 50)、(25, 51)、(26, 49)、(26, 50) 和 (26, 51)。"
+    },
+    {
+      "id": "n0067",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 3.7【/1】 Each output pixel is the average of a patch of surrounding pixels and itself in the input image.",
+      "zh": "【1】图 3.7【/1】 每个输出像素是输入图像中其自身与周围一片像素块的平均值"
+    },
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "【1】Fig. 3.8【/1】 shows an image blur kernel. Similar to the strategy that was used in 【2】colorToGrayscaleConversion【/2】, we use each thread to calculate an output pixel. That is, the thread-to-output-data mapping remains the same. Thus at the beginning of the kernel we see the familiar calculation of the 【3】col【/3】 and 【4】row【/4】 indices (lines 03–04). We also see the familiar if-statement that verifies that both 【5】col【/5】 and 【6】row【/6】 are within the valid range according to the height and width of the image (line 05). Only the threads whose 【7】col【/7】 and 【8】row【/8】 indices are both within value ranges are allowed to participate in the execution.",
+      "zh": "【1】图 3.8【/1】给出了一个图像模糊核函数。与【2】colorToGrayscaleConversion【/2】所用的策略类似，我们让每个线程计算一个输出像素，也就是说，线程到输出数据的映射保持不变。因此在核函数开头可以看到熟悉的【3】col【/3】和【4】row【/4】索引计算（第 03–04 行），也可以看到熟悉的 if 语句，它按图像的高度和宽度验证【5】col【/5】和【6】row【/6】是否都在有效范围内（第 05 行）。只有【7】col【/7】和【8】row【/8】索引都落在取值范围内的线程才被允许参与执行。"
+    },
+    {
+      "id": "n0069",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 3.8【/1】 An image blur kernel.",
+      "zh": "【1】图 3.8【/1】 一个图像模糊核函数"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "As shown in 【1】Fig. 3.7【/1】, the 【2】col【/2】 and 【3】row【/3】 values also give the central pixel location of the patch of input pixels used for calculating the output pixel for the thread. The nested for-loops in 【4】Fig. 3.8【/4】 (lines 10–11) iterate through all the pixels in the patch. We assume that the program has a defined constant 【5】BLUR_SIZE【/5】. The value of 【6】BLUR_SIZE【/6】 is set such that 【7】BLUR_SIZE【/7】 gives the number of pixels on each side (radius) of the patch and 【8】2*BLUR_SIZE+1【/8】 gives the total number of pixels across one dimension of the patch. For example, for a 3×3 patch, 【9】BLUR_SIZE【/9】 is set to 1, whereas for a 7×7 patch, 【10】BLUR_SIZE【/10】 is set to 3. The outer loop iterates through the rows of the patch. For each row, the inner loop iterates through the columns of the patch.",
+      "zh": "如【1】图 3.7【/1】所示，【2】col【/2】和【3】row【/3】的值同时也给出了用于计算该线程输出像素的那片输入像素块的中心像素位置。【4】图 3.8【/4】中的嵌套 for 循环（第 10–11 行）遍历像素块中的所有像素。我们假设程序中定义了常量【5】BLUR_SIZE【/5】。【6】BLUR_SIZE【/6】的取值按如下方式设定：【7】BLUR_SIZE【/7】给出像素块每一侧的像素数（半径），而【8】2*BLUR_SIZE+1【/8】给出像素块在一个维度上的像素总数。例如，对 3×3 的像素块，【9】BLUR_SIZE【/9】设为 1；而对 7×7 的像素块，【10】BLUR_SIZE【/10】设为 3。外层循环遍历像素块的各行；对每一行，内层循环遍历像素块的各列。"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "In our 3×3 patch example, the 【1】BLUR_SIZE【/1】 is 1. For the thread that calculates output pixel (25, 50), during the first iteration of the outer loop, the 【2】curRow【/2】 variable is 【3】row-BLUR_SIZE=【/3】(25−1)=24. Thus during the first iteration of the outer loop, the inner loop iterates through the patch pixels in row 24. The inner loop iterates from column 【4】col-BLUR_SIZE【/4】=50–1=49 to 【5】col+BLUR_SIZE【/5】=51 using the curCol variable. Therefore the pixels that are processed in the first iteration of the outer loop are (24, 49), (24, 50), and (24, 51). The reader should verify that in the second iteration of the outer loop, the inner loop iterates through pixels (25, 49), (25, 50), and (25, 51). Finally, in the third iteration of the outer loop, the inner loop iterates through pixels (26, 49), (26, 50), and (26, 51).",
+      "zh": "在 3×3 像素块的例子中，【1】BLUR_SIZE【/1】为 1。对于计算输出像素 (25, 50) 的线程，在外层循环的第一次迭代中，【2】curRow【/2】变量为【3】row-BLUR_SIZE=【/3】(25−1)=24。因此在外层循环的第一次迭代中，内层循环遍历第 24 行的像素块像素。内层循环借助 curCol 变量，从列【4】col-BLUR_SIZE【/4】=50–1=49 迭代到【5】col+BLUR_SIZE【/5】=51。所以外层循环第一次迭代中处理的像素是 (24, 49)、(24, 50) 和 (24, 51)。读者应自行验证：在外层循环的第二次迭代中，内层循环遍历像素 (25, 49)、(25, 50) 和 (25, 51)；最后，在外层循环的第三次迭代中，内层循环遍历像素 (26, 49)、(26, 50) 和 (26, 51)。"
+    },
+    {
+      "id": "p0370",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "Line 16 uses the linearized index of 【1】curRow【/1】 and 【2】curCol【/2】 to access the value of the input pixel visited in the current iteration. It accumulates the pixel value into a running sum variable 【3】pixVal【/3】. Line 17 records the fact that one more pixel value has been added into the running sum by incrementing the 【4】pixels【/4】 variable. After all the pixels in the patch have been processed, line 22 calculates the average value of the pixels in the patch by dividing the 【5】pixVal【/5】 value by the 【6】pixels【/6】 value. It uses the linearized index of 【7】row【/7】 and 【8】col【/8】 to write the result into its output pixel.",
+      "zh": "第 16 行利用【1】curRow【/1】和【2】curCol【/2】的线性化索引，访问本次迭代所访问的输入像素的值，并把该像素值累加到累加和变量【3】pixVal【/3】中。第 17 行通过递增【4】pixels【/4】变量，记录下又有一个像素值被加入累加和这一事实。像素块中的所有像素处理完毕后，第 22 行用【5】pixVal【/5】的值除以【6】pixels【/6】的值，算出像素块中各像素的平均值，并利用【7】row【/7】和【8】col【/8】的线性化索引把结果写入其输出像素。"
+    },
+    {
+      "id": "p0375",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "Line 15 contains a conditional statement that guards the execution of lines 16 and 17. For example, in computing output pixels near the edge of the image, the patch may extend beyond the valid range of the input image. This is illustrated in 【1】Fig. 3.9【/1】 assuming 3×3 patches. In case 1, the pixel at the upper-left corner is being blurred. Five of the nine pixels in the intended patch do not exist in the input image. In this case, the 【2】row【/2】 and 【3】col【/3】 values of the output pixel are 0 and 0, respectively. During the execution of the nested loop, the 【4】curRow【/4】 and 【5】curCol【/5】 values for the nine iterations are (−1,−1), (−1,0), (−1,1), (0,−1), (0,0), (0,1), (1,−1), (1,0), and (1,1). Note that for the five pixels that are outside the image, at least one of the values is less than 0. The 【6】curRow&lt;0【/6】 and 【7】curCol&lt;0【/7】 conditions of the if-statement catch these values and skip the execution of lines 16 and 17. As a result, only the values of the four valid pixels are accumulated into the running sum variable. The 【8】pixels【/8】 value is also correctly incremented only four times so that the average can be calculated properly at line 22.",
+      "zh": "第 15 行包含一条条件语句，用于守护第 16 行和第 17 行的执行。例如，在计算靠近图像边缘的输出像素时，像素块可能会超出输入图像的有效范围。【1】图 3.9【/1】以 3×3 像素块为例说明了这种情形。在情形 1 中，正在被模糊的是左上角的像素，预期像素块中的九个像素有五个在输入图像中并不存在。此时输出像素的【2】row【/2】值和【3】col【/3】值分别为 0 和 0。在嵌套循环执行期间，九次迭代的【4】curRow【/4】和【5】curCol【/5】取值依次为 (−1,−1)、(−1,0)、(−1,1)、(0,−1)、(0,0)、(0,1)、(1,−1)、(1,0) 和 (1,1)。注意，对图像之外的那五个像素，至少有一个取值小于 0。if 语句中的【6】curRow&lt;0【/6】和【7】curCol&lt;0【/7】条件会捕捉到这些取值，并跳过第 16 行和第 17 行的执行。结果，只有四个有效像素的值被累加到累加和变量中；【8】pixels【/8】的值也正确地只递增了四次，使第 22 行能正确算出平均值。"
+    },
+    {
+      "id": "n0074",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 3.9【/1】 Handling boundary conditions for pixels near the edges of the image.",
+      "zh": "【1】图 3.9【/1】 处理图像边缘附近像素的边界条件"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "page": "Ch003_47-68_B9780323912310000045",
+  "nodes": [
+    {
+      "id": "p0380",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[10]",
+      "en": "The reader should work through the other cases in 【1】Fig. 3.9【/1】 and analyze the execution behavior of the nested loop in 【2】blurKernel【/2】. Note that most of the threads will find all the pixels in their assigned 3×3 patch within the input image. They will accumulate all the nine pixels. However, for the pixels on the four corners, the responsible threads will accumulate only four pixels. For other pixels on the four edges, the responsible threads will accumulate six pixels. These variations are what necessitates keeping track of the actual number of pixels that are accumulated with the variable 【3】pixels【/3】.",
+      "zh": "读者应逐一分析【1】图 3.9【/1】中的其他情形，并考察【2】blurKernel【/2】中嵌套循环的执行行为。注意，大多数线程都能在输入图像内找到其所分配的 3×3 像素块中的全部像素，它们会累加全部九个像素。然而，对于四个角上的像素，负责的线程只会累加四个像素；对于四条边上的其他像素，负责的线程会累加六个像素。正是这些差异，才使得有必要用变量【3】pixels【/3】记录实际累加的像素数目。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "3.4 Matrix multiplication",
+      "zh": "3.4 矩阵乘法"
+    },
+    {
+      "id": "p0385",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "Matrix-matrix multiplication, or matrix multiplication in short, is an important component of the Basic Linear Algebra Subprograms standard (see the “Linear Algebra Functions” sidebar). It is the basis of many linear algebra solvers, such as LU decomposition. It is also an important computation for deep learning using convolutional neural networks, which will be discussed in detail in 【1】Chapter 16【/1】, Deep Learning.",
+      "zh": "矩阵-矩阵乘法，简称矩阵乘法，是基本线性代数子程序（Basic Linear Algebra Subprograms，BLAS）标准的重要组成部分（参见“线性代数函数”补充栏）。它是许多线性代数求解器（如 LU 分解）的基础，也是使用卷积神经网络（CNN）进行深度学习时的一项重要计算，这将在【1】第 16 章【/1】“深度学习”中详细讨论。"
+    },
+    {
+      "id": "n0078",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/p[1]",
+      "en": "Linear Algebra Functions",
+      "zh": "线性代数函数"
+    },
+    {
+      "id": "p0390",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/p[2]",
+      "en": "【1】Linear algebra operations are widely used in science and engineering applications. In the Basic Linear Algebra Subprograms (BLAS), a de facto standard for publishing libraries that perform basic algebra operations, there are three levels of linear algebra functions. As the level increases, the number of operations performed by the function increases. Level 1 functions perform vector operations of the form 【2】y=【/2】α【3】x+y【/3】, where 【4】x【/4】 and 【5】y【/5】 are vectors and α is a scalar. Our vector addition example is a special case of a level 1 function with α=1. Level 2 functions perform matrix-vector operations of the form 【6】y=【/6】α【7】Ax+【/7】β【8】y【/8】, where 【9】A【/9】 is a matrix, 【10】x【/10】 and 【11】y【/11】 are vectors, and α and β are scalars. We will be studying a form of level 2 function in sparse linear algebra. Level 3 functions perform matrix-matrix operations in the form of 【12】C=【/12】α【13】AB+【/13】β【14】C【/14】, where 【15】A, B【/15】【/1】, and 【16】【17】C【/17】 are matrices and α【/16】 and 【18】β are scalars. Our matrix-matrix multiplication example is a special case of a level 3 function where α=1 and β=0. These BLAS functions are important because they are used as basic building blocks of higher-level algebraic functions, such as linear system solvers and eigenvalue analysis. As we will discuss later, the performance of different implementations of BLAS functions can vary by orders of magnitude in both sequential and parallel computers【/18】.",
+      "zh": "【1】线性代数运算在科学与工程应用中被广泛使用。基本线性代数子程序（BLAS）是发布基本代数运算库的事实标准，其中的线性代数函数分为三个层级。层级越高，函数所执行的运算数量越多。第 1 层函数执行形如【2】y=【/2】α【3】x+y【/3】的向量运算，其中【4】x【/4】和【5】y【/5】是向量，α 是标量。我们的向量加法例子就是 α=1 时第 1 层函数的一个特例。第 2 层函数执行形如【6】y=【/6】α【7】Ax+【/7】β【8】y【/8】的矩阵-向量运算，其中【9】A【/9】是矩阵，【10】x【/10】和【11】y【/11】是向量，α 和 β 是标量。我们将在稀疏线性代数中研究一种第 2 层函数。第 3 层函数执行形如【12】C=【/12】α【13】AB+【/13】β【14】C【/14】的矩阵-矩阵运算，其中【15】A、B【/15】【/1】和【16】【17】C【/17】是矩阵，α【/16】【18】与 β 是标量。我们的矩阵-矩阵乘法例子就是 α=1 且 β=0 时第 3 层函数的一个特例。这些 BLAS 函数之所以重要，是因为它们被用作更高层代数函数（如线性方程组求解器和特征值分析）的基本构件。正如后面将要讨论的，BLAS 函数的不同实现，其性能在串行计算机和并行计算机上都可能相差若干个数量级【/18】。"
+    },
+    {
+      "id": "p0395",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "Matrix multiplication between an I×j (i rows by j columns) matrix 【1】M【/1】 and a j×k matrix 【2】N【/2】 produces an I×k matrix 【3】P【/3】. When a matrix multiplication is performed, each element of the output matrix 【4】P【/4】 is an inner product of a row of 【5】M【/5】 and a column of 【6】N【/6】. We will continue to use the convention where P【7】row, col【/7】 is the element at the rowth position in the vertical direction and the colth position in the horizontal direction. As shown in 【8】Fig. 3.10【/8】, P【9】row,col【/9】 (the small square in P) is the inner product of the vector formed by the rowth row of 【10】M【/10】 (shown as a horizontal strip in 【11】M【/11】) and the vector formed by the colth column of 【12】N【/12】 (shown as a vertical strip in 【13】N【/13】). The inner product, sometimes called the dot product, of two vectors is the sum of products of the individual vector elements. That is,",
+      "zh": "一个 I×j（i 行 j 列）矩阵【1】M【/1】与一个 j×k 矩阵【2】N【/2】相乘，产生一个 I×k 矩阵【3】P【/3】。执行矩阵乘法时，输出矩阵【4】P【/4】的每个元素都是【5】M【/5】的某一行与【6】N【/6】的某一列的内积。我们将继续沿用如下约定：P【7】row, col【/7】表示垂直方向第 row 个位置、水平方向第 col 个位置上的元素。如【8】图 3.10【/8】所示，P【9】row,col【/9】（P 中的小方块）是由【10】M【/10】的第 row 行构成的向量（在【11】M【/11】中显示为一条水平条带）与由【12】N【/12】的第 col 列构成的向量（在【13】N【/13】中显示为一条垂直条带）的内积。两个向量的内积，有时也称为点积，是各向量元素乘积之和。即，"
+    },
+    {
+      "id": "n0081",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 3.10【/1】 Matrix multiplication using multiple blocks by tiling P.",
+      "zh": "【1】图 3.10【/1】 通过对 P 分块，使用多个线程块进行矩阵乘法"
+    },
+    {
+      "id": "p0400",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "For example, in 【1】Fig. 3.10【/1】, assuming row=1 and col=5,",
+      "zh": "例如，在【1】图 3.10【/1】中，假设 row=1 且 col=5，"
+    },
+    {
+      "id": "p0405",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "To implement matrix multiplication using CUDA, we can map the threads in the grid to the elements of the output matrix 【1】P【/1】 with the same approach that we used for 【2】colorToGrayscaleConversion【/2】. That is, each thread is responsible for calculating one 【3】P【/3】 element. The row and column indices for the 【4】P【/4】 element to be calculated by each thread are the same as before:",
+      "zh": "要用 CUDA 实现矩阵乘法，我们可以把网格中的线程映射到输出矩阵【1】P【/1】的元素上，所采用的方法与【2】colorToGrayscaleConversion【/2】中的相同。也就是说，每个线程负责计算一个【3】P【/3】元素。每个线程所要计算的【4】P【/4】元素的行索引和列索引与之前相同："
+    },
+    {
+      "id": "p0415",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "and",
+      "zh": "以及"
+    },
+    {
+      "id": "p0425",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "With this one-to-one mapping, the 【1】row【/1】 and 【2】col【/2】 thread indices are also the row and column indices for their output elements. 【3】Fig. 3.11【/3】 shows the source code of the kernel based on this thread-to-data mapping. The reader should immediately see the familiar pattern of calculating 【4】row【/4】 and 【5】col【/5】 (lines 03–04) and the if-statement testing if 【6】row【/6】 and 【7】col【/7】 are both within range (line 05). These statements are almost identical to their counterparts in 【8】colorToGrayscaleConversion【/8】. The only significant difference is that we are making a simplifying assumption that 【9】matrixMulKernel【/9】 needs to handle only square matrices, so we replace both 【10】width【/10】 and 【11】height【/11】 with 【12】Width【/12】. This thread-to-data mapping effectively divides 【13】P【/13】 into tiles, one of which is shown as a light-colored square in 【14】Fig. 3.10【/14】. Each block is responsible for calculating one of these tiles.",
+      "zh": "在这种一一对应的映射下，线程索引【1】row【/1】和【2】col【/2】同时也是其输出元素的行索引和列索引。【3】图 3.11【/3】给出了基于这一线程-数据映射的核函数源代码。读者应当立刻看出熟悉的模式：计算【4】row【/4】和【5】col【/5】（第 03–04 行），以及用 if 语句检测【6】row【/6】和【7】col【/7】是否都在范围内（第 05 行）。这些语句与【8】colorToGrayscaleConversion【/8】中的对应语句几乎完全相同。唯一显著的差别在于，我们做了一个简化假设：【9】matrixMulKernel【/9】只需处理方阵，因此把【10】width【/10】和【11】height【/11】都替换为【12】Width【/12】。这种线程-数据映射实际上把【13】P【/13】划分为若干分块，其中之一在【14】图 3.10【/14】中显示为浅色方块。每个线程块负责计算其中一个分块。"
+    },
+    {
+      "id": "n0086",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[7]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 3.11【/1】 A matrix multiplication kernel using one thread to compute one P element.",
+      "zh": "【1】图 3.11【/1】 用一个线程计算一个 P 元素的矩阵乘法核函数"
+    },
+    {
+      "id": "p0430",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
+      "en": "We now turn our attention to the work done by each thread. Recall that P【1】row,col【/1】 is calculated as the inner product of the rowth row of 【2】M【/2】 and the colth column of 【3】N【/3】. In 【4】Fig. 3.11【/4】 we use a for-loop to perform this inner product operation. Before we enter the loop, we initialize a local variable 【5】Pvalue【/5】 to 0 (line 06). Each iteration of the loop accesses an element from the rowth row of 【6】M【/6】 and an element from the colth column of 【7】N【/7】, multiplies the two elements together, and accumulates the product into 【8】Pvalue【/8】 (line 08).",
+      "zh": "现在我们把注意力转向每个线程所做的工作。回想一下，P【1】row,col【/1】是作为【2】M【/2】的第 row 行与【3】N【/3】的第 col 列的内积计算出来的。在【4】图 3.11【/4】中，我们用一个 for 循环来执行这一内积运算。进入循环之前，我们把局部变量【5】Pvalue【/5】初始化为 0（第 06 行）。循环的每次迭代访问【6】M【/6】的第 row 行中的一个元素和【7】N【/7】的第 col 列中的一个元素，把两个元素相乘，并将乘积累加到【8】Pvalue【/8】中（第 08 行）。"
+    },
+    {
+      "id": "p0435",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
+      "en": "Let us first focus on accessing the 【1】M【/1】 element within the for-loop. 【2】M【/2】 is linearized into an equivalent 1D array using row-major order. That is, the rows of 【3】M【/3】 are placed one after another in the memory space, starting with the 0th row. Therefore the beginning element of row 1 is 【4】M[1*Width]【/4】 because we need to account for all elements of row 0. In general, the beginning element of the rowth row is 【5】M[row*Width]【/5】. Since all elements of a row are placed in consecutive locations, the kth element of the rowth row is at 【6】M[row*Width+k]【/6】. This linearized array offset is what we use in 【7】Fig. 3.11【/7】 (line 08).",
+      "zh": "我们先关注 for 循环中对【1】M【/1】元素的访问。【2】M【/2】按行主序布局线性化为一个等价的 1D 数组。也就是说，【3】M【/3】的各行从第 0 行开始，在内存空间中依次排列。因此第 1 行的起始元素是【4】M[1*Width]【/4】，因为需要先计入第 0 行的全部元素。一般而言，第 row 行的起始元素是【5】M[row*Width]【/5】。由于一行中的所有元素都存放在连续位置上，第 row 行的第 k 个元素位于【6】M[row*Width+k]【/6】。【7】图 3.11【/7】（第 08 行）中使用的正是这一线性化数组偏移量。"
+    },
+    {
+      "id": "p0440",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[12]",
+      "en": "We now turn our attention to accessing N. As is shown in 【1】Fig. 3.11【/1】, the beginning element of the colth column is the colth element of row 0, which is 【2】N[col]【/2】. Accessing the next element in the colth column requires skipping over an entire row. This is because the next element of the same column is the same element in the next row. Therefore the kth element of the colth column is 【3】N[k*Width+col]【/3】 (line 08).",
+      "zh": "现在我们把注意力转向对 N 的访问。如【1】图 3.11【/1】所示，第 col 列的起始元素就是第 0 行的第 col 个元素，即【2】N[col]【/2】。要访问第 col 列中的下一个元素，需要跳过一整行，这是因为同一列的下一个元素就是下一行中的相同元素。因此，第 col 列的第 k 个元素是【3】N[k*Width+col]【/3】（第 08 行）。"
+    },
+    {
+      "id": "p0445",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[13]",
+      "en": "After the execution exits the for-loop, all threads have their 【1】P【/1】 element values in the 【2】Pvalue【/2】 variables. Each thread then uses the 1D equivalent index expression 【3】row*Width+col【/3】 to write its 【4】P【/4】 element (line 10). Again, this index pattern is like that used in the 【5】colorToGrayscaleConversion【/5】 kernel.",
+      "zh": "执行退出 for 循环后，所有线程的【1】P【/1】元素值都保存在各自的【2】Pvalue【/2】变量中。随后，每个线程使用等价的 1D 索引表达式【3】row*Width+col【/3】写入自己的【4】P【/4】元素（第 10 行）。同样，这种索引模式与【5】colorToGrayscaleConversion【/5】核函数中所用的相似。"
+    },
+    {
+      "id": "p0450",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[14]",
+      "en": "wWe now use a small example to illustrate the execution of the matrix multiplication kernel. 【1】Fig. 3.12【/1】 shows a 4×4 P with BLOCK_WIDTH=2. Although such small matrix and block sizes are not realistic, they allow us to fit the entire example into one picture. The 【2】P【/2】 matrix is divided into four tiles, and each block calculates one tile. We do so by creating blocks that are 2×2 arrays of threads, with each thread calculating one 【3】P【/3】 element. In the example, thread (0,0) of block (0,0) calculates P【4】0,0【/4】, whereas thread (0,0) of block (1,0) calculates P【5】2,0【/5】.",
+      "zh": "下面我们用一个小例子来说明矩阵乘法核函数的执行过程。【1】图 3.12【/1】给出了一个 BLOCK_WIDTH=2 的 4×4 的 P。虽然这样小的矩阵和线程块规模并不现实，但它们使我们能够把整个例子放进一幅图中。【2】P【/2】矩阵被划分为四个分块，每个线程块计算一个分块。为此，我们创建由 2×2 线程数组构成的线程块，每个线程计算一个【3】P【/3】元素。在这个例子中，线程块 (0,0) 的线程 (0,0) 计算 P【4】0,0【/4】，而线程块 (1,0) 的线程 (0,0) 计算 P【5】2,0【/5】。"
+    },
+    {
+      "id": "n0092",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[8]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 3.12【/2】【/1】 A small execution example of 【3】matrixMulKernel【/3】.",
+      "zh": "【1】【2】图 3.12【/2】【/1】 【3】matrixMulKernel【/3】的一个小型执行示例"
+    },
+    {
+      "id": "p0455",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[15]",
+      "en": "The 【1】row【/1】 and 【2】col【/2】 indices in 【3】matrixMulKernel【/3】 identify the 【4】P【/4】 element to be calculated by a thread. The row index also identifies the row of 【5】M【/5】, and the col index identifies the column of 【6】N【/6】 as input values for the thread. 【7】Fig. 3.13【/7】 illustrates the multiplication actions in each thread block. For the small matrix multiplication example, threads in block (0,0) produce four dot products. The 【8】row【/8】 and 【9】col【/9】 indices of thread (1,0) in block (0,0) are 0*0+1=1 and 0*0+0=0, respectively. The thread thus maps to P【10】1,0【/10】 and calculates the dot product of row 1 of 【11】M【/11】 and column 0 of 【12】N【/12】.",
+      "zh": "【3】matrixMulKernel【/3】中的【1】row【/1】和【2】col【/2】索引标识线程所要计算的【4】P【/4】元素。row 索引同时标识【5】M【/5】的行，col 索引标识【6】N【/6】的列，二者作为该线程的输入值。【7】图 3.13【/7】说明了每个线程块中的乘法操作。对于这个小型矩阵乘法例子，线程块 (0,0) 中的线程产生四个点积。线程块 (0,0) 中线程 (1,0) 的【8】row【/8】和【9】col【/9】索引分别为 0*0+1=1 和 0*0+0=0。因此该线程映射到 P【10】1,0【/10】，并计算【11】M【/11】的第 1 行与【12】N【/12】的第 0 列的点积。"
+    },
+    {
+      "id": "n0094",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[9]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 3.13【/2】【/1】 Matrix multiplication actions of one thread block.",
+      "zh": "【1】【2】图 3.13【/2】【/1】 一个线程块的矩阵乘法操作"
+    },
+    {
+      "id": "p0460",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[16]",
+      "en": "Let us walk through the execution of the for-loop of 【1】Fig. 3.11【/1】 for thread (0,0) in block (0,0). During iteration 0 (k=0), 【2】row*Width+k=【/2】0*4+0=0 and 【3】k*Width+col=【/3】0*4+0=0. Therefore the input elements accessed are 【4】M[0]【/4】 and 【5】N[0]【/5】, which are the 1D equivalent of M【6】0,0【/6】 and N【7】0,0【/7】. Note that these are indeed the 0th elements of row 0 of 【8】M【/8】 and column 0 of 【9】N【/9】. During iteration 1 (k=1), 【10】row*Width+k【/10】=0*4+1=1 and 【11】k*Width+col【/11】=1*4+0=4. Therefore we are accessing 【12】M[1]【/12】 and 【13】N[4]【/13】, which are the 1D equivalent of M【14】0,1【/14】 and N【15】1,0【/15】. These are the first elements of row 0 of 【16】M【/16】 and column 0 of 【17】N【/17】. During iteration 2 (k=2), 【18】row*Width+k【/18】=0*4+2=2 and 【19】k*Width+col【/19】=2*4+0=8, which results in 【20】M[2]【/20】 and 【21】N[8]【/21】. Therefore the elements accessed are the 1D equivalent of M【22】0,2【/22】 and N【23】2,0【/23】. Finally, during iteration 3 (k=3), 【24】row*Width+k【/24】=0*4+3=3 and 【25】k*Width+col【/25】= 3*4+0=12, which results in 【26】M[3]【/26】 and 【27】N[12]【/27】, the 1D equivalent of M【28】0,3【/28】 and N【29】3,0【/29】. We have now verified that the for-loop performs the inner product between the 0th row of M and the 0th column of N for thread (0,0) in block (0,0). After the loop, the thread writes 【30】P[row*Width+col]【/30】, which is 【31】P[0]【/31】. This is the 1D equivalent of P【32】0,0【/32】, so thread (0,0) in block (0,0) successfully calculated the inner product between the 0th row of 【33】M【/33】 and the 0th column of 【34】N【/34】 and deposited the result in P【35】0,0【/35】.",
+      "zh": "让我们逐步走一遍线程块 (0,0) 中线程 (0,0) 对【1】图 3.11【/1】中 for 循环的执行过程。在第 0 次迭代（k=0）时，【2】row*Width+k=【/2】0*4+0=0，【3】k*Width+col=【/3】0*4+0=0。因此所访问的输入元素是【4】M[0]【/4】和【5】N[0]【/5】，它们是 M【6】0,0【/6】和 N【7】0,0【/7】的 1D 等价形式。注意，它们确实是【8】M【/8】第 0 行和【9】N【/9】第 0 列的第 0 个元素。在第 1 次迭代（k=1）时，【10】row*Width+k【/10】=0*4+1=1，【11】k*Width+col【/11】=1*4+0=4。因此我们访问的是【12】M[1]【/12】和【13】N[4]【/13】，它们是 M【14】0,1【/14】和 N【15】1,0【/15】的 1D 等价形式。它们是【16】M【/16】第 0 行和【17】N【/17】第 0 列的第 1 个元素。在第 2 次迭代（k=2）时，【18】row*Width+k【/18】=0*4+2=2，【19】k*Width+col【/19】=2*4+0=8，由此得到【20】M[2]【/20】和【21】N[8]【/21】。因此所访问的元素是 M【22】0,2【/22】和 N【23】2,0【/23】的 1D 等价形式。最后，在第 3 次迭代（k=3）时，【24】row*Width+k【/24】=0*4+3=3，【25】k*Width+col【/25】= 3*4+0=12，由此得到【26】M[3]【/26】和【27】N[12]【/27】，即 M【28】0,3【/28】和 N【29】3,0【/29】的 1D 等价形式。至此我们已经验证，对于线程块 (0,0) 中的线程 (0,0)，该 for 循环执行的是 M 的第 0 行与 N 的第 0 列之间的内积。循环结束后，该线程写入【30】P[row*Width+col]【/30】，即【31】P[0]【/31】。这是 P【32】0,0【/32】的 1D 等价形式，因此线程块 (0,0) 中的线程 (0,0) 成功计算了【33】M【/33】的第 0 行与【34】N【/34】的第 0 列之间的内积，并把结果存入 P【35】0,0【/35】。"
+    },
+    {
+      "id": "p0465",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[17]",
+      "en": "We will leave it as an exercise for the reader to hand-execute and verify the for-loop for other threads in block (0,0) or in other blocks.",
+      "zh": "我们把手工执行并验证线程块 (0,0) 中其他线程或其他线程块中线程的 for 循环，留作读者的练习。"
+    },
+    {
+      "id": "p0470",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[18]",
+      "en": "Since the size of a grid is limited by the maximum number of blocks per grid and threads per block, the size of the largest output matrix 【1】P【/1】 that can be handled by 【2】matrixMulKernel【/2】 will also be limited by these constraints. In the situation in which output matrices larger than this limit are to be computed, one can divide the output matrix into submatrices whose sizes can be covered by a grid and use the host code to launch a different grid for each submatrix. Alternatively, we can change the kernel code so that each thread calculates more 【3】P【/3】 elements. We will explore both options later in this book.",
+      "zh": "由于网格的大小受每个网格的最大线程块数和每个线程块的最大线程数限制，【2】matrixMulKernel【/2】所能处理的最大输出矩阵【1】P【/1】的规模也会受到这些约束的限制。当需要计算超出该限制的输出矩阵时，可以把输出矩阵划分为若干子矩阵，使每个子矩阵的规模都能被一个网格覆盖，并用主机代码为每个子矩阵启动一个不同的网格。另一种做法是修改核函数代码，让每个线程计算更多的【3】P【/3】元素。本书后面将探讨这两种方案。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "3.5 Summary",
+      "zh": "3.5 小结"
+    },
+    {
+      "id": "p0475",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "CUDA grids and blocks are multidimensional with up to three dimensions. The multidimensionality of grids and blocks is useful for organizing threads to be mapped to multidimensional data. The kernel execution configuration parameters define the dimensions of a grid and its blocks. Unique coordinates in 【1】blockIdx【/1】 and 【2】threadIdx【/2】 allow threads of a grid to identify themselves and their domains of data. It is the programmer’s responsibility to use these variables in kernel functions so that the threads can properly identify the portion of the data to process. When accessing multidimensional data, programmers will often have to linearize multidimensional indices into a 1D offset. The reason is that dynamically allocated multidimensional arrays in C are typically stored as 1D arrays in row-major order. We use examples of increasing complexity to familiarize the reader with the mechanics of processing multidimensional arrays with multidimensional grids. These skills will be foundational for understanding parallel patterns and their associated optimization techniques.",
+      "zh": "CUDA 的网格和线程块是多维的，最多可达三维。网格和线程块的多维性便于组织线程，使其映射到多维数据上。核函数执行配置参数定义网格及其线程块的维度。【1】blockIdx【/1】和【2】threadIdx【/2】中的唯一坐标使网格中的线程能够标识自身以及各自的数据域。程序员有责任在核函数中使用这些变量，以便线程能够正确地确定所要处理的那部分数据。在访问多维数据时，程序员往往必须把多维索引线性化为一个 1D 偏移量，原因是 C 语言中动态分配的多维数组通常按行主序布局存储为 1D 数组。我们使用复杂度递增的例子，让读者熟悉用多维网格处理多维数组的具体机制。这些技能将是理解并行模式及其相关优化技术的基础。"
+    }
+  ]
+}

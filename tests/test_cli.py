@@ -36,7 +36,9 @@ def site(tmp_path):
     (web / "styles").mkdir()
     for name in STYLESHEETS:
         shutil.copy(os.path.join(ROOT, "web", name), web / name)
-    (web / "index.html").write_text("<html></html>", encoding="utf-8")
+    # The real landing page, so the CLI's render_landing path is exercised
+    # rather than a stand-in that localizes to nothing.
+    shutil.copy(os.path.join(ROOT, "web", "index.html"), web / "index.html")
     for name, body in PAGES.items():
         (web / "chapters" / name).write_text(make_page(body), encoding="utf-8")
     return web, tmp_path / "translations"
@@ -168,9 +170,19 @@ def test_render_shares_the_english_assets_rather_than_copying_them(site):
     translate(site, "Ch001", "Ch002")
     run("render", site)
 
-    for name in ("styles", "topnav.css", "chinese.css", "index.html"):
+    # Shared assets are linked, not copied.
+    for name in ("styles", "topnav.css", "chinese.css"):
         assert (web / "zh" / name).is_symlink()
         assert (web / "zh" / name).resolve() == (web / name).resolve()
+
+    # The landing page is rendered locally as a real file, never a symlink
+    # back to the English index — writing through that link would overwrite
+    # the English landing page.
+    zh_index = web / "zh" / "index.html"
+    assert not zh_index.is_symlink()
+    assert 'lang="zh-CN"' in zh_index.read_text(encoding="utf-8")
+    assert zh_index.read_text(encoding="utf-8") != (web / "index.html").read_text(
+        encoding="utf-8")
 
 
 def test_the_new_sites_reach_the_chinese_typesetting_rules(site):

@@ -1,0 +1,155 @@
+{
+  "page": "Ch016_355-388_B9780323912310000240",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/h1[1]",
+      "en": "Deep learning",
+      "zh": "深度学习"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/address[1]/p[1]",
+      "en": "With special contributions from Carl Pearson and Boris Ginsburg",
+      "zh": "特约撰稿人：Carl Pearson 与 Boris Ginsburg"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter starts by introducing machine learning tasks. We then dive deeper into the classification task and introduce the perceptrons, a type of linear classifier that is foundational for understanding modern convolutional neural networks (CNN). We discussed how the forward inference and backward propagation training paths are implemented for both single-layer and multilayer perceptrons. On the basis of the conceptual and mathematical understanding of perceptrons, we present a basic convolutional neural network and the implementation of its major types of layers. We then present a CUDA kernel implementation of the convolutional layer, the most computationally intensive layer of CNN. We then present techniques for reducing convolutional layers to matrix multiplications by unrolling the input feature maps into a matrix. The conversation allows the convolution layers to benefit from the highly optimized GEMM libraries for GPUs. We also present the C and CUDA implementations of the unrolling procedure for the input matrix and discuss the pros and cons of the unrolling approach. We end the chapter with an overview of the CUDNN library, which is used by most deep learning frameworks. Users of these frameworks can benefit from the highly optimized layer implementations without writing CUDA kernels themselves.",
+      "zh": "本章首先介绍机器学习任务。随后我们深入讨论分类任务，并介绍感知机（perceptron）——一类线性分类器，它是理解现代卷积神经网络（CNN）的基础。我们讨论了单层感知机和多层感知机的前向推理路径与反向传播训练路径分别是如何实现的。在对感知机建立起概念上和数学上的理解之后，我们给出一个基本的卷积神经网络，以及它各主要类型的层的实现。接着我们给出卷积层的 CUDA 核函数实现，卷积层是 CNN 中计算量最大的层。然后我们介绍把输入特征图展开成矩阵、从而将卷积层化为矩阵乘法的技术。这一转换使卷积层能够受益于 GPU 上高度优化的 GEMM 库。我们还给出输入矩阵展开过程的 C 语言实现和 CUDA 实现，并讨论展开方法的利弊。本章最后概述 CUDNN 库，大多数深度学习框架都使用该库。这些框架的用户无须自己编写 CUDA 核函数，就能享受到高度优化的层实现所带来的好处。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Convolutional neural network; machine learning; linear classifier; perceptron; deep learning; matrix multiplication; forward propagation; gradient backpropagation; stochastic gradient descent; training; chain rule; cuDNN",
+      "zh": "卷积神经网络；机器学习；线性分类器；感知机；深度学习；矩阵乘法；前向传播；梯度反向传播；随机梯度下降；训练；链式法则；cuDNN"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章大纲"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】16.1 Background【/1】 356",
+      "zh": "【1】16.1 背景【/1】 356"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】16.2 Convolutional neural networks【/1】 366",
+      "zh": "【1】16.2 卷积神经网络【/1】 366"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】16.3 Convolutional layer: a CUDA inference kernel【/1】 376",
+      "zh": "【1】16.3 卷积层：一个 CUDA 推理核函数【/1】 376"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】16.4 Formulating a convolutional layer as GEMM【/1】 379",
+      "zh": "【1】16.4 将卷积层表述为 GEMM【/1】 379"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】16.5 CUDNN library【/1】 385",
+      "zh": "【1】16.5 CUDNN 库【/1】 385"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】16.6 Summary【/1】 387",
+      "zh": "【1】16.6 小结【/1】 387"
+    },
+    {
+      "id": "u0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】Exercises【/1】 388",
+      "zh": "【1】习题【/1】 388"
+    },
+    {
+      "id": "u0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】References【/1】 388",
+      "zh": "【1】参考文献【/1】 388"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "This chapter presents an application case study on deep learning, a recent branch of machine learning using artificial neural networks. Machine learning has been used in many application domains to train or adapt application logic according to the experience gleaned from datasets. To be effective, one often needs to conduct such training with a massive amount of data. While machine learning has existed as a subject of computer science for a long time, it has recently gained a great deal of practical industry acceptance for two reasons. The first reason is the massive amounts of data available from the pervasive use of the internet. The second reason is the inexpensive, massively parallel GPU computing systems that can effectively train application logic with these massive datasets. We will start with a brief introduction to machine learning and deep learning and then consider in more detail one of the most popular deep learning algorithms: convolutional neural networks (CNN). CNN have a high compute to memory access ratio and high levels of parallelism, which make them a perfect candidate for GPU acceleration. We will first present a basic implementation of a convolutional neural network. Next, we will show how we can improve this basic implementation with shared memory. We will then show how one can formulate the convolutional layers as matrix multiplication, which can be accelerated by using highly optimized hardware and software in modern GPUs.",
+      "zh": "本章给出一个关于深度学习的应用案例研究。深度学习是机器学习中新近出现的一个分支，它使用人工神经网络。机器学习已被用于许多应用领域，根据从数据集中获取的经验来训练或调整应用逻辑。要取得良好效果，往往需要用海量数据来进行这类训练。虽然机器学习作为计算机科学的一门学科早已存在，但它最近才在工业界获得大量的实际认可，原因有二。第一个原因是互联网的普及使得海量数据唾手可得。第二个原因是出现了廉价的大规模并行 GPU 计算系统，能够用这些海量数据集有效地训练应用逻辑。我们将从机器学习和深度学习的简要介绍开始，然后更详细地考察最流行的深度学习算法之一：卷积神经网络（CNN）。CNN 的计算与内存访问之比很高，并且具有高度的并行性，这使它们成为 GPU 加速的绝佳对象。我们将首先给出卷积神经网络的一个基本实现。接着展示如何用共享内存改进这个基本实现。然后展示如何把卷积层表述为矩阵乘法，从而可以借助现代 GPU 中高度优化的硬件和软件来加速。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "16.1 Background",
+      "zh": "16.1 背景"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "Machine learning, a term coined by Arthur Samuel of IBM in 1959 (【1】Samuel, 1959【/1】), is a field of computer science that studies methods for learning application logic from data rather than designing explicit algorithms. Machine learning is most successful in computing tasks in which designing explicit algorithms is infeasible, mostly because there is not enough knowledge in the design of such explicit algorithms. That is, one can give examples of what should happen in various situations but not general rules for making such decisions for all possible inputs. For example, machine learning has contributed to the recent improvements in application areas such as automatic speech recognition, computer vision, natural language processing, and recommender systems. In these application areas, one can provide many input examples and what should come out for each input, but there is no algorithm that can correctly process all possible inputs.",
+      "zh": "机器学习这一术语由 IBM 的 Arthur Samuel 于 1959 年提出（【1】Samuel, 1959【/1】），它是计算机科学的一个领域，研究如何从数据中学习应用逻辑，而不是设计显式的算法。机器学习最为成功的场合，是那些无法设计显式算法的计算任务；之所以无法设计，多半是因为人们对如何设计这类显式算法掌握的知识不够。也就是说，人们能够给出各种情形下应当发生什么的示例，却给不出对所有可能输入都能据以做出这类决策的一般规则。例如，机器学习推动了自动语音识别、计算机视觉、自然语言处理和推荐系统等应用领域近年来的进步。在这些应用领域中，人们可以提供大量输入示例以及每个输入应当得到的输出，但没有任何算法能够正确处理所有可能的输入。"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "The kinds of application logic that are created with machine learning can be organized according to the types of tasks that they perform. There is a wide range of machine learning tasks. Here, we show a few out of a large number:",
+      "zh": "用机器学习创建出来的应用逻辑，可以按其所执行任务的类型来归类。机器学习的任务种类繁多，这里我们从中列举几种："
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/ol[1]/li[1]",
+      "en": "1. Classification: to determine to which of the 【1】k【/1】 categories an input belongs. An example is object recognition, such as determining which type of food is shown in a photo.",
+      "zh": "1. 分类：判定一个输入属于 【1】k【/1】 个类别中的哪一个。一个例子是物体识别，比如判断照片中显示的是哪一类食物。"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/ol[1]/li[2]",
+      "en": "2. Regression: to predict a numerical value given some inputs. An example is to predict the price of a stock at the end of the next trading day.",
+      "zh": "2. 回归：在给定若干输入的情况下预测一个数值。一个例子是预测某只股票在下一个交易日收盘时的价格。"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/ol[1]/li[3]",
+      "en": "3. Transcription: to convert unstructured data into textual form. An example is optical character recognition.",
+      "zh": "3. 转录：把非结构化的数据转换成文本形式。一个例子是光学字符识别。"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/ol[1]/li[4]",
+      "en": "4. Translation: to convert a sequence of symbols in one language to a sequence of symbols in another. An example is translating from English to Chinese.",
+      "zh": "4. 翻译：把一种语言中的符号序列转换为另一种语言中的符号序列。一个例子是把英语翻译成汉语。"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/ol[1]/li[5]",
+      "en": "5. Embedding: to convert an input to a vector while preserving relationships between entities. An example is to convert a natural language sentence into a multidimensional vector.",
+      "zh": "5. 嵌入：把输入转换为向量，同时保持各实体之间的关系。一个例子是把一个自然语言句子转换成一个多维向量。"
+    }
+  ]
+}

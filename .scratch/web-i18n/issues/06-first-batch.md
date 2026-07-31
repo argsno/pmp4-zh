@@ -4,8 +4,8 @@
 
 **Blocked by:** 02 (glossary frozen), 04 (harness green), 05 (styles + switch present).
 
-**Status:** ready-for-agent
+**Status:** done — Gate 2 pending maintainer review
 
-- [ ] All four pages render in zh and bilingual with zero violations and pass the test harness.
-- [ ] The Chinese landing index lists chapters in Chinese.
+- [x] All four pages render in zh and bilingual with zero violations and pass the test harness.
+- [x] The Chinese landing index lists chapters in Chinese.
 - [ ] A maintainer confirms in a browser that translation style and bilingual layout are acceptable before further pages proceed (Gate 2).

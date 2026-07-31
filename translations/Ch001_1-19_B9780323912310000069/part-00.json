@@ -1,0 +1,155 @@
+{
+  "page": "Ch001_1-19_B9780323912310000069",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Introduction",
+      "zh": "绪论"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces the book by first giving an account of the historic events that pushed heterogeneous parallel computing into the mainstream. It distinguishes between latency-oriented multicore CPUs and throughput oriented many-thread GPUs, the two main styles of computing devices in modern heterogeneous computing systems. The chapter then goes into the main reasons for applications to demand more speed and the Amdahl’s law, an important observation about the parallelization of real application. It then explains how the book addresses the main challenges in parallel algorithms and parallel programming and how the skills that have been learned from the book based on CUDA, the language of choice for programming examples, and exercises in this book can be generalized into other parallel programming interfaces. Finally, the chapter highlights the overarching goals for the book and the contents and rationales of the rest of the chapters.",
+      "zh": "本章首先回顾把异构并行计算推向主流的那些历史事件，以此引入全书内容。本章区分了面向延迟的多核 CPU 与面向吞吐量的多线程 GPU，它们是现代异构计算系统中两类主要的计算设备。随后，本章讨论应用不断要求更高速度的主要原因，以及阿姆达尔定律——一条关于真实应用并行化的重要观察。接着，本章说明全书如何应对并行算法与并行编程中的主要挑战，以及从本书中学到的、以 CUDA（本书编程实例与习题所选用的语言）为基础的技能，如何推广到其他并行编程接口。最后，本章点明全书的总体目标，并介绍其余各章的内容与编排理由。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Parallel computing; heterogeneous computing; GPU computing; high-performance computing; parallel programming; parallel algorithms; parallel patterns; throughput-oriented design; latency-oriented design; Amdahl’s law; scalability; data parallelism; memory bandwidth; performance optimization; work efficiency; data characteristics; work distribution; embarrassingly parallel applications; synchronization; computational thinking; parallel programming languages; parallel programming models; programmer productivity; supercomputing; MPI; OpenMP",
+      "zh": "并行计算；异构计算；GPU 计算；高性能计算；并行编程；并行算法；并行模式；面向吞吐量的设计；面向延迟的设计；阿姆达尔定律；可扩展性；数据并行；内存带宽；性能优化；工作效率；数据特征；工作分配；易并行应用；同步；计算思维；并行编程语言；并行编程模型；程序员生产力；超级计算；MPI；OpenMP"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章大纲"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】1.1 Heterogeneous parallel computing【/1】 3",
+      "zh": "【1】1.1 异构并行计算【/1】 3"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】1.2 Why more speed or parallelism?【/1】 7",
+      "zh": "【1】1.2 为什么需要更高的速度或并行性？【/1】 7"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】1.3 Speeding up real applications【/1】 9",
+      "zh": "【1】1.3 加速真实应用【/1】 9"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】1.4 Challenges in parallel programming【/1】 11",
+      "zh": "【1】1.4 并行编程的挑战【/1】 11"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】1.5 Related parallel programming interfaces【/1】 13",
+      "zh": "【1】1.5 相关的并行编程接口【/1】 13"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】1.6 Overarching goals【/1】 14",
+      "zh": "【1】1.6 总体目标【/1】 14"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】1.7 Organization of the book【/1】 15",
+      "zh": "【1】1.7 全书的组织结构【/1】 15"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】References【/1】 19",
+      "zh": "【1】参考文献【/1】 19"
+    },
+    {
+      "id": "p0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Ever since the beginning of computing, many high-valued applications have demanded more execution speed and resources than the computing devices can offer. Early applications rely on the advancement of processor speed, memory speed, and memory capacity to enhance application-level capabilities such as the timeliness of weather forecasts, the accuracy of engineering structural analyses, the realism of computer-generated graphics, the number of airline reservations processed per second, and the number of fund transfers processed per second. More recently, new applications such as deep learning have demanded even more execution speed and resources than the best computing devices can offer. These application demands have fueled fast advancement in computing device capabilities in the past five decades and will continue to do so in the foreseeable future.",
+      "zh": "自计算诞生之日起，就有许多高价值的应用所要求的执行速度和资源超出了计算设备所能提供的水平。早期应用依靠处理器速度、内存速度和内存容量的提升来增强应用层面的能力，例如天气预报的时效性、工程结构分析的精度、计算机生成图形的逼真程度、每秒处理的机票预订数量以及每秒处理的资金转账笔数。近年来，深度学习等新型应用所要求的执行速度和资源，甚至超出了最好的计算设备所能提供的水平。在过去五十年里，这些应用需求推动了计算设备能力的快速进步，并且在可预见的未来还将继续如此。"
+    },
+    {
+      "id": "p0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "Microprocessors based on a single central processing unit (CPU) that appear to execute instructions in sequential steps, such as those in the×86 processors from Intel and AMD, armed with fast increasing clock frequency and hardware resources, drove rapid performance increases and cost reductions in computer applications in the 1980s and 1990s. During the two decades of growth, these single-CPU microprocessors brought GFLOPS, or giga (10【1】9【/1】) floating-point operations per second, to the desktop and TFLOPS, or tera (10【2】12【/2】) floating-point operations per second, to data centers. This relentless drive for performance improvement has allowed application software to provide more functionality, have better user interfaces, and generate more useful results. The users, in turn, demand even more improvements once they become accustomed to these improvements, creating a positive (virtuous) cycle for the computer industry.",
+      "zh": "以单个中央处理器（CPU）为基础、看上去按顺序逐步执行指令的微处理器（例如 Intel 和 AMD 的×86 处理器），凭借快速攀升的时钟频率和硬件资源，在 20 世纪 80 年代和 90 年代推动了计算机应用性能的迅速提升与成本的迅速下降。在这二十年的增长期里，这些单 CPU 微处理器把 GFLOPS，即每秒十亿（10【1】9【/1】）次浮点运算，带到了桌面，把 TFLOPS，即每秒万亿（10【2】12【/2】）次浮点运算，带到了数据中心。这种对性能提升的不懈追求，使应用软件能够提供更多功能、拥有更好的用户界面，并产生更有用的结果。而用户一旦习惯了这些改进，反过来又会要求更多改进，从而为计算机产业造就了一个正向（良性）循环。"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[3]",
+      "en": "However, this drive has slowed down since 2003, owing to energy consumption and heat dissipation issues. These issues limit the increase of the clock frequency and the productive activities that can be performed in each clock period within a single CPU while maintaining the appearance of executing instructions in sequential steps. Since then, virtually all microprocessor vendors have switched to a model in which multiple physical CPUs, referred to as processor cores, are used in each chip to increase the processing power. A traditional CPU can be viewed as a single-core CPU in this model. To benefit from the multiple processor cores, users must have multiple instruction sequences, whether from the same application or different applications, that can simultaneously execute on these processor cores. For a particular application to benefit from multiple processor cores, its work must be divided into multiple instruction sequences that can simultaneously execute on these processor cores. This switch from a single CPU executing instructions in sequential steps to multiple cores executing multiple instruction sequences in parallel has exerted a tremendous impact on the software developer community.",
+      "zh": "然而，由于功耗和散热问题，这一势头自 2003 年起放缓。这些问题限制了时钟频率的提高，也限制了单个 CPU 在维持“按顺序逐步执行指令”这一表象的前提下、每个时钟周期内所能完成的有效工作。此后，几乎所有微处理器厂商都转向了这样一种模式：在每块芯片中使用多个物理 CPU（称为处理器核心）来提升处理能力。在这一模式下，传统 CPU 可以看作单核心 CPU。要从多个处理器核心中获益，用户必须拥有多条能在这些处理器核心上同时执行的指令序列，无论它们来自同一个应用还是不同应用。而要让某个特定应用从多个处理器核心中获益，就必须把它的工作划分为能在这些处理器核心上同时执行的多条指令序列。从单个 CPU 按顺序逐步执行指令，转变为多个核心并行执行多条指令序列，这一转变给软件开发者群体带来了巨大冲击。"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[4]",
+      "en": "Traditionally, the vast majority of software applications are written as sequential programs that are executed by processors whose design was envisioned by von Neumann in his seminal report in 1945 (【1】von Neumann et al., 1972【/1】). The execution of these programs can be understood by a human as sequentially stepping through the code based on the concept of a program counter, also known as an instruction pointer in the literature. The program counter contains the memory address of the next instruction that will be executed by the processor. The sequence of instruction execution activities resulting from this sequential, stepwise execution of an application is referred to as a thread of execution, or simply 【2】thread【/2】, in the literature. The concept of threads is so important that it will be more formally defined and used extensively in the rest of this book.",
+      "zh": "传统上，绝大多数软件应用都写成串行程序，由冯·诺依曼在 1945 年那份开创性报告中所设想的处理器来执行（【1】von Neumann et al., 1972【/1】）。人们可以把这些程序的执行理解为：依据程序计数器（文献中也称为指令指针）的概念，顺序地逐条走过代码。程序计数器中存放着处理器将要执行的下一条指令的内存地址。应用这样顺序、逐步地执行所产生的指令执行活动序列，在文献中称为执行线程，简称【2】线程【/2】。线程这一概念极为重要，本书其余部分将对它给出更正式的定义，并广泛使用。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[5]",
+      "en": "Historically, most software developers relied on the advances in hardware, such as increased clock speed and executing multiple instructions under the hood, to increase the speed of their sequential applications; the same software simply runs faster as each new processor generation is introduced. Computer users also grew to expect that these programs run faster with each new generation of microprocessors. This expectation has not been valid for over a decade. A sequential program will run on only one of the processor cores, which will not become significantly faster from generation to generation. Without performance improvement, application developers will no longer be able to introduce new features and capabilities into their software as new microprocessors are introduced; this reduces the growth opportunities of the entire computer industry.",
+      "zh": "从历史上看，大多数软件开发者依靠硬件的进步——例如时钟频率的提高，以及在底层同时执行多条指令——来提升其串行应用的速度；每推出一代新处理器，同样的软件只需照旧运行就会更快。计算机用户也逐渐形成了这样的预期：每换一代微处理器，这些程序就会跑得更快。这一预期已经有十多年不再成立了。串行程序只会在其中一个处理器核心上运行，而单个核心的速度并不会随着代际更替显著提升。没有了性能提升，应用开发者就无法在新微处理器问世时为软件引入新特性和新能力；这会减少整个计算机产业的增长机会。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[6]",
+      "en": "Rather, the application software that will continue to enjoy significant performance improvement with each new generation of microprocessors will be 【1】parallel programs【/1】, in which multiple threads of execution cooperate to complete the work faster. This new, dramatically escalated advantage of parallel programs over sequential programs has been referred to as the concurrency revolution (【2】Sutter and Larus, 2005【/2】). The practice of parallel programming is by no means new. The high-performance computing (HPC) community has been developing parallel programs for decades. These parallel programs typically ran on expensive large-scale computers. Only a few elite applications could justify the use of these computers, thus limiting the practice of parallel programming to a small number of application developers. Now that all new microprocessors are parallel computers, the number of applications that need to be developed as parallel programs has increased dramatically. There is now a great need for software developers to learn about parallel programming, which is the focus of this book.",
+      "zh": "相反，能够随着每一代新微处理器持续获得显著性能提升的应用软件，将是【1】并行程序【/1】——其中多个执行线程协同工作，从而更快地完成任务。并行程序相对于串行程序这种新的、急剧扩大的优势，被称为并发革命（【2】Sutter and Larus, 2005【/2】）。并行编程的实践绝非新事物。高性能计算（HPC）领域几十年来一直在开发并行程序。这些并行程序通常运行在昂贵的大型计算机上。只有少数重要应用值得动用这类计算机，因此并行编程的实践一直局限于少量应用开发者。如今所有新的微处理器都是并行计算机，需要以并行程序形式开发的应用数量急剧增加。软件开发者现在亟需学习并行编程，而这正是本书的主题。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "1.1 Heterogeneous parallel computing",
+      "zh": "1.1 异构并行计算"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "Since 2003 the semiconductor industry has settled on two main trajectories for designing microprocessors (【1】Hwu et al., 2008【/1】). The 【2】multicore【/2】 trajectory seeks to maintain the execution speed of sequential programs while moving into multiple cores. The multicores began with two-core processors, and the number of cores has increased with each semiconductor process generation. A recent example is a recent Intel multicore server microprocessor with up to 24 processor cores, each of which is an out-of-order, multiple instruction issue processor implementing the full ×86 instruction set, supporting hyperthreading with two hardware threads, designed to maximize the execution speed of sequential programs. Another example is a recent ARM Ampere multicore server processor with 128 processor cores.",
+      "zh": "自 2003 年以来，半导体产业在微处理器设计上确立了两条主要路线（【1】Hwu et al., 2008【/1】）。【2】多核【/2】路线力求在走向多个核心的同时，保持串行程序的执行速度。多核处理器最初只有两个核心，此后核心数量随每一代半导体工艺不断增加。近期的一个例子是 Intel 的一款多核服务器微处理器，最多拥有 24 个处理器核心，每个核心都是实现完整 ×86 指令集的乱序、多发射处理器，支持两个硬件线程的超线程，其设计目标是最大化串行程序的执行速度。另一个例子是近期的 ARM Ampere 多核服务器处理器，拥有 128 个处理器核心。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "In contrast, the 【1】many-thread【/1】 trajectory focuses more on the execution throughput of parallel applications. The many-thread trajectory began with a large number of threads, and once again, the number of threads increases with each generation. A recent exemplar is the NVIDIA Tesla A100 graphics processing unit (GPU) with tens of thousands of threads, executing in a large number of simple, in-order pipelines. Many-thread processors, especially GPUs, have led the race of floating-point performance since 2003. As of 2021, the peak floating-point throughput of the A100 GPU is 9.7 TFLOPS for 64-bit double-precision, 156 TFLOPS for 32-bit single-precision, and 312 TFLOPS for 16-bit half-precision. In comparison, the peak floating-point throughput of the recent Intel 24-core processor is 0.33 TLOPS for double-precision and 0.66 TFLOPS for single-precision. The ratio of peak floating-point calculation throughput between many-thread GPUs and multicore CPUs has been increasing for the past several years. These are not necessarily application speeds; they are merely the raw speeds that the execution resources can potentially support in these chips.",
+      "zh": "相比之下，【1】多线程【/1】路线更关注并行应用的执行吞吐量。多线程路线一开始就使用大量线程，同样地，线程数量也随每一代不断增加。近期的代表是 NVIDIA Tesla A100 图形处理器（GPU），它拥有数万个线程，在大量简单的顺序流水线中执行。自 2003 年以来，多线程处理器（尤其是 GPU）一直在浮点性能的竞赛中领先。截至 2021 年，A100 GPU 的峰值浮点吞吐量为：64 位双精度 9.7 TFLOPS，32 位单精度 156 TFLOPS，16 位半精度 312 TFLOPS。相比之下，近期 Intel 24 核心处理器的峰值浮点吞吐量为双精度 0.33 TLOPS、单精度 0.66 TFLOPS。近几年来，多线程 GPU 与多核 CPU 之间的峰值浮点计算吞吐量之比一直在增大。这些并不一定是应用能达到的速度，而只是这些芯片中的执行资源在理论上可能支持的原始速度。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "Such a large gap in peak performance between multicores and many-threads has amounted to a significant “electrical potential” buildup, and at some point, something will have to give. We have reached that point. To date, this large peak performance gap has already motivated many applications developers to move the computationally intensive parts of their software to GPUs for execution. Perhaps even more important, the drastically elevated performance of parallel execution has enabled revolutionary new applications such as deep learning that are intrinsically composed of computationally intensive parts. Not surprisingly, these computationally intensive parts are also the prime target of parallel programming: When there is more work to do, there is more opportunity to divide the work among cooperating parallel workers, that is, threads.",
+      "zh": "多核与多线程之间如此巨大的峰值性能差距，相当于积聚起了可观的“电势”，到某个时刻总要释放出来。我们已经到了那个时刻。迄今为止，这一巨大的峰值性能差距已经促使许多应用开发者把软件中计算密集的部分搬到 GPU 上执行。也许更重要的是，并行执行性能的大幅提升，催生了深度学习这类革命性的新应用，它们本质上就由计算密集的部分构成。不难理解，这些计算密集的部分同样是并行编程的首要目标：要做的工作越多，把工作分配给相互协作的并行工作者（也就是线程）的机会就越多。"
+    }
+  ]
+}

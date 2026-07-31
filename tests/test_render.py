@@ -8,6 +8,8 @@ import re
 import pytest
 
 from build_i18n import render
+from build_i18n.document import Document
+from build_i18n.validate import check_page
 from support import (CHAPTER_PATH, count, canonical, english_text, make_page,
                      translations_for)
 
@@ -317,6 +319,14 @@ def test_a_one_word_heading_left_in_english_is_still_untranslated():
     assert result.zh_html is None
 
 
+def test_underscore_identifiers_are_not_treated_as_prose():
+    """A code symbol such as `pad_h` stays English; it must not be called
+    untranslated prose, or the cuDNN parameter tables could never render."""
+    _, result = rendered('<td id="d1">pad_h</td>', {"pad_h": "pad_h"})
+
+    assert result.violations == []
+
+
 def test_a_node_with_no_translation_at_all_is_reported():
     page = make_page('<p id="p1">Some prose here.</p>')
     data = translations_for(page, {"Some prose here.": "这里有一些正文。"})
@@ -363,6 +373,81 @@ def test_terms_the_glossary_keeps_in_english_are_not_enforced():
     result = render(page, data, glossary=GLOSSARY)
 
     assert result.violations == []
+
+
+def test_a_shorter_glossary_term_inside_a_longer_one_is_suppressed():
+    """`bank` inside `filter bank` is the DSP term, not the shared-memory term
+    the glossary mandates, so a correct 滤波器组 must not be forced to 存储体."""
+    glossary = {"bank": "存储体", "filter bank": "滤波器组"}
+    page = make_page('<p id="p1">The filter bank output is summed.</p>')
+    data = translations_for(page,
+                            {"The filter bank output is summed.": "滤波器组的输出被求和。"})
+
+    result = render(page, data, glossary=glossary)
+
+    assert result.violations == []
+
+
+def test_a_standalone_shorter_term_is_still_enforced():
+    """When `bank` is not inside a longer matched term, the glossary still
+    applies."""
+    glossary = {"bank": "存储体", "filter bank": "滤波器组"}
+    page = make_page('<p id="p1">The shared memory bank is fast.</p>')
+    data = translations_for(page,
+                            {"The shared memory bank is fast.": "共享内存的库很快。"})
+
+    result = render(page, data, glossary=glossary)
+
+    assert [v.rule for v in result.violations] == ["glossary"]
+    assert "bank" in result.violations[0].message
+
+
+# A handful of glossary terms are also everyday English nouns.  In ordinary
+# usage neither escape from the gate is available: the mandated rendering is
+# nonsense (`cost reductions` is not 成本归约) and keeping the English word
+# injects a bogus 首现 gloss into Chinese prose (成本的迅速下降（reduction）),
+# which §7 reserves for introducing a real technical term.
+@pytest.mark.parametrize("english,chinese", [
+    ("Faster clocks drove cost reductions in the 1990s.",
+     "更快的时钟推动了 20 世纪 90 年代的成本下降。"),
+    ("The reduction in area and power lets designers fit more units.",
+     "面积和功耗上的缩减让设计者能放下更多单元。"),
+])
+def test_ordinary_english_use_of_an_ambiguous_noun_is_not_a_glossary_violation(
+        english, chinese):
+    glossary = {"reduction": "归约"}
+    page = make_page('<p id="p1">%s</p>' % english)
+    data = translations_for(page, {english: chinese})
+
+    result = render(page, data, glossary=glossary)
+
+    assert result.violations == []
+
+
+def test_building_blocks_is_not_the_thread_block_of_the_glossary():
+    glossary = {"block / thread block": "线程块"}
+    english = "They are the basic building blocks of higher-level functions."
+    page = make_page('<p id="p1">%s</p>' % english)
+    data = translations_for(page, {english: "它们是高层函数的基本构件。"})
+
+    result = render(page, data, glossary=glossary)
+
+    assert result.violations == []
+
+
+def test_the_technical_sense_of_an_ambiguous_noun_is_still_enforced():
+    """The carve-out is per-collocation, not per-word: a bare technical
+    `reduction` must still be forced to 归约, or terminology drifts silently
+    through the chapter that is actually about reductions."""
+    glossary = {"reduction": "归约"}
+    english = "The reduction is performed in a tree of log(N) steps."
+    page = make_page('<p id="p1">%s</p>' % english)
+    data = translations_for(page, {english: "该缩减在 log(N) 步的树中完成。"})
+
+    result = render(page, data, glossary=glossary)
+
+    assert [v.rule for v in result.violations] == ["glossary"]
+    assert "reduction" in result.violations[0].message
 
 
 # ---------------------------------------------------------------------------
@@ -427,3 +512,60 @@ def test_the_chinese_page_declares_chinese():
 
     assert 'lang="zh-CN"' in result.zh_html.split("<body")[0]
     assert 'lang="en"' not in result.zh_html.split("<body")[0]
+
+
+# ---------------------------------------------------------------------------
+# Atomic blocks: what may move, what may not
+# ---------------------------------------------------------------------------
+TWO_FORMULAE = ('<p id="p1">Let <math><mi>x</mi></math> exceed '
+                '<math><mi>y</mi></math> here.</p>')
+
+
+def atoms_of(text):
+    return re.findall(r"【M\d+】", text)
+
+
+def test_atomic_blocks_may_be_reordered_to_suit_the_chinese_sentence():
+    # Chinese word order routinely differs from English, so a translator must
+    # be able to put the second formula first.  Nothing is lost or altered.
+    page = make_page(TWO_FORMULAE)
+    en = english_text(page)[0]
+    first, second = atoms_of(en)
+
+    result = render(page, translations_for(page, {en: f"设 {second} 超过 {first}。"}),
+                    glossary=NO_GLOSSARY)
+
+    assert result.violations == []
+    assert "<math><mi>x</mi></math>" in result.zh_html
+    assert "<math><mi>y</mi></math>" in result.zh_html
+
+
+def test_a_dropped_atomic_block_still_fails_and_names_the_node():
+    page = make_page(TWO_FORMULAE)
+    en = english_text(page)[0]
+    first, _second = atoms_of(en)
+
+    result = render(page, translations_for(page, {en: f"设 {first} 超过某值。"}),
+                    glossary=NO_GLOSSARY)
+
+    assert [v.rule for v in result.violations] == ["placeholder-mismatch"]
+    assert "p1" in str(result.violations[0])
+
+
+def test_an_altered_formula_fails_and_names_the_node():
+    # The renderer rebuilds atoms from the English source, so a drift here can
+    # only come from the source page itself changing under us; the gate still
+    # has to say which node to look at rather than just "somewhere".
+    page = make_page(TWO_FORMULAE)
+    en = english_text(page)[0]
+    first, second = atoms_of(en)
+    data = translations_for(page, {en: f"设 {first} 超过 {second}。"})
+
+    result = render(page, data, glossary=NO_GLOSSARY)
+    assert result.violations == []
+
+    tampered = result.zh_html.replace("<mi>y</mi>", "<mi>z</mi>")
+    drift = check_page(Document(page), tampered, "Ch001")
+
+    assert [v.rule for v in drift] == ["verbatim-drift"]
+    assert "p1" in str(drift[0])

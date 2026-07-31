@@ -1,0 +1,113 @@
+{
+  "page": "Ch003_47-68_B9780323912310000045",
+  "nodes": [
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[1]",
+      "en": "1. In this chapter we implemented a matrix multiplication kernel that has each thread produce one output matrix element. In this question, you will implement different matrix-matrix multiplication kernels and compare them.【M1】",
+      "zh": "1. 在本章中，我们实现了一个矩阵乘法核函数，其中每个线程生成一个输出矩阵元素。在本问题中，你将实现不同的矩阵-矩阵乘法核函数并对它们进行比较。【M1】"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[1]/ol[1]/li[1]",
+      "en": "a. Write a kernel that has each thread produce one output matrix row. Fill in the execution configuration parameters for the design.",
+      "zh": "a. 编写一个核函数，使每个线程生成一个输出矩阵行。为该设计填写执行配置参数。"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[1]/ol[1]/li[2]",
+      "en": "b. Write a kernel that has each thread produce one output matrix column. Fill in the execution configuration parameters for the design.",
+      "zh": "b. 编写一个核函数，使每个线程生成一个输出矩阵列。为该设计填写执行配置参数。"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[1]/ol[1]/li[3]",
+      "en": "c. Analyze the pros and cons of each of the two kernel designs.",
+      "zh": "c. 分析这两种核函数设计的优缺点。"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[2]",
+      "en": "2. A matrix-vector multiplication takes an input matrix B and a vector C and produces one output vector A. Each element of the output vector A is the dot product of one row of the input matrix B and C, that is, A[i]=∑【1】j【/1】 B[i][j]+C[j]. For simplicity we will handle only square matrices whose elements are single-precision floating-point numbers. Write a matrix-vector multiplication kernel and the host stub function that can be called with four parameters: pointer to the output matrix, pointer to the input matrix, pointer to the input vector, and the number of elements in each dimension. Use one thread to calculate an output vector element.",
+      "zh": "2. 矩阵-向量乘法以一个输入矩阵 B 和一个向量 C 为输入，产生一个输出向量 A。输出向量 A 的每个元素是输入矩阵 B 的一行与 C 的点积，即 A[i]=∑【1】j【/1】 B[i][j]+C[j]。为简单起见，我们只处理元素为单精度浮点数的方阵。编写一个矩阵-向量乘法核函数，以及可以用四个参数调用的主机桩函数：指向输出矩阵的指针、指向输入矩阵的指针、指向输入向量的指针，以及每个维度中的元素个数。使用一个线程来计算一个输出向量元素。"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[3]",
+      "en": "3. Consider the following CUDA kernel and the corresponding host function that calls it:【M1】【M2】",
+      "zh": "3. 考虑以下 CUDA 核函数及其调用它的对应主机函数：【M1】【M2】"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[3]/ol[1]/li[1]",
+      "en": "a. What is the number of threads per block?",
+      "zh": "a. 每个线程块中的线程数是多少？"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[3]/ol[1]/li[2]",
+      "en": "b. What is the number of threads in the grid?",
+      "zh": "b. 网格中的线程数是多少？"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[3]/ol[1]/li[3]",
+      "en": "c. What is the number of blocks in the grid?",
+      "zh": "c. 网格中的线程块数是多少？"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[3]/ol[1]/li[4]",
+      "en": "d. What is the number of threads that execute the code on line 05?",
+      "zh": "d. 执行第 05 行代码的线程数是多少？"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[4]",
+      "en": "4. Consider a 2D matrix with a width of 400 and a height of 500. The matrix is stored as a one-dimensional array. Specify the array index of the matrix element at row 20 and column 10:【M1】",
+      "zh": "4. 考虑一个宽度为 400、高度为 500 的二维矩阵。该矩阵存储为一维数组。指出位于第 20 行、第 10 列的矩阵元素的数组下标：【M1】"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[4]/ol[1]/li[1]",
+      "en": "a. If the matrix is stored in row-major order.",
+      "zh": "a. 若矩阵按行主序布局存储。"
+    },
+    {
+      "id": "o0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[4]/ol[1]/li[2]",
+      "en": "b. If the matrix is stored in column-major order.",
+      "zh": "b. 若矩阵按列主序布局存储。"
+    },
+    {
+      "id": "o0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[5]",
+      "en": "5. Consider a 3D tensor with a width of 400, a height of 500, and a depth of 300. The tensor is stored as a one-dimensional array in row-major order. Specify the array index of the tensor element at x=10, y=20, and z=5.",
+      "zh": "5. 考虑一个宽度为 400、高度为 500、深度为 300 的三维张量。该张量按行主序布局存储为一维数组。指出位于 x=10、y=20、z=5 的张量元素的数组下标。"
+    },
+    {
+      "id": "fn1",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/div[1]/p[1]",
+      "en": "【1】【2】1【/2】【/1】Devices with a capability of less than 3.0 allow blockIdx.x to range from 1 to 2【3】16【/3】 − 1.",
+      "zh": "【1】【2】1【/2】【/1】计算能力低于 3.0 的设备允许 blockIdx.x 的取值范围为 1 到 2【3】16【/3】 − 1。"
+    },
+    {
+      "id": "fn2",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/div[1]/p[2]",
+      "en": "【1】【2】2【/2】【/1】We will refer to the dimensions of multidimensional data in descending order: the z dimension followed by the y dimension, and so on. For example, for a picture of n pixels in the vertical or y dimension and m pixels in the horizontal or x dimension, we will refer to it as a n × m picture. This follows the C multidimensional array indexing convention. For example, we can refer to P[y][x] as P【3】y,x【/3】 in text and figures for conciseness. Unfortunately, this ordering is opposite to the order in which data dimensions are ordered in the gridDim and blockDim dimensions. The discrepancy can be especially confusing when we define the dimensions of a thread grid on the basis of a multidimensional array that is to be processed by its threads.",
+      "zh": "【1】【2】2【/2】【/1】我们将按降序引用多维数据的维度：先是 z 维度，然后是 y 维度，依此类推。例如，对于一幅在垂直（y）维度上有 n 个像素、在水平（x）维度上有 m 个像素的图像，我们将其称为 n × m 图像。这符合 C 语言多维数组的索引约定。例如，为了简洁，我们可以在正文和图示中将 P[y][x] 记为 P【3】y,x【/3】。遗憾的是，这种顺序与 gridDim 和 blockDim 维度中数据维度的排列顺序相反。当我们基于一个要由其线程处理的多维数组来定义线程网格的维度时，这种差异尤其容易令人困惑。"
+    },
+    {
+      "id": "fn3",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/div[1]/p[3]",
+      "en": "【1】【2】3【/2】【/1】We assume that CHANNELS is a constant of value 3, and its definition is outside the kernel function.",
+      "zh": "【1】【2】3【/2】【/1】我们假设 CHANNELS 是一个值为 3 的常量，其定义在核函数之外。"
+    }
+  ]
+}

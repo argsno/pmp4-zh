@@ -1,0 +1,155 @@
+{
+  "page": "Ch016_355-388_B9780323912310000240",
+  "nodes": [
+    {
+      "id": "t0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/p[1]",
+      "en": "Table 16.1",
+      "zh": "表 16.1"
+    },
+    {
+      "id": "n0176",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/caption[1]",
+      "en": "Convolution parameters for CUDNN. Note that the CUDNN naming convention is slightly different from what we used in previous sections.",
+      "zh": "CUDNN 的卷积参数。请注意，CUDNN 的命名约定与我们在前面各节中所使用的略有不同。"
+    },
+    {
+      "id": "n0177",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/thead[1]/tr[1]/th[1]",
+      "en": "Parameter",
+      "zh": "参数"
+    },
+    {
+      "id": "n0178",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/thead[1]/tr[1]/th[2]",
+      "en": "Meaning",
+      "zh": "含义"
+    },
+    {
+      "id": "n0179",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[1]/td[1]",
+      "en": "N",
+      "zh": "N"
+    },
+    {
+      "id": "n0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[1]/td[2]",
+      "en": "Number of images in minibatch",
+      "zh": "小批量中的图像数量"
+    },
+    {
+      "id": "n0181",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[2]/td[1]",
+      "en": "C",
+      "zh": "C"
+    },
+    {
+      "id": "n0182",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[2]/td[2]",
+      "en": "Number of input feature maps",
+      "zh": "输入特征图的数量"
+    },
+    {
+      "id": "n0183",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[3]/td[1]",
+      "en": "H",
+      "zh": "H"
+    },
+    {
+      "id": "n0184",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[3]/td[2]",
+      "en": "Height of input image",
+      "zh": "输入图像的高度"
+    },
+    {
+      "id": "n0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[4]/td[1]",
+      "en": "W",
+      "zh": "W"
+    },
+    {
+      "id": "n0186",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[4]/td[2]",
+      "en": "Width of input image",
+      "zh": "输入图像的宽度"
+    },
+    {
+      "id": "n0187",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[5]/td[1]",
+      "en": "K",
+      "zh": "K"
+    },
+    {
+      "id": "n0188",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[5]/td[2]",
+      "en": "Number of output feature maps",
+      "zh": "输出特征图的数量"
+    },
+    {
+      "id": "n0189",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[6]/td[1]",
+      "en": "R",
+      "zh": "R"
+    },
+    {
+      "id": "n0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[6]/td[2]",
+      "en": "Height of filter",
+      "zh": "滤波器的高度"
+    },
+    {
+      "id": "n0191",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[7]/td[1]",
+      "en": "S",
+      "zh": "S"
+    },
+    {
+      "id": "n0192",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[7]/td[2]",
+      "en": "Width of filter",
+      "zh": "滤波器的宽度"
+    },
+    {
+      "id": "n0193",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[8]/td[1]",
+      "en": "u",
+      "zh": "u"
+    },
+    {
+      "id": "n0194",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[8]/td[2]",
+      "en": "Vertical stride",
+      "zh": "垂直步长"
+    },
+    {
+      "id": "n0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[9]/td[1]",
+      "en": "v",
+      "zh": "v"
+    },
+    {
+      "id": "n0196",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[9]/td[2]",
+      "en": "Horizontal stride",
+      "zh": "水平步长"
+    },
+    {
+      "id": "n0197",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[10]/td[1]",
+      "en": "pad_h",
+      "zh": "pad_h"
+    },
+    {
+      "id": "n0198",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[10]/td[2]",
+      "en": "Height of zero padding",
+      "zh": "零填充的高度"
+    },
+    {
+      "id": "n0199",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/table[1]/tbody[1]/tr[11]/td[1]",
+      "en": "pad_w",
+      "zh": "pad_w"
+    }
+  ]
+}

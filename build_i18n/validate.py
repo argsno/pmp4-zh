@@ -6,6 +6,7 @@ problem someone will fix, a subtly broken page is one nobody will notice.
 from __future__ import annotations
 
 import re
+from collections import Counter
 from dataclasses import dataclass
 
 from lxml import html as lxml_html
@@ -17,6 +18,8 @@ from .spacing import has_cjk
 
 VERBATIM_TAGS = ("pre", "math")
 _WORD_RE = re.compile(r"[A-Za-z][A-Za-z'’-]{2,}")
+# Code symbols such as `pad_h` or `out_w` are never prose.
+_CODE_SYMBOL_RE = re.compile(r"\w*_\w+")
 
 
 @dataclass(frozen=True)
@@ -78,10 +81,7 @@ def check_page(english, chinese_html, page):
             message="rendered page has %d block-level nodes, the English page "
                     "has %d" % (actual, expected)))
 
-    if _verbatim(english) != _verbatim(rendered):
-        violations.append(Violation(
-            rule="verbatim-drift", page=page,
-            message="code or formulae differ from the English page"))
+    violations.extend(_drift(english, rendered, page))
     return violations
 
 
@@ -148,15 +148,70 @@ def _verbatim(doc):
             if el.tag in VERBATIM_TAGS]
 
 
+def _verbatim_owners(doc):
+    """Every code/formula block's source, paired with the node it sits in."""
+    return [(doc.source(el), _owner_id(el)) for el in content_elements(doc)
+            if el.tag in VERBATIM_TAGS]
+
+
+def _owner_id(el):
+    """The id a translator would recognise: the block's own, or its node's."""
+    for candidate in (el,) + tuple(el.ancestors()):
+        if candidate.attrs.get("id"):
+            return candidate.attrs["id"]
+    return ""
+
+
+def _drift(english, rendered, page):
+    """Code and formulae that went missing, appeared, or changed.
+
+    Order is deliberately not compared.  Chinese word order differs from
+    English, so a translator moving 【M2】 ahead of 【M1】 inside a sentence is
+    doing their job; what must never happen is a block being lost, invented or
+    altered.  Comparing multisets says exactly that, and comparing them by
+    source means a single changed byte still fails.
+    """
+    ours = Counter(source for source, _ in _verbatim_owners(rendered))
+    theirs = Counter(source for source, _ in _verbatim_owners(english))
+    if ours == theirs:
+        return []
+    missing = _where(theirs - ours, _verbatim_owners(english))
+    invented = _where(ours - theirs, _verbatim_owners(rendered))
+    parts = []
+    if missing:
+        parts.append("missing from %s" % ", ".join(missing))
+    if invented:
+        parts.append("unexpected in %s" % ", ".join(invented))
+    return [Violation(
+        rule="verbatim-drift", page=page, node_id=(missing + invented)[0],
+        message="code or formulae differ from the English page: %s"
+                % "; ".join(parts))]
+
+
+def _where(counts, owners):
+    """The nodes holding the given block sources, in page order, deduplicated."""
+    wanted = set(counts)
+    found = []
+    for source, owner in owners:
+        name = owner or "?"
+        if source in wanted and name not in found:
+            found.append(name)
+    return found
+
+
 def _is_prose(text):
     """Text a reader reads, as opposed to a label or a symbol.
 
-    Identifiers and acronyms — `threadIdx.x`, `CUDA`, `GB/s` — stay in English
-    on a fully translated page, so they cannot be held to "must contain
-    Chinese".  A single ordinary word can: a heading reading `Introduction` is
-    an untranslated heading, not a label.
+    Identifiers and acronyms — `threadIdx.x`, `CUDA`, `GB/s`, `pad_h` — stay
+    in English on a fully translated page, so they cannot be held to "must
+    contain Chinese".  A single ordinary word can: a heading reading
+    `Introduction` is an untranslated heading, not a label.
     """
-    words = _WORD_RE.findall(PLACEHOLDER_RE.sub(" ", text))
+    cleaned = PLACEHOLDER_RE.sub(" ", text)
+    # Code symbols such as `pad_h` or `out_w` are never prose; drop them before
+    # counting words, or the gate would wrongly demand Chinese inside them.
+    cleaned = _CODE_SYMBOL_RE.sub(" ", cleaned)
+    words = _WORD_RE.findall(cleaned)
     return any(word == word.lower() or word == word.capitalize()
                for word in words)
 

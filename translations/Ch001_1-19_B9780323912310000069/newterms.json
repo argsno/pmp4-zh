@@ -1,0 +1,10 @@
+[
+  {"en": "terascale", "zh": "万亿次级"},
+  {"en": "exascale", "zh": "百亿亿次级"},
+  {"en": "superapplications", "zh": "超级应用"},
+  {"en": "installed base", "zh": "装机量"},
+  {"en": "field-programmable gate arrays", "zh": "现场可编程门阵列"},
+  {"en": "out-of-order", "zh": "乱序"},
+  {"en": "hyperthreading", "zh": "超线程"},
+  {"en": "concurrency", "zh": "并发"}
+]

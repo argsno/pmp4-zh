@@ -16,23 +16,23 @@ SITE_PREFIX = {"en": "../../chapters/", "zh": "../../zh/chapters/",
 SWITCH_LABELS = {"en": "EN", "zh": "中", "bilingual": "对照"}
 
 
-def localize_header(doc, header, nav, mode, page_file):
+def localize_header(doc, header, nav, mode, page_file, prefix=None):
     """Rewrite one page's top navigation for the zh or bilingual site."""
     replacements = []
     for el in header.descendants():
         if el.tag == "optgroup":
-            label = el.attrs.get("label", "")
-            localized = _label(label, nav, mode)
-            if localized != label:
+            current = el.attrs.get("label", "")
+            localized = label(current, nav, mode)
+            if localized != current:
                 replacements.append((el.start, el.content_start,
                                      set_attr(doc.open_tag(el), "label",
                                               ihtml.escape(localized))))
         elif el.tag == "option":
             replacements.append(_inner_swap(doc, el,
-                                            _label(doc.inner(el), nav, mode)))
+                                            label(doc.inner(el), nav, mode)))
         elif "book-title" in el.classes:
             replacements.append(_inner_swap(doc, el,
-                                            _label(doc.inner(el), nav, "zh")))
+                                            label(doc.inner(el), nav, "zh")))
         elif "navbtn" in el.classes:
             replacements.append(_inner_swap(doc, el, _button(doc.inner(el))))
 
@@ -40,7 +40,7 @@ def localize_header(doc, header, nav, mode, page_file):
                     if "nav-buttons" in el.classes), None)
     if buttons is not None and page_file:
         replacements.append((buttons.end, buttons.end,
-                             language_switch(mode, page_file)))
+                             language_switch(mode, page_file, prefix)))
 
     replacements = [r for r in replacements if r is not None]
     return splice(doc.src, header.start, header.end, replacements)
@@ -49,7 +49,7 @@ def localize_header(doc, header, nav, mode, page_file):
 def nav_labels(doc, header):
     """Every English string the localized navigation needs a translation for.
 
-    The keys are exactly what `_label` will look up, so a skeleton built from
+    The keys are exactly what `label` will look up, so a skeleton built from
     this list can never miss by a stray entity or a space.
     """
     labels = []
@@ -66,16 +66,22 @@ def nav_labels(doc, header):
     return labels
 
 
-def language_switch(mode, page_file):
-    """EN / 中 / 对照, always pointing at the same chapter."""
+def language_switch(mode, page_file, prefix=None):
+    """EN / 中 / 对照, always pointing at the same page.
+
+    `prefix` says how to get from this page to its counterpart in each site;
+    it differs between a chapter page and a landing page, which sit at
+    different depths.
+    """
+    prefix = prefix or SITE_PREFIX
     parts = []
     for site in ("en", "zh", "bilingual"):
-        label = SWITCH_LABELS[site]
+        text = SWITCH_LABELS[site]
         if site == mode:
-            parts.append('<span class="langbtn active">%s</span>' % label)
+            parts.append('<span class="langbtn active">%s</span>' % text)
         else:
             parts.append('<a class="langbtn" href="%s%s">%s</a>'
-                         % (SITE_PREFIX[site], page_file, label))
+                         % (prefix[site], page_file, text))
     return '\n    <div class="langswitch">%s</div>' % "".join(parts)
 
 
@@ -86,7 +92,12 @@ def _inner_swap(doc, el, text):
     return (el.content_start, el.content_end, text)
 
 
-def _label(text, nav, mode):
+def label(text, nav, mode):
+    """One navigation label in the language the site is in.
+
+    An untranslated label is returned unchanged rather than blanked: a menu
+    with an English entry in it still navigates.
+    """
     english = ihtml.unescape(text)
     chinese = nav.get(english)
     if not chinese:
