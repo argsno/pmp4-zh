@@ -4,11 +4,18 @@ These tests stay at the surface — files on disk and exit codes — so the shel
 around the engine can be rearranged without rewriting them.
 """
 import json
+import os
+import re
+import shutil
 
 import pytest
 
 from build_i18n.cli import main
-from support import make_page
+from support import ROOT, make_page
+
+# The real stylesheets the sites ship, so the fixture exercises the wiring a
+# reader actually gets rather than a stand-in.
+STYLESHEETS = ("topnav.css", "chinese.css")
 
 PAGES = {
     "Ch001.html": "<h1>Introduction</h1>"
@@ -27,7 +34,8 @@ def site(tmp_path):
     web = tmp_path / "web"
     (web / "chapters").mkdir(parents=True)
     (web / "styles").mkdir()
-    (web / "topnav.css").write_text("nav {}", encoding="utf-8")
+    for name in STYLESHEETS:
+        shutil.copy(os.path.join(ROOT, "web", name), web / name)
     (web / "index.html").write_text("<html></html>", encoding="utf-8")
     for name, body in PAGES.items():
         (web / "chapters" / name).write_text(make_page(body), encoding="utf-8")
@@ -160,9 +168,39 @@ def test_render_shares_the_english_assets_rather_than_copying_them(site):
     translate(site, "Ch001", "Ch002")
     run("render", site)
 
-    for name in ("styles", "topnav.css", "index.html"):
+    for name in ("styles", "topnav.css", "chinese.css", "index.html"):
         assert (web / "zh" / name).is_symlink()
         assert (web / "zh" / name).resolve() == (web / name).resolve()
+
+
+def test_the_new_sites_reach_the_chinese_typesetting_rules(site):
+    """A chapter page asks for `../topnav.css` relative to its own site root,
+    so whatever that resolves to has to carry the Chinese rules.  Nothing
+    errors when it does not — the pages just quietly come out in the English
+    typeface with no visual break between an original and its translation.
+    """
+    web, _ = site
+    run("extract", site)
+    translate(site, "Ch001", "Ch002")
+
+    assert run("render", site) == 0
+
+    for name in ("zh", "bilingual"):
+        css = with_imports(web / name / "topnav.css")
+        assert "zh-trans" in css
+        assert "langbtn" in css
+
+
+def with_imports(path):
+    """A stylesheet's text with the ones it @imports pulled in after it.
+
+    Resolution is relative to the requested path, not the symlink's target,
+    which is what a browser asking for `web/zh/topnav.css` does too.
+    """
+    text = path.read_text(encoding="utf-8")
+    for target in re.findall(r'@import\s+url\("([^"]+)"\)', text):
+        text += with_imports(path.parent / target)
+    return text
 
 
 def test_render_leaves_a_real_file_in_the_site_root_alone(site):

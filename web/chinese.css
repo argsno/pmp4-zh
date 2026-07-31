@@ -1,0 +1,111 @@
+/* Chinese typesetting for the zh and bilingual sites.
+ *
+ * Loaded by every page of all three sites (topnav.css imports it), but nothing
+ * here matches an English page: each rule is scoped either to a document that
+ * declares itself Chinese, or to a `zh-trans` block, and only the two new
+ * sites produce those.
+ *
+ * The two scopes are what the renderer emits.  On the Chinese site the whole
+ * document is Chinese, so `html[lang="zh-CN"]` carries it.  On the bilingual
+ * site the document stays English and each translated copy is marked
+ * `zh-trans`, so the Chinese rules have to attach to those blocks one by one.
+ *
+ * Every declaration here is `!important` and reaches through both content ids.
+ * That is not enthusiasm: the book ships override_v1.css, which sets
+ * `#book-content #sbo-rt-content p { font-family: "Noto serif" !important }`
+ * and similar for most text elements.  Anything weaker silently loses, and
+ * loses invisibly — the page still renders, just in a Latin face that leaves
+ * the Chinese to whatever the system picks.
+ */
+
+:root {
+  /* Latin faces first so English terms — kernel, warp, threadIdx.x — keep
+     their own shapes, and the CJK families only pick up the Chinese. */
+  --zh-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+             Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+             "Noto Sans CJK SC", "Source Han Sans SC", "WenQuanYi Micro Hei",
+             sans-serif;
+}
+
+/* ---------------------------------------------------------------------------
+   Font
+   `pre`, `code` and `math` are deliberately absent: code stays monospaced and
+   formulae keep the fonts their renderer chose.
+   --------------------------------------------------------------------------- */
+html[lang="zh-CN"] #book-content,
+html[lang="zh-CN"] #book-content #sbo-rt-content :is(p, li, div, dt, dd,
+  blockquote, h1, h2, h3, h4, h5, h6, td, th, caption, figcaption,
+  a, em, strong, cite, i, b),
+#book-content #sbo-rt-content .zh-trans,
+#book-content #sbo-rt-content .zh-trans :is(a, em, strong, cite, i, b, sub, sup) {
+  font-family: var(--zh-font) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   Rhythm
+   Chinese sets solid — no ascenders or descenders to open the lines up — so it
+   needs more leading than the 1.5rem the English stylesheet gives.
+   --------------------------------------------------------------------------- */
+html[lang="zh-CN"] #book-content #sbo-rt-content :is(p, li, dt, dd,
+  blockquote, td, th, caption, figcaption),
+#book-content #sbo-rt-content .zh-trans {
+  line-height: 1.8 !important;
+}
+
+html[lang="zh-CN"] #book-content #sbo-rt-content :is(h1, h2, h3, h4, h5, h6) {
+  line-height: 1.4 !important;
+}
+
+/* ---------------------------------------------------------------------------
+   The bilingual translation block
+   A left rule and a faint tint, so a glance down the page separates original
+   from translation without having to read either.
+   --------------------------------------------------------------------------- */
+#book-content #sbo-rt-content .zh-trans {
+  display: block !important;
+  border-left: 3px solid #b9c6e2 !important;
+  border-radius: 0 3px 3px 0 !important;
+  background: #f5f8fd !important;
+  padding: 0.4em 0.9em !important;
+  margin: 0.3em 0 1.2em !important;
+  /* Untranslatable identifiers can be long; wrap rather than overflow. */
+  overflow-wrap: break-word !important;
+}
+
+/* A heading's translation is a second line of the same heading, not a heading
+   of its own — muted and slightly smaller so the English keeps the visual rank.
+   em is relative to the parent (the original English heading), which is the
+   correct reference point. */
+#book-content #sbo-rt-content :is(h1, h2, h3, h4, h5, h6).zh-trans {
+  color: #3c4a68 !important;
+  font-weight: 500 !important;
+  font-size: .88em !important;
+}
+
+/* Table cells put both languages in one cell — a second cell would break the
+   row — so there the mark is inline and the block treatment would misalign
+   the columns. */
+#book-content #sbo-rt-content :is(td, th) > .zh-trans {
+  background: none !important;
+  border-left: 0 !important;
+  padding: 0 !important;
+  margin: 0.2em 0 0 !important;
+  color: #2c3a58 !important;
+}
+
+/* ---------------------------------------------------------------------------
+   Small screens
+   The Elsevier stylesheet already indents content by 2em a side; the block's
+   own padding on top of that leaves a phone very little to read in.
+   --------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  #book-content #sbo-rt-content .zh-trans {
+    padding: 0.35em 0.6em !important;
+    margin-bottom: 0.9em !important;
+  }
+  html[lang="zh-CN"] #book-content #sbo-rt-content :is(p, li, dt, dd,
+    blockquote, td, th, caption, figcaption),
+  #book-content #sbo-rt-content .zh-trans {
+    line-height: 1.75 !important;
+  }
+}
