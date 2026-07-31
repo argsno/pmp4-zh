@@ -1,0 +1,155 @@
+{
+  "page": "Ch020_449-473_B9780323912310000070",
+  "nodes": [
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "【1】Fig. 20.7【/1】 shows the syntax for using the 【2】MPI_Send()【/2】 function. The first parameter is a pointer to the starting location of the memory area where the data to be sent can be found. The second parameter is an integer that gives that number of data elements to be sent. The third parameter is of the MPI built-in type 【3】MPI_Datatype【/3】. It specifies the type of each data element that is being sent as far as the MPI library implementation is concerned. The values that can be held by a variable or argument of the 【4】MPI_Datatype【/4】 are defined in mpi.h and include 【5】MPI_DOUBLE【/5】 (double-precision floating-point), 【6】MPI_FLOAT【/6】 (single-precision floating-point), 【7】MPI_INT【/7】 (integer), and 【8】MPI_CHAR【/8】 (character). The exact sizes of these types depend on the size of the corresponding C types in the host processor. See the MPI reference manual for more sophisticated use of MPI types (【9】Gropp et al., 1999【/9】).",
+      "zh": "【1】图 20.7【/1】展示了【2】MPI_Send()【/2】函数的语法。第一个参数是指向内存区域起始位置的指针，待发送的数据位于该区域中。第二个参数是一个整数，给出要发送的数据元素个数。第三个参数是 MPI 内置类型【3】MPI_Datatype【/3】，它指明就 MPI 库实现而言每个待发送数据元素的类型。【4】MPI_Datatype【/4】类型的变量或参数可以持有的值在 mpi.h 中定义，包括【5】MPI_DOUBLE【/5】（双精度浮点数）、【6】MPI_FLOAT【/6】（单精度浮点数）、【7】MPI_INT【/7】（整数）和【8】MPI_CHAR【/8】（字符）。这些类型的确切大小取决于主机处理器中相应 C 类型的大小。有关 MPI 类型的更复杂用法，请参阅 MPI 参考手册（【9】Gropp et al., 1999【/9】）。"
+    },
+    {
+      "id": "n0051",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 20.7【/2】【/1】 Syntax for the MPI_Send() function.",
+      "zh": "【1】【2】图 20.7【/2】【/1】 MPI_Send() 函数的语法。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "The fourth parameter for 【1】MPI_Send()【/1】 is an integer that gives the MPI rank of the destination process. The fifth parameter gives a tag that can be used to classify the messages that are sent by the same process. The sixth parameter is a communicator that specifies the context in which the destination MPI rank is defined.",
+      "zh": "【1】MPI_Send()【/1】的第四个参数是一个整数，给出目标进程的 MPI 进程号。第五个参数给出一个标记（tag），可用于对同一进程发送的消息进行分类。第六个参数是一个通信域，指定目标 MPI 进程号在其中定义的作用域（上下文）。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "【1】Fig. 20.8【/1】 shows the syntax for using the 【2】MPI_Recv()【/2】 function. The first parameter is a pointer to the area in memory where the received data should be deposited. The second parameter is an integer that gives the maximum number of elements that the 【3】MPI_Recv()【/3】 function is allowed to receive. The third parameter is an 【4】MPI_Datatype【/4】 that specifies the type of each element to be received. The fourth parameter is an integer that gives the process id of the source of the message. The fifth parameter is an integer that specifies the tag value that is expected by the destination process. If the destination process does not want to be limited to a particular tag value, it can use 【5】MPI_ANY_TAG【/5】, which means that the receiver is willing to accept messages of any tag value from the source.",
+      "zh": "【1】图 20.8【/1】展示了【2】MPI_Recv()【/2】函数的语法。第一个参数是指向内存中接收数据存放区域的指针。第二个参数是一个整数，给出【3】MPI_Recv()【/3】函数允许接收的最大元素个数。第三个参数是一个【4】MPI_Datatype【/4】，指明每个待接收元素的类型。第四个参数是一个整数，给出消息来源进程的进程 ID。第五个参数是一个整数，指定目标进程所期望的标记值。如果目标进程不想被限定于特定的标记值，可以使用【5】MPI_ANY_TAG【/5】，它表示接收方愿意接受来自源进程的任何标记值的消息。"
+    },
+    {
+      "id": "n0054",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 20.8【/2】【/1】 Syntax for the MPI_Recv() function.",
+      "zh": "【1】【2】图 20.8【/2】【/1】 MPI_Recv() 函数的语法。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "We will first use the data server to illustrate the use of point-to-point communication. In a real application the data server process would typically perform data input and output operations for the compute processes. However, input and output have too much system-dependent complexity. Since I/O is not the focus of our discussion, we will avoid the complexity of I/O operations in a cluster environment. That is, instead of reading data from a file system, we will just have the data server initialize the data with random numbers and distribute the data to the compute processes. The first part of the data server code is shown in 【1】Fig. 20.9【/1】.",
+      "zh": "我们首先使用数据服务器来说明点对点通信的用法。在真实应用中，数据服务器进程通常为计算进程执行数据输入和输出操作。然而，输入和输出具有太多与系统相关的复杂性。由于 I/O 不是我们讨论的重点，我们将避开集群环境中 I/O 操作的复杂性。也就是说，我们不从文件系统读取数据，而是让数据服务器用随机数初始化数据，并将其分发给计算进程。数据服务器代码的第一部分如【1】图 20.9【/1】所示。"
+    },
+    {
+      "id": "n0056",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 20.9【/1】 Data server process code (part 1).",
+      "zh": "【1】图 20.9【/1】 数据服务器进程代码（第 1 部分）。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "The data server function takes four parameters. The first three parameters specify the size of the 3D grid: the number of elements in the 【1】x【/1】 dimension, dimx; the number of elements in the 【2】y【/2】 dimension, dimy; and the number of elements in the 【3】z【/3】 dimension, dimz. The fourth parameter specifies the number of iterations that need to be done for all the data points in the grid.",
+      "zh": "数据服务器函数接受四个参数。前三个参数指定 3D 网格的大小：【1】x【/1】维的元素个数 dimx、【2】y【/2】维的元素个数 dimy 和【3】z【/3】维的元素个数 dimz。第四个参数指定需要对网格中所有数据点执行的迭代次数。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "In 【1】Fig. 20.9【/1】, line 02 declares variable np that will contain the number of processes running the application. Line 03 calls 【2】MPI_Comm_size()【/2】, which will deposit the number of processes running the application into np. Line 04 declares and initializes several helper variables. The variable 【3】num_comp_procs【/3】 contains the number of compute processes. Since we are reserving one process as the data server, there are np − 1 compute processes. The variable 【4】first_proc【/4】 gives the process id of the first compute process, which is 0. The variable 【5】last_proc【/5】 gives the process id of the last compute process, which is np − 2. That is, line 04 designates the first np − 1 processes, 0 through np − 2, as compute processes. The process with the largest rank serves as the data server. This reflects the design decision, and this decision will also be reflected in the compute process code.",
+      "zh": "在【1】图 20.9【/1】中，第 02 行声明了变量 np，它将保存运行该应用程序的进程数。第 03 行调用【2】MPI_Comm_size()【/2】，将运行该应用程序的进程数存入 np。第 04 行声明并初始化了几个辅助变量。变量【3】num_comp_procs【/3】保存计算进程数。由于我们保留一个进程作为数据服务器，因此有 np − 1 个计算进程。变量【4】first_proc【/4】给出第一个计算进程的进程 ID，即 0。变量【5】last_proc【/5】给出最后一个计算进程的进程 ID，即 np − 2。也就是说，第 04 行将前 np − 1 个进程（0 到 np − 2）指定为计算进程，进程号最大的进程充当数据服务器。这体现了设计决策，该决策也会在计算进程代码中体现。"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "Line 05 declares and initializes the 【1】num_points【/1】 variable that gives the total number of grid data points to be processed, which is simply the product of the number of elements in each dimension, or 【2】dimx * dimy * dimz【/2】. Line 06 declares and initializes the 【3】num_bytes【/3】 variable, which gives the total number of bytes needed to store all the grid data points. Since each grid data point is a float, this value is 【4】num_points * sizeof(float)【/4】.",
+      "zh": "第 05 行声明并初始化了【1】num_points【/1】变量，它给出需要处理的网格数据点总数，也就是每个维度的元素个数之积，即【2】dimx * dimy * dimz【/2】。第 06 行声明并初始化了【3】num_bytes【/3】变量，它给出存储所有网格数据点所需的总字节数。由于每个网格数据点是一个 float，该值为【4】num_points * sizeof(float)【/4】。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "Line 07 declares two pointer variables: input and output. These two pointers will point to the input data buffer and the output data buffer. Lines 08 and 09 allocate memory for the input and output buffers and assign their addresses to their respective pointers. Line 10 checks whether the memory allocations were successful. If either of the memory allocation fails, the corresponding pointer will have received a NULL pointer from the 【1】malloc()【/1】 function. In this case, the code aborts the application and reports an error (lines 11–12).",
+      "zh": "第 07 行声明了两个指针变量：input 和 output。这两个指针将分别指向输入数据缓冲区和输出数据缓冲区。第 08 行和第 09 行为输入和输出缓冲区分配内存，并将它们的地址赋给各自的指针。第 10 行检查内存分配是否成功。如果任一内存分配失败，对应的指针将从【1】malloc()【/1】函数收到 NULL 指针。在这种情况下，代码会中止应用程序并报告错误（第 11–12 行）。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
+      "en": "Lines 15 and 16 calculate the number of grid point array elements that should be sent to each compute process. As is shown in 【1】Fig. 20.3【/1】, there are two types of compute processes: edge processes and internal processes. The first process (process 0, which computes D1) and the last process (process 3, which computes D4) compute an edge partition that has neighbors only on one side. Partition D1, which is assigned to process 0, has a neighbor only on the right side (D2). Partition D4, which is assigned to the last compute process, has a neighbor only on the left side (D3). We call the compute processes that compute edge partitions the 【2】edge processes【/2】. Each of the other processes computes an internal partition that has neighbors on both sizes. For example, process 1 computes partition D2, which has a left neighbor (D1) and a right neighbor (D3). We call the processes that compute internal partitions 【3】internal processes【/3】.",
+      "zh": "第 15 行和第 16 行计算应发送给每个计算进程的网格点数组元素个数。如【1】图 20.3【/1】所示，有两类计算进程：边界进程和内部进程。第一个进程（计算 D1 的进程 0）和最后一个进程（计算 D4 的进程 3）计算一个仅在一侧有邻居的边界分区。分配给进程 0 的分区 D1 只在右侧（D2）有邻居。分配给最后一个计算进程的分区 D4 只在左侧（D3）有邻居。我们把计算边界分区的计算进程称为【2】边界进程【/2】。其他每个进程计算一个两侧都有邻居的内部分区。例如，进程 1 计算分区 D2，它有一个左邻居（D1）和一个右邻居（D3）。我们把计算内部分区的进程称为【3】内部进程【/3】。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
+      "en": "Recall that in the Jacobi iterative method, each calculation step for a grid point needs the values of its immediate neighbors from the previous step. This creates a need for halo cells for grid points at the left and right boundaries of a partition, which are shown as slices defined by dashed lines at the edge of each partition in 【1】Fig. 20.3【/1】. Note that these halo slices are similar to those in the stencil pattern that was presented in 【2】Chapter 8【/2】, Stencil. Since we are computing a 25-point stencil with four elements in each direction, each process needs to receive four slices of halo cells that contain all neighbors for each side of the boundary grid points of its partition. For example, in 【3】Fig. 20.3【/3】, partition D2 needs four halo slices from D1 and four halo slices from D3. Note that a halo slice for D2 is a boundary slice for D1 or D3.",
+      "zh": "回顾一下，在雅可比迭代法中，网格点的每一个计算步骤都需要其相邻点在上一步的值。这就使得分区左右边界处的网格点需要光环单元，在【1】图 20.3【/1】中，这些单元以每个分区边缘处由虚线界定的切片表示。请注意，这些光环切片与【2】第 8 章【/2】“模板”中介绍的模板模式中的光环切片类似。由于我们计算的是每个方向有四个元素的 25 点模板，每个进程需要接收四片光环单元，其中包含其分区边界网格点每一侧的所有邻居。例如，在【3】图 20.3【/3】中，分区 D2 需要来自 D1 的四片光环切片和来自 D3 的四片光环切片。请注意，D2 的一片光环切片就是 D1 或 D3 的一片边界切片。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[12]",
+      "en": "Recall that the total number of grid points is 【1】dimx*dimy*dimz【/1】. Since we are partitioning the grid along the 【2】z【/2】 dimension, the number of grid points in each partition should be 【3】dimx*dimy*(dimz/num_comp_procs)【/3】. Recall that we will need four neighbor slices in each direction in order to calculate values within each partition. Therefore the number of grid points that should be sent to each internal process is 【4】dimx*dimy*((dimz/num_comp_procs) + 8)【/4】. As for an edge process, there is only one neighbor. As in the case of convolution, we assume that zero values will be used for the ghost cells and that no input data needs to be sent for them. For example, partition D1 needs only the four neighbor slices from D2 on the right side. Therefore the number of grid points to be sent to an edge process is 【5】dimx*dimy*((dimz/num_comp_procs) + 4)【/5】. That is, each process receives four slices of halo grid points from the neighbor partition on each side.",
+      "zh": "回顾一下，网格点总数为【1】dimx*dimy*dimz【/1】。由于我们沿着【2】z【/2】维划分网格，每个分区中的网格点数应为【3】dimx*dimy*(dimz/num_comp_procs)【/3】。回顾一下，为了计算每个分区内的值，我们在每个方向需要四片邻居切片。因此，应发送给每个内部进程的网格点数为【4】dimx*dimy*((dimz/num_comp_procs) + 8)【/4】。对于边界进程，只有一个邻居。与卷积的情况一样，我们假设幽灵单元使用零值，并且不需要为它们发送任何输入数据。例如，分区 D1 只需要来自右侧 D2 的四片邻居切片。因此，发送给一个边界进程的网格点数为【5】dimx*dimy*((dimz/num_comp_procs) + 4)【/5】。也就是说，每个进程从每一侧的邻居分区接收四片光环网格点切片。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[13]",
+      "en": "Line 17 of 【1】Fig. 20.9【/1】 sets the 【2】send_address【/2】 pointer to point to the beginning of the input grid point array. To send the appropriate partition to each process, we will need to add the appropriate offset to this beginning address for each 【3】MPI_Send()【/3】. We will come back to this point later.",
+      "zh": "【1】图 20.9【/1】的第 17 行将【2】send_address【/2】指针设置为指向输入网格点数组的开头。为了向每个进程发送适当的分区，我们需要为每次【3】MPI_Send()【/3】在该起始地址上加上适当的偏移量。我们稍后会回到这一点。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[14]",
+      "en": "We are now ready to complete the code for the data server. Line 18 sends process 0 its partition. Since this is the first partition, its starting address is also the starting address of the entire grid, which was set up in line 17. Process 0 is an edge process, and it does not have a left neighbor. Therefore the number of grid points to be sent is the value 【1】edge_num_points【/1】, that is, 【2】dimx*dimy*((dimz/num_comp_procs) + 4)【/2】. The third parameter specifies that the type of each element is an 【3】MPI_FLOAT【/3】 which is C float (single-precision, 4 bytes). The fourth parameter specifies that the value of 【4】first_node【/4】, that is, 0, is the MPI rank of the destination process. The fifth parameter specifies 0 for the MPI tag. This is because we are not using tags to distinguish between messages sent from the data server. The sixth parameter specifies that the communicator to be used for interpreting the sender and receiver rank values for the message should be all MPI processes for the current application.",
+      "zh": "现在我们可以完成数据服务器的代码了。第 18 行将进程 0 的分区发送给它。由于这是第一个分区，它的起始地址也就是第 17 行设置的整个网格的起始地址。进程 0 是一个边界进程，没有左邻居。因此，要发送的网格点数是【1】edge_num_points【/1】，即【2】dimx*dimy*((dimz/num_comp_procs) + 4)【/2】。第三个参数指明每个元素的类型是【3】MPI_FLOAT【/3】，即 C 的 float（单精度，4 字节）。第四个参数指明【4】first_node【/4】的值（即 0）是目标进程的 MPI 进程号。第五个参数为 MPI 标记指定 0。这是因为我们不使用标记来区分数据服务器发送的消息。第六个参数指明用于解释消息的发送方和接收方进程号的通信域应为当前应用程序的所有 MPI 进程。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[15]",
+      "en": "Line 19 of 【1】Fig. 20.9【/1】 advances the 【2】send_address【/2】 pointer to the beginning of the data partition for process 1. From 【3】Fig. 20.3【/3】 there are 【4】dimx*dimy*(dimz/num_comp_procs)【/4】 elements in partition D1, which means that D2 starts at the location that is 【5】dimx*dimy*(dimz/num_comp_procs)【/5】 elements from the starting location of input. Recall that we also need to send the halo cells from D1. Therefore we adjust the starting address for the 【6】MPI_Send()【/6】 back by four slices, which results in the expression for advancing the 【7】send_address【/7】 pointer in line 19: 【8】dimx*dimy*((dimz/num_comp_procs) - 4)【/8】.",
+      "zh": "【1】图 20.9【/1】的第 19 行将【2】send_address【/2】指针推进到进程 1 的数据分区起始处。从【3】图 20.3【/3】可以看出，分区 D1 有【4】dimx*dimy*(dimz/num_comp_procs)【/4】个元素，这意味着 D2 从距 input 起始位置【5】dimx*dimy*(dimz/num_comp_procs)【/5】个元素处开始。回顾一下，我们还需要发送来自 D1 的光环单元，因此我们将【6】MPI_Send()【/6】的起始地址往回调整四片，从而得到第 19 行中推进【7】send_address【/7】指针的表达式：【8】dimx*dimy*((dimz/num_comp_procs) - 4)【/8】。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[16]",
+      "en": "Line 20 is a loop that sends out the MPI messages to the internal processes (process 1 through process np − 3). In our small example for four compute processes, np is 5, so the loop sends the MPI messages to process 1 and process 2. These internal processes need to receive halo grid points for neighbors on both sides. Therefore the second parameter of the 【1】MPI_Send()【/1】 in line 21 uses 【2】int_num_nodes【/2】, that is, 【3】dimx*dimy*((dimz/num_comp_procs) + 8)【/3】. The rest of the parameters are similar to that for the 【4】MPI_Send()【/4】 in line 18 with the obvious exception that the destination process is specified by the loop variable process, which is incremented from 1 to np − 3 (the 【5】last_node【/5】 is np − 2).",
+      "zh": "第 20 行是一个循环，向内部进程（进程 1 到进程 np − 3）发送 MPI 消息。在我们的四个计算进程的小示例中，np 为 5，因此该循环将 MPI 消息发送给进程 1 和进程 2。这些内部进程需要接收两侧邻居的光环网格点。因此，第 21 行中【1】MPI_Send()【/1】的第二个参数使用【2】int_num_nodes【/2】，即【3】dimx*dimy*((dimz/num_comp_procs) + 8)【/3】。其余参数与第 18 行中的【4】MPI_Send()【/4】类似，明显的例外是目标进程由循环变量 process 指定，它从 1 递增到 np − 3（【5】last_node【/5】为 np − 2）。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[17]",
+      "en": "Line 22 advances the send address for each internal process by the number of grid points in each partition: 【1】dimx*dimy*dimz/num_comp_nodes【/1】. Note that the starting locations of the halo grid points for internal processes are 【2】dimx*dimy*dimz/num_comp_procs【/2】 points apart. Although we need to pull back the starting address by four slices to accommodate halo grid points, we do so for every internal process, so the net distance between the starting locations remains the number of grid points in each partition.",
+      "zh": "第 22 行按每个分区的网格点数推进每个内部进程的发送地址：【1】dimx*dimy*dimz/num_comp_nodes【/1】。请注意，内部进程的光环网格点起始位置彼此相距【2】dimx*dimy*dimz/num_comp_procs【/2】个点。虽然我们需要将起始地址往回拉四片以容纳光环网格点，但由于我们对每个内部进程都这样做，起始位置之间的净距离仍然是每个分区中的网格点数。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[18]",
+      "en": "Line 23 sends the data to the process np − 2, the last compute process that has only one neighbor on the left. The reader should be able to reason through all the parameter values that are used. Note that we are not quite done with the data server code. We will come back later for the final part of the data server that collects the output values from all compute processes.",
+      "zh": "第 23 行将数据发送给进程 np − 2，这是最后一个只在左侧有邻居的计算进程。读者应当能够推断出所使用的所有参数值。请注意，数据服务器的代码还没有完成。我们稍后还会回来编写数据服务器的最后一部分，它负责收集所有计算进程的输出值。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[19]",
+      "en": "We now turn our attention to the compute processes that receive the input from the data server process. In 【1】Fig. 20.10【/1】, lines 03–04 establish the process id for the process and the total number of processes for the application. Line 05 establishes that the data server is process np − 1. Lines 06–07 calculate the number of grid points and the number of bytes that should be processed by each internal process. Lines 08–09 calculate the number of grid points and the number of bytes in each halo (4 slices).",
+      "zh": "我们现在把注意力转向从数据服务器进程接收输入的计算进程。在【1】图 20.10【/1】中，第 03–04 行建立该进程的进程 ID 和应用程序的进程总数。第 05 行确定数据服务器是进程 np − 1。第 06–07 行计算每个内部进程应处理的网格点数和字节数。第 08–09 行计算每个光环（4 片）中的网格点数和字节数。"
+    },
+    {
+      "id": "n0071",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 20.10【/2】【/1】 Compute process code (part 1).",
+      "zh": "【1】【2】图 20.10【/2】【/1】 计算进程代码（第 1 部分）。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[20]",
+      "en": "Lines 10–12 allocate the host memory and device memory for the input data. Although the edge processes need less halo data, they still allocate the same amount of memory for simplicity; part of the allocated memory will not be used by the edge processes. Line 13 sets the starting address of the host memory for receiving the input data from the data server. For all compute processes except process 0, the starting receiving location is simply the starting location of the allocated memory for the input data. However, for process 0, we adjust the receiving location by four slices. This is because for simplicity we assume that the host memory for receiving the input data is arranged in the same way for all compute processes: four slices of halo elements from the left neighbor followed by the partition, followed by four slices of halo elements from the right neighbor. However, as we showed in line 15 of 【1】Fig. 20.9【/1】, the data server will not send any halo data from the left neighbor to process 0. That is, for process 0, the MPI message from the data server contains only the partition and the halo from the right neighbor. Therefore line 13 adjusts the starting host memory location by four slices so that process 0 will correctly interpret the input data from the data server.",
+      "zh": "第 10–12 行为输入数据分配主机内存和设备内存。虽然边界进程需要较少的光环数据，但为简单起见，它们仍然分配相同数量的内存；部分分配的内存将不会被边界进程使用。第 13 行设置用于接收来自数据服务器的输入数据的主机内存起始地址。对于除进程 0 之外的所有计算进程，接收的起始位置就是为输入数据分配的内存起始位置。然而，对于进程 0，我们将接收位置向后调整四片。这是因为，为简单起见，我们假设所有计算进程接收输入数据的主机内存都以相同的方式排列：左邻居的四片光环元素，接着是分区本身，然后是右邻居的四片光环元素。但是，正如我们在【1】图 20.9【/1】的第 15 行中所示，数据服务器不会向进程 0 发送来自左邻居的任何光环数据。也就是说，对于进程 0，来自数据服务器的 MPI 消息只包含分区和来自右邻居的光环。因此，第 13 行将主机内存的起始位置向后调整四片，以便进程 0 能正确解释来自数据服务器的输入数据。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[21]",
+      "en": "Line 14 receives the MPI message from the data server. Most of the parameters should be familiar. The last parameter reflects any error condition that has occurred when the data are received. The second parameter specifies that all compute processes will receive the full amount of data from the data server. However, the data server will send less data to process 0 and process np − 2. This is not reflected in the code because 【1】MPI_Recv()【/1】 allows the second parameter to specify a larger number of data points than are actually received and will place only the actual number of bytes received from the sender into the receiving memory. In the case of process 0, the input data from the data server contains only the partition and the halo from the right neighbor. The received input will be placed by skipping the first four slices of the allocated memory, which correspond to the halo for the (nonexistent) left neighbor. This effect is achieved with the term 【2】((0==pid)? num_halo_points: 0)【/2】 on line 13. In the case of process np − 2, the input data contains the halo from the left neighbor and the partition. The received input will be placed from the beginning of the allocated memory, leaving the last four slices of the allocated memory unused.",
+      "zh": "第 14 行从数据服务器接收 MPI 消息。大多数参数应该是熟悉的。最后一个参数反映接收数据时发生的任何错误情况。第二个参数指明所有计算进程都将从数据服务器接收全部数量的数据。然而，数据服务器将向进程 0 和进程 np − 2 发送较少的数据。这一点没有在代码中体现，因为【1】MPI_Recv()【/1】允许第二个参数指定比实际接收更多的数据点，并且只将实际从发送方收到的字节数放入接收内存中。对于进程 0，来自数据服务器的输入数据只包含分区和来自右邻居的光环。接收到的输入将被放入分配内存时跳过前四片的位置，这四片对应于（不存在的）左邻居的光环。这一效果通过第 13 行中的【2】((0==pid)? num_halo_points: 0)【/2】项实现。对于进程 np − 2，输入数据包含来自左邻居的光环和分区本身。接收到的输入将从分配内存的起始位置开始放置，分配内存的最后四片将不被使用。"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[22]",
+      "en": "Line 15 copies the received input data to the device memory. In the case of process 0, the left halo points are not valid. In the case of process np − 2, the right halo points are not valid. However, for simplicity, all compute nodes send the full size to the device memory. The assumption is that the kernels will be launched in such a way that these invalid portions will be correctly ignored. After line 15, all the input data are in the device memory.",
+      "zh": "第 15 行将接收到的输入数据复制到设备内存。对于进程 0，左光环点无效。对于进程 np − 2，右光环点无效。然而，为简单起见，所有计算节点都将完整大小发送到设备内存。假设核函数将以正确忽略这些无效部分的方式启动。第 15 行之后，所有输入数据都在设备内存中。"
+    }
+  ]
+}

@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="zh-CN" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="前言部分">
+      <option value="Cover.html">封面图</option>
+      <option value="Title_page.html">标题页</option>
+      <option value="Contents.html">目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">致谢</option>
+    </optgroup>
+    <optgroup label="序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">课程资源</option>
+    </optgroup>
+    <optgroup label="第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第一部分：基本概念">
+      <option value="Part1.html">第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html">第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">参考文献</option>
+    </optgroup>
+    <optgroup label="第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html">第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html">第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html">第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">习题</option>
+    </optgroup>
+    <optgroup label="第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第二部分：并行模式">
+      <option value="Part2.html">第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html">第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html">第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">习题</option>
+    </optgroup>
+    <optgroup label="第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html">第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第三部分：高级模式与应用">
+      <option value="Part3.html">第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html">第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html">第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">参考文献</option>
+    </optgroup>
+    <optgroup label="第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">参考文献</option>
+    </optgroup>
+    <optgroup label="第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html" selected>第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">参考文献</option>
+    </optgroup>
+    <optgroup label="第四部分：高级实践">
+      <option value="Part4.html">第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html">第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">参考文献</option>
+    </optgroup>
+    <optgroup label="第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">参考文献</option>
+    </optgroup>
+    <optgroup label="第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Ch016_355-388_B9780323912310000240.html#st0125">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch017_391-414_B9780323912310000124.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/Ch017_391-414_B9780323912310000124.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch017_391-414_B9780323912310000124.html">对照</a></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter" id="c0017">
+<a id="Ch017_391-414_B9780323912310000124"></a><div id="page_391" aria-label="Page 391" epub:type="pagebreak" role="doc-pagebreak"></div><div id="CN"><a id="Ch017_391-414_B9780323912310000124titl"></a>Chapter 17</div><h1 class="chaptitle" epub:type="title" id="tit0010">迭代式磁共振成像重建</h1><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0105">在本章中，我们介绍将一个循环密集的应用——磁共振成像的迭代重建——从串行形式进行并行化与优化的关键步骤。我们首先讨论并行化的合理组织方式：分散方法（scatter approach）与汇聚方法（gather approach）。我们说明，从分散方法转变为汇聚方法，是避免原子操作的关键，因为原子操作会显著降低并行执行的性能。我们还讨论了实现汇聚式并行化所需的实用技术，即循环分裂与循环交换。我们进一步介绍了一些优化技术的应用，例如将数组元素提升到寄存器中、为输入元素使用常量内存/缓存，以及使用硬件函数来提升并行核函数的性能。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">统计估计方法；矩阵-向量乘法；线性方程组求解器；迭代法；MRI；非笛卡儿扫描轨迹；分散式并行化；汇聚式并行化；循环分裂；循环交换；跨迭代依赖；常量内存；常量缓存；信噪比；三角函数</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">概要</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">17.1 背景</a> 391</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">17.2 迭代重建</a> 394</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">17.3 计算 F<sup>H</sup>D</a> 396</li>
+<li class="chapoutl1" id="o9020"><a id="p9020"></a><a href="#s0045">17.4 小结</a> 412</li>
+<li class="chapoutl1" id="u0030"><a id="p0050"></a><a href="#s0050">习题</a> 413</li>
+<li class="chapoutl1" id="u0035"><a id="p0055"></a><a href="#bibliog0010">参考文献</a> 414</li>
+</ul>
+</div></nav>
+<p id="p0060" class="textfl"><a id="P391"></a>在本章中，我们从背景与问题定义入手，介绍一个相对简单的应用——该应用传统上一直受制于主流计算系统有限的计算能力。我们将说明，并行执行不仅能加速现有方法，还能让应用领域的专家采用一种早已被证明有益、却因计算需求过于庞大而一度被弃用的方法。这类方法代表了一类日益重要的计算方法，它们从海量观测数据中推导出未知量的统计最优估计。我们以这类方法中的一个示例算法及其实现源代码为例，说明开发者如何系统地确定核函数的并行性结构、将变量分配到不同类型的存储器中、规避硬件限制、验证结果，并评估性能改进的影响。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">17.1 背景</h2><p id="p0065" class="textfl"><span id="page_392" aria-label="Page 392" epub:type="pagebreak" role="doc-pagebreak"></span>磁共振成像（MRI）是一种常用的医学检查手段，可以安全、无创地探查人体各部位生物组织的结构与功能。利用 MRI 生成的图像在临床和研究领域都产生了深远的影响。MRI 包括两个阶段：采集（扫描）与重建。在采集阶段，扫描仪沿预先设定的轨迹在 k 空间域（即空间频率域或傅里叶变换域）内对数据进行采样。随后，这些样本在重建阶段被变换成所需的图像。直观地说，重建阶段根据从扫描仪采集到的观测 k 空间数据，估计组织的形状与纹理。</p>
+<p id="p0070" class="text">MRI 的应用常常受到高噪声水平、明显成像伪影和/或较长数据采集时间的限制。在临床环境中，缩短扫描时间不仅能提高扫描仪的吞吐量，还能减轻患者的不适，这往往有助于减少运动相关伪影。高图像分辨率与高保真度也很重要，因为它们有助于早期发现病变，从而改善患者的预后。然而，短扫描时间、高分辨率和高信噪比（SNR）这三个目标常常相互冲突；某一指标的改进往往以牺牲其他一个或两个指标为代价。要在三个维度上同时取得进展，就必须有新的技术突破。本研究展示了一个大规模并行计算带来这种突破的案例。</p>
+<p id="p0075" class="text">关于 MRI 背后的物理原理，我们建议读者参阅诸如 <a href="#bib1" role="doc-biblioref" epub:type="biblioref" id="BIB_1">Liang and Lauterbur (1999)</a>这样的 MRI 教科书。在本案例研究中，我们将重点关注重建阶段的计算复杂度，以及 k 空间采样轨迹如何影响这一复杂度。MRI 扫描仪采用的 k 空间采样轨迹会显著影响重建图像的质量、重建算法的时间复杂度，以及扫描仪采集样本所需的时间。<a href="#eqn1">式 (17.1)</a>给出了一类重建方法中 k 空间样本与重建图像之间关系的表达式：</p>
+<p class="hiddenClass"><math><mover><mi>m</mi><mo stretchy="true">⌢</mo></mover><mrow><mo stretchy="true">(</mo><mi mathvariant="normal">r</mi><mo stretchy="true">)</mo></mrow><mo>=</mo><munder><mo>∑</mo><mi>j</mi></munder><mrow><mi>W</mi><mrow><mo stretchy="true">(</mo><mrow><msub><mrow><mi mathvariant="normal">k</mi></mrow><mrow><mi mathvariant="normal">j</mi></mrow></msub></mrow><mo stretchy="true">)</mo></mrow></mrow><mi>s</mi><mrow><mo stretchy="true">(</mo><mrow><msub><mrow><mi mathvariant="normal">k</mi></mrow><mrow><mi>j</mi></mrow></msub></mrow><mo stretchy="true">)</mo></mrow><mi>e</mi><mi>i</mi><mn>2</mn><mi>π</mi><msub><mrow><mi mathvariant="normal">k</mi></mrow><mrow><mi mathvariant="normal">j</mi></mrow></msub><mspace width=".25em"></mspace><mi mathvariant="normal">r</mi></math> <span class="eqnum">(17.1)</span></p>
+<div class="showClass" id="eqn1"><img src="../images/F000124si1.png" class="img" alt="image" width="149" height="26"/> <span class="eqnum">(17.1)</span>
+</div>
+<p id="p0080" class="text">在<a href="#eqn1">式 (17.1)</a>中，<em>m</em>（<strong>r</strong>）是重建图像，<em>s</em>（<strong>k</strong>）是测量得到的 k 空间数据，<em>W</em>（<strong>k</strong>）是用于校正非均匀采样的加权函数；也就是说，<em>W</em>（<strong>k</strong>）会降低取自采样点密度较高区域的 k 空间数据的影响。对于这类重建方法，<em>W</em>（<strong>k</strong>）还可以充当<em>变迹</em>滤波函数，以降低噪声的影响，并减少因采样有限而产生的伪影。</p>
+<p id="p0085" class="text">在理想条件下，如果数据是在 k 空间中均匀间隔的笛卡儿网格点上采集的，那么 <em>W</em>（<strong>k</strong>）加权函数就是一个常数，因而可以从<a href="#eqn1">式 (17.1)</a>的求和中提出。此外，由于样本位于均匀间隔的笛卡儿网格上，<a href="#eqn1">式 (17.1)</a>中的指数项在 k 空间中也是均匀间隔的。于是，对 <em>m</em>（<strong>r</strong>）的重建就变成了对 <em>s</em>（<strong>k</strong>）的逆快速傅里叶变换（FFT），这是一种极为高效的计算方法。在如此均匀间隔的笛卡儿网格点上测得的数据集合，称为<em>笛卡儿扫描轨迹</em>。<a href="#f0010">图 17.1A</a> 描绘了笛卡儿扫描轨迹。在实际应用中，笛卡儿扫描轨迹在扫描仪上易于实现，如今在临床上得到广泛应用。</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F000124f17-01-9780323912310.jpg" class="img" alt="image" width="999" height="476"/><figcaption class="figleg"><a id="sp0010"></a><span class="fignum">图 17.1</span> 扫描仪的 k 空间轨迹及其对应的重建策略：（A）笛卡儿轨迹配合 FFT 重建，（B）螺旋（或一般的非笛卡儿轨迹）之后进行网格化以启用 FFT 重建，（C）螺旋（非笛卡儿）轨迹配合基于线性方程组求解器的重建。</figcaption></figure></div><p id="p0090" class="text"><span id="page_393" aria-label="Page 393" epub:type="pagebreak" role="doc-pagebreak"></span>尽管对笛卡儿扫描数据进行逆 FFT 重建在计算上很高效，但非笛卡儿扫描轨迹往往具有以下优势：对患者运动的敏感度更低、提供自校准场不均匀性信息的能力更强、对扫描仪硬件性能的要求更低。因此，人们提出了螺旋线（如<a href="#f0010">图 17.1(C)</a>所示）、径向线（也称为投影成像）和玫瑰线等非笛卡儿扫描轨迹，以减少运动相关伪影并应对扫描仪硬件性能的限制。这些改进近来使得重建图像的像素值可用于测量细微现象，例如组织在演变为解剖学病变之前的化学异常。</p>
+<p id="p0095" class="text"><span id="page_394" aria-label="Page 394" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0015">图 17.2</a> 展示了这样一种基于 MRI 重建的测量，它生成人体正常组织中受到严格调控的物质——钠——的分布图。这些信息可用于跟踪中风和癌症治疗过程中的组织健康状况。由于人体组织中钠的丰度远低于水分子，要可靠地测量钠含量，就需要通过更多的样本来获得更高的信噪比，因此必须借助非笛卡儿扫描轨迹来抵消额外的扫描时间。更高的信噪比使得可靠地采集人体组织中钠等化学物质的体内浓度数据成为可能。钠浓度的变化或迁移提示疾病发展或组织死亡的早期迹象。例如，<a href="#f0015">图 17.2</a> 所示的人脑钠分布图可用于早期提示脑肿瘤组织对化疗方案的响应情况，从而实现个体化医疗。</p>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F000124f17-02-9780323912310.jpg" class="img" alt="image" width="1350" height="372"/><figcaption class="figleg"><a id="sp0015"></a><span class="fignum">图 17.2</span> 非笛卡儿 k 空间采样轨迹与基于线性方程组求解器的精确重建带来了令人振奋的医学应用新能力。</figcaption></figure></div><p id="p0100" class="text">从非笛卡儿轨迹数据进行图像重建，既是挑战也是机遇。主要挑战源于指数项不再均匀间隔，求和也不再具有 FFT 的形式。因此，无法再通过对 k 空间样本直接施加逆 FFT 来重建。在一种称为网格化的常用方法中，样本首先被插值到均匀的笛卡儿网格上，然后利用 FFT 进行重建（见<a href="#f0010">图 17.1B</a>）。例如，卷积网格化方法取一个 k 空间数据点，将其与网格化卷积掩模进行卷积，并将结果累加到笛卡儿网格上。正如我们在<a href="Ch007_151-171_B9780323912310000082.html#Ch007_151-171_B9780323912310000082">第 7 章</a>《卷积》中所见，这种计算的计算量相当大，是大规模并行计算的一个重要模式。读者已具备用并行计算加速卷积网格化计算的技能，因而能够将现有的 FFT 方法应用于非笛卡儿轨迹数据。</p>
+<p id="p0105" class="text">在本章中，我们将介绍一种迭代的、统计最优的图像重建方法，它能够精确地对成像物理过程建模，并约束所得图像像素值中的噪声误差。在大数据分析兴起的背景下，这类统计最优方法正变得越来越重要。然而，与网格化相比，这类迭代重建方法的计算需求过高，一直难以用于大规模三维（3D）问题。近来，由于 GPU 的广泛普及，这些重建方法在临床环境中已变得可行。过去，使用高端串行 CPU 重建一幅中等分辨率的图像，需要耗费数小时；如今，同时使用 CPU 和 GPU 只需几分钟，这样的延迟在临床环境中是可以接受的。</p></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">17.2 迭代重建</h2><p id="p0110" class="textfl"><span id="page_395" aria-label="Page 395" epub:type="pagebreak" role="doc-pagebreak"></span>Haldar 和 Liang 为处理非笛卡儿扫描数据提出了一种基于线性方程组求解器的迭代重建算法（<a href="#bib3" role="doc-biblioref" epub:type="biblioref">Stone et al., 2008</a>），如<a href="#f0010">图 17.1C</a> 所示。该算法可以显式地对扫描仪数据采集过程的物理机制建模，从而减少重建图像中的伪影。不过，它的计算开销很大。我们把它作为一类创新方法的例子，这类方法由于所需计算时间过长而一直被认为不切实际。我们将说明，大规模并行执行可以把重建时间缩短到分钟量级，从而使钠成像等新的成像能力得以在临床环境中部署。</p>
+<p id="p0115" class="text"><a href="#f0020">图 17.3</a> 展示了迭代式基于线性方程组求解器的重建方法的准贝叶斯估计问题公式化描述的一个解，其中 ρ 是包含重建图像体素值的向量，F 是模拟成像物理过程的矩阵，D 是来自扫描仪的数据样本向量，W 是能够纳入解剖约束等先验信息的矩阵。F<sup>H</sup> 与 W<sup>H</sup> 分别是 F 与 W 的厄米转置（或共轭转置），即先转置，再对每个元素取复共轭（<span class="hiddenClass"><math><mi>a</mi><mo>+</mo><mi mathvariant="italic">ib</mi></math></span><span><img src="../images/F000124si2.png" class="img" alt="image" width="33" height="10"/></span>的复共轭为<span class="hiddenClass"><math><mi mathvariant="italic">a</mi><mo>−</mo><mi mathvariant="italic">ib</mi><mo>)</mo></math></span><span><img src="../images/F000124si3.png" class="img" alt="image" width="36" height="12"/></span>）。在临床环境中，W 中所体现的解剖约束来自对患者进行的一次或多次高分辨率、高信噪比水分子扫描。这些水分子扫描揭示了解剖结构位置等特征。矩阵 W 由这些参考图像导出。问题是在给定其他所有矩阵和向量的情况下求解 ρ。</p>
+<div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F000124f17-03-9780323912310.jpg" class="img" alt="image" width="749" height="510"/><figcaption class="figleg"><a id="sp0020"></a><span class="fignum">图 17.3</span> 一种基于线性方程组求解器的迭代方法，用于重建非笛卡儿 k 空间样本数据。</figcaption></figure></div><p id="p0120" class="text">表面上看，对<a href="#f0020">图 17.3</a> 中问题公式的求解应该非常简单。它涉及矩阵乘法与加法（F<sup>H</sup>F+λW<sup>H</sup>W）、矩阵-向量乘法（F<sup>H</sup>D）、矩阵求逆（F<sup>H</sup>F+λW<sup>H</sup>W）<sup>−1</sup>，最后还有矩阵乘法（(F<sup>H</sup>F+λW<sup>H</sup>W)<sup>−1</sup>*F<sup>H</sup>D）。然而，矩阵的规模使得这种直接方法极其耗时。F<sup>H</sup> 与 F 矩阵的维数由三维重建图像中的体素数以及重建所用的 k 空间样本数决定。即便是在中等分辨率的 128<sup>3</sup> 体素重建中，F 也有 128<sup>3</sup>=200 万列，每列有 N 个元素，其中 N 是所使用的 k 空间样本数（即 D 的大小）。显然，F 极其庞大。当人们试图用迭代求解方法从海量含噪观测数据中估计主要影响因素时，这种规模的维数在大数据分析中十分常见。</p>
+<p id="p0125" class="text"><span id="page_396" aria-label="Page 396" epub:type="pagebreak" role="doc-pagebreak"></span>所涉及的矩阵规模如此之大，以至于用高斯消元等方法直接求解<a href="#f0020">图 17.3</a> 中的方程所需的矩阵运算实际上难以处理。因此，人们更倾向于采用共轭梯度（CG）算法等矩阵求逆的迭代方法。CG 算法通过迭代求解<a href="#f0020">图 17.3</a> 中的方程来重建图像 ρ。在每次迭代中，CG 算法都会更新当前的图像估计 ρ，以改进准贝叶斯代价函数的值。CG 技术的计算效率在很大程度上取决于涉及 F<sup>H</sup>F+λW<sup>H</sup>W 与 ρ 的矩阵-向量乘法运算的效率，因为 CG 算法的每次迭代都需要这些运算。</p>
+<p id="p0130" class="text">幸运的是，矩阵 W 通常具有稀疏结构，可以高效地实现 W<sup>H</sup>W；矩阵 F<sup>H</sup>F 是 Toeplitz 矩阵，可以通过 FFT 高效地进行矩阵-向量乘法。<a href="#bib3" role="doc-biblioref" epub:type="biblioref">Stone et al. (2008)</a>提出了一种 GPU 加速的计算 Q 的方法。Q 是一种数据结构，它使我们无需真正计算 F<sup>H</sup>F 本身，就能快速完成涉及 F<sup>H</sup>F 的矩阵-向量乘法。在高端 CPU 核心上，计算 Q 可能需要数天。由于 F 是对成像过程物理机制的建模，对于给定的扫描仪和既定轨迹，它只需要计算一次。因此 Q 也只需计算一次，并且可供使用同一条扫描轨迹的多次扫描共用。</p>
+<p id="p0135" class="text">计算 F<sup>H</sup>D 所需的矩阵-向量乘法比计算 Q 大约快一个数量级，但在高端串行 CPU 上，一次 128<sup>3</sup> 体素重建仍可能需要约 3 小时。回顾一下，D 是来自扫描仪的数据样本向量。因此，由于每次图像采集都需要计算 F<sup>H</sup>D，我们希望能把 F<sup>H</sup>D 的计算时间缩短到分钟量级。<sup><a aria-label="noteref" href="#fn1" id="Cfn1">1</a></sup> 我们将展示这一过程的细节。事实证明，Q 的核心计算结构与 F<sup>H</sup>D 完全相同；Q 只是涉及的计算量更大，因为它处理的是矩阵乘法，而不仅仅是矩阵-向量乘法。因此，从并行化的角度出发，只讨论其中之一就足够了。我们将重点关注 F<sup>H</sup>D，因为每次数据采集都需要运行它。</p>
+<p id="p0140" class="text"><a href="#f0020">图 17.3</a> 中的“求解 ρ”步骤基于 F<sup>H</sup>D 执行实际的 CG 计算。如前所述，预先计算 Q 使这一步骤的计算强度远低于 F<sup>H</sup>D，在串行 CPU 上只占每幅图像重建执行的不到 1%。因此，本章将把 CG 求解器排除在并行化范围之外，专注于 F<sup>H</sup>D。不过，我们会在本章结尾重新审视它的地位。</p></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">17.3 计算 F<sup>H</sup>D</h2><p id="p0145" class="textfl"><span id="page_397" aria-label="Page 397" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0025">图 17.4</a> 展示了用于计算 F<sup>H</sup>D 的数据结构这一核心步骤的串行 C 实现。计算从一个遍历 k 空间样本的外层循环开始（第 01 行）。快速浏览<a href="#f0025">图 17.4</a> 即可看出，F<sup>H</sup>D 的 C 实现具有可观的数据并行性，是加速的理想候选。该算法首先在 k 空间的当前采样点计算 Mu 的实部与虚部分量（rMu 和 iMu）。随后进入内层 n 循环，计算当前 k 空间样本对图像空间中每个体素处 F<sup>H</sup>D 实部与虚部分量的贡献。请记住，M 是 k 空间样本的总数，N 是重建图像中体素的总数。任意体素处 F<sup>H</sup>D 的值取决于所有 k 空间采样点的值。然而，F<sup>H</sup>D 的任何体素元素都不依赖 F<sup>H</sup>D 的其他体素元素。因此，F<sup>H</sup>D 的所有元素都可以并行计算。具体而言，外层循环的所有迭代可以并行执行，内层循环的所有迭代也可以并行执行。不过，内层循环的计算依赖于同一外层循环迭代中前面语句的计算结果。</p>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F000124f17-04-9780323912310.jpg" class="img" alt="image" width="1369" height="357"/><figcaption class="figleg"><a id="sp0025"></a><span class="fignum">图 17.4</span> F<sup>H</sup>D 的计算。</figcaption></figure></div><p id="p0150" class="text">尽管该算法具有丰富的内在并行性，潜在的性能瓶颈也显而易见。首先，在计算 F<sup>H</sup>D 元素的循环中，浮点运算与内存访问之比最高为 0.75 OP/B，最低为 0.25 OP/B。最优情况假设 sin 和 cos 三角函数运算使用五元泰勒级数来计算，分别需要 13 次和 12 次浮点运算。最差情况假设每个三角运算在硬件中作为单次运算执行。正如我们在<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>《内存体系结构与数据局部性》中所见，核函数要不受内存带宽限制，就需要明显更高的浮点运算与全局内存访问之比。因此，除非大幅提高这一比值，否则内存访问显然会限制核函数的性能。</p>
+<p id="p0155" class="text"><span id="page_398" aria-label="Page 398" epub:type="pagebreak" role="doc-pagebreak"></span>其次，浮点算术与浮点三角函数之比仅为 13:2。因此，基于 GPU 的实现必须容忍或避免 sin 和 cos 运算因长延迟和低吞吐量而造成的停顿。如果没有好的办法降低三角函数运算的成本，性能很可能将由在这些函数上花费的时间主导。</p>
+<p id="p0160" class="text">现在，我们可以着手把 F<sup>H</sup>D 从串行 C 代码转换为 CUDA 核函数了。</p><section><a id="s0025"></a><h3 class="h2hd" id="st0040">步骤 1：确定核函数的并行性结构</h3><p id="p0165" class="textfl">将<a href="#f0025">图 17.4</a> 中的循环转换为 CUDA 核函数在概念上是直截了当的。由于<a href="#f0025">图 17.4</a> 外层循环的所有迭代都可以并行执行，我们只需把外层循环的迭代映射到 CUDA 线程，就能把它转换为 CUDA 核函数。<a href="#f0030">图 17.5</a> 展示了由这种直接转换得到的核函数。每个线程实现原始外层循环的一次迭代；也就是说，我们用每个线程来计算一个 k 空间样本对所有 F<sup>H</sup>D 元素的贡献。原始外层循环有 M 次迭代，而 M 可能达到数百万。显然，我们需要大量的线程块来产生足够的线程，以实现所有这些迭代。</p>
+<div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F000124f17-05-9780323912310.jpg" class="img" alt="image" width="1368" height="468"/><figcaption class="figleg"><a id="sp0030"></a><span class="fignum">图 17.5</span> F<sup>H</sup>D 核函数的第一版。</figcaption></figure></div><p id="p0170" class="text">为了方便性能调优，我们声明一个常量 <span class="inlinecode">FHD_THREADS_PER_BLOCK</span>，用于在调用 cmpFhD 核函数时定义每个线程块中的线程数。因此，调用核函数时，我们将用 <span class="inlinecode">M/FHD_THREADS_PER_BLOCK</span> 作为网格大小，用 <span class="inlinecode">FHD_THREADS_PER_BLOCK</span> 作为线程块大小。在核函数内部，每个线程用熟悉的公式 <span class="inlinecode">blockIdx.x*FHD_THREADS_PER_BLOCK + threadIdx.x</span> 来计算它被指派覆盖的原始外层循环迭代。例如，假设有 1,000,000 个 k 空间样本，我们决定每个线程块使用 1024 个线程。调用核函数时网格大小为 1,000,000/1024=977 个线程块。线程块大小为 1,024。每个线程对 m 的计算等价于 <span class="inlinecode">blockIdx.x*1024+threadIdx</span>。</p>
+<p id="p0175" class="text"><span id="page_399" aria-label="Page 399" epub:type="pagebreak" role="doc-pagebreak"></span>虽然<a href="#f0030">图 17.5</a> 中的核函数利用了充足的并行性，但它有一个重大问题：所有线程都要写入所有 rFhD 和 iFhD 体素元素。这意味着核函数必须在内层循环中对全局内存使用原子操作，以防止线程互相破坏彼此对体素值的贡献（第 10–11 行）。正如我们在<a href="Ch009_191-210_B978032391231000015X.html#Ch009_191-210_B978032391231000015X">第 9 章</a>《并行直方图》中所见，对全局内存数据大量使用原子操作会严重降低并行执行的性能。此外，rFhD 和 iFhD 数组的大小——即重建图像中体素的总数——使得在共享内存中进行私有化不可行。我们需要探索其他方案。</p>
+<p id="p0180" class="text">每个线程取一个输入元素（本应用中即 k 空间样本），并更新全部或许多输出元素（本应用中即重建图像的体素）这种安排，称为<em>分散方法</em>。直观地说，每个线程把一个输入的影响分散到许多输出值上。遗憾的是，在分散方法中，线程可能更新相同的输出元素，从而可能破坏彼此的贡献。因此，分散方法通常需要原子操作，而这往往会对并行执行的性能产生负面影响。</p>
+<p id="p0185" class="text">分散方法一个可能更好的替代方案是：让每个线程通过收集所有输入元素的贡献来计算一个输出元素，这称为<em>汇聚方法</em>。汇聚方法确保线程只更新自己负责的输出元素，彼此之间互不干扰。在我们的应用中，基于汇聚方法的并行化让每个线程负责从所有 k 空间样本计算一对 rFhD 和 iFhD 元素。这样，线程之间没有干扰，也不需要原子操作。</p>
+<p id="p0190" class="text">要采用汇聚方法，我们需要把 n 循环作为外层循环，从而可以把 n 循环的每次迭代分配给一个线程。这可以通过交换<a href="#f0025">图 17.4</a> 中的内层循环与外层循环来实现，使新的外层循环每次迭代处理一对 rFhD/iFhD 元素。也就是说，新的外层循环每次迭代将执行新的内层循环，后者把所有 k 空间样本对当前外层循环迭代所处理的 rFhD/iFhD 元素对的贡献累加起来。这种循环结构变换称为<em>循环交换</em>。它要求循环是完美嵌套的，也就是说，外层 for 循环语句与内层 for 循环语句之间不能有任何语句。然而，<a href="#f0025">图 17.4</a> 中的 FhD 代码并不满足这一点。我们需要找到一种方法，把 rMu 和 iMu 元素的计算挪到一边。</p>
+<p id="p0195" class="text">快速查看<a href="#f0025">图 17.4</a> 可以看出，F<sup>H</sup>D 的计算可以拆分为两个独立的循环，如<a href="#f0035">图 17.6</a> 所示，所用的技术称为<em>循环分裂</em>（loop splitting）。这种变换取一个循环的循环体，把它拆成两个循环。就 F<sup>H</sup>D 而言，外层循环由两部分组成：内层循环之前的语句，以及内层循环本身。如<a href="#f0035">图 17.6</a> 所示，我们可以对外层循环进行循环分裂：把内层循环之前的语句放进第一个循环，把内层循环放进第二个循环。</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F000124f17-06-9780323912310.jpg" class="img" alt="image" width="1367" height="420"/><figcaption class="figleg"><a id="sp0035"></a><span class="fignum">图 17.6</span> 对 F<sup>H</sup>D 计算进行的循环分裂。</figcaption></figure></div><p id="p0200" class="text"><span id="page_400" aria-label="Page 400" epub:type="pagebreak" role="doc-pagebreak"></span>循环分裂中一个重要的考量是：这种变换会改变原始外层循环两个部分的相对执行顺序。在原始外层循环中，第一次迭代的两个部分都在第二次迭代之前执行。分裂之后，所有迭代的第一部分会先执行，随后才是所有迭代的第二部分。读者应该能够验证，这种执行顺序的改变不会影响 F<sup>H</sup>D 的执行结果。这是因为，每个迭代的第一部分的执行并不依赖原始外层循环中任何先前迭代第二部分的执行结果。循环分裂是能够分析循环迭代之间语句（有无）依赖关系的高级编译器常做的一种变换。</p>
+<p id="p0205" class="text">经过循环分裂，F<sup>H</sup>D 的计算现在分两步进行。第一步是单层循环，计算供第二个循环使用的 rMu 和 iMu 元素。第二步对应第二个循环，它基于第一步计算出的 rMu 和 iMu 元素来计算 F<sup>H</sup>D 元素。现在，每一步都可以转换成自己独立的 CUDA 核函数。这两个 CUDA 核函数将按顺序依次执行。由于第二个循环需要使用第一个循环的结果，把这两个循环拆成顺序执行的两个核函数并不会牺牲任何并行性。</p>
+<p id="p0210" class="text"><span id="page_401" aria-label="Page 401" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0040">图 17.7</a> 中的 cmpMu() 核函数实现了第一个循环。将第一个循环从串行 C 代码转换为 CUDA 核函数是直截了当的：每个线程执行原始 C 代码的一次迭代。由于 M 值可能非常大（反映 k 空间样本数量庞大），这种映射可能产生大量线程。由于每个线程块中最多可以有 1024 个线程，我们需要使用多个线程块来容纳这些大量线程。这可以通过在每个线程块中设置一定数量的线程（由 <span class="inlinecode">MU_THREADS_PER_BLOCK</span> 指定，见<a href="#f0040">图 17.7</a>）并采用 <span class="inlinecode">M/MU_THREADS_PER_BLOCK</span> 个线程块来覆盖原始循环的全部 M 次迭代来实现。例如，如果有 1,000,000 个 k 空间样本，核函数可以用每线程块 1024 个线程、共 1,000,000/1024=977 个线程块的配置来调用。具体做法是把 <span class="inlinecode">MU_THREADS_PER_BLOCK</span> 定义为 1024，并在调用核函数时将其用作线程块大小，把 <span class="inlinecode">M/MU_THREADS_PER_BLOCK</span> 用作网格大小。</p>
+<div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F000124f17-07-9780323912310.jpg" class="img" alt="image" width="1368" height="223"/><figcaption class="figleg"><a id="sp0040"></a><span class="fignum">图 17.7</span> cmpMu 核函数。</figcaption></figure></div><p id="p0215" class="text">在核函数内部，每个线程可以用自己的 <span class="inlinecode">blockIdx</span> 和 <span class="inlinecode">threadIdx</span> 值来识别分配给它的迭代。由于线程结构是一维的，只需要使用 <span class="inlinecode">blockIdx.x</span> 和 <span class="inlinecode">threadIdx.x</span>。由于每个线程块覆盖原始迭代的一段，一个线程所覆盖的迭代为 <span class="inlinecode">blockIdx.x*MU_THREADS_PER_BLOCK + threadIdx</span>。例如，假设 <span class="inlinecode">MU_THREADS_PER_BLOCK = 1024</span>。那么 <span class="inlinecode">blockIdx.x=0</span> 且 <span class="inlinecode">threadIdx.x=37</span> 的线程覆盖原始循环的第 37 次迭代，而 <span class="inlinecode">blockIdx.x=5</span> 且 <span class="inlinecode">threadIdx.x=2</span> 的线程覆盖原始循环的第 5122 次（5*1024+2）迭代。用这个迭代编号访问 Mu、Phi 和 D 数组，可以确保线程对这些数组的覆盖方式与原始循环迭代的覆盖方式一致。由于每个线程都写入自己的 Mu 元素，这些线程之间不存在任何潜在冲突。</p>
+<p id="p0220" class="text">确定第二个核函数的结构需要多做一些工作。查看<a href="#f0035">图 17.6</a> 中的第二个循环可以看出，设计第二个核函数至少有三种方案。第一种方案让每个线程对应内层循环的一次迭代。这种方案产生的线程数最多，因而利用的并行性也最大。然而，线程数将是 N*M，其中 N 以百万计，M 以数十万计。它们的乘积会导致网格中线程过多，超出充分利用设备所需的线程数。</p>
+<p id="p0225" class="text">第二种方案是让每个线程实现外层循环的一次迭代。这种方案使用的线程数比第一种方案少。它不是生成 N*M 个线程，而是生成 M 个线程。由于 M 对应 k 空间样本数，而计算 F<sup>H</sup>D 时通常使用大量样本（约十万量级），这种方案仍然利用了大量的并行性。然而，这个核函数存在与<a href="#f0030">图 17.5</a> 中核函数相同的问题。也就是说，每个线程都会写入所有 rFhD 和 iFhD 元素，从而在线程之间产生极其大量的冲突。与<a href="#f0030">图 17.5</a> 中的情况一样，<a href="#f0045">图 17.8</a> 中的代码需要原子操作，而这会显著拖慢并行执行。因此，这种方案效果不佳。</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F000124f17-08-9780323912310.jpg" class="img" alt="image" width="1369" height="468"/><figcaption class="figleg"><a id="sp0045"></a><span class="fignum">图 17.8</span> F<sup>H</sup>D 核函数的第二种方案。</figcaption></figure></div><p id="p0230" class="text"><span id="page_402" aria-label="Page 402" epub:type="pagebreak" role="doc-pagebreak"></span>第三种方案是让每个线程计算一对 rFhD 和 iFhD 输出元素。这种方案要求我们交换内层循环和外层循环，然后让每个线程实现新的外层循环的一次迭代。这一变换如<a href="#f0050">图 17.9</a> 所示。循环交换是必要的，因为由 CUDA 线程实现的循环必须是外层循环。循环交换使新的外层循环的每次迭代处理一对 rFhD 和 iFhD 输出元素，并让每个内层循环收集所有输入元素对这一对输出元素的贡献。</p>
+<div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F000124f17-09-9780323912310.jpg" class="img" alt="image" width="1368" height="295"/><figcaption class="figleg"><a id="sp0050"></a><span class="fignum">图 17.9</span> F<sup>H</sup>D 计算的循环交换。</figcaption></figure></div><p id="p0235" class="text">在这里，循环交换是允许的，因为两层循环的所有迭代彼此独立，可以按任意相对顺序执行。循环交换会改变迭代的顺序，当这些迭代可以按任意顺序执行时，这种变换就是允许的。这种方案让我们能把新的外层循环转换为由 N 个线程执行的核函数。由于 N 对应重建图像中的体素数，对于分辨率更高的图像，N 值可能非常大。对于 128<sup>3</sup> 图像，有 128<sup>3</sup>=2,097,152 个线程，从而产生大量的并行性。对于 512<sup>3</sup> 等更高分辨率，我们可能需要使用多维网格、启动多个网格，或者把多个体素分配给同一个线程。第三种方案中的线程都累加到各自的 rFhD 和 iFhD 元素中，因为每个线程都有唯一的 n 值，线程之间没有冲突。这使得第三种方案成为三种方案中的最佳选择。</p>
+<p id="p0240" class="text"><span id="page_403" aria-label="Page 403" epub:type="pagebreak" role="doc-pagebreak"></span>由交换后的循环得到的核函数如<a href="#f0055">图 17.10</a> 所示。外层循环已被去掉；每个线程覆盖外层（n）循环的一次迭代，其中 n 等于 <span class="inlinecode">blockIdx.x*FHD_THREADS_PER_BLOCK + threadIdx.x</span>。一旦确定了这个迭代（n）值，线程就基于该 n 值执行内层（m）循环。这个核函数可以用每个线程块中的一定线程数来调用，该数量由一个全局常量 <span class="inlinecode">FHD_THREADS_PER_BLOCK</span> 指定。假设 N 是存储重建图像体素数的变量，那么 <span class="inlinecode">N/FHD_THREADS_PER_BLOCK</span> 个线程块覆盖原始循环的全部 N 次迭代。例如，如果有 2,097,152 个体素，核函数可以用每线程块 1024 个线程、共 2,097,152/1024=2048 个线程块的配置来调用。在<a href="#f0055">图 17.10</a> 中，具体做法是把 <span class="inlinecode">FHD_THREADS_PER_BLOCK</span> 赋值为 1024，并在调用核函数时将其用作线程块大小，把 <span class="inlinecode">N/FHD_THREADS_PER_BLOCK</span> 用作网格大小。</p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F000124f17-10-9780323912310.jpg" class="img" alt="image" width="1375" height="470"/><figcaption class="figleg"><a id="sp0055"></a><span class="fignum">图 17.10</span> FHD 核函数的第三种方案。</figcaption></figure></div></section><section><a id="s0030"></a><h3 class="h2hd" id="st0045">步骤 2：绕过内存带宽限制</h3><p id="p0245" class="textfl"><span id="page_404" aria-label="Page 404" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0055">图 17.10</a> 中的简单 cmpFhD 核函数性能会明显优于<a href="#f0030">图 17.5</a> 和<a href="#f0045">图 17.8</a> 中的核函数，但由于内存带宽的限制，加速比仍然有限。快速分析表明，执行受制于每个线程偏低的计算访存比。在原始循环中，每次迭代至少执行 14 次内存访问：<span class="inlinecode">kx[m]</span>、<span class="inlinecode">ky[m]</span>、<span class="inlinecode">kz[m]</span>、<span class="inlinecode">x[n]</span>、<span class="inlinecode">y[n]</span>、<span class="inlinecode">z[n]</span>、<span class="inlinecode">rMu[m]</span>两次、<span class="inlinecode">iMu[m]</span>两次，以及 <span class="inlinecode">rFhD[n]</span>的读和写、iFhD[n] 的读和写。同时，每次迭代执行约 13 次浮点乘法、加法或三角函数运算。因此，计算访存比为 13/(14*4)=0.23 OP/B，按照我们在<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>《内存体系结构与数据局部性》中的分析，这个比值太低。我们可以通过把部分数组元素赋给自动变量来立即提高计算访存比。正如我们在<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>《内存体系结构与数据局部性》中所讨论的，自动变量会驻留在寄存器中，从而把对全局内存的读写转换成对片上寄存器的读写。快速回顾<a href="#f0055">图 17.10</a> 中的核函数可以看出，对于每个线程，相同的 <span class="inlinecode">x[n]</span>、<span class="inlinecode">y[n]</span>和 <span class="inlinecode">z[n]</span>元素在 for 循环的所有迭代中都会用到（第 05–06 行）。这意味着我们可以在执行进入循环之前把这些元素加载到自动变量中。核函数随后可以在循环内使用这些自动变量，从而把全局内存访问转换为寄存器访问。此外，循环会反复读写 rFhD[n] 和 iFhD[n]。我们可以让各次迭代读写两个自动变量，并且只在执行退出循环后，才把这两个自动变量的内容写回 rFhD[n] 和 iFhD[n]。由此得到的代码如<a href="#f0060">图 17.11</a> 所示。通过让每个线程多使用 5 个寄存器，我们把每次迭代的内存访问从 14 次减少到 7 次。于是，我们把计算访存比从 0.23 OP/B 提高到 0.46 OP/B。这是一项很好的改进，也是对宝贵的寄存器资源的良好利用。</p>
+<div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F000124f17-11-9780323912310.jpg" class="img" alt="image" width="1373" height="646"/><figcaption class="figleg"><a id="sp0060"></a><span class="fignum">图 17.11</span> 在 F<sup>H</sup>D 核函数中使用寄存器以减少内存访问。</figcaption></figure></div><p id="p0250" class="text">回顾一下，寄存器使用量会限制占用率，也就是一个流式多处理器（SM）中可以运行的线程块数量。通过把核函数代码中的寄存器使用量增加 5，我们把每个线程块的寄存器使用量增加了 <span class="inlinecode">5*FHD_THREADS_PER_BLOCK</span>。假设每个线程块有 1024 个线程，那么线程块的寄存器使用量就增加了 5120。由于每个 SM 在其所分配的所有线程块之间总共可以容纳 65,536 个寄存器（SM 版本 3.5 或更高），我们需要小心，因为寄存器使用量的任何进一步增加都可能开始限制可分配给一个 SM 的线程块数量。幸运的是，对这个核函数而言，寄存器使用量并不是限制并行性的因素。</p>
+<p id="p0255" class="text"><span id="page_405" aria-label="Page 405" epub:type="pagebreak" role="doc-pagebreak"></span>我们希望进一步消除 cmpFhD 核函数中的全局内存访问，以提高计算访存比。接下来要考虑的候选是 k 空间样本 kx[m]、ky[m] 和 kz[m]。这些数组元素的访问方式与 x[n]、y[n] 和 z[n] 元素不同：在<a href="#f0060">图 17.11</a> 中循环的每次迭代里，访问的是 kx、ky 和 kz 的不同元素。这意味着我们无法把一个 k 空间元素加载到寄存器中，然后指望在全部迭代中都能从寄存器访问该元素。因此，寄存器在这里帮不上忙。不过，我们应该注意到，k 空间元素不会被核函数修改。而且，每个 k 空间元素都会被网格中的所有线程使用。这意味着我们或许可以把 k 空间元素放入常量内存。常量缓存或许能消除大部分 DRAM 访问。</p>
+<p id="p0260" class="text">对<a href="#f0060">图 17.11</a> 中循环的分析表明，k 空间元素确实是常量内存的理想候选。访问 kx、ky 和 kz 所用的下标是 m。我们知道，m 与 threadIdx 无关，这意味着一个线程束中的所有线程将访问 kx、ky 和 kz 的同一元素。对带缓存的常量内存来说，这是一种理想的访问模式：每当一个元素被取入缓存，在当前一代设备上，它至少会被一个线程束中的全部 32 个线程使用。这意味着每 32 次常量内存访问中，至少有 31 次由缓存服务。这样，缓存就能有效地消除 96% 甚至更多的全局内存访问。更好的是，每次从缓存访问一个常量时，它都可以广播给线程束中的所有线程。这使得常量内存在访问 k 空间元素方面几乎与寄存器一样高效。<sup><a aria-label="noteref" href="#fn2" id="Cfn2">2</a></sup></p>
+<p id="p0265" class="text">不过，把 k 空间元素放入常量内存涉及一个技术问题。回顾一下，常量内存的容量为 64KB。然而，k 空间样本的规模可能大得多，达到数百万量级。绕过常量内存容量限制的典型做法是，把大型数据集切分成 64KB 或更小的块。开发者必须重新组织核函数，使核函数被多次调用，每次调用只处理大型数据集中的一个块。对 cmpFhD 核函数来说，这相当容易做到。</p>
+<p id="p0270" class="text">仔细检查<a href="#f0060">图 17.11</a> 中的循环可以看出，所有线程将顺序地遍历 k 空间样本数组。也就是说，网格中的所有线程在每次迭代中都访问同一个 k 空间元素。对于大型数据集，核函数中的循环只是迭代次数更多。这意味着我们可以把循环划分成若干段，每段处理能够放入常量内存 64KB 容量的一块 k 空间元素。<sup><a aria-label="noteref" href="#fn3" id="Cfn3">3</a></sup> 现在，主机代码多次调用核函数。每次主机调用核函数时，都会在调用核函数之前把新的一块数据放入常量内存。这一过程如<a href="#f0065">图 17.12</a> 所示。（对于较新的设备和 CUDA 版本，用“const __restrict__”声明核函数参数可以使相应的输入数据驻留在只读数据缓存中，这是获得与使用常量内存相同效果的更简单方法。）</p>
+<div class="pageavoid"><figure class="fig" id="f0065"><img src="../images/F000124f17-12-9780323912310.jpg" class="img" alt="image" width="1374" height="647"/><figcaption class="figleg"><a id="sp0065"></a><span class="fignum">图 17.12</span> 将 k 空间数据分块以装入常量内存的主机代码序列。</figcaption></figure></div><p id="p0275" class="text"><span id="page_406" aria-label="Page 406" epub:type="pagebreak" role="doc-pagebreak"></span>在<a href="#f0065">图 17.12</a> 中，<span class="inlinecode">cmpFhD</span> 核函数在一个循环中被调用。代码假设 kx、ky 和 kz 数组位于主机内存中，其维数由 M 给出。每次迭代时，主机代码都会调用 <span class="inlinecode">cudaMemcpyToSymbol()</span>函数，把一块 k 空间数据传送到设备常量内存，正如<a href="Ch007_151-171_B9780323912310000082.html#Ch007_151-171_B9780323912310000082">第 7 章</a>《卷积》中所讨论的那样；随后调用核函数处理这一块数据。请注意，当 M 不是 <span class="inlinecode">CHUNK_SIZE</span> 的整数倍时，主机代码还需要额外执行一轮 <span class="inlinecode">cudaMemcpyToSymbol()</span>并再调用一次核函数，以处理剩余的 k 空间数据。</p>
+<p id="p0280" class="text"><span id="page_407" aria-label="Page 407" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0070">图 17.13</a> 展示了一个修改后的核函数，它从常量内存访问 k 空间数据。请注意，指向 kx、ky 和 kz 的指针不再出现在核函数的参数列表中。<span class="inlinecode">kx_c</span>、<span class="inlinecode">ky_c</span> 和 <span class="inlinecode">kz_c</span> 数组作为在 __constant__ 关键字下声明的全局变量来访问，如<a href="#f0065">图 17.12</a> 所示。通过从常量缓存访问这些元素，核函数现在实际上只有对 rMu 和 iMu 数组的 4 次全局内存访问。编译器通常会识别出这四次数组访问只对应两个位置，于是只执行两次全局访问，一次访问 <span class="inlinecode">rMu[m]</span>，一次访问 <span class="inlinecode">iMu[m]</span>。读取的值会存放在临时寄存器变量中，供另外两次使用。这样，最终的内存访问次数等于 2。计算访存比达到 1.63 OP/B。这个值虽然还不算理想，但已经足够高，内存带宽的限制不再是制约性能的唯一因素。我们将会看到，还可以进行其他几项优化，使计算更高效并进一步提高性能。</p>
+<div class="pageavoid"><figure class="fig" id="f0070"><img src="../images/F000124f17-13-9780323912310.jpg" class="img" alt="image" width="1367" height="538"/><figcaption class="figleg"><a id="sp0070"></a><span class="fignum">图 17.13</span> 使用常量内存的 F<sup>H</sup>D 修订版核函数。</figcaption></figure></div><p id="p0285" class="text">如果我们实际运行<a href="#f0065">图 17.12</a> 和<a href="#f0070">图 17.13</a> 中的代码，就会发现在某些设备上性能提升并不像我们预期的那样高。事实证明，这些图中所示的代码并没有带来我们预期的那么多内存带宽下降。原因是常量缓存对该代码的运行效果不佳。这与常量缓存的设计以及 k 空间数据的内存布局有关。如<a href="#f0075">图 17.14A</a> 所示，常量缓存的每个条目设计为存放多个连续的存储字。这种设计降低了常量缓存硬件的成本。当一个元素被取入缓存时，它周围的几个元素也会被取入缓存。这一点以 kx[i]、ky[i] 和 kz[i] 周围的阴影区来表示，后者在<a href="#f0075">图 17.14</a> 中显示为深色方框。要支持一个线程束每次迭代的高效执行，需要常量缓存中的三条缓存行。</p>
+<div class="pageavoid"><figure class="fig" id="f0075"><img src="../images/F000124f17-14-9780323912310.jpg" class="img" alt="image" width="1300" height="497"/><figcaption class="figleg"><a id="sp0075"></a><span class="fignum">图 17.14</span> k 空间数据布局对常量缓存效率的影响：（A）k 空间数据存储在相互独立的数组中，（B）k 空间数据存储在元素为结构体的数组中。</figcaption></figure></div><p id="p0290" class="text"><span id="page_408" aria-label="Page 408" epub:type="pagebreak" role="doc-pagebreak"></span>在典型执行中，一个 SM 上会同时运行相当多的线程束。由于不同线程束可能处于完全不同的迭代，它们总共可能需要很多常量缓存条目。例如，如果我们定义每个线程块有 1024 个线程，并希望每个 SM 中同时分配两个线程块执行，那么一个 SM 中将有 (1024/32)×2=64 个线程束并发执行。如果其中每个线程束至少需要常量缓存中的三条缓存行才能维持高效执行，那么在最坏情况下，我们总共需要 64×3=192 条缓存行。即使我们假设平均有三个线程束执行到同一迭代、因而可以共享缓存行，我们仍然需要 64 条缓存行。这被称为所有活动线程束的工作集。</p>
+<p id="p0295" class="text">出于成本约束，一些设备的常量缓存只有少量缓存行，例如 32 条。当缓存行不足以容纳整个工作集时，不同线程束正在访问的数据就会开始相互争夺缓存行。当一个线程束进入下一次迭代时，它接下来要访问的元素已经被清除，以便为其他线程束访问过的元素腾出空间。事实证明，一些设备的常量缓存容量确实不足以容纳一个 SM 中所有活动线程束所需的条目。因此，常量缓存无法消除大量的全局内存访问。</p>
+<p id="p0300" class="text"><span id="page_409" aria-label="Page 409" epub:type="pagebreak" role="doc-pagebreak"></span>缓存条目利用效率低下的问题在文献中已有充分研究，可以通过调整 k 空间数据的内存布局来解决。解决方案如<a href="#f0075">图 17.14B</a> 所示，基于该方案的代码见<a href="#f0080">图 17.15</a> 和<a href="#f0085">图 17.16</a>。该方案不再把 k 空间数据的 x、y、z 分量存放在三个独立的数组中，而是把这些分量存放在一个元素为结构体的数组中。在文献中，这种声明风格通常称为<em>结构体数组</em>。数组的声明见<a href="#f0080">图 17.15</a>（第 01–03 行）。我们假设（未显示的）内存分配与初始化代码已经把 k 空间数据的 x、y、z 分量正确地放入了相应字段。通过把 x、y、z 分量存放在一个数组元素的三个字段中，开发者强制这些分量存储在常量内存的连续位置。这样，一个线程束的某次迭代用到的三个分量现在可以装进同一条缓存条目，从而减少了支撑所有活动线程束执行所需的条目数。请注意，由于我们只有一个数组来容纳全部 k 空间数据，只需一次 CUDA Memcpy To Symbol 就可以把整个块复制到设备常量内存。假设每个 k 空间样本是单精度浮点数，传输大小从 <span class="inlinecode">4*CHUNK_SIZE</span> 调整为 <span class="inlinecode">12*CHUNK_SIZE</span>，以反映一次 CUDA Memcpy To Symbol 调用中三个分量的传输。</p>
+<div class="pageavoid"><figure class="fig" id="f0080"><img src="../images/F000124f17-15-9780323912310.jpg" class="img" alt="image" width="868" height="267"/><figcaption class="figleg"><a id="sp0080"></a><span class="fignum">图 17.15</span> 调整 k 空间数据布局以提高缓存效率。</figcaption></figure></div><div class="pageavoid"><figure class="fig" id="f0085"><img src="../images/F000124f17-16-9780323912310.jpg" class="img" alt="image" width="1367" height="526"/><figcaption class="figleg"><a id="sp0085"></a><span class="fignum">图 17.16</span> 在 F<sup>H</sup>D 核函数中适配 k 空间数据内存布局。</figcaption></figure></div><p id="p0305" class="text">采用新的数据结构布局后，我们还需要修改核函数，使访问按照新布局进行。新的核函数如<a href="#f0085">图 17.16</a> 所示。请注意，kx[m] 变成了 k[m].x，ky[m] 变成了 k[m].y，依此类推。代码的这一小改动在某些设备上可以显著提升执行速度。<sup><a aria-label="noteref" href="#fn4" id="Cfn4">4</a></sup></p></section><section><a id="s0035"></a><h3 class="h2hd" id="st0050">步骤 3：使用硬件三角函数</h3><p id="p0310" class="textfl">CUDA 提供了数学函数的硬件实现，其吞吐量远高于对应的软件实现。GPU 之所以为 <span class="inlinecode">sin(</span> <span class="inlinecode">)</span>和 <span class="inlinecode">cos(</span> <span class="inlinecode">)</span>等三角函数提供硬件实现，一个动机是提高图形应用中视角变换的速度。这些函数作为硬件指令实现，由 SFU（特殊函数单元）执行。使用这些函数的过程非常简单。就 <span class="inlinecode">cmpFhD</span> 核函数而言，我们要做的就是把对 <span class="inlinecode">sin(</span> <span class="inlinecode">)</span>和 <span class="inlinecode">cos(</span> <span class="inlinecode">)</span>函数的调用改成它们的硬件版本：<span class="inlinecode">__sin()</span>和<span class="inlinecode">__cos()</span>（函数名之前有两个“_”字符）。这些是编译器能够识别并转换为 SFU 指令的内建函数。由于这些函数在被频繁执行的循环体中被调用，我们预计这一改动将带来显著的性能提升。由此得到的 <span class="inlinecode">cmpFhD</span> 核函数如<a href="#f0090">图 17.17</a> 所示。</p>
+<div class="pageavoid"><figure class="fig" id="f0090"><img src="../images/F000124f17-17-9780323912310.jpg" class="img" alt="image" width="1365" height="573"/><figcaption class="figleg"><a id="sp0090"></a><span class="fignum">图 17.17</span> 使用硬件<span class="inlinecode">__sin()</span>和<span class="inlinecode">__cos()</span>函数。</figcaption></figure></div><p id="p0315" class="text"><span id="page_410" aria-label="Page 410" epub:type="pagebreak" role="doc-pagebreak"></span>不过，我们需要注意，从软件函数切换到硬件函数会降低精度。目前，硬件实现的精度低于软件库（细节可参见 CUDA C 编程指南）。就 MRI 而言，我们需要确保硬件实现提供的精度足够高，正如<a href="#f0095">图 17.18</a> 所定义的那样。测试过程涉及一个虚构对象（有时称为<em>体模</em>）的“理想”图像（I<sub>0</sub>）。我们用逆过程生成对应的合成“扫描” k 空间数据。随后，由所提出的重建系统处理这些合成扫描数据，生成重建图像（I）。然后把理想图像与重建图像中体素的值代入<a href="#f0095">图 17.18</a> 中的峰值信噪比（PSNR）公式。</p>
+<div class="pageavoid"><figure class="fig" id="f0095"><img src="../images/F000124f17-18-9780323912310.jpg" class="img" alt="image" width="1374" height="209"/><figcaption class="figleg"><a id="sp0095"></a><span class="fignum">图 17.18</span> 用于验证硬件函数精度的指标。I<sub>0</sub> 是理想图像。I 是重建图像。PSNR 是峰值信噪比。</figcaption></figure></div><p id="p0320" class="text">通过测试的标准取决于图像所服务的应用。在我们的案例中，我们与临床 MRI 专家合作，确保硬件函数引起的 PSNR 变化远在其应用可接受的范围内。在图像被医生用来判断损伤或评估疾病的那些应用中，还需要对图像质量进行目视检查。<a href="#f0100">图 17.19</a> 展示了原始“真实”图像的目视对比。它随后表明，CPU 双精度和单精度实现所达到的 PSNR 均为 27.6 dB，远高于应用可接受的水平。目视检查也表明，重建图像确实与原始图像吻合良好。</p>
+<div class="pageavoid"><figure class="fig" id="f0100"><img src="../images/F000124f17-19-9780323912310.jpg" class="img" alt="image" width="1375" height="1934"/><figcaption class="figleg"><a id="sp0100"></a><span class="fignum">图 17.19</span> 不同 F<sup>H</sup>D 实现的浮点精度与准确度验证。</figcaption></figure></div><p id="p0325" class="text"><span id="page_411" aria-label="Page 411" epub:type="pagebreak" role="doc-pagebreak"></span><span id="page_412" aria-label="Page 412" epub:type="pagebreak" role="doc-pagebreak"></span>与简单的双线性插值网格化/iFFT 相比，迭代重建的优势在<a href="#f0100">图 17.19</a> 中也显而易见。用简单的网格化/iFFT 重建的图像，其 PSNR 仅为 16.8 dB，远低于迭代重建方法达到的 27.6 dB 的 PSNR。对<a href="#f0100">图 17.19</a> 中网格化/iFFT 图像（图像 2）的目视检查表明，存在严重的伪影，会显著影响图像在诊断用途上的可用性。这些伪影在迭代重建方法得到的图像中不会出现。</p>
+<p id="p0330" class="text">当我们在 CPU 上从双精度算术改为单精度算术时，PSNR 没有可测量的下降，仍保持在 27.6 dB。当把三角函数从软件库移到硬件单元后，我们观察到 PSNR 有可忽略的下降，从 27.6 dB 变为 27.5 dB。PSNR 的轻微损失在应用可接受的范围内。目视检查证实，重建图像与原图像相比没有明显的伪影。</p></section><section><a id="s0040"></a><h3 class="h2hd" id="st0055">步骤 4：实验性性能调优</h3><p id="p0335" class="textfl">到目前为止，我们还没有确定核函数配置参数的适当取值。核函数的一个配置参数是每个线程块的线程数。使用足够的每线程块线程数，是充分利用每个 SM 线程容量的需要。核函数的另一个配置参数是<a href="#f0090">图 17.17</a> 中 for 循环体（第 07 行）应展开的次数。这可以通过使用“#pragma unroll”并后跟希望编译器对循环执行的展开次数来设置。一方面，展开循环可以减少开销指令的数量，并可能减少处理每个 k 空间样本数据所需的时钟周期数。另一方面，过度展开可能会增加寄存器的使用量，并减少一个 SM 能容纳的线程块数量。</p>
+<p id="p0340" class="text">请注意，这些配置的效果彼此并不孤立。增大一个参数的值，可能会占用本可用于增大另一个参数值的资源。因此，需要以实验的方式联合评估这些参数。可供尝试的组合可能非常多。就 F<sup>H</sup>D 而言，与只探索一些有希望趋势的启发式调优搜索相比，系统地搜索所有组合并选择实测运行时间最佳者，可使性能提升约 20%。<a href="#bib2" role="doc-biblioref" epub:type="biblioref" id="BIB_2">Ryoo et al. (2008)</a>提出了一种基于帕累托最优曲线的方法，用来筛除大多数较差的组合。</p></section></section><section><a id="s0045"></a><h2 class="h1hd" id="st0060">17.4 小结</h2><p id="p0345" class="textfl"><span id="page_413" aria-label="Page 413" epub:type="pagebreak" role="doc-pagebreak"></span>在本章中，我们介绍了把一个循环密集的应用——MRI 图像的迭代重建——从串行形式进行并行化与优化的关键步骤。我们首先讨论了并行化的合理组织方式：分散方法与汇聚方法。我们说明了从分散方法转变为汇聚方法是避免原子操作的关键，因为原子操作会显著降低并行执行的性能。我们还讨论了实现汇聚式并行化所需的实用技术，即循环分裂与循环交换。</p>
+<p id="p0350" class="text">我们进一步介绍了优化技术的应用，例如将数组元素提升到寄存器中、为输入元素使用常量内存/缓存，以及使用硬件函数来提升并行核函数的性能。如前所述，从基础版本到最终优化版本，速度大约提升了 10 倍。</p>
+<p id="p0355" class="text">在并行化和优化之前，F<sup>H</sup>D 曾经几乎占执行时间的 100%。一个有趣的观察是，到最后，CG 求解器（<a href="#f0020">图 17.3</a> 中的“求解 ρ”步骤）实际花费的时间可能比 F<sup>H</sup>D 还多。这是因为我们已经大幅加速了 F<sup>H</sup>D。任何进一步的加速现在都需要对 CG 求解器进行加速。在成功的并行化和优化之后，F<sup>H</sup>D 只占大约 50%。其余 50% 大部分花在 CG 求解器上。这是并行化真实应用时一个众所周知的现象。由于执行中某些耗时的阶段被成功的并行化工作加速，执行时间便由其他曾经只占执行时间很小比例的阶段所主导。</p></section><section><a id="s0050"></a><h2 class="h1hd" id="st0065">习题</h2><a id="p0360"></a><a id="li0020"></a><div><ol>
+<li class="numlista" id="o0030"><a id="p0365"></a>1. 循环分裂把一个循环拆成两个循环。使用<a href="#f0025">图 17.4</a> 中的 F<sup>H</sup>D 代码，列举外层循环体两个部分的执行顺序：（1）内层循环之前的语句和（2）内层循环。</li>
+</ol>
+</div>
+<a id="li0025"></a><div><ol>
+<li class="numlista" id="o0035"><a id="p0370"></a>a. 列出分裂前外层循环不同迭代中这些部分的执行顺序。</li>
+<li class="numlista" id="o0040"><a id="p0375"></a>b. 列出分裂后两个循环中这些部分的执行顺序。</li>
+<li class="numlista" id="o0045"><a id="p0380"></a>c. 判断本题 (a) 和 (b) 部分的执行结果是否相同。如果某一部分所需的全部数据在该部分执行之前都已正确生成并保存供其使用，且该部分的执行结果没有被在原始执行顺序中应位于该部分之后的其他部分覆盖，那么执行结果相同。</li>
+</ol></div><a id="li0030"></a><div><ol>
+<li class="numlista" id="o0050"><a id="p0385"></a>2. 循环交换把内层循环与外层循环互换。使用<a href="#f0050">图 17.9</a> 中的循环，列举循环交换前后各次循环体执行的顺序。</li>
+</ol>
+</div>
+<a id="li0035"></a><div><ol>
+<li class="numlista" id="o0055"><a id="p0390"></a>a. 列出循环交换前不同迭代中循环体的执行顺序。用 m 和 n 的值标识这些迭代。</li>
+<li class="numlista" id="o0060"><a id="p0395"></a>b. 列出循环交换后不同迭代中循环体的执行顺序。用 m 和 n 的值标识这些迭代。</li>
+<li class="numlista" id="o0065"><a id="p0400"></a><span id="page_414" aria-label="Page 414" epub:type="pagebreak" role="doc-pagebreak"></span>c. 判断本题 (a) 和 (b) 部分的执行结果是否相同。如果某一部分所需的全部数据在该部分执行之前都已正确生成并保存供其使用，且该部分的执行结果没有被在原始执行顺序中应位于该部分之后的其他部分覆盖，那么执行结果相同。</li>
+</ol></div><a id="li0040"></a><div><ol>
+<li class="numlista" id="o0070"><a id="p0405"></a>3. 在<a href="#f0060">图 17.11</a> 中，指出对 x[] 和 kx[] 的访问在使用下标性质上的差异。利用这一差异，解释为什么对于<a href="#f0060">图 17.11</a> 所示的核函数，试图把 kx[n] 加载到寄存器中是没有意义的。</li>
+</ol>
+</div>
+</section><footer><section aria-label="bibliography"><a id="bibliog0010"></a><h2 class="reftitle" id="st0070">参考文献</h2><section><p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib1"><a aria-label="noteref" href="#BIB_1">Liang and Lauterbur, 1999</a> Liang ZP, Lauterbur P. <cite><em>Principles of Magnetic Resonance Imaging: A Signal Processing Perspective</em></cite> John Wiley and Sons 1999.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib2"><a aria-label="noteref" href="#BIB_2">Ryoo et al., 2008</a> Ryoo S, Ridrigues CI, Stone SS, et al. <cite>Program optimization carving for GPU computing</cite>. <cite><em>J Parallel Distrib Comput</em></cite> 2008; <a href="https://doi.org/10.1016/j.jpdc.2008.050.011">https://doi.org/10.1016/j.jpdc.2008.050.011</a>.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib3">Stone et al., 2008 Stone SS, Haldar JP, Tsao SC, Hwu WW, Sutton BP, Liang ZP. <cite>Accelerating advanced MRI reconstruction on GPUs</cite>. <cite><em>J Parallel Distrib Comput.</em></cite> 2008;68(10):1307–1318 <a href="https://doi.org/10.1016/j.jpdc.2008.050.013">https://doi.org/10.1016/j.jpdc.2008.050.013</a>.</p></section></section><section epub:type="rearnotes">
+<div class="ftnote"><hr/>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn1"><a id="ntp0010"></a><a href="#Cfn1"><sup>1</sup></a> 请注意，F<sup>H</sup>D 的计算可以用网格化来近似，几秒钟即可运行，不过最终重建图像的质量可能会有所下降。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn2"><a id="ntp0015"></a><a href="#Cfn2"><sup>2</sup></a> 常量内存访问之所以不如寄存器访问高效，是因为访问常量内存仍然需要一条内存加载指令。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn3"><a id="ntp0020"></a><a href="#Cfn3"><sup>3</sup></a> 请注意，并非所有对只读数据的访问都像这里这样适合常量内存。在一些应用中，不同线程块中的线程在同一迭代中访问不同的输入元素。这种更分散的访问模式使得在一次核函数启动时，很难把足够多的数据装入常量内存。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn4"><a id="ntp0025"></a><a href="#Cfn4"><sup>4</sup></a> 读者可能会注意到，从多个数组调整为结构体数组，与全局内存数据通常采取的做法正好相反。当一个线程束中相邻的线程访问全局内存中结构体数组的连续元素时，把结构体的字段存放到多个数组中要好得多，这样全局内存访问可以合并。这里的关键区别在于，一个线程束中的所有线程访问的是相同元素，而不是连续元素。</p>
+</div></section></footer></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>

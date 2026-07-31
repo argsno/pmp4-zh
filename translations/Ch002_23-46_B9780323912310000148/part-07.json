@@ -1,0 +1,65 @@
+{
+  "page": "Ch002_23-46_B9780323912310000148",
+  "nodes": [
+    {
+      "id": "o0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[10]",
+      "en": "10. A new summer intern was frustrated with CUDA. He has been complaining that CUDA is very tedious. He had to declare many functions that he plans to execute on both the host and the device twice, once as a host function and once as a device function. What is your response?",
+      "zh": "10. 一名新来的暑期实习生对 CUDA 感到非常沮丧。他一直抱怨 CUDA 十分繁琐：他不得不把许多打算同时在主机和设备上执行的函数声明两次，一次作为主机函数，一次作为设备函数。你会如何回应他？"
+    },
+    {
+      "id": "st0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    },
+    {
+      "id": "fn1",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[1]",
+      "en": "【1】【2】1【/2】【/1】There has been a steady movement for CUDA C to adopt C++ features. We will be using some of these C++ features in our programming examples.",
+      "zh": "【1】【2】1【/2】【/1】CUDA C 一直在稳步引入 C++ 的特性。我们将在编程示例中使用其中的一些 C++ 特性。"
+    },
+    {
+      "id": "fn2",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[2]",
+      "en": "【1】【2】2【/2】【/1】CUDA C also has more advanced library functions for allocating space in the host memory. We will discuss them in 【3】Chapter 20【/3】, Programming a Heterogeneous Computing Cluster.",
+      "zh": "【1】【2】2【/2】【/1】CUDA C 还提供了一些更高级的库函数，用于在主机内存中分配空间。我们将在【3】第 20 章【/3】（编写异构计算集群程序）中讨论这些函数。"
+    },
+    {
+      "id": "fn3",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[3]",
+      "en": "【1】【2】3【/2】【/1】The fact that 【3】cudaMalloc【/3】 returns a generic object makes the use of dynamically allocated multidimensional arrays more complex. We will address this issue in 【4】Section 3.2【/4】.",
+      "zh": "【1】【2】3【/2】【/1】由于【3】cudaMalloc【/3】返回的是一个通用对象，动态分配的多维数组的使用会变得更加复杂。我们将在【4】第 3.2 节【/4】中讨论这个问题。"
+    },
+    {
+      "id": "fn4",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[4]",
+      "en": "【1】【2】4【/2】【/1】Note that 【3】cudaMalloc【/3】 has a different format from the C malloc function. The C malloc function returns a pointer to the allocated object. It takes only one parameter that specifies the size of the allocated object. The 【4】cudaMalloc【/4】 function writes to the pointer variable whose address is given as the first parameter. As a result, the 【5】cudaMalloc【/5】 function takes two parameters. The two-parameter format of 【6】cudaMalloc【/6】 allows it to use the return value to report any errors in the same way as other CUDA API functions.",
+      "zh": "【1】【2】4【/2】【/1】请注意，【3】cudaMalloc【/3】的格式与 C 的 malloc 函数不同。C 的 malloc 函数会返回指向所分配对象的指针，它只接受一个参数，即所分配对象的大小。而【4】cudaMalloc【/4】函数会把分配到的内存地址写入其地址由第一个参数给定的指针变量。因此，【5】cudaMalloc【/5】函数接受两个参数。【6】cudaMalloc【/6】采用两个参数的格式，使它能够像其他 CUDA API 函数一样，利用返回值来报告任何错误。"
+    },
+    {
+      "id": "fn5",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[5]",
+      "en": "【1】【2】5【/2】【/1】Note that SPMD is not the same as SIMD (single instruction multiple data) [【3】Flynn 1972【/3】]. In an SPMD system the parallel processing units execute the same program on multiple parts of the data. However, these processing units do not need to be executing the same instruction at the same time. In an SIMD system, all processing units are executing the same instruction at any instant.",
+      "zh": "【1】【2】5【/2】【/1】请注意，SPMD 不同于 SIMD（单指令多数据）[【3】Flynn 1972【/3】]。在 SPMD 系统中，并行处理单元对数据的不同部分执行相同的程序。不过，这些处理单元并不需要在同一时刻执行同一条指令。而在 SIMD 系统中，所有处理单元在任何时刻都在执行同一条指令。"
+    },
+    {
+      "id": "fn6",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[6]",
+      "en": "【1】【2】6【/2】【/1】Each thread block can have up to 1024 threads in CUDA 3.0 and beyond. Some earlier CUDA versions allow only up to 512 threads in a block.",
+      "zh": "【1】【2】6【/2】【/1】在 CUDA 3.0 及更高版本中，每个线程块最多可以有 1024 个线程。某些更早的 CUDA 版本中，一个线程块最多只允许有 512 个线程。"
+    },
+    {
+      "id": "fn7",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[7]",
+      "en": "【1】【2】7【/2】【/1】We will explain the rules for using indirect function calls and recursions in different generations of CUDA later. In general, one should avoid the use of recursion and indirect function calls in their device functions and kernel functions to allow maximal portability.",
+      "zh": "【1】【2】7【/2】【/1】我们稍后会解释在不同代际的 CUDA 中使用间接函数调用和递归的规则。一般来说，应避免在设备函数和核函数中使用递归和间接函数调用，以获得最大的可移植性。"
+    },
+    {
+      "id": "fn8",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[8]",
+      "en": "【1】【2】8【/2】【/1】While we use an arbitrary block size 256 in this example, the block size should be determined by a number of factors that will be introduced later.",
+      "zh": "【1】【2】8【/2】【/1】尽管在本示例中我们随意选用了 256 这一线程块大小，但线程块大小实际上应由若干因素决定，这些因素将在后文中介绍。"
+    }
+  ]
+}

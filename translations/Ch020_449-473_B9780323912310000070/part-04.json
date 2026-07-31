@@ -1,0 +1,155 @@
+{
+  "page": "Ch020_449-473_B9780323912310000070",
+  "nodes": [
+    {
+      "id": "n0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 20.15【/1】 Compute process code (part 4).",
+      "zh": "【1】图 20.15【/1】 计算进程代码（第 4 部分）。"
+    },
+    {
+      "id": "p0370",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[20]",
+      "en": "During the data exchange phase, we will have all MPI processes send their boundary slices to their left neighbors. That is, all processes will have their right neighbors sending data to them. It is therefore convenient to have an MPI function that sends data to a destination and receives data from a source. This reduces the number of MPI function calls. The 【1】MPI_Sendrecv()【/1】 function in 【2】Fig. 20.16【/2】 is such a function. It is a combination of 【3】MPI_Send()【/3】 and 【4】MPI_Recv()【/4】 so we will not elaborate further on the meaning of the parameters.",
+      "zh": "在数据交换阶段，我们将让所有 MPI 进程把它们的边界切片发送给左邻居，也就是说，所有进程的右邻居都会向它们发送数据。因此，如果有一个 MPI 函数既能向目标发送数据又能从源接收数据，就会很方便，这可以减少 MPI 函数调用的次数。【1】图 20.16【/1】中的【2】MPI_Sendrecv()【/2】函数就是这样一个函数。它是【3】MPI_Send()【/3】和【4】MPI_Recv()【/4】的组合，因此我们不再详细说明参数的含义。"
+    },
+    {
+      "id": "n0102",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 20.16【/2】【/1】 Syntax for the MPI_Sendrecv() function.",
+      "zh": "【1】【2】图 20.16【/2】【/1】 MPI_Sendrecv() 函数的语法。"
+    },
+    {
+      "id": "p0375",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[21]",
+      "en": "Line 45 sends four slices of left boundary points to the left neighbor and receives four slices of right halo points from the right neighbors. Line 46 sends four slices of right boundary points to the right neighbor and receives four slices of left halo points from the left neighbor. In the case of process 0, its 【1】left_neighbor【/1】 has been set to 【2】MPI_PROC_NULL【/2】 in line 27, so the MPI runtime will not send out the message in line 45 or receive the message in line 46 for process 0. Likewise, the MPI runtime will not receive the message in line 45 or send out the message in line 46 for process np − 2. Therefore the conditional assignments in lines 29 and 30 of 【3】Fig. 20.13【/3】 eliminate the need for special if-then-else statements in lines 45 and 46.",
+      "zh": "第 45 行将四片左边界点发送给左邻居，并从右邻居接收四片右光环点。第 46 行将四片右边界点发送给右邻居，并从左邻居接收四片左光环点。对于进程 0，其【1】left_neighbor【/1】已在第 27 行被设置为【2】MPI_PROC_NULL【/2】，因此 MPI 运行时不会为进程 0 发送第 45 行的消息或接收第 46 行的消息。同样，MPI 运行时也不会为进程 np − 2 接收第 45 行的消息或发送第 46 行的消息。因此，【3】图 20.13【/3】第 29 行和第 30 行中的条件赋值消除了第 45 行和第 46 行中对特殊 if-then-else 语句的需求。"
+    },
+    {
+      "id": "p0380",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[22]",
+      "en": "After the MPI messages have been sent and received, lines 47 and 48 transfer the newly received halo points to the 【1】d_output【/1】 buffer of device memory. These copies are done in stream 0, so they will execute in parallel with the kernel launched in stream 1 on line 38.",
+      "zh": "在 MPI 消息发送和接收完成后，第 47 行和第 48 行将新接收的光环点传输到设备内存的【1】d_output【/1】缓冲区。这些复制在流 0 中执行，因此它们将与第 38 行在流 1 中启动的核函数并行执行。"
+    },
+    {
+      "id": "p0385",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[23]",
+      "en": "Line 49 is a synchronization operation for all device activities. This call forces the process to wait for all device activities, including kernels and data copies, to complete. When the 【1】cudaDeviceSynchronize()【/1】 function returns, all 【2】d_output【/2】 data from the current computation step are in place: left halo data from the left neighbor process, boundary data from the kernel launched in line 36, internal data from the kernel launched in line 38, right boundary data from the kernel launched in line 37, and right halo data from the right neighbor.",
+      "zh": "第 49 行是对所有设备活动的同步操作。该调用强制进程等待所有设备活动（包括核函数和数据复制）完成。当【1】cudaDeviceSynchronize()【/1】函数返回时，当前计算步骤的所有【2】d_output【/2】数据都已就位：来自左邻居进程的左光环数据、第 36 行启动的核函数产生的边界数据、第 38 行启动的核函数产生的内部数据、第 37 行启动的核函数产生的右边界数据，以及来自右邻居的右光环数据。"
+    },
+    {
+      "id": "p0390",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[24]",
+      "en": "Lines 50 and 51 swap the 【1】d_input【/1】 and 【2】d_output【/2】 pointers. This changes the output of the 【3】d_ouput【/3】 data of the current computation step into the 【4】d_input【/4】 data of the next computation step. The execution then proceeds to the next computation step by going to the next iteration of the loop of line 35. This will continue until all compute processes have completed the number of computations specified by the parameter nreps.",
+      "zh": "第 50 行和第 51 行交换【1】d_input【/1】和【2】d_output【/2】指针。这把当前计算步骤【3】d_ouput【/3】数据的输出变为下一个计算步骤的【4】d_input【/4】数据。然后执行进入第 35 行循环的下一次迭代，继续下一个计算步骤，直到所有计算进程完成参数 nreps 指定的计算次数。"
+    },
+    {
+      "id": "p0395",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[25]",
+      "en": "【1】Fig. 20.17【/1】 shows part 5, the final part of the compute process code. Line 53 is a barrier synchronization that forces all processes to wait for each other to finish their computation steps. Lines 54–56 swap 【2】d_output【/2】 with 【3】d_input【/3】. This is because lines 50 and 51 swapped 【4】d_output【/4】 with 【5】d_input【/5】 in preparation for the next computation step. However, this is unnecessary for the last computation step, so we use lines 54–56 to undo the swap. Line 57 copies the final output to the host memory. Line 58 sends the output to the data server. Line 59 waits for all processes to complete. Lines 60–63 free all the resources before returning to the main program.",
+      "zh": "【1】图 20.17【/1】展示了计算进程代码的第 5 部分，即最后一部分。第 53 行是一个屏障同步，强制所有进程相互等待，直到完成各自的计算步骤。第 54–56 行交换【2】d_output【/2】和【3】d_input【/3】。这是因为第 50 行和第 51 行为了准备下一个计算步骤交换了【4】d_output【/4】和【5】d_input【/5】，但对最后一个计算步骤而言这种交换是不必要的，所以我们用第 54–56 行撤销交换。第 57 行将最终输出复制到主机内存。第 58 行将输出发送给数据服务器。第 59 行等待所有进程完成。第 60–63 行在返回主程序之前释放所有资源。"
+    },
+    {
+      "id": "n0108",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[6]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 20.17【/2】【/1】 Compute process code (part 5).",
+      "zh": "【1】【2】图 20.17【/2】【/1】 计算进程代码（第 5 部分）。"
+    },
+    {
+      "id": "p0400",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[26]",
+      "en": "【1】Fig. 20.18【/1】 shows part 2, the final part of the data server code, which continues from 【2】Fig. 20.9【/2】. Line 24 is a barrier synchronization that waits for all compute nodes to complete their computation steps and send their outputs. This barrier corresponds to the barrier at line 59 of the compute process. Lines 26 and 27 receive the output data from all the compute processes. Line 28 stores the output into an external storage. Finally, lines 29 and 30 free resources before returning to the main program.",
+      "zh": "【1】图 20.18【/1】展示了数据服务器代码的第 2 部分，即最后一部分，它接着【2】图 20.9【/2】继续。第 24 行是一个屏障同步，等待所有计算节点完成各自的计算步骤并发送它们的输出。这个屏障对应于计算进程第 59 行的屏障。第 26 行和第 27 行从所有计算进程接收输出数据。第 28 行将输出存储到外部存储中。最后，第 29 行和第 30 行在返回主程序之前释放资源。"
+    },
+    {
+      "id": "n0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[7]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 20.18【/2】【/1】 Data server code (part 2).",
+      "zh": "【1】【2】图 20.18【/2】【/1】 数据服务器代码（第 2 部分）。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "20.6 Message passing interface collective communication",
+      "zh": "20.6 消息传递接口集合通信"
+    },
+    {
+      "id": "p0405",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "We saw an example of the MPI collective communication API in the previous section: 【1】MPI_Barrier【/1】. The other commonly used group collective communication types are broadcast, reduce, gather, and scatter (【2】Gropp et al., 1999【/2】). Barrier synchronization 【3】MPI_Barrier()【/3】 is perhaps the most commonly used collective communication function. As we saw in the stencil example, barriers are used to ensure that all MPI processes are ready before they begin to interact with each other. We will not elaborate on the other types of MPI collective communication functions, but we encourage the reader to read the details of these functions. In general, collective communication functions are highly optimized by the MPI runtime developers and system vendors. Using them usually leads to better performance as well as readability and productivity than trying to achieve the same functionality with combinations of send and receive calls.",
+      "zh": "在上一节中，我们看到了 MPI 集合通信 API 的一个示例：【1】MPI_Barrier【/1】。其他常用的组集合通信类型是广播（broadcast）、归约（reduce）、汇聚（gather）和分散（scatter）（【2】Gropp et al., 1999【/2】）。屏障同步【3】MPI_Barrier()【/3】可能是最常用的集合通信函数。正如我们在模板示例中看到的，屏障用于确保所有 MPI 进程在开始彼此交互之前都已就绪。我们将不详细阐述其他类型的 MPI 集合通信函数，但鼓励读者自行阅读这些函数的细节。一般来说，集合通信函数由 MPI 运行时开发者和系统厂商高度优化。使用它们通常比尝试用发送和接收调用的组合来实现同样的功能能带来更好的性能，同时也更易读、更具生产力。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "20.7 CUDA aware message passing interface",
+      "zh": "20.7 CUDA 感知的 MPI"
+    },
+    {
+      "id": "p0410",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[1]",
+      "en": "Modern MPI implementations are aware of the CUDA programming model and are designed to minimize the communication latency between GPUs. Currently, direct interaction between CUDA and MPI is supported by MVAPICH2, IBM Platform MPI, and 【1】OpenMPI【/1】.",
+      "zh": "现代 MPI 实现了解 CUDA 编程模型，并设计用于最小化 GPU 之间的通信延迟。目前，MVAPICH2、IBM Platform MPI 和【1】OpenMPI【/1】支持 CUDA 与 MPI 之间的直接交互。"
+    },
+    {
+      "id": "p0415",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[2]",
+      "en": "CUDA-aware MPI implementations are capable of sending messages from the GPU memory in one node to the GPU memory in a different node. This effectively removes the need for device-to-host data transfers before sending MPI messages and host-to-device data transfers after receiving an MPI message. This has the potential to simplify the host code and memory data layout. In our stencil example, if we used a CUDA-aware MPI implementation, we will no longer need host-pinned memory allocations and asynchronous memory copies.",
+      "zh": "CUDA 感知的 MPI 实现能够将一个节点的 GPU 内存中的消息发送到另一个节点的 GPU 内存中。这实际上消除了发送 MPI 消息之前进行设备到主机数据传输、以及接收 MPI 消息之后进行主机到设备数据传输的需要。这有可能简化主机代码和内存数据布局。在我们的模板示例中，如果使用 CUDA 感知的 MPI 实现，我们将不再需要主机锁页内存分配和异步内存复制。"
+    },
+    {
+      "id": "p0420",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[3]",
+      "en": "The first simplification is that we no longer need to allocate host-pinned memory buffers to transfer the halo points to the host memory to prepare for 【1】MPI_Send()【/1】. This means that we can safely remove lines 21–24 in 【2】Fig. 20.11【/2】. However, we still need to use CUDA streams and two separate GPU kernels to start communicating across nodes as soon as the halo elements have been computed.",
+      "zh": "第一个简化是我们不再需要分配主机锁页内存缓冲区来将光环点传输到主机内存，以准备【1】MPI_Send()【/1】。这意味着我们可以安全地删除【2】图 20.11【/2】中的第 21–24 行。然而，我们仍然需要使用 CUDA 流和两个独立的 GPU 核函数，以便在光环元素计算完成后尽快开始跨节点通信。"
+    },
+    {
+      "id": "p0425",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[4]",
+      "en": "The second simplification is that we no longer need to asynchronously copy the halo data from the host to the device memory after 【1】MPI_Recv()【/1】. As a result, we can also remove lines 42 and 43 in 【2】Fig. 20.15【/2】. Since the MPI calls now accept device memory addresses, we need to modify the calls to 【3】MPI_SendRecv【/3】 to use them. Note that these memory addresses actually correspond to the device addresses of the asynchronous memory copies in the previous versions. Since the CUDA-aware MPI implementations will directly update the contents of the GPU memory, we also remove lines 47 and 48 in 【4】Fig. 20.15【/4】. 【5】Fig. 20.19【/5】 shows the modifications to he MPI_SendRecv statements in lines 45 and 46 in 【6】Fig. 20.15【/6】, so that they directly read from and write to the device memory.",
+      "zh": "第二个简化是我们不再需要在【1】MPI_Recv()【/1】之后将光环数据从主机异步复制到设备内存。因此，我们也可以删除【2】图 20.15【/2】中的第 42 行和第 43 行。由于 MPI 调用现在接受设备内存地址，我们需要修改对【3】MPI_SendRecv【/3】的调用以使用这些地址。请注意，这些内存地址实际上对应于之前版本中异步内存复制的设备地址。由于 CUDA 感知的 MPI 实现将直接更新 GPU 内存的内容，我们还删除了【4】图 20.15【/4】中的第 47 行和第 48 行。【5】图 20.19【/5】展示了【6】图 20.15【/6】中第 45 行和第 46 行对 MPI_SendRecv 语句所做的修改，使它们直接从设备内存读取和写入。"
+    },
+    {
+      "id": "n0118",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 20.19【/2】【/1】 Revised MPI SendRec calls in using CUDA-aware MPI.",
+      "zh": "【1】【2】图 20.19【/2】【/1】 使用 CUDA 感知的 MPI 时修订后的 MPI SendRec 调用。"
+    },
+    {
+      "id": "p0430",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[5]",
+      "en": "Besides removing the data transfers during the halo exchange using 【1】MPI_SendRecv()【/1】, it would also be possible to remove the initial and final memory copies by receiving/sending the input/output directly from the GPU memory.",
+      "zh": "除了在使用【1】MPI_SendRecv()【/1】交换光环时删除数据传输之外，还可以通过直接从 GPU 内存接收/发送输入/输出来删除最初和最终的内存复制。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/h2[1]",
+      "en": "20.8 Summary",
+      "zh": "20.8 小结"
+    },
+    {
+      "id": "p0435",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[1]",
+      "en": "In this chapter we covered basic patterns of joint CUDA/MPI programming for HPC clusters with heterogeneous computing nodes. All processes in an MPI application run the same program. However, each process can follow different control flow and function call paths to specialize their roles, as illustrated by the data server and the compute processes in our example. We also used the stencil pattern to show how compute processes exchange data. We presented the use of CUDA streams and asynchronous data transfers to enable the overlap of computation and communication. We also showed how to use the MPI barrier to ensure that all processes are ready to exchange data with each other. Finally, we briefly outlined the use of CUDA-aware MPI to simplify the exchange of data in the device memory. We would like to point out that while MPI is a very different programming system, all major MPI concepts that we covered in this chapter, namely, SPMD, MPI ranks, and barriers, have counterparts in the CUDA programming model. This confirms our belief that by teaching parallel programming well with one model, our students can quickly and easily pick up other programming models. We would like to encourage the reader to build on the foundation provided by this chapter and study more advanced MPI features and other important patterns.",
+      "zh": "在本章中，我们介绍了面向具有异构计算节点的 HPC 集群的 CUDA/MPI 联合编程的基本模式。MPI 应用程序中的所有进程运行相同的程序。然而，每个进程可以遵循不同的控制流和函数调用路径来专门化自己的角色，正如我们示例中的数据服务器和计算进程所示。我们还使用模板模式展示了计算进程如何交换数据。我们介绍了使用 CUDA 流和异步数据传输来实现计算与通信的重叠。我们还展示了如何使用 MPI 屏障来确保所有进程都已准备好相互交换数据。最后，我们简要概述了使用 CUDA 感知的 MPI 来简化设备内存中数据的交换。我们想指出，虽然 MPI 是一个非常不同的编程系统，但我们在本章中介绍的所有主要 MPI 概念，即单程序多数据（SPMD）、MPI 进程号和屏障，在 CUDA 编程模型中都有对应物。这印证了我们的信念：通过用一种模型把并行编程教好，我们的学生可以快速轻松地掌握其他编程模型。我们鼓励读者在本章提供的基础上继续学习更高级的 MPI 特性和其他重要的模式。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]",
+      "en": "1. Assume that the 25-point stencil computation in this chapter is applied to a grid whose size is 64 grid points in the 【1】x【/1】 dimension, 64 in the 【2】y【/2】 dimension, and 2048 in the 【3】z【/3】 dimension. The computation is divided across 17 MPI ranks, of which 16 ranks are compute processes and 1 rank is the data server process.【M4】",
+      "zh": "1. 假设本章中的 25 点模板计算应用于一个网格，其尺寸在【1】x【/1】维为 64 个网格点、【2】y【/2】维为 64 个、【3】z【/3】维为 2048 个。该计算被划分到 17 个 MPI 进程号上，其中 16 个进程号是计算进程，1 个进程号是数据服务器进程。【M4】"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[1]",
+      "en": "a. How many output grid point values are computed by each compute process?",
+      "zh": "a. 每个计算进程计算多少个输出网格点值？"
+    }
+  ]
+}

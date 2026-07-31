@@ -1,0 +1,77 @@
+[
+  {
+    "en": "data server",
+    "zh": "数据服务器",
+    "note": "20.2–20.6 节；示例中执行 I/O 服务、分发输入数据并收集输出结果的进程，与 §5.9 compute process（计算进程）相对"
+  },
+  {
+    "en": "bounce buffer",
+    "zh": "弹跳缓冲区",
+    "note": "20.5 节 p0290；设备内存与远程 MPI 进程之间数据往返的临时主机内存缓冲区"
+  },
+  {
+    "en": "distributed memory model",
+    "zh": "分布式内存模型",
+    "note": "20.1 节 p0070；MPI 的内存模型，进程通过消息交换信息"
+  },
+  {
+    "en": "25-point stencil",
+    "zh": "25 点模板",
+    "note": "全章；三维四阶模板，与 Ch008 新词 13-point/19-point stencil 配套"
+  },
+  {
+    "en": "higher-order stencil",
+    "zh": "高阶模板",
+    "note": "20.2 节 p0080；每个方向使用多个间接邻居的模板"
+  },
+  {
+    "en": "boundary slice",
+    "zh": "边界切片",
+    "note": "20.5 节；分区边界处的切片，与 halo slice（光环切片）相对"
+  },
+  {
+    "en": "halo slice",
+    "zh": "光环切片",
+    "note": "20.5 节；从邻居分区接收的光环数据切片"
+  },
+  {
+    "en": "intracommunicator",
+    "zh": "组内通信域",
+    "note": "脚注 fn1；同一进程组内的通信域，与 intercommunicator（组间通信域）相对"
+  },
+  {
+    "en": "intercommunicator",
+    "zh": "组间通信域",
+    "note": "脚注 fn1；连接两个进程组的通信域"
+  },
+  {
+    "en": "login node",
+    "zh": "登录节点",
+    "note": "20.3 节 p0115；集群中提交作业的节点"
+  },
+  {
+    "en": "tag",
+    "zh": "标记",
+    "note": "20.4 节 p0170/p0175；MPI 消息的分类标签，MPI_ANY_TAG 译为任意标记"
+  },
+  {
+    "en": "virtual memory",
+    "zh": "虚拟内存",
+    "note": "20.5 节 p0300–p0310；操作系统内存管理语境"
+  },
+  {
+    "en": "paging",
+    "zh": "换页",
+    "note": "20.5 节 p0300–p0310；page out 译为换出，page locked 译为锁页"
+  },
+  {
+    "en": "grid spacing",
+    "zh": "网格间距",
+    "note": "20.2 节 p0090；grid spacing variable 译为网格间距变量"
+  },
+  {
+    "en": "CUDA aware message passing interface",
+    "zh": "CUDA 感知的 MPI",
+    "note": "20.7 节标题（st0055 及本章概要 o0040）；nav.json 指定译法。GLOSSARY GATE：加入 §5 后，借助包含抑制逻辑可消除其中 message passing interface 对 消息传递接口 的强制要求（离线验证通过）；否则需在 glossary.py _ORDINARY_USAGE 中为 “CUDA aware message passing interface” 添加抑制模式"
+  }
+]

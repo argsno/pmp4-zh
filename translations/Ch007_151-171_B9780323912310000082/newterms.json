@@ -1,0 +1,52 @@
+[
+  {
+    "en": "arithmetic-to-global memory access ratio",
+    "zh": "算术运算与全局内存访问之比",
+    "note": "§7.2–§7.4 反复出现的性能指标；与 §5.4 的 compute to global memory access ratio 同一概念但英文措辞不同，且校验要求译文中含「内存访问」，故统一译「算术运算与全局内存访问之比」"
+  },
+  {
+    "en": "convolution kernel",
+    "zh": "卷积核",
+    "note": "§7.1 中指向滤波器数组（与 CUDA 核函数区分）；首现处附英文（convolution kernel），后文直接使用"
+  },
+  {
+    "en": "filter",
+    "zh": "滤波器",
+    "note": "全书反复出现，为卷积滤波器（convolution filter）的简称"
+  },
+  {
+    "en": "mask",
+    "zh": "掩码",
+    "note": "§7.1 摘要与 §7.2 习题中为 filter 的同义词（mask elements、rectangular mask）"
+  },
+  {
+    "en": "tiling efficiency",
+    "zh": "分块效率",
+    "note": "关键词（Keywords）词条"
+  },
+  {
+    "en": "1D convolution",
+    "zh": "1D 卷积",
+    "note": "§7.1 及习题；2D convolution / 3D convolution 依此类推，译为「2D 卷积」「3D 卷积」"
+  },
+  {
+    "en": "data caching",
+    "zh": "数据缓存",
+    "note": "摘要中；指依赖硬件缓存而非显式分块"
+  },
+  {
+    "en": "input tiling",
+    "zh": "输入分块",
+    "note": "摘要中作修饰语（input tiling kernel → 输入分块核函数）"
+  },
+  {
+    "en": "internal block",
+    "zh": "内部线程块",
+    "note": "§7.4 比值分析中，指光环单元非幽灵单元的线程块"
+  },
+  {
+    "en": "output pixel",
+    "zh": "输出像素",
+    "note": "§7.2 线程到输出元素映射"
+  }
+]

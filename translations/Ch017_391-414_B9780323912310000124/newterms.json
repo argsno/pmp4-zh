@@ -1,0 +1,177 @@
+[
+  {
+    "en": "voxel",
+    "zh": "体素",
+    "note": "17.1-17.3，三维重建图像的基本单元，全文统一"
+  },
+  {
+    "en": "gridding",
+    "zh": "网格化",
+    "note": "17.1-17.2，将非笛卡儿采样数据插值到笛卡儿网格的常用方法"
+  },
+  {
+    "en": "fast Fourier transform (FFT)",
+    "zh": "快速傅里叶变换（FFT）",
+    "note": "17.1，逆 FFT（iFFT）用于笛卡儿轨迹重建"
+  },
+  {
+    "en": "inverse fast Fourier transform (iFFT)",
+    "zh": "逆快速傅里叶变换（iFFT）",
+    "note": "17.1/17.3，gridding/iFFT 对比方法"
+  },
+  {
+    "en": "peak signal-to-noise ratio (PSNR)",
+    "zh": "峰值信噪比（PSNR）",
+    "note": "17.3，验证硬件函数精度的指标"
+  },
+  {
+    "en": "phantom object",
+    "zh": "体模",
+    "note": "17.3，测试用虚构对象"
+  },
+  {
+    "en": "apodization",
+    "zh": "变迹",
+    "note": "17.1，apodization filtering function 译作变迹滤波函数"
+  },
+  {
+    "en": "Taylor series",
+    "zh": "泰勒级数",
+    "note": "17.3，sin/cos 软件实现的五元泰勒级数"
+  },
+  {
+    "en": "special function unit (SFU)",
+    "zh": "特殊函数单元（SFU）",
+    "note": "17.3 步骤 3，执行硬件三角函数指令的单元"
+  },
+  {
+    "en": "working set",
+    "zh": "工作集",
+    "note": "17.3 步骤 2，活动线程束所需常量缓存条目的集合"
+  },
+  {
+    "en": "cache line",
+    "zh": "缓存行",
+    "note": "17.3 步骤 2，常量缓存条目"
+  },
+  {
+    "en": "weighting function",
+    "zh": "加权函数",
+    "note": "17.1，式 (17.1) 中的 W(k)"
+  },
+  {
+    "en": "scan trajectory",
+    "zh": "扫描轨迹",
+    "note": "17.1，注意 Cartesian/non-Cartesian scan trajectory 已入 §5.8"
+  },
+  {
+    "en": "cross-iteration dependence",
+    "zh": "跨迭代依赖",
+    "note": "关键词/17.3，循环分裂与循环交换的安全性前提"
+  },
+  {
+    "en": "statistical estimation method",
+    "zh": "统计估计方法",
+    "note": "关键词，统计最优估计类方法"
+  },
+  {
+    "en": "iterative method",
+    "zh": "迭代法",
+    "note": "关键词/17.2，与迭代重建区分"
+  },
+  {
+    "en": "read-only data cache",
+    "zh": "只读数据缓存",
+    "note": "17.3 步骤 2，const __restrict__ 使输入数据驻留的缓存"
+  },
+  {
+    "en": "bilinear interpolation",
+    "zh": "双线性插值",
+    "note": "17.3 步骤 3，gridding/iFFT 对比方法"
+  },
+  {
+    "en": "rosette",
+    "zh": "玫瑰线",
+    "note": "17.1，非笛卡儿扫描轨迹之一"
+  },
+  {
+    "en": "radial line",
+    "zh": "径向线",
+    "note": "17.1，非笛卡儿扫描轨迹，也称投影成像"
+  },
+  {
+    "en": "projection imaging",
+    "zh": "投影成像",
+    "note": "17.1，径向线的别称"
+  },
+  {
+    "en": "cost function",
+    "zh": "代价函数",
+    "note": "17.2，准贝叶斯代价函数"
+  },
+  {
+    "en": "loop unrolling",
+    "zh": "循环展开",
+    "note": "17.3 步骤 4，#pragma unroll"
+  },
+  {
+    "en": "Pareto optimal curve",
+    "zh": "帕累托最优曲线",
+    "note": "17.3 步骤 4，Ryoo et al. (2008) 的调优筛选方法"
+  },
+  {
+    "en": "heuristic tuning",
+    "zh": "启发式调优",
+    "note": "17.3 步骤 4，与系统搜索组合对比"
+  },
+  {
+    "en": "quasi-Bayesian",
+    "zh": "准贝叶斯",
+    "note": "17.2，准贝叶斯估计问题公式化"
+  },
+  {
+    "en": "Hermitian transpose",
+    "zh": "厄米转置",
+    "note": "17.2，即共轭转置（conjugate transpose）"
+  },
+  {
+    "en": "Toeplitz",
+    "zh": "Toeplitz",
+    "note": "17.2，保持英文（矩阵类型专名）"
+  },
+  {
+    "en": "view angle transformation",
+    "zh": "视角变换",
+    "note": "17.3 步骤 3，GPU 提供硬件三角函数的动机之一"
+  },
+  {
+    "en": "anatomical constraint",
+    "zh": "解剖约束",
+    "note": "17.2，W 中的先验信息"
+  },
+  {
+    "en": "reference image",
+    "zh": "参考图像",
+    "note": "17.2，用于导出 W 的高分辨率水分子扫描图像"
+  },
+  {
+    "en": "spatial frequency domain",
+    "zh": "空间频率域",
+    "note": "17.1，k 空间域的同义词"
+  },
+  {
+    "en": "Fourier transform domain",
+    "zh": "傅里叶变换域",
+    "note": "17.1，k 空间域的同义词"
+  },
+  {
+    "en": "field inhomogeneity",
+    "zh": "场不均匀性",
+    "note": "17.1，自校准场不均匀性信息"
+  },
+  {
+    "en": "memory bandwidth reduction",
+    "zh": "内存带宽下降",
+    "note": "glossary false positive：p0285 中 reduction 为普通英语（下降），非 §5 归约；denylist 只覆盖 reduction in/of memory bandwidth 语序，本短语未被覆盖，需团队负责人扩充 denylist"
+  }
+]

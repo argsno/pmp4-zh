@@ -1,0 +1,97 @@
+[
+  {
+    "en": "partial sum",
+    "zh": "部分和",
+    "note": "§10.1–10.3：归约树的中间结果，例如两两元素的部分和"
+  },
+  {
+    "en": "partial reduction result",
+    "zh": "部分归约结果",
+    "note": "§10.2：归约树各层产生的中间结果"
+  },
+  {
+    "en": "time step",
+    "zh": "时间步",
+    "note": "§10.2：并行归约树的每一轮运算"
+  },
+  {
+    "en": "execution resource",
+    "zh": "执行资源",
+    "note": "§10.2/10.4：活跃线程束所消耗的硬件资源"
+  },
+  {
+    "en": "execution resource utilization efficiency",
+    "zh": "执行资源利用率",
+    "note": "§10.4：活跃线程数与所消耗执行资源数之比"
+  },
+  {
+    "en": "active thread",
+    "zh": "活跃线程",
+    "note": "§10.3–10.6：某次迭代中执行运算的线程"
+  },
+  {
+    "en": "inactive thread",
+    "zh": "非活跃线程",
+    "note": "§10.3–10.6：某次迭代中跳过运算的线程"
+  },
+  {
+    "en": "convergent kernel",
+    "zh": "收敛核函数",
+    "note": "§10.5–10.6：指图 10.9 中相邻线程始终访问相邻位置的改进核函数"
+  },
+  {
+    "en": "stride",
+    "zh": "步长",
+    "note": "§10.3–10.4：线程所加元素与属主位置之间的距离；也指 stride 变量"
+  },
+  {
+    "en": "owner position / owner location",
+    "zh": "属主位置",
+    "note": "§10.3：线程所拥有（唯一写入）的数组位置"
+  },
+  {
+    "en": "sum reduction",
+    "zh": "求和归约",
+    "note": "§10.1–10.3：基于加法算子的归约"
+  },
+  {
+    "en": "max reduction",
+    "zh": "最大值归约",
+    "note": "§10.1–10.2：基于最大值算子的归约"
+  },
+  {
+    "en": "multiblock",
+    "zh": "多块",
+    "note": "§10.7：涉及多个线程块的（归约）"
+  },
+  {
+    "en": "segmented multiblock reduction",
+    "zh": "分段多块归约",
+    "note": "§10.7：将输入划分为段、每段由一个线程块归约"
+  },
+  {
+    "en": "global memory request",
+    "zh": "全局内存请求",
+    "note": "§10.5：线程束对全局内存的合并/非合并访问请求"
+  },
+  {
+    "en": "hardware underutilization",
+    "zh": "硬件未被充分利用",
+    "note": "§10.8：发散阶段硬件资源空闲的情形"
+  },
+  {
+    "en": "geometric series",
+    "zh": "几何级数",
+    "note": "§10.2：½N+¼N+…=N−1"
+  },
+  {
+    "en": "hierarchical reduction",
+    "zh": "分层归约",
+    "note": "§10.7 标题：面向任意输入长度的分层归约"
+  },
+  {
+    "en": "host",
+    "zh": "承办",
+    "note": "glossary false positive：p0150 中 \"provided enough resources to host the four games\" 的 host 为普通动词（承办/主办），非 CUDA 主机"
+  }
+]

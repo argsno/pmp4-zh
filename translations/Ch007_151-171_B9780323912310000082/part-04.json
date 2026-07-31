@@ -1,0 +1,155 @@
+{
+  "page": "Ch007_151-171_B9780323912310000082",
+  "nodes": [
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]",
+      "en": "2. Consider performing a 1D convolution on array 【1】N【/1】 = {4,1,3,2,3} with filter F = {2,1,4}. What is the resulting output array?",
+      "zh": "2. 考虑对数组【1】N【/1】= {4,1,3,2,3} 用滤波器 F = {2,1,4} 执行 1D 卷积。得到的输出数组是什么？"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]",
+      "en": "3. What do you think the following 1D convolution filters are doing?【M1】",
+      "zh": "3. 你认为下面这些 1D 卷积滤波器分别是在做什么？【M1】"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[1]",
+      "en": "a. [0 1 0]",
+      "zh": "a. [0 1 0]"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[2]",
+      "en": "b. [0 0 1]",
+      "zh": "b. [0 0 1]"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[3]",
+      "en": "c. [1 0 0]",
+      "zh": "c. [1 0 0]"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[4]",
+      "en": "d. [−1/2 0 1/2]",
+      "zh": "d. [−1/2 0 1/2]"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[5]",
+      "en": "e. [1/3 1/3 1/3]",
+      "zh": "e. [1/3 1/3 1/3]"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[4]",
+      "en": "4. Consider performing a 1D convolution on an array of size 【1】N【/1】 with a filter of size M:【M2】",
+      "zh": "4. 考虑对大小为【1】N【/1】的数组用大小为 M 的滤波器执行 1D 卷积：【M2】"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[4]/ol[1]/li[1]",
+      "en": "a. How many ghost cells are there in total?",
+      "zh": "a. 幽灵单元总共有多少个？"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[4]/ol[1]/li[2]",
+      "en": "b. How many multiplications are performed if ghost cells are treated as multiplications (by 0)?",
+      "zh": "b. 如果把幽灵单元也当作乘法处理（乘以 0），会执行多少次乘法？"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[4]/ol[1]/li[3]",
+      "en": "c. How many multiplications are performed if ghost cells are not treated as multiplications?",
+      "zh": "c. 如果不把幽灵单元当作乘法处理，会执行多少次乘法？"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[5]",
+      "en": "5. Consider performing a 2D convolution on a square matrix of size 【1】N【/1】 × 【2】N【/2】 with a square filter of size 【3】M【/3】 × 【4】M【/4】:【M5】",
+      "zh": "5. 考虑对大小为【1】N【/1】×【2】N【/2】的方阵用大小为【3】M【/3】×【4】M【/4】的方形滤波器执行 2D 卷积：【M5】"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[5]/ol[1]/li[1]",
+      "en": "a. How many ghost cells are there in total?",
+      "zh": "a. 幽灵单元总共有多少个？"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[5]/ol[1]/li[2]",
+      "en": "b. How many multiplications are performed if ghost cells are treated as multiplications (by 0)?",
+      "zh": "b. 如果把幽灵单元也当作乘法处理（乘以 0），会执行多少次乘法？"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[5]/ol[1]/li[3]",
+      "en": "c. How many multiplications are performed if ghost cells are not treated as multiplications?",
+      "zh": "c. 如果不把幽灵单元当作乘法处理，会执行多少次乘法？"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[6]",
+      "en": "6. Consider performing a 2D convolution on a rectangular matrix of size 【1】N【/1】【2】1【/2】 × 【3】N【/3】【4】2【/4】 with a rectangular mask of size 【5】M【/5】【6】1【/6】 × 【7】M【/7】【8】2【/8】:【M9】",
+      "zh": "6. 考虑对大小为【1】N【/1】【2】1【/2】×【3】N【/3】【4】2【/4】的矩形矩阵，用大小为【5】M【/5】【6】1【/6】×【7】M【/7】【8】2【/8】的矩形掩码执行 2D 卷积：【M9】"
+    },
+    {
+      "id": "o0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[6]/ol[1]/li[1]",
+      "en": "a. How many ghost cells are there in total?",
+      "zh": "a. 幽灵单元总共有多少个？"
+    },
+    {
+      "id": "o0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[6]/ol[1]/li[2]",
+      "en": "b. How many multiplications are performed if ghost cells are treated as multiplications (by 0)?",
+      "zh": "b. 如果把幽灵单元也当作乘法处理（乘以 0），会执行多少次乘法？"
+    },
+    {
+      "id": "o0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[6]/ol[1]/li[3]",
+      "en": "c. How many multiplications are performed if ghost cells are not treated as multiplications?",
+      "zh": "c. 如果不把幽灵单元当作乘法处理，会执行多少次乘法？"
+    },
+    {
+      "id": "o0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[7]",
+      "en": "7. Consider performing a 2D tiled convolution with the kernel shown in 【1】Fig. 7.12【/1】 on an array of size 【2】N【/2】 × 【3】N【/3】 with a filter of size 【4】M【/4】 × 【5】M【/5】 using an output tile of size 【6】T【/6】 × 【7】T【/7】.\n【M8】",
+      "zh": "7. 考虑用【1】图 7.12【/1】中所示的核函数，对大小为【2】N【/2】×【3】N【/3】的数组执行 2D 分块卷积，滤波器大小为【4】M【/4】×【5】M【/5】，输出分块大小为【6】T【/6】×【7】T【/7】。\n【M8】"
+    },
+    {
+      "id": "o0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[7]/ol[1]/li[1]",
+      "en": "a. How many thread blocks are needed?",
+      "zh": "a. 需要多少个线程块？"
+    },
+    {
+      "id": "o0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[7]/ol[1]/li[2]",
+      "en": "b. How many threads are needed per block?",
+      "zh": "b. 每个线程块需要多少个线程？"
+    },
+    {
+      "id": "o0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[7]/ol[1]/li[3]",
+      "en": "c. How much shared memory is needed per block?",
+      "zh": "c. 每个线程块需要多少共享内存？"
+    },
+    {
+      "id": "o0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[7]/ol[1]/li[4]",
+      "en": "d. Repeat the same questions if you were using the kernel in 【1】Fig. 7.15【/1】.",
+      "zh": "d. 如果改用【1】图 7.15【/1】中的核函数，重新回答同样的问题。"
+    },
+    {
+      "id": "o0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[8]",
+      "en": "8. Revise the 2D kernel in 【1】Fig. 7.7【/1】 to perform 3D convolution.",
+      "zh": "8. 修改【1】图 7.7【/1】中的 2D 核函数，使其执行 3D 卷积。"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "page": "Ch002_23-46_B9780323912310000148",
+  "nodes": [
+    {
+      "id": "n0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 2.11【/2】【/1】 CUDA C keywords for function declaration.",
+      "zh": "【1】【2】图 2.11【/2】【/1】 用于函数声明的 CUDA C 关键字。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[10]",
+      "en": "The “_【1】_device__【/1】” keyword indicates that the function being declared is a CUDA device function. A device function executes on a CUDA device and can be called only from a kernel function or another device function. The device function is executed by the device thread that calls it and does not result in any new device threads being launched.【2】【3】7【/3】【/2】",
+      "zh": "“_【1】_device__【/1】”关键字表示所声明的函数是一个 CUDA 设备函数。设备函数在 CUDA 设备上执行，只能从核函数或其他设备函数调用。设备函数由调用它的设备线程执行，不会导致任何新的设备线程被启动。【2】【3】7【/3】【/2】"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[11]",
+      "en": "The “_【1】_host__【/1】” keyword indicates that the function being declared is a CUDA host function. A host function is simply a traditional C function that executes on the host and can be called only from another host function. By default, all functions in a CUDA program are host functions if they do not have any of the CUDA keywords in their declaration. This makes sense, since many CUDA applications are ported from CPU-only execution environments. The programmer would add kernel functions and device functions during the porting process. The original functions remain as host functions. Having all functions to default into host functions spares the programmer the tedious work of changing all original function declarations.",
+      "zh": "“_【1】_host__【/1】”关键字表示所声明的函数是一个 CUDA 主机函数。主机函数就是传统 C 函数，在主机上执行，只能从其他主机函数调用。默认情况下，CUDA 程序中的所有函数只要声明中没有包含任何 CUDA 关键字，就都是主机函数。这很合理，因为许多 CUDA 应用是从仅使用 CPU 的执行环境移植过来的。在移植过程中，程序员会添加核函数和设备函数，原有的函数仍然是主机函数。让所有函数默认成为主机函数，免去了程序员修改所有原有函数声明的繁琐工作。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[12]",
+      "en": "Note that one can use both “_【1】_host__【/1】” and “_【2】_device__【/2】” in a function declaration. This combination tells the compilation system to generate two versions of object code for the same function. One is executed on the host and can be called only from a host function. The other is executed on the device and can be called only from a device or kernel function. This supports a common use case when the same function source code can be recompiled to generate a device version. Many user library functions will likely fall into this category.",
+      "zh": "请注意，在函数声明中可以同时使用“_【1】_host__【/1】”和“_【2】_device__【/2】”。这种组合告诉编译系统为同一个函数生成两个版本的目标代码：一个在主机上执行，只能从主机函数调用；另一个在设备上执行，只能从设备函数或核函数调用。这支持了一种常见的使用场景——同一份函数源代码可以重新编译生成设备版本。许多用户库函数很可能属于这一类。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[13]",
+      "en": "The second notable extension to C, in 【1】Fig. 2.10【/1】, is the built-in variables “【2】threadIdx【/2】,” “【3】blockIdx【/3】,” and “【4】blockDim【/4】.” Recall that all threads execute the same kernel code and there needs to be a way for them to distinguish themselves from each other and direct each thread toward a particular part of the data. These built-in variables are the means for threads to access hardware registers that provide the identifying coordinates to threads. Different threads will see different values in their 【5】threadIdx.x【/5】, 【6】blockIdx.x【/6】, and 【7】blockDim.x【/7】 variables. For readability we will sometimes refer to a thread as thread【8】【9】blockIdx.x【/9】, 【10】threadIdx.x【/10】【/8】 in our discussions.",
+      "zh": "【1】图 2.10【/1】中第二个值得注意的 C 扩展是内置变量“【2】threadIdx【/2】”、“【3】blockIdx【/3】”和“【4】blockDim【/4】”。回顾一下，所有线程都执行相同的核函数代码，因此需要有办法让它们彼此区分，并把每个线程引导到数据的特定部分。这些内置变量正是线程访问硬件寄存器的途径，这些寄存器向线程提供标识性的坐标。不同线程在其【5】threadIdx.x【/5】、【6】blockIdx.x【/6】和【7】blockDim.x【/7】变量中会看到不同的值。为了便于阅读，在后面的讨论中我们有时会把一个线程表示为 thread【8】【9】blockIdx.x【/9】,【10】threadIdx.x【/10】【/8】。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[14]",
+      "en": "There is an automatic (local) variable 【1】i【/1】 in 【2】Fig. 2.10【/2】. In a CUDA kernel function, automatic variables are private to each thread. That is, a version of 【3】i【/3】 will be generated for every thread. If the grid is launched with 10,000 threads, there will be 10,000 versions of 【4】i【/4】, one for each thread. The value assigned by a thread to its 【5】i【/5】 variable is not visible to other threads. We will discuss these automatic variables in more details in 【6】Chapter 5【/6】, Memory Architecture and Data Locality.",
+      "zh": "【2】图 2.10【/2】中有一个自动（局部）变量【1】i【/1】。在 CUDA 核函数中，自动变量对每个线程是私有的。也就是说，每个线程都会生成一个【3】i【/3】的副本。如果网格以 10,000 个线程启动，就会有 10,000 个【4】i【/4】，每个线程一个。线程赋给其【5】i【/5】变量的值对其他线程不可见。我们将在【6】第 5 章【/6】（内存体系结构与数据局部性）中更详细地讨论这些自动变量。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[15]",
+      "en": "A quick comparison between 【1】Fig. 2.4【/1】 and 【2】Fig. 2.10【/2】 reveals an important insight into CUDA kernels. The kernel function in 【3】Fig. 2.10【/3】 does not have a loop that corresponds to the one in 【4】Fig. 2.4【/4】. The reader should ask where the loop went. The answer is that the loop is now replaced with the grid of threads. The entire grid forms the equivalent of the loop. Each thread in the grid corresponds to one iteration of the original loop. This is sometimes referred to as 【5】loop parallelism【/5】, in which iterations of the original sequential code are executed by threads in parallel.",
+      "zh": "把【1】图 2.4【/1】和【2】图 2.10【/2】稍作比较，就能对 CUDA 核函数得出一个重要的认识。【3】图 2.10【/3】中的核函数没有与【4】图 2.4【/4】中那个循环相对应的循环。读者应该会问：循环到哪里去了？答案是：循环现在被线程网格取代了，整个网格就相当于原来的循环。网格中的每个线程对应原循环的一次迭代。这种形式有时被称为【5】循环级并行【/5】——原串行代码的各次迭代由线程并行执行。"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[16]",
+      "en": "Note that there is an if (【1】i【/1】&lt;【2】n【/2】) statement in 【3】addVecKernel【/3】 in 【4】Fig. 2.10【/4】. This is because not all vector lengths can be expressed as multiples of the block size. For example, let’s assume that the vector length is 100. The smallest efficient thread block dimension is 32. Assume that we picked 32 as block size. One would need to launch four thread blocks to process all the 100 vector elements. However, the four thread blocks would have 128 threads. We need to disable the last 28 threads in thread block 3 from doing work not expected by the original program. Since all threads are to execute the same code, all will test their 【5】i【/5】 values against 【6】n【/6】, which is 100. With the if (【7】i【/7】&lt;【8】n【/8】) statement, the first 100 threads will perform the addition, whereas the last 28 will not. This allows the kernel to be called to process vectors of arbitrary lengths.",
+      "zh": "请注意，【4】图 2.10【/4】中的【3】addVecKernel【/3】里有一条 if (【1】i【/1】&lt;【2】n【/2】) 语句。这是因为并非所有向量长度都能表示成线程块大小的整数倍。例如，假设向量长度为 100。最小的高效线程块维数为 32。假设我们把线程块大小选为 32，那么需要启动 4 个线程块才能处理全部 100 个向量元素。然而，4 个线程块会有 128 个线程。我们需要禁用线程块 3 中的最后 28 个线程，不让它们执行原程序预期之外的工作。由于所有线程都要执行同一份代码，所有线程都会把自己的【5】i【/5】值与【6】n【/6】（即 100）比较。有了 if (【7】i【/7】&lt;【8】n【/8】) 语句，前 100 个线程将执行加法，而最后 28 个线程不会。这使核函数可以被调用来处理任意长度的向量。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "2.6 Calling kernel functions",
+      "zh": "2.6 调用核函数"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "Having implemented the kernel function, the remaining step is to call that function from the host code to launch the grid. This is illustrated in 【1】Fig. 2.12【/1】. When the host code calls a kernel, it sets the grid and thread block dimensions via 【2】execution【/2】 【3】configuration parameters【/3】. The configuration parameters are given between the “&lt;&lt;&lt;” and “&gt;&gt;&gt;” before the traditional C function arguments. The first configuration parameter gives the number of blocks in the grid. The second specifies the number of threads in each block. In this example there are 256 threads in each block. To ensure that we have enough threads in the grid to cover all the vector elements, we need to set the number of blocks in the grid to the ceiling division (rounding up the quotient to the immediate higher integer value) of the desired number of threads (【4】n【/4】 in this case) by the thread block size (256 in this case). There are many ways to perform a ceiling division. One way is to apply the C ceiling function to 【5】n【/5】/256.0. Using the floating-point value 256.0 ensures that we generate a floating value for the division so that the ceiling function can round it up correctly. For example, if we want 1000 threads, we would launch ceil(1000/256.0)【6】=【/6】4 thread blocks. As a result, the statement will launch 4×256=1024 threads. With the if (【7】i【/7】 &lt; 【8】n【/8】) statement in the kernel as shown in 【9】Fig. 2.10【/9】, the first 1000 threads will perform addition on the 1000 vector elements. The remaining 24 will not.",
+      "zh": "实现了核函数之后，剩下的步骤就是从主机代码调用该函数来启动网格，如【1】图 2.12【/1】所示。主机代码调用核函数时，通过【2】执行【/2】【3】配置参数【/3】来设置网格和线程块的维度。配置参数放在传统 C 函数实参之前的一对“&lt;&lt;&lt;”与“&gt;&gt;&gt;”之间。第一个配置参数给出网格中的线程块数，第二个指定每个块中的线程数。在这个例子中，每个块有 256 个线程。为了确保网格中的线程数足以覆盖全部向量元素，我们需要把网格中的线程块数设置为所需线程数（本例中为【4】n【/4】）除以线程块大小（本例中为 256）后的向上取整除法结果（即把商向上舍入到紧邻的更高整数）。实现向上取整除法有很多方法。一种方法是对【5】n【/5】/256.0 应用 C 的向上取整函数。使用浮点值 256.0 可以保证除法产生浮点值，使向上取整函数能够正确地向上舍入。例如，如果我们想要 1000 个线程，就启动 ceil(1000/256.0)【6】=【/6】4 个线程块。这样一来，该语句会启动 4×256=1024 个线程。借助核函数中如【9】图 2.10【/9】所示的 if (【7】i【/7】 &lt; 【8】n【/8】) 语句，前 1000 个线程将对 1000 个向量元素执行加法，其余 24 个线程不会执行。"
+    },
+    {
+      "id": "n0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 2.12【/1】 A vector addition kernel call statement.",
+      "zh": "【1】图 2.12【/1】 一条向量加法核函数调用语句。"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "【1】Fig. 2.13【/1】 shows the final host code in the 【2】vecAdd【/2】 function. This source code completes the skeleton in 【3】Fig. 2.5【/3】. 【4】Figs. 2.12【/4】 and 【5】2.13【/5】 jointly illustrate a simple CUDA program that consists of both host code and a device kernel. The code is hardwired to use thread blocks of 256 threads each.【6】【7】8【/7】【/6】 However, the number of thread blocks used depends on the length of the vectors (【8】n【/8】). If 【9】n【/9】 is 750, three thread blocks will be used. If 【10】n【/10】 is 4000, 16 thread blocks will be used. If 【11】n【/11】 is 2,000,000, 7813 blocks will be used. Note that all the thread blocks operate on different parts of the vectors. They can be executed in any arbitrary order. The programmer must not make any assumptions regarding execution order. A small GPU with a small amount of execution resources may execute only one or two of these thread blocks in parallel. A larger GPU may execute 64 or 128 blocks in parallel. This gives CUDA kernels scalability in execution speed with hardware. That is, the same code runs at lower speed on small GPUs and at higher speed on larger GPUs. We will revisit this point in 【12】Chapter 4【/12】, Compute Architecture and Scheduling.",
+      "zh": "【1】图 2.13【/1】展示了【2】vecAdd【/2】函数中最终的主机代码。这段源代码补全了【3】图 2.5【/3】中的骨架。【4】图 2.12【/4】和图【5】2.13【/5】合起来说明了一个由主机代码和设备核函数组成的简单 CUDA 程序。这段代码硬性规定使用每个 256 个线程的线程块。【6】【7】8【/7】【/6】不过，所用线程块的数目取决于向量的长度（【8】n【/8】）。如果【9】n【/9】为 750，将使用 3 个线程块；如果【10】n【/10】为 4000，将使用 16 个线程块；如果【11】n【/11】为 2,000,000，将使用 7813 个线程块。请注意，所有这些线程块处理的是向量的不同部分，它们可以以任意顺序执行，程序员不得对执行顺序做任何假设。执行资源较少的小型 GPU 可能只并行执行其中的一两个线程块，而较大的 GPU 可能并行执行 64 或 128 个线程块。这使 CUDA 核函数的执行速度随硬件而具有可扩展性：也就是说，同一份代码在小型 GPU 上运行较慢，在较大的 GPU 上运行较快。我们将在【12】第 4 章【/12】（计算体系结构与调度）中再讨论这一点。"
+    },
+    {
+      "id": "n0112",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 2.13【/1】 A complete version of the host code in the vecAdd function.",
+      "zh": "【1】图 2.13【/1】 vecAdd 函数中主机代码的完整版本。"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "It is important to point out again that the vector addition example is used for its simplicity. In practice, the overhead of allocating device memory, input data transfer from host to device, output data transfer from device to host, and deallocating device memory will likely make the resulting code slower than the original sequential code in 【1】Fig. 2.4【/1】. This is because the amount of calculation that is done by the kernel is small relative to the amount of data processed or transferred. Only one addition is performed for two floating-point input operands and one floating-point output operand. Real applications typically have kernels in which much more work is needed relative to the amount of data processed, which makes the additional overhead worthwhile. Real applications also tend to keep the data in the device memory across multiple kernel invocations so that the overhead can be amortized. We will present several examples of such applications.",
+      "zh": "有必要再次指出，这里使用向量加法只是因为它简单。在实践中，分配设备内存、输入数据传输（从主机到设备）、输出数据传输（从设备到主机）以及释放设备内存所带来的开销，很可能使最终代码比【1】图 2.4【/1】中原来的串行代码更慢。这是因为核函数完成的计算量相对于处理或传输的数据量来说很小——两个浮点输入操作数和一个浮点输出操作数只做一次加法。真实应用中的核函数相对于处理的数据量通常需要多得多的计算，因此额外的开销是值得的。真实应用还倾向于在多次核函数调用之间把数据保留在设备内存中，从而分摊这些开销。我们后面会介绍几个这样的应用示例。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "2.7 Compilation",
+      "zh": "2.7 编译"
+    },
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[1]",
+      "en": "We have seen that implementing CUDA C kernels requires using various extensions that are not part of C. Once these extensions have been used in the code, it is no longer acceptable to a traditional C compiler. The code needs to be compiled by a compiler that recognizes and understands these extensions, such as NVCC (NVIDIA C compiler). As is shown at the top of 【1】Fig. 2.14【/1】, the NVCC compiler processes a CUDA C program, using the CUDA keywords to separate the host code and device code. The host code is straight ANSI C code, which is compiled with the host’s standard C/C++ compilers and is run as a traditional CPU process. The device code, which is marked with CUDA keywords that designate CUDA kernels and their associated helper functions and data structures, is compiled by NVCC into virtual binary files called PTX files. These PTX files are further compiled by a runtime component of NVCC into the real object files and executed on a CUDA-capable GPU device.",
+      "zh": "我们已经看到，实现 CUDA C 核函数需要使用各种不属于 C 的扩展。一旦代码中使用了这些扩展，传统的 C 编译器就不再接受它了。代码需要用能够识别并理解这些扩展的编译器来编译，例如 NVCC（NVIDIA C 编译器）。如【1】图 2.14【/1】顶部所示，NVCC 编译器处理 CUDA C 程序时，利用 CUDA 关键字把主机代码和设备代码分开。主机代码是纯粹的 ANSI C 代码，由主机上标准的 C/C++ 编译器编译，并作为传统的 CPU 进程运行。设备代码用指定 CUDA 核函数及其相关辅助函数和数据结构的 CUDA 关键字标记，由 NVCC 编译成称为 PTX 文件的虚拟二进制文件。这些 PTX 文件再由 NVCC 的运行时组件进一步编译为真正的目标文件，并在支持 CUDA 的 GPU 设备上执行。"
+    },
+    {
+      "id": "n0116",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 2.14【/2】【/1】 Overview of the compilation process of a CUDA C program.",
+      "zh": "【1】【2】图 2.14【/2】【/1】 CUDA C 程序编译过程概述。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/h2[1]",
+      "en": "2.8 Summary",
+      "zh": "2.8 小结"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[1]",
+      "en": "This chapter provided a quick, simplified overview of the CUDA C programming model. CUDA C extends the C language to support parallel computing. We discussed an essential subset of these extensions in this chapter. For your convenience we summarize the extensions that we have discussed in this chapter as follows:",
+      "zh": "本章快速而简化地概述了 CUDA C 编程模型。CUDA C 扩展了 C 语言以支持并行计算。本章我们讨论了这些扩展中必不可少的一个部分。为了方便读者，我们把本章讨论过的扩展总结如下："
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/section[1]/h3[1]",
+      "en": "2.8.1 Function declarations",
+      "zh": "2.8.1 函数声明"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/section[1]/p[1]",
+      "en": "CUDA C extends the C function declaration syntax to support heterogeneous parallel computing. The extensions are summarized in 【1】Fig. 2.12【/1】. Using one of “【2】__【3】global【/3】__【/2】,” “_【4】_device__【/4】,” or “_【5】_host__【/5】,” a CUDA C programmer can instruct the compiler to generate a kernel function, a device function, or a host function. All function declarations without any of these keywords default to host functions. If both “_【6】_host__【/6】” and “【7】_device__【/7】” are used in a function declaration, the compiler generates two versions of the function, one for the device and one for the host. If a function declaration does not have any CUDA C extension keyword, the function defaults into a host function.",
+      "zh": "CUDA C 扩展了 C 的函数声明语法，以支持异构并行计算。这些扩展总结在【1】图 2.12【/1】中。使用“【2】__【3】global【/3】__【/2】”、“_【4】_device__【/4】”或“_【5】_host__【/5】”中的任何一个，CUDA C 程序员就可以指示编译器生成核函数、设备函数或主机函数。所有不包含这些关键字的函数声明都默认为主机函数。如果函数声明中同时使用了“_【6】_host__【/6】”和“【7】_device__【/7】”，编译器会生成该函数的两个版本，一个用于设备，一个用于主机。如果函数声明不包含任何 CUDA C 扩展关键字，该函数默认为主机函数。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/section[2]/h3[1]",
+      "en": "2.8.2 Kernel call and grid launch",
+      "zh": "2.8.2 核函数调用与网格启动"
+    },
+    {
+      "id": "p0370",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/section[2]/p[1]",
+      "en": "CUDA C extends the C function call syntax with kernel execution configuration parameters surrounded by &lt;&lt;&lt; and &gt;&gt;&gt;. These execution configuration parameters are only used when calling a kernel function to launch a grid. We discussed the execution configuration parameters that define the dimensions of the grid and the dimensions of each block. The reader should refer to the CUDA Programming Guide (【1】NVIDIA, 2021【/1】) for more details of the kernel launch extensions as well as other types of execution configuration parameters.",
+      "zh": "CUDA C 通过由 &lt;&lt;&lt; 和 &gt;&gt;&gt; 括起的核函数执行配置参数扩展了 C 的函数调用语法。这些执行配置参数只在调用核函数以启动网格时使用。我们讨论了用于定义网格维度和每个线程块维度的执行配置参数。关于核函数启动扩展以及其他类型的执行配置参数的更多细节，读者应参阅 CUDA 编程指南（【1】NVIDIA, 2021【/1】）。"
+    },
+    {
+      "id": "st0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/section[3]/h3[1]",
+      "en": "2.8.3 Built-in (predefined) variables",
+      "zh": "2.8.3 内置（预定义）变量"
+    },
+    {
+      "id": "p0375",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/section[3]/p[1]",
+      "en": "CUDA kernels can access a set of built-in, predefined read-only variables that allow each thread to distinguish itself from other threads and to determine the area of data to work on. We discussed the 【1】threadIdx【/1】, 【2】blockDim【/2】, and 【3】blockIdx【/3】 variables in this chapter. In 【4】Chapter 3【/4】, Multidimensional Grids and Data, we will discuss more details of using these variables.",
+      "zh": "CUDA 核函数可以访问一组内置的、预定义的只读变量，它们让每个线程能够与其他线程区分开来，并确定要处理的数据区域。本章我们讨论了【1】threadIdx【/1】、【2】blockDim【/2】和【3】blockIdx【/3】变量。在【4】第 3 章【/4】（多维网格与数据）中，我们将更详细地讨论这些变量的用法。"
+    }
+  ]
+}

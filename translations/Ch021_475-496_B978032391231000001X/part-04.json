@@ -1,0 +1,155 @@
+{
+  "page": "Ch021_475-496_B978032391231000001X",
+  "nodes": [
+    {
+      "id": "p0375",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "Besides ensuring better work balance, dynamic parallelism offers many advantages in terms of programmability. However, it is important to keep in mind that launching grids with a small number of threads could lead to severe underutilization of the GPU resources. A general recommendation is launching child grids with many blocks, or at least blocks with many threads if the number of blocks is small.",
+      "zh": "除了确保更好的工作均衡之外，动态并行在可编程性方面还提供了许多优势。然而，必须牢记的是，启动线程数很少的网格可能导致 GPU 资源的严重利用不足。一般性建议是启动包含大量线程块的子网格；如果线程块数量较少，则至少要启动包含大量线程的线程块。"
+    },
+    {
+      "id": "p0380",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "Similarly, nested parallelism, which can be seen as a form of tree processing, provides higher performance when tree nodes are thick (that is, each node deploys many threads) and/or when the branch degree is large (i.e., each parent node has many children). As the nesting depth is limited in hardware, only relatively shallow trees can be implemented efficiently.",
+      "zh": "类似地，嵌套并行可以被视为树处理的一种形式。当树节点较粗（即每个节点部署大量线程）和/或分支度数较大（即每个父节点有大量子节点）时，嵌套并行能提供更高的性能。由于嵌套深度在硬件上是有限制的，因此只有相对较浅的树才能被高效实现。"
+    },
+    {
+      "id": "p0385",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[4]",
+      "en": "To use dynamic parallelism effectively, programmers need to understand details such as visibility of memory contents, pending launch count, and streams. Careful use of memory and streams between parents and children in dynamic parallelism is critical for the correct execution and achieving the expected level of parallelism in launching child grids.",
+      "zh": "要有效使用动态并行，程序员需要理解内存内容可见性、待启动数量以及流等细节。在动态并行中，谨慎地使用父网格与子网格之间的内存和流，对于正确执行以及在启动子网格时达到期望的并行度至关重要。"
+    },
+    {
+      "id": "st0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]",
+      "en": "1. Which of the following statements are true for the Bezier curves example?【M1】",
+      "zh": "1. 对于贝塞尔曲线示例，以下哪些陈述是正确的？【M1】"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]/ol[1]/li[1]",
+      "en": "a. If 【1】N_LINES【/1】=1024 and 【2】BLOCK_DIM【/2】=64, the number of child kernels that are launched will be 16.",
+      "zh": "a. 如果【1】N_LINES【/1】=1024 且【2】BLOCK_DIM【/2】=64，那么启动的子核函数数量将是 16。"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]/ol[1]/li[2]",
+      "en": "b. If 【1】N_LINES【/1】=1024, the fixed-size pool should be reduced from 2048 (the default) to 1024 to get the best performance.",
+      "zh": "b. 如果【1】N_LINES【/1】=1024，固定大小池应从 2048（默认值）减小到 1024，以获得最佳性能。"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]/ol[1]/li[3]",
+      "en": "c. If 【1】N_LINES【/1】=1024 and 【2】BLOCK_DIM【/2】=64 and per-thread streams are used, a total of 16 streams will be deployed.",
+      "zh": "c. 如果【1】N_LINES【/1】=1024、【2】BLOCK_DIM【/2】=64，并且使用每线程流，那么总共将部署 16 个流。"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]",
+      "en": "2. Consider a two-dimensional organization of 64 equidistant points. It is classified with a quadtree. What will be the maximum depth of the quadtree (including the root node)?【M1】",
+      "zh": "2. 考虑一个由 64 个等距点组成的二维排列。它用一个四叉树进行分类。四叉树的最大深度是多少（包括根节点）？【M1】"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]/ol[1]/li[1]",
+      "en": "a. 21",
+      "zh": "a. 21"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]/ol[1]/li[2]",
+      "en": "b. 4",
+      "zh": "b. 4"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]/ol[1]/li[3]",
+      "en": "c. 64",
+      "zh": "c. 64"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]/ol[1]/li[4]",
+      "en": "d. 16",
+      "zh": "d. 16"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]",
+      "en": "3. For the same quadtree, what will be the total number of child kernel launches?【M1】",
+      "zh": "3. 对于同一个四叉树，子核函数启动的总次数是多少？【M1】"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[1]",
+      "en": "a. 21",
+      "zh": "a. 21"
+    },
+    {
+      "id": "o0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[2]",
+      "en": "b. 4",
+      "zh": "b. 4"
+    },
+    {
+      "id": "o0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[3]",
+      "en": "c. 64",
+      "zh": "c. 64"
+    },
+    {
+      "id": "o0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[4]",
+      "en": "d. 16",
+      "zh": "d. 16"
+    },
+    {
+      "id": "o0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[4]",
+      "en": "4. 【1】True or False:【/1】 Parent kernels can define new 【2】__constant__【/2】 variables that will be inherited by child kernels.",
+      "zh": "4. 【1】判断对错：【/1】父核函数可以定义新的【2】__constant__【/2】 变量，这些变量将由子核函数继承。"
+    },
+    {
+      "id": "o0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[5]",
+      "en": "5. 【1】True or False:【/1】 Child kernels can access their parents’ shared and local memories.",
+      "zh": "5. 【1】判断对错：【/1】子核函数可以访问其父核函数的共享内存和局部内存。"
+    },
+    {
+      "id": "o0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[6]",
+      "en": "6. Six blocks of 256 threads run the following parent kernel:【M1】How many child kernels could run concurrently?【M2】",
+      "zh": "6. 六个包含 256 个线程的线程块运行以下父核函数：【M1】有多少子核函数可以并发运行？【M2】"
+    },
+    {
+      "id": "o0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[6]/ol[1]/li[1]",
+      "en": "a. 1536",
+      "zh": "a. 1536"
+    },
+    {
+      "id": "o0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[6]/ol[1]/li[2]",
+      "en": "b. 256",
+      "zh": "b. 256"
+    },
+    {
+      "id": "o0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[6]/ol[1]/li[3]",
+      "en": "c. 6",
+      "zh": "c. 6"
+    },
+    {
+      "id": "o0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[6]/ol[1]/li[4]",
+      "en": "d. 1",
+      "zh": "d. 1"
+    }
+  ]
+}

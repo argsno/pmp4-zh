@@ -1,0 +1,155 @@
+{
+  "page": "Ch015_331-354_B9780323912310000112",
+  "nodes": [
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "If a graph with N vertices is 【1】fully connected【/1】, that is, every vertex is connected with all other vertices, each vertex should have (N−1) outgoing edges. There should be a total of N(N−1) edges, since there is no edge going from a vertex to itself. For example, if our nine-vertex graph were fully connected, there should be eight edges going out of each vertex. There should be a total of 72 edges. Obviously, our graph is much less connected; each vertex has three or fewer outgoing edges. Such a graph is referred to as being 【2】sparsely connected【/2】. That is, the average number of outgoing edges from each vertex is much smaller than N−1.",
+      "zh": "如果一个包含 N 个顶点的图是【1】全连接【/1】的，也就是说，每个顶点都与所有其他顶点相连，那么每个顶点应有 (N−1) 条出边。由于不存在从顶点指向自身的边，图中共应有 N(N−1) 条边。例如，如果我们的九顶点图是全连接的，那么每个顶点应有 8 条出边，图中共应有 72 条边。显然，我们的图连接程度低得多；每个顶点只有 3 条或更少的出边。这样的图被称为【2】稀疏连接【/2】的。也就是说，每个顶点的平均出边数远小于 N−1。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "At this point, the reader has most likely made the correct observation that sparsely connected graphs can probably benefit from a sparse matrix representation. As we have seen in 【1】Chapter 14【/1】, Sparse Matrix Computation, using a compressed representation of the matrix can drastically reduce the amount of storage required and the number of wasted operations on the zero elements. Indeed, many real-world graphs are sparsely connected. For example, in a social network such as Facebook, Twitter, or LinkedIn, the average number of connections for each user is much smaller than the total number of users. This makes the number of nonzero elements in the adjacency matrix much smaller than the total number of elements.",
+      "zh": "至此，读者很可能已经正确地观察到，稀疏连接的图可能受益于稀疏矩阵表示。正如我们在【1】第 14 章【/1】“稀疏矩阵计算”中所见，使用矩阵的压缩表示可以大幅减少所需的存储空间，以及浪费在零元素上的运算次数。事实上，许多现实世界的图都是稀疏连接的。例如，在 Facebook、Twitter 或 LinkedIn 等社交网络中，每个用户的平均连接数远小于用户总数。这使得邻接矩阵中的非零元素数远小于元素总数。"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "【1】Fig. 15.3【/1】 shows three representations of our simple graph example using three different storage formats: compressed sparse row (CSR), compressed sparse column (CSC), and coordinate (COO). We will refer to the row indices and pointers arrays as the 【2】src【/2】 and 【3】srcPtrs【/3】 arrays, respectively, and the column indices and pointers arrays as the 【4】dst【/4】 and 【5】dstPtrs【/5】 arrays, respectively. If we take CSR as an example, recall that in a CSR representation of a sparse matrix each row pointer gives the starting location for the nonzero elements in a row. Similarly, in a CSR representation of a graph, each source vertex pointer (【6】srcPtrs【/6】) gives the starting location of the outgoing edges of the vertex. For example, 【7】srcPtrs[3]=7【/7】 gives the starting location of the nonzero elements in row 3 of the original adjacency matrix. Also, 【8】srcPtrs[4]=9【/8】 gives the starting location of the nonzero elements in row 4 of the original matrix. Thus we expect to find the nonzero data for row 3 in 【9】data[7]【/9】 and 【10】data[8]【/10】 and the column indices (destination vertices) for these elements in 【11】dst[7]【/11】 and 【12】dst[8]【/12】. These are the data and column indices for the two edges leaving vertex 3. The reason we call the column index array 【13】dst【/13】 is that the column index of an element in the adjacency matrix gives the destination vertex of the represented edge. In our example, we see that the destination of the two edges for source vertex 3 are 【14】dst[7]=4【/14】 and 【15】dst[8]=8【/15】. We leave it as an exercise to the reader to draw similar analogies for the CSC and COO representations.",
+      "zh": "【1】图 15.3【/1】展示了使用三种不同存储格式表示的简单图示例：压缩稀疏行格式（CSR）、压缩稀疏列格式（CSC）和坐标格式（COO）。我们将行索引数组和行指针数组分别称为【2】src【/2】数组和【3】srcPtrs【/3】数组，将列索引数组和列指针数组分别称为【4】dst【/4】数组和【5】dstPtrs【/5】数组。以 CSR 为例，回想一下，在稀疏矩阵的 CSR 表示中，每个行指针给出某一行中非零元素的起始位置。类似地，在图的 CSR 表示中，每个源顶点指针（【6】srcPtrs【/6】）给出该顶点出边的起始位置。例如，【7】srcPtrs[3]=7【/7】给出原始邻接矩阵第 3 行中非零元素的起始位置。【8】srcPtrs[4]=9【/8】给出原始矩阵第 4 行中非零元素的起始位置。因此，我们预期第 3 行的非零数据位于【9】data[7]【/9】和【10】data[8]【/10】中，这些元素的列索引（目标顶点）位于【11】dst[7]【/11】和【12】dst[8]【/12】中。它们就是离开顶点 3 的两条边的数据和列索引。我们把列索引数组称为【13】dst【/13】的原因是，邻接矩阵中某个元素的列索引给出了其所表示边的目标顶点。在我们的示例中，可以看到源顶点 3 的两条边的目标分别为【14】dst[7]=4【/14】和【15】dst[8]=8【/15】。我们将类似的类比推导留给读者作为练习，以理解 CSC 和 COO 表示。"
+    },
+    {
+      "id": "n0028",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 15.3【/2】【/1】 Three sparse matrix representations of the adjacency matrix: (A) CSR, (B) CSC, (C) COO. 【3】COO【/3】, coordinate; 【4】CSC【/4】, compressed sparse column; 【5】CSR【/5】, compressed sparse row.",
+      "zh": "【1】【2】图 15.3【/2】【/1】 邻接矩阵的三种稀疏矩阵表示：(A) CSR，(B) CSC，(C) COO。【3】COO【/3】，即坐标列表格式（coordinate）；【4】CSC【/4】，即压缩稀疏列格式（compressed sparse column）；【5】CSR【/5】，即压缩稀疏行格式（compressed sparse row）。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[7]",
+      "en": "Note that the 【1】data【/1】 array in this example is unnecessary. Since the value of all its elements is 1, we do not need to store it. We can make the data implicit, that is, whenever a nonzero element exists, we can just assume that it is 1. For example, the existence of each column index in the destination array of a CSR representation implies that an edge exists. However, in some applications the adjacency matrix may store additional information about the relationship, such as the distance between two locations or the date on which two social network users became connected. In those applications the data array will need to be explicitly stored.",
+      "zh": "请注意，本例中的【1】data【/1】数组是不必要的。由于它的所有元素值都为 1，我们不需要存储它。我们可以让数据隐式存在，也就是说，只要存在某个非零元素，我们就可以直接假定其值为 1。例如，在 CSR 表示的目标数组中，每个列索引的存在都意味着存在一条边。然而，在某些应用中，邻接矩阵可能存储有关关系的额外信息，例如两个地点之间的距离，或两个社交网络用户成为好友的日期。在这些应用中，就需要显式地存储 data 数组。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[8]",
+      "en": "Sparse representation can lead to significant savings in storing the adjacency matrix. For our example, assuming that the 【1】data【/1】 array can be eliminated, the CSR representation requires storage for 25 locations versus the 9【2】2【/2】=81 locations if we stored the entire adjacency matrix. For real-life problems in which a very small fraction of the adjacency matrix elements are nonzero, the savings can be tremendous.",
+      "zh": "稀疏表示可以显著节省邻接矩阵的存储。以我们的示例为例，假设【1】data【/1】数组可以省去，那么 CSR 表示需要存储 25 个位置，而如果存储整个邻接矩阵则需要 9【2】2【/2】=81 个位置。对于邻接矩阵元素中只有极小一部分为非零的真实问题，节省的存储空间可能相当可观。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[9]",
+      "en": "Different graphs may have drastically different structures. One way to characterize these structures is to look at the distribution of the number of edges that are connected to each vertex (the 【1】vertex degree【/1】). A road network, expressed as a graph, would have a relatively uniform degree distribution with a low average degree per vertex because each road intersection (vertex) would typically have only a low number of roads connected to it. On the other hand, a graph of Twitter followers, in which each incoming edge represents a “follow,” would have a much broader distribution of vertex degrees, with a large-degree vertex representing a popular Twitter user. The structure of the graph may influence the choice of algorithm to implement a particular graph application.",
+      "zh": "不同的图可能有截然不同的结构。刻画这些结构的一种方法是考察与每个顶点相连的边数的分布（即【1】顶点度数【/1】）。以道路网络为例，将其表示为图后，其度数分布相对均匀，每个顶点的平均度数较低，因为每个道路交叉口（顶点）通常只连接少量道路。另一方面，以 Twitter 粉丝图为例，其中每条入边代表一次“关注”，其顶点度数分布要宽得多，度数很大的顶点代表人气很高的 Twitter 用户。图的结构可能会影响特定图应用所采用的算法选择。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[10]",
+      "en": "Recall from 【1】Chapter 14【/1】, Sparse Matrix Computation, that each sparse matrix representation gives different accessibility to the represented data. Hence the choice of which representation to use for the graph has implications for which information about the graph is made easily accessible to the graph traversal algorithm. The CSR representations give easy access to the outgoing edges of a given vertex. The CSC representation gives easy access to the incoming edges of a given vertex. The COO representation gives easy access to the source and destination vertices of a given edge. Therefore the choice of the graph representation goes hand-in-hand with the choice of the graph traversal algorithm. We demonstrate this concept throughout this chapter by examining different parallel implementations of breadth-first search, a widely used graph search computation.",
+      "zh": "回想一下【1】第 14 章【/1】“稀疏矩阵计算”中的内容：每种稀疏矩阵表示对所表示数据的可访问性各不相同。因此，为图选择使用哪种表示，会影响到图遍历算法能够轻松访问图的哪些信息。CSR 表示使得访问给定顶点的出边变得容易。CSC 表示使得访问给定顶点的入边变得容易。COO 表示使得访问给定边的源顶点和目标顶点变得容易。因此，图表示的选择与图遍历算法的选择是相辅相成的。本章将通过考察广度优先搜索（一种被广泛使用的图搜索计算）的不同并行实现来演示这一概念。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "15.2 Breadth-first search",
+      "zh": "15.2 广度优先搜索"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "An important graph computation is breadth-first search (BFS). BFS is often used to discover the shortest number of edges that one needs to traverse to go from one vertex to another vertex of the graph. In the graph example in 【1】Fig. 15.1【/1】 we may need to find all the alternative routes that we could take going from the location represented by vertex 0 to that represented by vertex 5. By visual inspection we see that there are three possible paths: 0→1→3→4→5, 0→1→4→5, and 0→2→5, with 0→2→5 being the shortest. There are different ways of summarizing the outcome of a BFS traversal. One way is, given a vertex that is referred to as the root, to label each vertex with the smallest number of edges that one needs to traverse to go from the root to that vertex.",
+      "zh": "一种重要的图计算是广度优先搜索（BFS）。BFS 通常用于发现从图中的一个顶点到达另一个顶点所需经过的最少边数。在【1】图 15.1【/1】的图示例中，我们可能需要找出从顶点 0 所代表的地点到达顶点 5 所代表的地点的所有备选路线。通过目视检查，我们可以看到有三条可能的路径：0→1→3→4→5、0→1→4→5 和 0→2→5，其中 0→2→5 最短。概括 BFS 遍历结果的方式有多种。一种方式是：给定一个被称为根的顶点，将每个顶点标记为从根到达该顶点所需经过的最少边数。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "【1】Fig. 15.4(A)【/1】 shows the desired BFS result with vertex 0 as the root. Through one edge, we can get to vertices 1 and 2. Thus we label these vertices as belonging to level 1. By traversing another edge, we can get to vertices 3 (through vertex 1), 4 (through vertex 1), 5 (through vertex 2), 6 (through vertex 2), and 7 (through vertex 2). Thus we label these vertices as belonging to level 2. Finally, by traversing one more edge, we can get to vertex 8 (through any of vertices 3, 4, or 6).",
+      "zh": "【1】图 15.4(A)【/1】展示了以顶点 0 为根的期望 BFS 结果。经过一条边，我们可以到达顶点 1 和 2。因此我们将这些顶点标记为属于第 1 层。再经过一条边，我们可以到达顶点 3（经顶点 1）、4（经顶点 1）、5（经顶点 2）、6（经顶点 2）和 7（经顶点 2）。因此我们将这些顶点标记为属于第 2 层。最后，再经过一条边，我们可以到达顶点 8（经顶点 3、4 或 6 中的任意一个）。"
+    },
+    {
+      "id": "n0036",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 15.4【/1】 (A and B) Two examples of breadth-first search results for two different root vertices. The labels adjacent to each vertex indicate the number of hops (depth) from the root vertex.",
+      "zh": "【1】图 15.4【/1】 (A 和 B) 两个不同根顶点的广度优先搜索结果的示例。每个顶点旁边的标签表示从根顶点出发的跳数（深度）。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "The BFS result would be quite different with another vertex as the root. 【1】Fig. 15.4(B)【/1】 shows the desired result of BFS with vertex 2 as the root. The level 1 vertices are 5, 6, and 7. The level 2 vertices are 8 (through vertex 6) and 0 (through vertex 7). Only vertex 1 is at level 3 (through vertex 0). Finally, the level 4 vertices are 3 and 4 (both through vertex 1). It is interesting to note that the outcome is quite different for each vertex even though we moved the root to a vertex that is only one edge away from the original root.",
+      "zh": "如果换一个顶点作为根，BFS 的结果会大不相同。【1】图 15.4(B)【/1】展示了以顶点 2 为根的期望 BFS 结果。第 1 层的顶点是 5、6 和 7。第 2 层的顶点是 8（经顶点 6）和 0（经顶点 7）。只有顶点 1 位于第 3 层（经顶点 0）。最后，第 4 层的顶点是 3 和 4（都经顶点 1）。有趣的是，即使我们把根移动到了一个距原根仅一条边的顶点上，每个顶点的结果也大不相同。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "One can view the labeling actions of BFS as constructing a BFS tree that is rooted in the root node of the search. The tree consists of all the labeled vertices and only the edges traversed during the search that go from a vertex at one level to vertices at the next level.",
+      "zh": "我们可以把 BFS 的标记过程看作构建一棵以搜索根节点为根的 BFS 树。该树由所有已标记的顶点以及搜索过程中被遍历的那些边组成，这些边连接某一层的顶点与下一层的顶点。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "Once we have all the vertices labeled with their level, we can easily find a path from the root vertex to any of the vertices where the number of edges traveled is equivalent to the level. For example, in 【1】Fig. 15.4(B)【/1】, we see that vertex 1 is labeled as level 3, so we know that the smallest number of edges between the root (vertex 2) and vertex 1 is 3. If we need to find the path, we can simply start from the destination vertex and trace back to the root. At each step, we select the predecessor whose level is one less than that of the current vertex. If there are multiple predecessors with the same level, we can randomly pick one. Any vertex thus selected would give a sound solution. The fact that there are multiple predecessors to choose from means that there are multiple equally good solutions to the problem. In our example we can find a shortest path from vertex 2 to vertex 1 by starting from vertex 1, choosing vertex 0, then vertex 7, and then vertex 2. Therefore a solution path is 2→7→0→1. This of course assumes that each vertex has a list of the source vertices of all the incoming edges so that one can find the predecessors of a given vertex.",
+      "zh": "一旦我们给所有顶点都标上了层号，就可以轻松找到从根顶点到任意顶点的路径，所经过的边数等于层号。例如，在【1】图 15.4(B)【/1】中，我们看到顶点 1 被标记为第 3 层，因此我们知道根（顶点 2）与顶点 1 之间的最少边数为 3。如果需要找出这条路径，我们只需从目标顶点出发，回溯到根即可。每一步，我们都选择层号比当前顶点小 1 的前驱。如果有多个前驱的层号相同，我们可以任选一个。如此选出的任意顶点都会给出一个合理的解。存在多个可选前驱这一事实，意味着该问题存在多个同样好的解。在我们的示例中，我们可以从顶点 1 出发，选择顶点 0，再选择顶点 7，然后选择顶点 2，从而找到从顶点 2 到顶点 1 的最短路径。因此，一条解路径为 2→7→0→1。当然，这假设每个顶点都有一份所有入边的源顶点列表，以便能够找到给定顶点的前驱。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "【1】Fig. 15.5【/1】 shows an important application of BFS in computer-aided design (CAD). In designing an integrated circuit chip, there are many electronic components that need to be connected to complete the design. The connectors of these components are called net terminals. 【2】Fig. 15.5(A)【/2】 shows two such net terminals as round dots; one belongs to a component in the upper left part, and the other belongs to another component in the lower right part of the chip. Assume that the design requires that these two net terminals be connected. This is done by running, or routing, a wire of a given width from the first net terminal to the second net terminal.",
+      "zh": "【1】图 15.5【/1】展示了 BFS 在计算机辅助设计（CAD）中的一个重要应用。在设计集成电路芯片时，有许多电子元件需要连接起来才能完成设计。这些元件的连接点被称为网络端子。【2】图 15.5(A)【/2】展示了两个这样的网络端子，用圆点表示；其中一个属于芯片左上部分的一个元件，另一个属于芯片右下部分的另一个元件。假设设计要求将这两个网络端子连接起来。这可以通过从第一个网络端子到第二个网络端子走线（布线）一根给定宽度的导线来完成。"
+    },
+    {
+      "id": "n0041",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 15.5【/1】 Maze routing in integrated circuits—an application for breadth-first search: (A) breadth-first search, (B) identifying a routing path.",
+      "zh": "【1】图 15.5【/1】 集成电路中的迷宫布线——广度优先搜索的一个应用：(A) 广度优先搜索，(B) 确定布线路径。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "The routing software represents the chip as a grid of wiring blocks in which each block can potentially serve as a piece of a wire. A wire can be formed by extending in either the horizontal or the vertical direction. For example, the black J-shape in the lower half of the chip consists of 21 wiring blocks and connects three net terminals. Once a wiring block is used as part of a wire, it can no longer be used as part of any other wires. Furthermore, it forms a blockage for wiring blocks around it. No wires can be extended from a used block’s lower neighbor to its upper neighbor or from its left neighbor to its right neighbor, and so on. Once a wire is formed, all other wires must be routed around it. Routing blocks can also be occupied by circuit components, which impose the same blockage constraint as when they are used as part of a wire. This is why the problem is called a maze routing problem. The previously formed circuit components and wires form a maze for the wires that have yet to be formed. The maze routing software finds a route for each additional wire given all the constraints from the previously formed components and wires.",
+      "zh": "布线软件将芯片表示为一个布线块网格，其中每个块都可能充当导线的一段。导线可以通过沿水平方向或垂直方向延伸来形成。例如，芯片下半部分的黑色 J 形由 21 个布线块组成，并连接三个网络端子。一旦某个布线块被用作导线的一部分，它就不能再被用作任何其他导线的一部分。此外，它还会对周围的布线块形成阻碍。不能有导线从已用块的下邻格延伸到它的上邻格，或从它的左邻格延伸到右邻格，等等。一旦一根导线成形，所有其他导线都必须绕开它布线。布线块也可能被电路元件占据，这些元件施加的阻碍约束与布线块被用作导线一部分时的约束相同。这就是该问题被称为迷宫布线问题的原因。先前形成的电路元件和导线为尚未形成的导线构成了一座迷宫。迷宫布线软件在考虑先前形成的元件和导线的所有约束的前提下，为每条新增的导线寻找一条路径。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "The maze routing application represents the chip as a graph. The routing blocks are vertices. An edge from vertex 【1】i【/1】 to vertex 【2】j【/2】 indicates that one can extend a wire from block 【3】i【/3】 to block 【4】j【/4】. Once a block is occupied by a wire or a component, it is either marked as a blockage vertex or taken away from the graph, depending on the design of the application. 【5】Fig. 15.5【/5】 shows that the application solves the maze routing problem with a BFS from the root net terminal to the target net terminal. This is done by starting with the root vertex and labeling the vertices into levels. The immediate vertical or horizontal neighbors (a total of four) that are not blockages are marked as level 1. We see that all four neighbors of the root are reachable and will be marked as level 1. The neighbors of level 1 vertices that are neither blockages nor visited by the current search will be marked as level 2. The reader should verify that there are four level 1 vertices, eight level 2 vertices, twelve level 3 vertices, and so on in 【6】Fig. 15.5(A)【/6】. As we can see, the BFS essentially forms a wavefront of vertices for each level. These wavefronts start small for level 1 but can grow very large very quickly in a few levels.",
+      "zh": "迷宫布线应用将芯片表示为一个图。布线块是顶点。从顶点【1】i【/1】到顶点【2】j【/2】的边表示可以将导线从块【3】i【/3】延伸到块【4】j【/4】。一旦某个块被导线或元件占据，它要么被标记为阻塞顶点，要么从图中移除，具体取决于应用的设计。【5】图 15.5【/5】展示了该应用如何通过从根网络端子到目标网络端子的 BFS 来求解迷宫布线问题。具体做法是：从根顶点开始，把顶点按层标记。既非阻塞、又在垂直或水平方向上紧邻（共 4 个）的邻居被标记为第 1 层。我们看到，根顶点的全部 4 个邻居都是可达的，将被标记为第 1 层。第 1 层顶点的邻居中，既非阻塞又未被当前搜索访问过的，将被标记为第 2 层。读者应当验证，在【6】图 15.5(A)【/6】中有 4 个第 1 层顶点、8 个第 2 层顶点、12 个第 3 层顶点，依此类推。可以看到，BFS 实质上为每一层形成了一个顶点的波前。这些波前在第 1 层时很小，但可能在几层之内迅速变得非常大。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[9]",
+      "en": "【1】Fig. 15.5(B)【/1】 shows that once the BFS is complete, we can form a wire by finding a shortest path from the root to the target. As was explained earlier, this can be done by starting with the target vertex and tracing back to the predecessors whose levels are one lower than that of the current vertex. Whenever there are multiple predecessors that have equivalent levels, there are multiple routes that are of the same length. One could design heuristics to choose the predecessor in a way that minimizes the difficulty of constraints for wires that have yet to be formed.",
+      "zh": "【1】图 15.5(B)【/1】展示了 BFS 完成后，我们可以通过找到一条从根到目标的最短路径来形成导线。如前所述，这可以通过从目标顶点出发，回溯到层号比当前顶点低 1 的前驱来实现。每当存在多个层号相同的前驱时，就会有长度相同的多条路径。我们可以设计启发式方法来选择前驱，以最大限度地降低尚未形成的导线所受约束的难度。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "15.3 Vertex-centric parallelization of breadth-first search",
+      "zh": "15.3 面向顶点的广度优先搜索并行化"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "A natural way to parallelize graph algorithms is to perform operations on different vertices or edges in parallel. In fact, many parallel implementations of graph algorithms can be classified as vertex-centric or edge-centric. A vertex-centric parallel implementation assigns threads to vertices and has each thread perform an operation on its vertex, which usually involves iterating over the neighbors of that vertex. Depending on the algorithm, the neighbors of interest may be those that are reachable via the outgoing edges, the incoming edges, or both. In contrast, an edge-centric parallel implementation assigns threads to edges and has each thread perform an operation on its edge, which usually involves looking up the source and destination vertices of that edge. In this section we look at two different vertex-centric parallel implementations of BFS: one that iterates over outgoing edges and one that iterates over incoming edges. In the next section we look at an edge-centric parallel implementation of BFS and compare.",
+      "zh": "并行化图算法的一种自然方式，是并行地对不同的顶点或边执行操作。事实上，图算法的许多并行实现都可以归类为面向顶点的或面向边的。面向顶点的并行实现将线程分配给顶点，每个线程对其顶点执行一个操作，这通常涉及遍历该顶点的邻居。根据算法的不同，所关心的邻居可能是通过出边、入边或两者可达的邻居。相比之下，面向边的并行实现将线程分配给边，每个线程对其边执行一个操作，这通常涉及查找该边的源顶点和目标顶点。本节将考察 BFS 的两种不同的面向顶点并行实现：一种遍历出边，另一种遍历入边。下一节将考察 BFS 的一种面向边的并行实现并进行比较。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "The parallel implementations that we will look at follow the same strategy when it comes to iterating over levels. In all implementations we start by labeling the root vertex as belonging to level 0. We then call a kernel to label all the neighbors of the root vertex as belonging to level 1. After that, we call a kernel to label all the unvisited neighbors of the level 1 vertices as belonging to level 2. Then we call a kernel to label all the unvisited neighbors of the level 2 vertices as belonging to level 3. This process continues until no new vertices are visited and labeled.",
+      "zh": "我们将考察的并行实现在逐层遍历上采用相同的策略。在所有实现中，我们首先将根顶点标记为属于第 0 层。然后调用一个核函数，将根顶点的所有邻居标记为属于第 1 层。之后，我们调用一个核函数，将第 1 层顶点的所有未访问邻居标记为属于第 2 层。接着我们调用一个核函数，将第 2 层顶点的所有未访问邻居标记为属于第 3 层。这个过程一直持续到没有新的顶点被访问并标记为止。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "The reason a separate kernel is called for each level is that we need to wait until all vertices in a previous level have been labeled before proceeding to label vertices in the next level. Otherwise, we risk labeling a vertex incorrectly. In the rest of this section we focus on implementing the kernel that is called for each level. That is, we will implement a BFS kernel that, given a level, labels all the vertices that belong to that level on the basis of the labels of the vertices from previous levels.",
+      "zh": "每一层都单独调用一个核函数的原因是，我们需要等待前一层中的所有顶点都被标记之后，才能继续标记下一层的顶点。否则，我们就有可能错误地标记某个顶点。本节其余部分将重点实现每一层所调用的核函数。也就是说，我们将实现一个 BFS 核函数：给定某一层，根据前几层顶点的标记，标记属于该层的所有顶点。"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "The first vertex-centric parallel implementation assigns each thread to a vertex to iterate over the vertex’s outgoing edges (【1】Harish and Narayanan, 2007【/1】). Each thread first checks whether its vertex belongs to the previous level. If so, the thread will iterate over the outgoing edges to label all the unvisited neighbors as belonging to the current level. This vertex-centric implementation is often referred to as a 【2】top-down【/2】 or 【3】push【/3】 implementation.【4】【5】1【/5】【/4】 Since this implementation requires accessibility to the outgoing edges of a given source vertex (i.e., nonzero elements of a given row of the adjacency matrix), a CSR representation is needed.",
+      "zh": "第一种面向顶点的并行实现将每个线程分配给一个顶点，以遍历该顶点的出边（【1】Harish and Narayanan, 2007【/1】）。每个线程首先检查其顶点是否属于前一层。如果是，线程将遍历出边，把所有未访问的邻居标记为属于当前层。这种面向顶点的实现通常被称为【2】自顶向下【/2】实现或【3】推送式实现【/3】。【4】【5】1【/5】【/4】由于这种实现需要能够访问给定源顶点的出边（即邻接矩阵给定行中的非零元素），因此需要 CSR 表示。"
+    }
+  ]
+}

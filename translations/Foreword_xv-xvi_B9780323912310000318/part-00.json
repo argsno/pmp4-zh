@@ -1,0 +1,59 @@
+{
+  "page": "Foreword_xv-xvi_B9780323912310000318",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Foreword",
+      "zh": "前言"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[3]/p[1]",
+      "en": "Jensen Huang, 【1】NVIDIA, Santa Clara, CA, United States【/1】",
+      "zh": "Jensen Huang，【1】NVIDIA，美国加利福尼亚州圣克拉拉【/1】"
+    },
+    {
+      "id": "p0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Written by two exceptional computer scientists and pioneers of GPU computing, Wen-mei and David's 【1】Programming Massively Parallel Processors【/1】, Fourth Edition, by Wen-mei W. Hwu, David B. Kirk, and Izzat El Hajj continues to make an invaluable contribution to the creation of a new computing model.",
+      "zh": "本书由两位杰出的计算机科学家、GPU 计算的先驱 Wen-mei 和 David 执笔。Wen-mei W. Hwu、David B. Kirk 与 Izzat El Hajj 合著的《【1】Programming Massively Parallel Processors【/1】》第四版，继续为一种新计算模式的创立作出不可估量的贡献。"
+    },
+    {
+      "id": "p0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "GPU computing has become an essential instrument of modern science. This book will teach you how to use this instrument and give you a superpower tool to solve the most challenging problems. GPU computing will become a time machine that lets you see the future, a spaceship that takes you to new worlds that are now within reach.",
+      "zh": "GPU 计算已成为现代科学不可或缺的工具。本书将教会你如何使用这一工具，并赋予你一件解决最具挑战性问题的超级工具。GPU 计算将化作一台让你看见未来的时光机、一艘载你前往如今已触手可及的新世界的飞船。"
+    },
+    {
+      "id": "p0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[3]",
+      "en": "Computing performance is needed to solve many of the world’s most impactful problems. From the beginning of the history of computers, architects sought parallel computing techniques to boost performance. A hundredfold increase is equivalent to a decade of CPU advancements that relied on sequential processing. Despite the great benefits of parallel computing, creating a new computing model with a virtuous cycle of users, developers, vendors, and distributors has been a daunting chicken-and-egg problem.",
+      "zh": "解决世界上许多最具影响力的问题都需要计算性能。自有计算机历史以来，架构师们便一直在寻求并行计算技术以提升性能。百倍的性能提升，相当于依赖串行处理的 CPU 十年所取得的进展。尽管并行计算益处巨大，但要创立一种由用户、开发者、厂商和分销商构成良性循环的新计算模式，却是一个令人望而生畏的“先有鸡还是先有蛋”的问题。"
+    },
+    {
+      "id": "p0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[4]",
+      "en": "After nearly three decades, NVIDIA GPU computing is pervasive, and millions of developers have learned parallel programming, many from earlier editions of this book.",
+      "zh": "经过近三十年，NVIDIA GPU 计算已无处不在，数百万开发者学会了并行编程，其中许多人正是通过本书更早的版本学会的。"
+    },
+    {
+      "id": "p0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[5]",
+      "en": "GPU computing is affecting every field of science and industry, even computer science itself. The processing speed of GPUs has enabled deep learning models to learn from data and to perform intelligent tasks, starting a wave of invention from autonomous vehicles and robotics to synthetic biology. The era of AI is underway.",
+      "zh": "GPU 计算正影响着科学与工业的每一个领域，连计算机科学本身也不例外。GPU 的处理速度使深度学习模型得以从数据中学习并执行智能任务，由此掀起了一波从自动驾驶汽车、机器人到合成生物学的发明浪潮。AI 时代已经到来。"
+    },
+    {
+      "id": "p0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[6]",
+      "en": "AI is even learning physics and opening the possibility of simulating the Earth’s climate a millionfold faster than has ever been possible. NVIDIA is building a GPU supercomputer called Earth-2, a digital twin of the Earth, and partnering with the world’s scientific community to predict the impact of today’s actions on our climate decades from now.",
+      "zh": "AI 甚至正在学习物理学，并开辟了以比以往快一百万倍的速度模拟地球气候的可能性。NVIDIA 正在构建一台名为 Earth-2 的 GPU 超级计算机——地球的数字孪生——并与全球科学界合作，预测今日人类行为在数十年后对气候的影响。"
+    },
+    {
+      "id": "p0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[7]",
+      "en": "A life science researcher once said to me, “Because of your GPU, I can do my life’s work in my lifetime.” So whether you are advancing AI or doing groundbreaking science, I hope that GPU computing will help you do your life’s work.",
+      "zh": "一位生命科学研究者曾对我说：“因为有你的 GPU，我才能在有生之年完成毕生的事业。”所以，无论你是在推进 AI，还是在进行开创性的科学研究，我都希望 GPU 计算能帮助你完成毕生的事业。"
+    }
+  ]
+}

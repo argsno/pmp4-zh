@@ -1,0 +1,155 @@
+{
+  "page": "Ch010_211-233_B9780323912310000239",
+  "nodes": [
+    {
+      "id": "n0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.2【/1】 The general form of a reduction sequential code.",
+      "zh": "【1】图 10.2【/1】 归约串行代码的通用形式。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "10.2 Reduction trees",
+      "zh": "10.2 归约树"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "Parallel reduction algorithms have been studied extensively in the literature. The basic concept of parallel reduction is illustrated in 【1】Fig. 10.3【/1】, where time progresses downwards in the vertical direction and the activities that threads perform in parallel in each time step are shown in the horizontal direction.",
+      "zh": "文献中已对并行归约算法进行了广泛研究。并行归约的基本概念如【1】图 10.3【/1】所示，其中时间沿垂直方向向下推进，而各线程在每个时间步并行执行的活动沿水平方向展开。"
+    },
+    {
+      "id": "n0028",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.3【/1】 A parallel max reduction tree.",
+      "zh": "【1】图 10.3【/1】 一个并行最大值归约树。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "During the first round (time step), four max operations are performed in parallel on the four pairs of the original elements. These four operations produce partial reduction results: the four larger values from the four pairs of original elements. During the second time step, two max operations are performed in parallel on the two pairs of partial reduction results and produce two partial results that are even closer to the final reduction result. These two partial results are the largest value of the first four elements and the largest value of the second four elements in the original input. During the third and final time step, one max operation is performed to generate the final result, the largest value 7 from the original input.",
+      "zh": "在第一轮（时间步）中，对原始元素的四对组合并行执行四次最大值运算。这四次运算产生部分归约结果：即四对原始元素中各自较大的那个值。在第二个时间步中，对部分归约结果的两对组合并行执行两次最大值运算，产生两个更接近最终归约结果的部分结果。这两个部分结果分别是原始输入中前四个元素的最大值和后四个元素的最大值。在第三个也是最后一个时间步中，执行一次最大值运算以生成最终结果，即原始输入中的最大值 7。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "Note that the order of performing the operations will be changed from a sequential reduction algorithm to a parallel reduction algorithm. For example, for the input at the top of 【1】Fig. 10.3【/1】, a sequential max reduction like the one in 【2】Fig. 10.2【/2】 would start first by comparing the identity value (−∞) in acc with the input value 3 and update acc with the winner, which is 3. It will then compare the value of acc (3) with the input value 1 and update acc with the winner, which is 3. This will be followed by comparing the value of acc (3) with the input value 7 and updating acc with the winner, which is 7. However, in the parallel reduction of 【3】Fig. 10.3【/3】 the input value 7 is first compared with the input value 0 before it is compared against the maximum of 3 and 1.",
+      "zh": "请注意，从串行归约算法改为并行归约算法时，运算的执行顺序会发生变化。例如，对于【1】图 10.3【/1】顶部的输入，像【2】图 10.2【/2】那样的串行最大值归约会先将 acc 中的单位元（−∞）与输入值 3 比较，并用胜者 3 更新 acc；然后比较 acc 的值（3）与输入值 1，并用胜者 3 更新 acc；接着比较 acc 的值（3）与输入值 7，并用胜者 7 更新 acc。然而在【3】图 10.3【/3】的并行归约中，输入值 7 先与输入值 0 比较，然后再与 3 和 1 中的最大值比较。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "As we have seen, parallel reduction assumes that the order of applying the operator to the input values does not matter. In a max reduction, no matter what the order is for applying the operator to the input values, the outcome will be the same. This property is guaranteed mathematically if the operator is associative. An operator Θ is associative if (a Θ b) Θ c=a Θ (b Θ c). For example, integer addition is associative ((1+2)+3=1+(2+3)=6), whereas integer subtraction is not associative ((1−2)−3 【M1】【M2】. That is, if an operator is associative, one can insert parentheses at arbitrary positions of an expression involving the operator and the results are all the same. With this equivalence relation, one can convert any order of operator application to any other order while preserving the equivalence of results. Strictly speaking, floating-point additions are not associative, owing to potentially rounding results for different ways of introducing parentheses. However, most applications accept floating-point operation results to be the same if they are within a tolerable difference from each other. Such definition allows developers and compiler writers to treat floating-point addition as an associative operator. Interested readers are referred to 【3】Appendix A【/3】 for a detailed treatment.",
+      "zh": "正如我们所看到的，并行归约假定算子作用于输入值的顺序无关紧要。在最大值归约中，无论以何种顺序将算子应用于输入值，结果都相同。如果算子满足结合性，这一性质在数学上是有保证的。若 (a Θ b) Θ c=a Θ (b Θ c)，则称算子 Θ 满足结合性。例如，整数加法满足结合性（(1+2)+3=1+(2+3)=6），而整数减法不满足结合性（(1−2)−3 【M1】【M2】。也就是说，如果算子满足结合性，就可以在包含该算子的表达式的任意位置插入括号，结果都相同。借助这一等价关系，可以在保持结果等价的前提下，将算子应用的任意顺序转换为其他任意顺序。严格来说，浮点加法并不满足结合性，因为不同的加括号方式可能产生不同的舍入结果。不过，只要浮点运算结果彼此在可容忍的误差范围内，大多数应用都认为它们是相同的。这一定义使得开发人员和编译器编写者可以将浮点加法视为结合性算子。感兴趣的读者可参阅【3】附录 A【/3】以了解详细讨论。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "The conversion from the sequential reduction in 【1】Fig. 10.2【/1】 to the reduction tree in 【2】Fig. 10.3【/2】 requires that the operator be associative. We can think of a reduction as a list of operations. The difference of ordering between 【3】Fig. 10.2【/3】 and 【4】Fig. 10.3【/4】 is just inserting parenthesis at different positions of the same list. For 【5】Fig. 10.2【/5】, the parentheses are:",
+      "zh": "从【1】图 10.2【/1】中的串行归约到【2】图 10.3【/2】中的归约树，这一转换要求算子满足结合性。我们可以把归约看作一串运算序列。【3】图 10.2【/3】与【4】图 10.3【/4】之间的顺序差异，仅仅是在同一序列的不同位置插入括号。对于【5】图 10.2【/5】，括号为："
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "((((((3 max 1) max 7) max 0) max 4) max 1) max 6) max 3",
+      "zh": "((((((3 取最大值 1) 取最大值 7) 取最大值 0) 取最大值 4) 取最大值 1) 取最大值 6) 取最大值 3"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "Whereas the parentheses for 【1】Fig. 10.3【/1】 are:",
+      "zh": "而【1】图 10.3【/1】中的括号为："
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "((3 max 1) max (7 max 0)) max ((4 max 1) max (6 max 3))",
+      "zh": "((3 取最大值 1) 取最大值 (7 取最大值 0)) 取最大值 ((4 取最大值 1) 取最大值 (6 取最大值 3))"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[9]",
+      "en": "We will apply an optimization in 【1】Section 10.4【/1】 that not only rearranges the order of applying the operator but also rearranges the order of the operands. To rearrange the order of the operands, this optimization further requires the operator to be commutative. An operator is commutative if a Θ b=b Θ a. That is, the position of the operands can be rearranged in an expression and the results are the same. Note that the max operator is also commutative, as are many other operators such as min, sum, and product. Obviously, not all operators are commutative. For example, addition is commutative (1+2=2+1), whereas integer subtraction is not (1−2≠2−1).",
+      "zh": "我们将在【1】第 10.4 节【/1】中应用一种优化，它不仅会重新排列应用算子的顺序，还会重新排列操作数的顺序。为了重排操作数的顺序，这种优化还要求算子满足交换性。若 a Θ b=b Θ a，则称算子满足交换性。也就是说，可以重排表达式中操作数的位置而结果保持不变。注意，最大值算子也是可交换的，min、sum、product 等许多算子同样如此。显然，并非所有算子都满足交换性。例如，加法是可交换的（1+2=2+1），而整数减法不可交换（1−2≠2−1）。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[10]",
+      "en": "The parallel reduction pattern in 【1】Fig. 10.3【/1】 is called a reduction tree because it looks like a tree whose leaves are the original input elements and whose root is the final result. The term 【2】reduction tree【/2】 is not to be confused with tree data structures, in which the nodes are linked either explicitly with pointers or implicitly with assigned positions. In reduction trees the edges are conceptual, reflecting information flow from operations performed in one time step to those in the next time step.",
+      "zh": "【1】图 10.3【/1】中的并行归约模式之所以称为归约树，是因为它看起来像一棵树：叶子是原始输入元素，根是最终结果。【2】归约树【/2】这一术语不应与树型数据结构相混淆，后者中的节点要么通过指针显式链接，要么通过分配的位置隐式关联。在归约树中，边是概念性的，反映的是一个时间步中执行的操作向下一个时间步中操作的信息流动。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[11]",
+      "en": "The parallel operations result in significant improvement over the sequential code in the number of time steps needed to produce the final result. In the example in 【1】Fig. 10.3【/1】 the for-loop in the sequential code iterates eight times, or takes eight time steps, to visit all of the input elements and produce the final result. On the other hand, with the parallel operations in 【2】Fig. 10.3【/2】 the parallel reduction tree approach takes only three time steps: four max operations during the first time step, two during the second, and one during the third. This is a decrease of 5/8=62.5% in terms of number of time steps, or a speedup of 8/3=2.67. There is, of course, a cost to the parallel approach: One must have enough hardware comparators to perform up to four max operations in the same time step. For N input values, a reduction tree performs ½ N operations during the first round, ¼ N operations in the second round, and so on. Therefore the total number of operations that are performed is defined by the geometric series ½ N+¼ N+【3】1【/3】/【4】8【/4】 N+… 【5】1【/5】/【6】N【/6】 N=N−1 operations, which is similar to the sequential algorithm.",
+      "zh": "与串行代码相比，并行运算在产生最终结果所需的时间步数量上带来了显著改进。在【1】图 10.3【/1】的示例中，串行代码中的 for 循环迭代八次，即需要八个时间步来访问全部输入元素并产生最终结果。另一方面，采用【2】图 10.3【/2】中的并行运算，并行归约树方法只需三个时间步：第一个时间步执行四次最大值运算，第二个时间步执行两次，第三个时间步执行一次。就时间步数量而言，这减少了 5/8=62.5%，即获得了 8/3=2.67 的加速比。当然，并行方法也有代价：必须有足够多的硬件比较器，才能在同一个时间步内执行最多四次最大值运算。对于 N 个输入值，归约树在第一轮执行 ½ N 次运算，第二轮执行 ¼ N 次运算，依此类推。因此，执行的总运算次数由几何级数 ½ N+¼ N+【3】1【/3】/【4】8【/4】 N+… 【5】1【/5】/【6】N【/6】 N=N−1 定义，这与串行算法类似。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[12]",
+      "en": "In terms of time steps, a reduction tree takes log【1】2【/1】N steps to complete the reduction process for N input values. Thus it can reduce N=1024 input values in just ten steps, assuming that there are enough execution resources. During the first step, we need ½ N=512 execution resources! Note that the number of resources that are needed diminishes quickly as we progress in time steps. During the final time step, we need to have only one execution resource. The level of parallelism at each time step is the same as the number of execution units that are required. It is interesting to calculate the average level of parallelism across all time steps. The average parallelism is the total number of operations that are performed divided by the number of time steps, which is (N−1)/log【2】2【/2】N. For N=1024 the average parallelism across the ten time steps is 102.3, whereas the peak parallelism is 512 (during the first time step). Such variation in the level of parallelism and resource consumption across time steps makes reduction trees a challenging parallel pattern for parallel computing systems.",
+      "zh": "就时间步而言，归约树完成 N 个输入值的归约过程需要 log【1】2【/1】N 步。因此，假设执行资源充足，它只需十步就能归约 N=1024 个输入值。在第一步中，我们需要 ½ N=512 个执行资源！请注意，随着时间步的推进，所需资源的数量迅速减少。到最后一个时间步，我们只需要一个执行资源。每个时间步的并行度与所需的执行单元数量相同。计算所有时间步的平均并行度是很有意思的。平均并行度等于执行的总运算次数除以时间步数，即 (N−1)/log【2】2【/2】N。对于 N=1024，十个时间步的平均并行度为 102.3，而峰值并行度为 512（出现在第一个时间步）。并行度和资源消耗随时间步的这种变化，使得归约树成为并行计算系统中颇具挑战性的并行模式。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[13]",
+      "en": "【1】Fig. 10.5【/1】 shows a sum reduction tree example for eight input values. Everything we presented so far about the number of time steps and resources consumed for max reduction trees is also applicable to sum reduction trees. It takes log【2】2【/2】8=3 time steps to complete the reduction using a maximum of four adders. We will use this example to illustrate the design of sum reduction kernels.",
+      "zh": "【1】图 10.5【/1】展示了一个针对八个输入值的求和归约树示例。到目前为止，我们关于最大值归约树的时间步数量和资源消耗的论述，同样适用于求和归约树。使用最多四个加法器完成归约需要 log【2】2【/2】8=3 个时间步。我们将用这个示例来说明求和归约核函数的设计。"
+    },
+    {
+      "id": "n0041",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/p[1]",
+      "en": "Parallel Reduction in Sports and Competitions",
+      "zh": "体育与竞赛中的并行归约"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/p[2]",
+      "en": "【1】Parallel reduction has been used in sports and competitions long before the dawn of computing【/1】. 【2】Fig. 10.4【/2】 【3】shows the schedule of the 2010 World Cup quarterfinals, semifinals, and the final game in South Africa. It should be clear that this is just a rearranged reduction tree. The elimination process of the World Cup is a maximum reduction in which the maximum operator returns the team that “beats” the other team. The tournament “reduction” is done in multiple rounds. The teams are divided into pairs. During the first round, all pairs play in parallel. Winners of the first round advance to the second round, whose winners advance to the third round, and so on. With eight teams entering a tournament, four winners will emerge from the first round (quarterfinals in【/3】 【4】Fig. 10.4【/4】【5】), two from the second round (semifinals in【/5】 【6】Fig. 10.4【/6】【7】), and one final winner (champion) from the third round (final in【/7】 【8】Fig. 10.4【/8】【9】). Each round is a time step of the reduction process【/9】.",
+      "zh": "【1】早在计算机出现之前，并行归约就已应用于体育和竞赛之中【/1】。【2】图 10.4【/2】 【3】展示了 2010 年南非世界杯四分之一决赛、半决赛和决赛的赛程安排。显然，这只是一个经过重新排列的归约树。世界杯的淘汰过程就是一次最大值归约，其中最大值算子返回“击败”对方的那支球队。锦标赛的“归约”分多轮进行：球队被分成若干对。第一轮中所有配对同时开赛；第一轮的胜者晋级第二轮，第二轮的胜者晋级第三轮，依此类推。八支球队参赛时，第一轮产生四名胜者（四分之一决赛，见【/3】 【4】图 10.4【/4】【5】），第二轮产生两名胜者（半决赛，见【/5】 【6】图 10.4【/6】【7】），第三轮产生一名最终胜者（冠军，即决赛，见【/7】 【8】图 10.4【/8】【9】）。每一轮都是归约过程的一个时间步【/9】。"
+    },
+    {
+      "id": "n0043",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.4【/1】 The 2010 World Cup Finals as a reduction tree.",
+      "zh": "【1】图 10.4【/1】 作为归约树的 2010 年世界杯决赛。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/p[3]",
+      "en": "【1】It should be easy to see that even with 1024 teams, it takes only 10 rounds to determine the final winner. The trick is to have enough resources to hold the 512 games in parallel during the first round, 256 games in the second round, 128 games in the third round, and so on. With enough resources, even with 60,000 teams, we can determine the final winner in just 16 rounds. It is interesting to note that while reduction trees can greatly speed up the reduction process, they also consume quite a bit of resources. In the World Cup example, a game requires a large soccer stadium, officials, and staff as well as hotels and restaurants to accommodate the massive number of fans in the audience. The four quarterfinals in【/1】 【2】Fig. 10.4【/2】 【3】were played in three cities (Nelson Mandela Bay/Port Elizabeth, Cape Town, and Johannesburg) that all together provided enough resources to host the four games. Note that the two games in Johannesburg were played on two different days. Thus sharing resources between two games made the reduction process take more time. We will see similar tradeoffs in computation reduction trees【/3】.",
+      "zh": "【1】不难看出，即使有 1024 支球队，也只需 10 轮就能决出最终冠军。关键在于要有足够的资源在第一轮同时承办 512 场比赛，第二轮 256 场，第三轮 128 场，依此类推。只要有足够的资源，即使有 60,000 支球队，我们也只需 16 轮就能决出最终冠军。有趣的是，归约树虽然能大幅加快归约过程，但也会消耗相当多的资源。在世界杯的例子中，一场比赛需要大型足球场、裁判、工作人员，还需要旅馆和餐厅来容纳大量现场球迷。四场四分之一决赛的举办地见【/1】 【2】图 10.4【/2】 【3】，分别在三个城市（纳尔逊·曼德拉湾/伊丽莎白港、开普敦和约翰内斯堡）举行，这三个城市共同提供了承办四场比赛的足够资源。请注意，约翰内斯堡的两场比赛是在两个不同的日子进行的。因此，两场比赛之间共享资源使得归约过程耗时更长。我们将在计算归约树中看到类似的权衡【/3】。"
+    },
+    {
+      "id": "n0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.5【/1】 A parallel sum reduction tree.",
+      "zh": "【1】图 10.5【/1】 一个并行求和归约树。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "10.3 A simple reduction kernel",
+      "zh": "10.3 简单归约核函数"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "We are now ready to develop a simple kernel to perform the parallel sum reduction tree shown in 【1】Fig. 10.5【/1】. Since the reduction tree requires collaboration across all threads, which is not possible across an entire grid, we will start by implementing a kernel that performs a sum reduction tree within a single block. That is, for an input array of N elements we will call this simple kernel and launch a grid with one block of ½N threads. Since a block can have up to 1024 threads, we can process up to 2048 input elements. We will eliminate this limitation in 【2】Section 10.8【/2】. During the first time step, all ½N threads will participate, and each thread adds two elements to produce ½N partial sums. During the next time step, half of the threads will drop off, and only ¼N threads will continue to participate to produce ¼N partial sums. This process will continue until the last time step, in which only one thread will remain and produce the total sum.",
+      "zh": "现在，我们准备开发一个简单的核函数，来执行【1】图 10.5【/1】所示的并行求和归约树。由于归约树需要所有线程协同工作，而这在整个网格范围内是无法实现的，因此我们将从实现一个在单个线程块内执行求和归约树的核函数开始。也就是说，对于包含 N 个元素的输入数组，我们将调用这个简单核函数，并启动一个网格，其中包含一个由 ½N 个线程组成的线程块。由于一个线程块最多可以有 1024 个线程，因此我们最多可以处理 2048 个输入元素。我们将在【2】第 10.8 节【/2】中消除这一限制。在第一个时间步，全部 ½N 个线程都会参与，每个线程将两个元素相加，产生 ½N 个部分和。在下一个时间步，一半线程退出，只有 ¼N 个线程继续参与，产生 ¼N 个部分和。这个过程一直持续到最后一个时间步，此时只剩下一个线程，产生总和。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "【1】Fig. 10.6【/1】 shows the code of the simple sum kernel function, and 【2】Fig. 10.7【/2】 illustrates the execution of the reduction tree that is implemented by this code. Note that in 【3】Fig. 10.7【/3】 the time progresses from top to bottom. We assume that the 【4】input【/4】 array is in the global memory and that a pointer to the array is passed as an argument when the kernel function is called. Each thread is assigned to a data location that is 【5】2*threadIdx.x【/5】 (line 02). That is, the threads are assigned to the even locations in the 【6】input【/6】 array: thread 0 to 【7】input[0]【/7】, thread 1 to 【8】input[2]【/8】, thread 2 to 【9】input[4]【/9】, and so on, as shown in the top row of 【10】Fig. 10.7【/10】. Each thread will be the “owner” of the location to which it is assigned and will be the only thread that writes into that location. The design of the kernel follows the “owner computes” approach, in which every data location is owned by a unique thread and can be updated only by that owner thread.",
+      "zh": "【1】图 10.6【/1】展示了这个简单求和核函数的代码，【2】图 10.7【/2】则说明了这段代码所实现的归约树的执行过程。请注意，在【3】图 10.7【/3】中，时间自上而下推进。我们假定【4】input【/4】数组位于全局内存中，并且在调用核函数时，指向该数组的指针作为参数传入。每个线程被分配到一个数据位置，即【5】2*threadIdx.x【/5】（第 02 行）。也就是说，线程被分配到【6】input【/6】数组中的偶数位置：线程 0 对应【7】input[0]【/7】，线程 1 对应【8】input[2]【/8】，线程 2 对应【9】input[4]【/9】，依此类推，如【10】图 10.7【/10】最上面一行所示。每个线程将是其被分配位置的“属主”，并且是唯一向该位置写入的线程。该核函数的设计遵循“属主计算”方法，即每个数据位置都由一个唯一线程拥有，且只能由该属主线程更新。"
+    },
+    {
+      "id": "n0049",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.6【/1】 A simple sum reduction kernel.",
+      "zh": "【1】图 10.6【/1】 一个简单的求和归约核函数。"
+    }
+  ]
+}

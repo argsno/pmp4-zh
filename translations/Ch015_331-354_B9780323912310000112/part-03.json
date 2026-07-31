@@ -1,0 +1,155 @@
+{
+  "page": "Ch015_331-354_B9780323912310000112",
+  "nodes": [
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "【1】Fig. 15.12【/1】 shows the kernel code for the vertex-centric push implementation that uses frontiers, and 【2】Fig. 15.13【/2】 shows an example of how this kernel performs a traversal from level 1 to level 2. A key distinction from the previous approach is that the kernel takes additional parameters to represent the frontiers. The additional parameters include the arrays 【3】prevFrontier【/3】 and 【4】currFrontier【/4】 to store the vertices in the previous and current frontiers, respectively. They also include pointers to the counters 【5】numPrevFrontier【/5】 and 【6】numCurrFrontier【/6】 that store the number of vertices in each frontier. Note that the flag for indicating that a new vertex has been visited is no longer needed. Instead, the host can tell that the end has been reached when the number of vertices in the current frontier is 0.",
+      "zh": "【1】图 15.12【/1】展示了使用前沿的面向顶点的推送式实现的核函数代码，【2】图 15.13【/2】展示了该核函数如何从第 1 层遍历到第 2 层的示例。与前一种方法的一个关键区别是，核函数带有额外的参数来表示前沿。这些额外参数包括用于分别存储前一个和当前前沿中顶点的数组【3】prevFrontier【/3】和【4】currFrontier【/4】，以及指向计数器【5】numPrevFrontier【/5】和【6】numCurrFrontier【/6】的指针，这两个计数器分别存储每个前沿中的顶点数。注意，表示已访问新顶点的标志不再需要了。相反，当当前前沿中的顶点数为 0 时，主机就可以判断已经到达结束点。"
+    },
+    {
+      "id": "n0076",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 15.12【/1】 A vertex-centric push (top-down) BFS kernel with frontiers. 【2】BFS【/2】, breadth-first search.",
+      "zh": "【1】图 15.12【/1】 一个带前沿的面向顶点的推送式（自顶向下）BFS 核函数。【2】BFS【/2】，广度优先搜索。"
+    },
+    {
+      "id": "n0077",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 15.13【/1】 Example of a vertex-centric push (top-down) BFS traversal from level 1 to level 2 with frontiers. 【2】BFS【/2】, breadth-first search.",
+      "zh": "【1】图 15.13【/1】 一个带前沿的从第 1 层到第 2 层的面向顶点的推送式（自顶向下）BFS 遍历示例。【2】BFS【/2】，广度优先搜索。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "We now look at the body of the kernel in 【1】Fig. 15.12【/1】. The kernel starts by assigning a thread to each element of the previous frontier (line 05), and each thread ensures that its element id is within bounds (line 06). In 【2】Fig. 15.13【/2】, only vertices 1 and 2 are in the previous frontier, so only two threads are launched. Each thread loads its element from the previous frontier, which contains the index of the vertex that it is processing (line 07). The thread uses the CSR 【3】srcPtrs【/3】 array to locate the outgoing edges of the vertex and iterate over them (lines 08–09). For each outgoing edge, the thread finds the neighbor at the destination of the edge, using the CSR 【4】dst【/4】 array (line 10). The thread then checks whether the neighbor has not been visited; if not, it labels the neighbor as belonging to the current level (line 11). An important distinction from the previous implementation is that an atomic operation is used to perform the checking and labeling operation. The reason will be explained shortly. If a thread succeeds in labeling the neighbor, it must add the neighbor to the current frontier. To do so, the thread increments the size of the current frontier (line 12) and adds the neighbor to the corresponding location (line 13). The size of the current frontier needs to be incremented atomically (line 12) because multiple threads may be incrementing it simultaneously, so we need to ensure that no race condition takes place.",
+      "zh": "现在我们来看【1】图 15.12【/1】中核函数的函数体。核函数首先为前一个前沿的每个元素分配一个线程（第 05 行），每个线程确保其元素 id 在边界内（第 06 行）。在【2】图 15.13【/2】中，只有顶点 1 和 2 位于前一个前沿中，因此只启动了 2 个线程。每个线程从前一个前沿加载其元素，其中包含它所处理的顶点的索引（第 07 行）。线程使用 CSR【3】srcPtrs【/3】数组定位该顶点的出边并遍历它们（第 08–09 行）。对于每条出边，线程使用 CSR【4】dst【/4】数组找到该边目标处的邻居（第 10 行）。然后线程检查该邻居是否未被访问；如果未访问，它就把该邻居标记为属于当前层（第 11 行）。与前一种实现的一个重要区别是，这里使用原子操作来执行检查和标记操作。原因稍后解释。如果线程成功标记了该邻居，它必须将该邻居加入当前前沿。为此，线程递增当前前沿的大小（第 12 行），并将该邻居添加到相应的位置（第 13 行）。当前前沿的大小需要原子递增（第 12 行），因为可能有多个线程同时递增它，所以我们需要确保不发生竞态条件。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "We now turn our attention to the atomic operation on line 11. As a thread iterates through the neighbors of its vertex, it checks whether the neighbor has been visited; if not, it labels the neighbor as belonging to the current level. In the vertex-centric push kernel without frontiers in 【1】Fig. 15.12【/1】, this checking and labeling operation is performed without atomic operations (09–10). In that implementation, if multiple threads check the old label of the same unvisited neighbor before any of them are able to label it, multiple threads may end up labeling the neighbor. Since all threads are labeling the neighbor with the same label (the operation is idempotent), it is okay to allow the threads to label the neighbor redundantly. In contrast, in the frontier-based implementation in 【2】Fig. 15.12【/2】, each thread not only labels the unvisited neighbor but also adds it to the frontier. Hence if multiple threads observe the neighbor as unvisited, they will all add the neighbor to the frontier, causing it to be added multiple times. If the neighbor is added multiple times to the frontier, it will be processed multiple times in the next level, which is redundant and wasteful.",
+      "zh": "现在我们来看第 11 行的原子操作。当一个线程遍历其顶点的邻居时，它会检查该邻居是否已被访问；如果未访问，就把该邻居标记为属于当前层。在【1】图 15.12【/1】中不带前沿的面向顶点的推送式核函数里，这种检查和标记操作无需原子操作即可执行（第 09–10 行）。在该实现中，如果多个线程在任何一个线程来得及标记某个未访问邻居之前检查了该邻居的旧标记，那么多个线程最终都可能标记该邻居。由于所有线程都用相同的标记来标记该邻居（该操作是幂等的），允许线程重复标记该邻居是可以的。相比之下，在【2】图 15.12【/2】的基于前沿的实现中，每个线程不仅要标记未访问的邻居，还要把它加入前沿。因此，如果多个线程都观察到该邻居未被访问，它们都会把该邻居加入前沿，导致该邻居被重复加入。如果该邻居被重复加入前沿，它在下一层会被处理多次，这是冗余且浪费的。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
+      "en": "To avoid having multiple threads observe the neighbor as unvisited, the checking and updating of the neighbor’s label should be performed atomically. In other words, we must check whether the neighbor has not been visited, and if not, label it as part of the current level all in one atomic operation. An atomic operation that can perform all of these steps is 【1】compare-and-swap【/1】, which is provided by the 【2】atomicCAS【/2】 intrinsic function. This function takes three parameters: the address of the data in memory, the value to which we want to compare the data, and the value to which we would like to set the data if the comparison succeeds. In our case (line 11), we would like to compare 【3】level[neighbor]【/3】 to 【4】UINT_MAX【/4】 to check whether the neighbor is unvisited and set 【5】level[neighbor]【/5】 to 【6】currLevel【/6】 if the comparison succeeds. As with other atomic operations, 【7】atomicCAS【/7】 returns the old value of the data that was stored. Therefore we can check whether the compare-and-swap operation succeeded by comparing the return value of 【8】atomicCAS【/8】 with the value that 【9】atomicCAS【/9】 compared with, which in this case is 【10】UINT_MAX【/10】.",
+      "zh": "为了避免多个线程观察到该邻居未被访问，对邻居标记的检查和更新必须以原子方式执行。换句话说，我们必须在一个原子操作中完成：检查该邻居是否未被访问，如果未访问，就把它标记为当前层的一部分。【1】比较并交换【/1】就是一种能够完成所有这些步骤的原子操作，它由【2】atomicCAS【/2】内建函数提供。该函数接受三个参数：内存中数据的地址、我们希望与数据进行比较的值，以及如果比较成功我们希望将数据设置成的值。在我们的例子中（第 11 行），我们希望将【3】level[neighbor]【/3】与【4】UINT_MAX【/4】进行比较，以检查邻居是否未被访问，如果比较成功，则将【5】level[neighbor]【/5】设置为【6】currLevel【/6】。与其他原子操作一样，【7】atomicCAS【/7】返回所存储数据的旧值。因此，我们可以通过将【8】atomicCAS【/8】的返回值与【9】atomicCAS【/9】所比较的值（本例中为【10】UINT_MAX【/10】）进行比较，来检查比较并交换操作是否成功。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[7]",
+      "en": "As was mentioned earlier, the advantage of this frontier-based approach over the approach described in the previous section is that it reduces redundant work by only launching threads to process the relevant vertices. The disadvantage of this frontier-based approach is the overhead of the long-latency atomic operations, especially when these operations contend on the same data. For the 【1】atomicCAS【/1】 operation (line 11) we expect the contention to be moderate because only some threads, not all, will visit the same unvisited neighbor. However, for the 【2】atomicAdd【/2】 operation (line 12) we expect the contention to be high because all threads increment the same counter to add vertices to the same frontier. In the next section we look at how this contention can be reduced.",
+      "zh": "如前所述，这种基于前沿的方法相对于上一节所述方法的优势在于，它通过只启动线程来处理相关顶点来减少冗余工作。这种基于前沿的方法的缺点是长延迟原子操作的开销，尤其是当这些操作竞争同一数据时。对于【1】atomicCAS【/1】操作（第 11 行），我们预期竞争程度适中，因为只有部分线程（而非全部线程）会访问同一个未访问的邻居。然而，对于【2】atomicAdd【/2】操作（第 12 行），我们预期竞争会很激烈，因为所有线程都会递增同一个计数器，以把顶点加入同一个前沿。下一节我们将考察如何减少这种竞争。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "15.6 Reducing contention with privatization",
+      "zh": "15.6 利用私有化减少竞争"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "Recall from 【1】Chapter 6【/1】, Performance Considerations, that one optimization that can be applied to reduce the contention of atomic operations on the same data is privatization. Privatization reduces contention of atomics by applying partial updates to a private copy of the data, then updating the public copy when done. We saw an example of privatization in the histogram pattern in 【2】Chapter 9【/2】, Parallel Histogram, where threads in the same block updated a local histogram that was private to the block, then updated the public histogram at the end.",
+      "zh": "回想一下【1】第 6 章【/1】“性能考量”中所述，可以用于减少同一数据上的原子操作竞争的一种优化是私有化。私有化通过对数据的私有副本进行部分更新，然后在完成时更新公共副本，从而减少原子操作的竞争。我们在【2】第 9 章【/2】“并行直方图”的直方图模式中看到过私有化的一个例子：同一线程块中的线程更新该块私有的局部直方图，然后在结束时更新公共直方图。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "Privatization can also be applied in the context of concurrent frontier updates (increments to 【1】numCurrFrontier【/1】) to reduce the contention on inserting into the frontier. We can have each thread block maintain its own local frontier throughout the computation and update the public frontier when done. Hence threads will contend on the same data only with other threads in the same block. Moreover, the local frontier and its counter can be stored in shared memory, which enables lower-latency atomic operations on the counter and stores to the local frontier. Furthermore, when the local frontier in shared memory is stored to the public frontier in global memory, the accesses can be coalesced.",
+      "zh": "私有化也可以应用于并发前沿更新的场景（对【1】numCurrFrontier【/1】的递增），以减少插入前沿时的竞争。我们可以让每个线程块在整个计算过程中维护自己的局部前沿，并在完成时更新公共前沿。这样，线程只会与同一线程块中的其他线程竞争同一数据。此外，局部前沿及其计数器可以存储在共享内存中，从而可以在计数器上执行延迟更低的原子操作，并写入局部前沿。更进一步，当共享内存中的局部前沿被写入全局内存中的公共前沿时，这些访问可以是合并的。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "【1】Fig. 15.14【/1】 shows the kernel code for the vertex-centric push implementation that uses privatized frontiers, while 【2】Fig. 15.15【/2】 illustrates the privatization of the frontiers. The kernel starts by declaring a private frontier for each thread block in shared memory (lines 07–08). One thread in the block initializes the frontier’s counter to 0 (lines 09–11), and all threads in the block wait at the 【3】__syncthreads【/3】 barrier for the initialization to complete before they start using the counter (line 12). The next part of the code is similar to the previous version: Each thread loads its vertex from the frontier (line 17), iterates over its outgoing edges (lines 18–19), finds the neighbor at the destination of the edge (line 20), and atomically checks whether the neighbor is unvisited and visits it if it is unvisited (line 21).",
+      "zh": "【1】图 15.14【/1】展示了使用私有化前沿的面向顶点的推送式实现的核函数代码，【2】图 15.15【/2】展示了前沿的私有化。核函数首先在共享内存中为每个线程块声明一个私有前沿（第 07–08 行）。线程块中的一个线程将前沿的计数器初始化为 0（第 09–11 行），线程块中的所有线程在【3】__syncthreads【/3】屏障处等待初始化完成，然后再开始使用该计数器（第 12 行）。代码的下一部分与前一版本类似：每个线程从前沿加载其顶点（第 17 行），遍历其出边（第 18–19 行），找到该边目标处的邻居（第 20 行），并原子地检查该邻居是否未被访问，如果未访问则访问它（第 21 行）。"
+    },
+    {
+      "id": "n0086",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 15.14【/2】【/1】 A vertex-centric push (top-down) BFS kernel with privatization of frontiers. 【3】BFS【/3】, breadth-first search.",
+      "zh": "【1】【2】图 15.14【/2】【/1】 一个对前沿进行私有化的面向顶点的推送式（自顶向下）BFS 核函数。【3】BFS【/3】，广度优先搜索。"
+    },
+    {
+      "id": "n0087",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 15.15【/2】【/1】 Privatization of frontiers example.",
+      "zh": "【1】【2】图 15.15【/2】【/1】 前沿私有化示例。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[4]",
+      "en": "If the thread succeeds in visiting the neighbor, that is, the neighbor is unvisited, it adds the neighbor to the local frontier. The thread first atomically increments the local frontier counter (line 22). If the local frontier is not full (line 23), the thread adds the neighbor to the local frontier (line 24). Otherwise, if the local frontier has overflowed, the thread restores the value of the local counter (line 26) and adds the neighbor in the global frontier by atomically incrementing the global counter (line 27) and storing the neighbor at the corresponding location (line 28).",
+      "zh": "如果线程成功访问了该邻居，即该邻居未被访问，它就把该邻居加入局部前沿。线程首先原子递增局部前沿计数器（第 22 行）。如果局部前沿未满（第 23 行），线程就把该邻居加入局部前沿（第 24 行）。否则，如果局部前沿已溢出，线程就恢复局部计数器的值（第 26 行），并通过原子递增全局计数器（第 27 行）和将邻居存储在相应位置（第 28 行）的方式，把该邻居加入全局前沿。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[5]",
+      "en": "After all threads in a block have iterated over their vertices’ neighbors, they need to store the privatized local frontier to the global frontier. First, the threads wait for each other to complete to ensure that no more neighbors will be added to the local frontier (line 33). Next, one thread in the block acts on behalf of the others to allocate space in the global frontier for all the elements in the local frontier (lines 36–39) while all the threads wait for it (line 40). Finally, the threads iterate over the vertices in the local frontier (line 43–44) and store them in the public frontier (line 45–46). Notice that the index into the public frontier 【1】currFrontierIdx【/1】 is expressed in terms of 【2】currFrontierIdx_s【/2】, which is expressed in terms of 【3】threadIdx.x【/3】. Therefore threads with consecutive thread index values store to consecutive global memory locations, which means that the stores are coalesced.",
+      "zh": "一个线程块中的所有线程遍历完其顶点的邻居后，需要把私有化的局部前沿存储到全局前沿。首先，线程相互等待彼此完成，以确保不再有邻居被加入局部前沿（第 33 行）。接着，线程块中的一个线程代表其他线程，为局部前沿中的所有元素在全局前沿中分配空间（第 36–39 行），而所有线程都在等待它（第 40 行）。最后，线程遍历局部前沿中的顶点（第 43–44 行），并将它们存储到公共前沿中（第 45–46 行）。注意，公共前沿的索引【1】currFrontierIdx【/1】用【2】currFrontierIdx_s【/2】表示，而后者用【3】threadIdx.x【/3】表示。因此，线程索引值连续的线程会存储到连续的全局内存位置，这意味着这些存储是合并的。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "15.7 Other optimizations",
+      "zh": "15.7 其他优化"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/section[1]/h3[1]",
+      "en": "Reducing launch overhead",
+      "zh": "减少启动开销"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/section[1]/p[1]",
+      "en": "In most graphs, the frontiers of the initial iterations of a BFS can be quite small. The frontier of the first iteration has only the neighbors of the source. The frontier of the next iteration has all the unvisited neighbors of the current frontier vertices. In some cases, the frontiers of the last few iterations can also be small. For these iterations the overhead of terminating a grid and launching a new one may outweigh the benefit of parallelism. One way to deal with these iterations with small frontiers is to prepare another kernel that uses only one thread block but may perform multiple consecutive iterations. The kernel uses only a local block-level frontier and uses 【1】__syncthreads()【/1】 to synchronize across all threads in between levels.",
+      "zh": "在大多数图中，BFS 最初几次迭代的前沿可能相当小。第一次迭代的前沿只有源顶点的邻居。下一次迭代的前沿是当前前沿顶点的所有未访问邻居。在某些情况下，最后几次迭代的前沿也可能很小。对于这些迭代，终止一个网格并启动一个新网格的开销可能超过并行的收益。处理这些小前沿迭代的一种方法是准备另一个核函数，它只使用一个线程块，但可以连续执行多次迭代。该核函数只使用一个局部的线程块级前沿，并使用【1】__syncthreads()【/1】在层与层之间对所有线程进行同步。"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/section[1]/p[2]",
+      "en": "This optimization is illustrated in 【1】Fig. 15.16【/1】. In this example, levels 0 and 1 can each be processed by a single thread block. Rather than launching a separate grid for levels 0 and 1, we launch a single-block grid and use 【2】__syncthreads()【/2】 to synchronize between levels. Once the frontier reaches a size that overflows the block-level frontier, the threads in the block copy the block-level frontier contents to the global frontier and return to the host code. The host code will then call the regular kernel in the subsequent level iterations until the frontier is small again. The single-block kernel thus eliminates the launch overhead for the iterations with small frontiers. We leave its implementation as an exercise for the reader.",
+      "zh": "【1】图 15.16【/1】展示了这一优化。在本例中，第 0 层和第 1 层都可以由单个线程块处理。我们不为第 0 层和第 1 层分别启动一个网格，而是启动一个单线程块网格，并使用【2】__syncthreads()【/2】在各层之间进行同步。一旦前沿的大小超过了线程块级前沿的容量，线程块中的线程就会把线程块级前沿的内容复制到全局前沿，然后返回到主机代码。随后，主机代码在后续各层的迭代中调用常规核函数，直到前沿再次变小。因此，单线程块核函数消除了小前沿迭代的启动开销。我们将它的实现留作读者的练习。"
+    },
+    {
+      "id": "n0094",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/section[1]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 15.16【/2】【/1】 Executing multiple levels in one grid for levels with small frontiers: (A) launching a new grid for each level, (B) consecutive small levels in one grid.",
+      "zh": "【1】【2】图 15.16【/2】【/1】 在单个网格中执行多个层以处理小前沿的层：(A) 为每一层启动一个新网格，(B) 在单个网格中执行连续的小层。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/section[2]/h3[1]",
+      "en": "Improving load balance",
+      "zh": "改善负载均衡"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/section[2]/p[1]",
+      "en": "Recall that in the vertex-centric implementations the amount of work to be done by each thread depends on the connectivity of the vertex that is assigned to it. In some graphs, such as social network graphs, some vertices (celebrities) may have degrees that are several orders of magnitude higher than those of other vertices. When this happens, one or a few of the threads can take excessively long and slow down the execution of the entire grid. We have seen one way to address this issue, which is by using an edge-centric parallel implementation instead. Another way in which we can potentially address this issue is by sorting the vertices of a frontier into 【1】buckets【/1】 depending on their degree and processing each bucket in a separate kernel with an appropriately sized group of processors. One notable implementation (【2】Merrill and Garland, 2012【/2】) uses three different buckets for vertices with small, medium, and large degrees. The kernel processing the small buckets assigns each vertex to a single thread; the kernel processing the medium buckets assigns each vertex to a single warp; and the kernel processing the large buckets assigns each vertex to an entire thread block. This technique is particularly useful for graphs with a high variation in vertex degrees.",
+      "zh": "回想一下，在面向顶点的实现中，每个线程要完成的工作量取决于分配给它的顶点的连通性。在某些图中，如社交网络图，一些顶点（名人）的度数可能比其他顶点高出几个数量级。发生这种情况时，一个或少数几个线程可能耗时过长，拖慢整个网格的执行。我们已经看到解决这个问题的一种方法，即改用面向边的并行实现。另一种可能解决这个问题的方法，是根据前沿中顶点的度数把它们排序到【1】桶【/1】中，并在单独的核函数中，用规模合适的一组处理器处理每个桶。一个值得注意的实现（【2】Merrill and Garland, 2012【/2】）为小、中、大度数的顶点使用了三个不同的桶。处理小桶的核函数把每个顶点分配给单个线程；处理中桶的核函数把每个顶点分配给单个线程束；处理大桶的核函数把每个顶点分配给整个线程块。这种技术对于顶点度数差异很大的图尤其有用。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/section[3]/h3[1]",
+      "en": "Further challenges",
+      "zh": "进一步的挑战"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/section[3]/p[1]",
+      "en": "While BFS is among the simplest graph applications, it exhibits the challenges that are characteristic of more complex applications: problem decomposition for extracting parallelism, taking advantage of privatization, implementing fine-grained load balancing, and ensuring proper synchronization. Graph computation is applicable to a wide range of interesting problems, particularly in the areas of making recommendations, detecting communities, finding patterns within a graph, and identifying anomalies. One significant challenge is to handle graphs whose size exceeds the memory capacity of the GPU. Another interesting opportunity is to preprocess the graph into other formats before beginning computation in order to expose more parallelism or locality or to facilitate load balancing.",
+      "zh": "虽然 BFS 是最简单的图应用之一，但它体现了更复杂应用所特有的挑战：为提取并行性而进行的问题分解、利用私有化、实现细粒度负载均衡，以及确保正确的同步。图计算适用于广泛的有趣问题，特别是在推荐、社区发现、在图内寻找模式以及识别异常等领域。一个重大挑战是处理规模超过 GPU 内存容量的图。另一个有趣的机会是在开始计算之前，把图预处理成其他格式，以便暴露更多的并行性或局部性，或为负载均衡提供便利。"
+    },
+    {
+      "id": "st0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/h2[1]",
+      "en": "15.8 Summary",
+      "zh": "15.8 小结"
+    }
+  ]
+}

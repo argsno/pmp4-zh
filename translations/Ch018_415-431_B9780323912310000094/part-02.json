@@ -1,0 +1,155 @@
+{
+  "page": "Ch018_415-431_B9780323912310000094",
+  "nodes": [
+    {
+      "id": "n0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 18.9【/2】【/1】 Organizing threads and memory layout for coalesced writes.",
+      "zh": "【1】【2】图 18.9【/2】【/1】 为合并写入组织线程与内存布局。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "The kernel code with coarsened thread granularity and coalescing-aware assignment of grid points to threads is shown in 【1】Fig. 18.10【/1】. Note that the x coordinates that are used to calculate the atom-to-grid-point distances for a thread’s assigned grid points are offset by blockDim.x*gridspacing. This reflects the fact that the 【2】x【/2】 coordinates of the four grid points assigned to a thread are blockDim.x grid points away from each other. After the end of the loop, the indices of the memory writes to the energygrid array are blockDim.x away from each other as well. Hence all writes to the energygrid array will be coalesced, and the performance of the kernel will be improved over that of 【3】Fig. 18.8【/3】.",
+      "zh": "【1】图 18.10【/1】给出了采用粗化线程粒度、并以合并感知方式将网格点分配给线程的核函数代码。请注意，用于计算线程所分配网格点的原子到网格点距离的 x 坐标，偏移量为 blockDim.x*gridspacing。这反映了一个事实：分配给一个线程的四个网格点的【2】x【/2】坐标彼此相隔 blockDim.x 个网格点。循环结束后，对 energygrid 数组的内存写入索引也彼此相隔 blockDim.x。因此，对 energygrid 数组的所有写入都将合并，核函数的性能将优于【3】图 18.8【/3】。"
+    },
+    {
+      "id": "n0052",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 18.10【/1】 Direct Coulomb summation kernel with thread coarsening and memory coalescing.",
+      "zh": "【1】图 18.10【/1】 采用线程粗化与内存合并的直接库仑求和核函数。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "18.5 Cutoff binning for data size scalability",
+      "zh": "18.5 面向数据规模可扩展性的截断分箱"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "We can typically come up with multiple algorithms to solve a given problem. Some algorithms require fewer steps of computation than others, some expose a higher degree of parallel execution than others, some have better numerical stability than others, and some consume less memory bandwidth than others. Unfortunately, there is often not a single algorithm that is better than others in all the four aspects. Given a problem and a decomposition strategy, a parallel programmer often needs to select an algorithm that achieves the best compromise for a given hardware system.",
+      "zh": "解决给定问题通常可以有多种算法。有些算法比其他算法需要的计算步骤少，有些算法暴露出的并行执行程度更高，有些算法的数值稳定性更好，还有些算法消耗的内存带宽更少。遗憾的是，往往不存在一种算法在这四个方面都优于其他算法。给定一个问题和解耦策略后，并行程序员通常需要选择一种能在给定硬件系统上实现最佳折中的算法。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "In general, alternative algorithms for solving the same problem should reach the same solution. Under this requirement, one can optimize the computation for better efficiency and/or more parallelism. In some applications, one can often come up with even more aggressive algorithm strategies if the problem can be solved with slight variation in the final solution. An important algorithm strategy, referred to as 【1】cutoff summation【/1】, can significantly improve the execution efficiency of grid algorithms such as the electrostatic potential calculation by sacrificing a small amount of accuracy. This is based on the observation that many grid calculation problems are based on physical laws in which numerical contributions from particles or samples that are far away from a grid point can be collectively treated with an implicit method at much lower computational complexity.",
+      "zh": "一般而言，解决同一问题的不同算法应当得到相同的解。在这一要求下，可以优化计算以获得更高的效率和/或更多的并行性。在某些应用中，如果问题的最终解允许略有变化，往往还能设计出更加激进的算法策略。一种重要的算法策略称为【1】截断求和【/1】，它通过牺牲少量精度，可以显著提高静电势计算等网格算法的执行效率。其依据是：许多网格计算问题基于物理定律，对于距离网格点较远的粒子或样本的数值贡献，可以用隐式方法以低得多的计算复杂度统一处理。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "The cutoff summation strategy is illustrated for the electrostatic potential calculation in 【1】Fig. 18.11【/1】. 【2】Fig. 18.11(A)【/2】 shows the direct summation algorithms that were discussed in the previous sections of this chapter. Each grid point receives contributions from all atoms. While this is a very parallel approach and achieves excellent speedup, it does not scale well to very large energy grid systems in which the number of atoms increases proportionally to the volume of the system. The amount of computation increases with the square of the volume. For large volume systems, such increase makes the computation excessively long even for massively parallel devices.",
+      "zh": "【1】图 18.11【/1】针对静电势计算展示了截断求和策略。【2】图 18.11(A)【/2】给出了本章前面各节讨论的直接求和算法。每个网格点接收所有原子的贡献。虽然这是一种非常并行的方法，并获得了极佳的加速比，但它不太能扩展到非常大的能量网格系统，因为在这样的系统中原子数量随系统体积成比例增加，计算量随体积的平方增长。对于大体积系统，这种增长会使计算时间过长，即使对大规模并行设备也是如此。"
+    },
+    {
+      "id": "n0057",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 18.11【/1】 (A) Cutoff summation versus (B) direct summation.",
+      "zh": "【1】图 18.11【/1】 (A) 截断求和与 (B) 直接求和的对比。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "We know that each grid point needs to receive accurate contributions from atoms that are close to it. The atoms that are far away from a grid point will have a tiny contribution to the energy value at the grid point because the contribution is inversely proportional to the distance. 【1】Fig. 18.11(B)【/1】 illustrates this observation with a circle drawn around a grid point. The contributions to the grid point energy from atoms outside the circle (dark atoms) are small and can be handled with a separate implicit method. If we can devise an algorithm in which each grid point receives contributions only from atoms within a fixed radius of its coordinate, the computational complexity of the algorithm will be reduced to being linearly proportional to the volume of the system. This would make the computation time of the algorithm linearly proportional to the volume of the system. Such algorithms have been used extensively in sequential computation.",
+      "zh": "我们知道，每个网格点需要接收来自其附近原子的准确贡献。远离网格点的原子对该网格点能量值的贡献很小，因为贡献与距离成反比。【1】图 18.11(B)【/1】在网格点周围画了一个圆来说明这一观察。圆外原子（深色原子）对网格点能量的贡献很小，可以用单独的隐式方法处理。如果我们能设计一种算法，使每个网格点只接收其坐标固定半径内原子的贡献，该算法的计算复杂度将降为与系统体积成线性比例，这将使算法的计算时间与系统体积成线性比例。此类算法在串行计算中已被广泛使用。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "In sequential computing, a simple cutoff algorithm handles one atom at a time. For each atom the algorithm iterates through the grid points that fall within a radius of the atom’s coordinate. This is a straightforward procedure, since the grid points are in an array that can be easily indexed as a function of their coordinates. A C implementation of the cutoff algorithm can be derived with minor modifications to the C implementation of DCS in 【1】Fig. 18.4【/1】 by restricting the range of i and j of the inner loops to the energy grid points that fall into the radius. However, this simple procedure does not carry over easily to parallel execution. The reason is what we discussed in 【2】Section 18.2【/2】: The atom-centric parallelization does not work well, owing to its scatter memory update behavior.",
+      "zh": "在串行计算中，一个简单的截断算法一次处理一个原子。对于每个原子，算法遍历落在原子坐标半径范围内的网格点。这是一个直截了当的过程，因为网格点位于数组中，可以很容易地根据其坐标作为索引函数进行索引。只需对【1】图 18.4【/1】中 DCS 的 C 实现稍加修改，将内层循环 i 和 j 的范围限制在落入半径内的能量网格点，即可得到截断算法的 C 实现。然而，这种简单的过程不容易推广到并行执行。原因就是我们曾在【2】第 18.2 节【/2】讨论过的：以原子为中心的并行化由于其分散的内存更新行为而效果不佳。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
+      "en": "Therefore we need to find a cutoff binning algorithm based on the grid-centric decomposition: Each thread calculates the energy value at one grid point. Fortunately, there is a well-known approach to adapting a direct summation algorithm, such as the one in 【1】Fig. 18.10【/1】, into a cutoff binning algorithm. Rodrigues et al. presents such an algorithm for the electrostatic potential problem (【2】Rodrigues et al., 2008【/2】).",
+      "zh": "因此，我们需要找到一种基于以网格为中心分解的截断分箱算法：每个线程计算一个网格点处的能量值。幸运的是，有一种众所周知的将直接求和算法（如【1】图 18.10【/1】中的算法）改造为截断分箱算法的方法。Rodrigues 等人针对静电势问题提出了这样一种算法（【2】Rodrigues 等，2008【/2】）。"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[7]",
+      "en": "The key idea of the algorithm is to first sort the input atoms into bins according to their coordinates. Each bin corresponds to a box in the energy grid space, and it contains all atoms whose coordinates fall into the box. These bins are implemented as multidimensional arrays: the 【1】x【/1】, 【2】y【/2】, and 【3】z【/3】 dimensions as well as the fourth dimension that is a vector of atoms in the bin.",
+      "zh": "该算法的关键思想是首先根据坐标将输入原子排序到各个箱中。每个箱对应能量网格空间中的一个盒子，包含坐标落入该盒子的所有原子。这些箱以多维数组实现：【1】x【/1】、【2】y【/2】、【3】z【/3】三个维度，以及作为箱中原子向量的第四个维度。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[8]",
+      "en": "We define a “neighborhood” of bins for a grid point as the collection of bins that contain all the atoms that can contribute to the energy value of the grid point. 【1】Fig. 18.12【/1】 shows an example of the neighborhood bins for a grid point. Note that nine bins around the grid point overlap with the circle of cutoff distance. For the correct cutoff summation we need to make sure that all atoms in these nine bins are considered for contribution to the grid point. Note that some of the atoms in the neighborhood bins may not fall into the radius. Therefore in processing an atom from one of the neighborhood bins, all threads need to check whether the atom falls into its radius. This can cause some control divergence among threads in a warp.",
+      "zh": "我们把网格点的箱“邻域”定义为包含所有可能对该网格点能量值作出贡献的原子的箱的集合。【1】图 18.12【/1】给出了一个网格点邻域箱的示例。请注意，网格点周围的九个箱与截断距离的圆重叠。为了正确的截断求和，我们需要确保这九个箱中的所有原子都被纳入对网格点贡献的考虑。请注意，邻域箱中的一些原子可能并不落入半径之内。因此，在处理来自某个邻域箱的原子时，所有线程都需要检查该原子是否落入自己的半径内。这可能在线程束中的线程之间造成一些控制发散。"
+    },
+    {
+      "id": "n0063",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 18.12【/1】 Neighborhood bins for a grid point.",
+      "zh": "【1】图 18.12【/1】 网格点的邻域箱。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[9]",
+      "en": "Although 【1】Fig. 18.12【/1】 shows only one layer (2D) of bins that immediately surround the bin containing a grid point as its neighborhood, a real algorithm will typically have multiple 3D bins in a grid point’s neighborhood. In this approach, all threads iterate through their own neighborhood. They use their block and thread indices to identify the coordinates of their assigned grid point and use these coordinates to identify the appropriate bins to examine. One can think of the neighborhood bins as a stencil in the energy grid space. However, the calculations that are involved in determining the neighborhood bins given a cutoff radius can be a complex geometric problem whose solution can be time consuming. Therefore the neighborhood bins are usually defined for all threads in a block and are prepared before launching the grid.",
+      "zh": "虽然【1】图 18.12【/1】只显示了一层（2D）紧邻包含网格点的箱的箱作为其邻域，但在实际算法中，一个网格点的邻域通常有多个 3D 箱。在这种方法中，所有线程遍历各自的邻域。它们使用自己的线程块索引和线程索引来标识所分配网格点的坐标，并用这些坐标来标识需要检查的箱。可以把邻域箱看作能量网格空间中的一个模板。然而，在给定截断半径的情况下，确定邻域箱所涉及的计算可能是一个复杂的几何问题，其求解可能相当耗时。因此，邻域箱通常针对线程块中的所有线程统一定义，并在启动网格之前准备好。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[10]",
+      "en": "【1】Fig. 18.13【/1】 shows a per-block design of neighborhood bins. Based on the block dimensions and the grid spacing, one can calculate the area (volume in 3D) of energy grid space covered by each block. We show the areas covered by the blocks as squares in 【2】Fig. 18.13【/2】. For simplicity we assume that each of these areas is also covered by a bin; that is, all atoms that fall into the same square will be collected into the same bin. For example, if the grid spacing is 0.5 Å and the blocks are 8×8×8, each block would cover a 4 Å×4 Å×4Å cube in the energy grid space. If we assume a typical cutoff distance of 12 Å for molecular-level force calculation, we need to identify all bins that can potentially be fully or partially covered by any of the 512 circles, each of which is centered at one of the grid points covered by one of the threads in the block. We can also use a conservative approximation by drawing a supercircle that is centered at the center of the bin with a radius that is the cutoff distance plus half of the bin diagonal. The rationale is that this supercircle would cover all the circles that are centered at the corners of the bin. We can simply create a list of the relative positions of the bins that are fully or partially covered by the supercircle.",
+      "zh": "【1】图 18.13【/1】给出了邻域箱的按线程块设计方案。根据线程块尺寸和网格间距，可以计算每个线程块所覆盖的能量网格空间面积（3D 中为体积）。我们在【2】图 18.13【/2】中用正方形表示线程块覆盖的面积。为简单起见，我们假设这些面积中的每一块也都由一个箱覆盖；也就是说，落入同一个正方形的所有原子将被收集到同一个箱中。例如，如果网格间距为 0.5 Å，线程块为 8×8×8，那么每个线程块在能量网格空间中将覆盖一个 4 Å×4 Å×4Å 的立方体。如果我们假设分子级力计算的典型截断距离为 12 Å，就需要标识出所有可能被 512 个圆完全或部分覆盖的箱，其中每个圆以线程块中某个线程所覆盖的一个网格点为中心。我们还可以采用保守近似，画一个超圆，其圆心为箱的中心，半径为截断距离加箱对角线长度的一半。其原理是，这个超圆将覆盖所有以箱的角为中心的圆。我们可以直接创建一个列表，列出被超圆完全或部分覆盖的箱的相对位置。"
+    },
+    {
+      "id": "n0066",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 18.13【/1】 Identifying the neighborhood bins for all grid points processed by a block.",
+      "zh": "【1】图 18.13【/1】 标识线程块处理的所有网格点的邻域箱。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[11]",
+      "en": "【1】Fig. 18.14【/1】 shows a small example of identifying neighborhood bins. We see that for each bin, there are 9 bins that are fully covered by the supercircle and 12 bins that are partially covered. We can generate a list of 9 + 12=21 neighborhood bins that each thread in a block needs to examine for atoms that are within the cutoff distance of the grid point covered by the thread. These bins are expressed as the relative offset of the bin coordinates. For example, the 9 bins that are fully covered by the supercircle can be expressed as the list (−1, −1), (0, −1), (1,−1), (−1, 0), (0, 0), (1, 0), (−1, 1), (0, 1), and (1, 1), as illustrated in the top portion of 【2】Fig. 18.14【/2】. The list would be supplied to the kernel, most likely as a constant memory array. During kernel execution, all threads in a block would iterate through the neighborhood list. For each neighborhood bin, the threads apply the offsets to the coordinates of the bin covered by the block and derive the coordinate of the neighbor bin, as illustrated in the bottom portion of 【3】Fig. 18.14【/3】. They collaborate to load the atoms in the bin into the shared memory and then each thread individually checks whether these atoms fall within the cutoff distance of its assigned grid point. Each thread could make different decisions about including or excluding each atom for contributing to the energy value at its assigned grid point.",
+      "zh": "【1】图 18.14【/1】给出了标识邻域箱的一个小示例。我们可以看到，对于每个箱，有 9 个箱被超圆完全覆盖，12 个箱被部分覆盖。我们可以生成一个包含 9 + 12 = 21 个邻域箱的列表，线程块中的每个线程都需要检查这些箱中的原子是否在（线程所覆盖网格点的）截断距离之内。这些箱以箱坐标的相对偏移量表示。例如，被超圆完全覆盖的 9 个箱可表示为列表 (−1, −1)、(0, −1)、(1,−1)、(−1, 0)、(0, 0)、(1, 0)、(−1, 1)、(0, 1) 和 (1, 1)，如【2】图 18.14【/2】的上半部分所示。该列表将提供给核函数，很可能以常量内存数组的形式。在核函数执行期间，线程块中的所有线程都会遍历该邻域列表。对于每个邻域箱，线程将偏移量应用到线程块所覆盖的箱的坐标上，得出相邻箱的坐标，如【3】图 18.14【/3】的下半部分所示。它们协作将箱中的原子加载到共享内存，然后每个线程单独检查这些原子是否落在其分配网格点的截断距离内。对于每个原子是否纳入其分配网格点能量值的贡献，每个线程可能作出不同的决定。"
+    },
+    {
+      "id": "n0068",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 18.14【/1】 Neighborhood list using relative offsets.",
+      "zh": "【1】图 18.14【/1】 使用相对偏移量的邻域列表。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[12]",
+      "en": "The improvement in computational complexity in a cutoff binning algorithm mainly comes from the fact that each thread now examines a much smaller subset of atoms, defined by the neighborhood bins, in a large grid system. However, this makes constant memory much less attractive for holding the atoms. Since thread blocks will be accessing different neighborhoods, the limited-sized constant memory will unlikely be able to hold all the atoms that are needed by all active thread blocks. This motivates the use of global memory to hold a much larger set of atoms. To mitigate the bandwidth consumption, threads in a block collaborate in loading the atom information in each common neighborhood bin into the shared memory. All threads then examine the atoms out of shared memory.",
+      "zh": "截断分箱算法计算复杂度的改善主要来自：在大网格系统中，每个线程现在只需检查由邻域箱定义的、小得多的原子子集。然而，这使常量内存在存放原子方面的吸引力大大降低。由于线程块将访问不同的邻域，容量有限的常量内存不太可能容纳所有活动线程块所需的全部原子。这就促使我们使用全局内存来保存大得多的原子集合。为缓解带宽消耗，线程块中的线程协作将每个公共邻域箱中的原子信息加载到共享内存，然后所有线程都从共享内存中检查原子。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[13]",
+      "en": "One subtle issue with binning is that bins may end up with different numbers of atoms. Since the atoms are statistically distributed in the grid system, some bins may have lots of atoms, and some bins may end up with no atoms at all. To guarantee memory coalescing, it is important that all bins be of the same size and aligned at appropriate coalescing boundaries. This would require us to fill many bins with dummy atoms whose electrical charge is 0, which causes two negative effects. First, the dummy atoms still occupy global memory and shared memory storage. They also consume data transfer bandwidth to the device. Second, the dummy atoms extend the execution time of the thread blocks whose bins have few real atoms.",
+      "zh": "分箱的一个微妙问题是，各个箱最终可能包含不同数量的原子。由于原子在网格系统中呈统计分布，有些箱可能有很多原子，有些箱则可能根本没有原子。为保证内存合并，重要的是所有箱大小相同，并在适当的合并边界上对齐。这就要求我们为许多箱填充电荷为 0 的虚拟原子，这会产生两个负面影响。首先，虚拟原子仍占用全局内存和共享内存的存储空间，还会消耗将数据传输到设备所需的带宽。其次，虚拟原子会延长其箱中真实原子较少的线程块的执行时间。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[14]",
+      "en": "A good approach is setting the bin size at a reasonable level that covers the number of atoms in the vast majority of the bins, typically much smaller than the largest possible number of atoms in a bin. The binning process maintains an overflow list. In processing an atom, if the atom’s home bin is full, the atom is added to the overflow list instead. After the device completes a kernel, the resulting grid point energy values are transferred back to the host. The host executes a sequential cutoff algorithm on the atoms in the overflow list to complete the missing contributions from these overflow atoms.",
+      "zh": "一个不错的做法是把箱大小设置在合理水平，使其覆盖绝大多数箱中的原子数，通常远小于一个箱中可能出现的最大原子数。分箱过程维护一个溢出列表。在处理原子时，如果原子的归属箱已满，该原子将被加入溢出列表。设备完成一个核函数后，生成的网格点能量值被传回主机。主机对溢出列表中的原子执行串行截断算法，以补全这些溢出原子缺失的贡献。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[15]",
+      "en": "As long as the overflow atoms account for only a small percentage (e.g., less than 3%) of the atoms, the additional sequential processing time of the overflow atoms is typically shorter than that of the device execution time. One can also design the kernel so that each kernel invocation calculates the energy values for a subvolume of grid points. After each kernel completes, the host launches the next kernel and processes the overflow atoms for the completed kernel. Thus the host will be processing the overflow atoms while the device executes the next kernel. This approach can hide most, if not all, of the delays in processing overflow atoms, since it is done in parallel with the execution of the next kernel.",
+      "zh": "只要溢出原子只占原子总数的很小比例（例如不到 3%），处理溢出原子所需的额外串行时间通常短于设备执行时间。还可以这样设计核函数：每次核函数调用计算一个网格点子体积的能量值。每次核函数完成后，主机启动下一个核函数，并处理刚完成核函数的溢出原子。这样，主机会在设备执行下一个核函数的同时处理溢出原子。由于溢出原子的处理与下一个核函数的执行并行进行，这种方法可以隐藏处理溢出原子的大部分（即便不是全部）延迟。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "18.6 Summary",
+      "zh": "18.6 小结"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "This chapter presents a series of decisions and tradeoffs in parallelizing the calculation of electrostatic potential energy in a regularly spaced energy grid. We show that parallelizing a highly optimized sequential C implementation of the DCS method leads to a slow scatter kernel that requires heavy use of atomic operations. We then show that one can parallelize a less optimized sequential C code into a gather kernel that has much higher parallel execution speed. We also show that through thread coarsening, we can reclaim much of the efficiency of the optimized sequential execution. We further demonstrate that by carefully choosing the grid points to fold into each thread, the kernel can have completely coalesced memory write patterns.",
+      "zh": "本章介绍了一系列在规则间距的能量网格上并行化静电势能计算的决策与权衡。我们说明，对高度优化的 DCS 方法串行 C 实现进行并行化，会得到一个速度缓慢的分散核函数，且需要大量使用原子操作。随后我们说明，可以将一个优化程度较低的串行 C 代码并行化为汇聚核函数，其并行执行速度快得多。我们还说明，通过线程粗化，可以恢复优化后串行执行的大部分效率。我们进一步证明，通过仔细选择折入每个线程的网格点，核函数可以具有完全合并的内存写入模式。"
+    }
+  ]
+}

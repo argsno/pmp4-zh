@@ -1,0 +1,59 @@
+{
+  "page": "Part3",
+  "nodes": [
+    {
+      "id": "tit9020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Advanced Patterns and Applications",
+      "zh": "高级模式与应用"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "Outline",
+      "zh": "概要"
+    },
+    {
+      "id": "n0002",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[1]",
+      "en": "【1】Chapter 13 Sorting【/1】",
+      "zh": "【1】第 13 章 排序【/1】"
+    },
+    {
+      "id": "n0003",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[2]",
+      "en": "【1】Chapter 14 Sparse matrix computation【/1】",
+      "zh": "【1】第 14 章 稀疏矩阵计算【/1】"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[3]",
+      "en": "【1】Chapter 15 Graph traversal【/1】",
+      "zh": "【1】第 15 章 图遍历【/1】"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[4]",
+      "en": "【1】Chapter 16 Deep learning【/1】",
+      "zh": "【1】第 16 章 深度学习【/1】"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[5]",
+      "en": "【1】Chapter 17 Iterative magnetic resonance imaging reconstruction【/1】",
+      "zh": "【1】第 17 章 迭代式磁共振成像重建【/1】"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[6]",
+      "en": "【1】Chapter 18 Electrostatic potential map【/1】",
+      "zh": "【1】第 18 章 静电势图【/1】"
+    },
+    {
+      "id": "n0008",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[7]",
+      "en": "【1】Chapter 19 Parallel programming and computational thinking【/1】",
+      "zh": "【1】第 19 章 并行编程与计算思维【/1】"
+    }
+  ]
+}

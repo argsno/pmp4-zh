@@ -1,0 +1,149 @@
+{
+  "page": "FigureA.1_519-536_B9780323912310000215",
+  "nodes": [
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[13]",
+      "en": "In general, it is straightforward to design a parallel algorithm for the Gaussian elimination procedure that we illustrated in 【1】Fig. A.10【/1】. For example, we can write a CUDA kernel and designate each thread to perform all calculations to be done on a row of the matrix. For systems that can fit into shared memory, we can use a thread block to perform Gaussian elimination. All threads iterate through the steps. After each division step, all threads participate in barrier synchronization. They all then perform a subtraction step, after which one thread will stop its participation, since its designated row has no more work to do until the backward substitution phase. After the subtraction step, all threads need to perform barrier synchronization again to ensure that the next step will be done with the updated information. When we have systems of equations with many variables, we can expect a reasonable amount of speedup from the parallel execution.",
+      "zh": "一般而言，为我们用【1】图 A.10【/1】说明的高斯消元过程设计并行算法是直截了当的。例如，我们可以编写一个 CUDA 核函数，让每个线程负责对矩阵的一行执行所有计算。对于可以放入共享内存的方程组，我们可以用一个线程块来执行高斯消元。所有线程逐步迭代。在每个除法步骤之后，所有线程都参与屏障同步。随后它们都执行一个减法步骤，之后会有一个线程停止参与，因为其负责的行在回代阶段之前已没有更多工作可做。减法步骤之后，所有线程需要再次进行屏障同步，以确保下一步使用更新后的信息执行。当方程组含有很多变量时，我们可以预期并行执行能带来相当可观的加速比。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[14]",
+      "en": "Unfortunately, the simple Gaussian elimination algorithm that we have been using can suffer from numerical instability. This can be illustrated with the following example:",
+      "zh": "遗憾的是，我们一直使用的简单高斯消元算法可能存在数值不稳定问题。这可以用下面的例子来说明："
+    },
+    {
+      "id": "n0077",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[15]",
+      "en": "【M1】 【2】(A.6)【/2】",
+      "zh": "【M1】 【2】(A.6)【/2】"
+    },
+    {
+      "id": "n0078",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[16]",
+      "en": "【M1】 【2】(A.7)【/2】",
+      "zh": "【M1】 【2】(A.7)【/2】"
+    },
+    {
+      "id": "n0079",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[17]",
+      "en": "【M1】 【2】(A.8)【/2】",
+      "zh": "【M1】 【2】(A.8)【/2】"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[18]",
+      "en": "We will encounter a problem when we perform step 1 of the algorithm. The coefficient for the X variable in 【1】Eq. (A.6)【/1】 is zero. We will not be able to divide 【2】Eq. (A.6)【/2】 by the coefficient for variable X and eliminate the X variable from 【3】Eqs. (A.7)【/3】 and 【4】(A.8)【/4】 by subtracting 【5】Eq. (A.6)【/5】 from 【6】Eqs. (A.7)【/6】 and 【7】(A.8)【/7】. The reader should verify that this system of equation is solvable and has the same solution: X=1, Y=2, and Z=3. Therefore the algorithm is numerically unstable. It can fail to generate a solution for certain input values even though the solution exists.",
+      "zh": "在执行算法的第一步时，我们会遇到一个问题。【1】式 (A.6)【/1】中 X 变量的系数为零。我们将无法用 X 变量的系数去除【2】式 (A.6)【/2】，也无法通过从【6】式 (A.7)【/6】和【7】式 (A.8)【/7】中减去【5】式 (A.6)【/5】来从【3】式 (A.7)【/3】和【4】式 (A.8)【/4】中消去 X 变量。读者可以验证，这个方程组是可解的，并且解相同：X=1、Y=2、Z=3。因此该算法是数值不稳定的。对于某些输入值，即使解存在，它也可能无法产生解。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[19]",
+      "en": "This is a well-known problem with Gaussian elimination algorithms and can be addressed with a method that is commonly referred to as 【1】pivoting【/1】. The idea is to find one of the remaining equations whose coefficient for the lead variable is not zero. By swapping the current top equation with the identified equation, the algorithm can successfully eliminate the lead variable from the rest of the equations. If we apply pivoting to the three equations, we end up with the following set of equations:",
+      "zh": "这是高斯消元算法的一个众所周知的问题，可以用一种通常称为【1】选主元【/1】的方法来解决。其思路是找到剩余方程中主变量系数不为零的一个方程。通过将当前的顶部方程与找到的方程交换，算法就能成功地从其余方程中消去主变量。如果对这三个方程应用选主元，最终会得到如下方程组："
+    },
+    {
+      "id": "n0082",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[20]",
+      "en": "【M1】 【2】(A.9)【/2】",
+      "zh": "【M1】 【2】(A.9)【/2】"
+    },
+    {
+      "id": "n0083",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[21]",
+      "en": "【M1】 【2】(A.10)【/2】",
+      "zh": "【M1】 【2】(A.10)【/2】"
+    },
+    {
+      "id": "n0084",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[22]",
+      "en": "【M1】 【2】(A.11)【/2】",
+      "zh": "【M1】 【2】(A.11)【/2】"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[23]",
+      "en": "Note that the coefficient for X in 【1】Eq. (A.9)【/1】 is no longer zero. We can proceed with Gaussian elimination, as illustrated in 【2】Fig. A.11【/2】.",
+      "zh": "注意，【1】式 (A.9)【/1】中 X 的系数不再为零。我们可以继续进行高斯消元，如【2】图 A.11【/2】所示。"
+    },
+    {
+      "id": "n0086",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[12]/figure[1]/figcaption[1]",
+      "en": "【1】Figure A.11【/1】 Gaussian elimination with pivoting.",
+      "zh": "【1】图 A.11【/1】 带选主元的高斯消元。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[24]",
+      "en": "The reader should follow the steps in 【1】Fig. A.11【/1】. The most important additional insight is that some equations might not have the variable that the algorithm is eliminating at the current step (see row 2 of step 1 in 【2】Fig. A.11【/2】). The designated thread does not need to do the division on the equation.",
+      "zh": "读者应仔细跟进【1】图 A.11【/1】中的步骤。最重要的额外启示是，有些方程可能不含算法在当前步骤要消去的变量（参见【2】图 A.11【/2】中第一步的第 2 行）。负责该方程的线程无需对该方程执行除法。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[25]",
+      "en": "In general, the pivoting step should choose the equation with the largest absolute coefficient value among all the lead variables and swap its equation (row) with the current top equation as well as swap the variable (column) with the current variable. While pivoting is conceptually simple, it can incur significant implementation complexity and performance overhead. In the case of our simple CUDA kernel implementation, recall that each thread is assigned a row. Pivoting requires an inspection and perhaps swapping of coefficient data spread across these threads. This is not a big problem if all coefficients are in the shared memory. We can run a parallel max reduction using threads in the block as long as we control the level of control flow divergence within warps.",
+      "zh": "一般而言，选主元步骤应在所有主变量中选择绝对值系数最大的方程，将该方程（行）与当前的顶部方程交换，并将该变量（列）与当前变量交换。虽然选主元在概念上很简单，但它可能带来显著的实现复杂度和性能开销。就我们简单的 CUDA 核函数实现而言，回想一下，每个线程被分配一行。选主元需要检查分散在这些线程中的系数数据，并可能需要在它们之间交换。如果所有系数都在共享内存中，这就不是大问题。只要我们能控制线程束内控制发散的程度，就可以用线程块内的线程执行并行最大值归约。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[26]",
+      "en": "However, if the system of linear equations is being solved by multiple thread blocks or even multiple nodes of a compute cluster, the idea of inspecting data that is spread across multiple thread blocks or multiple compute cluster nodes can be an extremely expensive proposition. This is the main motivation for 【1】communication-avoiding algorithms【/1】 that avoid a global inspection of data such as pivoting (【2】Ballard et al., 2011【/2】). In general, there are two approaches to this problem. Partial pivoting restricts the candidates of the swap operation to come from a localized set of equations so that the cost of global inspection is limited. However, this can slightly reduce the numerical accuracy of the solution. Researchers have also demonstrated that randomization tends to maintain a high level of numerical accuracy for the solution.",
+      "zh": "然而，如果线性方程组由多个线程块甚至计算集群的多个节点求解，那么检查分散在多个线程块或计算集群多个节点中的数据，代价可能极其高昂。这正是【1】避免通信的算法【/1】的主要动机，这类算法避免了诸如选主元那样的全局数据检查（【2】Ballard et al., 2011【/2】）。一般而言，这个问题有两种处理方法。部分选主元将交换操作的对象限制在局部的一组方程中，从而限制全局检查的代价。不过，这可能会略微降低解的数值准确性。研究人员还证明，随机化往往能使解保持较高的数值准确性。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "A.7 Summary",
+      "zh": "A.7 小结"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "In this appendix we introduced the concepts of floating-point format and representable numbers, which are foundational to the understanding of precision. On the basis of these concepts, we explained the denormalized numbers and why they are important in many numerical applications. In early CUDA devices, denormalized numbers were not supported. However, more recent hardware generations support denormalized numbers. We also explained the concept of arithmetic accuracy of floating-point operations. It is important for CUDA programmers to understand the potential lower accuracy of fast arithmetic operations implemented in the special function units. More important, the reader should now have a good understanding of why parallel algorithms can often affect the accuracy of calculation results and how sorting and other techniques can be used to improve the accuracy of computation.",
+      "zh": "在本附录中，我们介绍了浮点格式和可表示数的概念，它们是理解精度的基础。在这些概念的基础上，我们解释了非规格化数以及它们为何在许多数值应用中很重要。在早期的 CUDA 设备中，不支持非规格化数。然而，较新的硬件世代支持非规格化数。我们还解释了浮点运算的算术准确性概念。CUDA 程序员理解特殊函数单元中实现的快速算术运算可能精度较低，这一点很重要。更重要的是，读者现在应当已经很好地理解了为什么并行算法常常会影响计算结果的准确性，以及如何利用排序和其他技术来提高计算的准确性。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[1]",
+      "en": "1. Draw the equivalent of 【1】Fig. A.5【/1】 for a 6-bit format (1-bit sign, 3-bit mantissa, 2-bit exponent). Use your result to explain what each additional mantissa bit does to the set of representable numbers on the number line.",
+      "zh": "1. 画出【1】图 A.5【/1】在 6 位格式（1 位符号、3 位尾数、2 位阶码）下的对应图。利用你的结果解释，每增加一位尾数对数轴上可表示数集合有何影响。"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[2]",
+      "en": "2. Draw the equivalent of 【1】Fig. A.5【/1】 for another 6-bit format (1-bit sign, 2-bit mantissa, 3-bit exponent). Use your result to explain what each additional exponent bit does to the set of representable numbers on the number line.",
+      "zh": "2. 画出【1】图 A.5【/1】在另一种 6 位格式（1 位符号、2 位尾数、3 位阶码）下的对应图。利用你的结果解释，每增加一位阶码对数轴上可表示数集合有何影响。"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[3]",
+      "en": "3. Assume that in a new processor design, owing to technical difficulty, the floating-point arithmetic unit that performs addition can only do “round to zero” (rounding by truncating the value toward 0). The hardware maintains a sufficient number of bits that the only error that is introduced is due to rounding. What is the maximal ULP error value for add operations on this machine?",
+      "zh": "3. 假设在某新型处理器设计中，由于技术困难，执行加法的浮点算术单元只能进行“舍入到零”（即向 0 截断的舍入）。硬件保留足够多的位，使得引入的唯一误差来自舍入。在这台机器上，加法运算的最大 ULP 误差值是多少？"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[4]",
+      "en": "4. A graduate student wrote a CUDA kernel to reduce a large floating-point array to the sum of all its elements. The array will always be sorted from the smallest values to the largest values. To avoid branch divergence, the student decided to implement the algorithm of 【1】Fig. A.4【/1】. Explain why this can reduce the accuracy of the results.",
+      "zh": "4. 一名研究生编写了一个 CUDA 核函数，把一个大浮点数组归约为其所有元素之和。该数组总是按从小到大的顺序排好序。为避免分支发散，该学生决定实现【1】图 A.4【/1】的算法。请解释为什么这会降低结果的准确性。"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/ol[1]/li[5]",
+      "en": "5. Assume that in an arithmetic unit design, the hardware implements an iterative approximation algorithm that generates two additional accurate mantissa bits of the result for the sin() function in each clock cycle. The architect decided to allow the arithmetic function to iterate nine clock cycles. Assume that the hardware fills in all remaining mantissa bits as 0’s. What would be the maximal ULP error of the hardware implementation of the sin() function in this design for IEEE single-precision numbers? Assume that the omitted “1.” mantissa bit must also be generated by the arithmetic unit.",
+      "zh": "5. 假设在某算术单元设计中，硬件实现了一种迭代逼近算法，每个时钟周期为 sin() 函数的结果生成两个额外的精确尾数位。架构师决定让该算术函数迭代九个时钟周期。假设硬件将剩余的所有尾数位填为 0。对于 IEEE 单精度数，该设计中 sin() 函数的硬件实现的最大 ULP 误差是多少？假设被省略的“1.”尾数位也必须由算术单元生成。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h3[1]",
+      "en": "References",
+      "zh": "参考文献"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+[
+  {
+    "en": "counting sort",
+    "zh": "计数排序",
+    "note": "§关键词/13.1：基于计数的非比较排序方法"
+  },
+  {
+    "en": "bucketing",
+    "zh": "分桶",
+    "note": "§关键词/13.2：将键按位分布到各桶的过程"
+  },
+  {
+    "en": "bucket",
+    "zh": "桶",
+    "note": "§13.2–13.7：基数排序中存放键的容器（0 桶/1 桶等）"
+  },
+  {
+    "en": "comparison sort",
+    "zh": "比较排序",
+    "note": "§关键词/13.8：基于比较的排序的简称，与 comparison-based sorting 同义"
+  },
+  {
+    "en": "key",
+    "zh": "键",
+    "note": "§13.1 起贯穿全章：键值对中决定排序顺序的字段"
+  },
+  {
+    "en": "key field",
+    "zh": "键字段",
+    "note": "§13.1：键值对中作为排序依据的字段"
+  },
+  {
+    "en": "value field",
+    "zh": "值字段",
+    "note": "§13.1：键值对中随键排序的字段"
+  },
+  {
+    "en": "primary key",
+    "zh": "主键",
+    "note": "§13.1：级联排序中后参与排序的键"
+  },
+  {
+    "en": "secondary key",
+    "zh": "次键",
+    "note": "§13.1：级联排序中先参与排序的键"
+  },
+  {
+    "en": "destination index",
+    "zh": "目标索引",
+    "note": "§13.3：键在输出列表中的目标位置索引"
+  },
+  {
+    "en": "input list",
+    "zh": "输入列表",
+    "note": "§13.1–13.7：待排序/待处理的列表"
+  },
+  {
+    "en": "output list",
+    "zh": "输出列表",
+    "note": "§13.1–13.7：排序结果所在列表"
+  },
+  {
+    "en": "local bucket",
+    "zh": "局部桶",
+    "note": "§13.4–13.6：线程块在共享内存中维护的桶"
+  },
+  {
+    "en": "local sort",
+    "zh": "局部排序",
+    "note": "§13.4：线程块内部对自有键执行的排序"
+  },
+  {
+    "en": "block-level local sort",
+    "zh": "块级局部排序",
+    "note": "§13.4：每个线程块内执行的局部排序"
+  },
+  {
+    "en": "nondecreasing order",
+    "zh": "非递减顺序",
+    "note": "§13.1：每个元素不小于前一个元素的顺序"
+  },
+  {
+    "en": "nonincreasing order",
+    "zh": "非递增顺序",
+    "note": "§13.1：每个元素不大于前一个元素的顺序"
+  },
+  {
+    "en": "lexicographical order",
+    "zh": "字典序",
+    "note": "§13.1/13.7：文本字符串的排序顺序"
+  },
+  {
+    "en": "boundary check",
+    "zh": "边界检查",
+    "note": "§13.3：核函数中检查线程是否越界的判断"
+  },
+  {
+    "en": "most significant bit",
+    "zh": "最高有效位",
+    "note": "§13.3：键的最高位"
+  },
+  {
+    "en": "least significant digit (LSD)",
+    "zh": "最低有效位（LSD）",
+    "note": "§13.8：基数排序中的最低位数字"
+  },
+  {
+    "en": "most significant digit (MSD)",
+    "zh": "最高有效位（MSD）",
+    "note": "§13.8：基数排序中的最高位数字"
+  },
+  {
+    "en": "bitwise-and operation",
+    "zh": "按位与运算",
+    "note": "§13.3：提取特定位时使用的位运算"
+  },
+  {
+    "en": "row-major order",
+    "zh": "行主序",
+    "note": "§13.4：表按行连续存放的顺序；与术语表 row-major layout=行主序布局 一致"
+  },
+  {
+    "en": "transposition sort",
+    "zh": "转置排序",
+    "note": "§13.8/关键词：使用固定比较模式交换乱序元素的排序；与术语表 transposition=转置 一致"
+  },
+  {
+    "en": "odd-even transposition sort",
+    "zh": "奇偶转置排序",
+    "note": "§13.8：交替比较偶/奇与奇/偶键对的简单并行排序"
+  },
+  {
+    "en": "bubble sort",
+    "zh": "冒泡排序",
+    "note": "§13.8：串行排序算法，奇偶转置排序与其相似"
+  },
+  {
+    "en": "quicksort",
+    "zh": "快速排序",
+    "note": "§13.8：样本排序是其双路划分的 p 路推广"
+  },
+  {
+    "en": "merge tree",
+    "zh": "归并树",
+    "note": "§13.8：归并排序中逐层合并已排序分块的树"
+  },
+  {
+    "en": "sampling sort",
+    "zh": "样本排序",
+    "note": "§13.1：即术语表中的 sample sort（样本排序），本书两处写法指同一算法"
+  },
+  {
+    "en": "oversampling",
+    "zh": "过采样",
+    "note": "§13.8：样本排序中选取多于 p−1 个键的常见做法"
+  },
+  {
+    "en": "top-down sort methods",
+    "zh": "自顶向下排序方法",
+    "note": "§关键词：与术语表 top-down strategy=自顶向下策略 一致"
+  },
+  {
+    "en": "bottom-up sort methods",
+    "zh": "自底向上排序方法",
+    "note": "§关键词：与术语表 bottom-up strategy=自底向上策略 一致"
+  }
+]

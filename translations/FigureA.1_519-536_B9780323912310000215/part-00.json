@@ -1,0 +1,155 @@
+{
+  "page": "FigureA.1_519-536_B9780323912310000215",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Numerical considerations",
+      "zh": "数值考量"
+    },
+    {
+      "id": "p0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "In the early days of computing, floating-point arithmetic capability was found only in mainframes and supercomputers. Although many microprocessors that were designed in the 1980s started to have floating-point coprocessors, their floating-point arithmetic speed was extremely slow, about three orders of magnitude slower than that of mainframes and supercomputers. With advances in microprocessor technology, many microprocessors that were designed in the 1990s, such as Intel Pentium III and AMD Athlon, started to have high-performance floating-point capabilities that rivaled those of supercomputers. High-speed floating-point arithmetic is a standard feature of microprocessors and GPUs today. Floating-point representation allows for a larger dynamic range of representable data values and more precise representation of tiny data values. These desirable properties make floating-point arithmetic the preferred data representative for modeling physical and artificial phenomena, such as combustion, aerodynamics, light illumination, and financial risks. Large-scale evaluation of these models has been driving the need for parallel computing. As a result, it is important for application programmers to understand the nature of floating-point arithmetic in developing their parallel applications. In particular, we will focus on the accuracy of floating-point arithmetic operations, the precision of floating-point number representation, the stability of numerical algorithms, and how they should be taken into consideration in parallel programming.",
+      "zh": "在计算机发展初期，浮点运算能力只存在于大型主机（mainframe）和超级计算机中。尽管 20 世纪 80 年代设计的许多微处理器开始配备浮点协处理器，但其浮点运算速度极慢，比大型主机和超级计算机大约慢三个数量级。随着微处理器技术的进步，20 世纪 90 年代设计的许多微处理器，如 Intel Pentium III 和 AMD Athlon，开始具备可与超级计算机媲美的高性能浮点能力。如今，高速浮点运算已是微处理器和 GPU 的标准功能。浮点表示允许可表示的数据值具有更大的动态范围，并能更精确地表示微小的数据值。这些优良特性使浮点运算成为对燃烧、空气动力学、光照和金融风险等物理与人工现象进行建模时首选的数据表示方式。对这些模型的大规模评估一直在推动对并行计算的需求。因此，应用程序开发人员在开发并行应用时理解浮点运算的特性十分重要。具体而言，我们将重点讨论浮点运算的准确性、浮点数表示的精度、数值算法的稳定性，以及它们在并行编程中应如何加以考虑。"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "A.1 Floating-point data representation",
+      "zh": "A.1 浮点数据表示"
+    },
+    {
+      "id": "p0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "The IEEE-754 Floating-Point Standard is an effort to ensure that computer manufacturers conform to a common representation and arithmetic behavior for floating-point data (【1】IEEE Microprocessor Standards Committee, 2008【/1】). Most, if not all, computer manufacturers in the world have accepted this standard. In particular, virtually all microprocessors that are designed in the future will either fully conform to or almost fully conform to the IEEE-754 Floating-Point Standard and its more recent IEEE-754 2008 revision. Therefore it is important for application developers to understand the concepts and practical considerations of this standard.",
+      "zh": "IEEE-754 浮点标准旨在确保计算机制造商遵循统一的浮点数据表示与运算行为（【1】IEEE Microprocessor Standards Committee, 2008【/1】）。世界上绝大多数（如果不是全部）计算机制造商都已接受这一标准。尤其是，未来设计的几乎所有微处理器都将完全符合或几乎完全符合 IEEE-754 浮点标准及其更新的 IEEE-754 2008 修订版。因此，应用程序开发人员理解该标准的概念和实际考量十分重要。"
+    },
+    {
+      "id": "p0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[2]",
+      "en": "A floating-point number system starts with the representation of a numerical value as bit patterns. In the IEEE Floating-Point Standard, a numerical value is represented in three groups of bits: sign (S), exponent (E), and mantissa (M). With some exceptions that will be detailed later in this appendix, each (S, E, M) pattern uniquely identifies a numerical value according to the following formula:",
+      "zh": "浮点数系统首先把数值表示为位模式。在 IEEE 浮点标准中，数值用三组位表示：符号（S）、阶码（E）和尾数（M）。除本附录稍后将详细说明的一些例外情况外，每个（S, E, M）模式按以下公式唯一确定一个数值："
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[3]",
+      "en": "【M1】 【2】(A.1)【/2】",
+      "zh": "【M1】 【2】(A.1)【/2】"
+    },
+    {
+      "id": "p0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[4]",
+      "en": "The interpretation of S is simple: S=0 means a positive number, and S=1 a negative number. Mathematically, any number, including −1, when raised to the power of 0, results in 1. Thus the value is positive. On the other hand, when −1 is raised to the power of 1, it is −1 itself. With a multiplication by −1, the value becomes negative. However, the interpretation of M and E bits is much more complex. We will use the following example to help explain the interpretation of M and E bits.",
+      "zh": "对 S 的解释很简单：S=0 表示正数，S=1 表示负数。在数学上，任何数（包括 −1）的 0 次幂都等于 1，因此该值为正。另一方面，−1 的 1 次幂就是 −1 本身，乘以 −1 后，该值变为负。然而，对 M 位和 E 位的解释要复杂得多。我们将用下面的例子来帮助解释 M 位和 E 位的含义。"
+    },
+    {
+      "id": "p0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[5]",
+      "en": "Assume for the sake of simplicity that each floating-point number consists of a 1-bit sign, a 3-bit exponent, and a 2-bit mantissa. We will use this hypothetical 6-bit format to illustrate the challenges that are involved in encoding E and M. As we discuss numerical values, we will sometimes need to express a number either in decimal place value or in binary place value. Numbers that are expressed in decimal place value will have a subscript 【1】D【/1】, and those that are expressed in binary place value will have a subscript 【2】B【/2】. For example, 0.5【3】D【/3】 (5*10【4】−1【/4】, since the place to the right of the decimal point carries a weight of 10【5】−1【/5】) is the same as 0.1【6】B【/6】 (1*2【7】−1【/7】, since the place to the right of the decimal point carries a weight of 2【8】−1【/8】).",
+      "zh": "为简单起见，假设每个浮点数由 1 位符号、3 位阶码和 2 位尾数构成。我们将用这种假想的 6 位格式来说明对 E 和 M 进行编码所面临的挑战。在讨论数值时，我们有时需要用十进制位值或二进制位值来表示一个数。用十进制位值表示的数带有下标【1】D【/1】，用二进制位值表示的数带有下标【2】B【/2】。例如，0.5【3】D【/3】（5*10【4】−1【/4】，因为小数点右侧的数位权重为 10【5】−1【/5】）与 0.1【6】B【/6】（1*2【7】−1【/7】，因为小数点右侧的数位权重为 2【8】−1【/8】）相同。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[1]/h3[1]",
+      "en": "A.1.1 Normalized representation of M",
+      "zh": "A.1.1 M 的规格化表示"
+    },
+    {
+      "id": "p0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[1]/p[1]",
+      "en": "【1】Eq. (A.1)【/1】 requires that all values be derived by treating the mantissa value as 1.M, which makes the mantissa bit pattern for each floating-point number unique. For example, in this interpretation of the M bits, the only mantissa bit pattern that is allowed for 0.5【2】D【/2】 is the one in which all bits that represent M are 0s:",
+      "zh": "【1】式 (A.1)【/1】要求所有数值都通过把尾数值视为 1.M 来导出，这使得每个浮点数的尾数位模式唯一。例如，在这种对 M 位的解释下，0.5【2】D【/2】所允许的唯一尾数位模式是所有表示 M 的位都为 0："
+    },
+    {
+      "id": "p0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[1]/p[3]",
+      "en": "Other potential candidates would be 0.1【1】B【/1】*2【2】0【/2】 and 10.0【3】B【/3】*2【4】−2【/4】, but neither fits the form of 1.M. The numbers that satisfy this restriction will be referred to as normalized numbers. Because all mantissa values that satisfy the restriction are of the form 1.XX, we can omit the “1.” part from the representation. Therefore the mantissa value of 0.5 in a 2-bit mantissa representation is 00, which is derived by omitting “1.” from 1.00. This makes a 2-bit mantissa effectively a 3-bit mantissa. In general, in IEEE format, an m-bit mantissa is effectively an (m+1)-bit mantissa.",
+      "zh": "其他可能的候选会是 0.1【1】B【/1】*2【2】0【/2】和 10.0【3】B【/3】*2【4】−2【/4】，但二者都不符合 1.M 的形式。满足这一限制的数将被称为规格化数。由于满足该限制的所有尾数值都具有 1.XX 的形式，我们可以在表示中省略“1.”部分。因此，0.5 在 2 位尾数表示中的尾数值为 00，即从 1.00 中省略“1.”得到。这使得 2 位尾数实际上相当于 3 位尾数。一般而言，在 IEEE 格式中，m 位尾数实际上相当于 (m+1) 位尾数。"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[2]/h3[1]",
+      "en": "A.1.2 Excess encoding of E",
+      "zh": "A.1.2 E 的移码编码"
+    },
+    {
+      "id": "p0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[2]/p[1]",
+      "en": "The number of bits that are used to represent E determines the range of numbers that can be represented. Large positive E values result in very large floating-point absolute values. For example, if the value of E is 64, the floating-point number that is being represented is between 2【1】64【/1】 (&gt;10【2】18【/2】) and 2【3】65【/3】. You would be extremely happy if this was the balance of your savings account! Large negative E values result in very small floating-point values. For example, if the E value is −64, the number that is being represented is between 2【4】−64【/4】 (&lt;10【5】−18【/5】) and 2【6】−63【/6】. This is a very tiny fractional number. The E field allows a floating-point number format to represent a wider range of numbers than integer number formats can. We will come back to this point when we look at the representable numbers of a format.",
+      "zh": "用于表示 E 的位数决定了可表示数的范围。较大的正 E 值会产生非常大的浮点绝对值。例如，如果 E 的值为 64，则所表示的浮点数介于 2【1】64【/1】（&gt;10【2】18【/2】）与 2【3】65【/3】之间。如果你的储蓄账户余额有这么多，你会非常高兴！较大的负 E 值会产生非常小的浮点值。例如，如果 E 的值为 −64，则所表示的数值介于 2【4】−64【/4】（&lt;10【5】−18【/5】）与 2【6】−63【/6】之间。这是一个非常微小的分数。E 字段使浮点数格式能够表示比整数格式更广范围的数。我们在考察一种格式的可表示数时会回到这一点。"
+    },
+    {
+      "id": "p0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[2]/p[2]",
+      "en": "The IEEE standard adopts an excess or biased encoding convention for E. If E bits are used to represent the exponent E, (2【1】e−1【/1】−1) is added to the two’s complement representation for the exponent to form its excess representation. A two’s complement representation is a system in which the negative value of a number can be derived by first complementing every bit of the value and adding 1 to the result. In our 3-bit exponent representation, there are three bits in the exponent (e=3). Therefore the value 2【2】3−1【/2】−1=011 will be added to the two’s complement representation of the exponent value.",
+      "zh": "IEEE 标准对 E 采用移码（有偏）编码约定。如果用 E 位来表示阶码 E，则将 (2【1】e−1【/1】−1) 加到阶码的二进制补码表示上，构成其移码表示。二进制补码表示是这样一种体系：一个数的负值可以先把该值的每一位取反，再将结果加 1 得到。在我们的 3 位阶码表示中，阶码有 3 位（e=3）。因此，将 2【2】3−1【/2】−1=011 加到阶码值的二进制补码表示上。"
+    },
+    {
+      "id": "p0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[2]/p[3]",
+      "en": "The advantage of excess representation is that an unsigned comparator can be used to compare signed numbers. As shown in 【1】Fig. A.1【/1】, in our 3-bit exponent representation, the excess-3 bit patterns increase monotonically from −3 to 3 when they are viewed as unsigned numbers. We will refer to each of these bit patterns as the code for the corresponding value. For example, the code for –3 is 000 and that for 3 is 110. Thus if one uses an unsigned number comparator to compare excess-3 code for any number from −3 to 3, the comparator gives the correct comparison result in terms of which number is larger, smaller, and so on. For another example, if one compares excess-3 codes 001 and 100 with an unsigned comparator, 001 is smaller than 100. This is the right conclusion, since the values that they represent, −2 and 1, have exactly the same relation. This is a desirable property for hardware implementation, since unsigned comparators are smaller and faster than signed comparators.",
+      "zh": "移码表示的优点在于，可以使用无符号比较器来比较有符号数。如【1】图 A.1【/1】所示，在我们的 3 位阶码表示中，移码 3 的位模式在按无符号数看待时，从 −3 到 3 单调递增。我们将这些位模式中的每一个称为对应数值的编码。例如，−3 的编码是 000，3 的编码是 110。因此，如果用无符号数比较器比较 −3 到 3 之间任意数的移码 3 编码，比较器都能给出正确的比较结果，即哪个数更大、哪个更小等。再如，如果用无符号比较器比较移码 3 编码 001 和 100，则 001 小于 100。这是正确的结论，因为二者所表示的数值 −2 和 1 恰好具有相同的关系。这对硬件实现而言是一种理想的特性，因为无符号比较器比有符号比较器更小、更快。"
+    },
+    {
+      "id": "n0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[2]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure A.1【/1】 Excess-3 encoding, sorted by excess-3 ordering.",
+      "zh": "【1】图 A.1【/1】 移码 3 编码，按移码 3 次序排列。"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[2]/p[4]",
+      "en": "【1】Fig. A.1【/1】 also shows that the pattern of all 1’s in the excess representation is a reserved pattern. Note that a 0 value and an equal number of positive and negative values result in an odd number of patterns. Having the pattern 111 as either an even number or an odd number would result in an unbalanced number of positive and negative numbers. The IEEE standard uses this special bit pattern in special ways that will be discussed later in this appendix.",
+      "zh": "【1】图 A.1【/1】还显示，移码表示中全 1 的位模式是一个保留模式。注意，一个 0 值加上数目相等的正值和负值，得到的位模式总数为奇数。若将模式 111 用于表示偶数或奇数中的任何一个，都会造成正数和负数数量不均衡。IEEE 标准以特殊方式使用这一特殊位模式，本附录稍后将讨论。"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[2]/p[5]",
+      "en": "Now we are ready to represent 0.5【1】D【/1】 with our 6-bit format:",
+      "zh": "现在我们可以用 6 位格式来表示 0.5【1】D【/1】了："
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[2]/p[7]",
+      "en": "That is, the 6-bit representation for 0.5【1】D【/1】 is 001000.",
+      "zh": "也就是说，0.5【1】D【/1】的 6 位表示是 001000。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[2]/p[8]",
+      "en": "In general, with a normalized mantissa and an excess-coded exponent, the value of a number with an n-bit exponent is",
+      "zh": "一般而言，在规格化尾数和移码阶码的情况下，具有 n 位阶码的数的值为"
+    },
+    {
+      "id": "n0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/section[2]/p[9]",
+      "en": "【M1】 【2】(A.2)【/2】",
+      "zh": "【M1】 【2】(A.2)【/2】"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h2[1]",
+      "en": "A.2 Representable numbers",
+      "zh": "A.2 可表示数"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "The representable numbers of a representation format are the numbers that can be exactly represented in the format. For example, if one uses a 3-bit unsigned integer format, the representable numbers are shown in 【1】Fig. A.2【/1】.",
+      "zh": "一种表示格式的可表示数，是指在该格式中能被精确表示的数。例如，如果使用 3 位无符号整数格式，其可表示数如【1】图 A.2【/1】所示。"
+    },
+    {
+      "id": "n0023",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure A.2【/2】【/1】 Representable numbers of a 3-bit unsigned integer format.",
+      "zh": "【1】【2】图 A.2【/2】【/1】 3 位无符号整数格式的可表示数。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[2]",
+      "en": "Neither −1 nor 9 can be represented in the format given above. We can draw a number line to identify all the representable numbers, as shown in 【1】Fig. A.3【/1】, in which all representable numbers of the 3-bit unsigned integer format are marked with stars.",
+      "zh": "上述格式既不能表示 −1，也不能表示 9。我们可以画一条数轴来标出所有可表示数，如【1】图 A.3【/1】所示，其中 3 位无符号整数格式的所有可表示数都用星号标出。"
+    }
+  ]
+}

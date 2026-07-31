@@ -1,0 +1,242 @@
+[
+  {
+    "en": "bank account",
+    "zh": "银行账户",
+    "note": "glossary false positive：p0115 中 bank account（银行账户）为日常用语，非 §5.3 存储体（bank）；denylist 未覆盖，需团队负责人扩展"
+  },
+  {
+    "en": "accuracy",
+    "zh": "准确性",
+    "note": "§A.4 及全文；与 precision（精度）相区分的核心概念"
+  },
+  {
+    "en": "bit pattern",
+    "zh": "位模式",
+    "note": "§A.1 起全文通用"
+  },
+  {
+    "en": "place value",
+    "zh": "位值",
+    "note": "§A.1 十进制位值/二进制位值"
+  },
+  {
+    "en": "two's complement",
+    "zh": "二进制补码",
+    "note": "§A.1.2 two's complement representation 译作 二进制补码表示"
+  },
+  {
+    "en": "excess representation",
+    "zh": "移码表示",
+    "note": "§A.1.2，与 §5.7 excess encoding（移码编码）同族"
+  },
+  {
+    "en": "excess-3",
+    "zh": "移码 3",
+    "note": "§A.1.2 编码名称（excess-3 encoding/ordering）"
+  },
+  {
+    "en": "biased encoding",
+    "zh": "偏置编码",
+    "note": "§A.1.2 'excess or biased encoding' 译作 移码（有偏）编码"
+  },
+  {
+    "en": "normalized number",
+    "zh": "规格化数",
+    "note": "§A.1.1，与 §5.7 normalized representation（规格化表示）同族"
+  },
+  {
+    "en": "denormalized number",
+    "zh": "非规格化数",
+    "note": "§A.2/§A.7，与 §5.7 denormalization（非规格化）同族"
+  },
+  {
+    "en": "reserved bit pattern",
+    "zh": "保留位模式",
+    "note": "§A.1.2 全 1 位模式"
+  },
+  {
+    "en": "comparator",
+    "zh": "比较器",
+    "note": "§A.1.2 无符号比较器/有符号比较器"
+  },
+  {
+    "en": "number line",
+    "zh": "数轴",
+    "note": "§A.2 数轴上的可表示数分布"
+  },
+  {
+    "en": "rounding error",
+    "zh": "舍入误差",
+    "note": "§A.2/§A.4"
+  },
+  {
+    "en": "overflow",
+    "zh": "上溢",
+    "note": "§A.3 与 underflow（下溢）相对"
+  },
+  {
+    "en": "signaling NaN",
+    "zh": "发信号 NaN",
+    "note": "§A.3 IEEE 两种 NaN 之一"
+  },
+  {
+    "en": "quiet NaN",
+    "zh": "静默 NaN",
+    "note": "§A.3 IEEE 两种 NaN 之一"
+  },
+  {
+    "en": "most significant bit",
+    "zh": "最高有效位",
+    "note": "§A.3 与 §5.5 least significant bit（最低有效位）相对"
+  },
+  {
+    "en": "dynamic range",
+    "zh": "动态范围",
+    "note": "§A 引言"
+  },
+  {
+    "en": "mainframe",
+    "zh": "大型主机",
+    "note": "§A 引言，与 supercomputer 并列"
+  },
+  {
+    "en": "supercomputer",
+    "zh": "超级计算机",
+    "note": "§A 引言"
+  },
+  {
+    "en": "microprocessor",
+    "zh": "微处理器",
+    "note": "§A 引言及全文"
+  },
+  {
+    "en": "coprocessor",
+    "zh": "协处理器",
+    "note": "§A 引言 浮点协处理器"
+  },
+  {
+    "en": "minicomputer",
+    "zh": "小型计算机",
+    "note": "§A.2 20 世纪 80 年代的小型计算机"
+  },
+  {
+    "en": "fabrication process",
+    "zh": "制造工艺",
+    "note": "§A.2 较新制造工艺"
+  },
+  {
+    "en": "inversion operation",
+    "zh": "求倒数运算",
+    "note": "§A.4 硬件求倒数"
+  },
+  {
+    "en": "transcendental function",
+    "zh": "超越函数",
+    "note": "§A.4"
+  },
+  {
+    "en": "polynomial approximation",
+    "zh": "多项式逼近",
+    "note": "§A.4/§A.8 习题 5"
+  },
+  {
+    "en": "sum reduction",
+    "zh": "求和归约",
+    "note": "§A.5 reduction（归约）的加和变体"
+  },
+  {
+    "en": "pairwise product",
+    "zh": "两两乘积",
+    "note": "§A.5 点积中的两两乘积"
+  },
+  {
+    "en": "pairwise sum",
+    "zh": "成对和",
+    "note": "§A.5 并行算法中的成对和"
+  },
+  {
+    "en": "presort",
+    "zh": "预排序",
+    "note": "§A.5 归约计算前的预排序"
+  },
+  {
+    "en": "compensated summation algorithm",
+    "zh": "补偿求和算法",
+    "note": "§A.5 即 Kahan 求和算法（§5.7 已有条目）"
+  },
+  {
+    "en": "right-hand-side value",
+    "zh": "右端项",
+    "note": "§A.6 矩阵形式存储的系数与右端项"
+  },
+  {
+    "en": "coefficient",
+    "zh": "系数",
+    "note": "§A.6 全文"
+  },
+  {
+    "en": "lead variable",
+    "zh": "主变量",
+    "note": "§A.6 选主元语境下待消去的主变量"
+  },
+  {
+    "en": "top equation",
+    "zh": "顶部方程",
+    "note": "§A.6 选主元中与当前顶部方程交换"
+  },
+  {
+    "en": "identity matrix",
+    "zh": "单位矩阵",
+    "note": "§A.6"
+  },
+  {
+    "en": "triangular matrix",
+    "zh": "三角矩阵",
+    "note": "§A.6 高斯消元后的矩阵形式"
+  },
+  {
+    "en": "inverse matrix",
+    "zh": "逆矩阵",
+    "note": "§A.6 消元等价于乘逆矩阵"
+  },
+  {
+    "en": "compute cluster",
+    "zh": "计算集群",
+    "note": "§A.6 多节点计算集群"
+  },
+  {
+    "en": "randomization",
+    "zh": "随机化",
+    "note": "§A.6 保持数值准确性的随机化方法"
+  },
+  {
+    "en": "communication-avoiding algorithm",
+    "zh": "避免通信的算法",
+    "note": "§A.6 避免全局数据检查的一类算法"
+  },
+  {
+    "en": "partial pivoting",
+    "zh": "部分选主元",
+    "note": "§A.6，与 §5.7 pivoting（选主元）同族"
+  },
+  {
+    "en": "special function unit",
+    "zh": "特殊函数单元",
+    "note": "§A.7 GPU 中实现快速近似运算的硬件单元"
+  },
+  {
+    "en": "branch divergence",
+    "zh": "分支发散",
+    "note": "§A.8 习题 4，与 §5.4 control divergence（控制发散）相关但不相同"
+  },
+  {
+    "en": "round to zero",
+    "zh": "舍入到零",
+    "note": "§A.8 习题 3 舍入模式名称"
+  },
+  {
+    "en": "no-zero",
+    "zh": "no-zero（无零）",
+    "note": "§A.2 图 A.4/A.5 中列名与格式名，保留原样并在首次出现时给出中文注"
+  }
+]

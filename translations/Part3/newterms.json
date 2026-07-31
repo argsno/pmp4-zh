@@ -1,0 +1,7 @@
+[
+  {
+    "en": "Outline",
+    "zh": "概要",
+    "note": "Part-divider page heading listing the chapters in the part; not a §5 term. Rendered 概要 to match nav.json's Chapter Outline→本章概要 style. Appears on all Part-divider pages (Part1/Part2/Part3/Part4)."
+  }
+]

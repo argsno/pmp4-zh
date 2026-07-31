@@ -1,0 +1,77 @@
+[
+  {
+    "en": "sense amplifier / sensing amplifier",
+    "zh": "读出放大器",
+    "note": "6.1 节 DRAM 结构，多次出现"
+  },
+  {
+    "en": "sensor (DRAM sensing)",
+    "zh": "检测器",
+    "note": "6.1 节，DRAM 读出机制中的检测器件"
+  },
+  {
+    "en": "decoder (DRAM)",
+    "zh": "译码器",
+    "note": "6.1 节，驱动字线的电子电路"
+  },
+  {
+    "en": "outlet gate",
+    "zh": "输出门",
+    "note": "6.1 节侧栏，存储单元的电荷放出门管"
+  },
+  {
+    "en": "DRAM cell",
+    "zh": "DRAM 存储单元",
+    "note": "6.1 节起，DRAM 基本存储单元（小电容）"
+  },
+  {
+    "en": "bit line",
+    "zh": "位线",
+    "note": "6.1 节，读出放大器的长位线"
+  },
+  {
+    "en": "core array",
+    "zh": "核心阵列",
+    "note": "6.2 节，DRAM core array 中的并行访问"
+  },
+  {
+    "en": "memory controller",
+    "zh": "内存控制器",
+    "note": "6.2 节，每个通道即一个内存控制器"
+  },
+  {
+    "en": "double data rate (DDR)",
+    "zh": "双倍数据速率（DDR）",
+    "note": "6.2 节，DDR 总线每时钟两次传输"
+  },
+  {
+    "en": "interleaved data distribution",
+    "zh": "交错数据分布",
+    "note": "6.2 节，图 6.9 的分布方案"
+  },
+  {
+    "en": "coarsening loop",
+    "zh": "粗化循环",
+    "note": "6.3 节，图 6.13 代码中遍历各工作单元的循环"
+  },
+  {
+    "en": "binary search",
+    "zh": "二分查找",
+    "note": "6.4 节，归并模式与线程粗化中出现的查找操作"
+  },
+  {
+    "en": "universal copy",
+    "zh": "公共副本",
+    "note": "6.4 节，私有化优化中多个线程/线程块共享的输出副本"
+  },
+  {
+    "en": "carpooling",
+    "zh": "拼车",
+    "note": "6.1 节，用拼车类比内存合并；含 carpool lanes 拼车车道"
+  },
+  {
+    "en": "reduction",
+    "zh": "减少",
+    "note": "glossary false positive；6.1 节交通拥堵类比中 'the reduction of the number of cars' 为日常英语，非归约模式"
+  }
+]

@@ -1,0 +1,155 @@
+{
+  "page": "Ch006_123-147_B9780323912310000161",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Performance considerations",
+      "zh": "性能考量"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "In this chapter we briefly present the off-chip memory (DRAM) architecture and discuss related performance considerations, such as memory coalescing and memory latency hiding. We then discuss an important optimization, thread granularity coarsening, that may target any of the different aspects of the compute and memory architecture, depending on the application. Finally, we wrap up this part of the book with a checklist of common performance optimizations that will serve as a guide for optimizing the performance of the parallel patterns that are discussed in the second and third parts of the book.",
+      "zh": "本章简要介绍片外内存（DRAM）的体系结构，并讨论相关的性能考量，如内存合并与内存延迟隐藏。然后我们讨论一种重要的优化——线程粒度粗化，它可以根据应用的不同，针对计算与内存体系结构的各个方面进行优化。最后，我们用一个常用性能优化清单来收束本书的这一部分，该清单将作为优化本书第二、三部分中讨论的各种并行模式性能的指南。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Memory bandwidth; memory bank; memory channel; DRAM burst; memory coalescing; corner turning; latency hiding; thread granularity; thread coarsening; performance optimization; performance bottleneck",
+      "zh": "内存带宽；内存存储体；内存通道；DRAM 突发传输；内存合并；拐角变换；延迟隐藏；线程粒度；线程粗化；性能优化；性能瓶颈"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】6.1 Memory coalescing【/1】 124",
+      "zh": "【1】6.1 内存合并【/1】 124"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】6.2 Hiding memory latency【/1】 133",
+      "zh": "【1】6.2 隐藏内存延迟【/1】 133"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】6.3 Thread coarsening【/1】 138",
+      "zh": "【1】6.3 线程粗化【/1】 138"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】6.4 A checklist of optimizations【/1】 141",
+      "zh": "【1】6.4 优化清单【/1】 141"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】6.5 Knowing your computation’s bottleneck【/1】 145",
+      "zh": "【1】6.5 认清计算瓶颈【/1】 145"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】6.6 Summary【/1】 146",
+      "zh": "【1】6.6 小结【/1】 146"
+    },
+    {
+      "id": "u0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】Exercises【/1】 146",
+      "zh": "【1】习题【/1】 146"
+    },
+    {
+      "id": "u0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】References【/1】 147",
+      "zh": "【1】参考文献【/1】 147"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "The execution speed of a parallel program can vary greatly depending on the interactions between the resource demands of the program and the resource constraints of the hardware. Managing the interaction between parallel code and hardware resource constraints is important for achieving high performance in virtually all parallel programming models. It is a practical skill that requires deep understanding of the hardware architecture and is best learned through hands-on exercises in a parallel programming model that is designed for high performance.",
+      "zh": "并行程序的执行速度会因程序对资源的需求与硬件资源约束之间的相互作用而产生巨大差异。在几乎所有并行编程模型中，处理好并行代码与硬件资源约束之间的相互作用对获得高性能都至关重要。这是一项实践技能，需要对硬件体系结构有深刻的理解，并且最好通过在高性能设计的并行编程模型中动手实践来学习。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "So far, we have learned about various aspects of the GPU architecture and their implications for performance. In 【1】Chapter 4【/1】, Compute Architecture and Scheduling, we learned about the compute architecture of the GPU and related performance considerations, such as control divergence and occupancy. In 【2】Chapter 5【/2】, Memory Architecture and Data Locality, we learned about the on-chip memory architecture of the GPU and the use of shared memory tiling to achieve more data reuse. In this chapter we will briefly present the off-chip memory (DRAM) architecture and discuss related performance considerations such as memory coalescing and memory latency hiding. We then discuss an important type of optimization—thread granularity coarsening—that may target any of the different aspects of the architecture, depending on the application. Finally, we wrap up this part of the book with a checklist of common performance optimizations that will serve as a guide for optimizing the performance of the parallel patterns that will be discussed in the second and third parts of the book.",
+      "zh": "到目前为止，我们已经学习了 GPU 体系结构的各个方面及其对性能的影响。在【1】第 4 章【/1】《计算体系结构与调度》中，我们学习了 GPU 的计算体系结构以及相关的性能考量，如控制发散与占用率。在【2】第 5 章【/2】《内存体系结构与数据局部性》中，我们学习了 GPU 的片上内存体系结构，以及如何利用共享内存分块来实现更多的数据重用。在本章中，我们将简要介绍片外内存（DRAM）的体系结构，并讨论相关的性能考量，如内存合并与内存延迟隐藏。然后我们将讨论一种重要的优化类型——线程粒度粗化，它可以根据应用的不同，针对体系结构的各个方面进行优化。最后，我们用一个常用性能优化清单来收束本书的这一部分，该清单将作为优化本书第二、三部分中将要讨论的各种并行模式性能的指南。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[3]",
+      "en": "In different applications, different architecture constraints may dominate and become the limiting factors of performance, commonly referred to as 【1】bottlenecks【/1】. One can often dramatically improve the performance of an application on a particular CUDA device by trading one resource usage for another. This strategy works well if the resource constraint that is thus alleviated was the dominating constraint before the strategy was applied and the constraint that is thus exacerbated does not have negative effects on parallel execution. Without such an understanding, performance tuning would be guesswork; plausible strategies may or may not lead to performance enhancements.",
+      "zh": "在不同的应用中，不同的体系结构约束可能占主导地位，成为限制性能的因素，通常被称为【1】瓶颈【/1】。在特定的 CUDA 设备上，通过用一种资源的使用换取另一种资源的使用，往往可以显著提升应用的性能。如果经此缓解的资源约束在采用该策略之前正是起主导作用的约束，而且因此加剧的约束对并行执行没有负面影响，那么这种策略效果很好。没有这样的认识，性能调优就成了瞎猜；看起来合理的策略未必能带来性能提升。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "6.1 Memory coalescing",
+      "zh": "6.1 内存合并"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "One of the most important factors of CUDA kernel performance is accessing data in the global memory, the limited bandwidth of which can become the bottleneck. CUDA applications extensively exploit data parallelism. Naturally, CUDA applications tend to process a massive amount of data from the global memory within a short period of time, In 【1】Chapter 5【/1】, Memory Architecture and Data Locality, we studied tiling techniques that leverage the shared memory to reduce the total amount of data that must be accessed from the global memory by a collection of threads in each thread block. In this chapter we will further discuss memory coalescing techniques for moving data between global memory and shared memories or registers in an efficient manner. Memory coalescing techniques are often used in conjunction with tiling techniques to allow CUDA devices to reach their performance potential by efficiently utilizing the global memory bandwidth.【2】【3】1【/3】【/2】",
+      "zh": "影响 CUDA 核函数性能的最重要因素之一是在全局内存中访问数据，全局内存有限的带宽可能成为瓶颈。CUDA 应用广泛利用数据并行。自然而然地，CUDA 应用往往会在短时间内处理来自全局内存的海量数据。在【1】第 5 章【/1】《内存体系结构与数据局部性》中，我们学习了分块技术，该技术利用共享内存来减少每个线程块中的一组线程必须从全局内存访问的数据总量。在本章中，我们将进一步讨论内存合并技术，以高效地在全局内存与共享内存或寄存器之间移动数据。内存合并技术常与分块技术结合使用，使 CUDA 设备能够通过高效利用全局内存带宽来发挥其性能潜力。【2】【3】1【/3】【/2】"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "The global memory of a CUDA device is implemented with DRAM. Data bits are stored in DRAM cells that are small capacitors, in which the presence or absence of a tiny amount of electrical charge distinguishes between a 1 and a 0 value. Reading data from a DRAM cell requires the small capacitor to use its tiny electrical charge to drive a highly capacitive line leading to a sensor and set off the sensor’s detection mechanism that determines whether a sufficient amount of charge is present in the capacitor to qualify as a “1.” This process takes tens of nanoseconds in modern DRAM chips (see the “Why is DRAM So Slow?” sidebar). This is in sharp contrast to the subnanosecond clock cycle time of modern computing devices. Because this process is very slow relative to the desired data access speed (subnanosecond access per byte), modern DRAM designs use parallelism to increase their rate of data access, commonly referred to as memory access throughput.",
+      "zh": "CUDA 设备的全局内存由 DRAM 实现。数据位存储在 DRAM 存储单元中，这些单元是微小的电容，其中是否存在极微量的电荷决定了值是 1 还是 0。从 DRAM 存储单元读取数据时，需要让这个微小电容用其微量电荷去驱动一条高电容的线路，到达检测器并触发检测器的检测机制，由它判断电容中是否有足够多的电荷而算作“1”。在现代 DRAM 芯片中，这一过程需要几十纳秒（见“为什么 DRAM 如此之慢？”专栏）。这与现代计算设备亚纳秒级的时钟周期时间形成鲜明对比。由于这一过程相对于理想的数据访问速度（每字节亚纳秒）非常缓慢，现代 DRAM 设计利用并行性来提高其数据访问速率，即通常所说的内存访问吞吐量。"
+    },
+    {
+      "id": "n0021",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/p[1]",
+      "en": "Why Are DRAMs So Slow?",
+      "zh": "为什么 DRAM 如此之慢？"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/p[2]",
+      "en": "【1】The following figure shows a DRAM cell and the path for accessing its content. The decoder is an electronic circuit that uses a transistor to drive a line connected to the outlet gates of thousands of cells. It can take a long time for the line to be fully charged or discharged to the desired level【/1】.",
+      "zh": "【1】下图展示了一个 DRAM 存储单元以及访问其内容的路径。译码器是一种电子电路，它利用晶体管驱动一条连接到数千个单元输出门的线路。要使该线路完全充电或放电到期望的电平，可能需要很长时间【/1】。"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/p[3]",
+      "en": "【1】A more formidable challenge is for the cell to drive the vertical line to the sense amplifiers and allow the sense amplifier to detect its content. This is based on electrical charge sharing. The gate lets out the tiny amount of electrical charge that is stored in the cell. If the cell content is “1,” the tiny amount of charge must raise the electrical potential of the large capacitance of the long bit line to a sufficiently high level that it can trigger the detection mechanism of the sense amplifier. A good analogy would be for someone to hold a small cup of coffee at one end of a long hallway and a person at the other end of the hallway to use the aroma propagated along the hallway to determine the flavor of the coffee【/1】.",
+      "zh": "【1】更艰巨的挑战在于，让存储单元驱动垂直方向的线路到达读出放大器，并使读出放大器检测出其内容。这基于电荷共享原理。门管释放出存储在单元中的微量电荷。如果单元内容为“1”，那么这微量电荷必须把长位线大电容上的电位提升到足够高的电平，从而触发读出放大器的检测机制。一个很好的类比是：一个人手持一小杯咖啡站在长走廊的一端，走廊另一端的另一个人利用沿走廊传播的香气来判断咖啡的口味【/1】。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/p[4]",
+      "en": "【1】One could speed up the process by using a larger, stronger capacitor in each cell. However, the DRAMs have been going in the opposite direction. The capacitors in each cell have been steadily reduced in size and thus reduced in their strength over time so that more bits can be stored in each chip. This is why the access latency of DRAMs has not decreased over time【/1】.",
+      "zh": "【1】一种加快该过程的方法是让每个单元使用更大、更强的电容。然而，DRAM 的发展方向恰恰相反。随着时间推移，每个单元中的电容尺寸被不断缩小，强度也随之减弱，以便在每块芯片中存储更多的位。这正是 DRAM 的访问延迟没有随时间降低的原因【/1】。"
+    }
+  ]
+}

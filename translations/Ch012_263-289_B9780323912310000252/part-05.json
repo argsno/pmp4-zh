@@ -1,0 +1,113 @@
+{
+  "page": "Ch012_263-289_B9780323912310000252",
+  "nodes": [
+    {
+      "id": "p0450",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[14]",
+      "en": "【1】Fig. 12.19【/1】 shows an implementation of the co-rank function that provides the simplified model for the co-rank values while correctly operating on circular buffers. It treats i, j, i_low, and j_low values in exactly the same way as the co-rank function in 【2】Fig. 12.5【/2】. The only change is that i, i − 1, j, and j − 1 are no longer used directly as indices in accessing the A_S and B_S arrays. They are used as offsets that are to be added to the values of A_S_start and B_S_start to form the index values i_cir, i_m_1_cir, j_cir, and j_m_1_cir. In each case, we need to test whether the actual index values need to be wrapped around to the beginning part of the buffer. Note that we cannot simply use i_cir − 1 to replace i − 1. We need to form the final index value and check for the need to wrap it around. It should be clear that the simplified model also helps to keep the co-rank function code simple: All the manipulations of the i, j, i_low, and j_low values remain the same; they do not need to deal with the circular nature of the buffers.",
+      "zh": "【1】图 12.19【/1】展示了一个协秩函数的实现，它在环形缓冲区上正确运行的同时，为协秩值提供了简化模型。它对 i、j、i_low 和 j_low 值的处理方式与【2】图 12.5【/2】中的协秩函数完全相同。唯一的变化是，i、i − 1、j 和 j − 1 不再被直接用作访问 A_S 和 B_S 数组的索引。它们被用作偏移量，加到 A_S_start 和 B_S_start 的值上，形成索引值 i_cir、i_m_1_cir、j_cir 和 j_m_1_cir。在每种情况下，我们都需要判断实际索引值是否需要环绕到缓冲区的开头部分。注意，我们不能简单地用 i_cir − 1 代替 i − 1。我们需要形成最终的索引值，并检查是否有必要让它环绕。显然，简化模型也有助于保持协秩函数代码的简洁：对 i、j、i_low 和 j_low 值的所有操作都保持不变，它们不需要处理缓冲区的环形特性。"
+    },
+    {
+      "id": "n0126",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[6]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 12.19【/2】【/1】 A co_rank_circular function that operates on circular buffers.",
+      "zh": "【1】【2】图 12.19【/2】【/1】 一个在环形缓冲区上运行的 co_rank_circular 函数。"
+    },
+    {
+      "id": "p0455",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[15]",
+      "en": "【1】Fig. 12.20【/1】 shows an implementation of the merge_sequential_circular function. Similarly to the co_rank_circular function, the logic of the code remains essentially unchanged from the original merge function. The only change is in the way in which i and j are used to access the A and B elements. Since the merge_sequential_circular function will be called only by the thread-level code of merge_circular_buffer_kernel, the A and B elements that are accessed will be in the A_S and B_S arrays. In all four places where i or j is used to access the A or B elements, we need to form the i_cir or j_cir and test whether the index value needs to be wrapped around to the beginning part of the array. Otherwise, the code is the same as that of the merge function in 【2】Fig. 12.2【/2】.",
+      "zh": "【1】图 12.20【/1】展示了归并函数 merge_sequential_circular 的一个实现。与 co_rank_circular 函数类似，其代码逻辑与原来的归并函数相比基本保持不变。唯一的变化在于 i 和 j 用于访问 A 和 B 元素的方式。由于归并函数 merge_sequential_circular 只会被 merge_circular_buffer_kernel 的线程级代码调用，所访问的 A 和 B 元素将位于 A_S 和 B_S 数组中。在全部四个使用 i 或 j 访问 A 或 B 元素的地方，我们都需要构造 i_cir 或 j_cir，并判断索引值是否需要环绕到数组的开头部分。除此之外，代码与【2】图 12.2【/2】中归并函数的代码相同。"
+    },
+    {
+      "id": "n0128",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[7]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 12.20【/2】【/1】 Implementation of the merge_sequential_circular function.",
+      "zh": "【1】【2】图 12.20【/2】【/1】 归并函数 merge_sequential_circular 的实现。"
+    },
+    {
+      "id": "p0460",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[16]",
+      "en": "Although we did not list all parts of merge_circular_buffer_kernel, the reader should be able to put it all together on the basis of the parts that we discussed. The use of tiling and circular buffers adds quite a bit of complexity. In particular, each thread uses quite a few more registers to keep track of the starting point and the remaining number of elements in the buffers. All these additional usages can potentially reduce the occupancy, or the number of thread-blocks that can be assigned to each of the streaming multiprocessors when the kernel is executed. However, since the merge operation is memory bandwidth bound, the computational and register resources are likely underutilized. Thus increasing the number of registers that are used and address calculations to conserve memory bandwidth is a reasonable tradeoff.",
+      "zh": "虽然我们没有列出 merge_circular_buffer_kernel 的所有部分，但读者应当能够根据我们讨论过的部分把它们拼装起来。分块和环形缓冲区的使用增加了相当多的复杂度。特别是，每个线程会使用多得多的寄存器来记录缓冲区的起始点和剩余元素数量。所有这些额外的使用都有可能降低占用率，即核函数执行时可以分配到每个流式多处理器上的线程块数量。然而，由于归并操作受内存带宽限制，计算和寄存器资源很可能未被充分利用。因此，增加所用寄存器的数量和地址计算量来节约内存带宽，是一个合理的权衡。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/h2[1]",
+      "en": "12.8 Thread coarsening for merge",
+      "zh": "12.8 面向归并的线程粗化"
+    },
+    {
+      "id": "p0465",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[1]",
+      "en": "The price of parallelizing merge across many threads is primarily the fact that each thread has to perform its own binary search operations to identify the co-ranks of its output indices. The number of binary search operations that are performed can be reduced by reducing the number of threads that are launched, which can be done by assigning more output elements per thread. All the kernels that are presented in this chapter already have thread coarsening applied because they are all written to process multiple elements per thread. In a completely uncoarsened kernel, each thread would be responsible for a single output element. However, this would require a binary search operation to be performed for every single element, which would be prohibitively expensive. Hence coarsening is essential for amortizing the cost of the binary search operation across a substantial number of elements.",
+      "zh": "在许多线程之间并行化归并的代价，主要是每个线程都必须执行自己的二分查找操作，以确定其输出索引的协秩。可以减少启动的线程数量，从而减少执行的二分查找操作次数，而增加每个线程分配到的输出元素数量即可做到这一点。本章介绍的所有核函数都已经应用了线程粗化，因为它们都是以每个线程处理多个元素的方式编写的。在完全未粗化的核函数中，每个线程将只负责一个输出元素。然而，这需要对每一个元素都执行一次二分查找操作，代价将高得令人望而却步。因此，线程粗化对于把二分查找操作的成本分摊到大量元素上至关重要。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/h2[1]",
+      "en": "12.9 Summary",
+      "zh": "12.9 小结"
+    },
+    {
+      "id": "p0470",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/p[1]",
+      "en": "In this chapter we introduced the ordered merge pattern whose parallelization requires each thread to dynamically identify its input position ranges. Because the input ranges are data dependent, we resort to a fast search implementation of the co-rank function to identify the input range for each thread. The fact that the input ranges are data dependent also creates extra challenges when we use a tiling technique to conserve memory bandwidth and enable memory coalescing. As a result, we introduced the use of circular buffers to allow us to make full use of the data loaded from global memory. We showed that introducing a more complex data structure, such as a circular buffer, can significantly increase the complexity of the code that uses the data structure. Thus we introduce a simplified buffer access model for the code that manipulates and uses the indices to remain largely unchanged. The actual circular nature of the buffers is exposed only when these indices are used to access the elements in the buffer.",
+      "zh": "本章我们介绍了有序归并模式，该模式的并行化要求每个线程动态地确定其输入位置范围。由于输入范围取决于数据，我们借助协秩函数的快速搜索实现来确定每个线程的输入范围。输入范围取决于数据这一事实，也给我们使用分块技术以节省内存带宽、实现内存合并带来了额外的挑战。因此，我们引入了环形缓冲区的使用，使我们能够充分利用从全局内存加载的数据。我们表明，引入更复杂的数据结构（如环形缓冲区）会显著增加使用该数据结构的代码的复杂度。因此，我们引入一种简化的缓冲区访问模型，使操作和使用索引的代码大体保持不变。缓冲区的实际环形特性只在用这些索引访问缓冲区中的元素时才显现出来。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]",
+      "en": "1. Assume that we need to merge two lists A=(1, 7, 8, 9, 10) and B=(7, 10, 10, 12). What are the co-rank values for C[8]?",
+      "zh": "1. 假设我们需要归并两个列表 A=(1, 7, 8, 9, 10) 和 B=(7, 10, 10, 12)。C[8] 的协秩值是什么？"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[2]",
+      "en": "2. Complete the calculation of co-rank functions for thread 2 in 【1】Fig. 12.6【/1】.",
+      "zh": "2. 完成【1】图 12.6【/1】中线程 2 的协秩函数计算。"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[3]",
+      "en": "3. For the for-loops that load A and B tiles in 【1】Fig. 12.12【/1】, add a call to the co-rank function so that we can load only the A and B elements that will be consumed in the current generation of the while-loop.",
+      "zh": "3. 对于【1】图 12.12【/1】中加载 A 和 B 分块的 for 循环，增加一次对协秩函数的调用，以便只加载 while 循环当前这一轮将要消耗的 A 和 B 元素。"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[4]",
+      "en": "4. Consider a parallel merge of two arrays of size 1,030,400 and 608,000. Assume that each thread merges eight elements and that a thread block size of 1024 is used.【M1】",
+      "zh": "4. 考虑两个大小分别为 1,030,400 和 608,000 的数组的并行归并。假设每个线程归并八个元素，并使用大小为 1024 的线程块。【M1】"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[4]/ol[1]/li[1]",
+      "en": "a. In the basic merge kernel in 【1】Fig. 12.9【/1】, how many threads perform a binary search on the data in the global memory?",
+      "zh": "a. 在【1】图 12.9【/1】的基础归并核函数中，有多少线程对全局内存中的数据进行二分查找？"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[4]/ol[1]/li[2]",
+      "en": "b. In the tiled merge kernel in 【1】Figs. 12.11【/1】–【2】12.13【/2】, how many threads perform a binary search on the data in the global memory?",
+      "zh": "b. 在【1】图 12.11【/1】–【2】图 12.13【/2】的分块归并核函数中，有多少线程对全局内存中的数据进行二分查找？"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[4]/ol[1]/li[3]",
+      "en": "c. In the tiled merge kernel in 【1】Figs. 12.11【/1】–【2】12.13【/2】, how many threads perform a binary search on the data in the shared memory?",
+      "zh": "c. 在【1】图 12.11【/1】–【2】图 12.13【/2】的分块归并核函数中，有多少线程对共享内存中的数据进行二分查找？"
+    },
+    {
+      "id": "st0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "page": "Ch023_515-518_B9780323912310000203",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Conclusion and outlook",
+      "zh": "结论与展望"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter summarizes the main parts of the book. It then concludes the book by offering an outlook of how parallel programming is contributing and will continue to contribute to new innovations in science and technology.",
+      "zh": "本章总结本书的主要内容。随后，本书以展望作结，探讨并行编程如何正在推动、并将继续推动科学技术领域的新创新。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Computational thinking; parallel patterns; golden age of computing; self-driving cars; individualized medicine",
+      "zh": "计算思维；并行模式；计算的黄金时代；自动驾驶汽车；个体化医疗"
+    },
+    {
+      "id": "st9020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "概要"
+    },
+    {
+      "id": "o9010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】23.1 Goals revisited【/1】 515",
+      "zh": "【1】23.1 目标回顾【/1】 515"
+    },
+    {
+      "id": "o9015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】23.2 Future outlook【/1】 516",
+      "zh": "【1】23.2 未来展望【/1】 516"
+    },
+    {
+      "id": "p0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "You made it! We have arrived at the finishing line. In this final chapter we will briefly review the learning goals that you have achieved through this book. Instead of drawing a conclusion, we will offer our vision for the future of massively parallel computing and how its advancements will affect the future course of science and technology.",
+      "zh": "你做到了！我们已到达终点线。在这最后一章中，我们将简要回顾你通过本书所达到的学习目标。与其给出一个结论，我们更愿意展望大规模并行计算的未来，以及它的进展将如何影响科学技术今后的发展进程。"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "23.1 Goals revisited",
+      "zh": "23.1 目标回顾"
+    },
+    {
+      "id": "p0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "As we stated in the Introduction, our primary goal is to teach you, the reader, how to program massively parallel processors. We promised that it would become easy once you develop the right intuition and go about it the right way. In particular, we promised to focus on computational thinking skills that would enable you to think about problems in ways that are amenable to parallel computing. We also promised to focus on the factors that limit the performance of parallel applications and provide a systematic approach for optimizing code to overcome these factors.",
+      "zh": "正如我们在引言中所说，我们的首要目标是教会你——读者——如何为大规模并行处理器编程。我们承诺过，一旦你建立起正确的直觉、并以正确的方式着手，编程就会变得容易。具体而言，我们承诺着力培养计算思维技能，让你能够以适合并行计算的方式去思考问题。我们还承诺关注限制并行应用性能的因素，并提供一套系统化的代码优化方法，以克服这些因素。"
+    },
+    {
+      "id": "p0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "We delivered on these promises through four steps. In step one, 【1】Chapters 2【/1】 through 【2】6【/2】 introduce the essential concepts of parallel computing and CUDA C and the key performance considerations in developing massively parallel code in CUDA. They also introduce the pertinent computer architecture concepts needed to understand the hardware limitations that must be addressed in high-performance parallel programming. With this knowledge, a developer can be confident in writing their parallel code and reasoning about the relative merit of alternative threading arrangements, loop structures, and coding styles. We conclude this part with a checklist of common optimization techniques that we apply throughout the rest of the book to optimize the performance of various parallel patterns and applications.",
+      "zh": "我们分四步兑现了这些承诺。第一步中，【1】第 2 章【/1】至【2】第 6 章【/2】介绍了并行计算与 CUDA C 的基本概念，以及用 CUDA 开发大规模并行代码时的关键性能考量。这些章节还介绍了相关的计算机体系结构概念，帮助读者理解高性能并行编程中必须解决的硬件限制。掌握了这些知识，开发者就能自信地编写并行代码，并权衡各种线程组织方式、循环结构和编码风格的相对优劣。这一部分以一份常见优化技术清单收尾，我们将这份清单贯穿应用于全书其余部分，以优化各种并行模式和应用的性能。"
+    },
+    {
+      "id": "p0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "In the second step, we introduce six major parallel patterns (【1】Chapters 7【/1】 through 【2】12【/2】) that have been proven useful in introducing parallelism into many applications. These chapters cover the concepts behind the most useful patterns of parallel computation. Each pattern is illustrated with concrete code examples. Each pattern is also used to introduce important techniques for overcoming frequently encountered parallelization and performance obstacles in parallel programming. We also use these patterns to showcase how the optimizations introduced in the first step can be applied in a wide variety of scenarios.",
+      "zh": "第二步中，我们介绍六个主要的并行模式（【1】第 7 章【/1】至【2】第 12 章【/2】），它们已被证明能有效地把并行引入众多应用。这些章节阐述了最有用的并行计算模式背后的概念。每种模式都配有具体的代码示例加以说明。每种模式还用来介绍一些重要技巧，以克服并行编程中频繁遇到的并行化与性能障碍。我们还用这些模式展示第一步中介绍的优化如何在各种不同的场景中得以应用。"
+    },
+    {
+      "id": "p0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "In the third step, we introduce additional advanced patterns and applications (【1】Chapters 13【/1】–【2】19【/2】) to reinforce the knowledge and skills gained in the previous step. While in this step, we continue to apply the optimizations that we practiced in the previous step, we put more emphasis on exploring alternative forms of problem decomposition to enable parallelization and analyze the tradeoffs between different decompositions and their associated data structures. The final chapter in this step is dedicated to recap the computational thinking skills (【3】Chapter 19【/3】, Parallel Programming and Computational Thinking) that help the reader to generalize the concepts learnt in the previous chapters into the high-level thinking required to tackle a new problem. With these insights, high-performance parallel programming becomes a thought process, rather than a black art.",
+      "zh": "第三步中，我们介绍更多高级模式和应用（【1】第 13 章【/1】至【2】第 19 章【/2】），以巩固上一步获得的知识和技能。在这一步中，我们继续运用上一步练过的优化，同时更强调探索其他形式的问题分解以促成并行化，并分析不同分解方式及其相关数据结构之间的权衡。本步的最后一章专门用来回顾计算思维技能（【3】第 19 章【/3】，《并行编程与计算思维》），帮助读者把前几章学到的概念提炼为应对新问题所需的高层次思维。有了这些见解，高性能并行编程就成了一种思维过程，而不再是玄学。"
+    },
+    {
+      "id": "p0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "The fourth step is to expose the reader to related advanced practices in parallel programming. 【1】Chapter 20【/1】, Programming a Heterogeneous Computing Cluster, presents the basic skills required to program an HPC cluster using MPI and CUDA C. 【2】Chapter 21【/2】, CUDA Dynamic Parallelism, presents an introduction to dynamic parallelism that helps parallel programmers to address more complex parallel algorithms with dynamically varying workload in many real-world applications. 【3】Chapter 22【/3】, Advanced Practices and Future Evolution, summarizes other advanced practices as well as expectations for the future evolution of massively parallel processors.",
+      "zh": "第四步是让读者接触并行编程中相关的高级实践。【1】第 20 章【/1】《编写异构计算集群程序》介绍了使用 MPI 和 CUDA C 编写 HPC 集群程序所需的基本技能。【2】第 21 章【/2】《CUDA 动态并行》对动态并行作了入门介绍，帮助并行程序员应对许多真实应用中工作负载动态变化、更为复杂的并行算法。【3】第 22 章【/3】《高级实践与未来演进》总结了其他高级实践，以及对大规模并行处理器未来演进的展望。"
+    },
+    {
+      "id": "p0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "We hope that you have enjoyed the book and agree with us that you are now well equipped for programming massively parallel computing systems.",
+      "zh": "我们希望你喜欢这本书，并同意我们的看法：你现在已经具备为大规模并行计算系统编程的扎实能力。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "23.2 Future outlook",
+      "zh": "23.2 未来展望"
+    },
+    {
+      "id": "p0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "Since the introduction of the first CUDA-enabled GPU, the G80, in 2007, the capability of GPUs as massively computing devices has improved at an amazing 452× in computing throughput and 18× in memory bandwidth, as shown in 【1】Fig. 23.1【/1】. These advancements have stimulated tremendous progress in HPC, AI, and data analytics for both science and engineering, with significant impact on many vertical areas such as finance, manufacturing, and medicine. For example, as we have seen in 【2】Chapter 16【/2】, Deep Learning, GPUs have ignited a revolution in deep learning from very large datasets, with applications in image recognition, speech recognition, and video analytics.",
+      "zh": "自 2007 年第一款支持 CUDA 的 GPU（G80）问世以来，GPU 作为大规模计算设备的能力以惊人的速度提升——计算吞吐量提高了 452 倍，内存带宽提高了 18 倍，正如【1】图 23.1【/1】所示。这些进展在科学与工程领域推动了高性能计算（HPC）、人工智能（AI）和数据分析的巨大进步，对金融、制造、医药等众多垂直领域产生了重要影响。例如，正如我们在【2】第 16 章【/2】《深度学习》中所见，GPU 基于超大规模数据集点燃了深度学习的革命，其应用涵盖图像识别、语音识别和视频分析。"
+    },
+    {
+      "id": "n0019",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 23.1【/2】【/1】 From G80 to A100, a 13-year comparison.",
+      "zh": "【1】【2】图 23.1【/2】【/1】 从 G80 到 A100 的 13 年对比。"
+    },
+    {
+      "id": "p0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "Since the first edition of this book in 2010, the field of parallel computing has also advanced at an amazing pace. The spectrum of problems that can be solved with scalable algorithms has broadened significantly. While the use of GPUs was initially concentrated on regular, dense matrix computation and Monte Carlo methods, their use has quickly expanded into sparse methods, graph computation, and adaptive refinement methods. In many areas, there has also been fast advancement in algorithms. Some of the algorithms presented in the parallel pattern, advanced patterns, and applications chapters represent significant recent advancements.",
+      "zh": "自 2010 年本书第一版问世以来，并行计算领域同样以惊人的速度发展。能用可扩展算法解决的问题范围已显著扩大。GPU 的用途最初集中在规则的稠密矩阵计算和蒙特卡洛方法上，如今已迅速扩展到稀疏方法、图计算和自适应加密方法。在许多领域，算法也取得了快速进展。并行模式、高级模式和应用章节中介绍的一些算法，代表了近期的重要进展。"
+    },
+    {
+      "id": "p0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "It is only natural for some of us to wonder if we have reached the end of the fast advancement in parallel computing. From all indications, the answer is definitely no. We are only at the beginning of the parallel computing revolution. The amazing advancement in computing in the past three decades has triggered a paradigm shift in industry. The major innovations used to be driven by physical instruments assisted by computing devices. They are now driven by computing assisted by physical instruments.",
+      "zh": "我们中有些人自然会想：并行计算的快速发展是否已经走到尽头？种种迹象表明，答案显然是否定的。我们才刚处于并行计算革命的开端。过去三十年计算领域的惊人进展已经在工业界引发了范式转变。过去，重大创新由物理仪器驱动、计算设备辅助；如今则反过来，由计算驱动、物理仪器辅助。"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "For example, two decades ago, GPS revolutionized the way we drive. GPS is primarily based on satellite signal sensing assisted by computing methods that determine the shortest path between two locations. More recently, peer reporting and computing through the map apps in the phones and data services in the cloud have further enabled drivers to change their routes based on the traffic condition. Today, the most exciting revolution in the automobile industry is self-driving cars, which is primarily based on machine-learning computing methods assisted by physical sensors.",
+      "zh": "再举一例，二十年前，GPS 彻底改变了我们的驾驶方式。GPS 主要基于卫星信号感知，辅以确定两点之间最短路径的计算方法。近年来，通过手机中的地图应用进行用户上报和计算，以及云中的数据服务，进一步让驾驶员能够根据路况改变路线。如今，汽车行业最激动人心的革命是自动驾驶汽车，它主要基于机器学习计算方法，辅以物理传感器。"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "For another example, MRI and PET revolutionized medicine in the past two decades. These technologies are primarily based on electromagnetic and light sensors assisted by computational image reconstruction methods. They allowed doctors to see the pathology inside human bodies without surgery. Today, the field of medicine is going through the revolution of individualized medicine, which is primarily driven by computational genomics methods assisted by sequencing sensors.",
+      "zh": "再如，磁共振成像（MRI）和正电子发射断层成像（PET）在过去二十年里彻底改变了医学。这些技术主要基于电磁与光学传感器，辅以计算图像重建方法。它们让医生无需手术就能看到人体内部的病理。如今，医学领域正在经历个体化医疗的革命，个体化医疗主要由计算基因组学方法驱动，辅以测序传感器。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "For yet another example, the semiconductor industry used to rely on advancement in physical light sources assisted by computing methods that enforce design rules in their push to reduce the device feature size in the manufacturing process. Today, the advancement in physical light sources has practically stopped. The advancement in feature size reduction is primarily driven by lithography masks that are computationally designed to orchestrate the interference of light waves to result in extremely precise etching patterns on the chips.",
+      "zh": "再举一例，半导体行业过去依靠物理光源的进步，辅以执行设计规则的计算机方法，来推动制造过程中器件特征尺寸的缩小。如今，物理光源的进步实际上已经停滞。特征尺寸缩小的进展主要依靠光刻掩模版推动——这些掩模版经过计算设计，用以协调光波的干涉，从而在芯片上形成极其精确的蚀刻图形。"
+    }
+  ]
+}

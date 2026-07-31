@@ -1,0 +1,155 @@
+{
+  "page": "Ch022_499-513_B9780323912310000136",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/h1[1]",
+      "en": "Advanced practices and future evolution",
+      "zh": "高级实践与未来演进"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/address[1]/p[1]",
+      "en": "With special contributions from Isaac Gelado and Mark Harris",
+      "zh": "特别贡献：Isaac Gelado 与 Mark Harris"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter presents a brief history of the evolution of CUDA and a future outlook. It clarifies the capabilities and limitations in several generations of the host-device interaction model, including zero-copy memory, unified virtual address spaces, and unified memory. It further presents the additional functionalities that have been enabled by the recent ability to handle page faults during kernel execution. The chapter also presents the evolution of kernel execution efficiency and multiple kernel execution support. It concludes with an update on the recent advancements in programming, profiling, and debugging environments.",
+      "zh": "本章简要回顾了 CUDA 的发展历史并展望了未来。本章阐明了主机-设备交互模型在几代产品中的能力与局限，包括零拷贝内存、统一虚拟地址空间和统一内存。本章还介绍了核函数执行期间处理页错误这一新能力所带来的额外功能。本章也介绍了核函数执行效率的演进，以及对多个核函数并行执行的支持。最后，本章概述了编程、性能分析和调试环境方面的最新进展。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Unified memory; cooperating kernels; unified virtual memory; zero-copy system memory access; multikernel execution; CUDA streams; kernel queues; on-chip memory; shared memory; cache; programming environment; profiler; critical path analysis",
+      "zh": "统一内存；协作核函数；统一虚拟内存；零拷贝系统内存访问；多核函数执行；CUDA 流；核函数队列；片上内存；共享内存；缓存；编程环境；性能分析器；关键路径分析"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "概要"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】22.1 Model of host/device interaction【/1】 500",
+      "zh": "【1】22.1 主机/设备交互模型【/1】 500"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】22.2 Kernel execution control【/1】 505",
+      "zh": "【1】22.2 核函数执行控制【/1】 505"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】22.3 Memory bandwidth and compute throughput【/1】 508",
+      "zh": "【1】22.3 内存带宽与计算吞吐量【/1】 508"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】22.4 Programming environment【/1】 510",
+      "zh": "【1】22.4 编程环境【/1】 510"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】22.5 Future outlook【/1】 513",
+      "zh": "【1】22.5 未来展望【/1】 513"
+    },
+    {
+      "id": "u0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】References【/1】 513",
+      "zh": "【1】参考文献【/1】 513"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Our focus throughout this book has been on scalable parallel programming. CUDA C and the GPU hardware have mostly played the role of the programming platform for our examples and exercises. However, the parallel programming concepts and skills that are learned on the basis of CUDA C can be easily adapted for other parallel programming platforms. For example, as we saw in 【1】Chapter 20【/1】, Programming a Heterogeneous Computing Cluster, Programming a Heterogeneous Computing Cluster: An Introduction to CUDA Streams, most key concepts of Message Passing Interface (MPI), such as processes, rank, and barriers, have counterparts in CUDA C. Furthermore, as we also discussed in 【2】Chapter 20【/2】, Programming a Heterogeneous Computing Cluster, CUDA-enabled GPUs have become widely available in high-performance computing (HPC) systems. For many readers, CUDA C will likely be an important application development and deployment platform rather than just a learning vehicle. For this reason, it is important for the reader to understand the advanced CUDA C features and practices that are designed to support high-performance programming at the application level. For example, as we saw in 【3】Chapter 20【/3】, Programming a Heterogeneous Computing Cluster, CUDA streams enable an MPI HPC application to overlap communication with the computation. Such capability is especially important for achieving whole-application performance goals. With this in mind, this chapter will provide the reader with an overview of the advanced features of CUDA C and GPU computing hardware that will be important in achieving high performance and maintainability in your applications. For each feature we will present the basic concepts as well as a brief history of its evolution through different generations of GPU computing. A good understanding of the concepts and the evolution history will help to clear up some common confusion about these features. The goal is to help the reader to establish a conceptual framework for more detailed studies of these features.",
+      "zh": "本书始终聚焦于可扩展的并行编程。CUDA C 与 GPU 硬件主要充当了我们示例和练习的编程平台。不过，基于 CUDA C 学到的并行编程概念和技能可以轻松迁移到其他并行编程平台。例如，正如我们在【1】第 20 章【/1】《编写异构计算集群程序：CUDA 流入门》中所见，消息传递接口（MPI）的大多数关键概念，如进程、进程号和屏障，在 CUDA C 中都有对应物。此外，正如我们也在【2】第 20 章【/2】《编写异构计算集群程序》中讨论过的，支持 CUDA 的 GPU 已广泛应用于高性能计算（HPC）系统。对许多读者来说，CUDA C 很可能是一个重要的应用开发和部署平台，而不仅仅是学习工具。因此，读者有必要了解那些旨在支持应用级高性能编程的 CUDA C 高级特性和实践。例如，正如我们在【3】第 20 章【/3】《编写异构计算集群程序》中所见，CUDA 流使 MPI HPC 应用能够将通信与计算重叠。这种能力对于达成整个应用的性能目标尤为重要。有鉴于此，本章将向读者概述 CUDA C 与 GPU 计算硬件的高级特性，这些特性对在应用中实现高性能与可维护性都很重要。对每个特性，我们都会介绍其基本概念，以及它在 GPU 计算各代产品中的演进简史。透彻理解这些概念和演进历史，有助于澄清人们对这些特性的一些常见困惑。其目标是帮助读者建立起一个概念框架，以便更深入地研究这些特性。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "22.1 Model of host/device interaction",
+      "zh": "22.1 主机/设备交互模型"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "So far, we have assumed a fairly simple model of interaction between host and device in a heterogeneous computing system. In this simple model, as presented in 【1】Chapter 2【/1】, Heterogeneous Data Parallel Computing, Heterogeneous Data Parallel Computing, each device has a device memory (CUDA global memory) that is separate from the host memory, or the system memory. The data to be processed by a kernel running on a device needs to be transferred from the host memory to the device memory by calling the 【2】cudaMemcpy()【/2】 function. The data that is produced by the device also needs to be transferred from the device memory to the host by calling the 【3】cudaMemcpy()【/3】 function before it can be utilized by the host. While the model is simple and easy to understand, it results in several problems at the application level.",
+      "zh": "到目前为止，我们一直假定异构计算系统中主机与设备之间存在一种相当简单的交互模型。在这个简单模型中，正如【1】第 2 章【/1】《异构数据并行计算》所介绍的，每个设备都有独立于主机内存（即系统内存）的设备内存（CUDA 全局内存）。要由设备上运行的核函数处理的数据，需要通过调用【2】cudaMemcpy()【/2】函数从主机内存传输到设备内存。设备产生的数据，也需要通过调用【3】cudaMemcpy()【/3】函数从设备内存传输到主机，才能被主机使用。这个模型虽然简单易懂，但在应用层面会导致若干问题。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "First, I/O devices such as disk controllers and network interface cards are designed to operate efficiently on the host memory. Since the device memory is separate from the host memory, input data need to be transferred from the host memory to the device memory, and output data need to be transferred from the device memory to the host memory to be used in I/O operations. Such additional transfers increase the I/O latency and reduce the achievable I/O throughput. For many applications the ability of I/O devices to operate directly on the device memory would improve overall application performance and simplify the application code.",
+      "zh": "首先，磁盘控制器和网络接口卡等 I/O 设备被设计为在主机内存上高效工作。由于设备内存与主机内存相互独立，输入数据需要从主机内存传输到设备内存，输出数据也需要从设备内存传输回主机内存，才能用于 I/O 操作。这些额外传输增加了 I/O 延迟，并降低了可达到的 I/O 吞吐量。对许多应用而言，如果 I/O 设备能够直接在设备内存上工作，将能提升整体应用性能并简化应用代码。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "Second, the host memory is where the traditional programming systems place their application data structures. Some of the data structures are large. The device memory in early generations of CUDA-enabled GPUs were small in comparison to the host memory, which forces application developers to partition their large data structures into chunks that fit into the device memory. For example, in 【1】Chapter 18【/1】, Electrostatic Potential Map, the three-dimensional (3D) electrostatic energy grid array was partitioned into two-dimensional slices that are transferred between the host memory and the device memory. For many applications it would be much better if the entire data structures could reside in the device memory. For some applications there may not even be a good way to partition the data structure into smaller chunks. For these applications it would be best if the GPU could directly access the data in the host memory or have the CUDA runtime system software migrate the data that is used during kernel execution.",
+      "zh": "其次，传统编程系统将应用的数据结构存放在主机内存中。其中一些数据结构很大。与主机内存相比，早期几代支持 CUDA 的 GPU 的设备内存很小，这迫使应用开发者将大型数据结构划分成能放进设备内存的数据块。例如，在【1】第 18 章【/1】《静电势图》中，三维（3D）静电能量网格数组被划分成二维切片，在主机内存与设备内存之间来回传输。对许多应用来说，如果整个数据结构都能驻留在设备内存中会好得多。对某些应用，甚至可能找不到把数据结构划分为更小块的好办法。对这些应用，最好的做法是让 GPU 直接访问主机内存中的数据，或者让 CUDA 运行时系统软件迁移核函数执行期间所用的数据。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "These limitations of the host/device interaction model were rooted in the limitations of the memory architecture of early generations of CUDA-enabled GPUs. In these early devices, the only viable host/device interaction model for applications was the simple model that we assumed in the previous chapters. As more applications adopted GPU computing, their needs motivated CUDA system software developers and GPU hardware designers to provide a better solution. Researchers have been aware of these needs and have proposed solutions since the early days of CUDA (【1】Gelado et al., 2010【/1】). The rest of this section will go over a brief history of advancements that address these limitations.",
+      "zh": "主机/设备交互模型的这些局限，源于早期几代支持 CUDA 的 GPU 的内存体系结构的局限。在这些早期设备上，应用唯一可行的主机/设备交互模型，就是我们前几章一直假定的那个简单模型。随着越来越多的应用采用 GPU 计算，它们的需求促使 CUDA 系统软件开发者与 GPU 硬件设计者提供更好的解决方案。研究者们早就认识到这些需求，并从 CUDA 诞生之初就提出了解决方案（【1】Gelado et al., 2010【/1】）。本节其余部分将简要回顾为解决这些局限而取得的进展。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/h3[1]",
+      "en": "Zero-copy memory and unified virtual address space",
+      "zh": "零拷贝内存与统一虚拟地址空间"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[1]",
+      "en": "In 2009, CUDA 2.2 introduced zero-copy access to system memory. This enables the host code to supply a special device data pointer to host memory to a kernel. The code that is running on the device can use this pointer to directly access the host memory through the system interconnect, such as the PCIe bus, without calling to 【1】cudaMemcpy()【/1】. Zero-copy memory is pinned host memory (【2】Chapter 20【/2】, Programming a Heterogeneous Computing Cluster,) and is allocated by calling 【3】cudaHostAlloc()【/3】 with 【4】cudaHostAllocMapped【/4】 as the value of the flag argument. We mentioned that the other values of the flag argument are for more advanced usage. The data pointer that is returned by 【5】cudaHostAlloc()【/5】 cannot be directly passed to the kernel; the host code has to obtain a valid device data pointer, using 【6】cudaHostGetDevicePointer()【/6】 first, and pass the device data pointer that is returned by this function to the kernel. This means that different data pointers for host and device codes are used to access the same physical memory.",
+      "zh": "2009 年，CUDA 2.2 引入了对系统内存的零拷贝访问。这使得主机代码可以把一个指向主机内存的特殊设备数据指针提供给核函数。设备上运行的代码可以使用该指针，通过系统互连（如 PCIe 总线）直接访问主机内存，而无需调用【1】cudaMemcpy()【/1】。零拷贝内存是锁页主机内存（见【2】第 20 章【/2】《编写异构计算集群程序》），通过调用【3】cudaHostAlloc()【/3】并以【4】cudaHostAllocMapped【/4】作为 flag 参数的值来分配。我们之前提到过，flag 参数的其他取值用于更高级的用法。【5】cudaHostAlloc()【/5】返回的数据指针不能直接传给核函数；主机代码必须先调用【6】cudaHostGetDevicePointer()【/6】获得一个有效的设备数据指针，再把这个函数返回的设备数据指针传给核函数。这意味着主机代码和设备代码使用不同的数据指针访问同一块物理内存。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[2]",
+      "en": "As we explained in 【1】Chapter 20【/1】, Programming a Heterogeneous Computing Cluster, the host memory pages must be pinned to prevent the operating system from accidentally paging out the data while the GPU is accessing them. Obviously, the access will suffer from the long latency and limited bandwidth of the system interconnect. The bandwidth of the system interconnect is typically less than 10% of the global memory bandwidth. As we learned in 【2】Chapter 5【/2】, Memory Architecture and Data Locality, a kernel’s performance is typically limited by the global memory bandwidth unless we use tiling techniques to drastically reduce the number of global memory accesses per floating-point operation performed. If most of the memory accesses of a kernel are to zero-copy memory, the kernel’s execution speed can be even more severely limited by the bandwidth of the system interconnect. Therefore one should use zero-copy memory only for application data structures that are occasionally and sparsely accessed by a kernel running on a GPU.",
+      "zh": "正如我们在【1】第 20 章【/1】《编写异构计算集群程序》中所解释的，主机内存页必须被锁定，以防操作系统在 GPU 访问这些数据时把它们意外换出。显然，这类访问会遭受系统互连的长延迟和有限带宽之苦。系统互连的带宽通常不到全局内存带宽的 10%。正如我们在【2】第 5 章【/2】《内存体系结构与数据局部性》中学到的，除非我们使用分块技术大幅减少每次浮点运算所执行的全局内存访问次数，否则核函数的性能通常受限于全局内存带宽。如果核函数的大部分内存访问都针对零拷贝内存，那么核函数的执行速度受系统互连带宽的限制会更为严重。因此，零拷贝内存只应被用于 GPU 上运行的核函数偶尔、稀疏地访问的应用数据结构。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[3]",
+      "en": "In 2011, CUDA 4 introduced the Unified Virtual Addressing. Until this CUDA release, the host and the device had their own virtual address spaces, each of them mapping host or device data pointers to physical host or device memory locations. These disjoint virtual address spaces imply that the same physical memory location could be accessed by different virtual addresses in the host and the device, which effectively happens in using zero-copy memory. The Unified Virtual Address Space (UVAS), first introduced by the GMAC library (【1】Gelado et al., 2010【/1】) and adopted in CUDA 4, uses a single virtual address space that is shared by the host and the device. The UVAS guarantees that each physical memory address is mapped to only one virtual memory location. This enables the CUDA runtime to determine whether a data pointer is referencing host or device memory by just inspecting its virtual memory address. This feature removes the need to specify the data copy direction on 【2】cudaMemcpy()【/2】 calls.",
+      "zh": "2011 年，CUDA 4 引入了统一虚拟寻址（Unified Virtual Addressing）。在此之前，主机和设备各自拥有自己的虚拟地址空间，各自把主机或设备数据指针映射到物理主机或设备内存位置。这些互不相交的虚拟地址空间意味着，同一物理内存位置可能被主机和设备的不同虚拟地址访问，使用零拷贝内存时实际就是这种情况。统一虚拟地址空间（UVAS）最早由 GMAC 库提出（【1】Gelado et al., 2010【/1】），并于 CUDA 4 中采用，它使用一个由主机和设备共享的单一虚拟地址空间。UVAS 保证每个物理内存地址只映射到一个虚拟内存位置。这使得 CUDA 运行时只需检查指针的虚拟内存地址，就能判断该数据指针指向的是主机内存还是设备内存。这一特性使【2】cudaMemcpy()【/2】调用不再需要指定数据拷贝方向。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[4]",
+      "en": "It is important to note that the UVAS in CUDA 4 does not guarantee the accessibility of the data that is referenced by a pointer. For example, the host code cannot use a device pointer that is returned by 【1】cudaMalloc()【/1】 to directly access the device memory and vice versa. Zero-copy memory is the exception: The host code can directly pass a pointer to zero-copy memory as a kernel launch parameter to the device. When the kernel code dereferences this zero-copy pointer, the pointer value is translated to a physical system memory location and is accessed directly through the PCIe bus. Note that this approach does not necessarily allow the kernel code to dereference a pointer value that is read from a memory location, such as following a chain of pointers while traversing a linked data structure, unless all memory has been allocated by using 【2】cudaHostAlloc()【/2】.",
+      "zh": "需要指出的是，CUDA 4 中的 UVAS 并不保证指针所引用数据的可访问性。例如，主机代码不能用【1】cudaMalloc()【/1】返回的设备指针直接访问设备内存，反之亦然。零拷贝内存是个例外：主机代码可以把指向零拷贝内存的指针作为核函数启动参数直接传给设备。当核函数代码解引用这个零拷贝指针时，指针值会被转换成物理系统内存位置，并通过 PCIe 总线直接访问。请注意，这种方法并不保证核函数代码一定能解引用从内存位置读出的指针值，例如在遍历链表数据结构时顺着指针链逐个访问——除非所有内存都是用【2】cudaHostAlloc()【/2】分配的。"
+    }
+  ]
+}

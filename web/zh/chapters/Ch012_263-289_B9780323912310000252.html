@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="zh-CN" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="前言部分">
+      <option value="Cover.html">封面图</option>
+      <option value="Title_page.html">标题页</option>
+      <option value="Contents.html">目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">致谢</option>
+    </optgroup>
+    <optgroup label="序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">课程资源</option>
+    </optgroup>
+    <optgroup label="第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第一部分：基本概念">
+      <option value="Part1.html">第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html">第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">参考文献</option>
+    </optgroup>
+    <optgroup label="第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html">第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html">第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html">第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">习题</option>
+    </optgroup>
+    <optgroup label="第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第二部分：并行模式">
+      <option value="Part2.html">第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html">第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html">第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">习题</option>
+    </optgroup>
+    <optgroup label="第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html" selected>第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第三部分：高级模式与应用">
+      <option value="Part3.html">第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html">第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html">第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">参考文献</option>
+    </optgroup>
+    <optgroup label="第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">参考文献</option>
+    </optgroup>
+    <optgroup label="第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html">第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">参考文献</option>
+    </optgroup>
+    <optgroup label="第四部分：高级实践">
+      <option value="Part4.html">第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html">第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">参考文献</option>
+    </optgroup>
+    <optgroup label="第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">参考文献</option>
+    </optgroup>
+    <optgroup label="第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Ch011_235-261_B9780323912310000227.html#st0070">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch012_263-289_B9780323912310000252.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/Ch012_263-289_B9780323912310000252.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch012_263-289_B9780323912310000252.html">对照</a></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter" id="c0012">
+<a id="Ch012_263-289_B9780323912310000252"></a><div id="page_263" aria-label="Page 263" epub:type="pagebreak" role="doc-pagebreak"></div><header>
+<div id="CN"><a id="Ch012_263-289_B9780323912310000252titl"></a>Chapter 12</div><hgroup>
+<h1 class="chaptitle" epub:type="title" id="tit0010">归并</h1>
+<h2 class="chapsubt" epub:type="subtitle">动态输入数据识别入门</h2></hgroup><address><p class="chapau">特别贡献：Li-Wen Chang 和 Jie Lv</p></address>
+</header><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0110">本章介绍有序归并模式，该模式的并行化要求每个线程动态地确定其输入位置范围。由于输入范围取决于数据，我们借助协秩函数的快速搜索实现来确定每个线程的输入范围。输入范围取决于数据这一事实，也给我们使用分块技术以节省内存带宽、实现内存合并带来了额外的挑战。因此，我们引入环形缓冲区的使用，使我们能够充分利用从全局内存加载的数据。我们已经表明，引入更复杂的数据结构（如环形缓冲区）会显著增加使用该数据结构的代码的复杂度。因此，我们引入一种简化的缓冲区访问模型，使操作和使用索引的代码大体保持不变。缓冲区的实际环形特性只在用这些索引访问缓冲区中的元素时才显现出来。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">有序列表；MapReduce；归并；动态输入数据识别；秩；协秩；分块；缓冲；内存合并；环形缓冲区；二分查找</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">大纲</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">12.1 背景</a> 263</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">12.2 串行归并算法</a> 265</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">12.3 一种并行化方法</a> 266</li>
+<li class="chapoutl1" id="o0025"><a id="p0025"></a><a href="#s0025">12.4 协秩函数实现</a> 268</li>
+<li class="chapoutl1" id="o0030"><a id="p0030"></a><a href="#s0030">12.5 基础并行归并核函数</a> 273</li>
+<li class="chapoutl1" id="o0035"><a id="p0035"></a><a href="#s0035">12.6 改善合并访问的分块归并核函数</a> 275</li>
+<li class="chapoutl1" id="o0040"><a id="p0040"></a><a href="#s0040">12.7 环形缓冲区归并核函数</a> 282</li>
+<li class="chapoutl1" id="o0045"><a id="p0045"></a><a href="#s0045">12.8 面向归并的线程粗化</a> 288</li>
+<li class="chapoutl1" id="o0050"><a id="p0050"></a><a href="#s0050">12.9 小结</a> 288</li>
+<li class="chapoutl1" id="u0010"><a id="p0055"></a><a href="#s0055">习题</a> 289</li>
+<li class="chapoutl1" id="u0015"><a id="p0060"></a><a href="#bibliog0010">参考文献</a> 289</li>
+</ul>
+</div></nav>
+<p id="p0065" class="textfl"><a id="P263"></a>我们的下一个并行模式是有序归并操作，它接收两个有序列表并生成一个合并后的有序列表。有序归并操作可以用作排序算法的构建模块，正如我们将在<a href="Ch013_293-310_B9780323912310000197.html#Ch013_293-310_B9780323912310000197">第 13 章</a>（排序）中看到的那样。有序归并操作还构成了现代 MapReduce 框架的基础。本章介绍一种并行有序归并算法，其中每个线程的输入数据都是动态确定的。数据访问的这种动态性，使利用局部性和分块技术来改善内存访问效率和性能变得富有挑战性。动态输入数据识别背后的原理也适用于许多其他重要的计算，如集合交集和集合并集。我们将介绍日益复杂的缓冲区管理方案，以便为有序归并以及其他动态确定输入数据的操作实现更高水平的内存访问效率。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">12.1 背景</h2><p id="p0070" class="textfl"><span id="page_264" aria-label="Page 264" epub:type="pagebreak" role="doc-pagebreak"></span>有序归并函数接收两个有序列表 A 和 B，并把它们归并成一个有序列表 C。在本章中，我们假设有序列表存储在数组中。我们进一步假设，数组中的每个元素都有一个键。在键上定义了一个记为 ≤ 的序关系。例如，键可以就是整数值，而 ≤ 可以定义为这些整数值之间常规的<em>小于等于</em>关系。在最简单的情况下，元素仅由键构成。</p>
+<p id="p0075" class="text">假设我们有两个元素 <em>e</em><sub>1</sub> 和 <em>e</em><sub>2</sub>，其键分别为 <em>k</em><sub>1</sub> 和 <em>k</em><sub>2</sub>。在基于关系 ≤ 的有序列表中，如果 <em>e</em><sub>1</sub> 出现在 <em>e</em><sub>2</sub> 之前，则 <em>k</em><sub>1</sub> ≤ <em>k</em><sub>2</sub>。基于序关系 <em>R</em> 的归并函数接收两个已排序的输入数组 A 和 B，分别有 m 和 n 个元素，其中 m 和 n 不必相等。数组 A 和数组 B 都基于序关系 R 排序。该函数生成一个包含 m + n 个元素的已排序输出数组 C。数组 C 由数组 A 和 B 中的所有输入元素构成，并按序关系 R 排序。</p>
+<p id="p0080" class="text"><a href="#f0010">图 12.1</a> 展示了基于常规数值序关系的简单归并函数的操作过程。数组 A 有五个元素（m=5），数组 B 有四个元素（n=4）。归并函数利用 A 和 B 生成包含全部 9 个元素（m + n）的数组 C。这些元素必须有序。<a href="#f0010">图 12.1</a> 中的箭头展示了 A 和 B 的元素应如何放入 C 以完成归并操作。每当 A 的一个元素与 B 的一个元素数值相等时，A 的元素应首先出现在输出列表 C 中。这一要求确保了有序归并操作的稳定性。</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F000252f12-01-9780323912310.jpg" class="img" alt="image" width="998" height="326"/><figcaption class="figleg"><a id="sp0010"></a><span class="fignum">图 12.1</span> 归并操作示例。</figcaption></figure></div><p id="p0085" class="text"><span id="page_265" aria-label="Page 265" epub:type="pagebreak" role="doc-pagebreak"></span>一般来说，如果键值相等的元素在输出中的顺序与它们在输入中出现的顺序相同，则该排序操作是稳定的。<a href="#f0010">图 12.1</a> 中的示例在归并操作各输入列表内部以及跨越各输入列表两个方面都展示了稳定性。例如，值均为 10 的两个元素从 B 复制到 C 时保持了它们原有的顺序。这说明了归并操作在单个输入列表内部的稳定性。再如，值为 7 的 A 元素先于同值的 B 元素进入 C。这说明了归并操作跨越输入列表的稳定性。稳定性这一性质使排序操作能够保留当前排序操作所用键未能体现的先前顺序。例如，列表 A 和 B 可能先按某个不同的键排序，然后再按当前用于归并的键排序。在归并操作中保持稳定性，使归并操作能够保留前面步骤所做的工作。</p>
+<p id="p0090" class="text">归并操作是归并排序的核心，归并排序是一种重要的可并行化排序算法。正如我们将在<a href="Ch013_293-310_B9780323912310000197.html#Ch013_293-310_B9780323912310000197">第 13 章</a>（排序）中看到的，并行归并排序函数把输入列表划分为多个区段，并把它们分发给并行线程。线程对各个区段进行排序，然后协作归并这些已排序的区段。这种分治方法使排序能够被高效地并行化。</p>
+<p id="p0095" class="text">在现代 MapReduce 分布式计算框架（如 Hadoop）中，计算被分发到大量的计算节点上。reduce 过程把这些计算节点的结果组装成最终结果。许多应用都要求结果按照某种序关系排序。这些结果通常以归约树模式利用归并操作进行组装。因此，高效的归并操作对这些框架的效率至关重要。</p></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">12.2 串行归并算法</h2><p id="p0100" class="textfl">归并操作可以用一个简单直接的串行算法实现。<a href="#f0015">图 12.2</a> 展示了一个串行归并函数。</p>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F000252f12-02-9780323912310.jpg" class="img" alt="image" width="1374" height="740"/><figcaption class="figleg"><a id="sp0015"></a><span class="fignum">图 12.2</span> 一个串行归并函数。</figcaption></figure></div><p id="p0105" class="text"><span id="page_266" aria-label="Page 266" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0015">图 12.2</a> 中的串行函数由两个主要部分组成。第一部分是一个按顺序访问 A 和 B 列表元素的 while 循环（第 05 行）。循环从第一个元素开始：A[0] 和 B[0]。每次迭代填充输出数组 C 中的一个位置；该位置要么选择 A 的一个元素，要么选择 B 的一个元素（第 06–10 行）。循环使用 i 和 j 标识当前正在考虑的 A 和 B 元素；执行过程首次进入循环时，i 和 j 都为 0。循环还使用 k 标识输出列表数组 C 中当前要填充的位置。在每次迭代中，如果元素 A[i] 小于等于 B[j]，就把 A[i] 的值赋给 C[k]。在这种情况下，执行过程在进入下一次迭代前将 i 和 k 都加 1。否则，把 B[j] 的值赋给 C[k]。在这种情况下，执行过程在进入下一次迭代前将 j 和 k 都加 1。</p>
+<p id="p0110" class="text">当执行到达数组 A 的末尾或数组 B 的末尾时，while 循环退出。执行转入第二部分，即<a href="#f0015">图 12.2</a> 右侧的部分。如果被完全遍历的是数组 A（由 i 等于 m 可知），那么代码把数组 B 的剩余元素复制到数组 C 的剩余位置（第 13–15 行）。否则，被完全遍历的就是数组 B，代码把 A 的剩余元素复制到 C 的剩余位置（第 17–19 行）。注意，从正确性角度看，这个 if-else 结构并非必需。我们完全可以让两个 while 循环（第 13–15 行和第 17–19 行）直接跟在第一个 while 循环后面。这两个 while 循环只有一个会被进入，具体取决于第一个 while 循环耗尽的是 A 还是 B。不过，我们加入这个 if-else 结构是为了让代码对读者更直观。</p>
+<p id="p0115" class="text">我们可以用<a href="#f0010">图 12.1</a> 中的简单示例来说明串行归并函数的操作过程。在 while 循环的前三次（0–2）迭代中，A[0]、A[1] 和 B[0] 分别被赋给 C[0]、C[1] 和 C[2]。执行一直持续到第 5 次迭代结束。此时，列表 A 已被完全遍历，执行退出 while 循环。C 中共有六个位置由 A[0] 至 A[4] 以及 B[0] 填充。if 结构真分支中的循环用于把剩余的 B 元素，即 B[1] 至 B[3]，复制到剩余的 C 位置中。</p>
+<p id="p0120" class="text">串行归并函数对 A 和 B 中的每个输入元素各访问一次，并对每个 C 位置各写入一次。其算法复杂度为 O(m + n)，执行时间与待归并的元素总数呈线性比例关系。</p></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">12.3 一种并行化方法</h2><p id="p0125" class="textfl"><span id="page_267" aria-label="Page 267" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#bib1" role="doc-biblioref" epub:type="biblioref">Siebert and Traff (2012)</a>提出了一种并行化归并操作的方法。在他们的方法中，每个线程首先确定自己要生成的输出位置范围（输出范围），并把该输出范围作为<em>协秩函数</em>的输入，以确定将被归并来生成该输出范围的相应输入范围。一旦输入和输出范围确定下来，每个线程就可以独立地访问它的两个输入子数组和一个输出子数组。这种独立性使每个线程能够在其子数组上执行串行归并函数，从而并行地完成归并。显然，所提出的并行化方法的关键在于协秩函数。下面我们就来构造协秩函数。</p>
+<p id="p0130" class="text">设 A 和 B 是两个输入数组，元素个数分别为 m 和 n。我们假设两个输入数组都按某种序关系排序。每个数组的索引从 0 开始。设 C 是由 A 和 B 归并生成的已排序输出数组。显然，C 有 m + n 个元素。我们可以得出如下观察结论：</p>
+<div class="boxg1" id="enun0010">
+<p class="b1num">观察 1</p>
+<p id="p0135" class="b1textfl">对于任意满足 0≤k&lt;m + n 的 k，要么（情形 1）存在 i 使得 0≤i&lt;m 且 C[k] 在归并过程中从 A[i] 取值，要么（情形 2）存在 j 使得 0≤j&lt;n 且 C[k] 在归并过程中从 B[j] 取值。</p>
+</div>
+<p id="p0140" class="text"><span id="page_268" aria-label="Page 268" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0020">图 12.3</a> 展示了观察 1 的两种情形。在第一种情形中，所讨论的 C 元素来自数组 A。例如，在<a href="#f0020">图 12.3A</a> 中，C[4]（值 9）从 A[3] 取值。在这种情况下，k=4、i=3。我们可以看到，C[4] 的前缀子数组 C[0]–C[3]（位于 C[4] 之前的四个元素组成的子数组）是 A[3] 的前缀子数组 A[0]–A[2]（位于 A[3] 之前的三个元素组成的子数组）与 B[1] 的前缀子数组 B[0]（位于 B[1] 之前的 4 − 3=1 个元素组成的子数组）归并的结果。通用公式是：子数组 C[0]–C[k − 1]（k 个元素）是 A[0]–A[i − 1]（i 个元素）与 B[0]–B[k − i − 1]（k − i 个元素）归并的结果。</p>
+<div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F000252f12-03-9780323912310.jpg" class="img" alt="image" width="1099" height="960"/><figcaption class="figleg"><a id="sp0020"></a><span class="fignum">图 12.3</span> 观察 1 的示例。</figcaption></figure></div><p id="p0145" class="text">在第二种情形中，所讨论的 C 元素来自数组 B。例如，在<a href="#f0020">图 12.3B</a> 中，C[6] 从 B[1] 取值。在这种情况下，k=6、j=1。C[6] 的前缀子数组 C[0]–C[5]（位于 C[6] 之前的六个元素组成的子数组）是前缀子数组 A[0]–A[4]（位于 A[5] 之前的五个元素组成的子数组）与 B[0]（位于 B[1] 之前的 1 个元素组成的子数组）归并的结果。此情形的通用公式是：子数组 C[0]–C[k − 1]（k 个元素）是 A[0]–A[k − j − 1]（k − j 个元素）与 B[0]–B[j − 1]（j 个元素）归并的结果。</p>
+<p id="p0150" class="text">在第一种情形中，我们求出 i，并推导出 j 为 k − i。在第二种情形中，我们求出 j，并推导出 i 为 k - j。我们可以利用这种对称性，把两种情形归纳为一个观察结论：</p>
+<div class="boxg1" id="enun0015">
+<p class="b1num">观察 2</p>
+<p id="p0155" class="b1textfl">对于任意满足 0≤k&lt;m + n 的 k，我们都能找到 i 和 j，使得 k=i + j、0≤i&lt;m 且 0≤j&lt;n，并且子数组 C[0]–C[k − 1] 是子数组 A[0]–A[i − 1] 与子数组 B[0]–B[j − 1] 归并的结果。</p>
+</div>
+<p id="p0160" class="text">除此之外，<a href="#bib1" role="doc-biblioref" epub:type="biblioref">Siebert and Traff (2012)</a>还证明了 i 和 j 是唯一的；这两个值定义了为生成长度为 k 的 C 前缀子数组所需的 A 和 B 前缀子数组。对于元素 C[k]，索引 k 被称为它的秩（rank）。唯一确定的索引 i 和 j 被称为它的协秩。例如，在<a href="#f0020">图 12.3A</a> 中，C[4] 的秩和协秩分别为 4、3 和 1。再如，C[6] 的秩和协秩分别为 6、5 和 1。</p>
+<p id="p0165" class="text">协秩的概念为我们提供了将归并函数并行化的途径。我们可以把输出数组划分为若干子数组，并把一个子数组的生成任务分配给每个线程，从而在线程之间划分工作。分配完成后，每个线程要生成的输出元素的秩就已知了。然后，每个线程使用协秩函数确定它需要归并到其输出子数组中的两个输入子数组。</p>
+<p id="p0170" class="text">注意，归并函数的并行化与我们之前所有模式的并行化之间的主要区别在于：每个线程要使用的输入数据范围无法通过简单的索引计算来确定。每个线程要使用的输入元素范围取决于实际的输入值。这使得并行化的归并操作成为一个有趣且富有挑战性的并行计算模式。</p></section><section><a id="s0025"></a><h2 class="h1hd" id="st0040">12.4 协秩函数实现</h2><p id="p0175" class="textfl"><span id="page_269" aria-label="Page 269" epub:type="pagebreak" role="doc-pagebreak"></span>我们把协秩函数定义为一个这样的函数：它接受输出数组 C 中某个元素的秩（k）以及关于两个输入数组 A 和 B 的信息，并返回输入数组 A 中相应元素的协秩值（i）。协秩函数的签名如下：</p><div class="pageavoid"><figure class="fig" id="f0110"><img src="../images/F000252u12-01-9780323912310.jpg" class="img" alt="image" width="1365" height="81"/></figure></div><p class="textfl">其中 k 是所讨论的 C 元素的秩，A 是指向输入数组 A 的指针，m 是数组 A 的大小，B 是指向输入数组 B 的指针，n 是输入数组 B 的大小，返回值是 i，即 k 在 A 中的协秩。调用方随后可以推导出 j，即 k 在 B 中的协秩值，为 k − i。</p>
+<p id="p0180" class="text">在研究协秩函数的实现细节之前，先了解并行归并函数将如何使用它是有益的。协秩函数的这种用法如<a href="#f0025">图 12.4</a> 所示，其中我们用两个线程执行归并操作。我们假设线程 0 生成 C[0]–C[3]，线程 1 生成 C[4]–C[8]。</p>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F000252f12-04-9780323912310.jpg" class="img" alt="image" width="999" height="389"/><figcaption class="figleg"><a id="sp0025"></a><span class="fignum">图 12.4</span> 协秩函数执行示例。</figcaption></figure></div><p id="p0185" class="text">直观地讲，每个线程调用协秩函数来推导将被归并到分配给该线程的 C 子数组中的 A 和 B 子数组的起始位置。例如，线程 1 以参数 (4, A, 5, B, 4) 调用协秩函数。线程 1 的协秩函数的目标是针对其秩值 k1=4 找出协秩值 i1=3 和 j1=1。也就是说，从 C[4] 开始的子数组将由从 A[3] 和 B[1] 开始的子数组归并生成。直观地讲，我们是在寻找来自 A 和 B 的共四个元素，它们将在线程 1 开始归并其元素之前填充输出数组的前四个元素。通过目视检查，我们看到 i1=3 和 j1=1 的选择满足我们的需求。线程 0 将取 A[0]–A[2] 和 B[0]，留下 A[3]（值 9）和 B[1]（值 10），这正是线程 1 开始归并的位置。</p>
+<p id="p0190" class="text"><span id="page_270" aria-label="Page 270" epub:type="pagebreak" role="doc-pagebreak"></span>如果我们将 i1 的值改为 2，就需要把 j1 的值设为 2，这样才能在线程 1 之前仍然有共四个元素。但这意味着我们会把值为 10 的 B[1] 包含进线程 0 的元素中。这个值大于本应包含在线程 1 元素中的 A[2]（值 8）。这样的改动会使最终得到的 C 数组无法正确排序。另一方面，如果我们将 i1 的值改为 4，就需要把 j1 的值设为 0，以保持元素总数为 4。但这意味着我们会把 A[3]（值 9）包含进线程 0 的元素中，而 A[3] 大于本应错误地包含在线程 1 元素中的 B[0]（值 7）。这两个例子表明，需要一种能够快速确定该值的搜索算法。</p>
+<p id="p0195" class="text">除了确定其输入段的起始位置外，线程 1 还需要确定它们的结束位置。为此，线程 1 还以参数 (9, A, 5, B, 4) 调用协秩函数。从<a href="#f0025">图 12.4</a> 中我们看到，协秩函数应当产生协秩值 i2=5 和 j2=4。也就是说，由于 C[9] 超出了 C 数组的最后一个元素，如果有人试图生成一个从 C[9] 开始的 C 子数组，那么 A 和 B 数组的所有元素都应当已被耗尽。一般而言，线程 t 要使用的输入子数组由线程 t 和线程 t + 1 的协秩值界定：A[i<sub>t</sub>]–A[i<sub>t+1</sub>] 和 B[j<sub>t</sub>]–B[j<sub>t+1</sub>]。</p>
+<p id="p0200" class="text"><span id="page_271" aria-label="Page 271" epub:type="pagebreak" role="doc-pagebreak"></span>协秩函数本质上是一种搜索操作。由于两个输入数组都已排序，我们可以使用二分查找，甚至更高基数的搜索，使搜索的计算复杂度达到 O(log N)。<a href="#f0030">图 12.5</a> 展示了一个基于二分查找的协秩函数。协秩函数使用两对标记变量来界定当前正在为协秩值考虑的 A 数组索引范围和 B 数组索引范围。变量 i 和 j 是当前二分查找迭代中正在考虑的候选协秩返回值。变量 i_low 和 j_low 是函数可能产生的最小协秩值。第 02 行把 i 初始化为其可能的最大值。如果 k 的值大于 m，第 02 行把 i 初始化为 m，因为协秩值 i 不可能大于数组 A 的大小。否则，第 02 行把 i 初始化为 k，因为 i 不可能大于 k。协秩值 j 被初始化为 k − i（第 03 行）。在整个执行过程中，协秩函数保持着这个重要的不变量关系：变量 i 与 j 之和始终等于输入变量 k 的值（秩值）。</p>
+<div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F000252f12-05-9780323912310.jpg" class="img" alt="image" width="1374" height="845"/><figcaption class="figleg"><a id="sp0030"></a><span class="fignum">图 12.5</span> 一个基于二分查找的协秩函数。</figcaption></figure></div><p id="p0205" class="text">i_low 和 j_low 变量的初始化（第 4 行和第 5 行）需要稍作解释。这两个变量使我们能够限制搜索范围并加快搜索速度。从功能上讲，我们可以把这两个值都设为零，让后续的执行把它们提升为更精确的值。当 k 的值小于 m 和 n 时，这样做是合理的。然而，当 k 大于 n 时，我们知道 i 的值不可能小于 k − n。原因是：C[k] 的前缀子数组元素中，最多有 n 个可以来自数组 B。因此，至少有 k − n 个元素必须来自 A。所以 i 的值永远不会小于 k − n；我们不妨把 i_low 设为 k − n。同理，j_low 的值不能小于 k − m，k − m 是归并过程中必须使用的 B 元素的最少个数，因而也是最终协秩值 j 的下界。</p>
+<p id="p0210" class="text">我们将用<a href="#f0035">图 12.6</a> 中的示例来说明<a href="#f0030">图 12.5</a> 中协秩函数的运行过程。该示例假设使用三个线程把数组 A 和 B 归并到 C 中。每个线程负责生成一个包含三个元素的输出子数组。我们首先跟踪线程 1 的协秩函数的二分查找步骤，线程 1 负责生成 C[3]–C[5]。读者应当能够确定，线程 1 以参数 (3, A, 5, B, 4) 调用协秩函数。</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F000252f12-06-9780323912310.jpg" class="img" alt="image" width="1003" height="513"/><figcaption class="figleg"><a id="sp0035"></a><span class="fignum">图 12.6</span> 线程 1 的协秩函数运行示例的第 0 次迭代。</figcaption></figure></div><p id="p0215" class="text"><span id="page_272" aria-label="Page 272" epub:type="pagebreak" role="doc-pagebreak"></span>如<a href="#f0030">图 12.5</a> 所示，协秩函数的第 2 行把 i 初始化为 3，即 k 的值，因为本例中 k 小于 m（值 5）。同时，i_low 被设为 0。i 和 i_low 的值界定了当前正在搜索以确定最终协秩 i 值的 A 数组区段。因此，协秩 i 值只考虑 0、1、2 和 3。同样，j 和 j_low 的值被设为 0 和 0。</p>
+<p id="p0220" class="text">协秩函数的主体是一个 while 循环（第 08 行），它迭代地逼近最终的协秩 i 和 j 值。目标是找到一对 i 和 j 值，使得 A[i-1]≤B[j] 且 B[j-1]&lt;A[i]。其直觉是：我们选择的 i 和 j 值要保证，用于生成前一个输出子数组的 A 子数组（称为前一个 A 子数组）中的任何值都不大于用于生成当前输出子数组的 B 子数组（称为当前 B 子数组）中的任何元素。注意，前一个子数组中最大的 A 元素可以等于当前 B 子数组中最小的元素，因为根据稳定性要求，当 A 元素与 B 元素之间出现相等情况时，A 元素优先放入输出数组。</p>
+<p id="p0225" class="text">在<a href="#f0030">图 12.5</a> 中，while 循环中的第一个 if 结构（第 09 行）测试当前的 i 值是否过高。如果是，它将调整标记变量的值，使 i 的搜索范围向较小的一端缩小约一半。具体做法是：把 i 的值减小约 i 与 i_low 之差的一半。在<a href="#f0040">图 12.7</a> 中，对于 while 循环的第 0 次迭代，if 结构发现 i 的值（3）过高，因为 A[i − 1]（其值为 8）大于 B[j]（其值为 7）。接下来的几条语句通过把 i 的值减小 delta=(3 − 0 + 1) <img src="../images/gg_8811.png" alt="ent" width="23" height="20"/> 1=2（第 10 行和第 13 行）来缩小 i 的搜索范围，同时保持 i_low 的值不变。因此，下一次迭代的 i_low 和 i 值将是 0 和 1。</p>
+<div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F000252f12-07-9780323912310.jpg" class="img" alt="image" width="1003" height="475"/><figcaption class="figleg"><a id="sp0040"></a><span class="fignum">图 12.7</span> 线程 1 的协秩函数运行示例的第 1 次迭代。</figcaption></figure></div><p id="p0230" class="text">代码还把 j 的搜索范围移到当前 j 位置之上，使其与 i 的搜索范围相当。这一调整维持了 i 与 j 之和等于 k 的性质。调整方法是：把当前的 j 值赋给 j_low（第 11 行），并把 delta 值加到 j 上（第 12 行）。在我们的示例中，下一次迭代的 j_low 和 j 值将是 0 和 2。</p>
+<p id="p0235" class="text"><span id="page_273" aria-label="Page 273" epub:type="pagebreak" role="doc-pagebreak"></span>在 while 循环的第 1 次迭代中（如<a href="#f0040">图 12.7</a> 所示），i 和 j 的值是 1 和 2。if 结构（第 9 行）认为 i 值可以接受，因为 A[i − 1] 是 A[0]（其值为 1），而 B[j] 是 B[2]（其值为 10），所以 A[i − 1] 小于 B[j]。因此，第一个 if 结构的条件不成立，其主体被跳过。然而，在这次迭代中，j 值被判定为过高，因为 B[j − 1] 是 B[1]（第 14 行），其值为 10，而 A[i] 是 A[1]，其值为 7。因此，第二个 if 结构将调整下一次迭代的标记，使 j 的搜索范围向较低值方向缩小约一半。具体做法是：从 j 中减去 delta=(j − j_low + 1) <img src="../images/gg_8811.png" alt="ent" width="23" height="20"/> 1=1（第 15 行和第 18 行）。结果，下一次迭代的 j_low 和 j 值将是 0 和 1。同时，它使 i 的下一次搜索范围与 j 的大小相同，但向上移动 delta 个位置。具体做法是：把当前的 i 值赋给 i_low（第 16 行），并把 delta 值加到 i 上（第 17 行）。因此，下一次迭代的 i_low 和 i 值将分别是 1 和 2。</p>
+<p id="p0240" class="text">在第 2 次迭代中（如<a href="#f0045">图 12.8</a> 所示），i 和 j 的值是 2 和 1。两个 if 结构（第 9 行和第 14 行）都会认为 i 和 j 的值可以接受。对于第一个 if 结构，A[i − 1] 是 A[1]（值 7），B[j] 是 B[1]（值 10），因此条件 A[i − 1]≤B[j] 得到满足。对于第二个 if 结构，B[j − 1] 是 B[0]（值 7），A[i] 是 A[2]（值 8），因此条件 B[j − 1]&lt;A[i] 也得到满足。协秩函数设置一个标志以退出 while 循环（第 20 行和第 08 行），并返回最终的 i 值 2 作为协秩 i 值（第 23 行）。调用线程可以推导出最终的协秩 j 值，即 k − i=3 − 2=1。检查<a href="#f0045">图 12.8</a> 可以确认，协秩值 2 和 1 确实为线程 1 确定了正确的 A 和 B 输入子数组。</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F000252f12-08-9780323912310.jpg" class="img" alt="image" width="1004" height="469"/><figcaption class="figleg"><a id="sp0045"></a><span class="fignum">图 12.8</span> 线程 0 的协秩函数运行示例的第 2 次迭代。</figcaption></figure></div><p id="p0245" class="text">读者可以自行对线程 2 重复同样的过程作为练习。另外请注意，如果输入序列长得多，delta 值每一步都会减半，因此算法的复杂度为 log<sub>2</sub>(N)，其中 N 是两个输入数组大小的较大者。</p></section><section><a id="s0030"></a><h2 class="h1hd" id="st0045">12.5 基础并行归并核函数</h2><p id="p0250" class="textfl"><span id="page_274" aria-label="Page 274" epub:type="pagebreak" role="doc-pagebreak"></span>在本章其余部分，我们假设输入数组 A 和 B 位于全局内存中。我们进一步假设启动一个核函数来归并这两个输入数组，生成同样位于全局内存中的输出数组 C。<a href="#f0050">图 12.9</a> 展示了一个基础核函数，它是<a href="#s0020">第 12.3 节</a>所述并行归并函数的直接实现。</p>
+<div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F000252f12-09-9780323912310.jpg" class="img" alt="image" width="1375" height="437"/><figcaption class="figleg"><a id="sp0050"></a><span class="fignum">图 12.9</span> 一个基础归并核函数。</figcaption></figure></div><p id="p0255" class="text">可以看到，这个核函数很简单。它首先计算当前线程要生成的输出子数组的起始点（k_curr）和下一个线程的输出子数组起始点（k_next），从而在线程之间划分工作。请记住，输出元素的总数可能不是线程数的整数倍。然后，每个线程对协秩函数进行两次调用。第一次调用使用 k_curr 作为秩参数，k_curr 是当前线程要生成的输出子数组的第一个（索引最小的）元素。返回的协秩值 i_curr 给出属于该线程要使用的输入子数组的、索引最小的输入 A 数组元素。这个协秩值还可以用来得到 B 输入子数组的 j_curr。i_curr 和 j_curr 的值标明了该线程输入子数组的起始位置。因此，&amp;A[i_curr] 和 &amp;B[j_curr] 是指向当前线程要使用的输入子数组起始位置的指针。</p>
+<p id="p0260" class="text">第二次调用使用 k_next 作为秩参数，以获得下一个线程的协秩值。这些协秩值标明了下一个线程要使用的索引最小的输入数组元素的位置。因此，i_next − i_curr 和 j_next − j_curr 给出当前线程要使用的 A 和 B 子数组的大小。指向当前线程要生成的输出子数组起始位置的指针是 &amp;C[k_curr]。核函数的最后一步是使用这些参数调用归并函数 merge_sequential（来自<a href="#f0015">图 12.2</a>）。</p>
+<p id="p0265" class="text"><span id="page_275" aria-label="Page 275" epub:type="pagebreak" role="doc-pagebreak"></span>基础归并核函数的执行可以用<a href="#f0045">图 12.8</a> 中的示例来说明。三个线程（线程 0、1 和 2）的 k_curr 值将是 0、3 和 6。我们将重点关注 k_curr 值为 3 的线程 1 的执行。从第一次协秩函数调用确定的 i_curr 和 j_curr 值是 2 和 1。线程 1 的 k_next 值将是 6。对协秩函数的第二次调用有助于确定 i_next 和 j_next 的值，即 5 和 1。然后，线程 1 以参数 (&amp;A[2], 3, &amp;B[1], 0, &amp;C[3]) 调用归并函数。注意，参数 n 的值 0 表示线程 1 的输出子数组的三个元素都不应来自数组 B。<a href="#f0045">图 12.8</a> 中的情况正是如此：输出元素 C[3]−C[5] 全部来自 A[2]−A[4]。</p>
+<p id="p0270" class="text">虽然基础归并核函数相当简单而优雅，但它在内存访问效率方面有所不足。首先，显然在执行归并函数 merge_sequential 时，线程束中的相邻线程在读写输入和输出子数组元素时访问的不是相邻的内存位置。以<a href="#f0045">图 12.8</a> 中的示例为例，在归并函数 merge_sequential 执行的第一次迭代中，三个相邻线程将读取 A[0]、A[2] 和 B[0]。然后它们将写入 C[0]、C[3] 和 C[6]。因此，它们的内存访问不是合并的，导致内存带宽利用率低下。</p>
+<p id="p0275" class="text">其次，线程在执行协秩函数时还需要从全局内存访问 A 和 B 元素。由于协秩函数执行二分查找，其访问模式有些不规则，不太可能是合并的。因此，这些访问会进一步降低内存带宽的利用效率。如果我们能避免协秩函数对全局内存的这些非合并访问，将会很有帮助。</p></section><section><a id="s0035"></a><h2 class="h1hd" id="st0050">12.6 改善合并访问的分块归并核函数</h2><p id="p0280" class="textfl">在<a href="Ch006_123-147_B9780323912310000161.html#Ch006_123-147_B9780323912310000161">第 6 章</a>（性能考量）中，我们提到了在核函数中改善内存合并的三种主要策略：（1）重新排列线程到数据的映射；（2）重新排列数据本身；（3）以合并的方式在全局内存与共享内存之间传输数据，并在共享内存中执行不规则的访问。对于归并模式，我们将采用第三种策略，即利用共享内存来改善合并访问。使用共享内存还有一个优点，即能够利用协秩函数与串行归并阶段之间的少量数据复用。</p>
+<p id="p0285" class="text">关键的观察是：相邻线程要使用的 A 和 B 输入子数组在内存中是彼此相邻的。本质上，线程块中的所有线程将共同使用较大的、线程块级的 A 和 B 子数组，来生成一个较大的、线程块级的 C 子数组。我们可以为整个线程块调用协秩函数，以获得线程块级 A 和 B 子数组的起始和结束位置。利用这些线程块级协秩值，线程块中的所有线程可以协作地、以合并的模式把线程块级 A 和 B 子数组的元素加载到共享内存中。</p>
+<p id="p0290" class="text"><span id="page_276" aria-label="Page 276" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0055">图 12.10</a> 展示了分块归并核函数的线程块级设计。在此示例中，我们假设使用三个线程块执行归并操作。在图的底部，我们展示了 C 被划分为三个线程块级子数组。我们用灰色竖条标出这些划分。基于该划分，每个线程块调用协秩函数，把输入数组划分为供每个线程块使用的子数组。我们也用灰色竖条标出输入划分。注意，根据输入数组中实际数据元素的值，输入划分的大小可以有很大差异。例如，在<a href="#f0045">图 12.8</a> 中，线程 0 的输入 A 子数组明显大于输入 B 子数组。另一方面，线程 1 的输入 A 子数组明显小于输入 B 子数组。显然，两个输入子数组的大小之和必须始终等于每个线程的输出子数组的大小。</p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F000252f12-10-9780323912310.jpg" class="img" alt="image" width="1376" height="668"/><figcaption class="figleg"><a id="sp0055"></a><span class="fignum">图 12.10</span> 分块归并核函数的设计。</figcaption></figure></div><p id="p0295" class="text">我们将为每个线程块声明两个共享内存数组 A_S 和 B_S。由于共享内存大小有限，A_S 和 B_S 可能无法覆盖线程块的整个输入子数组。因此，我们将采用迭代方法。假设 A_S 和 B_S 数组各自能容纳 x 个元素，而每个输出子数组包含 y 个元素。每个线程块将在 y/x 次迭代中完成其操作。在每次迭代中，线程块中的所有线程将协作地从线程块的输入 A 子数组加载 x 个元素，并从其输入 B 子数组加载 x 个元素。</p>
+<p id="p0300" class="text"><span id="page_277" aria-label="Page 277" epub:type="pagebreak" role="doc-pagebreak"></span>每个线程的第一次迭代如<a href="#f0055">图 12.10</a> 所示。我们展示了：对于每个线程块，输入 A 子数组的浅灰色部分被加载到 A_S 中，输入 B 子数组的浅灰色部分被加载到 B_S 中。共享内存中有 x 个 A 元素和 x 个 B 元素时，线程块就有足够的输入元素来生成至少 x 个输出数组元素。所有线程都能保证获得本次迭代所需的全部输入子数组元素。有人可能会问，为什么加载总共 2x 个输入元素只能保证生成 x 个输出元素。原因在于：在最坏的情况下，当前输出区段的所有元素可能全部来自其中一个输入区段。这种输入使用的不确定性使归并核函数的分块设计比之前的模式更具挑战性。可以先为当前和下一个输出区段调用协秩函数，从而更精确地加载输入分块。在这种情况下，我们以额外的二分查找操作换取冗余数据加载的减少。我们把这个替代实现留作练习。在<a href="#s0040">第 12.7 节</a>中，我们还将通过环形缓冲区设计来提高内存带宽的利用效率。</p>
+<p id="p0305" class="text"><a href="#f0055">图 12.10</a> 还展示了：每个线程块中的线程在每次迭代中将使用 A_S 的一部分和 B_S 的一部分（以深灰色区段示出），以在其输出 C 子数组中生成一个包含 x 个元素的区段。这一过程用从 A_S 和 B_S 深灰色区段指向 C 深灰色区段的虚线箭头来说明。注意，每个线程块使用的 A_S 与 B_S 部分很可能各不相同。有些线程块可能从 A_S 使用更多元素，另一些则可能从 B_S 使用更多元素。每个线程块实际使用的部分取决于输入数据元素的值。</p>
+<p id="p0310" class="text"><a href="#f0060">图 12.11</a> 展示了分块归并核函数的第一部分。与<a href="#f0050">图 12.9</a> 相比，二者显示出惊人的相似性。这部分本质上就是线程级基础归并核函数设置代码的线程块级版本。线程块中只需要一个线程为当前线程块起始输出索引的秩值和下一个线程块起始输出索引的秩值计算协秩值。这些值被放入共享内存，以便线程块中的所有线程都能看到。只让一个线程调用协秩函数，可以减少协秩函数的全局内存访问次数，从而改善全局内存访问的效率。这里使用屏障同步来确保所有线程等待线程块级协秩值出现在共享内存的 A_S[0] 和 A_S[1] 位置后，才继续使用这些值。</p>
+<div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F000252f12-11-9780323912310.jpg" class="img" alt="image" width="1375" height="698"/><figcaption class="figleg"><a id="sp0060"></a><span class="fignum">图 12.11</span> 第 1 部分：确定线程块级输出和输入子数组。</figcaption></figure></div><p id="p0315" class="text"><span id="page_278" aria-label="Page 278" epub:type="pagebreak" role="doc-pagebreak"></span>回想一下，由于输入子数组可能太大而无法放入共享内存，核函数采用迭代方法。核函数接收一个 tile_size 参数，它指定共享内存要容纳的 A 元素和 B 元素的数量。例如，tile_size 的值为 1024 表示共享内存要容纳 1024 个 A 数组元素和 1024 个 B 数组元素。这意味着每个线程块将分配 (1024 + 1024)×4=8192 字节的共享内存来存放 A 和 B 数组元素。</p>
+<p id="p0320" class="text">举一个简单的例子：假设我们要把包含 33,000 个元素的数组 A（m=33,000）与包含 31,000 个元素的数组 B（n=31,000）归并。输出 C 元素的总数为 64,000。进一步假设我们使用 16 个线程块（gridDim.x=16），每个线程块有 128 个线程（blockDim.x=128）。每个线程块将生成 64,000/16=4000 个输出 C 数组元素。</p>
+<p id="p0325" class="text">如果我们假设 tile_size 的值为 1024，<a href="#f0065">图 12.12</a> 中的 while 循环需要对每个线程块进行四次迭代，才能完成其 4000 个输出元素的生成。在 while 循环的第 0 次迭代期间，每个线程块中的线程将协作地把 1024 个 A 元素和 1024 个 B 元素加载到共享内存中。由于一个线程块有 128 个线程，它们在 for 循环（第 26 行）的每次迭代中可以共同加载 128 个元素。因此，<a href="#f0065">图 12.12</a> 中的第一个 for 循环将迭代 8 次，线程块中的所有线程才能完成 1024 个 A 元素的加载。第二个 for 循环也将迭代 8 次，以完成 1024 个 B 元素的加载。注意，线程使用其 threadIdx.x 值来选择要加载的元素，因此连续的线程加载连续的元素。这些内存访问是合并的。稍后我们将回过头来解释这些 if 条件，以及用于加载 A 和 B 元素的索引表达式是如何构造的。</p>
+<div class="pageavoid"><figure class="fig" id="f0065"><img src="../images/F000252f12-12-9780323912310.jpg" class="img" alt="image" width="1374" height="592"/><figcaption class="figleg"><a id="sp0065"></a><span class="fignum">图 12.12</span> 第 2 部分：将 A 和 B 元素加载到共享内存中。</figcaption></figure></div><p id="p0330" class="text"><span id="page_279" aria-label="Page 279" epub:type="pagebreak" role="doc-pagebreak"></span>一旦输入分块进入共享内存，各个线程就可以划分输入分块并并行归并各自的部分。具体做法是：把输出的一个区段分配给每个线程，并运行协秩函数来确定应使用哪些共享内存数据区段来生成该输出区段。<a href="#f0070">图 12.13</a> 中的代码完成了这一步。请记住，这是<a href="#f0065">图 12.12</a> 中开始的 while 循环的延续。在 while 循环的每次迭代中，线程块中的线程将使用我们加载到共享内存中的数据，生成总共 tile_size 个 C 元素。（最后那次迭代除外，稍后会加以说明。）协秩函数针对各个线程在共享内存中的数据运行。每个线程首先计算其输出范围的起始位置和下一个线程输出范围的起始位置，然后把这些起始位置作为协秩函数的输入，以确定其输入范围。然后，每个线程调用串行归并函数，把（由协秩值确定的）其 A 和 B 元素部分从共享内存归并到其指定的 C 元素范围中。</p>
+<div class="pageavoid"><figure class="fig" id="f0070"><img src="../images/F000252f12-13-9780323912310.jpg" class="img" alt="image" width="1375" height="647"/><figcaption class="figleg"><a id="sp0070"></a><span class="fignum">图 12.13</span> 第 3 部分：所有线程并行归并各自的子数组。</figcaption></figure></div><p id="p0335" class="text">让我们继续我们正在进行的示例。在 while 循环的每次迭代中，线程块中的所有线程将使用共享内存中的两个输入分块（A 元素和 B 元素）共同生成 1024 个输出元素。（再次说明，我们稍后会处理 while 循环的最后一次迭代。）工作在 128 个线程之间划分，因此每个线程将生成八个输出元素。虽然我们知道每个线程将消耗共享内存中总共八个输入元素，但我们仍需要调用协秩函数来确定每个线程将消耗的 A 元素与 B 元素的确切数量以及它们的起始和结束位置。例如，一个线程可能使用三个 A 元素和五个 B 元素，另一个线程可能使用六个 A 元素和两个 B 元素，依此类推。</p>
+<p id="p0340" class="text">总的来说，在我们这个示例中，线程块中所有线程在该次迭代中使用的 A 元素和 B 元素总数将加起来等于 1024。例如，如果线程块中的所有线程使用了 476 个 A 元素，我们就知道它们还使用了 1024 − 476=548 个 B 元素。甚至有可能所有线程最终使用 1024 个 A 元素和 0 个 B 元素。请记住，共享内存中总共加载了 2048 个元素。因此，在 while 循环的每次迭代中，加载到共享内存中的 A 和 B 元素只有一半会被线程块中的所有线程使用。</p>
+<p id="p0345" class="text"><span id="page_280" aria-label="Page 280" epub:type="pagebreak" role="doc-pagebreak"></span>现在我们可以更仔细地考察核函数的细节了。回想一下，我们跳过了关于把 A 和 B 元素从全局内存加载到共享内存的索引表达式的解释。对于 while 循环的每次迭代，在 A 和 B 数组中加载当前分块的起始点取决于 while 循环此前各次迭代中线程块所有线程已消耗的 A 和 B 元素总数。假设我们用变量 A_consumed 记录 while 循环此前所有迭代消耗的 A 元素总数。在进入 while 循环之前，我们把 A_consumed 初始化为 0。在 while 循环的第 0 次迭代中，由于迭代 0 开始时 A_consumed 为 0，所有线程块都从 A[A_curr] 开始加载其分块。在 while 循环随后的每次迭代中，A 元素分块将从 A[A_curr + A_consumed] 开始。</p>
+<p id="p0350" class="text"><a href="#f0075">图 12.14</a> 展示了 while 循环第 1 次迭代的索引计算。在我们<a href="#f0055">图 12.10</a> 中的示例里，我们把线程块在第 0 次迭代期间消耗的 A_S 元素显示为 A_S 中分块的深灰色部分。在第 1 次迭代中，线程块 0 要从全局内存加载的分块应起始于包含第 0 次迭代所消耗 A 元素的区段之后紧邻的位置。在<a href="#f0075">图 12.14</a> 中，对于每个线程块，第 0 次迭代消耗的 A 元素区段显示为分配给该线程块的 A 子数组开头的小白色区段（由竖条标出）。由于这个小区段的长度由 A_consumed 的值给出，while 循环第 1 次迭代要加载的分块从 A[A_curr + A_consumed] 开始。同样，while 循环第 1 次迭代要加载的分块从 B[B_curr + B_consumed] 开始。</p>
+<div class="pageavoid"><figure class="fig" id="f0075"><img src="../images/F000252f12-14-9780323912310.jpg" class="img" alt="image" width="1373" height="667"/><figcaption class="figleg"><a id="sp0075"></a><span class="fignum">图 12.14</span> 示例中 while 循环的第 1 次迭代。</figcaption></figure></div><p id="p0355" class="text"><span id="page_281" aria-label="Page 281" epub:type="pagebreak" role="doc-pagebreak"></span>注意，在<a href="#f0070">图 12.13</a> 中，A_consumed（第 48 行）和 C_completed 在 while 循环的迭代过程中不断累加。此外，B_consumed 由累加后的 A_consumed 和 C_completed 值推导而来，因此它也在 while 循环的迭代过程中不断累加。因此，它们始终反映到目前为止所有迭代消耗的 A 和 B 元素数量。在每次迭代开始时，本次迭代要加载的分块总是从 A[A_curr + A_consumed] 和 B[B_curr + B_consumed] 开始。</p>
+<p id="p0360" class="text">在 while 循环的最后几次迭代中，某些线程块可能没有足够的输入 A 或 B 元素来填满共享内存中的输入分块。例如，在<a href="#f0075">图 12.14</a> 中，对于线程块 2，第 1 次迭代剩余 A 元素的数量小于分块大小。应当使用 if 语句防止线程尝试加载线程块输入子数组之外的元素。<a href="#f0065">图 12.12</a> 中的第一个 if 语句（第 27 行）通过检查线程试图加载的 A_S 元素的索引是否超过表达式 A_length − A_consumed 的值所给出的剩余 A 元素数量，来检测这类尝试。该 if 语句确保线程只加载位于 A 子数组剩余区段内的元素。B 元素也做了同样的处理（第 32 行）。</p>
+<p id="p0365" class="text">有了 if 语句和索引表达式，只要 A_consumed 和 B_consumed 给出线程块在 while 循环此前各次迭代中消耗的 A 和 B 元素总数，分块加载过程就能正常工作。接下来我们看<a href="#f0070">图 12.13</a> 中 while 循环末尾的代码。这些语句更新到目前为止 while 循环迭代生成的 C 元素总数。除最后一次迭代外，每次迭代都会额外生成 tile_size 个 C 元素。</p>
+<p id="p0370" class="text">接下来的两条语句更新线程块中线程消耗的 A 和 B 元素总数。除最后一次迭代外，线程块额外消耗的 A 元素数量是下式的返回值：</p>
+<div class="pageavoid"><figure class="fig" id="f0115"><img src="../images/F000252u12-02-9780323912310.jpg" class="img" alt="image" width="1133" height="59"/></figure>
+</div>
+<p id="p0375" class="text">正如我们之前提到的，在 while 循环最后一次迭代结束时，所消耗元素数量的计算结果可能不正确。最后一次迭代可能没有完整分块的元素可供使用。不过，由于 while 循环不会继续迭代，A_consumed、B_consumed 和 C_completed 这些值将不会被使用，因此不正确的结果不会造成任何影响。但应当记住，如果出于任何原因在退出 while 循环后需要这些值，这三个变量将不具有正确的值。此时应改用 A_length、B_length 和 C_length 的值，因为在 while 循环退出时，分配给线程块的子数组中的所有元素都将已被消耗。</p>
+<p id="p0380" class="text"><span id="page_282" aria-label="Page 282" epub:type="pagebreak" role="doc-pagebreak"></span>分块核函数使协秩函数对全局内存的访问大幅减少，并实现了全局内存访问的合并。然而，就现状而言，这个核函数有一个显著的缺陷：它每次迭代只使用了加载到共享内存中的数据的一半。共享内存中未使用的数据在下次迭代中被简单地重新加载，这浪费了一半的内存带宽。在下一节中，我们将介绍一种用于管理共享内存中数据元素分块的环形缓冲区方案，它使核函数能够充分利用已加载到共享内存中的所有 A 和 B 元素。正如我们将看到的，这种效率的提升伴随着代码复杂度的显著增加。</p></section><section><a id="s0040"></a><h2 class="h1hd" id="st0055">12.7 环形缓冲区归并核函数</h2><p id="p0385" class="textfl">环形缓冲区归并核函数（下文简称 merge_circular_buffer_kernel）的设计，与上一节中 merge_tiled_kernel 核函数的设计大体相同。主要区别在于共享内存中 A 和 B 元素的管理方式，其目的是充分利用从全局内存加载的所有元素。merge_tiled_kernel 的整体结构如<a href="#f0065">图 12.12</a> 至<a href="#f0075">图 12.14</a> 所示；它假设 A 和 B 元素的分块总是分别从 A_S[0] 和 B_S[0] 开始。每完成一次 while 循环迭代，核函数就从 A_S[0] 和 B_S[0] 开始加载下一个分块。merge_tiled_kernel 的效率低下源于这样一个事实：下一批分块中的一部分元素已经在共享内存中，但我们却从全局内存重新加载整个分块，从而覆盖了上一次迭代剩余的这些元素。</p>
+<p id="p0390" class="text"><span id="page_283" aria-label="Page 283" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0080">图 12.15</a> 展示了 merge_circular_buffer_kernel 的主要思想。我们将继续使用<a href="#f0055">图 12.10</a> 和<a href="#f0075">图 12.14</a> 中的示例。新增了两个变量 A_S_start 和 B_S_start，使<a href="#f0065">图 12.12</a> 中 while 循环的每次迭代能够分别从 A_S[0] 和 B_S[0] 内部动态确定的位置开始其 A 和 B 分块。这一额外的追踪机制使 while 循环的每次迭代能够以上一次迭代剩余的 A 和 B 元素开始分块。由于首次进入 while 循环时不存在上一次迭代，这两个变量在进入 while 循环之前被初始化为 0。</p>
+<div class="pageavoid"><figure class="fig" id="f0080"><img src="../images/F000252f12-15-9780323912310.jpg" class="img" alt="image" width="1373" height="818"/><figcaption class="figleg"><a id="sp0080"></a><span class="fignum">图 12.15</span> 一种管理共享内存分块的环形缓冲区方案。</figcaption></figure></div><p id="p0395" class="text">在第 0 次迭代中，由于 A_S_start 和 B_S_start 的值都是 0，分块将从 A_S[0] 和 B_S[0] 开始。这一点如<a href="#f0080">图 12.15A</a> 所示，我们把将从全局内存（A 和 B）加载到共享内存（A_S 和 B_S）的分块显示为浅灰色区段。一旦这些分块被加载到共享内存中，merge_circular_buffer_kernel 就会以与 merge_tile_kernel 相同的方式进行归并操作。</p>
+<p id="p0400" class="text">我们还需要更新 A_S_start 和 B_S_start 变量以供下次迭代使用，方法是让这两个变量的值前进本次迭代期间从共享内存消耗的 A 和 B 元素数量。请记住，每个缓冲区的大小限制为 tile_size。在某个时刻，我们将需要复用 A_S 和 B_S 数组开头部分的缓冲区位置。具体做法是检查新的 A_S_start 和 B_S_start 值是否超过 tile_size。如果是，就从它们中减去 tile_size，如下面的 if 语句所示：</p>
+<div class="pageavoid"><figure class="fig" id="f0120"><img src="../images/F000252u12-03-9780323912310.jpg" class="img" alt="image" width="1135" height="118"/></figure>
+</div>
+<p id="p0405" class="text"><a href="#f0080">图 12.15B</a> 展示了 A_S_start 和 B_S_start 变量的更新。在第 0 次迭代结束时，A 分块的一部分和 B 分块的一部分已被消耗。在<a href="#f0080">图 12.15B</a> 中，被消耗的部分显示为 A_S 和 B_S 中的白色区段。我们把 A_S_start 和 B_S_start 的值更新为共享内存中被消耗区段之后紧邻的位置。</p>
+<p id="p0410" class="text"><a href="#f0080">图 12.15C</a> 展示了 while 循环第 1 次迭代开始时填充 A 和 B 分块的操作。A_S_consumed 是一个新增的变量，用于跟踪当前迭代中使用的 A 元素数量。该变量对填充下一次迭代的分块很有用。在每次迭代开始时，我们需要加载一个长度最多为 A_S_consumed 个元素的区段，以填满共享内存中的 A 分块。同样，我们需要加载一个长度最多为 B_S_consumed 个元素的区段，以填满共享内存中的 B 分块。加载的这两个区段在<a href="#f0080">图 12.15C</a> 中显示为深灰色区段。注意，由于我们复用了第 0 次迭代期间消耗的 A 和 B 元素的空间，分块实际上在 A_S 和 B_S 数组中“环绕”。</p>
+<p id="p0415" class="text"><span id="page_284" aria-label="Page 284" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0080">图 12.15D</a> 展示了第 1 次迭代结束时对 A_S_start 和 B_S_start 的更新。第 1 次迭代期间消耗的元素区段显示为白色区段。注意，在 A_S 中，被消耗的区段环绕到了 A_S 的开头部分。A_S_start 变量的值也由 % 取模运算符实现环绕。显然，我们需要调整加载和使用分块元素的代码，以支持对 A_S 和 B_S 数组的这种环形使用方式。</p>
+<p id="p0420" class="text">merge_circular_buffer_kernel 的第 1 部分与<a href="#f0060">图 12.11</a> 中 merge_tiled_kernel 的第 1 部分相同，因此我们不再展示。<a href="#f0085">图 12.16</a> 展示了环形缓冲区核函数的第 2 部分。相同的变量声明请参见<a href="#f0065">图 12.12</a>。新变量 A_S_start、B_S_start、A_S_consumed 和 B_S_consumed 在进入 while 循环之前被初始化为 0。</p>
+<div class="pageavoid"><figure class="fig" id="f0085"><img src="../images/F000252f12-16-9780323912310.jpg" class="img" alt="image" width="1373" height="535"/><figcaption class="figleg"><a id="sp0085"></a><span class="fignum">图 12.16</span> 环形缓冲区归并核函数的第 2 部分。</figcaption></figure></div><p id="p0425" class="text">注意，两个 for 循环的退出条件已被调整。与<a href="#f0065">图 12.12</a> 中归并核函数总是加载完整分块不同，<a href="#f0085">图 12.16</a> 中的每个 for 循环都被设置为只加载重新填满分块所需的元素数量，该数量由 A_S_consumed 给出。线程块在第 i 次 for 循环迭代中要加载的 A 元素区段从全局内存位置 A[A_curr + A_consumed + i] 开始。注意，每次迭代后 i 都会按 blockDim.x 递增。因此，线程在第 i 次 for 循环迭代中要加载的 A 元素是 A[A_curr + A_consumed + i + threadIdx.x]。每个线程把其 A 元素放入 A_S 数组的索引是 A_S_start + (tile_size − A_S_consumed) + I + threadIdx，因为分块从 A_S[A_S_start] 开始，并且缓冲区中还剩余上一次 while 循环迭代留下的 (tile_size − A_S_consumed) 个元素。取模（%）运算检查索引值是否大于或等于 tile_size。如果是，就把该索引值减去 tile_size，使其绕回数组的开头部分。同样的分析适用于加载 B 分块的 for 循环，留给读者作为练习。</p>
+<p id="p0430" class="text"><span id="page_285" aria-label="Page 285" epub:type="pagebreak" role="doc-pagebreak"></span>把 A_S 和 B_S 数组用作环形缓冲区，也会给协秩函数和归并函数的实现带来额外的复杂度。这部分额外的复杂度有一部分会体现在调用这些函数的线程级代码中。然而，一般而言，最好能在库函数内部高效地处理这些复杂性，以尽量减少用户代码中增加的复杂度。我们在<a href="#f0090">图 12.17</a> 中展示了这样一种方法。<a href="#f0090">图 12.17A</a> 展示了环形缓冲区的实现。A_S_start 和 B_S_start 标明了环形缓冲区中分块的起始位置。分块在 A_S 和 B_S 数组中环绕，显示为 A_S_start 和 B_S_start 左侧的浅灰色区段。</p>
+<div class="pageavoid"><figure class="fig" id="f0090"><img src="../images/F000252f12-17-9780323912310.jpg" class="img" alt="image" width="1103" height="558"/><figcaption class="figleg"><a id="sp0090"></a><span class="fignum">图 12.17</span> 使用环形缓冲区时协秩值的简化模型。</figcaption></figure></div><p id="p0435" class="text">请记住，协秩值用于让线程确定它们要使用的输入子数组的起始位置、结束位置和长度。在使用环形缓冲区时，我们可以把协秩值直接提供为环形缓冲区中的实际索引。然而，这会给 merge_circular_buffer_kernel 代码带来相当大的复杂度。例如，a_next 的值可能小于 a_curr 的值，因为分块在 A_S 数组中发生了环绕。因此，需要针对这种情况进行判断，并把区段的长度计算为 a_next-a_curr + tile_size。然而，在 a_next 大于 a_curr 的其他情况下，区段的长度就是 a_next − a_curr。</p>
+<p id="p0440" class="text"><a href="#f0090">图 12.17B</a> 展示了一个用于在环形缓冲区中定义、推导和使用协秩值的简化模型。在这个模型中，每个分块看起来都位于一个从 A_S_start 和 B_S_start 开始的连续区段中。在<a href="#f0090">图 12.17A</a> 中 B_S 分块的情况下，b_next 发生了环绕，在环形缓冲区中会小于 b_curr。然而，如<a href="#f0090">图 12.17B</a> 所示，该简化模型营造了一种假象，即所有元素都位于一个长度最多为 tile_size 个元素的连续区段中；因此 a_next 始终大于或等于 a_curr，b_next 也始终大于或等于 b_curr。需要由 co_rank_circular 和 merge_sequential_circular 函数的实现来把这个关于协秩值的简化视图映射为环形缓冲区的实际索引，以便它们能够正确而高效地完成各自的功能。</p>
+<p id="p0445" class="text"><span id="page_286" aria-label="Page 286" epub:type="pagebreak" role="doc-pagebreak"></span>co_rank_circular 和 merge_sequential_circular 函数与原来的 co_rank 和 merge 函数具有相同的参数集合，另外还多了三个参数：A_S_start、B_S_start 和 tile_size。这三个额外参数告知函数缓冲区当前的起始位置在哪里以及缓冲区有多大。<a id="Bf0095" href="#f0095">图 12.18</a> 展示了基于使用环形缓冲区的协秩值简化模型修改后的线程级代码。代码中唯一的变化是调用 co_rank_circular 和 merge_sequential_circular 函数，而不是 co_rank 和 merge 函数。这表明，设计良好的库接口可以降低采用复杂数据结构时对用户代码的影响。</p>
+<div class="pageavoid"><figure class="fig" id="f0095"><img src="../images/F000252f12-18-9780323912310.jpg" class="img" alt="image" width="1374" height="1099"/><figcaption class="figleg"><a id="sp0095"></a><span class="fignum"><a href="#Bf0095">图 12.18</a></span> 环形缓冲区归并核函数的第 3 部分。</figcaption></figure></div><p id="p0450" class="text"><span id="page_287" aria-label="Page 287" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0100" href="#f0100">图 12.19</a> 展示了一个协秩函数的实现，它在环形缓冲区上正确运行的同时，为协秩值提供了简化模型。它对 i、j、i_low 和 j_low 值的处理方式与<a href="#f0030">图 12.5</a> 中的协秩函数完全相同。唯一的变化是，i、i − 1、j 和 j − 1 不再被直接用作访问 A_S 和 B_S 数组的索引。它们被用作偏移量，加到 A_S_start 和 B_S_start 的值上，形成索引值 i_cir、i_m_1_cir、j_cir 和 j_m_1_cir。在每种情况下，我们都需要判断实际索引值是否需要环绕到缓冲区的开头部分。注意，我们不能简单地用 i_cir − 1 代替 i − 1。我们需要形成最终的索引值，并检查是否有必要让它环绕。显然，简化模型也有助于保持协秩函数代码的简洁：对 i、j、i_low 和 j_low 值的所有操作都保持不变，它们不需要处理缓冲区的环形特性。</p>
+<div class="pageavoid"><figure class="fig" id="f0100"><img src="../images/F000252f12-19-9780323912310.jpg" class="img" alt="image" width="1374" height="918"/><figcaption class="figleg"><a id="sp0100"></a><span class="fignum"><a href="#Bf0100">图 12.19</a></span> 一个在环形缓冲区上运行的 co_rank_circular 函数。</figcaption></figure></div><p id="p0455" class="text"><a id="Bf0105" href="#f0105">图 12.20</a> 展示了归并函数 merge_sequential_circular 的一个实现。与 co_rank_circular 函数类似，其代码逻辑与原来的归并函数相比基本保持不变。唯一的变化在于 i 和 j 用于访问 A 和 B 元素的方式。由于归并函数 merge_sequential_circular 只会被 merge_circular_buffer_kernel 的线程级代码调用，所访问的 A 和 B 元素将位于 A_S 和 B_S 数组中。在全部四个使用 i 或 j 访问 A 或 B 元素的地方，我们都需要构造 i_cir 或 j_cir，并判断索引值是否需要环绕到数组的开头部分。除此之外，代码与<a href="#f0015">图 12.2</a> 中归并函数的代码相同。</p>
+<div class="pageavoid"><figure class="fig" id="f0105"><img src="../images/F000252f12-20-9780323912310.jpg" class="img" alt="image" width="1374" height="916"/><figcaption class="figleg"><a id="sp0105"></a><span class="fignum"><a href="#Bf0105">图 12.20</a></span> 归并函数 merge_sequential_circular 的实现。</figcaption></figure></div><p id="p0460" class="text"><span id="page_288" aria-label="Page 288" epub:type="pagebreak" role="doc-pagebreak"></span>虽然我们没有列出 merge_circular_buffer_kernel 的所有部分，但读者应当能够根据我们讨论过的部分把它们拼装起来。分块和环形缓冲区的使用增加了相当多的复杂度。特别是，每个线程会使用多得多的寄存器来记录缓冲区的起始点和剩余元素数量。所有这些额外的使用都有可能降低占用率，即核函数执行时可以分配到每个流式多处理器上的线程块数量。然而，由于归并操作受内存带宽限制，计算和寄存器资源很可能未被充分利用。因此，增加所用寄存器的数量和地址计算量来节约内存带宽，是一个合理的权衡。</p></section><section><a id="s0045"></a><h2 class="h1hd" id="st0060">12.8 面向归并的线程粗化</h2><p id="p0465" class="textfl">在许多线程之间并行化归并的代价，主要是每个线程都必须执行自己的二分查找操作，以确定其输出索引的协秩。可以减少启动的线程数量，从而减少执行的二分查找操作次数，而增加每个线程分配到的输出元素数量即可做到这一点。本章介绍的所有核函数都已经应用了线程粗化，因为它们都是以每个线程处理多个元素的方式编写的。在完全未粗化的核函数中，每个线程将只负责一个输出元素。然而，这需要对每一个元素都执行一次二分查找操作，代价将高得令人望而却步。因此，线程粗化对于把二分查找操作的成本分摊到大量元素上至关重要。</p></section><section><a id="s0050"></a><h2 class="h1hd" id="st0065">12.9 小结</h2><p id="p0470" class="textfl"><span id="page_289" aria-label="Page 289" epub:type="pagebreak" role="doc-pagebreak"></span>本章我们介绍了有序归并模式，该模式的并行化要求每个线程动态地确定其输入位置范围。由于输入范围取决于数据，我们借助协秩函数的快速搜索实现来确定每个线程的输入范围。输入范围取决于数据这一事实，也给我们使用分块技术以节省内存带宽、实现内存合并带来了额外的挑战。因此，我们引入了环形缓冲区的使用，使我们能够充分利用从全局内存加载的数据。我们表明，引入更复杂的数据结构（如环形缓冲区）会显著增加使用该数据结构的代码的复杂度。因此，我们引入一种简化的缓冲区访问模型，使操作和使用索引的代码大体保持不变。缓冲区的实际环形特性只在用这些索引访问缓冲区中的元素时才显现出来。</p></section><section><a id="s0055"></a><h2 class="h1hd" id="st0070">习题</h2><a id="p0475"></a><a id="li0015"></a><div><ol>
+<li class="numlista" id="o0055"><a id="p0480"></a>1. 假设我们需要归并两个列表 A=(1, 7, 8, 9, 10) 和 B=(7, 10, 10, 12)。C[8] 的协秩值是什么？</li>
+<li class="numlista" id="o0060"><a id="p0485"></a>2. 完成<a href="#f0035">图 12.6</a> 中线程 2 的协秩函数计算。</li>
+<li class="numlista" id="o0065"><a id="p0490"></a>3. 对于<a href="#f0065">图 12.12</a> 中加载 A 和 B 分块的 for 循环，增加一次对协秩函数的调用，以便只加载 while 循环当前这一轮将要消耗的 A 和 B 元素。</li>
+<li class="numlista" id="o0070"><a id="p0495"></a><a id="li0020"></a>4. 考虑两个大小分别为 1,030,400 和 608,000 的数组的并行归并。假设每个线程归并八个元素，并使用大小为 1024 的线程块。<ol>
+<li class="numlist1a" id="o0075"><a id="p0500"></a>a. 在<a href="#f0050">图 12.9</a> 的基础归并核函数中，有多少线程对全局内存中的数据进行二分查找？</li>
+<li class="numlist1a" id="o0080"><a id="p0505"></a>b. 在<a href="#f0060">图 12.11</a>–<a href="#f0070">图 12.13</a> 的分块归并核函数中，有多少线程对全局内存中的数据进行二分查找？</li>
+<li class="numlist1a" id="o0085"><a id="p0510"></a>c. 在<a href="#f0060">图 12.11</a>–<a href="#f0070">图 12.13</a> 的分块归并核函数中，有多少线程对共享内存中的数据进行二分查找？</li>
+</ol></li>
+</ol>
+</div>
+</section><footer><section aria-label="bibliography"><a id="bibliog0010"></a><h2 class="reftitle" id="st0075">参考文献</h2><section>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib1">Siebert and Traff, 2012 Siebert C, Traff JL. <cite><em>Efficient MPI implementation of a parallel, stable merge algorithm</em></cite>. <cite><em>Proceedings of the 19th European conference on recent advances in the message passing interface (EuroMPI'12)</em></cite> Heidelberg: Springer-Verlag Berlin; 2012;204–213.</p></section></section></footer></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>

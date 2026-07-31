@@ -1,0 +1,117 @@
+[
+  {
+    "en": "Bezier curve",
+    "zh": "贝塞尔曲线",
+    "note": "§21.3 全节使用；计算机图形学中的曲线，保留“贝塞尔”音译，全文统一"
+  },
+  {
+    "en": "control point",
+    "zh": "控制点",
+    "note": "§21.3 定义贝塞尔曲线的一组点，P0 至 Pn"
+  },
+  {
+    "en": "spline curve",
+    "zh": "样条曲线",
+    "note": "§21.3 自适应细分的对象"
+  },
+  {
+    "en": "adaptive subdivision",
+    "zh": "自适应细分",
+    "note": "§21.3 样条曲线的自适应细分"
+  },
+  {
+    "en": "order (of a control point)",
+    "zh": "阶",
+    "note": "§21.3 贝塞尔曲线的阶，n=1 线性、2 二次、3 三次；对应 degree"
+  },
+  {
+    "en": "curvature",
+    "zh": "曲率",
+    "note": "§21.3 由三个控制点确定的曲线曲率，决定需要计算的曲线点数"
+  },
+  {
+    "en": "quadtree",
+    "zh": "四叉树",
+    "note": "§21.4 全节使用；与 nav.json“四叉树”一致；首现作 四叉树（quadtree）"
+  },
+  {
+    "en": "quadrant",
+    "zh": "象限",
+    "note": "§21.4 四叉树递归细分的四个象限"
+  },
+  {
+    "en": "bounding box",
+    "zh": "边界框",
+    "note": "§21.4 包围象限的边界框，由左上、右下角定义"
+  },
+  {
+    "en": "nesting level",
+    "zh": "嵌套层级",
+    "note": "§21.5 每次下级启动视为一个新的嵌套层级；与嵌套深度（nesting depth，§5 术语）区分"
+  },
+  {
+    "en": "synchronization depth",
+    "zh": "同步深度",
+    "note": "§21.5 父子同步时对嵌套深度的额外限制"
+  },
+  {
+    "en": "pending launch pool",
+    "zh": "待启动池",
+    "note": "§21.5 跟踪待启动核函数调用的缓冲区；虚拟化池、固定大小池同义系列"
+  },
+  {
+    "en": "virtualized pool",
+    "zh": "虚拟化池",
+    "note": "§21.5 超出固定待启动池容量时使用的池"
+  },
+  {
+    "en": "fixed-size pool",
+    "zh": "固定大小池",
+    "note": "§21.5 固定容量的待启动池，默认 2048"
+  },
+  {
+    "en": "named stream",
+    "zh": "命名流",
+    "note": "§21.5 每线程显式创建、可并发运行的流"
+  },
+  {
+    "en": "nested parallelism",
+    "zh": "嵌套并行",
+    "note": "§21.6 树处理的一种形式"
+  },
+  {
+    "en": "branch degree",
+    "zh": "分支度数",
+    "note": "§21.6 每个父节点的子节点数量"
+  },
+  {
+    "en": "grid spacing",
+    "zh": "网格间距",
+    "note": "§21.1 固定网格系统中不同线程块使用的网格间距"
+  },
+  {
+    "en": "parent kernel",
+    "zh": "父核函数",
+    "note": "§21.2 起使用；与 §5 的 核函数、父网格 组合派生"
+  },
+  {
+    "en": "child kernel",
+    "zh": "子核函数",
+    "note": "§21.2 起使用；与 §5 的 核函数、子网格 组合派生"
+  },
+  {
+    "en": "turbulence simulation",
+    "zh": "湍流模拟",
+    "note": "§21.1 固定网格与动态网格示例"
+  },
+  {
+    "en": "reduction of memory usage",
+    "zh": "大幅减少内存使用",
+    "note": "glossary false positive：p0225 \"substantial reduction of memory usage\" 为普通英语（内存使用量下降），非 §5 归约模式；denylist 未覆盖，需团队扩展"
+  },
+  {
+    "en": "reduction in the execution time",
+    "zh": "执行时间显著缩短",
+    "note": "glossary false positive：p0355 \"considerable reduction in the execution time\" 为普通英语（执行时间缩短），非 §5 归约模式；denylist 未覆盖，需团队扩展"
+  }
+]

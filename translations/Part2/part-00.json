@@ -1,0 +1,53 @@
+{
+  "page": "Part2",
+  "nodes": [
+    {
+      "id": "tit9015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Parallel Patterns",
+      "zh": "并行模式"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "Outline",
+      "zh": "概要"
+    },
+    {
+      "id": "n0002",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[1]",
+      "en": "【1】Chapter 7 Convolution【/1】",
+      "zh": "【1】第 7 章 卷积【/1】"
+    },
+    {
+      "id": "n0003",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[2]",
+      "en": "【1】Chapter 8 Stencil【/1】",
+      "zh": "【1】第 8 章 模板【/1】"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[3]",
+      "en": "【1】Chapter 9 Parallel histogram【/1】",
+      "zh": "【1】第 9 章 并行直方图【/1】"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[4]",
+      "en": "【1】Chapter 10 Reduction【/1】",
+      "zh": "【1】第 10 章 归约【/1】"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[5]",
+      "en": "【1】Chapter 11 Prefix sum (scan)【/1】",
+      "zh": "【1】第 11 章 前缀和（扫描）【/1】"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[6]",
+      "en": "【1】Chapter 12 Merge【/1】",
+      "zh": "【1】第 12 章 归并【/1】"
+    }
+  ]
+}

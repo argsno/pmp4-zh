@@ -1,0 +1,155 @@
+{
+  "page": "Ch017_391-414_B9780323912310000124",
+  "nodes": [
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[8]",
+      "en": "【1】Fig. 17.13【/1】 shows a revised kernel that accesses the k-space data from the constant memory. Note that pointers to kx, ky, and kz are no longer in the parameter list of the kernel function. The 【2】kx_c【/2】, 【3】ky_c【/3】, and 【4】kz_c【/4】 arrays are accessed as global variables declared under __constant__ keyword, as shown in 【5】Fig. 17.12【/5】. By accessing these elements from the constant cache, the kernel now has effectively only four global memory accesses to the rMu and iMu arrays. The compiler will typically recognize that the four array accesses are made to only two locations. It will perform only two global accesses, one to 【6】rMu[m]【/6】 and one to 【7】iMu[m]【/7】. The values will be stored in temporary register variables for use in the other two. This makes the final number of memory accesses equal to 2. The compute to memory access ratio is up to 1.63 OP/B. This is still not quite ideal but is sufficiently high that the memory bandwidth limitation is no longer the only factor that limits performance. As we will see, we can perform a few other optimizations that make the computation more efficient and further improve performance.",
+      "zh": "【1】图 17.13【/1】展示了一个修改后的核函数，它从常量内存访问 k 空间数据。请注意，指向 kx、ky 和 kz 的指针不再出现在核函数的参数列表中。【2】kx_c【/2】、【3】ky_c【/3】和【4】kz_c【/4】数组作为在 __constant__ 关键字下声明的全局变量来访问，如【5】图 17.12【/5】所示。通过从常量缓存访问这些元素，核函数现在实际上只有对 rMu 和 iMu 数组的 4 次全局内存访问。编译器通常会识别出这四次数组访问只对应两个位置，于是只执行两次全局访问，一次访问【6】rMu[m]【/6】，一次访问【7】iMu[m]【/7】。读取的值会存放在临时寄存器变量中，供另外两次使用。这样，最终的内存访问次数等于 2。计算访存比达到 1.63 OP/B。这个值虽然还不算理想，但已经足够高，内存带宽的限制不再是制约性能的唯一因素。我们将会看到，还可以进行其他几项优化，使计算更高效并进一步提高性能。"
+    },
+    {
+      "id": "n0076",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.13【/1】 Revised F【2】H【/2】D kernel to use constant memory.",
+      "zh": "【1】图 17.13【/1】 使用常量内存的 F【2】H【/2】D 修订版核函数。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[9]",
+      "en": "If we ran the code in 【1】Figs. 17.12【/1】 and 【2】17.13【/2】, we would have found out that the performance enhancement was not as high as we expected for some devices. As it turns out, the code shown in these figures does not result in as much memory bandwidth reduction as we expected. The reason is that the constant cache does not perform very well for the code. This has to do with the design of the constant cache and the memory layout of the k-space data. As is shown in 【3】Fig. 17.14A【/3】, each constant cache entry is designed to store multiple consecutive words. This design reduces the cost of constant cache hardware. When an element is brought into the cache, several elements around it are also brought into the cache. This is illustrated as shaded sections surrounding kx[i], ky[i], and kz[i], which are shown as dark boxes in 【4】Fig. 17.14【/4】. Three cache lines in the constant cache are needed to support the efficient execution of each iteration of a warp.",
+      "zh": "如果我们实际运行【1】图 17.12【/1】和【2】图 17.13【/2】中的代码，就会发现在某些设备上性能提升并不像我们预期的那样高。事实证明，这些图中所示的代码并没有带来我们预期的那么多内存带宽下降。原因是常量缓存对该代码的运行效果不佳。这与常量缓存的设计以及 k 空间数据的内存布局有关。如【3】图 17.14A【/3】所示，常量缓存的每个条目设计为存放多个连续的存储字。这种设计降低了常量缓存硬件的成本。当一个元素被取入缓存时，它周围的几个元素也会被取入缓存。这一点以 kx[i]、ky[i] 和 kz[i] 周围的阴影区来表示，后者在【4】图 17.14【/4】中显示为深色方框。要支持一个线程束每次迭代的高效执行，需要常量缓存中的三条缓存行。"
+    },
+    {
+      "id": "n0078",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.14【/1】 Effect of k-space data layout on constant cache efficiency: (A) k-space data stored in separate arrays, (B) k-space data stored in an array whose elements are structs.",
+      "zh": "【1】图 17.14【/1】 k 空间数据布局对常量缓存效率的影响：（A）k 空间数据存储在相互独立的数组中，（B）k 空间数据存储在元素为结构体的数组中。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[10]",
+      "en": "In a typical execution we will have a fairly large number of warps that are concurrently executing on an SM. Since different warps can be at very different iterations, they may require many constant cache entries altogether. For example, if we define each thread block to have 1024 threads and expect to assign two blocks to execute concurrently in each SM, we will have (1024/32)×2=64 warps executing concurrently in an SM. If each of them requires a minimum of three cache lines in the constant cache to sustain efficient execution, in the worst case, we need a total of 64×3=192 cache lines. Even if we assume that, on average, three warps will be executing at the same iteration and thus can share cache lines, we still need 64 cache lines. This is referred to as the working set of all the active warps.",
+      "zh": "在典型执行中，一个 SM 上会同时运行相当多的线程束。由于不同线程束可能处于完全不同的迭代，它们总共可能需要很多常量缓存条目。例如，如果我们定义每个线程块有 1024 个线程，并希望每个 SM 中同时分配两个线程块执行，那么一个 SM 中将有 (1024/32)×2=64 个线程束并发执行。如果其中每个线程束至少需要常量缓存中的三条缓存行才能维持高效执行，那么在最坏情况下，我们总共需要 64×3=192 条缓存行。即使我们假设平均有三个线程束执行到同一迭代、因而可以共享缓存行，我们仍然需要 64 条缓存行。这被称为所有活动线程束的工作集。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[11]",
+      "en": "Because of cost constraints, the constant caches of some devices have a small number of cache lines, such as 32. When there are not enough cache lines to accommodate the entire working set, the data that are being accessed by different warps begin to compete with each other for the cache lines. By the time a warp moves to its next iteration, the next elements to be accessed have already been purged to make room for the elements that have been accessed by other warps. As it turns out, the constant cache capacity in some devices is indeed insufficient to accommodate the entries for all the warps that are active in an SM. As a result, the constant cache fails to eliminate many of the global memory accesses.",
+      "zh": "出于成本约束，一些设备的常量缓存只有少量缓存行，例如 32 条。当缓存行不足以容纳整个工作集时，不同线程束正在访问的数据就会开始相互争夺缓存行。当一个线程束进入下一次迭代时，它接下来要访问的元素已经被清除，以便为其他线程束访问过的元素腾出空间。事实证明，一些设备的常量缓存容量确实不足以容纳一个 SM 中所有活动线程束所需的条目。因此，常量缓存无法消除大量的全局内存访问。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[12]",
+      "en": "The problem of inefficient use of cache entries has been well studied in the literature and can be solved by adjusting the memory layout of the k-space data. The solution is illustrated in 【1】Fig. 17.14B【/1】, and the code based on this solution is shown in 【2】Figs. 17.15【/2】 and 【3】17.16【/3】. Rather than having the x, y, and z components of the k-space data stored in three separate arrays, the solution stores these components in an array whose elements make up a struct. In the literature this style of declaration is often referred to as 【4】array of structures【/4】. The declaration of the array is shown in 【5】Fig. 17.15【/5】 (lines 01–03). We assume that the memory allocation and initialization code (not shown) has placed the x, y, and z components of the k-space data into the fields properly. By storing the x, y, and z components in the three fields of an array element, the developer forces these components to be stored in consecutive locations of the constant memory. Therefore all three components that are used by an iteration of a warp can now fit into one cache entry, reducing the number of entries needed to support the execution of all the active warps. Note that since we have only one array to hold all k-space data, we can just use one CUDA Memcpy To Symbol to copy the entire chunk to the device constant memory. Assuming that each k-space sample is a single-precision floating-point number, the size of the transfer is adjusted from 【6】4*CHUNK_SIZE【/6】 to 【7】12*CHUNK_SIZE【/7】 to reflect the transfer of all the three components in one CUDA Memcpy To Symbol call.",
+      "zh": "缓存条目利用效率低下的问题在文献中已有充分研究，可以通过调整 k 空间数据的内存布局来解决。解决方案如【1】图 17.14B【/1】所示，基于该方案的代码见【2】图 17.15【/2】和【3】图 17.16【/3】。该方案不再把 k 空间数据的 x、y、z 分量存放在三个独立的数组中，而是把这些分量存放在一个元素为结构体的数组中。在文献中，这种声明风格通常称为【4】结构体数组【/4】。数组的声明见【5】图 17.15【/5】（第 01–03 行）。我们假设（未显示的）内存分配与初始化代码已经把 k 空间数据的 x、y、z 分量正确地放入了相应字段。通过把 x、y、z 分量存放在一个数组元素的三个字段中，开发者强制这些分量存储在常量内存的连续位置。这样，一个线程束的某次迭代用到的三个分量现在可以装进同一条缓存条目，从而减少了支撑所有活动线程束执行所需的条目数。请注意，由于我们只有一个数组来容纳全部 k 空间数据，只需一次 CUDA Memcpy To Symbol 就可以把整个块复制到设备常量内存。假设每个 k 空间样本是单精度浮点数，传输大小从【6】4*CHUNK_SIZE【/6】调整为【7】12*CHUNK_SIZE【/7】，以反映一次 CUDA Memcpy To Symbol 调用中三个分量的传输。"
+    },
+    {
+      "id": "n0082",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.15【/1】 Adjusting k-space data layout to improve cache efficiency.",
+      "zh": "【1】图 17.15【/1】 调整 k 空间数据布局以提高缓存效率。"
+    },
+    {
+      "id": "n0083",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/div[6]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.16【/1】 Adjusting for the k-space data memory layout in the F【2】H【/2】D kernel.",
+      "zh": "【1】图 17.16【/1】 在 F【2】H【/2】D 核函数中适配 k 空间数据内存布局。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[13]",
+      "en": "With the new data structure layout, we also need to revise the kernel so that the access is done according to the new layout. The new kernel is shown in 【1】Fig. 17.16【/1】. Note that kx[m] has become k[m].x, ky[m] has become k[m].y, and so on. This small change to the code can result in significant enhancement of its execution speed on some devices.【2】【3】4【/3】【/2】",
+      "zh": "采用新的数据结构布局后，我们还需要修改核函数，使访问按照新布局进行。新的核函数如【1】图 17.16【/1】所示。请注意，kx[m] 变成了 k[m].x，ky[m] 变成了 k[m].y，依此类推。代码的这一小改动在某些设备上可以显著提升执行速度。【2】【3】4【/3】【/2】"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/h3[1]",
+      "en": "Step 3: Using hardware trigonometry functions",
+      "zh": "步骤 3：使用硬件三角函数"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/p[1]",
+      "en": "CUDA offers hardware implementations of mathematical functions that provide much higher throughput than their software counterparts. A motivation for GPUs to offer such hardware implementations for trigonometry functions such as 【1】sin(【/1】 【2】)【/2】 and 【3】cos(【/3】 【4】)【/4】 is to improve the speed of view angle transformations in graphics applications. These functions are implemented as hardware instructions executed by the SFU (special function units). The procedure for using these functions is quite easy. In the case of the 【5】cmpFhD【/5】 kernel, what we need to do is to change the calls to 【6】sin(【/6】 【7】)【/7】 and 【8】cos(【/8】 【9】)【/9】 functions into their hardware versions: 【10】__sin()【/10】 and 【11】__cos()【/11】 (two “_” characters before the function name). These are intrinsic functions that are recognized by the compiler and translated into SFU instructions. Because these functions are called in a heavily executed loop body, we expect that the change will result in a significant performance improvement. The resulting 【12】cmpFhD【/12】 kernel is shown in 【13】Fig. 17.17【/13】.",
+      "zh": "CUDA 提供了数学函数的硬件实现，其吞吐量远高于对应的软件实现。GPU 之所以为【1】sin(【/1】 【2】)【/2】和【3】cos(【/3】 【4】)【/4】等三角函数提供硬件实现，一个动机是提高图形应用中视角变换的速度。这些函数作为硬件指令实现，由 SFU（特殊函数单元）执行。使用这些函数的过程非常简单。就【5】cmpFhD【/5】核函数而言，我们要做的就是把对【6】sin(【/6】 【7】)【/7】和【8】cos(【/8】 【9】)【/9】函数的调用改成它们的硬件版本：【10】__sin()【/10】和【11】__cos()【/11】（函数名之前有两个“_”字符）。这些是编译器能够识别并转换为 SFU 指令的内建函数。由于这些函数在被频繁执行的循环体中被调用，我们预计这一改动将带来显著的性能提升。由此得到的【12】cmpFhD【/12】核函数如【13】图 17.17【/13】所示。"
+    },
+    {
+      "id": "n0087",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.17【/1】 Using hardware 【2】__sin()【/2】 and 【3】__cos()【/3】 functions.",
+      "zh": "【1】图 17.17【/1】 使用硬件【2】__sin()【/2】和【3】__cos()【/3】函数。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/p[2]",
+      "en": "However, we need to be careful about the reduced accuracy in switching from software functions to hardware functions. Hardware implementations currently have less accuracy than software libraries (the details are available in the CUDA C Programming Guide). In the case of MRI we need to make sure that the hardware implementation provides enough accuracy, as defined in 【1】Fig. 17.18【/1】. The testing process involves a “perfect” image (I【2】0【/2】) of a fictitious object, sometimes referred to as a 【3】phantom object【/3】. We use a reverse process to generate a corresponding “scanned” k-space data that is synthesized. The synthesized scanned data is then processed by the proposed reconstruction system to generate a reconstructed image (I). The values of the voxels in the perfect and reconstructed images are then fed into the peak signal-to-noise ratio (PSNR) formula in 【4】Fig. 17.18【/4】.",
+      "zh": "不过，我们需要注意，从软件函数切换到硬件函数会降低精度。目前，硬件实现的精度低于软件库（细节可参见 CUDA C 编程指南）。就 MRI 而言，我们需要确保硬件实现提供的精度足够高，正如【1】图 17.18【/1】所定义的那样。测试过程涉及一个虚构对象（有时称为【3】体模【/3】）的“理想”图像（I【2】0【/2】）。我们用逆过程生成对应的合成“扫描” k 空间数据。随后，由所提出的重建系统处理这些合成扫描数据，生成重建图像（I）。然后把理想图像与重建图像中体素的值代入【4】图 17.18【/4】中的峰值信噪比（PSNR）公式。"
+    },
+    {
+      "id": "n0089",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.18【/1】 Metrics used to validate the accuracy of hardware functions. I【2】0【/2】 is the perfect image. I is the reconstructed image. PSNR is peak signal-to-noise ratio.",
+      "zh": "【1】图 17.18【/1】 用于验证硬件函数精度的指标。I【2】0【/2】是理想图像。I 是重建图像。PSNR 是峰值信噪比。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/p[3]",
+      "en": "The criteria for passing the test depend on the application for which the image is intended. In our case, we worked with experts in clinical MRI to ensure that the PSNR changes due to hardware functions were well within the accepted limits for their applications. In applications in which the images are used by physicians to form an impression of injury or to evaluate a disease, one also needs to have visual inspection of the image quality. 【1】Fig. 17.19【/1】 shows the visual comparison of the original “true” image. It then shows that the PSNR that is achieved by CPU double-precision and single-precision implementations are both 27.6 dB, well above the acceptable level for the application. A visual inspection also shows that the reconstructed image indeed corresponds well with the original image.",
+      "zh": "通过测试的标准取决于图像所服务的应用。在我们的案例中，我们与临床 MRI 专家合作，确保硬件函数引起的 PSNR 变化远在其应用可接受的范围内。在图像被医生用来判断损伤或评估疾病的那些应用中，还需要对图像质量进行目视检查。【1】图 17.19【/1】展示了原始“真实”图像的目视对比。它随后表明，CPU 双精度和单精度实现所达到的 PSNR 均为 27.6 dB，远高于应用可接受的水平。目视检查也表明，重建图像确实与原始图像吻合良好。"
+    },
+    {
+      "id": "n0091",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.19【/1】 Validation of floating-point precision and accuracy of the different F【2】H【/2】D implementations.",
+      "zh": "【1】图 17.19【/1】 不同 F【2】H【/2】D 实现的浮点精度与准确度验证。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/p[4]",
+      "en": "The advantage of iterative reconstruction compared to a simple bilinear interpolation gridding/iFFT is also obvious in 【1】Fig. 17.19【/1】. The image reconstructed with the simple gridding/iFFT has a PSNR of only 16.8 dB, substantially lower than the PSNR of 27.6 dB that is achieved by the iterative reconstruction method. A visual inspection of the gridding/iFFT image in 【2】Fig. 17.19【/2】 (image 2) shows that there are severe artifacts that can significantly affect the usability of the image for diagnostic purposes. These artifacts do not occur in the images from the iterative reconstruction method.",
+      "zh": "与简单的双线性插值网格化/iFFT 相比，迭代重建的优势在【1】图 17.19【/1】中也显而易见。用简单的网格化/iFFT 重建的图像，其 PSNR 仅为 16.8 dB，远低于迭代重建方法达到的 27.6 dB 的 PSNR。对【2】图 17.19【/2】中网格化/iFFT 图像（图像 2）的目视检查表明，存在严重的伪影，会显著影响图像在诊断用途上的可用性。这些伪影在迭代重建方法得到的图像中不会出现。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/p[5]",
+      "en": "When we moved from double-precision arithmetic to single-precision arithmetic on the CPU, there was no measurable degradation of PSNR, which remained at 27.6 dB. When we moved the trigonometry function from the software library to the hardware units, we observed a negligible degradation of PSNR, from 27.6 dB to 27.5 dB. The slight loss of PSNR is within an acceptable range for the application. A visual inspection confirms that the reconstructed image does not have significant artifacts compared to the original image.",
+      "zh": "当我们在 CPU 上从双精度算术改为单精度算术时，PSNR 没有可测量的下降，仍保持在 27.6 dB。当把三角函数从软件库移到硬件单元后，我们观察到 PSNR 有可忽略的下降，从 27.6 dB 变为 27.5 dB。PSNR 的轻微损失在应用可接受的范围内。目视检查证实，重建图像与原图像相比没有明显的伪影。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/h3[1]",
+      "en": "Step 4: Experimental performance tuning",
+      "zh": "步骤 4：实验性性能调优"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/p[1]",
+      "en": "Up to this point, we have not determined the appropriate values for the configuration parameters of the kernel. One kernel configuration parameter is the number of threads per block. Using an adequate number of threads per block is needed to fully utilize the thread capacity of each SM. Another kernel configuration parameter is the number of times one should unroll the body of the for-loop in 【1】Fig. 17.17【/1】 (line 07). This can be set by using a “#pragma unroll” followed by the number of unrolls that we want the compiler to perform on a loop. On one hand, unrolling the loop can reduce the number of overhead instructions and potentially reduce the number of clock cycles to process each k-space sample data. On the other hand, too much unrolling can potentially increase the usage of registers and reduce the number of blocks that can fit into an SM.",
+      "zh": "到目前为止，我们还没有确定核函数配置参数的适当取值。核函数的一个配置参数是每个线程块的线程数。使用足够的每线程块线程数，是充分利用每个 SM 线程容量的需要。核函数的另一个配置参数是【1】图 17.17【/1】中 for 循环体（第 07 行）应展开的次数。这可以通过使用“#pragma unroll”并后跟希望编译器对循环执行的展开次数来设置。一方面，展开循环可以减少开销指令的数量，并可能减少处理每个 k 空间样本数据所需的时钟周期数。另一方面，过度展开可能会增加寄存器的使用量，并减少一个 SM 能容纳的线程块数量。"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/p[2]",
+      "en": "Note that the effects of these configurations are not isolated from each other. Increasing one parameter value can potentially use the resource that could have been used to increase another parameter value. As a result, one needs to evaluate these parameters jointly in an experimental manner. There can be a large number of combinations to try. In the case of F【1】H【/1】D, the performance improves about 20% by systematically searching all the combinations and choosing the one with the best measured runtime, as compared to a heuristic tuning search effort that explores only some promising trends. 【2】Ryoo et al. (2008)【/2】 present a Pareto optimal curve–based method to screen away most of the inferior combinations.",
+      "zh": "请注意，这些配置的效果彼此并不孤立。增大一个参数的值，可能会占用本可用于增大另一个参数值的资源。因此，需要以实验的方式联合评估这些参数。可供尝试的组合可能非常多。就 F【1】H【/1】D 而言，与只探索一些有希望趋势的启发式调优搜索相比，系统地搜索所有组合并选择实测运行时间最佳者，可使性能提升约 20%。【2】Ryoo et al. (2008)【/2】提出了一种基于帕累托最优曲线的方法，用来筛除大多数较差的组合。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "17.4 Summary",
+      "zh": "17.4 小结"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "In this chapter we presented the key steps for parallelizing and optimizing a loop-intensive application—iterative reconstruction of MRI images—from its sequential form. We started with the appropriate organization of parallelization: the scatter approach versus the gather approach. We showed that transforming from a scatter approach to a gather approach is key to avoiding atomic operations, which can significantly reduce the performance of parallel execution. We discussed the practical techniques, that is, loop fission and loop interchange, that are needed to enable the gather approach to parallelization.",
+      "zh": "在本章中，我们介绍了把一个循环密集的应用——MRI 图像的迭代重建——从串行形式进行并行化与优化的关键步骤。我们首先讨论了并行化的合理组织方式：分散方法与汇聚方法。我们说明了从分散方法转变为汇聚方法是避免原子操作的关键，因为原子操作会显著降低并行执行的性能。我们还讨论了实现汇聚式并行化所需的实用技术，即循环分裂与循环交换。"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "We further presented the application of optimization techniques, such as promoting array elements into registers, using constant memory/cache for input elements, and using hardware functions to improve the performance of the parallel kernel. There is about a 10× speed improvement going from the basic version to the final optimized version, as was discussed.",
+      "zh": "我们进一步介绍了优化技术的应用，例如将数组元素提升到寄存器中、为输入元素使用常量内存/缓存，以及使用硬件函数来提升并行核函数的性能。如前所述，从基础版本到最终优化版本，速度大约提升了 10 倍。"
+    }
+  ]
+}

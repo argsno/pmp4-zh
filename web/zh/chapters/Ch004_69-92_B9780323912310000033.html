@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="zh-CN" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="前言部分">
+      <option value="Cover.html">封面图</option>
+      <option value="Title_page.html">标题页</option>
+      <option value="Contents.html">目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">致谢</option>
+    </optgroup>
+    <optgroup label="序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">课程资源</option>
+    </optgroup>
+    <optgroup label="第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第一部分：基本概念">
+      <option value="Part1.html">第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html">第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">参考文献</option>
+    </optgroup>
+    <optgroup label="第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html">第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html" selected>第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html">第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">习题</option>
+    </optgroup>
+    <optgroup label="第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第二部分：并行模式">
+      <option value="Part2.html">第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html">第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html">第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">习题</option>
+    </optgroup>
+    <optgroup label="第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html">第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第三部分：高级模式与应用">
+      <option value="Part3.html">第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html">第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html">第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">参考文献</option>
+    </optgroup>
+    <optgroup label="第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">参考文献</option>
+    </optgroup>
+    <optgroup label="第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html">第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">参考文献</option>
+    </optgroup>
+    <optgroup label="第四部分：高级实践">
+      <option value="Part4.html">第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html">第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">参考文献</option>
+    </optgroup>
+    <optgroup label="第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">参考文献</option>
+    </optgroup>
+    <optgroup label="第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Ch003_47-68_B9780323912310000045.html#st0050">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch004_69-92_B9780323912310000033.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/Ch004_69-92_B9780323912310000033.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch004_69-92_B9780323912310000033.html">对照</a></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter" id="c0004">
+<a id="Ch004_69-92_B9780323912310000033"></a><div id="page_69" aria-label="Page 69" epub:type="pagebreak" role="doc-pagebreak"></div><div id="CN"><a id="Ch004_69-92_B9780323912310000033titl"></a>Chapter 4</div><h1 class="chaptitle" epub:type="title" id="tit0010">计算体系结构与调度</h1><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0060">本章介绍现代 GPU 计算体系结构中的一些关键概念，这些概念对 CUDA C 程序员十分重要。本章首先概述 GPU 的执行资源，例如流式多处理器（SM）。随后讨论线程块如何被分配到 SM 并划分成线程束以便调度。接着更详细地介绍单指令多数据执行硬件、线程束调度、延迟容忍、控制发散以及资源限制的影响。本章最后介绍资源查询的概念。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">线程调度；线程束调度；线程的线性布局；控制发散；动态资源划分；流式多处理器；占用率；透明可扩展性；设备属性查询；屏障同步；延迟容忍；零开销线程调度；死锁</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">概要</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">4.1 现代 GPU 的体系结构</a> 70</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">4.2 线程块调度</a> 70</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">4.3 同步与透明可扩展性</a> 71</li>
+<li class="chapoutl1" id="o0025"><a id="p0025"></a><a href="#s0025">4.4 线程束与 SIMD 硬件</a> 74</li>
+<li class="chapoutl1" id="o0030"><a id="p0030"></a><a href="#s0030">4.5 控制发散</a> 79</li>
+<li class="chapoutl1" id="o0035"><a id="p0035"></a><a href="#s0035">4.6 线程束调度与延迟容忍</a> 83</li>
+<li class="chapoutl1" id="o0040"><a id="p0040"></a><a href="#s0040">4.7 资源划分与占用率</a> 85</li>
+<li class="chapoutl1" id="o0045"><a id="p0045"></a><a href="#s0045">4.8 查询设备属性</a> 87</li>
+<li class="chapoutl1" id="o0050"><a id="p0050"></a><a href="#s0050">4.9 小结</a> 90</li>
+<li class="chapoutl1" id="u0010"><a id="p0055"></a><a href="#s0055">习题</a> 90</li>
+<li class="chapoutl1" id="u0015"><a id="p0060"></a><a href="#bibliog0010">参考文献</a> 92</li>
+</ul>
+</div></nav>
+<p id="p0065" class="textfl"><a id="P69"></a><span id="page_70" aria-label="Page 70" epub:type="pagebreak" role="doc-pagebreak"></span>在<a href="Ch001_1-19_B9780323912310000069.html#Ch001_1-19_B9780323912310000069">第 1 章</a>“引言”中，我们看到 CPU 的设计目标是尽量缩短指令执行的延迟，而 GPU 的设计目标则是尽量提高执行指令的吞吐量。在<a href="Ch002_23-46_B9780323912310000148.html#Ch002_23-46_B9780323912310000148">第 2 章</a>“异构数据并行计算”和<a href="Ch003_47-68_B9780323912310000045.html#Ch003_47-68_B9780323912310000045">第 3 章</a>“多维网格与数据”中，我们学习了 CUDA 编程接口的核心特性，包括创建和调用核函数来启动并执行线程。在接下来的三章中，我们将讨论现代 GPU 的体系结构，包括计算体系结构和内存体系结构，以及基于对这些体系结构的理解而产生的性能优化技术。本章介绍 GPU 计算体系结构的若干方面，这些方面对于 CUDA C 程序员理解和分析其核函数代码的性能行为至关重要。我们将首先展示计算体系结构的高层简化视图，并探讨灵活的资源分配、线程块调度和占用率等概念。然后进一步深入线程调度、延迟容忍、控制发散和同步。本章最后将介绍可用于查询 GPU 中可用资源的 API 函数，以及用于估算执行核函数时 GPU 占用率的工具。在接下来的两章中，我们将介绍 GPU 内存体系结构的核心概念和编程要点。具体来说，<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>“内存体系结构与数据局部性”重点介绍片上内存体系结构，而<a href="Ch006_123-147_B9780323912310000161.html#Ch006_123-147_B9780323912310000161">第 6 章</a>“性能考量”简要介绍片外内存体系结构，然后详细阐述整个 GPU 体系结构的各种性能考量。掌握这些概念的 CUDA C 程序员将有能力编写和理解高性能的并行核函数。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">4.1 现代 GPU 的体系结构</h2><p id="p0070" class="textfl"><a href="#f0010">图 4.1</a> 展示了典型支持 CUDA 的 GPU 体系结构的高层视图（从 CUDA C 程序员的角度看）。GPU 由一组高度线程化的流式多处理器（SM）构成。每个 SM 包含多个称为流处理器或 CUDA 核心的处理单元（为简洁起见，下文简称<em>核心</em>），在<a href="#f0010">图 4.1</a> 中以 SM 内部的小方块表示，这些处理单元共享控制逻辑和内存资源。例如，Ampere A100 GPU 拥有 108 个 SM，每个 SM 有 64 个核心，整个 GPU 共有 6912 个核心。</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F000033f04-01-9780323912310.jpg" class="img" alt="image" width="1374" height="527"/><figcaption class="figleg"><a id="sp0010"></a><span class="fignum">图 4.1</span> 支持 CUDA 的 GPU 的体系结构。</figcaption></figure></div><p id="p0075" class="text">SM 还带有不同的片上内存结构，在<a href="#f0010">图 4.1</a> 中统称为“Memory”（内存）。这些片上内存结构将是<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>“内存体系结构与数据局部性”的主题。GPU 还带有数 GB 的片外设备内存，在<a href="#f0010">图 4.1</a> 中称为“Global Memory”（全局内存）。早期的 GPU 使用图形双倍数据速率同步 DRAM，而较新的 GPU（从 NVIDIA 的 Pascal 架构开始）可能使用 HBM（高带宽内存）或 HBM2，它们由与 GPU 紧密集成在同一封装中的 DRAM（动态随机存取存储器）模块组成。为简洁起见，在本书其余部分我们将所有这些类型的内存统称为 DRAM。我们将在<a href="Ch006_123-147_B9780323912310000161.html#Ch006_123-147_B9780323912310000161">第 6 章</a>“性能考量”中讨论访问 GPU DRAM 所涉及的最重要概念。</p></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">4.2 线程块调度</h2><p id="p0080" class="textfl"><span id="page_71" aria-label="Page 71" epub:type="pagebreak" role="doc-pagebreak"></span>当核函数被调用时，CUDA 运行时系统启动一个执行核函数代码的线程网格。这些线程按线程块逐个分配到 SM 上。也就是说，一个线程块中的所有线程被同时分配到同一个 SM。</p>
+<p id="p0085" class="text"><a href="#f0015">图 4.2</a> 说明了线程块到 SM 的分配方式。多个线程块很可能会同时分配到同一个 SM。例如在<a href="#f0015">图 4.2</a> 中，每个 SM 分配了三个线程块。然而，线程块需要预留硬件资源才能执行，因此同时分配给给定 SM 的线程块数量是有限的。线程块数量的上限取决于多种因素，这些因素将在<a href="#s0035">第 4.6 节</a>中讨论。</p>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F000033f04-02-9780323912310.jpg" class="img" alt="image" width="1204" height="563"/><figcaption class="figleg"><a id="sp0015"></a><span class="fignum">图 4.2</span> 线程块到流式多处理器（SM）的分配。</figcaption></figure></div><p id="p0090" class="text">由于 SM 数量有限，且每个 SM 能够同时分配的线程块数量也有限，因此在 CUDA 设备中能够同时执行的线程块总数存在上限。大多数网格包含的线程块远多于这一数目。为了确保网格中的所有线程块都能得到执行，运行时系统维护一个待执行线程块的列表，并在先前分配的线程块执行完毕后，向 SM 分配新的线程块。</p>
+<p id="p0095" class="text">以线程块为单位把线程分配到 SM，保证了同一线程块内的线程被同时调度到同一个 SM 上。这一保证使得同一线程块内的线程能够以跨线程块的线程之间所不可能的方式进行交互。<sup><a aria-label="noteref" href="#fn1" id="Cfn1">1</a></sup> 这包括<em>屏障同步</em>，相关内容将在<a href="#s0020">第 4.3 节</a>讨论；也包括访问位于 SM 上的低延迟<em>共享内存</em>，相关内容将在<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>“内存体系结构与数据局部性”中讨论。</p></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">4.3 同步与透明可扩展性</h2><p id="p0100" class="textfl"><span id="page_72" aria-label="Page 72" epub:type="pagebreak" role="doc-pagebreak"></span>CUDA 允许同一线程块内的线程使用屏障同步函数<span class="inlinecode">__syncthreads()</span>来协调各自的活动。注意，“__”由两个“_”字符组成。当一个线程调用<span class="inlinecode">__syncthreads()</span>时，它将被阻塞在该调用所在的程序位置，直到同一线程块中的每个线程都到达该位置。这保证了线程块中所有线程都完成执行的某个阶段后，才允许其中任何一个线程进入下一阶段。</p>
+<p id="p0105" class="text">屏障同步是一种简单而常用的协调并行活动的方法。在现实生活中，我们经常用屏障同步来协调多人的并行活动。例如，假设四个朋友开一辆车去购物中心。他们可以各自去不同的商店购买自己的衣服。这是一种并行活动，比他们一直作为一个群体按顺序逛所有感兴趣的商店要高效得多。然而，在他们离开购物中心之前需要一次屏障同步。他们必须等到四个朋友全部回到车上才能离开。比其他人先完成的人必须等待那些完成较晚的人。如果没有屏障同步，当车离开时，可能有一个或多个人被留在购物中心，这会严重损害他们的友谊！</p>
+<p id="p0110" class="text"><span id="page_73" aria-label="Page 73" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0020" href="#f0020">图 4.3</a> 说明了屏障同步的执行过程。线程块中共有 N 个线程，时间从左向右推进。有些线程很早就到达屏障同步语句，有些则晚得多。先到达屏障的线程将等待晚到的线程。当最后一个线程到达屏障时，所有线程都可以继续执行。有了屏障同步，“任何人都不会被落下”。</p>
+<div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F000033f04-03-9780323912310.jpg" class="img" alt="image" width="855" height="723"/><figcaption class="figleg"><a id="sp0020"></a><span class="fignum"><a href="#Bf0020">图 4.3</a></span> 屏障同步的一个执行示例。箭头表示随时间推进的执行活动。垂直曲线标出每个线程执行<span class="inlinecode">__syncthreads</span> 语句的时刻。垂直曲线右侧的空白区域表示每个线程等待所有线程完成的时间。垂直线标出最后一个线程执行<span class="inlinecode">__syncthreads</span> 语句的时刻，此后所有线程都被允许继续执行<span class="inlinecode">__syncthreads</span> 语句之后的语句。</figcaption></figure></div><p id="p0115" class="text">在 CUDA 中，如果存在<span class="inlinecode">__syncthreads()</span>语句，则它必须被线程块中的所有线程执行。当<span class="inlinecode">__syncthreads()</span>语句放在 if 语句中时，要么线程块中的所有线程都执行包含该<span class="inlinecode">__syncthreads()</span>的分支，要么所有线程都不执行。对于 if-then-else 语句，如果每个分支都有一个<span class="inlinecode">__syncthreads()</span>语句，则要么线程块中的所有线程都执行 then 分支，要么所有线程都执行 else 分支。这两处<span class="inlinecode">__syncthreads()</span>是两个不同的屏障同步点。例如，在<a id="Bf0025" href="#f0025">图 4.4</a> 中，从第 04 行开始的 if 语句里使用了两处<span class="inlinecode">__syncthreads()</span>。所有 <span class="inlinecode">threadIdx.x</span> 值为偶数的线程执行 then 分支，其余线程执行 else 分支。第 06 行和第 10 行的<span class="inlinecode">__syncthreads()</span>调用定义了两个不同的屏障。由于不能保证线程块中的所有线程都会执行其中任意一个屏障，该代码违反了使用<span class="inlinecode">__syncthreads()</span>的规则，将导致未定义的执行行为。一般来说，不正确使用屏障同步可能导致结果错误，或导致线程彼此永远等待，这种情况称为<em>死锁</em>。避免此类不当使用屏障同步的责任在程序员身上。</p>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F000033f04-04-9780323912310.jpg" class="img" alt="image" width="1373" height="511"/><figcaption class="figleg"><a id="sp0025"></a><span class="fignum"><a href="#Bf0025">图 4.4</a></span> <span class="inlinecode">__syncthreads()</span>的不正确使用</figcaption></figure></div><p id="p0120" class="text">屏障同步对线程块内的线程施加了执行约束。这些线程应在时间上彼此接近地执行，以避免过长的等待时间。更重要的是，系统需要确保参与屏障同步的所有线程都能获得所需的资源，从而最终到达屏障。否则，一个永远到不了屏障同步点的线程可能导致死锁。CUDA 运行时系统通过把一个线程块中所有线程作为一个整体来分配执行资源，从而满足这一约束，正如我们在<a href="#s0015">第 4.2 节</a>中看到的。线程块中的所有线程不仅必须被分配到同一个 SM，而且必须被同时分配到该 SM。也就是说，只有当运行时系统为线程块中所有线程完成执行所需的全部资源都准备就绪后，线程块才能开始执行。这保证了线程块中所有线程在时间上的接近性，并防止屏障同步期间出现过长甚至无限期的等待。</p>
+<p id="p0125" class="text"><span id="page_74" aria-label="Page 74" epub:type="pagebreak" role="doc-pagebreak"></span>这引出了 CUDA 屏障同步设计中的一个重要权衡。通过不允许不同线程块中的线程彼此进行屏障同步，CUDA 运行时系统可以按任意相对顺序执行线程块，因为任何一个线程块都不需要等待其他线程块。这种灵活性使得实现具有可扩展性，如<a href="#f0030">图 4.5</a> 所示。图中时间自上而下推进。在只有少量执行资源的低成本系统中，可以同时执行的线程块数量较少，如<a href="#f0030">图 4.5</a> 左侧所示的一次执行两个线程块；在拥有更多执行资源的高端实现中，可以同时执行许多线程块，如<a href="#f0030">图 4.5</a> 右侧所示的一次执行四个线程块。如今高端 GPU 可以同时执行数百个线程块。</p>
+<div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F000033f04-05-9780323912310.jpg" class="img" alt="image" width="1372" height="481"/><figcaption class="figleg"><a id="sp0030"></a><span class="fignum">图 4.5</span> 线程块之间没有同步约束，使得 CUDA 程序具有透明可扩展性。</figcaption></figure></div><p id="p0130" class="text">能够以多种不同的速度执行同一应用程序代码，使得可以根据不同市场细分对成本、功耗和性能的要求，制造出多种不同的实现。例如，移动处理器可以缓慢地执行应用程序，但功耗极低；台式机处理器则可以以更高的速度执行同一应用程序，同时消耗更多功耗。两者执行的是同一应用程序，代码无需任何改动。在不同的、执行资源数量各异的硬件上执行同一应用程序代码的能力称为<em>透明可扩展性</em>，它减轻了应用程序开发者的负担，并提高了应用程序的可用性。</p></section><section><a id="s0025"></a><h2 class="h1hd" id="st0040">4.4 线程束与 SIMD 硬件</h2><p id="p0135" class="textfl"><span id="page_75" aria-label="Page 75" epub:type="pagebreak" role="doc-pagebreak"></span>我们已经看到，线程块之间可以按任意顺序执行，这使程序在不同设备上具有透明可扩展性。不过，关于每个线程块内线程的执行时序，我们此前并未多谈。从概念上讲，应该假定线程块内的线程可以按任意顺序相互执行。对于分阶段的算法，只要我们希望确保所有线程都完成了前一个执行阶段后，才让其中任何一个线程开始下一阶段，就应该使用屏障同步。执行核函数的正确性不应依赖于“某些线程在未使用屏障同步的情况下会彼此同步执行”这样的假设。</p>
+<p id="p0140" class="text">CUDA GPU 中的线程调度是一个硬件实现概念，因此必须在具体硬件实现的背景下讨论。迄今为止的大多数实现中，线程块一旦被分配到 SM，就会被进一步划分为由 32 个线程组成的单元，称为<em>线程束（warp）</em>。线程束的大小由具体实现决定，在未来的 GPU 代次中可能发生变化。了解线程束有助于理解和优化 CUDA 应用在特定代次 CUDA 设备上的性能。</p>
+<p id="p0145" class="text"><span id="page_76" aria-label="Page 76" epub:type="pagebreak" role="doc-pagebreak"></span>线程束是 SM 中线程调度的单位。<a id="Bf0035" href="#f0035">图 4.6</a> 展示了某种实现中线程块划分成线程束的情况。在这个例子中有三个线程块——Block 1、Block 2 和 Block 3——它们都被分配到一个 SM。为了调度的目的，这三个线程块中的每一个又被进一步划分成线程束。每个线程束由 32 个 <span class="inlinecode">threadIdx</span> 值连续的线程组成：线程 0 至 31 构成第一个线程束，线程 32 至 63 构成第二个线程束，依此类推。对于给定的线程块大小和分配给每个 SM 的线程块数量，我们可以计算出驻留在 SM 中的线程束数量。在这个例子中，如果每个线程块有 256 个线程，我们可以确定每个线程块有 256/32 即 8 个线程束。SM 中有三个线程块，因此 SM 中共有 8×3 = 24 个线程束。</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F000033f04-06-9780323912310.jpg" class="img" alt="image" width="1099" height="975"/><figcaption class="figleg"><a id="sp0035"></a><span class="fignum"><a href="#Bf0035">图 4.6</a></span> 线程块被划分成线程束，以便进行线程调度。</figcaption></figure></div><p id="p0150" class="text">线程块基于线程索引划分成线程束。如果线程块组织成一维数组，即只使用 <span class="inlinecode">threadIdx.x</span>，则划分非常直接。线程束内的 <span class="inlinecode">threadIdx.x</span> 值是连续递增的。对于大小为 32 的线程束，线程束 0 从线程 0 开始到线程 31 结束，线程束 1 从线程 32 开始到线程 63 结束，依此类推。一般地，线程束 n 从线程 32×n 开始，到线程 32×(n+1)−1 结束。对于大小不是 32 的倍数的线程块，最后一个线程束将用非活动线程填充，以占满 32 个线程位置。例如，如果线程块有 48 个线程，它将被划分为两个线程束，第二个线程束将用 16 个非活动线程填充。</p>
+<p id="p0155" class="text">对于由多维线程组成的线程块，在划分成线程束之前，这些维度会被投影成线性化的行主序布局。该线性布局的确定方式是：把 <em>y</em> 和 z 坐标较大的行放在坐标较小的行之后。也就是说，如果线程块由二维线程组成，那么就要把所有 <span class="inlinecode">threadIdx.y</span> 为 1 的线程放在 <span class="inlinecode">threadIdx.y</span> 为 0 的线程之后，<span class="inlinecode">threadIdx.y</span> 为 2 的线程放在 <span class="inlinecode">threadIdx.y</span> 为 1 的线程之后，依此类推。<span class="inlinecode">threadIdx.y</span> 值相同的线程按照 <span class="inlinecode">threadIdx.x</span> 递增的顺序放置在连续的位置上。</p>
+<p id="p0160" class="text"><span id="page_77" aria-label="Page 77" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0040">图 4.7</a> 展示了把二维线程块中的线程放入线性布局的示例。上半部分展示了线程块的二维视图。读者应当能看出它与二维数组行主序布局的相似性。每个线程表示为 T<sub>y,x</sub>，其中 x 是 <span class="inlinecode">threadIdx.x</span>，y 是 <span class="inlinecode">threadIdx.y</span>。<a href="#f0040">图 4.7</a> 的下半部分展示了线程块的线性化视图。前四个线程是 <span class="inlinecode">threadIdx.y</span> 值为 0 的线程，它们按 <span class="inlinecode">threadIdx.x</span> 值递增的顺序排列。接下来四个线程是 <span class="inlinecode">threadIdx.y</span> 值为 1 的线程，同样按 <span class="inlinecode">threadIdx.x</span> 值递增的顺序排列。在这个例子中，全部 16 个线程组成半个线程束。该线程束将再填充 16 个线程，凑成一个 32 线程的线程束。设想一个 8×8 线程的二维线程块，这 64 个线程将组成两个线程束。第一个线程束从 T<sub>0,0</sub> 开始，到 T<sub>3,7</sub> 结束；第二个线程束从 T<sub>4,0</sub> 开始，到 T<sub>7,7</sub> 结束。读者不妨自己动手把这个图画出来，作为练习。</p>
+<div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F000033f04-07-9780323912310.jpg" class="img" alt="image" width="1200" height="585"/><figcaption class="figleg"><a id="sp0040"></a><span class="fignum">图 4.7</span> 把 2D 线程放入线性布局。</figcaption></figure></div><p id="p0165" class="text">对于三维线程块，我们首先把 <span class="inlinecode">threadIdx.z</span> 值为 0 的所有线程按线性顺序排列。这些线程被视为一个二维线程块，如<a href="#f0040">图 4.7</a> 所示。然后，把 <span class="inlinecode">threadIdx.z</span> 值为 1 的所有线程按线性顺序排列，依此类推。例如，对于一个三维的 2×8×4 线程块（<em>x</em> 维有 4 个、<em>y</em> 维有 8 个、<em>z</em> 维有 2 个），这 64 个线程将被划分为两个线程束，第一个线程束包含从 T<sub>0,0,0</sub> 到 T<sub>0,7,3</sub>，第二个线程束包含从 T<sub>1,0,0</sub> 到 T<sub>1,7,3</sub>。</p>
+<p id="p0170" class="text">SM 的设计目标是按照单指令多数据（SIMD）模型执行线程束中的所有线程。也就是说，在任何时刻，处理器为线程束中的所有线程取出并执行一条指令（参见“线程束与 SIMD 硬件”补充栏）。<a href="#f0045">图 4.8</a> 展示了 SM 中的核心如何分组为<em>处理块</em>：每 8 个核心组成一个处理块，共享一个取指/分发单元。举一个真实的例子，Ampere A100 的 SM 有 64 个核心，被组织成 4 个处理块，每个处理块 16 个核心。同一线程束中的线程被分配到同一个处理块，该处理块为线程束取出指令，并同时为线程束中的所有线程执行该指令。这些线程把同一条指令应用于数据的不同部分。由于 SIMD 硬件实际上限制了线程束中的所有线程在任何时刻都执行同一条指令，因此线程束的执行行为常被称为“单指令多线程”。</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F000033f04-08-9780323912310.jpg" class="img" alt="image" width="599" height="716"/><figcaption class="figleg"><a id="sp0045"></a><span class="fignum">图 4.8</span> 流式多处理器按处理块组织，以进行 SIMD 执行。</figcaption></figure></div><p id="p0175" class="text"><span id="page_78" aria-label="Page 78" epub:type="pagebreak" role="doc-pagebreak"></span><span id="page_79" aria-label="Page 79" epub:type="pagebreak" role="doc-pagebreak"></span>SIMD 的优势在于，控制硬件的成本（例如取指/分发单元）可以在许多执行单元之间分摊。这种设计选择使得可以用较小比例的硬件来承担控制功能，而用较大比例的硬件来提高算术吞吐量。我们预计在可预见的将来，线程束划分仍将是一种流行的实现技术。不过，线程束的大小可能因实现而异。到目前为止，所有 CUDA 设备都使用了类似的线程束配置，即每个线程束由 32 个线程组成。</p><div class="boxg1" id="b0010"><p class="b1title"><a id="sp0065"></a>线程束与 SIMD 硬件</p>
+<p id="p0180" class="b1textfl"><em>在他 1945 年的开创性报告中，约翰·冯·诺依曼描述了一种构建电子计算机的模型，该模型基于先驱 EDVAC 计算机的设计。这一模型如今通常被称为“冯·诺依曼模型”，它一直是几乎所有现代计算机的基础蓝图</em>。</p>
+<p id="p0185" class="b1text"><em>下面的图展示了冯·诺依曼模型。计算机具有 I/O（输入/输出），既可以向系统提供程序和数据，也可以从系统产生程序和数据的输出。要执行程序，计算机首先把程序和它的数据输入到内存（Memory）</em>。</p><div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F000033u04-01-9780323912310.jpg" class="img" alt="image" width="799" height="619"/></figure></div><p id="p0190" class="b1text"><em>程序由一组指令组成。控制单元维护着一个程序计数器（PC），其中保存着下一条待执行指令的内存地址。在每个“指令周期”中，控制单元使用 PC 把一条指令取入指令寄存器（IR）。随后对指令的各个位进行检查，以确定计算机各个组件要采取的动作。这就是该模型也被称为“存储程序”模型的原因，这意味着用户可以通过把不同的程序存入计算机的内存来改变计算机的行为</em>。</p>
+<p id="p9190" class="b1text"><a id="P79"></a><em>以线程束为单位执行线程的动机，可以用下面这个为反映 GPU 设计而改造的冯·诺依曼模型来说明</em><em>。该处理器与</em><a href="#f0045"><em>图 4.8</em></a> <em>中的处理块相对应，只有一个负责取指和分发指令的控制单元。相同的控制信号（即从控制单元指向</em><a href="#f0045"><em>图 4.8</em></a> <em>中各处理单元的箭头）作用于多个处理单元，每个处理单元对应 SM 中的一个核心，并执行线程束中的一个线程</em>。</p>
+<div class="pageavoid"><figure class="fig" id="f9010"><img src="../images/F000033u04-02-9780323912310.jpg" class="img" alt="image" width="849" height="525"/></figure>
+</div>
+<p id="p9200" class="b1text"><em>由于所有处理单元都由控制单元指令寄存器（IR）中的同一条指令控制，它们之间的执行差异源于寄存器文件中数据操作数值的不同。这在处理器设计中被称为单指令多数据（SIMD）。例如，虽然所有处理单元（核心）都由同一条指令（如 add r1, r2, r3）控制，但在不同的处理单元中 r2 和 r3 的内容是不同的</em>。</p>
+<p id="p9210" class="b1text"><em>现代处理器中的控制单元相当复杂，包括用于取指令的精密逻辑和访问指令缓存的端口。让多个处理单元共享一个控制单元，可以显著降低硬件制造成本和功耗</em>。</p>
+</div>
+</section><section><a id="s0030"></a><h2 class="h1hd" id="st0045">4.5 控制发散</h2><p id="p0195" class="textfl"><span id="page_80" aria-label="Page 80" epub:type="pagebreak" role="doc-pagebreak"></span>当线程束内的所有线程在处理各自的数据时遵循同一条执行路径（更正式的说法是控制流）时，SIMD 执行效果良好。例如，对于 if-else 结构，当线程束中的所有线程要么都执行 if 路径、要么都执行 else 路径时，执行效果良好。然而，当线程束内的线程走不同的控制流路径时，SIMD 硬件将对这些路径进行多趟执行，每条路径一趟。例如，对于 if-else 结构，如果线程束中一些线程走 if 路径，而另一些线程走 else 路径，硬件将执行两趟：一趟执行走 if 路径的线程，另一趟执行走 else 路径的线程。在每一趟中，走另一条路径的线程不被允许生效。</p>
+<p id="p0200" class="text">当同一线程束中的线程走不同的执行路径时，我们说这些线程表现出<em>控制发散</em>，即它们的执行发生了发散。针对发散线程束执行的多趟方案，扩展了 SIMD 硬件实现 CUDA 线程完整语义的能力。硬件虽然为线程束中的所有线程执行同一条指令，但它有选择地让这些线程只在与其所走路径对应的那一趟中生效，从而使每个线程看起来都走了自己的控制流路径。这在利用 SIMD 硬件低成本优势的同时，保留了线程的独立性。不过，发散的成本在于：硬件需要执行额外的趟数，以便让线程束中的不同线程做出各自的决策，此外每一趟中非活动线程还会消耗执行资源。</p>
+<p id="p0205" class="text"><span id="page_81" aria-label="Page 81" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0050" href="#f0050">图 4.9</a> 展示了线程束如何执行一个发散 if-else 语句的示例。在这个例子中，当由线程 0–31 组成的线程束到达 if-else 语句时，线程 0–23 走 then 路径，而线程 24–31 走 else 路径。在这种情况下，线程束将对代码执行一趟：线程 0–23 执行 A，线程 24–31 处于非活动状态。线程束还将对代码执行另一趟：线程 24–31 执行 B，线程 0–23 处于非活动状态。随后线程束中的线程重新汇聚，执行 C。在 Pascal 架构及更早的架构中，这些趟是顺序执行的，即一趟执行完毕后，再执行另一趟。从 Volta 架构开始，各趟可以并发执行，即一趟的执行可以与另一趟的执行交错进行。这一特性称为<em>独立线程调度</em>。感兴趣的读者可参阅关于 Volta V100 架构的白皮书（<a href="#bib2" role="doc-biblioref" epub:type="biblioref" id="BIB_2">NVIDIA，2017</a>）了解详情。</p>
+<div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F000033f04-09-9780323912310.jpg" class="img" alt="image" width="1004" height="693"/><figcaption class="figleg"><a id="sp0050"></a><span class="fignum"><a href="#Bf0050">图 4.9</a></span> 线程束在 if-else 语句处发散的示例。</figcaption></figure></div><p id="p0210" class="text">发散也可能出现在其他控制流结构中。<a id="Bf0055" href="#f0055">图 4.10</a> 展示了线程束如何执行一个发散 for 循环的示例。在这个例子中，每个线程执行的循环迭代次数不同，介于四次到八次之间。在前四次迭代中，所有线程都处于活动状态并执行 A。在其余的迭代中，一些线程执行 A，而另一些线程由于已完成各自的迭代而处于非活动状态。</p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F000033f04-10-9780323912310.jpg" class="img" alt="image" width="999" height="662"/><figcaption class="figleg"><a id="sp0055"></a><span class="fignum"><a href="#Bf0055">图 4.10</a></span> 线程束在 for 循环处发散的示例。</figcaption></figure></div><p id="p0215" class="text">通过检查控制结构的判断条件，可以确定它是否会导致线程发散。如果判断条件基于 <span class="inlinecode">threadIdx</span> 值，则该控制语句可能导致线程发散。例如，语句 <span class="inlinecode">if(threadIdx.x &gt; 2</span>) <span class="inlinecode">{…}</span>会使线程块第一个线程束中的线程走两条发散的执行路径。线程 0、1 和 2 走的路径与线程 3、4、5 等不同。类似地，如果循环的条件基于线程索引值，循环也可能导致线程发散。</p>
+<p id="p0220" class="text"><span id="page_82" aria-label="Page 82" epub:type="pagebreak" role="doc-pagebreak"></span>使用带线程控制发散的控制结构的一个常见原因，是在把线程映射到数据时处理边界条件。这通常是因为线程总数需要是线程块大小的整数倍，而数据的大小可以是任意数。从<a href="Ch002_23-46_B9780323912310000148.html#Ch002_23-46_B9780323912310000148">第 2 章</a>“异构数据并行计算”中的向量加法核函数开始，我们就在 <span class="inlinecode">addVecKernel</span> 里使用了 <span class="inlinecode">if(i&lt;n)</span>语句。这是因为并非所有向量长度都能表示成线程块大小的整数倍。例如，假设向量长度为 1003，我们选取 64 作为线程块大小。那么需要启动 16 个线程块来处理全部 1003 个向量元素。然而，16 个线程块共有 1024 个线程。我们需要禁用线程块 15 中最后 21 个线程，让它们不执行原程序所不期望或不允许的工作。请记住，这 16 个线程块被划分为 32 个线程束。只有最后一个线程束（即最后一个线程块中的第二个线程束）会出现控制发散。</p>
+<p id="p0225" class="text">请注意，控制发散对性能的影响会随着所处理向量规模的增大而减小。对于长度为 100 的向量，四个线程束中会有一个出现控制发散，这可能对性能产生显著影响。对于长度为 1000 的向量，32 个线程束中只有一个会出现控制发散。也就是说，控制发散只会影响大约 3% 的执行时间。即使它使该线程束的执行时间翻倍，对总执行时间的净影响也只有大约 3%。显然，如果向量长度为 10,000 或更长，313 个线程束中只有一个会出现控制发散，控制发散的影响将远小于 1%！</p>
+<p id="p0230" class="text">对于二维数据，例如<a href="Ch003_47-68_B9780323912310000045.html#Ch003_47-68_B9780323912310000045">第 3 章</a>“多维网格与数据”中的彩色转灰度示例，也会使用 if 语句来处理在数据边缘工作的线程的边界条件。在<a href="Ch003_47-68_B9780323912310000045.html#f0015">图 3.2</a> 中，为了处理 62×76 的图像，我们使用了 20 = 4×5 个二维线程块，每个线程块由 16×16 个线程组成。每个线程块将被划分为 8 个线程束，每个线程束由线程块的两行组成。总共涉及 160 个线程束（每个线程块 8 个线程束）。要分析控制发散的影响，请参阅<a href="Ch003_47-68_B9780323912310000045.html#f0030">图 3.5</a>。区域 1 中 12 个线程块里的线程束都不会出现控制发散。区域 1 有 12×8 = 96 个线程束。对于区域 2，全部 24 个线程束都会出现控制发散。对于区域 3，所有底部线程束都映射到完全位于图像之外的数据，因此它们都不会通过 if 条件。读者可以自行验证：如果图片在垂直方向上有奇数个像素，这些线程束就会出现控制发散。在区域 4，前 7 个线程束会出现控制发散，但最后一个线程束不会。总而言之，160 个线程束中有 31 个会出现控制发散。</p>
+<p id="p0235" class="text">同样地，控制发散对性能的影响会随着水平方向像素数量的增加而减小。例如，如果用 16×16 的线程块处理 200×150 的图片，线程块总数为 130 = 13×10，即 1040 个线程束。区域 1 至 4 中的线程束数量分别为 864（12×9×8）、72（9×8）、96（12×8）和 8（1×8）。其中只有 80 个线程束会出现控制发散。因此，控制发散对性能的影响将小于 8%。显然，如果处理一幅水平方向超过 1000 像素的真实图片，控制发散对性能的影响将小于 2%。</p>
+<p id="p0240" class="text"><span id="page_83" aria-label="Page 83" epub:type="pagebreak" role="doc-pagebreak"></span>控制发散的一个重要含义是：不能假定线程束中的所有线程具有相同的执行时序。因此，如果必须等线程束中所有线程都完成执行的某个阶段后，才能让其中任何一个线程继续推进，就必须使用诸如<span class="inlinecode">__syncwarp()</span>之类的屏障同步机制来保证正确性。</p></section><section><a id="s0035"></a><h2 class="h1hd" id="st0050">4.6 线程束调度与延迟容忍</h2><p id="p0245" class="textfl">当线程被分配到 SM 时，分配给一个 SM 的线程数量通常多于该 SM 的核心数。也就是说，每个 SM 只拥有足够的执行单元，在任何时刻只能执行分配给它的全部线程中的一部分。在早期的 GPU 设计中，每个 SM 在任一时刻只能为单个线程束执行一条指令。在较新的设计中，每个 SM 在任一时刻可以为少数几个线程束执行指令。无论哪种情况，硬件都只能为 SM 中全部线程束中的一部分执行指令。一个合理的问题是：既然 SM 在任何时刻只能执行其中一部分线程束，为什么还要分配这么多线程束给它？答案是：这正是 GPU 容忍诸如全局内存访问之类的长延迟操作的方式。</p>
+<p id="p0250" class="text">当某个线程束要执行的指令需要等待先前发起的某个长延迟操作的结果时，该线程束不会被选中执行。相反，会挑选另一个已不再等待先前指令结果的驻留线程束来执行。如果有多个线程束都准备好了，则使用一种优先级机制从中选一个执行。这种用其他线程的工作来填充部分线程操作延迟时间的机制，通常被称为“延迟容忍”或“延迟隐藏”（参见“延迟容忍”补充栏）。</p><div class="boxg1" id="b0015"><p class="b1title"><a id="sp0070"></a>延迟容忍</p>
+<p id="p0255" class="b1textfl"><em>延迟容忍在许多日常情境中都是需要的。例如，在邮局里，每个想寄包裹的人都应该在去服务台之前填好所有表格和标签。然而，正如我们都经历过的，有些人会等着服务台工作人员告诉他们该填哪张表格、如何填写</em>。</p>
+<p id="p0260" class="b1text"><em>当服务台前排着长队时，最大限度地提高服务人员的工作效率就很重要。让一个人站在工作人员面前填表而其他所有人都等着，并不是一个好办法。这个人填表期间，工作人员应该去帮助排在后面的其他顾客。这些顾客“随时可以办理”，不应被那位需要更多时间填表的顾客挡住</em>。</p>
+<p id="p0265" class="b1text"><em>这就是为什么一位好的工作人员会礼貌地请第一位顾客站到一旁填表，同时继续为其他顾客服务。在大多数情况下，第一位顾客不需要排到队尾，只要他或她填完表、工作人员也服务完当前顾客，就会立即得到服务</em>。</p>
+<p id="p0270" class="b1text"><em>我们可以把这些邮局顾客想象成线程束，把工作人员想象成硬件执行单元。需要填表的顾客对应一个其后续执行依赖于某个长延迟操作的线程束</em>。</p></div><p class="text"><span id="page_84" aria-label="Page 84" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<p id="p0275" class="text">请注意，线程束调度也用于容忍其他类型的操作延迟，例如流水线浮点运算和分支指令。只要有足够多的线程束在场，硬件在任意时刻都可能找到某个可执行的线程束，从而在部分线程束的指令等待这些长延迟操作结果的同时，充分利用执行硬件。对已准备好执行的线程束的挑选，不会在执行时间线上引入任何空闲或浪费的时间，这被称为<em>零开销线程调度</em>（参见“线程、上下文切换与零开销调度”补充栏）。借助线程束调度，线程束指令的长时间等待被其他线程束指令的执行“隐藏”了起来。这种容忍长操作延迟的能力，是 GPU 不像 CPU 那样把几乎同样多的芯片面积用于缓存和分支预测机制的主要原因。因此，GPU 可以把更多的芯片面积用于浮点执行和内存访问通道资源。</p><div class="boxg1" id="b0020"><p class="b1title"><a id="sp0075"></a>线程、上下文切换与零开销调度</p>
+<p id="p0280" class="b1textfl"><em>基于冯·诺依曼模型，我们可以更深入地理解线程是如何实现的。在现代计算机中，一个线程就是一个程序以及该程序在冯·诺依曼处理器上执行的状态。回想一下，线程由程序的代码、代码中正在执行的指令，以及其变量和数据结构的值组成</em>。</p>
+<p id="p9280" class="b1text"><em>在基于冯·诺依曼模型的计算机中，程序代码存储在内存里。PC 跟踪程序中正在执行的指令的地址。IR 保存正在执行的指令。寄存器和内存保存变量和数据结构的值</em>。</p>
+<p id="p9281" class="b1text"><em>现代处理器被设计成支持上下文切换，即多个线程可以轮流取得进展，分时共享一个处理器。通过仔细地保存和恢复 PC 值以及寄存器和内存的内容，我们可以挂起一个线程的执行，并在稍后正确地恢复该线程的执行。然而，在这些处理器中进行上下文切换时，保存和恢复寄存器内容会带来显著的开销，表现为额外增加的执行时间</em>。</p>
+<p id="p9282" class="b1text"><em>零开销调度指的是 GPU 的这种能力：让需要等待长延迟指令结果的线程束进入休眠，并激活一个随时可以执行的线程束，而不会在处理单元中引入任何额外的空闲周期。传统 CPU 之所以会产生这类空闲周期，是因为把执行从一个线程切换到另一个线程，需要把执行状态（例如离开线程的寄存器内容）保存到内存，并从内存载入进入线程的执行状态。GPU 的 SM 通过把分配给它的所有线程束的执行状态保存在硬件寄存器中来实现零开销调度，因此在从一个线程束切换到另一个线程束时，无需保存和恢复状态</em>。</p></div><p class="text"><span id="page_85" aria-label="Page 85" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<p id="p0285" class="text">要使延迟容忍行之有效，理想的做法是让分配给 SM 的线程数量远多于其执行资源所能同时支持的数量，从而在任意时刻都能最大限度地找到可执行的线程束。例如，Ampere A100 GPU 的 SM 有 64 个核心，但可以同时分配给它多达 2048 个线程。因此，分配给 SM 的线程数量可以是其核心在任意一个时钟周期内所能支持数量的 32 倍之多。这种线程对 SM 的过度订阅对延迟容忍至关重要。它增加了在当前执行的线程束遇到长延迟操作时找到另一个线程束来执行的机会。</p></section><section><a id="s0040"></a><h2 class="h1hd" id="st0055">4.7 资源划分与占用率</h2><p id="p0290" class="textfl">我们已经看到，为了容忍长延迟操作，给 SM 分配尽可能多的线程束是可取的。然而，把 SM 所支持的最大线程束数量分配给 SM 并不总是可行的。分配给 SM 的线程束数量与其支持的最大线程束数量之比称为<em>占用率</em>。要理解是什么因素可能阻止 SM 达到最大占用率，首先理解 SM 的资源是如何划分的很重要。</p>
+<p id="p0295" class="text">SM 中的执行资源包括寄存器、共享内存（在<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>“内存体系结构与数据局部性”中讨论）、线程块槽位和线程槽位。这些资源在线程之间动态划分，以支持线程的执行。例如，Ampere A100 GPU 每个 SM 最多支持 32 个线程块、每个 SM 最多 64 个线程束（2048 个线程）、每个线程块最多 1024 个线程。如果用大小为 1024 个线程的线程块（所允许的最大值）启动网格，则每个 SM 中的 2048 个线程槽位会被划分并分配给 2 个线程块。在这种情况下，每个 SM 最多可容纳 2 个线程块。类似地，如果用大小为 512、256、128 或 64 个线程的线程块启动网格，2048 个线程槽位将分别被划分并分配给 4、8、16 或 32 个线程块。</p>
+<p id="p0300" class="text">这种在线程块之间动态划分线程槽位的能力使 SM 具有很高的灵活性。它们既可以执行许多线程数很少的线程块，也可以执行少量线程数很多的线程块。这种动态划分可以与固定划分方法形成对比：在固定划分中，每个线程块无论实际需要多少资源，都获得固定的资源量。当线程块需要的线程数少于固定划分所支持的数量时，固定划分会导致线程槽位浪费；而当线程块需要的线程槽位多于固定划分提供的数量时，固定划分又无法支持。</p>
+<p id="p0305" class="text"><span id="page_86" aria-label="Page 86" epub:type="pagebreak" role="doc-pagebreak"></span>资源的动态划分可能导致各种资源限制之间产生微妙的相互作用，从而造成资源利用不足。这种相互作用可能发生在线程块槽位与线程槽位之间。在 Ampere A100 的例子中，我们看到线程块大小可以从 1024 变化到 64，分别使每个 SM 有 2–32 个线程块。在所有上述情况下，分配给 SM 的线程总数都是 2048，这使占用率达到最大。然而，考虑每个线程块有 32 个线程的情况。此时 2048 个线程槽位需要被划分并分配给 64 个线程块。但是，Volta 的 SM 一次最多只能支持 32 个线程块槽位。这意味着只有 1024 个线程槽位会被利用，也就是 32 个线程块、每块 32 个线程。此时的占用率为 (1024 个已分配线程)/(2048 个最大线程) = 50%。因此，要充分利用线程槽位并达到最大占用率，每个线程块至少需要有 64 个线程。</p>
+<p id="p0310" class="text">另一种可能对占用率产生负面影响的情况是：每个线程块的最大线程数不能被线程块大小整除。在 Ampere A100 的例子中，我们看到每个 SM 最多可以支持 2048 个线程。然而，如果选择 768 作为线程块大小，SM 将只能容纳 2 个线程块（1536 个线程），留下 512 个线程槽位未利用。在这种情况下，既达不到每个 SM 的最大线程数，也达不到每个 SM 的最大线程块数。此时的占用率为 (1536 个已分配线程)/(2048 个最大线程) = 75%。</p>
+<p id="p0315" class="text">前面的讨论没有考虑其他资源约束的影响，例如寄存器和共享内存。我们将在<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>“内存体系结构与数据局部性”中看到，在 CUDA 核函数中声明的自动变量会被放入寄存器。有些核函数可能使用很多自动变量，有些则用得很少。因此可以预期，有些核函数每个线程需要很多寄存器，有些则只需要很少。通过在 SM 中把寄存器动态划分给线程，SM 可以在每个线程所需寄存器很少时容纳许多线程块，而在每个线程所需寄存器较多时容纳较少的线程块。</p>
+<p id="p0320" class="text">不过，确实需要留意寄存器资源限制对占用率的潜在影响。例如，Ampere A100 GPU 每个 SM 最多允许 65,536 个寄存器。要以满占用率运行，每个 SM 需要为 2048 个线程提供足够的寄存器，这意味着每个线程使用的寄存器数不应超过 (65,536 个寄存器)/(2048 个线程) = 每个线程 32 个寄存器。例如，如果某个核函数每个线程使用 64 个寄存器，那么 65,536 个寄存器最多可以支持 1024 个线程。在这种情况下，无论线程块大小如何设置，该核函数都无法以满占用率运行，占用率至多为 50%。在某些情况下，编译器可能会执行寄存器溢出，以减少每个线程的寄存器需求，从而提高占用率水平。然而，这通常以增加线程从内存访问被溢出的寄存器值的执行时间为代价，并可能导致整个网格的总执行时间增加。关于共享内存资源的类似分析将在<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>“内存体系结构与数据局部性”中进行。</p>
+<p id="p0325" class="text"><span id="page_87" aria-label="Page 87" epub:type="pagebreak" role="doc-pagebreak"></span>假设程序员实现了一个每个线程使用 31 个寄存器的核函数，并配置为每个线程块 512 个线程。此时，SM 将有 (2048 个线程)/(512 个线程/线程块) = 4 个线程块同时运行。这些线程总共使用 (2048 个线程)×(31 个寄存器/线程) = 63,488 个寄存器，低于 65,536 个寄存器的限制。现在假设程序员在核函数中又声明了两个自动变量，使每个线程使用的寄存器数增加到 33。此时 2048 个线程所需的寄存器数为 67,584 个，超过了寄存器上限。CUDA 运行时系统可能会通过只给每个 SM 分配 3 个线程块而不是 4 个来处理这种情况，从而把所需寄存器数减少到 50,688 个。但这会把 SM 上运行的线程数从 2048 减少到 1536；也就是说，仅仅多用了两个自动变量，程序占有的占用率就从 100% 下降到了 75%。这种现象有时被称为“性能悬崖”：资源使用量的微小增加，会导致并行度和性能的显著下降（<a href="#bib3" role="doc-biblioref" epub:type="biblioref" id="BIB_3">Ryoo 等，2008</a>）。</p>
+<p id="p0330" class="text">读者应当清楚，所有动态划分资源的约束之间会以复杂的方式相互作用。要精确确定每个 SM 中运行的线程数是困难的。读者可参阅 CUDA 占用率计算器（<a href="#bib1" role="doc-biblioref" epub:type="biblioref" id="BIB_1">CUDA Occupancy Calculator</a>，Web），它是一个可下载的电子表格，在给定核函数资源使用情况的情况下，计算出特定设备实现上每个 SM 实际运行的线程数。</p></section><section><a id="s0045"></a><h2 class="h1hd" id="st0060">4.8 查询设备属性</h2><p id="p0335" class="textfl"><span id="page_88" aria-label="Page 88" epub:type="pagebreak" role="doc-pagebreak"></span>我们关于 SM 资源划分的讨论引出了一个重要问题：我们如何获知特定设备可用的资源量？当 CUDA 应用在某个系统上执行时，它如何获知设备中 SM 的数量，以及每个 SM 可以分配多少个线程块和线程？其他种类的资源也存在同样的问题，其中一些我们还没有讨论过。一般来说，许多现代应用被设计成在各种各样的硬件系统上运行。应用常常需要<em>查询</em>底层硬件可用的资源和能力，以便利用能力更强的系统，同时弥补能力较弱的系统（参见“资源与能力查询”补充栏）。</p><div class="boxg1" id="b0025"><p class="b1title"><a id="sp0080"></a>资源与能力查询</p>
+<p id="p0340" class="b1textfl"><em>在日常生活中，我们经常查询某个环境中的资源和能力。例如，预订酒店时，我们可以查看酒店房间附带哪些设施。如果房间配有吹风机，我们就不必自带。大多数美国酒店房间都配有吹风机，而世界其他地区的许多酒店则没有</em>。</p>
+<p id="p0345" class="b1text"><em>一些亚洲和欧洲的酒店提供牙膏，甚至牙刷，而大多数美国酒店则不提供。许多美国酒店同时提供洗发水和护发素，而其他大洲的酒店往往只提供洗发水</em>。</p>
+<p id="p0350" class="b1text"><a id="P88"></a><em>如果房间配有微波炉和冰箱，我们就可以把晚餐的剩菜带回去，第二天再吃。如果酒店有游泳池，我们可以带上泳衣，在商务会议之后游个泳。如果酒店没有游泳池但有健身房，我们可以带上跑鞋和运动服。一些亚洲高端酒店甚至提供运动服装！</em></p>
+<p id="p0355" class="b1text"><em>这些酒店设施是酒店属性（即资源和能力）的一部分。经验丰富的旅行者会查看酒店网站上的属性介绍，选择最符合自己需求的酒店，并更高效、更有效地打包行李</em>。</p></div><p id="p0360" class="text">每个 CUDA 设备 SM 中的资源量被指定为设备<em>计算能力</em>的一部分。一般来说，计算能力级别越高，每个 SM 中可用的资源就越多。GPU 的计算能力往往随代际更迭而不断提高。Ampere A100 GPU 的计算能力为 8.0。</p>
+<p id="p0365" class="text">在 CUDA C 中，有一种内置机制让主机代码查询系统中可用设备的属性。CUDA 运行时系统（设备驱动程序）有一个 API 函数 <span class="inlinecode">cudaGetDeviceCount</span>，它返回系统中可用 CUDA 设备的数量。主机代码可以用下面的语句查出可用 CUDA 设备的数量：</p><div class="pageavoid"><figure class="fig" id="f9015"><img src="../images/F000033u04-04-9780323912310.jpg" class="img" alt="image" width="826" height="137"/></figure></div><p id="p0380" class="text">虽然这一点可能并不明显，但现代 PC 系统通常有两个或更多的 CUDA 设备。这是因为许多 PC 系统都带有一种或多种“集成”GPU。这些 GPU 是默认的图形单元，提供基本的处理能力和硬件资源，以完成现代基于窗口的用户界面所需的最基本图形功能。大多数 CUDA 应用在这些集成设备上的表现不会很好。这将是主机代码遍历所有可用设备、查询它们的资源和能力，并选出资源足以让应用以令人满意的性能执行的设备的原因。</p>
+<p id="p0385" class="text">CUDA 运行时把系统中所有可用设备从 0 到 <span class="inlinecode">devCount-1</span> 编号。它提供了一个 API 函数 <span class="inlinecode">cudaGetDeviceProperties</span>，返回以参数形式给出的设备号的属性。例如，我们可以在主机代码中使用下面的语句遍历可用设备并查询它们的属性：</p><div class="pageavoid"><figure class="fig" id="f9020"><img src="../images/F000033u04-05-9780323912310.jpg" class="img" alt="image" width="1375" height="365"/></figure></div><p class="text"><span id="page_89" aria-label="Page 89" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<p id="p0415" class="text">内置类型 <span class="inlinecode">cudaDeviceProp</span> 是一个 C 结构体类型，其字段表示 CUDA 设备的属性。该类型的所有字段请读者参阅 CUDA C 编程指南。我们将讨论其中几个与执行资源分配到线程特别相关的字段。我们假定属性通过 devProp 变量返回，其字段由 <span class="inlinecode">cudaGetDeviceProperties</span> 函数设置。如果读者选择用不同的变量名，那么显然需要在下面的讨论中用相应的变量名替换。</p>
+<p id="p0420" class="text">顾名思义，字段 <span class="inlinecode">devProp.maxThreadsPerBlock</span> 给出被查询设备中每个线程块允许的最大线程数。有些设备每个线程块最多允许 1024 个线程，有些设备允许的更少。未来的设备甚至可能允许每个线程块超过 1024 个线程。因此，就应用而言，查询可用设备并确定哪些设备允许每个线程块有足够数量的线程，是一个好主意。</p>
+<p id="p0425" class="text">设备中 SM 的数量由 <span class="inlinecode">devProp.multiProcessorCount</span> 给出。如果应用需要大量 SM 才能达到令人满意的性能，那么它一定要检查候选设备的这一属性。此外，设备的时钟频率在 <span class="inlinecode">devProp.clockRate</span> 中。时钟频率与 SM 数量的组合，可以很好地指示该设备的最大硬件执行吞吐量。</p>
+<p id="p0430" class="text">主机代码可以在字段 <span class="inlinecode">devProp.maxThreadsDim[0]</span>（<em>x</em> 维）、<span class="inlinecode">devProp.maxThreadsDim[1]</span>（<em>y</em> 维）和 <span class="inlinecode">devProp.maxThreadsDim[2]</span>（<em>z</em> 维）中找到线程块每个维度允许的最大线程数。这类信息的一个用法是：让自动调优系统在为底层硬件评估最佳线程块维度时，设置线程块维度的取值范围。类似地，它还可以在 <span class="inlinecode">devProp.maxGridSize[0]</span>（<em>x</em> 维）、<span class="inlinecode">devProp.maxGridSize[1]</span>（<em>y</em> 维）和 <span class="inlinecode">devProp.maxGridSize[2]</span>（<em>z</em> 维）中找到网格每个维度允许的最大线程块数。这类信息的一个典型用途是判断网格是否能有足够的线程来处理整个数据集，还是需要某种迭代方法。</p>
+<p id="p0435" class="text">字段 <span class="inlinecode">devProp.regsPerBlock</span> 给出每个 SM 中可用的寄存器数量。这个字段有助于判断核函数在特定设备上是能够达到最大占用率，还是会受其寄存器使用量的限制。注意，这个字段的名字略有误导性。对于大多数计算能力级别，线程块可以使用的最大寄存器数确实与 SM 中可用的寄存器总数相同。然而，对于某些计算能力级别，线程块可以使用的最大寄存器数小于 SM 上可用的寄存器总数。</p>
+<p id="p0440" class="text">我们还讨论过，线程束的大小取决于硬件。线程束的大小可以从 <span class="inlinecode">devProp.warpSize</span> 字段获得。</p>
+<p id="p0445" class="text"><span id="page_90" aria-label="Page 90" epub:type="pagebreak" role="doc-pagebreak"></span><span class="inlinecode">cudaDeviceProp</span> 类型中还有很多其他字段。随着我们逐步介绍这些字段所设计用来反映的概念和特性，我们将在全书中讨论它们。</p></section><section><a id="s0050"></a><h2 class="h1hd" id="st0065">4.9 小结</h2><p id="p0450" class="textfl">GPU 由 SM 组织而成，SM 又由多个共享控制逻辑和内存资源的核心处理块组成。当网格启动时，其线程块以任意顺序被分配到 SM，从而使 CUDA 应用具有透明可扩展性。透明可扩展性伴随着一个限制：不同线程块中的线程之间不能互相同步。</p>
+<p id="p0455" class="text">线程以线程块为单位被分配到 SM 执行。线程块一旦被分配到 SM，就会进一步被划分成线程束。线程束中的线程按照 SIMD 模型执行。如果同一线程束中的线程走不同的执行路径而发生发散，处理块会分趟执行这些路径，每个线程只在与其所走路径相对应的那一趟中处于活动状态。</p>
+<p id="p0460" class="text">SM 被分配的线程数量可能远多于它能够同时执行的线程数。在任何时刻，SM 只执行其驻留线程束中一小部分线程束的指令。这使得其他线程束可以等待长延迟操作，而不会拖慢数量庞大的处理单元的总体执行吞吐量。分配给 SM 的线程数与其所能支持的最大线程数之比称为<em>占用率</em>。SM 的占用率越高，它就越能更好地隐藏长延迟操作。</p>
+<p id="p0465" class="text">每个 CUDA 设备对每个 SM 中可用资源量的限制可能各不相同。例如，每个 CUDA 设备对每个 SM 所能容纳的线程块数、线程数、寄存器数以及其他资源量都有限制。对于每个核函数，这些资源限制中的一个或多个可能成为占用率的限制因素。CUDA C 为程序员提供了在运行时查询 GPU 中可用资源的能力。</p></section><section><a id="s0055"></a><h2 class="h1hd" id="st0070">习题</h2><a id="p0470"></a><a id="li8010"></a><div><ol>
+<li class="numlista" id="o0055"><a id="p0475"></a><span id="page_91" aria-label="Page 91" epub:type="pagebreak" role="doc-pagebreak"></span><a id="li0015"></a>1. 考虑下面的 CUDA 核函数以及调用它的相应主机函数：<div class="pageavoid"><figure class="fig" id="f9025"><img src="../images/F000033u04-03-9780323912310.jpg" class="img" alt="image" width="1305" height="634"/></figure></div><ol>
+<li class="numlist1a" id="o0060"><a id="p0560"></a>a. 每个线程块的线程束数量是多少？</li>
+<li class="numlist1a" id="o0065"><a id="p0565"></a>b. 网格中有多少个线程束？</li>
+<li class="numlist1a" id="o0070"><a id="p0570"></a><a id="li0020"></a>c. 对于第 04 行的语句：<ol>
+<li class="numlist2a" id="o0075"><a id="p0575"></a>i. 网格中有多少个线程束处于活动状态？</li>
+<li class="numlist2a" id="o0080"><a id="p0580"></a>ii. 网格中有多少个线程束出现发散？</li>
+<li class="numlist2a" id="o0085"><a id="p0585"></a>iii. 线程块 0 中线程束 0 的 SIMD 效率（%）是多少？</li>
+<li class="numlist2a" id="o0090"><a id="p0590"></a>iv. 线程块 0 中线程束 1 的 SIMD 效率（%）是多少？</li>
+<li class="numlist2a" id="o0095"><a id="p0595"></a>v. 线程块 0 中线程束 3 的 SIMD 效率（%）是多少？</li>
+</ol></li>
+<li class="numlist1a" id="o0100"><a id="p0600"></a><a id="li1"></a>d. 对于第 07 行的语句：<ol>
+<li class="numlist2a" id="o0210"><a id="p8010"></a>i. 网格中有多少个线程束处于活动状态？</li>
+<li class="numlist2a" id="o0215"><a id="p8015"></a>ii. 网格中有多少个线程束出现发散？</li>
+<li class="numlist2a" id="o0220"><a id="p8020"></a>iii. 线程块 0 中线程束 0 的 SIMD 效率（%）是多少？</li>
+</ol></li>
+<li class="numlist1a" id="o0105"><a id="p0620"></a><a id="li2"></a>e. 对于第 09 行的循环：<ol>
+<li class="numlist2a" id="o0225"><a id="p8025"></a>i. 有多少次迭代没有发散？</li>
+<li class="numlist2a" id="o0230"><a id="p8030"></a>ii. 有多少次迭代存在发散？</li>
+</ol></li>
+</ol></li>
+<li class="numlista" id="o0110"><a id="p0635"></a>2. 对于向量加法，假设向量长度为 2000，每个线程计算一个输出元素，线程块大小为 512 个线程。那么网格中将有多少个线程？</li>
+<li class="numlista" id="o0115"><a id="p0640"></a>3. 对于上一个问题，你预计有多少个线程束会因向量长度的边界检查而出现发散？</li>
+<li class="numlista" id="o0120"><a id="p0645"></a>4. 考虑一个假设的线程块，其中有 8 个线程，在到达屏障之前执行一段代码。这些线程执行各段代码所需的时间（以微秒计）分别为：2.0、2.3、3.0、2.8、2.4、1.9、2.6 和 2.9；其余时间都在等待屏障。这些线程总执行时间中有多少百分比花在等待屏障上？</li>
+<li class="numlista" id="o0125"><a id="p0650"></a>5. 一位 CUDA 程序员说，如果启动一个每个线程块只有 32 个线程的核函数，那么在需要屏障同步的地方都可以省略<span class="inlinecode">__syncthreads()</span>指令。你认为这是个好主意吗？请说明理由。</li>
+<li class="numlista" id="o0130"><a id="p0655"></a><a id="li0030"></a>6. 如果某个 CUDA 设备的 SM 最多能容纳 1536 个线程和 4 个线程块，那么下列哪种线程块配置会使 SM 中的线程数最多？<ol>
+<li class="numlist1a" id="o0135"><a id="p0660"></a>a. 每个线程块 128 个线程</li>
+<li class="numlist1a" id="o0140"><a id="p0665"></a>b. 每个线程块 256 个线程</li>
+<li class="numlist1a" id="o0145"><a id="p0670"></a>c. 每个线程块 512 个线程</li>
+<li class="numlist1a" id="o0150"><a id="p0675"></a>d. 每个线程块 1024 个线程</li>
+</ol></li>
+<li class="numlista" id="o0155"><a id="p0680"></a><a id="li0035"></a>7. 假设某个设备允许每个 SM 最多 64 个线程块、每个 SM 最多 2048 个线程。指出下列每种每个 SM 的分配方案是否可行。在可行的方案中，指出占用率水平。<ol>
+<li class="numlist1a" id="o0160"><a id="p0685"></a>a. 8 个线程块，每块 128 个线程</li>
+<li class="numlist1a" id="o0165"><a id="p0690"></a>b. 16 个线程块，每块 64 个线程</li>
+<li class="numlist1a" id="o0170"><a id="p0695"></a>c. 32 个线程块，每块 32 个线程</li>
+<li class="numlist1a" id="o0175"><a id="p0700"></a>d. 64 个线程块，每块 32 个线程</li>
+<li class="numlist1a" id="o0180"><a id="p0705"></a><span id="page_92" aria-label="Page 92" epub:type="pagebreak" role="doc-pagebreak"></span>e. 32 个线程块，每块 64 个线程</li>
+</ol></li>
+<li class="numlista" id="o0185"><a id="p0710"></a><a id="li0040"></a>8. 考虑一个具有以下硬件限制的 GPU：每个 SM 2048 个线程、每个 SM 32 个线程块、每个 SM 64K（65,536）个寄存器。对于下列每种核函数特征，请说明该核函数能否达到满占用率。如果不能，请指出限制因素。<ol>
+<li class="numlist1a" id="o0190"><a id="p0715"></a>a. 核函数每个线程块使用 128 个线程，每个线程使用 30 个寄存器。</li>
+<li class="numlist1a" id="o0195"><a id="p0720"></a>b. 核函数每个线程块使用 32 个线程，每个线程使用 29 个寄存器。</li>
+<li class="numlist1a" id="o0200"><a id="p0725"></a>c. 核函数每个线程块使用 256 个线程，每个线程使用 34 个寄存器。</li>
+</ol></li>
+<li class="numlista" id="o0205"><a id="p0730"></a>9. 一名学生提到，他们用 32×32 的线程块运行矩阵乘法核函数，成功将两个 1024×1024 的矩阵相乘。该学生使用的 CUDA 设备每个线程块最多允许 512 个线程，每个 SM 最多允许 8 个线程块。该学生还提到，线程块中的每个线程计算结果矩阵的一个元素。你会作何反应？为什么？</li>
+</ol></div></section><footer><section aria-label="bibliography"><a id="bibliog0010"></a><h2 class="reftitle" id="st0075">参考文献</h2><section><p class="reflist" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib1"><a aria-label="noteref" href="#BIB_1">CUDA Occupancy Calculator</a> CUDA Occupancy Calculator, 2021. <a href="https://docs.nvidia.com/cuda/cuda-occupancy-calculator/index.html">https://docs.nvidia.com/cuda/cuda-occupancy-calculator/index.html</a>.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib2"><a aria-label="noteref" href="#BIB_2">NVIDIA, 2017</a> NVIDIA (2017). NVIDIA Tesla V100 GPU Architecture. Version WP-08608-001_v1.1.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib3"><a aria-label="noteref" href="#BIB_3">Ryoo, et al., 2008</a> Ryoo, S., Rodrigues, C., Stone, S., Baghsorkhi, S., Ueng, S., Stratton, J., et al., Program optimization space pruning for a multithreaded GPU. In: Proceedings of the Sixth ACM/IEEE International Symposium on Code Generation and Optimization, April 6–9, 2008.</p></section></section><section epub:type="rearnotes">
+<div class="ftnote"><hr/>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn1"><a id="ntp0010"></a><a href="#Cfn1"><sup>1</sup></a> 不同线程块中的线程可以通过 Cooperative Groups API 执行屏障同步。然而，必须遵守几个重要的限制条件，才能确保所有涉及的线程确实同时在各 SM 上执行。关于 Cooperative Groups API 的正确用法，感兴趣的读者请参阅 CUDA C 编程指南。</p>
+</div></section></footer></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>

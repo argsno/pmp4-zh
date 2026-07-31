@@ -1,0 +1,35 @@
+{
+  "page": "Dedication_v_B9780323912310000264",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Dedication",
+      "zh": "献词"
+    },
+    {
+      "id": "sp9010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[2]/p[1]",
+      "en": "To Sabrina, Amanda, Bryan, and Carissa",
+      "zh": "献给 Sabrina、Amanda、Bryan 和 Carissa"
+    },
+    {
+      "id": "sp0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[2]/p[2]",
+      "en": "To Caroline, Rose, and Leo",
+      "zh": "献给 Caroline、Rose 和 Leo"
+    },
+    {
+      "id": "sp0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[2]/p[3]",
+      "en": "To Mona, Amal, and Ali",
+      "zh": "献给 Mona、Amal 和 Ali"
+    },
+    {
+      "id": "sp0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[3]/p[1]",
+      "en": "for enduring our absence while working on the course and the book—once again!",
+      "zh": "感谢你们包容我们在编写课程和本书期间的缺席——又一次！"
+    }
+  ]
+}

@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="zh-CN" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="前言部分">
+      <option value="Cover.html">封面图</option>
+      <option value="Title_page.html">标题页</option>
+      <option value="Contents.html">目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">致谢</option>
+    </optgroup>
+    <optgroup label="序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">课程资源</option>
+    </optgroup>
+    <optgroup label="第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第一部分：基本概念">
+      <option value="Part1.html">第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html">第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">参考文献</option>
+    </optgroup>
+    <optgroup label="第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html">第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html">第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html">第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">习题</option>
+    </optgroup>
+    <optgroup label="第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第二部分：并行模式">
+      <option value="Part2.html">第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html">第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html">第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">习题</option>
+    </optgroup>
+    <optgroup label="第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html">第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第三部分：高级模式与应用">
+      <option value="Part3.html">第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html">第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html">第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">参考文献</option>
+    </optgroup>
+    <optgroup label="第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">参考文献</option>
+    </optgroup>
+    <optgroup label="第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html">第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">参考文献</option>
+    </optgroup>
+    <optgroup label="第四部分：高级实践">
+      <option value="Part4.html">第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html" selected>第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">参考文献</option>
+    </optgroup>
+    <optgroup label="第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">参考文献</option>
+    </optgroup>
+    <optgroup label="第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Ch020_449-473_B9780323912310000070.html#st0070">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch021_475-496_B978032391231000001X.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/Ch021_475-496_B978032391231000001X.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch021_475-496_B978032391231000001X.html">对照</a></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter">
+<a id="Ch021_475-496_B978032391231000001X"></a><div id="page_475" aria-label="Page 475" epub:type="pagebreak" role="doc-pagebreak"></div><header>
+<div id="CN"><a id="Ch021_475-496_B978032391231000001Xtitl"></a>Chapter 21</div><h1 class="chaptitle" epub:type="title" id="tit0010">CUDA 动态并行</h1><address><p class="chapau">特别贡献：Juan Gómez-Luna</p></address>
+</header><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0070">本章介绍 CUDA 动态并行，它是 CUDA 编程模型的一个扩展，允许 CUDA 核函数通过调用其他核函数来创建更多的线程网格。动态并行使得能够动态发现新工作的算法无需加重主机的负担或诉诸复杂的软件技术，即可准备并启动网格。本章以一个受益于动态并行的简单模式开始，然后使用两个高级示例——贝塞尔曲线计算和四叉树构建——来说明程序员在真实应用中使用动态并行时可能遇到的一些重要细节与微妙之处。最后，本章讨论了动态并行实际使用中的重要考量，包括内存数据可见性、待启动池配置、流以及嵌套深度。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">动态工作发现；不规则工作分布；时空工作变化；网格启动；流；同步；递归核函数调用</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">大纲</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">21.1 背景</a> 476</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">21.2 动态并行概述</a> 478</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">21.3 示例：贝塞尔曲线</a> 481</li>
+<li class="chapoutl1" id="o0025"><a id="p0045"></a><a href="#s0045">21.4 递归示例：四叉树</a> 484</li>
+<li class="chapoutl1" id="o0030"><a id="p0050"></a><a href="#s0050">21.5 重要考量</a> 490</li>
+<li class="chapoutl1" id="o0035"><a id="p0075"></a><a href="#s0075">21.6 小结</a> 492</li>
+<li class="chapoutl1" id="u0050"><a id="p0080"></a><a href="#s0080">习题</a> 493</li>
+<li class="chapoutl1" id="u0060"><a id="p0090"></a><a href="#s0085">A21.1 四叉树示例的支持代码</a> 495</li>
+<li class="chapoutl1" id="u0055"><a id="p0085"></a><a href="#bibliog0010">参考文献</a> 497</li>
+</ul>
+</div></nav>
+<p id="p0095" class="textfl"><a id="P475"></a><span id="page_476" aria-label="Page 476" epub:type="pagebreak" role="doc-pagebreak"></span>CUDA 动态并行是 CUDA 编程模型的一个扩展，它允许核函数调用其他核函数，从而使在设备上执行的线程能够启动新的线程网格。在早期的 CUDA 版本中，网格只能从主机代码中启动。涉及递归、不规则循环结构、时空变化或其他不适合扁平且单层并行结构的算法，需要通过主机进行多次核函数调用来实现，这会增加主机的负担、主机与设备之间的通信量以及总执行时间。在某些情况下，程序员不得不借助循环串行化和其他笨拙的技术来满足这些算法需求，代价是软件可维护性下降。动态并行的支持使得能够动态发现新工作的算法可以准备并启动新网格，而无需加重主机的负担或影响软件可维护性。本章描述了使 CUDA 具备动态并行能力的扩展特性，包括对 CUDA 编程接口的修改与新增，以及利用这一新增能力的指南和最佳实践。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">21.1 背景</h2><p id="p0100" class="textfl">许多真实世界的应用采用这样的算法：其工作在空间上存在差异，或者随时间动态变化的工作量。例如，<a href="#f0010">图 21.1</a> 展示了一个湍流模拟示例，其中所需的建模细节级别在空间和时间上都各不相同。随着燃烧流从左向右移动，活动范围和强度不断增加。建模模型右侧所需的细节级别远高于模型左侧。一方面，对模型左侧使用固定的细网格会带来无谓的过多工作量；另一方面，对模型右侧使用固定的粗网格又会牺牲过多的精度。理想情况下，应该对模型需要更多细节的部分使用细网格，对不需要那么多细节的部分使用粗网格。</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F00001Xf21-01-9780323912310.jpg" class="img" alt="image" width="1375" height="980"/><figcaption class="figleg"><a id="sp0010"></a><span class="fignum">图 21.1</span> 湍流模拟模型的固定网格与动态网格。</figcaption></figure></div><p id="p0105" class="text"><span id="page_477" aria-label="Page 477" epub:type="pagebreak" role="doc-pagebreak"></span>到目前为止，我们一直假设所有核函数都是从主机代码调用的。线程网格所完成的工作量在调用核函数时就已经预先确定。由于核函数代码采用单程序、多数据的编程风格，要让不同的线程块使用不同的网格间距即使不是极其困难，也是非常繁琐的。因此，这种限制偏向于使用固定且均匀（规则）的网格系统。为了达到期望的精度，这种固定网格方法——如<a href="#f0010">图 21.1</a> 右上方所示——通常需要满足模型中最苛刻的部分，并在不需要那么多细节的部分维护多余的数据、执行多余的工作。</p>
+<p id="p0110" class="text">一种更可取的方法如<a href="#f0010">图 21.1</a> 右下方的动态网格所示。当模拟算法检测到模型某些区域中的模拟量快速变化时，它会在这些区域细化网格，以达到期望的精度水平。对于没有表现出这种剧烈活动的区域，则不需要进行这种细化。因此，算法可以动态地将更多的计算资源引导到模型那些能从额外工作中获益的区域。</p>
+<p id="p0115" class="text"><span id="page_478" aria-label="Page 478" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0015">图 21.2</a> 从概念上比较了对于<a href="#f0010">图 21.1</a> 中的模拟模型，没有动态并行的系统与具有动态并行的系统在行为上的差异。没有动态并行时，主机线程必须启动所有网格。如果发现了新工作，例如在某个网格执行过程中需要细化模型的某个区域，则该网格必须终止、向主机汇报，并由主机启动新的网格。这如<a href="#f0015">图 21.2A</a> 所示：主机启动一个网格，在该网格终止后接收其信息，并为已完成网格发现的任何新工作启动后续网格。图中把后续网格描绘为一个接一个地启动；不过也可以应用更精细的优化，例如在不同的流中启动相互独立的网格，或将它们合并起来以便并行运行。</p>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F00001Xf21-02-9780323912310.jpg" class="img" alt="image" width="1374" height="842"/><figcaption class="figleg"><a id="sp0015"></a><span class="fignum">图 21.2</span> 具有动态工作变化的算法的网格启动模式：(A) 不使用动态并行，(B) 使用动态并行。</figcaption></figure></div><p id="p0120" class="text"><a href="#f0015">图 21.2B</a> 表明，有了动态并行，发现新工作的线程可以直接启动网格来完成这些工作。在我们的示例中，当某个线程发现模型中的某个区域需要细化时，它可以启动一个新网格来对细化后的区域执行计算，而无需承担终止网格、向主机汇报并让主机启动新网格的开销。</p></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">21.2 动态并行概述</h2><p id="p0125" class="textfl"><span id="page_479" aria-label="Page 479" epub:type="pagebreak" role="doc-pagebreak"></span>从程序员的角度来看，动态并行意味着他们可以在核函数内部编写一条调用另一个核函数的语句。在<a href="#f0020">图 21.3</a> 中，主函数（主机代码）启动了三个核函数：A、B 和 C。这些都是主机代码中的核函数调用，正如我们在本书中一直假设的那样。<a href="#f0020">图 21.3</a> 中的新内容是，其中一个核函数 B 调用了三个核函数 X、Y 和 Z。在不支持动态并行的早期 CUDA 系统中，这是非法的。</p>
+<div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F00001Xf21-03-9780323912310.jpg" class="img" alt="image" width="1374" height="956"/><figcaption class="figleg"><a id="sp0020"></a><span class="fignum">图 21.3</span> 一个核函数（B）启动三个核函数（X、Y 和 Z）的简单示例。</figcaption></figure></div><p id="p0130" class="text">从核函数内部调用核函数的语法，与从主机代码调用核函数的语法相同：</p><div class="pageavoid"><figure class="fig" id="f0070"><img src="../images/F00001Xu21-01-9780323912310.jpg" class="img" alt="image" width="895" height="40"/></figure></div><a id="li0025"></a><div><ul>
+<li class="bulllist" id="u0065"><a id="p0135"></a>• <span class="inlinecode">Dg</span> 的类型为 <span class="inlinecode">dim3</span>，指定网格的维度和大小。</li>
+<li class="bulllist" id="u0070"><a id="p0140"></a>• <span class="inlinecode">Db</span> 的类型为 <span class="inlinecode">dim3</span>，指定每个线程块的维度和大小。</li>
+<li class="bulllist" id="u0075"><a id="p0145"></a>• <span class="inlinecode">Ns</span> 的类型为 <span class="inlinecode">size_t</span>，指定本次调用中每个线程块动态分配的共享内存字节数，这部分内存是在静态分配的共享内存之外的。<span class="inlinecode">Ns</span> 是可选参数，默认值为 0。</li>
+<li class="bulllist" id="u0080"><a id="p0150"></a>• <span class="inlinecode">S</span> 的类型为 <span class="inlinecode">cudaStream_t</span>，指定与此调用关联的流。该流必须是在发起调用的同一个线程块中分配的。<span class="inlinecode">S</span> 是可选参数，默认值为 0。流已在<a href="Ch020_449-473_B9780323912310000070.html#Ch020_449-473_B9780323912310000070">第 20 章</a>（编程异构计算集群）中讨论过。</li>
+</ul>
+</div>
+<p id="p0155" class="text">为了演示如何使用动态并行，我们提供了不使用和使用动态并行的核函数简单示例。这些示例基于一个假设的并行算法，它并不计算有用的结果，但提供了一种在许多应用中反复出现的、概念上简单的计算模式。它有助于说明两种方法之间的差异，以及在算法中每个线程完成的工作量可以动态变化时，如何使用动态并行提取更多的并行性，同时减少控制流发散。</p>
+<p id="p0160" class="text"><a href="#f0025">图 21.4</a> 展示了一个不使用动态并行编写的简单示例核函数。在这个示例中，核函数的每个线程执行一些计算（第 05 行），然后遍历它负责的数据元素列表（第 07 行），并为每个数据元素执行另一次计算（第 08 行）。</p>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F00001Xf21-04-9780323912310.jpg" class="img" alt="image" width="1365" height="346"/><figcaption class="figleg"><a id="sp0025"></a><span class="fignum">图 21.4</span> 用 CUDA 实现且不使用动态并行的假设并行算法的一个简单示例。</figcaption></figure></div><p id="p0165" class="text"><span id="page_480" aria-label="Page 480" epub:type="pagebreak" role="doc-pagebreak"></span>这种计算模式在许多应用中频繁出现。例如，在图搜索中，每个线程可以访问一个顶点，然后遍历相邻顶点列表。读者会发现，这种核函数结构与<a href="Ch015_331-354_B9780323912310000112.html#f0075">图 15.14</a> 中面向顶点的 BFS 核函数相似。再举一个例子，在稀疏矩阵计算中，每个线程可以先确定一行非零元素的起始位置，然后遍历这些非零值。在诸如本章开头示例那样的模拟中，每个线程可以先处理一个粗网格单元，然后在需要细化网格时遍历更细的网格单元。</p>
+<p id="p0170" class="text">以<a href="#f0025">图 21.4</a> 所示风格编写应用存在两个主要问题。首先，如果循环中的工作（第 07–09 行）可以并行执行并获得收益，那么我们就错失了从应用中提取更多并行性的机会。其次，如果同一线程束内各线程的循环迭代次数差异很大，那么由此产生的控制发散会降低程序的性能。</p>
+<p id="p0175" class="text"><a href="#f0030">图 21.5</a> 展示了同一程序使用动态并行的版本。在这个版本中，原来的核函数被分成两个：父核函数和子核函数。父核函数的开头与原核函数相同，由被称为父网格的线程网格执行。父核函数不再循环，而是调用子核函数来继续工作（第 07–08 行）。子核函数由被称为子网格的线程网格执行，这些网格完成原先在循环体内完成的工作（第 18 行，<a href="#f0030">图 21.5</a>；原循环体为第 07–09 行，<a href="#f0025">图 21.4</a>）。</p>
+<div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F00001Xf21-05-9780323912310.jpg" class="img" alt="image" width="1374" height="667"/><figcaption class="figleg"><a id="sp0030"></a><span class="fignum">图 21.5</span> 使用 CUDA 动态并行修改后的示例。</figcaption></figure></div><p id="p0180" class="text"><span id="page_481" aria-label="Page 481" epub:type="pagebreak" role="doc-pagebreak"></span>以这种方式编写程序可以解决前面提到的原代码的两个问题。首先，循环迭代现在由子核函数的线程并行执行，而不是由原核函数的线程串行执行。因此，我们从程序中提取了更多的并行性。其次，每个线程现在只执行一次循环迭代，这带来了更好的负载均衡，并消除了控制发散。虽然程序员也可以通过不同的方式重写核函数来实现这两个目标，例如使用面向边的广度优先实现，但对某些应用来说，这种变换可能笨拙、复杂且容易出错。动态并行提供了一种表达此类计算模式的简便方式。</p></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">21.3 示例：贝塞尔曲线</h2><p id="p0185" class="textfl">我们现在展示一个更有趣、更有用的示例：样条曲线的自适应细分。这个示例说明的是子网格启动数量随工作负载而变化的情况。示例的内容是计算贝塞尔曲线（<a href="#bib1" role="doc-biblioref" epub:type="biblioref" id="BIB_1">Bezier Curves</a>）。贝塞尔曲线在计算机图形学中经常用于绘制平滑、直观的曲线，这些曲线由一组<em>控制点</em>定义，控制点通常由用户指定。</p>
+<p id="p0190" class="text">从数学上讲，贝塞尔曲线由一组控制点 <strong>P</strong><sub>0</sub> 至 <strong>P</strong><sub><em>n</em></sub> 定义，其中 <em>n</em> 称为控制点的<em>阶</em>（<em>n</em>=1 对应线性，2 对应二次，3 对应三次，以此类推）。曲线的第一个和最后一个控制点始终是曲线的端点，但中间的控制点（如果有）通常不在曲线上。</p><section><a id="s0025"></a><h3 class="h2hd" id="st0040">线性贝塞尔曲线</h3><p id="p0195" class="textfl">给定两个控制点 <strong>P</strong><sub>0</sub> 和 <strong>P</strong><sub>1</sub>，线性贝塞尔曲线就是连接这两个点的直线。曲线上点的坐标由以下线性插值公式给出：</p>
+<p class="hiddenClass"><math><mi mathvariant="bold">B</mi><mrow><mfenced open="(" close=")"><mrow><mi>t</mi></mrow></mfenced></mrow><mo>=</mo><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>+</mo><mi>t</mi><mrow><mfenced open="(" close=")"><mrow><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>−</mo><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub></mrow></mfenced></mrow><mo>=</mo><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></mfenced></mrow><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>+</mo><mi>t</mi><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>,</mo><mspace width="1em"></mspace><mi>t</mi><mo>∈</mo><mo>[</mo><mn>0</mn><mo>,</mo><mspace width="1em"></mspace><mn>1</mn><mo>]</mo></math></p><div class="showClass" id="eqn1"><img src="../images/F00001Xsi1.png" class="img" alt="image" width="266" height="11"/></div></section><section><a id="s0030"></a><h3 class="h2hd" id="st0045">二次贝塞尔曲线</h3><p id="p0200" class="textfl">二次贝塞尔曲线由三个控制点 <strong>P</strong><sub>0</sub>、<strong>P</strong><sub>1</sub> 和 <strong>P</strong><sub>2</sub> 定义。二次曲线上的点定义为从 <strong>P</strong><sub>0</sub> 到 <strong>P</strong><sub>1</sub> 以及从 <strong>P</strong><sub>1</sub> 到 <strong>P</strong><sub>2</sub> 的线性贝塞尔曲线上对应点的线性插值。曲线上点坐标的计算用以下公式表示：</p>
+<p class="hiddenClass"><math><mi mathvariant="bold">B</mi><mrow><mfenced open="(" close=")"><mrow><mi>t</mi></mrow></mfenced></mrow><mo>=</mo><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></mfenced></mrow><mrow><mfenced open="[" close="]"><mrow><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></mfenced></mrow><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>+</mo><mi>t</mi><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>1</mn></mrow></msub></mrow></mfenced></mrow><mo>+</mo><mi>t</mi><mo>[</mo><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></mfenced></mrow><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>+</mo><mi>t</mi><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>2</mn></mrow></msub><mo mathvariant="bold">]</mo><mo>,</mo><mspace width="1em"></mspace><mi>t</mi><mo>∈</mo><mo>[</mo><mn>0</mn><mo>,</mo><mspace width="1em"></mspace><mn>1</mn><mo>]</mo><mo>,</mo></math></p><div class="showClass" id="eqn2"><img src="../images/F00001Xsi2.png" class="img" alt="image" width="312" height="11"/></div><p class="textfl">它可以化简为以下公式：</p>
+<p class="hiddenClass"><math><mi mathvariant="bold">B</mi><mrow><mfenced open="(" close=")"><mrow><mi>t</mi></mrow></mfenced></mrow><mo>=</mo><msup><mrow><mo>(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo>)</mo></mrow><mrow><mn>2</mn></mrow></msup><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>0</mn></mrow></msub><mo>+</mo><mn>2</mn><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow></mfenced></mrow><mi>t</mi><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>1</mn></mrow></msub><mo>+</mo><msup><mrow><mi>t</mi></mrow><mrow><mn>2</mn></mrow></msup><msub><mrow><mi mathvariant="bold">P</mi></mrow><mrow><mn>2</mn></mrow></msub><mo>,</mo><mspace width="1em"></mspace><mi>t</mi><mo>∈</mo><mrow><mfenced open="[" close="]"><mrow><mn>0</mn><mo>,</mo><mspace width="1em"></mspace><mn>1</mn></mrow></mfenced></mrow><mo>.</mo></math></p><div class="showClass" id="eqn3"><img src="../images/F00001Xsi3.png" class="img" alt="image" width="250" height="13"/></div></section><section><a id="s0035"></a><h3 class="h2hd" id="st0050">贝塞尔曲线计算（不使用动态并行）</h3><p id="p0205" class="textfl"><span id="page_482" aria-label="Page 482" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0035">图 21.6</a> 展示了计算贝塞尔曲线上点坐标的 CUDA C 程序的一部分。从第 13 行开始的 <span class="inlinecode">computeBezierLines</span> 核函数设计为使用一个线程块来计算一组三个控制点（按二次贝塞尔公式）的曲线点。每个线程块首先计算由这三个控制点确定的曲线的曲率度量。直观地说，曲率越大，绘制这三个控制点的平滑二次贝塞尔曲线所需的点就越多。这决定了每个线程块要完成的工作量。这反映在第 20 行和第 21 行：当前线程块要计算的点总数与曲率值成正比。</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F00001Xf21-06-9780323912310.jpg" class="img" alt="image" width="1374" height="1211"/><figcaption class="figleg"><a id="sp0035"></a><span class="fignum">图 21.6</span> 不使用动态并行的贝塞尔曲线计算。</figcaption></figure></div><p id="p0210" class="text"><span id="page_483" aria-label="Page 483" epub:type="pagebreak" role="doc-pagebreak"></span>在第 24 行的 for 循环中，所有线程在每次迭代中计算一组连续的贝塞尔曲线点。循环体内的具体计算基于我们前面给出的公式。关键在于，一个线程块中的线程执行的迭代次数可能与另一个线程块中的线程执行的迭代次数大不相同。根据调度策略的不同，这种每个线程块工作量上的差异可能导致流式多处理器（SM）利用率下降，从而降低性能。</p></section><section><a id="s0040"></a><h3 class="h2hd" id="st0055">贝塞尔曲线计算（使用动态并行）</h3><p id="p0215" class="textfl"><a href="#f0040">图 21.7</a> 展示了使用动态并行的贝塞尔曲线计算代码。它把<a href="#f0035">图 21.6</a> 中的 <span class="inlinecode">computeBezierLines</span> 核函数拆分成两个核函数。第一部分 <span class="inlinecode">computeBezierLines_parent</span> 确定每个控制点需要完成的工作量，第二部分 <span class="inlinecode">computeBezierLines_child</span> 执行计算。</p>
+<div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F00001Xf21-07-9780323912310.jpg" class="img" alt="image" width="1374" height="1324"/><figcaption class="figleg"><a id="sp0040"></a><span class="fignum">图 21.7</span> 使用动态并行的贝塞尔计算。</figcaption></figure></div><p id="p0220" class="text"><span id="page_484" aria-label="Page 484" epub:type="pagebreak" role="doc-pagebreak"></span>在新的组织方式下，<span class="inlinecode">computeBezierLines_parent</span> 核函数为每组控制点完成的工作量比原来的 <span class="inlinecode">computeBezierLines</span> 核函数小得多。因此，在 <span class="inlinecode">computeBezierLines_parent</span> 中，我们用单个线程来完成这项工作，而不是像 <span class="inlinecode">computeBezierLines</span> 那样使用一个线程块。在第 58 行，我们只需要为每组控制点启动一个线程。这体现在核函数启动配置中：用 <span class="inlinecode">BLOCK_DIM</span> 除 <span class="inlinecode">N_LINES</span> 得到线程块的数量。</p>
+<p id="p0225" class="text"><span class="inlinecode">computeBezierLines_parent</span> 核函数与 <span class="inlinecode">computeBezierLines</span> 核函数之间有两个关键差异。首先，用于访问控制点的索引是基于线程生成的（<a href="#f0040">图 21.7</a> 中的第 08 行），而不是基于线程块生成的（<a href="#f0035">图 21.6</a> 中的第 14 行）。这是因为如本章前面所述，每个控制点的工作由单个线程而不是线程块完成。其次，用于存储计算出的贝塞尔曲线点的内存在<a href="#f0040">图 21.7</a> 的第 15 行被动态确定并分配。这样，代码就可以为每组控制点分配恰好足够的内存，并将其放入 <span class="inlinecode">bLines</span> 变量。请注意，在<a href="#f0035">图 21.6</a> 中，每个 <span class="inlinecode">BezierLine</span> 元素都按最大可能的点数声明（第 09 行）。而在<a href="#f0040">图 21.7</a> 中，声明只有一个指向动态分配存储空间的指针。允许核函数调用 <span class="inlinecode">cudaMalloc()</span> 函数，可以在控制点曲率变化显著的情况下大幅减少内存使用。</p>
+<p id="p0230" class="text">当 <span class="inlinecode">computeBezierLines_parent</span> 核函数中的某个线程确定了它的控制点组所需的工作量后，它会调用 <span class="inlinecode">computeBezierLines_child</span> 核函数，并启动一个子网格来完成这些工作（<a href="#f0040">图 21.7</a> 中的第 19 行）。在我们的示例中，父网格中的每个线程都为分配给它的控制点组创建一个新网格。这样一来，每个线程块完成的工作量就是均衡的。每个子网格完成的工作量各不相同。</p>
+<p id="p0235" class="text">动态并行的核函数调用与主机发起的核函数调用具有相同的异步语义。也就是说，一旦子核函数被调用，调用它的父线程就可以继续执行后续代码，而无需等待子网格完成。如果父线程希望等待其子网格完成，它必须执行显式同步，与主机线程的做法类似。如果不进行显式同步，线程可以结束执行，但在结束时存在一次隐式同步。隐式同步确保父网格终止前所有子网格都已终止。关于父子网格同步语义的更多细节，请读者参阅 CUDA C++ 编程指南（<a href="#bib3" role="doc-biblioref" epub:type="biblioref">NVIDIA Corporation, 2021</a>）。</p>
+<p id="p0240" class="text">在 <span class="inlinecode">computeBezierLines_parent</span> 终止后，核函数内部使用 <span class="inlinecode">cudaMalloc</span> 分配的内存仍需要释放。为此，实现了一个额外的核函数 <span class="inlinecode">freeVertexMem</span>（第 42–47 行），由主机调用。该核函数并行释放 <span class="inlinecode">bLines_d</span> 数据结构中为顶点分配的所有存储空间（第 61 行）。这个核函数是必要的，因为设备核函数在设备上分配的顶点存储空间必须由设备核函数来释放。关于在设备上使用 <span class="inlinecode">cudaMalloc</span> 和 <span class="inlinecode">cudaFree</span> 的更多细节，请读者参阅 CUDA C++ 编程指南（<a href="#bib3" role="doc-biblioref" epub:type="biblioref">NVIDIA Corporation, 2021</a>）。</p></section></section><section><a id="s0045"></a><h2 class="h1hd" id="st0060">21.4 递归示例：四叉树</h2><p id="p0245" class="textfl"><span id="page_485" aria-label="Page 485" epub:type="pagebreak" role="doc-pagebreak"></span>动态并行还允许程序员实现递归算法。在本节中，我们用四叉树<em>（quadtree）</em>（<a href="#bib2" role="doc-biblioref" epub:type="biblioref" id="BIB_2">Finkel and Bentley, 1974</a>）来说明如何利用动态并行实现递归。四叉树通过递归地将二维空间细分为四个大小相等的<em>象限</em>来划分该空间。每个象限被认为是四叉树的一个<em>节点</em>，其中包含一定数量的点。如果某个象限中的点数大于某个固定的最小值，该象限将被递归细分为四个象限，即四个子节点。</p>
+<p id="p0250" class="text"><span id="page_486" aria-label="Page 486" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0045">图 21.8</a> 说明了使用动态并行构建四叉树的过程。在这个实现中，一个节点（象限）分配给一个线程块。最初（depth=0），一个线程块（线程块 0）被分配整个二维空间（四叉树的根节点），其中包含所有点。它把空间划分为四个象限，并为每个象限启动一个线程块（depth=1）。这些子线程块（线程块 00 至 03）如果包含的点数超过固定的最小值，将再次细分它们各自的象限。在本例中，我们假设最小值为 2，因此线程块 00 和 02 不启动子线程块，而线程块 01 和 03 各自启动一个含四个线程块的网格。</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F00001Xf21-08-9780323912310.jpg" class="img" alt="image" width="1375" height="1568"/><figcaption class="figleg"><a id="sp0045"></a><span class="fignum">图 21.8</span> 四叉树示例。每个线程块被分配一个象限。如果某个象限中的点数超过两个，该线程块就启动四个子线程块。阴影中的线程块是每一深度层级的活动线程块。</figcaption></figure></div><p id="p0255" class="text">如<a href="#f0045">图 21.8</a> 右侧的流程图所示，线程块首先检查其象限中的点数是否大于进一步细分所需的最小值，以及是否尚未达到最大深度。如果两个条件中有任何一个不满足，该象限的工作就完成了，线程块返回。否则，线程块计算包围其象限的边界框的中心。该中心位于四个新象限的中间。随后统计每个新象限中的点数。使用一个四元素的扫描操作来计算各点存储位置的偏移量。然后对点进行重排，使同一象限中的点归在一起，放入点存储区中各自的分段。最后，线程块启动一个包含四个线程块的子网格，每个线程块对应四个新象限中的一个。</p>
+<p id="p0260" class="text"><a href="#f0050">图 21.9</a> 接着<a href="#f0045">图 21.8</a> 中的小示例，详细说明了在每个深度层级如何对点进行重排。在本例中，我们假设每个象限必须包含两个以上的点才能进一步划分。算法使用两个缓冲区来存储点并对其重排。算法结束时，点应当位于缓冲区 0 中。因此，如果在满足终止条件时点还在缓冲区 1 中，则在退出前可能有必要交换缓冲区内容。</p>
+<div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F00001Xf21-09-9780323912310.jpg" class="img" alt="image" width="1374" height="602"/><figcaption class="figleg"><a id="sp0050"></a><span class="fignum">图 21.9</span> 四叉树示例。在每个深度层级，线程块把同一象限中的所有点归在一起。(A) 显示缓冲区 0 中的初始输入列表；(B) 显示列表被重排为对应四个象限的四个子列表之后的状况；(C) 显示列表被重排以反映第二层象限后的状况；(D) 显示列表被重排以反映第三层象限后的状况；(E) 最终列表被复制到缓冲区 0 以返回给调用者。</figcaption></figure></div><p id="p0265" class="text"><span id="page_487" aria-label="Page 487" epub:type="pagebreak" role="doc-pagebreak"></span>在主机代码的初始核函数调用中（depth=0），线程块 0 被分配缓冲区 0 中的所有点，如<a href="#f0050">图 21.9A</a> 所示。线程块 0 进一步把象限划分为四个子象限，把同一子象限中的所有点归在一起，并按象限把点存入缓冲区 1，如<a href="#f0050">图 21.9B</a> 所示。它的四个子线程块（线程块 00 至 03）被分别分配四个新象限，如<a href="#f0050">图 21.9B</a> 中标记的范围所示。线程块 00 和 02 不会启动子线程块，因为它们各自被分配象限中的点数只有 2。线程块 01 和 03 对它们的点进行重排以归组同一象限中的点，并各自启动四个子线程块，如<a href="#f0050">图 21.9C</a> 所示。线程块 010、011、012、013、030、031 和 032 不启动子线程块（它们有 2 个或更少的点），也不需要交换点（它们已经在缓冲区 0 中）。只有线程块 033 对它的点进行重排并启动四个线程块，如<a href="#f0050">图 21.9D</a> 所示。线程块 0330 至 0333 在把它们的点交换到缓冲区 0 之后退出，这可以在<a href="#f0050">图 21.9E</a> 中看到。</p>
+<p id="p0270" class="text"><span id="page_488" aria-label="Page 488" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0055" href="#f0055">图 21.10</a> 中的核函数代码实现了<a href="#f0045">图 21.8</a> 中的流程图。四叉树用一个节点数组实现，数组中的每个元素包含四叉树一个节点的所有相关信息（定义见<a href="#s0085">附录 A21.1</a>）。在四叉树构建过程中，核函数执行期间会创建新节点并放入数组中。核函数代码假设 <span class="inlinecode">node</span> 参数指向节点数组中下一个可用的位置。</p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F00001Xf21-10-9780323912310.jpg" class="img" alt="image" width="1375" height="1295"/><figcaption class="figleg"><a id="sp0055"></a><span class="fignum"><a href="#Bf0055">图 21.10</a></span> 使用动态并行的四叉树：递归核函数（支持代码见<a href="#s0085">附录 A210.1</a>）。</figcaption></figure>
+</div>
+<p id="p0275" class="text"><span id="page_489" aria-label="Page 489" epub:type="pagebreak" role="doc-pagebreak"></span>每个线程块首先检查其节点（象限）中的点数。一个点是一对表示 <span class="inlinecode">x</span> 和 <span class="inlinecode">y</span> 坐标的浮点数（定义见<a href="#s0085">附录 A21.1</a>）。如果点数小于或等于最小值，或者达到了最大深度（第 11 行），线程块将退出。最大深度可以根据应用需求或硬件限制来指定（参见<a href="Ch012_263-289_B9780323912310000252.html#s0030">第 12.5 节</a>）。退出之前，如有必要，线程块可能需要把它的点从缓冲区 1 写入缓冲区 0。这是因为四叉树构建完成后，期望输出位于缓冲区 0 中。将点从缓冲区 1 传输到缓冲区 0 的工作在设备函数 <span class="inlinecode">check_num_points_and_depth()</span> 中完成，如<a href="#f0060">图 21.11</a> 所示。</p>
+<div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F00001Xf21-11a-9780323912310.jpg" class="img" alt="image" width="1375" height="1436"/><img src="../images/F00001Xf21-11b-9780323912310.jpg" class="img" alt="image" width="1371" height="1461"/><figcaption class="figleg"><a id="sp0060"></a><span class="fignum">图 21.11</span> 使用动态并行的四叉树：设备函数（支持代码见<a href="#s0085">附录 A21.1</a>）。</figcaption></figure>
+</div>
+<p id="p0280" class="text"><span id="page_490" aria-label="Page 490" epub:type="pagebreak" role="doc-pagebreak"></span>接下来，计算边界框的中心（第 17 行）。边界框由其左上角和右下角定义。当前节点边界框的左上角和右下角顶点的坐标由调用者作为节点数据的一部分提供。中心的坐标按这两个角点之间中点的坐标计算。边界框的定义（包括函数 <span class="inlinecode">compute_center()</span>）见<a href="#s0085">附录 A21.1</a>。</p>
+<p id="p0285" class="text">由于中心将四个象限分开，可以通过把每个点与中心点比较来确定当前节点中的每个点属于哪个象限。每个象限中的点数被统计出来（第 26 行）。设备函数 <span class="inlinecode">count_points_in_children()</span> 可以在<a href="#f0060">图 21.11</a> 中找到。为清晰起见，这些函数做了简化。线程块的各线程协同遍历点的范围，并使用原子操作更新共享内存中每个象限的计数器。</p>
+<p id="p0290" class="text">随后调用设备函数 <span class="inlinecode">scan_for_offsets()</span>（第 29 行）。如<a href="#f0060">图 21.11</a> 所示，它对共享内存中的四个计数器执行一次扫描。然后，它把父象限的全局偏移量加到这些值上，从而得出缓冲区中每个象限组的起始偏移量。</p>
+<p id="p0295" class="text">利用各象限的偏移量，使用 <span class="inlinecode">reorder_points()</span> 对点进行重排（第 32 行）。为简单起见，这个设备函数（<a href="#f0060">图 21.11</a>）对四个象限计数器中的一个执行原子操作，以得出每个点的放置位置。</p>
+<p id="p0300" class="text">最后，线程块中的最后一个线程（第 35 行）确定节点数组中可用于子节点的下一个位置（第 37 行），为子象限准备新的节点内容（第 40 行），并启动一个包含四个线程块的子核函数（第 43 行）。设备函数 <span class="inlinecode">prepare_children()</span> 通过设置子节点的边界框界限以及每个象限中点的范围来为子节点准备新的节点内容。<span class="inlinecode">prepare_children()</span> 函数可以在图 13.14 中找到（第 75 行）。</p>
+<p id="p0305" class="text">其余定义见<a href="#s0085">附录 A21.1</a>。</p></section><section><a id="s0050"></a><h2 class="h1hd" id="st0065">21.5 重要考量</h2><p id="p0310" class="textfl">在本节中，我们将简要说明使用动态并行的程序在执行行为方面的一些重要考量。程序员要充分理解这些考量，才能自信地使用动态并行。</p><section><a id="s0055"></a><h3 class="h2hd" id="st0070">内存与数据可见性</h3><p id="p0315" class="textfl">当父线程向子网格传递内存指针时，它必须确保所指向的内存对子网格是可访问的，这样子网格就不会试图访问无效的内存。父线程及其子网格都能访问的内存包括全局内存、常量内存和纹理内存。父线程不应向子网格传递指向局部内存或共享内存的指针，因为局部内存和共享内存分别只对线程自身和线程块私有。</p>
+<p id="p0320" class="text"><span id="page_491" aria-label="Page 491" epub:type="pagebreak" role="doc-pagebreak"></span>除了确保父线程传递给子网格的内存对子网格可访问之外，程序员还必须清楚父线程写入该内存的数据何时对子网格可见，反之亦然。在执行的进程中，父线程和子网格对内存有一致视图的时刻有两个：父线程启动子网格的时刻，以及父线程通过同步 API 调用的完成得知子网格完成之时。换句话说，当父线程启动子网格时，子网格能够看到该启动之前对内存的所有更新，但对该启动之后的更新则没有这种保证。同样，在父线程对子网格的完成进行同步之前，子网格对内存所做的任何更新也都没有保证对父线程可见。</p>
+<p id="p0325" class="text">关于父线程与子网格之间内存和数据可见性的更多细节，请读者参阅 CUDA C++ 编程指南（<a href="#bib3" role="doc-biblioref" epub:type="biblioref">NVIDIA Corporation, 2021</a>）。</p></section><section><a id="s0060"></a><h3 class="h2hd" id="st0075">待启动池配置</h3><p id="p0330" class="textfl">待启动池是一个缓冲区，用于跟踪正在执行或等待执行的核函数。该池被分配固定大小的空间，因此可以支持固定数量的待启动核函数调用（默认为 2048）。如果超出这个数量，就会使用虚拟化池，导致显著的性能下降，下降幅度可能达到一个数量级或更多。为了避免这种性能下降，程序员可以在主机函数中执行 <span class="inlinecode">cudaDeviceSetLimit()</span> API 调用来设置 <span class="inlinecode">cudaLimitDevRuntimePendingLaunchCount</span> 配置，从而增大固定池的大小。</p>
+<p id="p0335" class="text">例如，在<a href="#s0020">第 21.3 节</a> 的贝塞尔曲线计算中，如果 <span class="inlinecode">N_LINES</span> 设为 4096，那么将启动 4096 个子网格，其中一半的启动将使用虚拟化池。这会造成严重的性能损失。然而，如果固定大小池设为 4096，执行时间将大幅缩短。</p>
+<p id="p0340" class="text">作为一般性建议，固定大小池的大小应设置为预期启动的网格数量（如果它超过默认大小的话）。在贝塞尔曲线示例中，我们会先调用 <span class="inlinecode">cudaDeviceSetLimit(cudaLimitDevRuntimePendingLaunchCount, N_LINES)</span>，再调用 <span class="inlinecode">computeBezierLines_parent()</span> 核函数。</p></section><section><a id="s0065"></a><h3 class="h2hd" id="st0080">流</h3><p id="p0345" class="textfl"><span id="page_492" aria-label="Page 492" epub:type="pagebreak" role="doc-pagebreak"></span>正如主机代码可以使用流来并发执行核函数一样，设备线程在使用动态并行启动网格时也可以使用流。流的范围对其创建所在的线程块是私有的。当核函数调用未指定流时，线程块中所有线程都使用默认的 NULL 流。这意味着在同一线程块中启动的所有网格都将被串行化，即使它们是由不同线程启动的。然而，通常情况下，线程块中不同线程启动的网格是相互独立的，可以并发执行。因此，如果程序员希望避免串行化带来的性能损失，就必须注意在每个线程中显式使用不同的流。</p>
+<p id="p0350" class="text"><a href="#s0020">第 21.3 节</a> 的贝塞尔曲线示例启动的子网格数量与 <span class="inlinecode">computeBezierLines_parent()</span> 核函数中的父线程数量相同（<a href="#f0040">图 21.7</a> 中的第 19 行）。如果使用默认的 NULL 流，同一父线程块启动的所有网格都将被串行化。因此，在启动 <span class="inlinecode">computeBezierLines_child()</span> 核函数时使用默认 NULL 流，与不使用动态并行的原核函数相比，会大幅降低并行性。</p>
+<p id="p0355" class="text">如果需要更高的并发度，则必须在每个线程中创建并使用命名流。<a id="Bf0065" href="#f0065">图 21.12</a> 展示了应替换<a href="#f0040">图 21.7</a> 中第 19 行的代码。使用这段代码后，从同一线程块启动的核函数将被放入不同的流中，可以并发运行。这将更好地利用所有 SM，使执行时间显著缩短。</p>
+<div class="pageavoid"><figure class="fig" id="f0065"><img src="../images/F00001Xf21-12-9780323912310.jpg" class="img" alt="image" width="1373" height="281"/><figcaption class="figleg"><a id="sp0065"></a><span class="fignum"><a href="#Bf0065">图 21.12</a></span> 使用命名流的子核函数启动。</figcaption></figure></div></section><section><a id="s0070"></a><h3 class="h2hd" id="st0085">嵌套深度</h3><p id="p0360" class="textfl">通过动态并行启动的核函数本身可以调用其他核函数，而这些核函数又可以继续调用其他核函数，依此类推。我们在<a href="Ch012_263-289_B9780323912310000252.html#s0025">第 12.4 节</a> 的四叉树应用中看到过这样的核函数示例。每一次下级启动都被视为一个新的<em>嵌套层级</em>，而达到的层级总数称为<em>嵌套深度</em>。当前硬件支持的最大嵌套深度为 24 层。因此，像四叉树示例中的那种核函数，在决定是否进行动态启动之前，应当检查这个限制。</p>
+<p id="p0365" class="text">在存在父子同步的情况下，由于系统需要存储父网格状态的内存数量，嵌套深度还会受到额外的限制。这一限制被称为<em>同步深度</em>。关于嵌套深度和同步深度的更多细节，请读者参阅 CUDA C++ 编程指南（<a href="#bib3" role="doc-biblioref" epub:type="biblioref">NVIDIA Corporation, 2021</a>）。</p></section></section><section><a id="s0075"></a><h2 class="h1hd" id="st0090">21.6 小结</h2><p id="p0370" class="textfl"><span id="page_493" aria-label="Page 493" epub:type="pagebreak" role="doc-pagebreak"></span>CUDA 动态并行扩展了 CUDA 编程模型，允许核函数调用其他核函数。这使得每个线程能够动态发现工作，并根据新发现的工作量启动新的网格。它还支持线程动态分配设备内存。正如我们在贝塞尔曲线计算示例中所展示的，这些扩展可以带来更好的线程间和线程块间工作均衡，以及更高效的内存使用。CUDA 动态并行还帮助程序员实现递归算法，正如四叉树示例所示。</p>
+<p id="p0375" class="text">除了确保更好的工作均衡之外，动态并行在可编程性方面还提供了许多优势。然而，必须牢记的是，启动线程数很少的网格可能导致 GPU 资源的严重利用不足。一般性建议是启动包含大量线程块的子网格；如果线程块数量较少，则至少要启动包含大量线程的线程块。</p>
+<p id="p0380" class="text">类似地，嵌套并行可以被视为树处理的一种形式。当树节点较粗（即每个节点部署大量线程）和/或分支度数较大（即每个父节点有大量子节点）时，嵌套并行能提供更高的性能。由于嵌套深度在硬件上是有限制的，因此只有相对较浅的树才能被高效实现。</p>
+<p id="p0385" class="text">要有效使用动态并行，程序员需要理解内存内容可见性、待启动数量以及流等细节。在动态并行中，谨慎地使用父网格与子网格之间的内存和流，对于正确执行以及在启动子网格时达到期望的并行度至关重要。</p></section><section><a id="s0080"></a><h2 class="h1hd" id="st0095">习题</h2><a id="p0390"></a><a id="li0030"></a><div><ol>
+<li class="numlista" id="o0040"><a id="p0395"></a><a id="li0035"></a>1. 对于贝塞尔曲线示例，以下哪些陈述是正确的？<ol>
+<li class="numlist1a" id="o0045"><a id="p0400"></a>a. 如果 <span class="inlinecode">N_LINES</span>=1024 且 <span class="inlinecode">BLOCK_DIM</span>=64，那么启动的子核函数数量将是 16。</li>
+<li class="numlist1a" id="o0050"><a id="p0405"></a>b. 如果 <span class="inlinecode">N_LINES</span>=1024，固定大小池应从 2048（默认值）减小到 1024，以获得最佳性能。</li>
+<li class="numlist1a" id="o0055"><a id="p0410"></a>c. 如果 <span class="inlinecode">N_LINES</span>=1024、<span class="inlinecode">BLOCK_DIM</span>=64，并且使用每线程流，那么总共将部署 16 个流。</li>
+</ol></li>
+<li class="numlista" id="o0060"><a id="p0415"></a><a id="li0040"></a>2. 考虑一个由 64 个等距点组成的二维排列。它用一个四叉树进行分类。四叉树的最大深度是多少（包括根节点）？<ol>
+<li class="numlist1a" id="o0065"><a id="p0420"></a>a. 21</li>
+<li class="numlist1a" id="o0070"><a id="p0425"></a>b. 4</li>
+<li class="numlist1a" id="o0075"><a id="p0430"></a>c. 64</li>
+<li class="numlist1a" id="o0080"><a id="p0435"></a>d. 16</li>
+</ol></li>
+<li class="numlista" id="o0085"><a id="p0440"></a><a id="li0045"></a>3. 对于同一个四叉树，子核函数启动的总次数是多少？<ol>
+<li class="numlist1a" id="o0090"><a id="p0445"></a>a. 21</li>
+<li class="numlist1a" id="o0095"><a id="p0450"></a><span id="page_494" aria-label="Page 494" epub:type="pagebreak" role="doc-pagebreak"></span>b. 4</li>
+<li class="numlist1a" id="o0100"><a id="p0455"></a>c. 64</li>
+<li class="numlist1a" id="o0105"><a id="p0460"></a>d. 16</li>
+</ol></li>
+<li class="numlista" id="o0110"><a id="p0465"></a>4. <strong>判断对错：</strong>父核函数可以定义新的<span class="inlinecode">__constant__</span> 变量，这些变量将由子核函数继承。</li>
+<li class="numlista" id="o0115"><a id="p0470"></a>5. <strong>判断对错：</strong>子核函数可以访问其父核函数的共享内存和局部内存。</li>
+<li class="numlista" id="o0120"><a id="p0475"></a><a id="li0050"></a>6. 六个包含 256 个线程的线程块运行以下父核函数：<div class="pageavoid"><figure class="fig" id="f0075"><img src="../images/F00001Xu21-02-9780323912310.jpg" class="img" alt="image" width="1372" height="309"/></figure></div>有多少子核函数可以并发运行？<ol>
+<li class="numlist1a" id="o0125"><a id="p0485"></a>a. 1536</li>
+<li class="numlist1a" id="o0130"><a id="p0490"></a>b. 256</li>
+<li class="numlist1a" id="o0135"><a id="p0495"></a>c. 6</li>
+<li class="numlist1a" id="o0140"><a id="p0500"></a>d. 1</li>
+</ol></li>
+</ol></div><p class="textfl"><span id="page_495" aria-label="Page 495" epub:type="pagebreak" role="doc-pagebreak"></span></p></section><section><a id="s0085"></a><h2 class="h1hd" id="st0105">A21.1 四叉树示例的支持代码</h2><a id="p0505"></a><div class="pageavoid"><figure class="fig" id="f0080"><img src="../images/F00001Xu21-03-1-9780323912310.jpg" class="img" alt="image" width="1374" height="1775"/></figure></div><p class="textfl"><span id="page_496" aria-label="Page 496" epub:type="pagebreak" role="doc-pagebreak"></span></p><div class="pageavoid"><figure class="fig" id="f9080"><img src="../images/F00001Xu21-03-2-9780323912310.jpg" class="img" alt="image" width="1375" height="1887"/></figure></div><div class="pageavoid"><figure class="fig" id="f9085"><img src="../images/F00001Xu21-03-3-9780323912310.jpg" class="img" alt="image" width="1373" height="760"/></figure></div></section><footer><section aria-label="bibliography"><a id="bibliog0010"></a><h2 class="reftitle" id="st0100">参考文献</h2><section><p class="reflist" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib1"><a aria-label="noteref" href="#BIB_1">Bezier Curves</a> Bezier Curves, <a href="http://en.wikipedia.org/wiki/B%C3%A9zier_curve">http://en.wikipedia.org/wiki/B%C3%A9zier_curve</a>.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib2"><a aria-label="noteref" href="#BIB_2">Finkel and Bentley, 1974</a> Finkel RA, Bentley JL. <cite>Quad trees: a data structure for retrieval on composite keys</cite>. <cite><em>Acta Inform.</em></cite> 1974;4(1):1–9.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib3">NVIDIA Corporation, 2021 NVIDIA Corporation, 2021. CUDA C++ programming guide, March.</p></section></section></footer></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>

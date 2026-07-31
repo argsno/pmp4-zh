@@ -1,0 +1,155 @@
+{
+  "page": "Ch008_173-189_B9780323912310000173",
+  "nodes": [
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[11]",
+      "en": "That is, the larger the T value, the more the input grid point values are reused. The upper bound on the ratio as T increases asymptotically is 13/4=3.25 OP/B.",
+      "zh": "也就是说，T 值越大，输入网格点值的重用就越多。随着 T 增大，该比值的上限渐近为 13/4=3.25 OP/B。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[12]",
+      "en": "Unfortunately, the 1024 limit of the block size on current hardware makes it difficult to have large T values. The practical limit on T is 8 because an 8×8×8 thread block has a total of 512 threads. Furthermore, the amount of shared memory that is used for the input tile is proportional to T【1】3【/1】. Thus a larger T dramatically increases the consumption of the shared memory. These hardware constraints force us to use small tile sizes for the tiled stencil kernel. In contrast, convolution is often used to process 2D images in which larger tile dimensions (T value) such as 32×32 can be used.",
+      "zh": "遗憾的是，当前硬件对线程块大小的 1024 上限使得 T 值难以取大。T 的实际可行上限是 8，因为一个 8×8×8 的线程块总共有 512 个线程。此外，用于输入分块的共享内存量正比于 T【1】3【/1】。因此，T 越大，共享内存消耗就增加得越剧烈。这些硬件限制迫使我们为分块模板核函数使用较小的分块尺寸。相比之下，卷积常用于处理二维图像，可以采用 32×32 这样更大的分块尺寸（T 值）。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[13]",
+      "en": "There are two major disadvantages to the small limit on the T value that is imposed by the hardware. The first disadvantage is that it limits the reuse ratio and thus the compute to memory access ratio. For T=8 the ratio for a seven-point stencil is only 1.37 OP/B, which is much less than the upper bound of 3.25 OP/B. The reuse ratio decreases as the T value decreases because of the halo overhead. As we discussed in 【1】Chapter 7【/1】, Convolution, halo elements are less reused than the nonhalo elements are. As the portion of halo elements in the input tile increases, both the data reuse ratio and the floating-point to global memory access ratio decrease. For example, for a convolution filter with radius 1, a 32×32 2D input tile has 1024 input elements. The corresponding output tile has 30×30=900 elements, which means that 1024−900=124 of the input elements are halo elements. The portion of halo elements in the input tile is about 12%. In contrast, for a 3D stencil of order 1, an 8×8×8 3D input tile has 512 elements. The corresponding output tile has 6×6×6=216 elements, which means that 512−216=296 of the input elements are halo elements. The portion of halo elements in the input tile is about 58%!",
+      "zh": "硬件对 T 值的小上限有两个主要不利之处。第一个不利之处是它限制了重用率，进而限制了计算访存比。对于 T=8，七点模板的比值仅为 1.37 OP/B，远低于 3.25 OP/B 的上限。由于光环开销，重用率随着 T 值的减小而下降。正如我们在 【1】第 7 章【/1】“卷积”中所讨论的，光环元素的被重用程度低于非光环元素。随着输入分块中光环元素占比的增加，数据重用率和浮点运算与全局内存访问比都会下降。例如，对于半径为 1 的卷积滤波器，32×32 的二维输入分块有 1024 个输入元素，对应的输出分块有 30×30=900 个元素，这意味着 1024−900=124 个输入元素是光环元素，光环元素在输入分块中约占 12%。相比之下，对于 1 阶三维模板，8×8×8 的三维输入分块有 512 个元素，对应的输出分块有 6×6×6=216 个元素，这意味着 512−216=296 个输入元素是光环元素，光环元素在输入分块中约占 58%！"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[14]",
+      "en": "The second disadvantage of a small tile size is that it has an adverse impact on memory coalescing. For an 8×8×8 tile, every warp that consists of 32 threads will be responsible for loading four different rows of the tile that have eight input values each. Hence on the same load instruction the threads of the warp will access at least four distant locations in global memory. These accesses cannot be coalesced and will underutilize the DRAM bandwidth. Therefore T needs to be a much larger value for the reuse level to be closer to 3.25 OP/B and to enable full use of the DRAM bandwidth. The need for a larger T motivates the approach that we will cover in the following section.",
+      "zh": "小分块尺寸的第二个不利之处是它对内存合并有不利影响。对于一个 8×8×8 的分块，每个由 32 个线程组成的线程束（warp）将负责加载分块的四个不同行，每行有 8 个输入值。因此，在同一条加载指令上，线程束中的线程将访问全局内存中至少四个相距较远的位置。这些访问无法合并，会浪费 DRAM 带宽。因此，T 需要大得多，重用水平才能更接近 3.25 OP/B，并得以充分利用 DRAM 带宽。对更大 T 值的需求催生了下一节将要介绍的方法。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "8.4 Thread coarsening",
+      "zh": "8.4 线程粗化"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "As we mentioned in the previous section, the fact that stencils are typically applied to 3D grids and the sparse nature of the stencil patterns can make stencil sweep a less profitable target of shared memory tiling than convolution. This section presents the use of thread coarsening to overcome the block size limitation by coarsening the work that is done by each thread from calculating one grid point value to a column of grid point values, as illustrated in 【1】Fig. 8.9【/1】. Recall from 【2】Section 6.3【/2】 that with thread coarsening, the programmer partially serializes parallel units of work into each thread and reduces the price paid for parallelism. In this case, the price that is paid for parallelism is the low data reuse due to the loading of halo elements by each block.",
+      "zh": "正如我们在上一节提到的，模板通常应用于三维网格这一事实，加上模板模式的稀疏性，可能使模板扫掠成为不如卷积有吸引力的共享内存分块对象。本节介绍如何使用线程粗化来克服线程块大小限制：把每个线程完成的工作从计算一个网格点值粗化为计算一列网格点值，如 【1】图 8.9【/1】 所示。回顾 【2】第 6.3 节【/2】，通过线程粗化，程序员把并行的工作单元部分地串行化到每个线程中，从而降低为并行付出的代价。在本例中，为并行付出的代价是每个线程块加载光环元素所导致的低数据重用。"
+    },
+    {
+      "id": "n0056",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 8.9【/1】 Thread coarsening in the z direction for a 3D seven-point stencil sweep.",
+      "zh": "【1】图 8.9【/1】 三维七点模板扫掠在 z 方向上的线程粗化。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "In 【1】Fig. 8.9【/1】 we assume that each input tile consists of 【M2】【M3】 grid points. Note that to make the inside of the input tile visible, we have peeled away the front, left, and top layers of the tile. We also assume that each output tile consists of 【M4】【M5】 grid points. The x, y, and z directions in the illustration are shown with the coordinate system for the input and the output. Each x-y plane of the input tile consists of 【M6】【M7】 grid points, and each x-y plane of the output tile consists of 【M8】【M9】 grid points. The thread block that is assigned to process this tile consists of the same number of threads as one x-y plane of the input tile (i.e., 6×6). In the illustration we show only the internal threads of the thread block that are active in computing output tile values (i.e., 4×4).",
+      "zh": "在 【1】图 8.9【/1】 中，我们假设每个输入分块由 【M2】【M3】 个网格点组成。注意，为了让输入分块的内部可见，我们剥离了分块的前、左、顶三层。我们还假设每个输出分块由 【M4】【M5】 个网格点组成。图中的 x、y、z 方向与输入和输出的坐标系一致。输入分块的每个 x-y 平面由 【M6】【M7】 个网格点组成，输出分块的每个 x-y 平面由 【M8】【M9】 个网格点组成。负责处理该分块的线程块，其线程数与输入分块一个 x-y 平面的网格点数相同（即 6×6）。在图中我们只画出了线程块内参与计算输出分块值的内部线程（即 4×4）。"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "【1】Fig. 8.10【/1】 shows a kernel with thread coarsening in the z direction for a 3D seven-point stencil sweep. The idea is for the thread block to iterate in the z direction (into the figure), calculating the values of grid points in one x-y plane of the output tile during each iteration. The kernel first assigns each thread to a grid point in an x-y plane of the output (lines 03–04). Note that 【2】i【/2】 is the z index of the output tile grid point calculated by each thread. During each iteration, all threads in a block will be processing an x-y plane of an output tile; thus they will all be calculating output grid points whose z indices are identical.",
+      "zh": "【1】图 8.10【/1】 给出了一个在 z 方向上进行线程粗化的三维七点模板扫掠核函数。其思想是让线程块沿 z 方向（深入图面方向）迭代，在每次迭代中计算输出分块一个 x-y 平面中各网格点的值。核函数首先把每个线程分配到输出网格一个 x-y 平面中的某个网格点（第 03–04 行）。注意，【2】i【/2】 是每个线程计算的输出分块网格点的 z 索引。在每次迭代中，线程块中的所有线程将处理输出分块的一个 x-y 平面，因此它们计算的输出网格点 z 索引都相同。"
+    },
+    {
+      "id": "n0059",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 8.10【/1】 Kernel with thread coarsening in the z direction for a 3D seven-point stencil sweep.",
+      "zh": "【1】图 8.10【/1】 在 z 方向上进行线程粗化的三维七点模板扫掠核函数。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "Initially, each block needs to load into the shared memory the three input tile planes that contain all the points that are needed to calculate the values of the output tile plane that is the closest to the reader (marked with threads) in 【1】Fig. 8.9【/1】. This is done by having all the threads in the block load the first layer (lines 08–10) into the shared memory array 【2】inPrev_s【/2】 and the second layer (lines 11–13) into the shared memory array 【3】inCurr_s【/3】. For the first layer, 【4】inPrev_s【/4】 is loaded from the front layer of the input tile that has been peeled off for visibility into the internal layers.",
+      "zh": "最初，每个线程块需要把三个输入分块平面加载到共享内存中，这三个平面包含计算 【1】图 8.9【/1】 中最靠近读者（以线程标出）的输出分块平面各点取值所需的全部点。具体做法是让线程块中的所有线程把第一层（第 08–10 行）加载到共享内存数组 【2】inPrev_s【/2】 中，把第二层（第 11–13 行）加载到共享内存数组 【3】inCurr_s【/3】 中。对于第一层，【4】inPrev_s【/4】 的数据来自输入分块的前层——即为了显示内部各层面而被剥离的那一层。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "During the first iteration, all threads in a block collaborate to load the third layer needed for the current output tile layer into the shared memory array 【1】inNext_s【/1】 (lines 15–17). All threads then wait on a barrier (line 18) until all have completed loading the input tile layers. The conditions in lines 19–21 serve the same purpose as their counterparts in the shared memory kernel in 【2】Fig. 8.8【/2】.",
+      "zh": "在第一次迭代中，线程块中的所有线程协同把当前输出分块层所需的第三层加载到共享内存数组 【1】inNext_s【/1】 中（第 15–17 行）。随后所有线程在屏障处等待（第 18 行），直到所有线程都完成输入分块各层的加载。第 19–21 行的条件与 【2】图 8.8【/2】 中共享内存核函数的对应条件作用相同。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "Each thread then calculates its output grid point value in the current output tile plane using the four x-y neighbors stored in 【1】inCurr_s【/1】, the z neighbor in 【2】inPrev_s【/2】, and the z neighbor in 【3】inNext_s【/3】. All threads in the block then wait at the barrier to ensure that everyone completes its calculation before they move on to the next output tile plane. Once off the barrier, all threads collaborate to move the contents of 【4】inCurr_s【/4】 to 【5】inPrev_s【/5】 and the contents of 【6】inNext_s【/6】 to 【7】inCurr_s【/7】. This is because the roles that are played by the input tile planes change when the threads move by one output plane in the z direction. Thus by the end of each iteration, the block has two of the three input tile planes needed for calculating the output tile plane of the next iteration. All threads then move into the next iteration and load the third plane of the input tile needed for the output plane of the iteration. The updated mappings of 【8】inPrev_s【/8】, 【9】inCurr_s【/9】, and 【10】inNext_s【/10】 in preparation for the calculation of the second output tile plane are illustrated in 【11】Fig. 8.11【/11】.",
+      "zh": "随后，每个线程使用存储在 【1】inCurr_s【/1】 中的四个 x-y 邻点、存储在 【2】inPrev_s【/2】 中的 z 邻点以及存储在 【3】inNext_s【/3】 中的 z 邻点，计算其在当前输出分块平面中的输出网格点值。然后线程块中的所有线程在屏障处等待，确保每个线程都完成计算后再进入下一个输出分块平面。离开屏障后，所有线程协同把 【4】inCurr_s【/4】 的内容移到 【5】inPrev_s【/5】，把 【6】inNext_s【/6】 的内容移到 【7】inCurr_s【/7】。这是因为当线程在 z 方向上推进一个输出平面时，各输入分块平面所扮演的角色发生了变化。因此到每次迭代结束时，线程块已经拥有计算下一次迭代输出分块平面所需三个输入分块平面中的两个。随后所有线程进入下一次迭代，加载该迭代输出平面所需的输入分块第三平面。为计算第二个输出分块平面做准备时，【8】inPrev_s【/8】、【9】inCurr_s【/9】 和 【10】inNext_s【/10】 更新后的映射关系如 【11】图 8.11【/11】 所示。"
+    },
+    {
+      "id": "n0063",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 8.11【/2】【/1】 The mapping of the shared memory arrays to the input tile after the first iteration.",
+      "zh": "【1】【2】图 8.11【/2】【/1】 第一次迭代后共享内存数组与输入分块之间的映射关系。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "The advantages of the thread coarsening kernel are that it increases the tile size without increasing the number of threads and that it does not require all planes of the input tile to be present in the shared memory. The thread block size is now only T【1】2【/1】 instead of T【2】3【/2】, so we can use a much larger T value, such as 32, which would result in a block size of 1024 threads. With this T value we can expect that the floating-point arithmetic to global memory access ratio will be 【M3】【M4】, which is a significant improvement over the 1.37 OP/B ratio of the original shared memory tiling kernel and closer to the 3.25 OP/B upper bound. Moreover, at any point in time, only three layers of the input tile need to be in the shared memory. The shared memory capacity requirement is now 3T【5】2【/5】 elements instead of T【6】3【/6】 elements. For T=32 the shared memory consumption is now at a reasonable level of 3*32【7】2【/7】*4B=12KB per block.",
+      "zh": "线程粗化核函数的优点在于：它不增加线程数就能增大分块尺寸，而且不需要输入分块的所有平面都驻留在共享内存中。线程块大小现在只有 T【1】2【/1】 而不是 T【2】3【/2】，因此我们可以使用大得多的 T 值，比如 32，这样线程块大小为 1024 个线程。使用这个 T 值，我们可以预期浮点算术运算与全局内存访问比将达到 【M3】【M4】，这相对于原始共享内存分块核函数的 1.37 OP/B 是一个显著改进，也更接近 3.25 OP/B 的上限。此外，在任何时刻，输入分块只需要有三个平面位于共享内存中。共享内存容量需求现在是 3T【5】2【/5】 个元素，而不是 T【6】3【/6】 个元素。对于 T=32，共享内存消耗现在处于合理水平：每个线程块 3*32【7】2【/7】*4B=12KB。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "8.5 Register tiling",
+      "zh": "8.5 寄存器分块"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "The special characteristics of some stencil patterns can give rise to new optimization opportunities. Here, we present an optimization that can be especially effective for stencil patterns that involve only neighbors along the x, y, and z directions of the center point. All stencils in 【1】Fig. 8.3【/1】 fall into this description. The 3D seven-point stencil sweep kernel in 【2】Fig. 8.10【/2】 reflects this property. Each 【3】inPrev_s【/3】 and 【4】inNext_s【/4】 element is used by only one thread in the calculation of the output tile grid point with the same x-y indices. Only the 【5】inCurr_s【/5】 elements are accessed by multiple threads and truly need to be in the shared memory. The z neighbors in 【6】inPrev_s【/6】 and 【7】inNext_s【/7】 can instead stay in the registers of the single user thread.",
+      "zh": "某些模板模式的特殊特性可以带来新的优化机会。这里，我们介绍一种对只涉及中心点 x、y、z 方向邻点的模板模式特别有效的优化。【1】图 8.3【/1】 中的所有模板都属于这种类型。【2】图 8.10【/2】 中的三维七点模板扫掠核函数就体现了这一特性。每个 【3】inPrev_s【/3】 和 【4】inNext_s【/4】 元素在计算 x-y 索引相同的输出分块网格点时只被一个线程使用。只有 【5】inCurr_s【/5】 的元素被多个线程访问，才真正需要放在共享内存中。【6】inPrev_s【/6】 和 【7】inNext_s【/7】 中的 z 邻点则可以让它们留在唯一使用它们的那个线程的寄存器中。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "We take advantage of this property with the register tiling kernel in 【1】Fig. 8.12【/1】. The kernel is built on the thread coarsening kernel in 【2】Fig. 8.10【/2】 with some simple but important modifications. We will focus on these modifications. First, we create the three register variables 【3】inPrev【/3】, 【4】inCurr【/4】, and 【5】inNext【/5】 (lines 05, 07, 08). The register variables 【6】inPrev【/6】 and 【7】inNext【/7】 replace the shared memory arrays 【8】inPrev_s【/8】 and 【9】inNext【/9】, respectively. In comparison, we keep 【10】inCurr_s【/10】 to allow the x-y neighbor grid point values to be shared among threads. Therefore the amount of shared memory that is used by this kernel is reduced to one-third of that by the kernel in 【11】Fig. 8.12【/11】.",
+      "zh": "我们在 【1】图 8.12【/1】 的寄存器分块核函数中利用了这一特性。该核函数建立在 【2】图 8.10【/2】 的线程粗化核函数之上，做了一些简单但重要的修改。我们将重点放在这些修改上。首先，我们创建三个寄存器变量 【3】inPrev【/3】、【4】inCurr【/4】 和 【5】inNext【/5】 （第 05、07、08 行）。寄存器变量 【6】inPrev【/6】 和 【7】inNext【/7】 分别取代共享内存数组 【8】inPrev_s【/8】 和 【9】inNext【/9】。相比之下，我们保留 【10】inCurr_s【/10】，以便让 x-y 邻点网格点值可以在线程之间共享。因此，该核函数使用的共享内存量减少为 【11】图 8.12【/11】 中核函数的三分之一。"
+    },
+    {
+      "id": "n0068",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 8.12【/1】 Kernel with thread coarsening and register tiling in the z direction for a 3D seven-point stencil sweep.",
+      "zh": "【1】图 8.12【/1】 在 z 方向上进行线程粗化和寄存器分块的三维七点模板扫掠核函数。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "The initial loading of the previous and current input tile planes (lines 09–15) and the loading of the next plane of the input tile before each new iteration (lines 17–19) are all performed with register variables as destination. Thus the three planes of the “active part” of the input tile are held in the registers across the threads of the same block. In addition, the kernel always maintains a copy of the current plane of the input tile in the shared memory (lines 14 and 34). That is, the x-y neighbors of the active input tile plane are always available to all threads that need to access these neighbors.",
+      "zh": "对前一个和当前输入分块平面的初始加载（第 09–15 行），以及每次新迭代前对输入分块下一平面的加载（第 17–19 行），都以寄存器变量作为目标。因此，输入分块“活动部分”的三个平面由同一线程块内的各线程存放在寄存器中。此外，该核函数始终在共享内存中保留输入分块当前平面的一份副本（第 14 行和第 34 行）。也就是说，活动输入分块平面的 x-y 邻点始终可供所有需要访问这些邻点的线程使用。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "The kernels in 【1】Figs. 8.10【/1】 and 【2】8.12【/2】 both keep only the active part of the input tile in the on-chip memory. The number of planes in the active part depends on the order of the stencil and is 3 for the 3D seven-point stencil. The coarsening and register tiling kernel in 【3】Fig. 8.12【/3】 has two advantages over the coarsening kernel in 【4】Fig. 8.10【/4】. First, many reads from and writes to the shared memory are now shifted into registers. Since registers have significantly lower latency and higher bandwidth than the shared memory, we expect the code to run faster. Second, each block consumes only one-third of the shared memory. This is, of course, achieved at the cost of three more registers used by each thread, or 3072 more registers per block, assuming 32×32 blocks. The reader should keep in mind that register use will become even higher for higher-order stencils. If the register usage becomes a problem, one can go back to storing some of the planes in shared memory. This scenario represents a common tradeoff that often needs to be made between shared memory and register usage.",
+      "zh": "【1】图 8.10【/1】 和 【2】8.12【/2】 中的核函数都只在片上内存中保留输入分块的活动部分。活动部分中的平面数取决于模板的阶数，对于三维七点模板为 3。【3】图 8.12【/3】 中的粗化与寄存器分块核函数相对于 【4】图 8.10【/4】 中的粗化核函数有两个优势。第一，许多对共享内存的读和写现在转移到了寄存器中。由于寄存器的延迟明显低于共享内存、带宽明显高于共享内存，我们预期代码运行会更快。第二，每个线程块只消耗三分之一的共享内存。当然，这是以每个线程多用三个寄存器为代价实现的，假设 32×32 的线程块，每个线程块要多用 3072 个寄存器。读者应记住，对于更高阶的模板，寄存器使用量还会更高。如果寄存器使用成为问题，可以改回把部分平面存储在共享内存中。这种情形代表了常见的取舍：通常需要在共享内存和寄存器使用之间作出权衡。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "Overall, the data reuse is now spread across registers and the shared memory. The number of global memory accesses has not changed. The overall data reuse if we consider both registers and the shared memory remains the same as the thread coarsening kernel that uses only the shared memory for the input tile. Thus there is no impact on the consumption of the global memory bandwidth when we add register tiling to thread coarsening.",
+      "zh": "总体而言，数据重用现在分布在寄存器和共享内存之间。全局内存访问次数没有改变。如果同时考虑寄存器和共享内存，总体数据重用与仅使用共享内存存放输入分块的线程粗化核函数保持相同。因此，在线程粗化基础上加入寄存器分块，对全局内存带宽的消耗没有影响。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
+      "en": "Note that the idea of storing a tile of data collectively in the registers of a block’s threads is one that we have seen before. In the matrix multiplication kernels in 【1】Chapters 3【/1】, Multidimensional Grids and Data, and 【2】5【/2】, Memory Architecture and Data Locality, and in the convolution kernel in 【3】Chapter 7【/3】, Convolution, we stored the output value computed by each thread in a register of that thread. Hence the output tile that is computed by a block was stored collectively in the registers of that block’s threads. Therefore register tiling is not a new optimization but one that we have applied before. It just became more apparent in this chapter because we are now using registers to store part of the input tile: the same tile was sometimes stored in registers and other times stored in shared memory throughout the course of the computation.",
+      "zh": "请注意，把一块数据整体存储在某个线程块各线程寄存器中的想法，我们之前已经见过。在 【1】第 3 章【/1】“多维网格与数据”和 【2】第 5 章【/2】“内存体系结构与数据局部性”的矩阵乘法核函数中，以及在 【3】第 7 章【/3】“卷积”的卷积核函数中，我们都把每个线程计算出的输出值存放在该线程的寄存器中。因此，线程块计算出的输出分块整体存储在该线程块各线程的寄存器中。所以寄存器分块并不是一项新的优化，而是我们之前已经应用过的优化。它在本章中只是变得更加显眼，因为我们现在用寄存器来存放输入分块的一部分：同一分块在计算过程中有时存放在寄存器中，有时存放在共享内存中。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "8.6 Summary",
+      "zh": "8.6 小结"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "In this chapter we dived into stencil sweep computation, which seems to be just convolution with special filter patterns. However, because the stencils come from discretization and numerical approximation of derivatives in solving differential equations, they have two characteristics that motivate and enable new optimizations. First stencil sweeps are typically done on 3D grids, whereas convolution is typically done on 2D images or a small number of time slices of 2D images. This makes the tiling considerations different between the two and motivates thread coarsening for 3D stencils to enable larger input tiles and more data reuse. Second, the stencil patterns can sometimes enable register tiling of input data to further improve data access throughput and alleviate shared memory pressure.",
+      "zh": "本章深入探讨了模板扫掠计算。它看起来只是带有特殊滤波器模式的卷积，但由于模板源自求解微分方程时对导数的离散化和数值近似，因此它们具有两个催生并支撑新优化的特点。首先，模板扫掠通常在三维（3D）网格上进行，而卷积通常在二维（2D）图像或少量二维图像时间切片上进行。这使得两者的分块考量有所不同，并促使人们对三维模板采用线程粗化，以支持更大的输入分块和更多的数据重用。其次，模板模式有时还能对输入数据采用寄存器分块，从而进一步提升数据访问吞吐量并缓解共享内存压力。"
+    }
+  ]
+}

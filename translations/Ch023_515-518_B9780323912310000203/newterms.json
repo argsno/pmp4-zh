@@ -1,0 +1,82 @@
+[
+  {
+    "en": "golden age of computing",
+    "zh": "计算的黄金时代",
+    "note": "Ch023 关键词（n0004）与 23.2 结语段（p0080 'a golden age of computing'）"
+  },
+  {
+    "en": "self-driving cars",
+    "zh": "自动驾驶汽车",
+    "note": "Ch023 关键词（n0004）与 23.2 p0060"
+  },
+  {
+    "en": "individualized medicine",
+    "zh": "个体化医疗",
+    "note": "Ch023 关键词（n0004）与 23.2 p0065"
+  },
+  {
+    "en": "positron emission tomography (PET)",
+    "zh": "正电子发射断层成像（PET）",
+    "note": "Ch023 23.2 p0065；正文用缩写 PET"
+  },
+  {
+    "en": "workload",
+    "zh": "工作负载",
+    "note": "Ch023 23.1 p0035 'dynamically varying workload'"
+  },
+  {
+    "en": "paradigm shift",
+    "zh": "范式转变",
+    "note": "Ch023 23.2 p0055 与 p0075"
+  },
+  {
+    "en": "feature size",
+    "zh": "特征尺寸",
+    "note": "Ch023 23.2 p0070 半导体制造语境 'device feature size'"
+  },
+  {
+    "en": "lithography mask",
+    "zh": "光刻掩模版",
+    "note": "Ch023 23.2 p0070"
+  },
+  {
+    "en": "data analytics",
+    "zh": "数据分析",
+    "note": "Ch023 23.2 p0045；'video analytics' 译为视频分析"
+  },
+  {
+    "en": "Monte Carlo methods",
+    "zh": "蒙特卡洛方法",
+    "note": "Ch023 23.2 p0050"
+  },
+  {
+    "en": "adaptive refinement",
+    "zh": "自适应加密",
+    "note": "Ch023 23.2 p0050 'adaptive refinement methods'"
+  },
+  {
+    "en": "black art",
+    "zh": "玄学",
+    "note": "Ch023 23.1 p0030 'rather than a black art'；比喻义：难以掌握的秘传技巧"
+  },
+  {
+    "en": "G80",
+    "zh": "G80（保留英文，GPU 架构代号）",
+    "note": "Ch023 23.2 p0045 与图注 n0019"
+  },
+  {
+    "en": "A100",
+    "zh": "A100（保留英文，GPU 架构代号）",
+    "note": "Ch023 23.2 图注 n0019"
+  },
+  {
+    "en": "reduction",
+    "zh": "缩小",
+    "note": "glossary false positive；Ch023 23.2 p0070 'feature size reduction' 特征尺寸缩小，非归约模式。该搭配已在 denylist 'size reductions?' 覆盖"
+  },
+  {
+    "en": "device",
+    "zh": "器件",
+    "note": "glossary false positive；Ch023 23.2 p0070 'device feature size' 器件特征尺寸，半导体制造语境（指被制造的芯片），非 CUDA device（设备）。该搭配不在 denylist 中，需 team lead 扩展 denylist（如 'device\\s+feature\\s+size'）"
+  }
+]

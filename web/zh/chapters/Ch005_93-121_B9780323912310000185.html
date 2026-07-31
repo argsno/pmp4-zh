@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="zh-CN" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="前言部分">
+      <option value="Cover.html">封面图</option>
+      <option value="Title_page.html">标题页</option>
+      <option value="Contents.html">目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">致谢</option>
+    </optgroup>
+    <optgroup label="序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">课程资源</option>
+    </optgroup>
+    <optgroup label="第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第一部分：基本概念">
+      <option value="Part1.html">第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html">第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">参考文献</option>
+    </optgroup>
+    <optgroup label="第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html">第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html">第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html" selected>第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">习题</option>
+    </optgroup>
+    <optgroup label="第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第二部分：并行模式">
+      <option value="Part2.html">第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html">第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html">第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">习题</option>
+    </optgroup>
+    <optgroup label="第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html">第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第三部分：高级模式与应用">
+      <option value="Part3.html">第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html">第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html">第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">参考文献</option>
+    </optgroup>
+    <optgroup label="第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">参考文献</option>
+    </optgroup>
+    <optgroup label="第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html">第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">参考文献</option>
+    </optgroup>
+    <optgroup label="第四部分：高级实践">
+      <option value="Part4.html">第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html">第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">参考文献</option>
+    </optgroup>
+    <optgroup label="第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">参考文献</option>
+    </optgroup>
+    <optgroup label="第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Ch004_69-92_B9780323912310000033.html#st0075">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch005_93-121_B9780323912310000185.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/Ch005_93-121_B9780323912310000185.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch005_93-121_B9780323912310000185.html">对照</a></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter" id="c0005">
+<a id="Ch005_93-121_B9780323912310000185"></a><div id="page_93" aria-label="Page 93" epub:type="pagebreak" role="doc-pagebreak"></div><div id="CN"><a id="Ch005_93-121_B9780323912310000185titl"></a>Chapter 5</div><h1 class="chaptitle" epub:type="title" id="tit0010">内存体系结构与数据局部性</h1><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0085">本章介绍 GPU 的片上内存体系结构、访存受限应用的概念，以及改善访存受限应用性能的技术。本章以矩阵乘法为例，说明减少全局内存访问次数的机会；接着介绍分块技术，该技术利用屏障同步协调各线程的执行时机，从而改善数据局部性并减少全局内存访问。不过，分块技术会在边界检查方面引入额外的复杂性。本章继续以矩阵乘法为例，说明一个分块核函数要适用于任意规模的矩阵，需要额外进行哪些边界检查。本章最后概述共享内存和寄存器的使用会如何影响每个流式多处理器（SM）所能容纳的线程块数量。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">内存带宽；内存延迟；计算访存比；访存受限；吞吐量；片上内存；缓存；分块；数据局部性；条带挖掘；共享内存；私有内存；作用域；生命周期；占用率</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">大纲</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">5.1 内存访问效率的重要性</a> 94</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">5.2 CUDA 内存类型</a> 96</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">5.3 减少内存流量的分块</a> 103</li>
+<li class="chapoutl1" id="o0025"><a id="p0025"></a><a href="#s0025">5.4 分块矩阵乘法核函数</a> 107</li>
+<li class="chapoutl1" id="o0030"><a id="p0030"></a><a href="#s0030">5.5 边界检查</a> 112</li>
+<li class="chapoutl1" id="o0035"><a id="p0035"></a><a href="#s0035">5.6 内存使用对占用率的影响</a> 115</li>
+<li class="chapoutl1" id="o0040"><a id="p0040"></a><a href="#s0040">5.7 小结</a> 118</li>
+<li class="chapoutl1" id="u0010"><a id="p0045"></a><a href="#s0045">习题</a> 119</li>
+</ul>
+</div></nav>
+<p id="p0050" class="textfl"><a id="P93"></a><span id="page_94" aria-label="Page 94" epub:type="pagebreak" role="doc-pagebreak"></span>到目前为止，我们已经学会了如何编写 CUDA 核函数，以及如何配置和协调由大量线程执行的核函数。我们也已经了解了当前 GPU 硬件的计算体系结构，以及线程如何被调度到这些硬件上执行。本章将聚焦于 GPU 的片上内存体系结构，开始研究如何组织和放置数据，以便大量线程能够高效地访问。我们迄今研究过的 CUDA 核函数，很可能只能发挥底层硬件潜在速度的一小部分。性能之所以如此低下，是因为全局内存通常由片外 DRAM 实现，往往具有较长的访问延迟（数百个时钟周期）和有限的访问带宽。虽然执行时有大量线程可用，理论上可以容忍较长的内存访问延迟，但很容易出现这样的情形：全局内存访问路径上的流量拥塞使得除极少数线程以外的所有线程都无法取得进展，从而让流式多处理器（SM）中的部分核心处于空闲状态。为了规避这种拥塞，GPU 提供了一系列额外的片上内存资源来访问数据，可以消除与全局内存之间的大部分往来流量。本章将研究如何使用不同类型的内存来提升 CUDA 核函数的执行性能。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">5.1 内存访问效率的重要性</h2><p id="p0055" class="textfl">我们可以通过计算<a href="Ch003_47-68_B9780323912310000045.html#f0060">图 3.11</a> 中矩阵乘法核函数代码中执行次数最多的部分（该部分在<a href="#f0010">图 5.1</a> 中有所复现）的预期性能水平，来说明内存访问效率的影响。就执行时间而言，核函数最重要的部分，是计算 M 的一行与 N 的一列的点积的 for 循环。</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F000185f05-01-9780323912310.jpg" class="img" alt="image" width="1372" height="109"/><figcaption class="figleg"><a id="sp0010"></a><span class="fignum">图 5.1</span> <a href="Ch003_47-68_B9780323912310000045.html#f0060">图 3.11</a> 中矩阵乘法核函数执行次数最多的部分。</figcaption></figure>
+</div>
+<p id="p0060" class="text">在循环的每次迭代中，都要执行两次全局内存访问，对应一次浮点乘法和一次浮点加法。这两次全局内存访问分别从 M 数组和 N 数组中取出元素。浮点乘法运算把这两个元素相乘，浮点加法运算则把乘积累加到 <span class="inlinecode">Pvalue</span> 中。因此，浮点运算次数（FLOP）与从全局内存访问的字节数（B）之比为 2 FLOP 对 8 B，即 0.25 FLOP/B。我们把这一比值称为<em>计算访存比</em>，其定义为：程序某一区域内每从全局内存访问一个字节所执行的 FLOP 数。在文献中，这一比值有时也被称为<em>算术强度</em>或<em>计算强度</em>。</p>
+<p id="p0065" class="text"><span id="page_95" aria-label="Page 95" epub:type="pagebreak" role="doc-pagebreak"></span><span id="page_96" aria-label="Page 96" epub:type="pagebreak" role="doc-pagebreak"></span>计算访存比对 CUDA 核函数的性能具有重大影响。例如，Ampere A100 GPU 的峰值全局内存带宽为 1555 GB/秒。由于矩阵乘法核函数每字节执行 0.25 OP，全局内存带宽把核函数所能执行的单精度浮点运算吞吐量限制为每秒 389 十亿次浮点运算（GFLOPS），即 1555 GB/秒乘以 0.25 FLOP/B。然而，389 GFLOPS 仅占 A100 GPU 峰值单精度运算吞吐量（19500 GFLOPS）的 2%。A100 还配有称为<em>张量核心</em>的专用单元，可用于加速矩阵乘法运算。如果考虑 A100 张量核心 156000 GFLOPS 的峰值单精度浮点吞吐量，389 GFLOPS 仅占其峰值的 0.25%。因此，矩阵乘法核函数的执行严重受限于数据从内存传送到 GPU 核心的速率。我们把执行速度受内存带宽限制的程序称为<em>访存受限</em>程序。</p>
+<div class="boxg1" id="b0010">
+<p class="b1title"><a id="sp9095"></a>Roofline 模型</p>
+<p id="p9145" class="b1textfl"><em>Roofline 模型是一种可视化模型，用于评估应用相对于其所运行硬件的极限所达到的性能。下面给出了 Roofline 模型的一个基本示例</em>。</p>
+<div class="pageavoid"><figure class="fig" id="f0080"><img src="../images/F000185u05-01-9780323912310.jpg" class="img" alt="image" width="749" height="614"/></figure>
+</div>
+<p id="p9150" class="b1text"><em>x 轴上是以 FLOP/B 为单位的算术强度（计算强度）。它反映应用每加载一个字节的数据所完成的工作量。y 轴上是以 GFLOPS 为单位的计算吞吐量。图中两条线反映硬件极限：水平线由硬件所能维持的峰值计算吞吐量（GFLOPS）决定；从原点出发、斜率为正的那条线由硬件所能维持的峰值内存带宽决定。图中的点代表一个应用，其运算强度对应 x 轴，所达到的计算吞吐量对应 y 轴。当然，这些点会位于两条线之下，因为它们能达到的吞吐量不可能超过硬件峰值</em>。</p>
+<p id="p9155" class="b1text"><a id="P96"></a><em>一个点相对这两条线的位置，说明了应用的效率。接近两条线的点表示应用在高效地利用内存带宽或计算单元，而远低于这两条线的应用则表明对资源的利用效率不高。这两条线的交点所对应的算术强度值，是应用从访存受限过渡到计算受限的分界点。算术强度较低的应用属于访存受限，受内存带宽限制，无法达到峰值吞吐量；算术强度较高的应用属于计算受限，不受内存带宽限制</em>。</p>
+<p id="p9156" class="b1text"><em>例如，点 A<sub>1</sub> 和 A<sub>2</sub> 都代表访存受限的应用，而 A<sub>3</sub> 代表计算受限的应用。A<sub>1</sub> 高效地利用资源，运行在接近峰值内存带宽的水平，而 A<sub>2</sub> 则不然。对于 A<sub>2</sub>，或许还有通过改善内存带宽利用率来进一步提高吞吐量的优化空间。然而，对于 A<sub>1</sub>，提高吞吐量的唯一途径是提高应用的算术强度</em>。</p>
+</div>
+<p id="p0070" class="text">为了进一步提高这个核函数的性能，我们需要通过减少它所执行的全局内存访问次数，来提高核函数的计算访存比。例如，要充分利用 A100 GPU 提供的 19500 GFLOPS，至少需要 (19500 GOP/秒)/(1555 GB/秒)=12.5 OP/B 的比值。这意味着每访问一个 4 字节的浮点数值，就必须执行大约 50 次浮点运算！这个比值能在多大程度上达到，取决于当前计算中数据的内在重用程度。我们请读者参阅“Roofline 模型”边栏，那里提供了一个有用的模型，可用于根据程序的算术强度分析其潜在性能。</p>
+<p id="p0075" class="text">正如我们将看到的，矩阵乘法为减少全局内存访问提供了机会，而这些机会可以用相对简单的技术来把握。矩阵乘法函数的执行速度可能相差若干数量级，具体取决于全局内存访问的减少程度。因此，矩阵乘法为这类技术提供了一个极好的入门示例。本章将介绍一种常用的减少全局内存访问次数的技术，并在矩阵乘法上演示这一技术。</p></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">5.2 CUDA 内存类型</h2><p id="p0080" class="textfl">CUDA 设备包含多种类型的内存，可以帮助程序员提高计算访存比。<a href="#f0015">图 5.2</a> 展示了这些 CUDA 设备内存。在图的底部，我们可以看到全局内存和常量内存。这两种内存都可以由主机写入（W）和读取（R）。全局内存还可以由设备写入和读取，而常量内存支持设备进行低延迟、高带宽的只读访问。我们在<a href="Ch002_23-46_B9780323912310000148.html#Ch002_23-46_B9780323912310000148">第 2 章</a>“异构数据并行计算”中介绍了全局内存，并将在<a href="Ch007_151-171_B9780323912310000082.html#Ch007_151-171_B9780323912310000082">第 7 章</a>“卷积”中详细研究常量内存。</p>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F000185f05-02-9780323912310.jpg" class="img" alt="image" width="1004" height="478"/><figcaption class="figleg"><a id="sp0015"></a><span class="fignum">图 5.2</span> CUDA 设备内存模型（不完整）总览。本图未展示的一种重要 CUDA 内存类型是纹理内存，因为本书不涉及它的使用。</figcaption></figure></div><p id="p0085" class="text"><span id="page_97" aria-label="Page 97" epub:type="pagebreak" role="doc-pagebreak"></span>另一种内存类型是局部内存，它同样可以被读取和写入。局部内存实际上位于全局内存之中，具有相似的访问延迟，但它不在线程之间共享。每个线程都有自己的一段全局内存，用作其私有的局部内存，存放对该线程而言私有、但无法分配到寄存器中的数据。这些数据包括静态分配的数组、溢出的寄存器，以及线程调用栈中的其他元素。</p>
+<p id="p0090" class="text"><a href="#f0015">图 5.2</a> 中的寄存器和共享内存都是片上内存。存放于这两种内存中的变量，可以以非常高的速度、高度并行地被访问。寄存器分配给各个线程；每个线程只能访问自己的寄存器（见“CPU 与 GPU 的寄存器体系结构”边栏）。核函数通常使用寄存器来保存各线程私有的、被频繁访问的变量。共享内存分配给线程块；一个线程块中的所有线程都可以访问为该线程块声明的共享内存变量。共享内存是线程之间共享输入数据和中间结果、从而进行协作的一种高效手段。通过在某种 CUDA 内存类型中声明一个 CUDA 变量，CUDA 程序员就决定了该变量的可见性和访问速度。</p>
+<div class="boxg1" id="b0015">
+<p class="b1title"><a id="sp9195"></a>CPU 与 GPU 的寄存器体系结构</p>
+<p id="p9185" class="b1textfl"><em>CPU 与 GPU 不同的设计目标导致了不同的寄存器体系结构。正如我们在</em><a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033"><em>第 4 章</em></a>、<em>“计算体系结构与调度”一章中所见，CPU 在线程之间进行上下文切换时，会把离开线程的寄存器保存到内存中，并从内存中恢复进入线程的寄存器。相比之下，GPU 通过在处理块（block）的寄存器文件中保存调度到该处理块的所有线程的寄存器，实现了零开销调度。这样，在线程束之间切换是瞬时完成的，因为进入线程的寄存器已经位于寄存器文件之中。因此，GPU 的寄存器文件需要比 CPU 的寄存器文件大得多</em>。</p>
+<p id="p9165" class="b1text"><em>我们还在</em><a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033"><em>第 4 章</em></a>、<em>“计算体系结构与调度”中看到，GPU 支持动态资源划分：一个 SM 可以给每个线程配备少量寄存器并执行大量线程，也可以给每个线程配备更多寄存器而执行较少的线程。因此，GPU 的寄存器文件需要设计为支持这种寄存器动态划分。相比之下，CPU 的寄存器体系结构为每个线程分配一组固定的寄存器，而不考虑线程对寄存器的实际需求</em>。</p>
+</div>
+<p id="p0095" class="text"><span id="page_98" aria-label="Page 98" epub:type="pagebreak" role="doc-pagebreak"></span><span id="page_99" aria-label="Page 99" epub:type="pagebreak" role="doc-pagebreak"></span>为了充分理解寄存器、共享内存和全局内存之间的区别，我们需要更深入地了解这些不同类型的内存在现代处理器中是如何实现和使用的。正如我们在<a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>“计算体系结构与调度”的“线程束与 SIMD 硬件”边栏中讨论的那样，几乎所有现代处理器都源于约翰·冯·诺依曼于 1945 年提出的模型，如<a href="#f0020">图 5.3</a> 所示。CUDA 设备也不例外。CUDA 设备中的全局内存对应于<a href="#f0020">图 5.3</a> 中的“内存”方框。处理器方框对应我们今天通常看到的处理器芯片边界。全局内存在处理器芯片之外，采用 DRAM 技术实现，这意味着较长的访问延迟和相对较低的访问带宽。寄存器对应于冯·诺依曼模型中的“寄存器文件”。寄存器文件位于处理器芯片上，与全局内存相比，访问延迟非常短，访问带宽也高得多。在典型的设备中，所有 SM 上所有寄存器文件的聚合访问带宽至少比全局内存高两个数量级。此外，只要变量存放在寄存器中，对它的访问就不再消耗片外全局内存带宽。这将体现为计算访存比的提高。</p>
+<div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F000185f05-03-9780323912310.jpg" class="img" alt="image" width="854" height="663"/><figcaption class="figleg"><a id="sp0020"></a><span class="fignum">图 5.3</span> 基于冯·诺依曼模型的现代计算机中内存与寄存器的对比。</figcaption></figure></div><p id="p0100" class="text">一个更微妙的点是：访问寄存器所需的指令比访问全局内存更少。大多数现代处理器中的算术指令都有“内建”的寄存器操作数。例如，一条浮点加法指令可能具有如下形式：</p><div class="pageavoid"><figure class="fig" id="f0090"><img src="../images/F000185u05-02-9780323912310.jpg" class="img" alt="image" width="472" height="74"/></figure></div><p class="text">其中 r2 和 r3 是寄存器编号，指定在寄存器文件中存放输入操作数值的位置。浮点加法结果值的存放位置由 r1 指定。因此，当算术指令的操作数位于寄存器中时，不需要额外的指令就能把操作数值提供给算术逻辑单元（ALU），算术计算在那里完成。</p>
+<p id="p0115" class="text">与此同时，如果操作数值位于全局内存中，处理器需要执行一次内存加载操作，才能把操作数值提供给 ALU。例如，如果一条浮点加法指令的第一个操作数位于全局内存中，涉及的指令很可能看起来像下面的示例：</p><div class="pageavoid"><figure class="fig" id="f0095"><img src="../images/F000185u05-03-9780323912310.jpg" class="img" alt="image" width="448" height="104"/></figure></div><p class="text">其中加载指令把偏移值加到 r4 的内容上，形成操作数值的地址，然后访问全局内存并把数值放入寄存器 r2。一旦操作数值位于 r2 中，fadd 指令就使用 r2 和 r3 中的值执行浮点加法，并把结果放入 r1。由于处理器每个时钟周期只能取回和执行有限数量的指令，带额外加载的版本很可能比不带加载的版本花费更多时间。这是把操作数放在寄存器中可以改善执行速度的另一个原因。</p>
+<p id="p0135" class="text"><span id="page_100" aria-label="Page 100" epub:type="pagebreak" role="doc-pagebreak"></span>最后，还有一个更微妙的理由说明为什么把操作数值放在寄存器中是更好的选择。在现代计算机中，从寄存器文件访问一个数值所消耗的能量，至少比从全局内存访问一个数值低一个数量级。从寄存器访问数值在能效上比从全局内存访问数值有巨大优势。我们很快将更详细地研究在现代计算机中访问这两种硬件结构在速度和能量上的差异。另一方面，正如我们很快将了解到的，在当今的 GPU 中，每个线程可用的寄存器数量相当有限。正如我们在<a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>“计算体系结构与调度”中所见，如果满占用率场景下的寄存器使用量超过上限，应用的占用率就会降低。因此，只要有可能，我们也需要避免过度占用这一有限资源。</p>
+<p id="p0140" class="text"><a href="#f0025">图 5.4</a> 展示了 CUDA 设备中的共享内存和寄存器。虽然两者都是片上内存，但在功能和访问成本上差别很大。共享内存是位于处理器芯片上的内存空间的一部分。当处理器访问存放在共享内存中的数据时，它需要执行一次内存加载操作，就像访问全局内存中的数据一样。然而，由于共享内存位于片上，它的访问延迟比全局内存低得多，吞吐量也高得多。由于需要执行加载操作，共享内存的延迟比寄存器长，带宽比寄存器低。用计算机体系结构的术语来说，共享内存是一种<em>便笺存储器</em>。</p>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F000185f05-04-9780323912310.jpg" class="img" alt="image" width="854" height="527"/><figcaption class="figleg"><a id="sp0025"></a><span class="fignum">图 5.4</span> CUDA 设备 SM 中共享内存与寄存器的对比。</figcaption></figure></div><p id="p0145" class="text">CUDA 中共享内存与寄存器的一个重要区别是：存放在共享内存中的变量可以被一个线程块中的所有线程访问。这与寄存器数据形成对比——寄存器数据对单个线程是私有的。也就是说，共享内存的设计目标，是支持线程块内线程之间高效、高带宽的数据共享。如<a href="#f0025">图 5.4</a> 所示，CUDA 设备 SM 通常采用多个处理单元，让多个线程能够同时取得进展（见<a href="Ch002_23-46_B9780323912310000148.html#Ch002_23-46_B9780323912310000148">第 2 章</a>“异构数据并行计算”中的“线程”边栏）。一个线程块中的线程可以分布在这些处理单元上。因此，这些 CUDA 设备中共享内存的硬件实现通常被设计成允许多个处理单元同时访问其内容，以支持线程块内线程之间的高效数据共享。我们将学习几种重要的并行算法类型，它们都能从这种线程间高效的数据共享中受益匪浅。</p>
+<p id="p0150" class="text"><span id="page_101" aria-label="Page 101" epub:type="pagebreak" role="doc-pagebreak"></span>到现在应该已经清楚了：寄存器、局部内存、共享内存和全局内存具有不同的功能、延迟和带宽。因此，理解如何声明变量，使它存放在所期望的内存类型中，是很重要的。<a href="#t0010">表 5.1</a> 给出了把程序变量声明到各种内存类型中的 CUDA 语法。每种这样的声明也会赋予所声明的 CUDA 变量一个作用域和生命周期。作用域标识可以访问该变量的线程集合：仅单个线程、一个线程块的所有线程，还是所有网格的所有线程。如果变量的作用域是单个线程，那么将为每个线程创建该变量的一个私有版本；每个线程只能访问其私有的变量版本。例如，如果一个核函数声明了一个作用域为单个线程的变量，并且该核函数以一百万个线程启动，那么将创建一百万个该变量的版本，以便每个线程初始化并使用自己的变量版本。</p>
+<div class="pageavoid">
+<p id="t0010" class="tnum">表 5.1</p>
+<table class="tbody" id="TABC000185t0010"><caption class="ttitle"><a id="sp0080"></a>CUDA 变量声明的类型限定符及每种类型对应的属性。</caption><thead><tr><th scope="col" class="tcolhd1">变量声明</th><th scope="col" class="tcolhd1">内存</th><th scope="col" class="tcolhd1">作用域</th><th scope="col" class="tcolhd1">生命周期</th></tr></thead><tbody><tr><td class="tb">除数组以外的自动变量</td><td class="tb">寄存器</td><td class="tb">线程</td><td class="tb">网格</td></tr><tr><td class="tb">自动数组变量</td><td class="tb">局部</td><td class="tb">线程</td><td class="tb">网格</td></tr><tr><td class="tb">__device__ __shared__ int SharedVar;（共享内存变量声明）</td><td class="tb">共享</td><td class="tb">线程块</td><td class="tb">网格</td></tr><tr><td class="tb">__device__ int GlobalVar;（全局变量声明）</td><td class="tb">全局</td><td class="tb">网格</td><td class="tb">应用</td></tr><tr><td class="tb">__device__ __constant__ int ConstVar;（常量变量声明）</td><td class="tb">常量</td><td class="tb">网格</td><td class="tb">应用</td></tr></tbody></table><div class="small_device"><p class="table_fig"><img src="../images/T000185tabt0010.png" alt="Image" width="3481" height="590"/></p></div></div><p id="p0155" class="text">生命周期说明变量在程序执行过程中的哪一段时间内可供使用：要么在一个网格的执行期间内，要么在整个应用执行期间内。如果变量的生命周期局限在一个网格的执行期间，它就必须在核函数体内声明，并且只能被该核函数的代码使用。如果该核函数被调用多次，变量的值不会在这些调用之间保持。每次调用都必须初始化该变量才能使用它。另一方面，如果变量的生命周期覆盖整个应用的执行，它就必须在任何函数体之外声明。这些变量的内容会在整个应用执行期间一直保持，并且所有核函数都可以使用。</p>
+<p id="p0160" class="text">我们把不是数组的变量称为<em>标量</em>变量。如<a href="#t0010">表 5.1</a> 所示，在核函数和设备函数中声明的所有自动标量变量都被放入寄存器。这些自动变量的作用域局限于各个线程。当一个核函数声明一个自动变量时，会为执行该核函数的每个线程生成该变量的一个私有副本。当一个线程终止时，它的所有自动变量都不复存在。在<a href="#f0010">图 5.1</a> 中，变量 <span class="inlinecode">blurRow</span>、<span class="inlinecode">blurCol</span>、<span class="inlinecode">curRow</span>、<span class="inlinecode">curCol</span>、<span class="inlinecode">pixels</span> 和 <span class="inlinecode">pixVal</span> 都是自动变量，属于这一类。注意，访问这些变量非常快且高度并行，但必须小心不要超出硬件实现中寄存器存储的有限容量。使用大量寄存器会对每个 SM 的占用率产生不利影响，正如我们在<a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>“计算体系结构与调度”中所见。</p>
+<p id="p0165" class="text"><span id="page_102" aria-label="Page 102" epub:type="pagebreak" role="doc-pagebreak"></span>自动数组变量不会存放在寄存器中。<sup><a aria-label="noteref" href="#fn1" id="Cfn1">1</a></sup> 相反，它们被存入线程的局部内存，可能会带来较长的访问延迟和潜在的访问拥塞。这些数组的作用域与自动标量变量一样，局限于各个线程。也就是说，每个线程都会创建并使用每个自动数组的一个私有版本。一旦线程结束执行，其自动数组变量的内容就不复存在。根据我们的经验，在核函数和设备函数中很少需要使用自动数组变量。</p>
+<p id="p0170" class="text">如果变量声明前带有<span class="inlinecode">__shared__</span>关键字（每个“__”由两个“_”字符组成），就在 CUDA 中声明了一个共享变量。也可以在声明中把可选的<span class="inlinecode">__device__</span>加到<span class="inlinecode">__shared__</span>前面，以达到相同的效果。这种声明通常在核函数或设备函数中进行。共享变量存放在共享内存中。共享变量的作用域限于一个线程块内；也就是说，一个线程块中的所有线程看到的是共享变量的同一个版本。在核函数执行期间，每个线程块都会创建并使用共享变量的一个私有版本。共享变量的生命周期与核函数执行的持续时间一致。当一个核函数结束其网格的执行时，其共享变量的内容就不复存在。正如我们前面讨论过的，共享变量是线程块内线程相互协作的一种高效手段。从共享内存访问共享变量非常快，而且高度并行。CUDA 程序员经常使用共享变量来保存在核函数的某个执行阶段中被频繁使用和复用的那部分全局内存数据。可能需要调整算法，以创建高度聚焦于全局内存数据小部分的执行阶段，正如我们将用<a href="#s0025">第 5.4 节</a>中的矩阵乘法所演示的那样。</p>
+<p id="p0175" class="text">如果变量声明前带有<span class="inlinecode">__constant__</span>关键字（每个“__”由两个“_”字符组成），就在 CUDA 中声明了一个常量变量。也可以在声明中把可选的<span class="inlinecode">__device__</span>加到<span class="inlinecode">__constant__</span>前面，以达到相同的效果。常量变量的声明必须在任何函数体之外。常量变量的作用域覆盖所有网格，也就是说，所有网格中的所有线程看到的是同一个常量变量版本。常量变量的生命周期覆盖整个应用的执行。常量变量通常用于为核函数提供输入值的变量。核函数代码不能改变常量变量的值。常量变量存放在全局内存中，但会被缓存以便高效访问。在适当的访问模式下，访问常量内存非常快且高度并行。目前，一个应用中常量变量的总大小被限制为 65,536 字节。可能需要拆分输入数据量，以适应这一限制。我们将在<a href="Ch007_151-171_B9780323912310000082.html#Ch007_151-171_B9780323912310000082">第 7 章</a>“卷积”中演示常量内存的使用。</p>
+<p id="p0180" class="text"><span id="page_103" aria-label="Page 103" epub:type="pagebreak" role="doc-pagebreak"></span>一个变量，如果其声明只以关键字<span class="inlinecode">__device__</span>开头（每个“__”由两个“_”字符组成），就是全局变量，会被放在全局内存中。对全局变量的访问速度较慢。在较新的设备中，访问全局变量的延迟和吞吐量已通过缓存得到改善。全局变量的一个重要优点是：它对所有核函数的所有线程可见。它们的内容也会在整段执行期间持续存在。因此，全局变量可以作为线程跨线程块协作的手段。不过，必须注意：目前除了使用原子操作或终止当前核函数的执行之外，还没有简便的方法在不同线程块之间进行同步，或确保不同线程访问全局内存时数据的一致性。<sup><a aria-label="noteref" href="#fn2" id="Cfn2">2</a></sup> 因此，全局变量通常用于把信息从一个核函数调用传递到另一个核函数调用。</p>
+<p id="p0185" class="text">在 CUDA 中，可以使用指针指向全局内存中的数据对象。在核函数和设备函数中，指针的使用通常有两种典型方式。第一种，如果对象由主机函数分配，指向对象的指针由内存分配 API 函数（如 <span class="inlinecode">cudaMalloc</span>）初始化，并可以作为参数传给核函数，正如我们在<a href="Ch002_23-46_B9780323912310000148.html#Ch002_23-46_B9780323912310000148">第 2 章</a>“异构数据并行计算”和<a href="Ch003_47-68_B9780323912310000045.html#Ch003_47-68_B9780323912310000045">第 3 章</a>“多维网格与数据”中所见。第二种使用方式是，把在全局内存中声明的变量的地址赋给指针变量。例如，核函数中的语句<span class="inlinecode">{float* ptr=&amp;GlobalVar;}</span>把 <span class="inlinecode">GlobalVar</span> 的地址赋给自动指针变量 <span class="inlinecode">ptr</span>。读者应参考 CUDA Programming Guide，了解在其他内存类型中使用指针的方法。</p></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">5.3 减少内存流量的分块</h2><p id="p0190" class="textfl">在 CUDA 中，使用设备内存存在一个内在的权衡：全局内存大但慢，而共享内存小但快。一种常见策略是把数据划分成称为<em>分块</em>的子集，使每个分块都能放入共享内存。<em>分块</em>一词借用了这样一个类比：一堵大墙（即全局内存数据）可以用小瓷砖（即每个都能放入共享内存的子集）铺满。一个重要的标准是，核函数对这些分块的计算可以相互独立地进行。注意，对于任意给定的核函数，并非所有数据结构都能划分成分块。</p>
+<p id="p0195" class="text"><span id="page_104" aria-label="Page 104" epub:type="pagebreak" role="doc-pagebreak"></span>分块的概念可以用<a href="Ch003_47-68_B9780323912310000045.html#Ch003_47-68_B9780323912310000045">第 3 章</a>“多维网格与数据”中的矩阵乘法示例来说明。<a href="Ch003_47-68_B9780323912310000045.html#f0070">图 3.13</a> 展示了一个小的矩阵乘法示例，它对应于<a href="Ch003_47-68_B9780323912310000045.html#f0060">图 3.11</a> 中的核函数。我们在<a href="#f0030">图 5.5</a> 中复现了这个示例，方便查阅。为简洁起见，我们把 P[y*Width+x]、M[y*Width+x] 和 N[y*Width+x] 分别简写为 P<sub>y,x</sub>、M<sub>y,x</sub> 和 N<sub>y,x</sub>。这个示例假设我们使用四个 2×2 的线程块来计算 P 矩阵。P 矩阵中的粗线方框标明了每个线程块处理的 P 元素。<a href="#f0030">图 5.5</a> 突出了线程块 <sub>0,0</sub> 的四个线程所完成的计算。这四个线程计算 P<sub>0,0</sub>、P<sub>0,1</sub>、P<sub>1,0</sub> 和 P<sub>1,1</sub>。线程块 <sub>0,0</sub> 的线程 <sub>0,0</sub> 和线程 <sub>0,1</sub> 对 M 和 N 元素的访问用黑色箭头标出。例如，线程 <sub>0,0</sub> 读取 M<sub>0,0</sub> 和 N<sub>0,0</sub>，接着读取 M<sub>0,1</sub> 和 N<sub>1,0</sub>，再读取 M<sub>0,2</sub> 和 N<sub>2,0</sub>，最后读取 M<sub>0,3</sub> 和 N<sub>3,0</sub>。</p>
+<div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F000185f05-05-9780323912310.jpg" class="img" alt="image" width="704" height="689"/><figcaption class="figleg"><a id="sp0030"></a><span class="fignum">图 5.5</span> 一个小的矩阵乘法示例。为简洁起见，我们把 M[y*Width+x]、N[y*Width+x]、P[y*Width+x] 分别表示为 M<sub>y,x</sub>、N<sub>y,x</sub> 和 P<sub>y,x</sub>。</figcaption></figure></div><p id="p0200" class="text"><a id="Bf0035" href="#f0035">图 5.6</a> 展示了线程块 <sub>0,0</sub> 中所有线程完成的全局内存访问。线程沿垂直方向列出，访问时间沿水平方向从左向右递增。注意，每个线程在执行期间都要访问 M 的四个元素和 N 的四个元素。在被突出的四个线程中，它们访问的 M 和 N 元素有相当大的重叠。例如，线程 <sub>0,0</sub> 和线程 <sub>0,1</sub> 都访问 M<sub>0,0</sub> 以及 M 第 0 行的其余元素。同样，线程 <sub>0,1</sub> 和线程 <sub>1,1</sub> 都访问 N<sub>0,1</sub> 以及 N 第 1 列的其余元素。</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F000185f05-06-9780323912310.jpg" class="img" alt="image" width="854" height="286"/><figcaption class="figleg"><a id="sp0035"></a><span class="fignum"><a href="#Bf0035">图 5.6</a></span> 线程块 <sub>0,0</sub> 中的线程执行的全局内存访问。</figcaption></figure></div><p id="p0205" class="text"><a href="Ch003_47-68_B9780323912310000045.html#f0060">图 3.11</a> 中的核函数的编写方式是：线程 <sub>0,0</sub> 和线程 <sub>0,1</sub> 都从全局内存访问 M 的第 0 行元素。如果我们能以某种方式让线程 <sub>0,0</sub> 和线程 <sub>0,1</sub> 协作，使这些 M 元素只从全局内存加载一次，就可以把对全局内存的访问总次数减少一半。事实上，我们可以看到，在线程块 <sub>0,0</sub> 的执行过程中，每个 M 和 N 元素都恰好被访问两次。因此，如果我们能让这四个线程在访问全局内存时相互协作，就可以把全局内存流量减少一半。</p>
+<p id="p0210" class="text"><span id="page_105" aria-label="Page 105" epub:type="pagebreak" role="doc-pagebreak"></span>读者应该验证：在矩阵乘法示例中，全局内存流量的潜在减少量与所用线程块的维数成正比。使用 Width×Width 的线程块时，全局内存流量的潜在减少量可达到 Width 倍。也就是说，如果我们使用 16×16 的线程块，通过线程之间的协作，就可以把全局内存流量潜在减少到原来的 1/16。</p>
+<p id="p0215" class="text">我们现在介绍一种分块矩阵乘法算法。其基本思想是：在线程各自把这些 M 和 N 元素用于点积计算之前，让线程们协作地把 M 和 N 元素的子集加载到共享内存中。要记住，共享内存的容量相当小，在把这些 M 和 N 元素加载到共享内存时，必须小心不要超出共享内存的容量。这可以通过把 M 和 N 矩阵划分成更小的分块来实现。这些分块的大小要选择得能放入共享内存。在最简单的形式中，分块的维数与线程块的维数相等，如<a href="#f0040">图 5.7</a> 所示。</p>
+<div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F000185f05-07-9780323912310.jpg" class="img" alt="image" width="753" height="735"/><figcaption class="figleg"><a id="sp0040"></a><span class="fignum">图 5.7</span> 对 M 和 N 进行分块以利用共享内存。</figcaption></figure></div><p id="p0220" class="text">在<a href="#f0040">图 5.7</a> 中，我们按照粗线所划分的那样，把 M 和 N 分成 2×2 的分块。每个线程执行的点积计算现在被划分成多个阶段。在每个阶段中，线程块中的所有线程协作，把一个 M 分块和一个 N 分块加载到共享内存中。这可以通过让线程块中的每个线程把一个 M 元素和一个 N 元素加载到共享内存来实现，如<a href="#f0045">图 5.8</a> 所示。<a href="#f0045">图 5.8</a> 的每一行展示一个线程的执行活动。注意，时间从左向右推进。我们只需要展示线程块 <sub>0,0</sub> 中线程的活动；其他线程块的行为完全相同。用于 M 元素的共享内存数组称为 Mds，用于 N 元素的共享内存数组称为 Nds。在阶段 1 开始时，线程块 <sub>0,0</sub> 的四个线程协作地把一个 M 分块加载到共享内存：线程 <sub>0,0</sub> 把 M<sub>0,0</sub> 加载到 Mds<sub>0,0</sub>，线程 <sub>0,1</sub> 把 M<sub>0,1</sub> 加载到 Mds<sub>0,1</sub>，线程 <sub>1,0</sub> 把 M<sub>1,0</sub> 加载到 Mds<sub>1,0</sub>，线程 <sub>1,1</sub> 把 M<sub>1,1</sub> 加载到 Mds<sub>1,1</sub>。这些加载显示在<a href="#f0045">图 5.8</a> 的第二列。一个 N 分块也以类似方式加载，显示在<a href="#f0045">图 5.8</a> 的第三列。</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F000185f05-08-9780323912310.jpg" class="img" alt="image" width="1204" height="728"/><figcaption class="figleg"><a id="sp0045"></a><span class="fignum">图 5.8</span> 分块矩阵乘法的执行阶段。</figcaption></figure></div><p id="p0225" class="text">在两个 M 和 N 分块被加载到共享内存之后，这些元素就被用于点积的计算。注意，共享内存中的每个值都被使用两次。例如，由线程 <sub>1,1</sub> 加载到 Mds<sub>1,1</sub> 的 M<sub>1,1</sub> 值被使用两次，一次由线程 <sub>1,0</sub> 使用，一次由线程 <sub>1,1</sub> 使用。通过把每个全局内存值加载到共享内存，使它可以被多次使用，我们减少了访问全局内存的次数。在这种情况下，访问全局内存的次数减少了一半。读者应该验证：如果分块是 N×N 个元素，减少量就是 N 倍。</p>
+<p id="p0230" class="text"><span id="page_106" aria-label="Page 106" epub:type="pagebreak" role="doc-pagebreak"></span><span id="page_107" aria-label="Page 107" epub:type="pagebreak" role="doc-pagebreak"></span>注意，每个点积的计算现在分两个阶段进行，即<a href="#f0045">图 5.8</a> 中的阶段 1 和阶段 2。在每个阶段中，每个线程把两对输入矩阵元素的乘积累加到 Pvalue 变量中。注意，Pvalue 是自动变量，所以会为每个线程生成一个私有版本。我们加上下标只是为了说明这些是为每个线程创建的 Pvalue 变量的不同实例。第一阶段的计算显示在<a href="#f0045">图 5.8</a> 的第四列，第二阶段显示在第七列。一般来说，如果输入矩阵的维数为 <span class="inlinecode">Width</span>，分块大小为 <span class="inlinecode">TILE_WIDTH</span>，那么点积将分 <span class="inlinecode">Width/TILE_WIDTH</span> 个阶段进行。这些阶段的形成是减少对全局内存访问的关键。由于每个阶段聚焦于输入矩阵值的一个小子集，线程们可以协作地把该子集加载到共享内存，并用共享内存中的值来满足本阶段相互重叠的输入需求。</p>
+<p id="p0235" class="text">还要注意，Mds 和 Nds 会在各阶段之间复用。在每个阶段，相同的 Mds 和 Nds 被复用来存放该阶段用到的 M 和 N 元素子集。这样，小得多的共享内存就可以满足大部分对全局内存的访问。这是因为每个阶段都聚焦于输入矩阵元素的一个小子集。这种聚焦的访问行为称为<em>数据局部性</em>。当一个算法表现出数据局部性时，就有机会使用小而高速的内存来满足大部分访问，把这些访问从全局内存中移除。数据局部性对于在多核 CPU 上取得高性能，与在多线程 GPU 上一样重要。我们将在<a href="Ch006_123-147_B9780323912310000161.html#Ch006_123-147_B9780323912310000161">第 6 章</a>“性能考量”中回到数据局部性这一概念。</p></section><section><a id="s0025"></a><h2 class="h1hd" id="st0040">5.4 分块矩阵乘法核函数</h2><p id="p0240" class="textfl">我们现在准备介绍一个使用共享内存来减少全局内存流量的分块矩阵乘法核函数。<a href="#f0050">图 5.9</a> 所示的核函数实现了<a href="#f0045">图 5.8</a> 中说明的阶段。在<a href="#f0050">图 5.9</a> 中，第 04 行和第 05 行分别把 <span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 声明为共享内存数组。回忆一下，共享内存变量的作用域是一个线程块。因此，每个线程块都会创建一组 <span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 数组，线程块中的所有线程都可以访问同一个 <span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 版本。这一点很重要，因为线程块中的所有线程都必须能够访问由同伴加载到 <span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 中的 M 和 N 元素，以便用这些值满足自己的输入需求。</p>
+<div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F000185f05-09-9780323912310.jpg" class="img" alt="image" width="1374" height="1130"/><figcaption class="figleg"><a id="sp0050"></a><span class="fignum">图 5.9</span> 使用共享内存的分块矩阵乘法核函数。</figcaption></figure></div><p id="p0245" class="text">第 07 行和第 08 行把 <span class="inlinecode">threadIdx</span> 和 <span class="inlinecode">blockIdx</span> 的值保存到名称更短的自动变量中，使代码更简洁。回忆一下，自动标量变量会被放入寄存器。它们的作用域在单个线程内。也就是说，运行时系统会为每个线程创建 <span class="inlinecode">tx</span>、<span class="inlinecode">ty</span>、<span class="inlinecode">bx</span> 和 <span class="inlinecode">by</span> 各一个私有版本，它们位于该线程可访问的寄存器中。这些变量用 <span class="inlinecode">threadIdx</span> 和 <span class="inlinecode">blockIdx</span> 的值初始化，并在线程的生命周期内被多次使用。线程一旦结束，这些变量的值就不复存在。</p>
+<p id="p0250" class="text"><span id="page_108" aria-label="Page 108" epub:type="pagebreak" role="doc-pagebreak"></span>第 11 行和第 12 行分别确定线程要生成的 P 元素的行索引和列索引。代码假设每个线程负责计算一个 P 元素。如第 12 行所示，线程要生成的 P 元素的水平（x）位置，即列索引，可以计算为 <span class="inlinecode">bx*TILE_WIDTH+tx</span>。这是因为每个线程块在水平方向上覆盖 P 的 <span class="inlinecode">TILE_WIDTH</span> 个元素。线程块 <span class="inlinecode">bx</span> 中的一个线程，前面有 <span class="inlinecode">bx</span> 个线程块，即<span class="inlinecode">(bx*TILE_WIDTH)</span>个线程；它们覆盖 P 的 <span class="inlinecode">bx*TILE_WIDTH</span> 个元素。同一线程块中的另外 <span class="inlinecode">tx</span> 个线程会再覆盖 <span class="inlinecode">tx</span> 个元素。因此，具有 <span class="inlinecode">bx</span> 和 <span class="inlinecode">tx</span> 的线程应负责计算 x 索引为 <span class="inlinecode">bx*TILE_WIDTH+tx</span> 的 P 元素。以<a href="#f0040">图 5.7</a> 中的示例为例，线程块 <sub>1,0</sub> 中线程 <sub>0,1</sub> 要计算的 P 元素的水平（x）索引为 0*2+1=1。这个水平索引被保存在该线程的变量 <span class="inlinecode">Col</span> 中，也在<a href="#f0055">图 5.10</a> 中作了说明。</p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F000185f05-10-9780323912310.jpg" class="img" alt="image" width="1324" height="1233"/><figcaption class="figleg"><a id="sp0055"></a><span class="fignum">图 5.10</span> 分块乘法中矩阵索引的计算。</figcaption></figure></div><p id="p0255" class="text">类似地，线程要处理的 P 元素的垂直（y）位置，即行索引，计算为 <span class="inlinecode">by*TILE_WIDTH+ty</span>。回到<a href="#f0040">图 5.7</a> 中的示例，线程块 <sub>1,0</sub> 中线程 <sub>0,1</sub> 要计算的 P 元素的 y 索引为 1*2+0=2。这个垂直索引被保存在线程的变量 <span class="inlinecode">Row</span> 中。如<a href="#f0055">图 5.10</a> 所示，每个线程计算位于第 <span class="inlinecode">Col</span> 列、第 <span class="inlinecode">Row</span> 行的 P 元素。因此，线程块 <sub>1,0</sub> 中线程 <sub>0,1</sub> 要计算的 P 元素是 P<sub>2,1</sub>。</p>
+<p id="p0260" class="text"><span id="page_109" aria-label="Page 109" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0050">图 5.9</a> 的第 16 行标记了循环的开始，该循环遍历计算 P 元素的各个阶段。循环的每次迭代对应<a href="#f0045">图 5.8</a> 所示计算的一个阶段。<span class="inlinecode">ph</span> 变量表示点积已经完成的阶段数。回忆一下，每个阶段使用一个 M 分块和一个 N 分块。因此，在每个阶段开始时，前面的阶段已经处理了 <span class="inlinecode">ph*TILE_WIDTH</span> 对 M 和 N 元素。</p>
+<p id="p0265" class="text"><span id="page_110" aria-label="Page 110" epub:type="pagebreak" role="doc-pagebreak"></span>在每个阶段中，<a href="#f0050">图 5.9</a> 的第 19 行和第 20 行分别把相应的 M 和 N 元素加载到共享内存中。既然我们已经知道线程要处理的 M 的行和 N 的列，现在把注意力转向 M 的列索引和 N 的行索引。如<a href="#f0055">图 5.10</a> 所示，每个线程块有 <span class="inlinecode">TILE_WIDTH</span><sup>2</sup> 个线程，它们将协作地把 <span class="inlinecode">TILE_WIDTH</span><sup>2</sup> 个 <span class="inlinecode">M</span> 元素和 <span class="inlinecode">TILE_WIDTH</span><sup>2</sup> 个 <span class="inlinecode">N</span> 元素加载到共享内存中。因此，我们只需给每个线程分配一个 M 元素和一个 N 元素来加载。使用 <span class="inlinecode">blockIdx</span> 和 <span class="inlinecode">threadIdx</span> 就可以方便地做到这一点。注意，要加载的 M 元素段的起始列索引为 <span class="inlinecode">ph*TILE_WIDTH</span>。因此，一个简单的方法是让每个线程加载一个距该起始点 <span class="inlinecode">tx</span>（即 <span class="inlinecode">threadIdx.x</span> 的值）个位置的元素。类似地，要加载的 N 元素段的起始行索引也是 <span class="inlinecode">ph*TILE_WIDTH</span>。因此，每个线程加载一个距该起始点 <span class="inlinecode">ty</span>（即 <span class="inlinecode">threadIdx.y</span> 的值）个位置的元素。</p>
+<p id="p0270" class="text">这正是我们在第 19 行和第 20 行所做的。在第 19 行，每个线程加载 <span class="inlinecode">M[Row*Width + ph*TILE_WIDTH + tx]</span>，其中的线性化索引由行索引 <span class="inlinecode">Row</span> 和列索引 <span class="inlinecode">ph*TILE_WIDTH + tx</span> 构成。由于 <span class="inlinecode">Row</span> 的值是 <span class="inlinecode">ty</span> 的线性函数，这 <span class="inlinecode">TILE_WIDTH</span><sup>2</sup> 个线程中的每一个都会把一个唯一的 M 元素加载到共享内存，因为每个线程都有唯一的 <span class="inlinecode">tx</span> 和 <span class="inlinecode">ty</span> 组合。这些线程合起来将加载<a href="#f0055">图 5.10</a> 中 M 的深色方块子集。类似地，在第 20 行，每个线程使用线性化索引<span class="inlinecode">(ph*TILE_WIDTH + ty)*Width + Col</span> 把相应的 N 元素加载到共享内存。读者应该使用<a href="#f0040">图 5.7</a> 和<a href="#f0045">图 5.8</a> 中的小示例来验证地址计算对各个线程是否正确。</p>
+<p id="p0275" class="text">第 21 行的屏障<span class="inlinecode">__syncthreads()</span>确保所有线程都已完成把 M 和 N 分块加载到 <span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 的工作，之后任何线程才能继续前进。回忆<a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>“计算体系结构与调度”中的内容，调用<span class="inlinecode">__syncthreads()</span>可以让线程块中的所有线程等待彼此到达屏障，然后任何线程才能继续。这一点很重要，因为线程要使用的 M 和 N 元素可能由其他线程加载。需要确保所有元素都被正确加载到共享内存中之后，任何线程才能开始使用这些元素。第 23 行的循环随后基于分块元素执行一个阶段的点积。线程 <sub>ty, tx</sub> 的循环推进过程显示在<a href="#f0055">图 5.10</a> 中，M 和 N 元素的访问方向沿着标有 k 的箭头，k 是第 23 行中的循环变量。注意，这些元素将从 <span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 中访问，它们是存放这些 M 和 N 元素的共享内存数组。第 26 行的屏障<span class="inlinecode">__syncthreads()</span>确保所有线程都已完成对共享内存中 M 和 N 元素的使用，之后任何线程才能进入下一次迭代并从下一组分块加载元素。这样，就不会有线程过早地加载元素，从而破坏其他线程的输入值。</p>
+<p id="p0280" class="text">第 21 行和第 26 行的两次<span class="inlinecode">__syncthreads()</span>调用展示了并行程序员在协调线程时常需要分析的两种不同类型的数据依赖。第一种称为<em>写后读依赖</em>，因为线程必须先等待其他线程把数据写到适当位置，然后才能读取它。第二种称为<em>读后写依赖</em>，因为线程必须先等待所有需要该数据的线程读完，然后才能覆盖它。写后读依赖和读后写依赖的别名分别是真依赖和伪依赖。写后读依赖是<em>真依赖</em>，因为读线程确实需要写线程提供的数据，所以它别无选择，只能等待。读后写依赖是<em>伪依赖</em>，因为写线程不需要读线程的任何数据。这种依赖是由它们复用同一个内存位置造成的；如果它们使用不同的位置，这种依赖就不会存在。</p>
+<p id="p0285" class="text"><span id="page_111" aria-label="Page 111" epub:type="pagebreak" role="doc-pagebreak"></span>从第 16 行到第 28 行的循环嵌套展示了一种称为<em>条带挖掘</em>的技术，它把一个长时间运行的循环分解成多个阶段。每个阶段包含一个内层循环，执行原循环中若干个连续的迭代。原来的循环变成一个外层循环，其作用是反复调用内层循环，使原循环的所有迭代都按原有顺序执行。通过在内层循环前后添加屏障同步，我们强制同一线程块中的所有线程在每个阶段聚焦于同一段输入数据。条带挖掘是数据并行程序中创建分块所需阶段的重要手段。<sup><a aria-label="noteref" href="#fn3" id="Cfn3">3</a></sup></p>
+<p id="p0290" class="text">当点积的所有阶段都完成后，执行退出外层循环。在第 29 行，所有线程使用由 <span class="inlinecode">Row</span> 和 <span class="inlinecode">Col</span> 计算的线性化索引写入各自的 <span class="inlinecode">P</span> 元素。</p>
+<p id="p0295" class="text">分块算法的收益是显著的。对于矩阵乘法，全局内存访问减少了 <span class="inlinecode">TILE_WIDTH</span> 倍。使用 16×16 的分块，可以把全局内存访问减少 16 倍。这把计算访存比从 0.25 OP/B 提高到 4 OP/B。这一改进使 CUDA 设备的内存带宽能够支持更高的计算速率。例如，在全局内存带宽为 1555 GB/秒的 A100 GPU 上，这一改进使设备能达到 (1555 GB/秒)*(4 OP/B)=6220 GFLOPS，这比未使用分块的核函数所达到的 389 GFLOPS 要高得多。</p>
+<p id="p0300" class="text">虽然分块大幅提高了吞吐量，但 6220 GFLOPS 仍然只占设备峰值吞吐量 19500 GFLOPS 的 32%。可以进一步优化代码，减少全局内存访问次数并提高吞吐量。我们将在本书后面看到其中一些优化，而另一些高级优化则不会涉及。由于矩阵乘法在许多领域中的重要性，已经有高度优化的库，如 cuBLAS 和 CUTLASS，它们已经整合了许多这类高级优化。程序员可以使用这些库，在其线性代数应用中立即获得接近峰值的性能。</p>
+<p id="p0305" class="text"><span id="page_112" aria-label="Page 112" epub:type="pagebreak" role="doc-pagebreak"></span>分块在提高矩阵乘法乃至一般应用的吞吐量方面的有效性，并非 GPU 独有。在 CPU 上应用分块（或阻塞）技术以提高性能，已有很长的历史，其原理是确保 CPU 线程在特定时间窗口内复用的数据能够在缓存中找到。一个关键区别是：CPU 上的分块技术隐式地依靠 CPU 缓存把复用的数据保留在片上，而 GPU 上的分块技术则显式地使用共享内存把数据保留在片上。原因是 CPU 核心通常一次只运行一两个线程，因此线程可以依靠缓存把最近使用的数据保留在身边。相比之下，GPU SM 同时运行大量线程以隐藏延迟。这些线程可能会争用缓存槽位，使 GPU 缓存不那么可靠，因此对于要复用的重要数据，有必要使用共享内存。</p>
+<p id="p0310" class="text">虽然分块矩阵乘法核函数的性能提升令人印象深刻，但它确实做了几个简化假设。首先，假设矩阵的宽度是线程块宽度的倍数。这使核函数无法正确处理任意宽度的矩阵。第二个假设是矩阵是方阵。这在实际中并不总是成立。在下一节中，我们将介绍一个带边界检查的核函数，它消除了这些假设。</p></section><section><a id="s0030"></a><h2 class="h1hd" id="st0045">5.5 边界检查</h2><p id="p0315" class="textfl">我们现在扩展分块矩阵乘法核函数，使其能够处理任意宽度的矩阵。这些扩展必须允许核函数正确处理宽度不是分块宽度倍数的矩阵。我们把<a href="#f0040">图 5.7</a> 中的小示例改为使用 3×3 的 M、N 和 P 矩阵。修改后的示例显示在<a href="#f0060">图 5.11</a> 中。注意，矩阵的宽度为 3，不是分块宽度（2）的倍数。<a href="#f0060">图 5.11</a> 展示了线程块 <sub>0,0</sub> 在第二阶段的内存访问模式。我们看到，线程 <sub>0,1</sub> 和线程 <sub>1,1</sub> 会尝试加载不存在的 M 元素。类似地，线程 <sub>1,0</sub> 和线程 <sub>1,1</sub> 会尝试访问不存在的 N 元素。</p>
+<div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F000185f05-11-9780323912310.jpg" class="img" alt="image" width="854" height="646"/><figcaption class="figleg"><a id="sp0060"></a><span class="fignum">图 5.11</span> 加载靠近边缘的输入矩阵元素：线程块 <sub>0,0</sub> 的阶段 1。</figcaption></figure></div><p id="p0320" class="text"><span id="page_113" aria-label="Page 113" epub:type="pagebreak" role="doc-pagebreak"></span>访问不存在的元素在两方面有问题。对于访问越过行末尾的不存在元素（<a href="#f0060">图 5.11</a> 中线程 <sub>0,1</sub> 和线程 <sub>1,1</sub> 对 M 的访问），这些访问会落到错误的元素上。在我们的示例中，线程会尝试访问不存在的 M<sub>0,3</sub> 和 M<sub>1,3</sub>。那么这些内存加载会发生什么？要回答这个问题，我们需要回到二维矩阵的线性化布局。在线性化布局中，M<sub>0,2</sub> 之后的下一个元素是 M<sub>1,0</sub>。虽然线程 <sub>0,1</sub> 尝试访问 M<sub>0,3</sub>，但它最终会得到 M<sub>1,0</sub>。在随后的内积计算中使用这个值，显然会破坏输出值。</p>
+<p id="p0325" class="text">访问越过列末尾的元素也会出现类似问题（<a href="#f0060">图 5.11</a> 中线程 <sub>1,0</sub> 和线程 <sub>1,1</sub> 对 N 的访问）。这些访问指向数组已分配区域之外的内存位置。在某些系统中，它们会从其他数据结构返回随机值。在其他系统中，这些访问会被拒绝，导致程序中止。无论哪种方式，这类访问的结果都是不可取的。</p>
+<p id="p0330" class="text">从我们迄今的讨论来看，似乎有问题的访问只出现在线程执行的最后一个阶段。这会让我们认为，可以在分块核函数执行的最后阶段采取特殊措施来处理。遗憾的是，事实并非如此。有问题的访问可能出现在所有阶段。<a id="Bf0065" href="#f0065">图 5.12</a> 展示了线程块 <sub>1,1</sub> 在阶段 0 期间的内存访问模式。我们看到，线程 <sub>1,0</sub> 和线程 <sub>1,1</sub> 尝试访问不存在的 M 元素 M<sub>3,0</sub> 和 M<sub>3,1</sub>，而线程 <sub>0,1</sub> 和线程 <sub>1,1</sub> 尝试访问不存在的 N<sub>0,3</sub> 和 N<sub>1,3</sub>。</p>
+<div class="pageavoid"><figure class="fig" id="f0065"><img src="../images/F000185f05-12-9780323912310.jpg" class="img" alt="image" width="904" height="593"/><figcaption class="figleg"><a id="sp0065"></a><span class="fignum"><a href="#Bf0065">图 5.12</a></span> 线程块 <sub>1,1</sub> 在阶段 0 期间加载输入元素。</figcaption></figure></div><p id="p0335" class="text"><span id="page_114" aria-label="Page 114" epub:type="pagebreak" role="doc-pagebreak"></span>注意，这些有问题的访问不能简单地通过排除那些不计算有效 P 元素的线程来防止。例如，线程块 <sub>1,1</sub> 中的线程 <sub>1,0</sub> 不计算任何有效的 P 元素。然而，它在阶段 0 期间需要为线程块 <sub>1,1</sub> 中的其他线程加载 M<sub>2,1</sub> 供它们使用。此外，注意有些计算有效 P 元素的线程也会尝试访问不存在的 M 或 N 元素。例如，正如我们在<a href="#f0060">图 5.11</a> 中看到的，线程块 0,0 的线程 <sub>0,1</sub> 计算有效的 P 元素 P<sub>0,1</sub>。然而，它在阶段 1 期间尝试访问不存在的 M<sub>0,3</sub>。这两个事实表明，我们需要为加载 M 分块、加载 N 分块以及计算/存储 P 元素使用不同的边界条件测试。一条经验法则是：每一次内存访问都需要有相应的检查，确保访问所用的索引在所用数组的边界之内。</p>
+<p id="p0340" class="text">我们先从加载输入分块的边界测试条件说起。当一个线程要加载一个输入分块元素时，它应该测试它试图加载的输入元素是否是有效元素。这可以通过检查 y 和 x 索引来轻松完成。例如，在<a href="#f0050">图 5.9</a> 的第 19 行，线性化索引由 y 索引 <span class="inlinecode">Row</span> 和 x 索引 <span class="inlinecode">ph*TILE_WIDTH + tx</span> 推导而来。边界条件测试将是这两个索引都小于 <span class="inlinecode">Width</span>：<span class="inlinecode">Row &lt; Width &amp;&amp; (ph*TILE_WIDTH+tx) &lt; Width</span>。如果条件为真，线程就应该继续加载 <span class="inlinecode">M</span> 元素。读者应该验证，加载 N 元素的测试条件是<span class="inlinecode">(ph*TILE_WIDTH+ty) &lt; Width &amp;&amp; Col &lt; Width</span>。</p>
+<p id="p0345" class="text">如果条件为假，线程就不应加载该元素。问题是，共享内存位置中应该放入什么。答案是 0.0，一个即使在内积计算中被使用也不会造成任何损害的值。如果有任何线程在内积计算中使用这个 0.0 值，内积的值不会发生任何变化。</p>
+<p id="p0350" class="text">最后，只有当线程负责计算有效的 P 元素时，它才应存储其最终的内积值。这个条件的测试是<span class="inlinecode">(Row &lt; Width) &amp;&amp; (Col &lt; Width)</span>。带有附加边界条件检查的核函数代码如<a href="#f0070">图 5.13</a> 所示。</p>
+<div class="pageavoid"><figure class="fig" id="f0070"><img src="../images/F000185f05-13-9780323912310.jpg" class="img" alt="image" width="1369" height="765"/><figcaption class="figleg"><a id="sp0070"></a><span class="fignum">图 5.13</span> 带边界条件检查的分块矩阵乘法核函数。</figcaption></figure></div><p id="p0355" class="text"><span id="page_115" aria-label="Page 115" epub:type="pagebreak" role="doc-pagebreak"></span>有了边界条件检查，分块矩阵乘法核函数距离通用的矩阵乘法核函数只有一步之遥。一般来说，矩阵乘法针对矩形矩阵定义：j×k 的 M 矩阵与 k×l 的 N 矩阵相乘，得到 j×l 的 P 矩阵。我们的核函数到目前为止只能处理方阵。</p>
+<p id="p0360" class="text">幸运的是，把我们的核函数进一步扩展为通用矩阵乘法核函数是相当容易的。我们需要做几个简单的修改。首先，把 <span class="inlinecode">Width</span> 参数替换为三个无符号整数参数：<span class="inlinecode">j</span>、<span class="inlinecode">k</span>、<span class="inlinecode">l</span>。凡是用 <span class="inlinecode">Width</span> 表示 M 的高度或 P 的高度的地方，都用 <span class="inlinecode">j</span> 替换。凡是用 <span class="inlinecode">Width</span> 表示 M 的宽度或 N 的高度的地方，都用 <span class="inlinecode">k</span> 替换。凡是用 <span class="inlinecode">Width</span> 表示 N 的宽度或 P 的宽度的地方，都用 <span class="inlinecode">l</span> 替换。带有这些修改的核函数修订留作练习。</p></section><section><a id="s0035"></a><h2 class="h1hd" id="st0050">5.6 内存使用对占用率的影响</h2><p id="p0365" class="textfl">回忆<a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>“计算体系结构与调度”中的内容，我们讨论了最大化 SM 上线程占用率对于容忍长延迟操作的重要性。核函数的内存使用在占用率调优中起着重要作用。虽然 CUDA 寄存器和共享内存在减少全局内存访问次数方面可以极其有效，但必须小心不要超出 SM 对这些内存的容量。每个 CUDA 设备提供的资源有限，这限制了对给定应用而言可以同时驻留在 SM 中的线程数量。一般来说，每个线程需要的资源越多，每个 SM 中可以驻留的线程就越少。</p>
+<p id="p0370" class="text">我们在<a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>“计算体系结构与调度”中看到，寄存器使用如何成为占用率的限制因素。共享内存的使用也会限制可以分配给每个 SM 的线程数量。例如，A100 GPU 可以配置为每个 SM 最多 164 KB 的共享内存，并且支持每个 SM 最多 2048 个线程。因此，要使用全部 2048 个线程槽位，一个线程块平均使用的共享内存不应超过 (164 KB)/(2048 个线程)=82 B/线程。在分块矩阵乘法示例中，每个线程块有 <span class="inlinecode">TILE_WIDTH</span><sup>2</sup> 个线程，并使用 <span class="inlinecode">TILE_WIDTH</span><sup>2</sup>*4B 的共享内存存放 <span class="inlinecode">Mds</span>，使用 <span class="inlinecode">TILE_WIDTH</span><sup>2</sup>*4B 的共享内存存放 <span class="inlinecode">Nds</span>。因此，该线程块平均使用 (<span class="inlinecode">TILE_WIDTH</span><sup>2</sup>*4B + <span class="inlinecode">TILE_WIDTH</span><sup>2</sup>*4B)/(<span class="inlinecode">TILE_WIDTH</span><sup>2</sup> 个线程)=8 B/线程 的共享内存。因此，分块矩阵乘法核函数的占用率不受共享内存的限制。</p>
+<p id="p0375" class="text"><span id="page_116" aria-label="Page 116" epub:type="pagebreak" role="doc-pagebreak"></span>然而，考虑一个线程块使用 32 KB 共享内存、每个线程块有 256 个线程的核函数。在这种情况下，核函数平均使用 (32 KB)/(256 个线程)=132 B/线程 的共享内存。在如此高的共享内存使用量下，核函数无法达到满占用率。每个 SM 最多只能容纳 (164 KB)/(132 B/线程)=1272 个线程。因此，这个核函数能达到的最大占用率为 (1272 个已分配线程)/(2048 个最大线程)=62%。</p>
+<p id="p0380" class="text">注意，每个 SM 中共享内存的大小也因设备而异。每一代或每一种型号的设备，其每个 SM 中的共享内存数量都可能不同。核函数通常希望能够根据硬件中可用的共享内存数量来使用不同量的共享内存。也就是说，我们可能希望主机代码动态地确定共享内存的大小，并调整核函数使用的共享内存量。这可以通过调用 <span class="inlinecode">cudaGetDeviceProperties</span> 函数来完成。假设变量<span class="inlinecode">&amp;devProp</span> 被传给该函数。在这种情况下，字段 <span class="inlinecode">devProp.sharedMemPerBlock</span> 给出每个 SM 中可用的共享内存量。程序员随后可以确定每个线程块应使用的共享内存量。</p>
+<p id="p0385" class="text">遗憾的是，<a href="#f0050">图 5.9</a> 和<a href="#f0070">图 5.13</a> 中的核函数不支持主机代码对共享内存使用量进行任何动态调整。<a href="#f0050">图 5.9</a> 中使用的声明把其共享内存使用量硬编码为编译期常量：</p>
+<div class="pageavoid"><figure class="fig" id="f0100"><img src="../images/F000185u05-04-9780323912310.jpg" class="img" alt="image" width="996" height="165"/></figure>
+</div>
+<p id="p0400" class="text">也就是说，无论 <span class="inlinecode">TILE_WIDTH</span> 在编译时被设置为多少，<span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 的大小都被设定为 <span class="inlinecode">TILE_WIDTH</span><sup>2</sup> 个元素。由于代码包含</p>
+<div class="pageavoid"><figure class="fig" id="f0105"><img src="../images/F000185u05-05-9780323912310.jpg" class="img" alt="image" width="497" height="86"/></figure>
+</div>
+<p id="p0410" class="text"><span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 都将有 256 个元素。如果我们想改变 <span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 的大小，就需要改变 <span class="inlinecode">TILE_WIDTH</span> 的值并重新编译代码。不重新编译，核函数无法轻易地在运行时调整其共享内存使用量。</p>
+<p id="p0415" class="text">我们可以用 CUDA 中另一种风格的声明来启用这种调整：在共享内存声明前加上 <span class="inlinecode">C extern</span> 关键字，并在声明中省略数组的大小。基于这种风格，<span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 的声明需要合并为一个动态分配的数组：</p>
+<div class="pageavoid"><figure class="fig" id="f0110"><img src="../images/F000185u05-06-9780323912310.jpg" class="img" alt="image" width="615" height="69"/></figure>
+</div>
+<p id="p0425" class="text"><span id="page_117" aria-label="Page 117" epub:type="pagebreak" role="doc-pagebreak"></span>由于只有一个合并后的数组，我们还需要手动定义数组中 <span class="inlinecode">Mds</span> 段从哪里开始、<span class="inlinecode">Nds</span> 段从哪里开始。注意，合并后的数组是一维的。我们需要基于垂直和水平索引，使用线性化索引来访问它。</p>
+<p id="p0430" class="text">在运行时，当我们调用核函数时，可以根据设备查询结果动态地配置每个线程块使用的共享内存量，并把它作为第三个配置参数提供给核函数调用。例如，修改后的核函数可以用下面的语句启动：</p>
+<div class="pageavoid"><figure class="fig" id="f0115"><img src="../images/F000185u05-07-9780323912310.jpg" class="img" alt="image" width="1223" height="386"/></figure>
+</div>
+<p id="p0445" class="text">其中 <span class="inlinecode">size_t</span> 是一种内建类型，用于声明一个变量来保存动态分配的数据结构的大小信息。该大小以字节数表示。在我们的矩阵乘法示例中，对于 16×16 的分块，我们有 2×16×16×4=2048 字节的大小来容纳 <span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span>。我们省略了在运行时设置 size 值的计算细节，把它留作读者的练习。</p>
+<p id="p0450" class="text"><span id="page_118" aria-label="Page 118" epub:type="pagebreak" role="doc-pagebreak"></span>在<a id="Bf0075" href="#f0075">图 5.14</a> 中，我们展示了如何修改<a href="#f0050">图 5.9</a> 和<a href="#f0060">图 5.11</a> 中的核函数代码，为 <span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 数组使用动态大小的共享内存。把数组各段的大小作为参数传入核函数也可能很有用。在这个示例中，我们添加了两个参数：第一个参数是 <span class="inlinecode">Mds</span> 段的大小，第二个参数是 <span class="inlinecode">Nds</span> 段的大小，都以字节为单位。注意，在上面的主机代码中，我们传入了 size/2 作为这些参数的值，即 1024 字节。借助第 06 行和第 07 行的赋值，核函数代码的其余部分可以把 <span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 用作数组的基址，并使用线性化索引访问 <span class="inlinecode">Mds</span> 和 <span class="inlinecode">Nds</span> 元素。例如，不用 <span class="inlinecode">Mds[ty][tx]</span>，而用 <span class="inlinecode">Mds[ty*TILE_WIDTH+tx].</span></p>
+<div class="pageavoid"><figure class="fig" id="f0075"><img src="../images/F000185f05-14-9780323912310.jpg" class="img" alt="image" width="1369" height="328"/><figcaption class="figleg"><a id="sp0075"></a><span class="fignum"><a href="#Bf0075">图 5.14</a></span> 使用动态大小共享内存的分块矩阵乘法核函数。</figcaption></figure></div></section><section><a id="s0040"></a><h2 class="h1hd" id="st0055">5.7 小结</h2><p id="p0455" class="textfl">总而言之，在现代处理器中，程序的执行速度可能严重受限于内存的速度。为了充分利用 CUDA 设备的执行吞吐量，需要努力在核函数代码中获得较高的计算访存比。如果这个比值较低，核函数就是访存受限的。也就是说，它的执行速度受限于从内存访问其操作数的速率。</p>
+<p id="p0460" class="text">CUDA 提供对寄存器、共享内存和常量内存的访问。这些内存比全局内存小得多，但访问速度要高得多。有效使用这些内存需要对算法进行重新设计。我们以矩阵乘法为例说明分块，这是一种增强数据访问局部性、实现共享内存有效利用的常用策略。在并行编程中，分块使用屏障同步，强制多个线程在每个执行阶段共同聚焦于输入数据的一个子集，以便该子集数据可以被放入这些特殊类型的内存中，从而实现高得多的访问速度。</p>
+<p id="p0465" class="text">然而，CUDA 程序员必须意识到这些特殊类型内存的有限容量。它们的容量取决于具体实现。一旦超出这些容量，它们就会限制每个 SM 中能同时执行的线程数量，并可能对 GPU 的计算吞吐量及其容忍延迟的能力产生不利影响。在开发应用时具备对硬件限制的推理能力，是并行编程的一个关键方面。</p>
+<p id="p0470" class="text">虽然我们是在 CUDA C 编程的语境下介绍分块算法的，但它在几乎所有类型的并行计算系统中都是实现高性能的有效策略。原因是应用必须在数据访问中表现出局部性，才能有效利用这些系统中的高速内存。例如，在多核 CPU 系统中，数据局部性使应用能够有效利用片上数据缓存来降低内存访问延迟并实现高性能。这些片上数据缓存同样容量有限，要求计算表现出局部性。因此，读者在使用其他编程模型为其他类型的并行计算系统开发并行应用时，也会发现分块算法很有用。</p>
+<p id="p0475" class="text"><span id="page_119" aria-label="Page 119" epub:type="pagebreak" role="doc-pagebreak"></span>本章的目标是介绍局部性、分块以及不同类型 CUDA 内存的概念。我们介绍了一个使用共享内存的分块矩阵乘法核函数。我们还进一步研究了在应用分块技术时，为支持任意数据维度而进行边界测试的必要性。我们还简要讨论了动态大小共享内存分配的使用，使核函数能够根据硬件能力调整每个线程块使用的共享内存大小。我们没有讨论分块中寄存器的使用。我们将在本书第二部分讨论并行算法模式时，解释分块算法中寄存器的使用。</p></section><section><a id="s0045"></a><h2 class="h1hd" id="st0060">习题</h2><a id="p0480"></a><a id="li0015"></a><div><ol>
+<li class="numlista" id="o0045"><a id="p0485"></a>1. 考虑矩阵加法。能否使用共享内存来减少全局内存带宽的消耗？提示：分析每个线程访问的元素，看看线程之间是否存在任何共性。</li>
+<li class="numlista" id="o0050"><a id="p0490"></a>2. 画出相当于<a href="#f0040">图 5.7</a> 的示意图，分别针对 8×8 矩阵乘法使用 2×2 分块和 4×4 分块的情况。验证全局内存带宽的减少确实与分块的维数大小成正比。</li>
+<li class="numlista" id="o0055"><a id="p0495"></a>3. 如果忘记在<a href="#f0050">图 5.9</a> 的核函数中使用一个或两个 __syncthreads()，会发生哪种类型的错误执行行为？</li>
+<li class="numlista" id="o0060"><a id="p0500"></a>4. 假设寄存器和共享内存的容量都不是问题，给出一个重要理由，说明为什么使用共享内存而不是寄存器来保存从全局内存取回的值是有价值的？请解释你的答案。</li>
+<li class="numlista" id="o0065"><a id="p0505"></a>5. 对于我们的分块矩阵-矩阵乘法核函数，如果使用 32×32 的分块，输入矩阵 M 和 N 的内存带宽使用量会减少多少？</li>
+<li class="numlista" id="o0070"><a id="p0510"></a>6. 假设一个 CUDA 核函数以 1000 个线程块启动，每个线程块有 512 个线程。如果一个变量被声明为核函数中的局部变量，在核函数执行的整个生命周期中会创建该变量的多少个版本？</li>
+<li class="numlista" id="o0075"><a id="p0515"></a>7. 在上一题中，如果一个变量被声明为共享内存变量，在核函数执行的整个生命周期中会创建该变量的多少个版本？</li>
+<li class="numlista" id="o0080"><a id="p0520"></a><a id="li0020"></a>8. 考虑执行两个 N×N 维输入矩阵的矩阵乘法。当以下情况时，输入矩阵中的每个元素会从全局内存请求多少次：<ol>
+<li class="numlist1a" id="o0085"><a id="p0525"></a>a. 不使用分块时？</li>
+<li class="numlist1a" id="o0090"><a id="p0530"></a>b. 使用大小为 T×T 的分块时？</li>
+</ol></li>
+<li class="numlista" id="o0095"><a id="p0535"></a><a id="li0025"></a>9. 一个核函数每个线程执行 36 次浮点运算和 7 次 32 位全局内存访问。对于以下每种设备属性，请指出该核函数是计算受限还是访存受限。<ol>
+<li class="numlist1a" id="o0100"><a id="p0540"></a>a. 峰值 FLOPS=200 GFLOPS，峰值内存带宽=100 GB/秒</li>
+<li class="numlist1a" id="o0105"><a id="p0545"></a>b. 峰值 FLOPS=300 GFLOPS，峰值内存带宽=250 GB/秒</li>
+</ol></li>
+<li class="numlista" id="o0110"><a id="p0550"></a><span id="page_120" aria-label="Page 120" epub:type="pagebreak" role="doc-pagebreak"></span><a id="li0030"></a>10. 为了操作分块，一位新的 CUDA 程序员编写了一个设备核函数，用于转置矩阵中的每个分块。分块的大小为 BLOCK_WIDTH×BLOCK_WIDTH，并且已知矩阵 A 的每个维度都是 BLOCK_WIDTH 的倍数。核函数调用和代码如下所示。BLOCK_WIDTH 在编译时已知，可以在 1 到 20 之间任意设置。<div class="pageavoid"><figure class="fig" id="f0120"><img src="../images/F000185u05-08-9780323912310.jpg" class="img" alt="image" width="1304" height="583"/></figure></div><ol>
+<li class="numlist1a" id="o0115"><a id="p0555"></a>a. 在 BLOCK_SIZE 可能的取值范围中，对于哪些 BLOCK_SIZE 值，这个核函数能在设备上正确执行？</li>
+<li class="numlist1a" id="o0120"><a id="p0560"></a>b. 如果代码不能对所有 BLOCK_SIZE 值都正确执行，这种错误执行行为的根本原因是什么？请建议对代码的修复，使其适用于所有 BLOCK_SIZE 值。</li>
+</ol></li>
+<li class="numlista" id="o0125"><a id="p0565"></a>11. 考虑下面的 CUDA 核函数以及调用它的相应主机函数：</li>
+</ol></div><div class="pageavoid"><figure class="fig" id="f0230"><img src="../images/F000185u05-09-9780323912310.jpg" class="img" alt="image" width="1291" height="786"/></figure></div><a id="li0035"></a><div><ol>
+<li class="numlista" id="o0130"><a id="p0570"></a>a. 变量 <span class="inlinecode">i</span> 有多少个版本？</li>
+<li class="numlista" id="o0135"><a id="p0575"></a>b. 数组 <span class="inlinecode">x[]</span>有多少个版本？</li>
+<li class="numlista" id="o0140"><a id="p0580"></a>c. 变量 <span class="inlinecode">y_s</span> 有多少个版本？</li>
+<li class="numlista" id="o0145"><a id="p0585"></a><span id="page_121" aria-label="Page 121" epub:type="pagebreak" role="doc-pagebreak"></span>d. 数组 <span class="inlinecode">b_s[]</span>有多少个版本？</li>
+<li class="numlista" id="o0150"><a id="p0590"></a>e. 每个线程块使用的共享内存量是多少（以字节为单位）？</li>
+<li class="numlista" id="o0155"><a id="p0595"></a>f. 该核函数的浮点运算与全局内存访问之比是多少（以 OP/B 为单位）？</li>
+</ol></div><a id="li0040"></a><div><ol>
+<li class="numlista" id="o0160"><a id="p0600"></a><a id="li0045"></a>12. 考虑一个具有以下硬件限制的 GPU：每 SM 2048 个线程、每 SM 32 个线程块、每 SM 64K（65,536）个寄存器、每 SM 96 KB 共享内存。对于以下每种核函数特征，请指出该核函数能否达到满占用率。如果不能，请指出限制因素。<ol>
+<li class="numlist1a" id="o0165"><a id="p0605"></a>a. 该核函数使用每线程块 64 个线程、每线程 27 个寄存器，以及每 SM 4 KB 共享内存。</li>
+<li class="numlist1a" id="o0170"><a id="p0610"></a>b. 该核函数使用每线程块 256 个线程、每线程 31 个寄存器，以及每 SM 8 KB 共享内存。</li>
+</ol></li>
+</ol></div></section><footer><section epub:type="rearnotes"><div class="ftnote"><hr/><p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn1"><a id="ntp0010"></a><a href="#Cfn1"><sup>1</sup></a> 这一规则也有一些例外。如果所有访问都使用常量索引值进行，编译器可能会决定把自动数组存入寄存器。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn2"><a id="ntp0015"></a><a href="#Cfn2"><sup>2</sup></a> 如果线程块的数量小于 CUDA 设备中 SM 的数量，可以使用 CUDA 内存栅栏来确保线程块之间的数据一致性。更多细节请参阅 CUDA Programming Guide。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn3"><a id="ntp0020"></a><a href="#Cfn3"><sup>3</sup></a> 读者应该注意，条带挖掘在 CPU 编程中已长期使用。条带挖掘后接循环交换，常被用于在串行程序中实现分块以改善局部性。条带挖掘也是向量化编译器为 CPU 程序生成向量或 SIMD 指令的主要手段。</p>
+</div></section></footer></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>

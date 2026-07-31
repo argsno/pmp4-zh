@@ -1,0 +1,155 @@
+{
+  "page": "Ch007_151-171_B9780323912310000082",
+  "nodes": [
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "【1】Fig. 7.13【/1】 shows a small example of convolution using a 3 × 3 filter (【2】FILTER_RADIUS【/2】【3】=【/3】1), 8 × 8 input tiles, 8 × 8 blocks, and 6 × 6 output tiles. The left side of 【4】Fig. 7.13【/4】 shows the input tile and the thread block. Since they are of the same size, they are overlaid on top of each other. With our design, we deactivate 【5】FILTER_RADIUS【/5】=1 exterior layer of threads. The heavy-line box at the center of the left side of 【6】Fig. 7.13【/6】 encloses the active threads for calculating the output tile elements. In this example the 【7】threadIdx.x【/7】 and 【8】threadIdx.y【/8】 values of the active threads both range from 1 to 6.",
+      "zh": "【1】图 7.13【/1】展示了一个小型的卷积示例，使用 3 × 3 的滤波器（【2】FILTER_RADIUS【/2】【3】=【/3】1）、8 × 8 的输入分块、8 × 8 的线程块和 6 × 6 的输出分块。【4】图 7.13【/4】的左侧展示了输入分块和线程块。由于它们大小相同，二者重叠在一起。按照我们的设计，停用【5】FILTER_RADIUS【/5】=1 圈外层线程。【6】图 7.13【/6】左侧中央的粗线框圈出了用于计算输出分块元素的活动线程。在本例中，活动线程的【7】threadIdx.x【/7】和【8】threadIdx.y【/8】值都从 1 到 6。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "【1】Fig. 7.13【/1】 also shows the mapping of the active threads to the output tile elements: Active thread (tx, ty) will calculate output element (tx - 【2】FILTER_RADIUS【/2】, ty - 【3】FILTER_RADIUS【/3】) using a patch of input tile elements whose upper-left corner is element (tx - 【4】FILTER_RADIUS【/4】, ty - 【5】FILTER_RADIUS【/5】) of the input tile. This is reflected in lines 17–18 of 【6】Fig. 7.12【/6】, where the column index 【7】(tileCol)【/7】 and row index 【8】(tileRow)【/8】 are assigned 【9】threadIdx.x-FILTER_RADIUS【/9】 and 【10】threadId.y-FILTER_RADIUS【/10】, respectively.",
+      "zh": "【1】图 7.13【/1】还展示了活动线程到输出分块元素的映射：活动线程（tx, ty）将利用一块输入分块元素来计算输出元素（tx - 【2】FILTER_RADIUS【/2】, ty - 【3】FILTER_RADIUS【/3】），该输入分块元素块的左上角是输入分块的元素（tx - 【4】FILTER_RADIUS【/4】, ty - 【5】FILTER_RADIUS【/5】）。这体现在【6】图 7.12【/6】的第 17–18 行，其中列索引【7】(tileCol)【/7】和行索引【8】(tileRow)【/8】分别被赋值为【9】threadIdx.x-FILTER_RADIUS【/9】和【10】threadId.y-FILTER_RADIUS【/10】。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "In our small example in 【1】Fig. 7.13【/1】, 【2】tileCol【/2】 and 【3】tileRow【/3】 of thread (1,1) receive 0 and 0, respectively. Thus thread (1, 1) calculates element (0,0) of the output tile using the 3 × 3 patch of input tile elements highlighted with the dashed box at the upper-left corner of the input tile. The 【4】fRow-fCol【/4】 loop nest on lines 24–28 of 【5】Fig. 7.12【/5】 iterates through the patch and generates the output element. Thread (1,1) in the block will iterate through the patch whose upper-left corner is 【6】N_s[0][0]【/6】, whereas thread (5,5) will iterate through the patch whose upper-left corner is 【7】N_s[5][5]【/7】.",
+      "zh": "在【1】图 7.13【/1】的小示例中，线程 (1,1) 的【2】tileCol【/2】和【3】tileRow【/3】分别为 0 和 0。因此线程 (1, 1) 使用输入分块左上角虚线框标出的 3 × 3 输入分块元素块，计算输出分块的元素 (0,0)。【5】图 7.12【/5】第 24–28 行的【4】fRow-fCol【/4】循环嵌套遍历该元素块并生成输出元素。线程块中的线程 (1,1) 将遍历左上角为【6】N_s[0][0]【/6】的元素块，而线程 (5,5) 将遍历左上角为【7】N_s[5][5]【/7】的元素块。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
+      "en": "In lines 06–07, 【1】blockIdx.x*OUT_TILE_DIM【/1】 and 【2】blockIdx.y*OUT_TILE_DIM【/2】 are the horizontal and vertical P array indices, respectively, of the beginning of the output tile assigned to the block. As we discussed earlier, 【3】threadIdx.x-r【/3】 and 【4】threadIdx.y-r【/4】 give the offset into the tile. Thus the row and the col variables provide the index of the output element assigned to each active thread. Each thread uses these two indices to write the final value of the output element in line 29.",
+      "zh": "在第 06–07 行中，【1】blockIdx.x*OUT_TILE_DIM【/1】和【2】blockIdx.y*OUT_TILE_DIM【/2】分别是分配给该线程块的输出分块起点的水平与垂直 P 数组索引。正如我们之前讨论过的，【3】threadIdx.x-r【/3】和【4】threadIdx.y-r【/4】给出分块内的偏移量。这样，row 和 col 变量就提供了分配给每个活动线程的输出元素索引。每个线程在第 29 行用这两个索引写入输出元素的最终值。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
+      "en": "The tiled 2D convolution kernel in 【1】Fig. 7.12【/1】 is significantly longer and more complex than the basic kernel in 【2】Fig. 7.9【/2】. We introduced the additional complexity to reduce the number of DRAM accesses for the N elements. The goal is to improve the arithmetic-to-global memory access ratio so that the achieved performance is not limited or less limited by the DRAM bandwidth. Recall from 【3】Section 7.4【/3】 that the arithmetic-to-global memory access ratio of the kernel in 【4】Fig. 7.9【/4】 is 0.5 OP/B. Let us now derive this ratio for the kernel in 【5】Fig. 7.12【/5】.",
+      "zh": "【1】图 7.12【/1】中的分块 2D 卷积核函数比【2】图 7.9【/2】中的基础核函数要长得多，也复杂得多。我们引入这些额外的复杂度是为了减少访问 N 元素所需的 DRAM 访问次数。其目标是提高算术运算与全局内存访问之比，使实际性能不受或较少受 DRAM 带宽的限制。回顾【3】第 7.4 节【/3】，【4】图 7.9【/4】中核函数的算术运算与全局内存访问之比为 0.5 OP/B。现在让我们为【5】图 7.12【/5】中的核函数推导这一比值。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[12]",
+      "en": "For the blocks that handle tiles at the edges of the data, the threads that handle ghost cells do not perform any memory access for these ghost cells. This reduces the number of memory accesses for these blocks. We can calculate the reduced number of memory accesses by enumerating the number of threads that use each ghost cell. However, it should be clear that for large input arrays, the effect of ghost cells for small mask sizes will be insignificant. Therefore we will ignore the effect of ghost cells when we calculate the arithmetic-to-global memory access ratio in tiled convolution kernels and consider only the internal thread blocks whose halo cells are not ghost cells.",
+      "zh": "对于处理数据边缘分块的线程块，处理幽灵单元的线程不会为这些幽灵单元执行任何内存访问，从而减少了这些线程块的内存访问次数。我们可以通过枚举使用每个幽灵单元的线程数来计算减少后的内存访问次数。不过，显然对于大型输入数组，当掩码很小时，幽灵单元的影响可以忽略不计。因此，在计算分块卷积核函数的算术运算与全局内存访问之比时，我们将忽略幽灵单元的影响，只考虑光环单元不是幽灵单元的内部线程块。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[13]",
+      "en": "We now calculate the arithmetic-to-global memory access ratio for the tiled kernel in 【1】Fig. 7.12【/1】. Every thread that is assigned to an output tile element performs one multiplication and one addition for every element of the filter. Therefore the threads in an internal block collectively perform 【2】OUT_TILE_DIM【/2】【3】【4】2【/4】【/3】【5】*(2*FILTER_RADIUS + 1)【/5】【6】【7】2【/7】【/6】【8】*2【/8】 arithmetic operations. As for the global memory accesses, all the global memory accesses have been shifted to the code that loads the N elements into the shared memory. Each thread that is assigned to an input tile element loads one 4-byte input value. Therefore 【9】IN_TILE_DIM【/9】【10】【11】2【/11】【/10】【12】*4=(OUT_TILE_DIM+2*FILTER_RADIUS)【/12】【13】【14】2【/14】【/13】【15】*4【/15】 bytes are loaded by each internal block. Therefore the arithmetic-to-global memory access ratio for the tiled kernel is",
+      "zh": "现在我们来计算【1】图 7.12【/1】中分块核函数的算术运算与全局内存访问之比。分配给输出分块元素的每个线程，对滤波器的每个元素都要执行一次乘法和一次加法。因此，内部线程块中的线程共执行【2】OUT_TILE_DIM【/2】【3】【4】2【/4】【/3】【5】*(2*FILTER_RADIUS + 1)【/5】【6】【7】2【/7】【/6】【8】*2【/8】次算术运算。至于全局内存访问，所有的全局内存访问都已转移到把 N 元素加载到共享内存的代码中。分配给输入分块元素的每个线程加载一个 4 字节的输入值。因此，每个内部线程块加载【9】IN_TILE_DIM【/9】【10】【11】2【/11】【/10】【12】*4=(OUT_TILE_DIM+2*FILTER_RADIUS)【/12】【13】【14】2【/14】【/13】【15】*4【/15】字节。因此，该分块核函数的算术运算与全局内存访问之比为"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[15]",
+      "en": "For our example with a 5 × 5 filter and 32 × 32 input tiles (28 × 28 output tiles), the ratio is 【M1】【M2】. An input tile size of 32 × 32 is the largest that is achievable on current GPUs. However, we can perform an asymptotic analysis on the tile size to get an upper bound on the arithmetic-to-global memory access ratio that is achievable for this computation. If 【3】OUT_TILE_DIM【/3】 is much larger than 【4】FILTER_RADIUS【/4】, we can consider 【5】OUT_TILE_DIM+2*FILTER_RADIUS【/5】 to be approximately 【6】OUT_TILE_DIM【/6】. This simplifies the expression to 【7】(2*FILTER_RADIUS+1)【/7】【8】【9】2【/9】【/8】【10】*2/4【/10】. This should be quite an intuitive result. In the original algorithm, each N element is redundantly loaded by approximately 【11】(2*FILTER_RADIUS+1)【/11】【12】【13】2【/13】【/12】 threads, each of which performs two arithmetic operations with it. Thus if the tile size is infinitely large and each 4-byte element is loaded only into the shared memory once, the ratio should be 【14】(2*FILTER_RADIUS+1)【/14】【15】【16】2【/16】【/15】【17】*2/4【/17】.",
+      "zh": "以我们的示例为例，5 × 5 的滤波器和 32 × 32 的输入分块（28 × 28 的输出分块），该比值为【M1】【M2】。32 × 32 的输入分块大小是当前 GPU 上可达到的最大尺寸。不过，我们可以对分块大小做渐近分析，以得到该计算可达的算术运算与全局内存访问之比的上界。如果【3】OUT_TILE_DIM【/3】远大于【4】FILTER_RADIUS【/4】，我们可以认为【5】OUT_TILE_DIM+2*FILTER_RADIUS【/5】约等于【6】OUT_TILE_DIM【/6】。这样表达式就简化为【7】(2*FILTER_RADIUS+1)【/7】【8】【9】2【/9】【/8】【10】*2/4【/10】。这应当是一个相当直观的结果。在原始算法中，每个 N 元素会被大约【11】(2*FILTER_RADIUS+1)【/11】【12】【13】2【/13】【/12】个线程重复加载，每个线程对它执行两次算术运算。因此，如果分块大小无限大，且每个 4 字节元素只被加载到共享内存一次，该比值应为【14】(2*FILTER_RADIUS+1)【/14】【15】【16】2【/16】【/15】【17】*2/4【/17】。"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[16]",
+      "en": "【1】Fig. 7.14【/1】 shows how the arithmetic-to-global memory access ratio of the tiled convolution kernel for different filter sizes varies with tile dimension, including an asymptotic bound. The bound on the ratio with a 5 × 5 filter is 12.5 OP/B. However, the ratio that is actually achievable with the 32 × 32 limit on thread block size is 9.57 OP/B. For a larger filter, such as 9 × 9 in the bottom row of 【2】Fig. 7.14【/2】, the bound on the ratio is 40.5 OP/B. However, the ratio that is actually achievable with the 32 × 32 limit on thread block size is 22.78 OP/B. Therefore we observe that a larger filter size has a higher ratio because each input element is used by more threads. However, the larger filter size also has a higher disparity between the bound and the ratio that is actually achieved because of the larger number of halo elements that force a smaller output tile.",
+      "zh": "【1】图 7.14【/1】展示了不同滤波器大小下分块卷积核函数的算术运算与全局内存访问之比如何随分块维度变化，其中还给出了渐近上界。5 × 5 滤波器的比值上界为 12.5 OP/B。然而，在 32 × 32 的线程块大小限制下，实际可达到的比值为 9.57 OP/B。对于更大的滤波器，如【2】图 7.14【/2】最下面一行的 9 × 9，比值的上界为 40.5 OP/B，而在 32 × 32 的线程块大小限制下，实际可达到的比值为 22.78 OP/B。因此我们观察到，滤波器越大，比值越高，因为每个输入元素会被更多的线程使用。不过，滤波器越大，上界与实际达到的比值之间的差距也越大，因为光环元素越多，迫使输出分块越小。"
+    },
+    {
+      "id": "n0084",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.14【/1】 Arithmetic-to-global memory access ratio as a function of tile size and filter size for a 2D tiled convolution.",
+      "zh": "【1】图 7.14【/1】 2D 分块卷积中算术运算与全局内存访问之比随分块大小和滤波器大小的变化。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[17]",
+      "en": "The reader should always be careful when using small block and tile sizes. They may result in significantly less reduction in memory accesses than expected. For example, in 【1】Figs. 7.14【/1】, 【2】7.8【/2】 × 8 blocks (input tiles) result in only a ratio of 3.13 OP/B for 5 × 5 filters. In practice, smaller tile sizes are often used because of an insufficient amount of on-chip memory, especially in 3D convolution, in which the amount of on-chip memory that is needed grows quickly with the dimension of the tile.",
+      "zh": "读者在使用小块和小分块时应始终保持谨慎。它们可能使内存访问次数的减少量远低于预期。例如，在【1】图 7.14【/1】中，【2】7.8【/2】× 8 的线程块（输入分块）对 5 × 5 的滤波器只能得到 3.13 OP/B 的比值。在实践中，由于片上内存不足，常常使用较小的分块大小，尤其是在 3D 卷积中，所需的片上内存量会随分块维度的增大而迅速增长。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "7.5 Tiled convolution using caches for halo cells",
+      "zh": "7.5 利用缓存处理光环单元的分块卷积"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "In 【1】Fig. 7.12【/1】, much of the complexity of the code has to do with the fact that the input tiles and blocks are larger than the output tiles because of the loading of halo cells. Recall that the halo cells of an input tile of a block are also the internal elements of neighboring tiles. For example, in 【2】Fig. 7.11【/2】 the lightly shaded halo cells of an input tile are also internal elements of the input tiles of neighboring blocks. There is a significant probability that by the time a block needs its halo cells, they are already in L2 cache because of the accesses by its neighboring blocks. As a result, the memory accesses to these halo cells may be naturally served from L2 cache without causing additional DRAM traffic. That is, we can leave the accesses to these halo cells in the original N elements rather than loading them into the 【3】N_ds【/3】. We now present a tiled convolution algorithm that uses the same dimension for input and output tiles and loads only the internal elements of each tile into the shared memory.",
+      "zh": "在【1】图 7.12【/1】中，代码的大部分复杂性源于这样一个事实：由于要加载光环单元，输入分块和线程块都大于输出分块。回顾一下，一个线程块输入分块的光环单元同时也是相邻分块的内部元素。例如，在【2】图 7.11【/2】中，某个输入分块的浅色光环单元也是相邻线程块输入分块的内部元素。当一个线程块需要其光环单元时，有很大概率它们已经在 L2 缓存中，因为相邻线程块的访问已经把它们带了进来。因此，对这些光环单元的内存访问可能会自然地从 L2 缓存得到满足，而不会产生额外的 DRAM 流量。也就是说，我们可以让对这些光环单元的访问保持对原始 N 元素的访问，而不必把它们加载到【3】N_ds【/3】中。现在，我们给出一种分块卷积算法，它让输入分块和输出分块采用相同的维度，并且只把每个分块的内部元素加载到共享内存中。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "【1】Fig. 7.15【/1】 shows a 2D convolution kernel using caching for halo cells. In this tiled kernel, the shared memory 【2】N_ds【/2】 array needs to hold only the internal elements of the tile. Thus the input tiles and output tiles are of the same dimension, which is defined as constant 【3】TILE_DIM【/3】 (line 1). With this simplification, 【4】N_s【/4】 is declared to have 【5】TILE_DIM【/5】 elements in both x and y dimensions (line 6).",
+      "zh": "【1】图 7.15【/1】展示了一个利用缓存处理光环单元的 2D 卷积核函数。在这个分块核函数中，共享内存数组【2】N_ds【/2】只需要容纳分块的内部元素。这样，输入分块和输出分块具有相同的维度，该维度被定义为常量【3】TILE_DIM【/3】（第 1 行）。有了这个简化，【4】N_s【/4】被声明为在 x 和 y 两个维度上各有【5】TILE_DIM【/5】个元素（第 6 行）。"
+    },
+    {
+      "id": "n0089",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.15【/1】 A tiled 2D convolution kernel using caching for halos and constant memory for F.",
+      "zh": "【1】图 7.15【/1】 一个利用缓存处理光环单元、使用常量内存存放 F 的分块 2D 卷积核函数。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "Because the input tiles and output tiles are of the same size, the thread blocks can be launched with the same size of the input/output tiles. Loading of the 【1】N_s【/1】 elements becomes simpler, since each thread can simply load the input element that has the same x and y coordinates as its assigned output element (lines 4–5 and 7–11). The condition for loading an input element is also simplified in line 7: Because the kernel no longer loads halo cells into shared memory, there is no danger of loading ghost cells. Thus the condition needs to check only for the usual boundary condition that a tile may extend beyond the valid range of the input data.",
+      "zh": "由于输入分块和输出分块大小相同，线程块可以按与它们相同的大小来启动。加载【1】N_s【/1】元素变得更简单，因为每个线程只需加载与其负责的输出元素具有相同 x、y 坐标的输入元素（第 4–5 行和第 7–11 行）。第 7 行中加载输入元素的条件也得以简化：由于核函数不再把光环单元加载到共享内存中，也就不存在加载幽灵单元的危险。因此，该条件只需检查通常的边界条件，即分块可能超出输入数据的有效范围。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "However, the body of the loop that calculates P elements becomes more complex. It needs to add conditions to check for use of both halo cells and ghost cells. The handling of halo cells is done with the conditions in lines 17–20, which tests whether the input element falls within the interior of the input tile. If so, the element is accessed from the shared memory. If not, the conditions in lines 24–27 check whether the halo cells are ghost cells. If so, no action is taken for the element, since we assume that the ghost values are 0. Otherwise, the element is accessed from the global memory. The reader should verify that the conditions for handling the ghost cells are similar to those used in 【1】Fig. 7.7【/1】.",
+      "zh": "不过，计算 P 元素的循环体变得更复杂了。它需要增加条件来检查光环单元和幽灵单元的使用。光环单元的处理由第 17–20 行的条件完成，这些条件检查输入元素是否位于输入分块的内部。如果是，则从共享内存访问该元素；如果不是，第 24–27 行的条件检查这些光环单元是否为幽灵单元。如果是，则对该元素不做任何操作，因为我们假定幽灵值为 0；否则，从全局内存访问该元素。读者可以自行验证，处理幽灵单元的条件与【1】图 7.7【/1】中所用的条件类似。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "A subtle advantage of the kernel in 【1】Fig. 7.15【/1】 compared to the kernel in 【2】Fig. 7.12【/2】 is that its block size, input tile size, and output tile size can be the same and can be a power of 2. Because the input tile size and output tile size are different for the kernel in 【3】Fig. 7.12【/3】, there is likely more memory divergence and control divergence during the execution of that kernel.",
+      "zh": "与【2】图 7.12【/2】中的核函数相比，【1】图 7.15【/1】中核函数的一个微妙优势是，其线程块大小、输入分块大小和输出分块大小可以相同，而且可以是 2 的幂。由于【3】图 7.12【/3】中核函数的输入分块大小与输出分块大小不同，该核函数在执行期间很可能出现更多的内存发散和控制发散。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "7.6 Summary",
+      "zh": "7.6 小结"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "In this chapter we have studied convolution as an important parallel computation pattern. While convolution is used in many applications, such as computer vision and video processing, it also represents a general pattern that forms the basis of many parallel algorithms. For example, one can view the stencil algorithms in partial differential equation solvers as a special case of convolution; this will be the subject of 【1】Chapter 8【/1】, Stencil. For another example, one can also view the calculation of grid point force or potential value as a special case of convolution, which will be presented in 【2】Chapter 17【/2】, Iterative Magnetic Resonance Imaging Reconstruction. We will also apply much of what we learned in this chapter on convolutional neural networks in 【3】Chapter 16【/3】, Deep Learning.",
+      "zh": "在本章中，我们研究了卷积这一重要的并行计算模式。虽然卷积被用于计算机视觉和视频处理等许多应用中，但它也代表了一种通用模式，构成许多并行算法的基础。例如，可以把偏微分方程求解器中的模板算法视为卷积的特例，这将是【1】第 8 章【/1】《模板》的主题。再如，也可以把网格点作用力或势能值的计算视为卷积的特例，这将在【2】第 17 章【/2】《迭代式磁共振成像重建》中介绍。我们还将在【3】第 16 章【/3】《深度学习》中运用本章学到的许多知识来研究卷积神经网络。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "We presented a basic parallel convolution algorithm whose implementation will be limited by DRAM bandwidth for accessing both the input and filter elements. We then introduced constant memory and a simple modification to the kernel and host code to take advantage of constant caching and eliminate practically all DRAM accesses for the filter elements. We further introduced a tiled parallel convolution algorithm that reduces DRAM bandwidth consumption by leveraging the shared memory while introducing more control flow divergence and programming complexity. Finally, we presented a tiled parallel convolution algorithm that takes advantage of the L1 and L2 caches for handling halo cells.",
+      "zh": "我们给出了一种基础并行卷积算法，其实现将受限于访问输入元素和滤波器元素所需的 DRAM 带宽。随后我们介绍了常量内存，以及对核函数和主机代码做的一个简单修改，以利用常量缓存并几乎完全消除访问滤波器元素所需的 DRAM 访问。我们还进一步介绍了一种分块并行卷积算法，它通过利用共享内存来降低 DRAM 带宽消耗，同时引入了更多的控制流发散和编程复杂性。最后，我们给出了一种分块并行卷积算法，它利用 L1 和 L2 缓存来处理光环单元。"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "We presented an analysis of the benefit of tiling in terms of elevated arithmetic-to-global memory access ratio. The analysis is an important skill and will be useful in understanding the benefit of tiling for other patterns. Through the analysis we can learn about the limitation of small tile sizes, which is especially pronounced for large filters and 3D convolutions.",
+      "zh": "我们从提高算术运算与全局内存访问之比的角度，对分块的收益进行了分析。这种分析是一项重要技能，有助于理解分块对其他模式的收益。通过该分析，我们可以了解到小分块大小的局限性，这种局限性在大滤波器和 3D 卷积中尤为明显。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[4]",
+      "en": "Although we have shown kernel examples for only 1D and 2D convolutions, the techniques are directly applicable to 3D convolutions as well. In general, the index calculation for the input and output arrays are more complex, owing to higher dimensionality. Also, one will have more loop nesting for each thread, since multiple dimensions need to be traversed in loading tiles and/or calculating output values. We encourage the reader to complete these higher-dimension kernels as homework exercises.",
+      "zh": "虽然我们只给出了 1D 和 2D 卷积的核函数示例，但这些技术同样直接适用于 3D 卷积。一般来说，由于维数更高，输入和输出数组的索引计算会更复杂。此外，每个线程会有更多层的循环嵌套，因为在加载分块和/或计算输出值时需要遍历多个维度。我们鼓励读者把这些高维核函数作为家庭作业来完成。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]",
+      "en": "1. Calculate the P[0] value in 【1】Fig. 7.3【/1】.",
+      "zh": "1. 计算【1】图 7.3【/1】中 P[0] 的值。"
+    }
+  ]
+}

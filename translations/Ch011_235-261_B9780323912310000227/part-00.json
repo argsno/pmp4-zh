@@ -1,0 +1,155 @@
+{
+  "page": "Ch011_235-261_B9780323912310000227",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/hgroup[1]/h1[1]",
+      "en": "Prefix sum (scan)",
+      "zh": "前缀和（扫描）"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/hgroup[1]/h2[1]",
+      "en": "An introduction to work efficiency in parallel algorithms",
+      "zh": "并行算法中的工作效率入门"
+    },
+    {
+      "id": "n0002",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/address[1]/p[1]",
+      "en": "With special contributions from Li-Wen Chang, Juan Gómez-Luna and John Owens",
+      "zh": "特别感谢 Li-Wen Chang、Juan Gómez-Luna 和 John Owens 的贡献"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces parallel scan (prefix sum), an important parallel computation pattern and the concept of work efficiency for parallel algorithms. It introduces three styles of kernels: Kogge-Stone, Brent-Kung, and two-phase hybrid. These kernels each present a different tradeoff in terms of work efficiency, speed, and complexity. The chapter then introduces two hierarchical parallel scan algorithms that are designed to process arbitrarily long input lists while maintaining work efficiency.",
+      "zh": "本章介绍并行扫描（前缀和），这是一种重要的并行计算模式，并介绍并行算法中工作效率的概念。本章介绍三种风格的核函数：Kogge-Stone、Brent-Kung 和两阶段混合式。这些核函数在工作效率、速度和复杂性方面各有不同的取舍。随后，本章介绍两种分层并行扫描算法，它们专门用于处理任意长度的输入列表，同时保持工作效率。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Scan; prefix sum; reduction; linear recursion; resource allocation; work assignment; polynomial evaluation; Kogge-Stone; race condition; data dependence; double-buffering; work efficiency; Brent-Kung; segmented scan; adjacent (block) synchronization; stream-based scan",
+      "zh": "扫描；前缀和；归约；线性递归；资源分配；工作分配；多项式求值；Kogge-Stone；竞态条件；数据依赖；双缓冲；工作效率；Brent-Kung；分段扫描；相邻（线程块）同步；流式扫描"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0008",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】11.1 Background【/1】 236",
+      "zh": "【1】11.1 背景【/1】 236"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】11.2 Parallel scan with the Kogge-Stone algorithm【/1】 238",
+      "zh": "【1】11.2 基于 Kogge-Stone 算法的并行扫描【/1】 238"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】11.3 Speed and work efficiency consideration【/1】 244",
+      "zh": "【1】11.3 速度与工作效率考量【/1】 244"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】11.4 Parallel scan with the Brent-Kung algorithm【/1】 246",
+      "zh": "【1】11.4 基于 Brent-Kung 算法的并行扫描【/1】 246"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】11.5 Coarsening for even more work efficiency【/1】 251",
+      "zh": "【1】11.5 进一步提升工作效率的粗化【/1】 251"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】11.6 Segmented parallel scan for arbitrary-length inputs【/1】 253",
+      "zh": "【1】11.6 面向任意长度输入的分段并行扫描【/1】 253"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】11.7 Single-pass scan for memory access efficiency【/1】 256",
+      "zh": "【1】11.7 面向内存访问效率的单遍扫描【/1】 256"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】11.8 Summary【/1】 259",
+      "zh": "【1】11.8 小结【/1】 259"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[9]",
+      "en": "【1】Exercises【/1】 260",
+      "zh": "【1】习题【/1】 260"
+    },
+    {
+      "id": "u0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[10]",
+      "en": "【1】References【/1】 261",
+      "zh": "【1】参考文献【/1】 261"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Our next parallel pattern is prefix sum, which is also commonly known as scan. Parallel scan is frequently used to parallelize seemingly sequential operations, such as resource allocation, work assignment, and polynomial evaluation. In general, if a computation is naturally described as a mathematical recursion in which each item in a series is defined in terms of the previous item, it can likely be parallelized as a parallel scan operation. Parallel scan plays a key role in massively parallel computing for a simple reason: Any sequential section of an application can drastically limit the overall performance of the application. Many such sequential sections can be converted into parallel computation with parallel scan. For this reason, parallel scan is often used as a primitive operation in parallel algorithms that perform radix sort, quick sort, string comparison, polynomial evaluation, solving recurrences, tree operations, and stream compaction. The radix sort example will be presented in 【1】Chapter 13【/1】, Sorting.",
+      "zh": "我们的下一个并行模式是前缀和（prefix sum），也就是通常所说的扫描（scan）。并行扫描常被用来并行化那些看似串行的运算，例如资源分配、工作分配和多项式求值。一般而言，如果某个计算可以自然地描述为一种数学递归——序列中的每一项都由前一项定义——那么它很可能可以并行化为并行扫描运算。并行扫描在大规模并行计算中扮演着关键角色，原因很简单：应用程序中的任何串行部分都可能极大地限制应用的总体性能。许多此类串行部分都可以借助并行扫描转换为并行计算。正因如此，并行扫描常常被用作并行算法中的基本运算，用于执行基数排序、快速排序、字符串比较、多项式求值、求解递推、树运算和流式紧凑化。基数排序的例子将在【1】第 13 章【/1】排序中介绍。"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "Another reason why parallel scan is an important parallel pattern is that it is a typical example of where the work performed by some parallel algorithms can have higher complexity than the work performed by a sequential algorithm, leading to a tradeoff that needs to be carefully made between algorithm complexity and parallelization. As we will show, a slight increase in algorithm complexity can make parallel scan run more slowly than sequential scan for large datasets. Such consideration is becoming even more important in the age of “big data,” in which massive datasets challenge tradition algorithms that have high computational complexity.",
+      "zh": "并行扫描之所以是一种重要的并行模式，还有另一个原因：一些并行算法所完成的工作，其复杂度可能高于串行算法完成的工作，这带来了一种需要在算法复杂度与并行化之间仔细权衡的取舍。正如我们将要展示的，对于大型数据集，算法复杂度的轻微增加就可能使并行扫描比串行扫描运行得更慢。在“大数据”时代，这种考量变得更为重要——海量数据集正挑战着那些计算复杂度较高的传统算法。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "11.1 Background",
+      "zh": "11.1 背景"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "Mathematically, an 【1】inclusive scan【/1】 operation takes a binary associative operator ⊕ and an input array of 【2】n【/2】 elements [【3】x【/3】【4】0【/4】, 【5】x【/5】【6】1【/6】, …, 【7】x【/7】【8】【9】n【/9】−1【/8】], and returns the following output array:",
+      "zh": "从数学上讲，【1】包含式扫描【/1】运算接受一个二元结合性算子 ⊕ 和一个包含【2】n【/2】个元素的输入数组 [【3】x【/3】【4】0【/4】, 【5】x【/5】【6】1【/6】, …, 【7】x【/7】【8】【9】n【/9】−1【/8】]，并返回如下输出数组："
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "For example, if ⊕ is addition, an inclusive scan operation on the input array [3 1 7 0 4 1 6 3] would return [2, 3+1, 3+1+7, 3+1+7+0, …, 3+1+7+0+4+1+6+3]=[3 4 11 11 15 16 22 25]. The name “inclusive” scan comes from the fact that each output element 【1】includes【/1】 the effect of the corresponding input element.",
+      "zh": "例如，如果 ⊕ 是加法，那么对输入数组 [3 1 7 0 4 1 6 3] 执行包含式扫描将返回 [2, 3+1, 3+1+7, 3+1+7+0, …, 3+1+7+0+4+1+6+3]=[3 4 11 11 15 16 22 25]。“包含式”扫描这一名称源于以下事实：每个输出元素【1】包含【/1】了对应输入元素的影响。"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "We can illustrate the applications for inclusive scan operations using an example of cutting sausage for a group of people. Assume that we have a 40-inch sausage to be served to eight people. Each person has ordered a different amount in terms of inches: 3, 1, 7, 0, 4, 1, 6, and 3. That is, Person 0 wants 3 inches of sausage, Person 1 wants 1 inch, and so on. We can cut the sausage either sequentially or in parallel. The sequential way is very straightforward. We first cut a 3-inch section for Person 0. The sausage is now 37 inches long. We then cut a one-inch section for Person 1. The sausage becomes 36 inches long. We can continue to cut more sections until we serve the 3-inch section to Person 7. At that point, we have served a total of 25 inches of sausage, with 15 inches remaining.",
+      "zh": "我们可以用为一群人切香肠的例子来说明包含式扫描运算的应用。假设我们有 40 英寸的香肠要分给八个人。每个人订购的量各不相同（以英寸计）：3、1、7、0、4、1、6 和 3。也就是说，第 0 个人要 3 英寸香肠，第 1 个人要 1 英寸，依此类推。我们可以串行切香肠，也可以并行切。串行方式非常直接：先给第 0 个人切出 3 英寸的一段，此时香肠还剩 37 英寸长；接着给第 1 个人切出 1 英寸的一段，香肠变成 36 英寸长。我们可以继续切下去，直到给第 7 个人切出 3 英寸的一段。到那时，我们共切出 25 英寸香肠，还剩 15 英寸。"
+    }
+  ]
+}

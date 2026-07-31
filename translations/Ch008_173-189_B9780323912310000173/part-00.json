@@ -1,0 +1,155 @@
+{
+  "page": "Ch008_173-189_B9780323912310000173",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Stencil",
+      "zh": "模板"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "In this chapter we dive into stencil sweep computation, which seems to be just convolution with special filter patterns. However, because the stencils come from discretization and numerical approximation of derivatives in solving differential equations, they have two characteristics that motivate and enable new optimizations. This chapter focuses on these new optimization opportunities and challenges. First, stencil sweeps are typically done on three-dimensional (3D) grids, whereas convolution is typically done on two-dimensional (2D) images or a small number of time slices of 2D images. This makes the tiling considerations different between the two and motivates thread coarsening for 3D stencils to enable larger input tiles and more data reuse. Second, the stencil patterns can sometimes enable register tiling of input data to further improve data access throughput and alleviate shared memory pressure.",
+      "zh": "本章深入探讨模板扫掠计算，它看起来只是带有特殊滤波器模式的卷积。然而，由于模板源自求解微分方程时对导数的离散化和数值近似，因此它们具有两个催生并支撑新优化的特点。本章聚焦于这些新的优化机会与挑战。首先，模板扫掠通常在三维（3D）网格上进行，而卷积通常在二维（2D）图像或少量二维图像时间切片上进行。这使得两者的分块考量有所不同，并促使人们对三维模板采用线程粗化，以支持更大的输入分块和更多的数据重用。其次，模板模式有时还能对输入数据采用寄存器分块，从而进一步提升数据访问吞吐量并缓解共享内存压力。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Stencil; stencil sweep; numerical methods; discretization; differential equations; boundary condition problems; finite difference method; domain decomposition; tiling; ghost cells; halo cells; data reuse; tiling efficiency; thread coarsening; shared memory tiling; register tiling",
+      "zh": "模板；模板扫掠；数值方法；离散化；微分方程；边界条件问题；有限差分法；区域分解；分块；幽灵单元；光环单元；数据重用；分块效率；线程粗化；共享内存分块；寄存器分块"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】8.1 Background【/1】 174",
+      "zh": "【1】8.1 背景【/1】 174"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】8.2 Parallel stencil: a basic algorithm【/1】 178",
+      "zh": "【1】8.2 并行模板：基础算法【/1】 178"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】8.3 Shared memory tiling for stencil sweep【/1】 179",
+      "zh": "【1】8.3 面向模板扫掠的共享内存分块【/1】 179"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】8.4 Thread coarsening【/1】 183",
+      "zh": "【1】8.4 线程粗化【/1】 183"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】8.5 Register tiling【/1】 186",
+      "zh": "【1】8.5 寄存器分块【/1】 186"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】8.6 Summary【/1】 188",
+      "zh": "【1】8.6 小结【/1】 188"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】Exercises【/1】 188",
+      "zh": "【1】习题【/1】 188"
+    },
+    {
+      "id": "p0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Stencils are foundational to numerical methods for solving partial differential equations in application domains such as fluid dynamics, heat conductance, combustion, weather forecasting, climate simulation, and electromagnetics. The data that is processed by stencil-based algorithms consists of discretized quantities of physical significance, such as mass, velocity, force, acceleration, temperature, electrical field, and energy, whose relationships with each other are governed by differential equations. A common use of stencils is to approximate the derivative values of a function based on the function values within a range of input variable values. Stencils bear strong resemblance to convolution in that both stencils and convolution calculate the new value of an element of a multidimensional array based on the current value of the element at the same position and those in the neighborhood in another multidimensional array. Therefore stencils also need to deal with halo cells and ghost cells. Unlike convolution, a stencil computation is used to iteratively solve the values of continuous, differentiable functions within the domain of interest. The data elements and the weight coefficients that are used for the elements in the stencil neighborhood are governed by the differential equations that are being solved. Some stencil patterns are amenable to optimizations that are not applicable to convolution. In the solvers in which initial conditions are iteratively propagated through the domain, the calculations of output values may have dependences and need to be performed according to some ordering constraints. Furthermore, because of the numerical accuracy requirements in solving differential questions, the data that is processed by stencils tends to be high-precision floating data that consumes more on-chip memory for tiling techniques. Because of these differences, stencils tend to motivate different optimizations than convolution does.",
+      "zh": "模板是求解偏微分方程的数值方法的基础，这些方法应用于流体动力学、热传导、燃烧、天气预报、气候模拟和电磁学等领域。基于模板的算法所处理的数据，是质量、速度、力、加速度、温度、电场和能量等具有物理意义的离散量，它们彼此之间的关系由微分方程支配。模板的一个常见用途是：根据一定取值范围内的输入变量上的函数值，来近似函数的导数值。模板与卷积有很强的相似性：二者都是根据多维数组中同一位置元素的当前值及其邻域内其他元素的当前值，来计算该元素的新值。因此模板同样需要处理光环单元和幽灵单元。与卷积不同，模板计算用于在感兴趣的域内迭代地求解连续可微函数的值。模板邻域中各元素所对应的数据元素和权重系数，由正在求解的微分方程决定。某些模板模式适合采用卷积所无法适用的优化。在初始条件在域内迭代传播的求解器中，输出值的计算可能存在依赖关系，需要按照一定的顺序约束来执行。此外，由于求解微分方程时对数值精度的要求，模板处理的数据往往是高精度浮点数据，这会使分块技术消耗更多的片上内存。正是由于这些差异，模板往往催生出与卷积不同的优化。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "8.1 Background",
+      "zh": "8.1 背景"
+    },
+    {
+      "id": "p0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "The first step in using computers to numerically evaluate and solve functions, models, variables, and equations is to convert them into a discrete representation. For example, 【1】Fig. 8.1A【/1】 shows the sine function 【M2】【M3】 for 【M4】【M5】. 【6】Fig. 8.1B【/6】 shows the design of a one-dimensional (1D) regular (structured) grid whose seven grid points correspond to 【7】x【/7】 values that are of constant spacing (【M8】【M9】 apart. In general, structured grids cover an n-dimensional Euclidean space with identical parallelotopes (e.g., segments in one dimension, rectangles in two dimension, bricks in three dimensions). As we will see later, with structured grids, derivatives of variables can be conveniently expressed as finite differences. Therefore structured grids are used mainly in finite-difference methods. Unstructured grids are more complex and are used in finite-element and finite-volume methods. For simplicity we will use only regular grids and thus finite-difference methods in this book.",
+      "zh": "使用计算机对函数、模型、变量和方程进行数值求值与求解的第一步，是把它们转换成离散表示。例如，【1】图 8.1A【/1】 给出了 【M2】【M3】 在 【M4】【M5】 范围内的正弦函数。【6】图 8.1B【/6】 给出了一个一维（1D）规则（结构化）网格的设计，其七个网格点对应间距恒定的 【7】x【/7】 值（相邻网格点间距为 【M8】【M9】）。一般而言，结构化网格以相同的平行多面体覆盖 n 维欧几里得空间（例如一维中的线段、二维中的矩形、三维中的长方体）。稍后我们将看到，借助结构化网格，变量的导数可以方便地用有限差分来表示。因此，结构化网格主要用于有限差分法。非结构化网格更为复杂，用于有限元和有限体积方法。为简单起见，本书只使用规则网格，因而只使用有限差分法。"
+    },
+    {
+      "id": "n0017",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 8.1【/1】 (A) Sine as a continuous, differentiable function for 【M2】【M3】. (B) Design of a regular grid with constant spacing (【M4】【M5】 between grid point for discretization. (C) Resulting discrete representation of the sine function for 【M6】【M7】.",
+      "zh": "【1】图 8.1【/1】 （A）正弦函数在 【M2】【M3】 上作为连续可微函数。（B）用于离散化的规则网格设计，网格点间距恒定（为 【M4】【M5】）。（C）正弦函数在 【M6】【M7】 上的离散表示结果。"
+    },
+    {
+      "id": "p0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "【1】Fig. 8.1C【/1】 shows the resulting discrete representation in which the sine function is represented with its values at the seven grid points. In this case, the representation is stored in a 1D array F. Note that the 【2】x【/2】 values are implicitly assumed to be 【M3】【M4】, where 【5】i【/5】 is the index of the array element. For example, the 【6】x【/6】 value that corresponds to element F[2] is 0.87, which is the sine value of 【M7】【M8】.",
+      "zh": "【1】图 8.1C【/1】 给出了得到的离散表示：正弦函数用其七个网格点上的取值来表示。在此情形下，该表示存储在一维数组 F 中。注意，【2】x【/2】 的取值被隐式假定为 【M3】【M4】，其中 【5】i【/5】 是数组元素的索引。例如，与元素 F[2] 对应的 【6】x【/6】 值为 0.87，它是 【M7】【M8】 的正弦值。"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "In a discrete representation, one needs to use an interpolation technique such as linear or splines to derive the approximate value of the function for 【1】x【/1】 values that do not correspond to any of the grid points. The fidelity of the representation or how accurate the function values from these approximate interpolation techniques are depends on the spacing between grid points: The smaller the spacing, the more accurate the approximations. By decreasing the spacing, one can improve the accuracy of the representation at the cost of more storage and, as we will see, more computation when we solve a partial differential equation.",
+      "zh": "在离散表示中，对于不与任何网格点对应的 【1】x【/1】 值，需要用线性或样条等插值技术来推导函数的近似值。表示的保真度——即这些近似插值技术所得函数值的准确程度——取决于网格点之间的间距：间距越小，近似越准确。减小间距可以提高表示的精度，但代价是需要更多存储，而且，稍后我们将看到，在求解偏微分方程时还会带来更多计算。"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "The fidelity of a discrete representation also depends on the precision of the numbers used. Since we are approximating continuous functions, floating-point numbers are typically used for the grid point values. Mainstream CPUs and GPUs support double-precision (64-bit), single-precisions (32-bit), and half-precision (16-bit) representations today. Among the three, double-precision numbers offer the best precision and the most fidelity in discrete representations. However, modern CPUs and GPUs typically have much higher arithmetic computation throughput for single-precision and half-precision arithmetic. Also, since double-precision numbers consist of more bits, reading and writing double-precision numbers consumes more memory bandwidth. Storing these double-precision numbers also requires memory capacity. This can pose a significant challenge for tiling techniques that require a significant number of grid point values to be stored in on-chip memory and registers.",
+      "zh": "离散表示的保真度还取决于所用数值的精度。由于我们近似的是连续函数，网格点值通常使用浮点数。当今主流的 CPU 和 GPU 支持双精度（64 位）、单精度（32 位）和半精度（16 位）表示。三者之中，双精度数在离散表示中提供最佳的精度和最高的保真度。然而，现代 CPU 和 GPU 对单精度和半精度运算通常具有高得多的算术计算吞吐量。此外，由于双精度数包含更多位，读写双精度数会消耗更多的内存带宽。存储这些双精度数也需要内存容量。这对分块技术构成了不小的挑战，因为分块技术要求把大量网格点值存储在片上内存和寄存器中。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "Let us discuss the definition of stencils with a little more formalism. In mathematics a stencil is a geometric pattern of weights applied at each point of a structured grid. The pattern specifies how the values of the grid point of interest can be derived from the values at neighboring points using a numerical approximation routine. For example, a stencil may specify how the derivative value of a function at a point of interest is approximated by using finite differences between the values of the function at the point and its neighbors. Since partial differential equations express the relationships between functions, variables, and their derivatives, stencils offer a convenient basis for specifying how finite difference methods numerically compute the solutions to partial differential equations.",
+      "zh": "让我们以稍微更正式的方式来讨论模板的定义。在数学中，模板是施加于结构化网格每个点上的权重几何模式。该模式规定了如何借助数值近似方法，从相邻点的取值推导出所关注网格点的取值。例如，模板可以规定如何利用函数在关注点及其邻点取值之间的有限差分，来近似函数在该点的导数值。由于偏微分方程刻画了函数、变量及其导数之间的关系，模板为规定有限差分法如何数值地计算偏微分方程的解提供了便捷的基础。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "For example, assume that we have 【M1】【M2】 discretized into a 1D grid array F and we would like to calculate the discretized derivative of 【M3】【M4】, 【M5】【M6】. We can use the classic finite difference approximation for the first derivative:",
+      "zh": "例如，假设我们有函数 【M1】【M2】，将其离散化为一维网格数组 F，并且我们希望计算 【M3】【M4】 的离散导数，即 【M5】【M6】。我们可以使用经典的一阶导数有限差分近似："
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[8]",
+      "en": "That is, the derivative of a function at point 【1】x【/1】 can be approximated by the difference of the function values at two neighboring points divided by the difference of the 【2】x【/2】 values of these neighboring points. The value 【3】h【/3】 is the spacing between neighboring points in the grid. The error is expressed by the term 【M4】【M5】 meaning that the error is proportional to the square of 【6】h【/6】. Obviously, the smaller the 【7】h【/7】 value, the better the approximation. In our example in 【8】Fig. 8.1【/8】 the 【9】h【/9】 value is 【M10】【M11】 or 0.52. The value is not small enough to make the approximation error negligible but should be able to result in a reasonably close approximation.",
+      "zh": "也就是说，函数在点 【1】x【/1】 处的导数可以近似为：两个相邻点上的函数值之差除以这两个相邻点的 【2】x【/2】 值之差。值 【3】h【/3】 是网格中相邻点之间的间距。误差由项 【M4】【M5】 表示，它说明误差与 【6】h【/6】 的平方成正比。显然，【7】h【/7】 的值越小，近似越好。在 【8】图 8.1【/8】 的例子中，【9】h【/9】 的值为 【M10】【M11】，即 0.52。该值还不足以让近似误差小到可以忽略，但应当能够得到相当接近的近似。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[9]",
+      "en": "Since the grid spacing is 【1】h【/1】, the current estimated 【2】f【/2】(【3】x【/3】−【4】h【/4】), 【5】f【/5】(【6】x【/6】), and 【7】f【/7】(【8】x【/8】+【9】h【/9】) values are in F[i−1], F[i], and F[i+1], respectively, where 【10】x【/10】=【11】i*h【/11】. Therefore we can calculate the derivative values of 【12】f【/12】(【13】x【/13】) at each grid point into an output array FD:",
+      "zh": "由于网格间距为 【1】h【/1】，当前估计值 【2】f【/2】(【3】x【/3】−【4】h【/4】)、【5】f【/5】(【6】x【/6】) 和 【7】f【/7】(【8】x【/8】+【9】h【/9】) 分别存放在 F[i−1]、F[i] 和 F[i+1] 中，其中 【10】x【/10】=【11】i*h【/11】。因此，我们可以把 【12】f【/12】(【13】x【/13】) 在每个网格点处的导数值计算到输出数组 FD 中："
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "page": "Ch019_433-446_B9780323912310000021",
+  "nodes": [
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[10]",
+      "en": "Amdahl’s law often motivates task-level parallelization. Although some of these smaller activities do not warrant fine-grained massive parallel execution, it may be desirable to execute some of these activities in parallel with each other when the dataset is large enough. This could be achieved by using a multicore host to execute such tasks in parallel. Alternatively, we could try to simultaneously execute multiple small kernels, each corresponding to one task. CUDA devices support task parallelism with streams, which will be discussed in 【1】Chapter 20【/1】, Programming a Heterogeneous Computing Cluster.",
+      "zh": "阿姆达尔定律常常促使人们进行任务级并行化。尽管其中一些较小的活动不值得进行细粒度的大规模并行执行，但当数据集足够大时，让其中一些活动彼此并行执行或许是可取的。这可以通过使用多核主机并行执行此类任务来实现。另一种做法是，我们也可以尝试同时执行多个小型核函数，每个核函数对应一个任务。CUDA 设备支持通过 CUDA 流实现任务并行，这一点将在【1】第 20 章【/1】编写异构计算集群程序中讨论。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[11]",
+      "en": "An alternative approach to reducing the effect of sequential tasks is to exploit data parallelism in a hierarchical manner. For example, in a Message Passing Interface (【1】MPI, 2009【/1】) implementation a molecular dynamics application would typically distribute large chunks of the spatial grids and their associated atoms to nodes of a networked computing cluster. By using the host of each node to calculate the vibrational and rotational force for its chunk of atoms, we can take advantage of multiple host CPUs and achieve speedup for these lesser modules. Each node can use a CUDA device to calculate the nonbonding force at a higher level of speedup. The nodes will need to exchange data to accommodate forces that go across chunks and atoms that move across chunk boundaries. We will discuss more details of joint MPI-CUDA programming in 【2】Chapter 20【/2】, Programming a Heterogeneous Computing Cluster. The main point here is that MPI and CUDA can be used in a complementary, hierarchical way in applications to jointly achieve a higher level of speed with large datasets.",
+      "zh": "减少串行任务影响的另一种方法是以分层方式利用数据并行。例如，在消息传递接口（【1】MPI, 2009【/1】）实现中，分子动力学应用通常会将空间网格的大块区域及其相关原子分发给网络化计算集群的各个节点。通过利用每个节点的主机计算其原子块上的振动和转动力，我们可以利用多个主机 CPU，为这些次要模块获得加速比。每个节点可以使用 CUDA 设备以更高的加速比计算非键力。节点之间需要交换数据，以处理跨越块边界的力以及移动跨过块边界的原子。我们将在【2】第 20 章【/2】编写异构计算集群程序中详细讨论 MPI-CUDA 联合编程。这里的要点是，MPI 和 CUDA 可以在应用中互补、分层地使用，共同在处理大数据集时实现更高的速度。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[12]",
+      "en": "The process of parallel programming can typically be divided into three steps: algorithm selection, problem decomposition, and performance optimization and tuning. The last step was the focus of previous chapters and received general treatment in 【1】Chapter 6【/1】, Performance Considerations. In the next two sections of this chapter we will discuss the first two steps with generality as well as depth.",
+      "zh": "并行编程的过程通常可分为三个步骤：算法选择、问题分解以及性能优化与调优。最后一步是前几章的重点，在【1】第 6 章【/1】性能考量中得到了概括性的讨论。在本章接下来的两节中，我们将深入而广泛地讨论前两个步骤。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "19.2 Algorithm selection",
+      "zh": "19.2 算法选择"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "An algorithm is a step-by-step procedure in which each step is precisely stated and can be carried out by a computer. An algorithm must exhibit three essential properties: definiteness, effective computability, and finiteness. Definiteness refers to the notion that each step is precisely stated; there is no room for ambiguity as to what is to be done. Effective computability refers to the fact that each step can be carried out by a computer. Finiteness means that the algorithm must be guaranteed to terminate.",
+      "zh": "算法是一种逐步执行的过程，其中每一步都有精确的陈述，并且可以由计算机执行。一个算法必须具有三个基本性质：确定性、有效可计算性和有限性。确定性指的是每一步都有精确的陈述，对于要做什么没有任何含糊的余地。有效可计算性指的是每一步都可以由计算机执行。有限性意味着算法必须保证能够终止。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "Given a problem, one can typically come up with multiple algorithms to solve the problem. Some require fewer steps of computation than others (i.e., have lower algorithmic complexity), some expose a higher degree of parallel execution than others, some are more generally applicable than others, and some have better accuracy or numerical stability than others. Unfortunately, there is often not a single algorithm that is better than others in all these aspects. A parallel programmer often needs to select an algorithm that achieves the best compromise for a given hardware system.",
+      "zh": "对于给定问题，人们通常可以想出多种算法来求解。有些算法比其他算法需要的计算步骤更少（即算法复杂度更低），有些算法比其他算法暴露出的并行执行程度更高，有些算法比其他算法更具普适性，有些算法则比其他算法具有更好的准确度或数值稳定性。遗憾的是，往往不存在一个在所有方面都优于其他算法的算法。并行程序员通常需要为一个给定的硬件系统选择能取得最佳折中的算法。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "We have seen examples of assessing the tradeoffs between different algorithms for a computation in several chapters throughout this book. For the prefix sum computation in 【1】Chapter 11【/1】, Prefix Sum (Scan), we compared two different algorithms for performing parallel prefix sum, namely, the Kogge-Stone algorithm and the Brent-Kung algorithm. Our analysis showed that the Brent-Kung algorithm has lower algorithmic complexity. It requires fewer operations to perform the same computation, which makes it more work efficient. However, we also showed that the Kogge-Stone algorithm exposes more parallelism than the Brent-Kung algorithm, allowing it to complete in fewer iterations. This tradeoff between algorithmic complexity and the amount of parallelism exposed by an algorithm is a classic tradeoff that is encountered by parallel programmers. The best algorithm usually depends on the characteristics of the parallel hardware being targeted as well as the extent to which the higher complexity of an algorithm can be mitigated with hybrid approaches that combine two parallel algorithms or combine a parallel algorithm with a lower-complexity sequential algorithm via thread coarsening.",
+      "zh": "在本书的多个章节中，我们看到了评估同一计算的不同算法之间权衡取舍的示例。对于【1】第 11 章【/1】前缀和（扫描）中的前缀和计算，我们比较了两种不同的并行前缀和算法，即 Kogge-Stone 算法和 Brent-Kung 算法。我们的分析表明，Brent-Kung 算法的算法复杂度更低，完成相同计算所需的操作更少，因此工作效率更高。然而，我们还表明，Kogge-Stone 算法比 Brent-Kung 算法暴露出的并行性更多，使其能够在更少的迭代中完成。算法复杂度与算法所暴露的并行性程度之间的这种权衡，是并行程序员常遇到的经典权衡。最佳算法通常取决于目标并行硬件的特性，以及算法较高的复杂度在多大程度上可以通过混合方法得到缓解——这些混合方法将两种并行算法结合起来，或者通过线程粗化将一种并行算法与一种复杂度较低的串行算法结合起来。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "For the sorting pattern in 【1】Chapter 13【/1】, Sorting, we compared two different algorithms for performing parallel sorting, namely, radix sort and merge sort. Radix sort can achieve lower algorithmic complexity than merge sort because it is a noncomparison sorting algorithm. It is also highly amenable to parallelization. However, radix sort is not generally applicable because it can be used only with certain types of keys. Merge sort, which is a comparison-based sort, is more generally applicable and can be used with any type of key that has a well-defined comparison operator. The tradeoff between generality and parallel execution efficiency is yet another tradeoff that parallel programmers encounter when selecting a parallel algorithm.",
+      "zh": "对于【1】第 13 章【/1】排序中的排序模式，我们比较了两种不同的并行排序算法，即基数排序和归并排序。基数排序可以实现比归并排序更低的算法复杂度，因为它是一种非比较型排序算法，而且非常适合并行化。然而，基数排序并不具有普适性，因为它只能用于特定类型的键。归并排序是一种基于比较的排序，更具普适性，可以用于任何具有明确定义的比较运算符的键。通用性与并行执行效率之间的权衡，是并行程序员在选择并行算法时遇到的又一种权衡。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "For the electrostatic potential map computation in 【1】Chapter 18【/1】, Electrostatic Potential Map, we compared two different algorithms for performing the computation, namely, direct Coulomb summation (DCS) and cutoff summation (【2】Rodrigues et al., 2008【/2】). These two approaches expose the same amount of parallelism and have the same level of generality; however, they present the classic tradeoff between algorithmic complexity and accuracy. In 【3】Chapter 18【/3】, Electrostatic Potential Map, we showed that the cutoff summation algorithm can significantly improve the execution efficiency of grid computation by sacrificing a small amount of accuracy. The challenge that is addressed by this technique is that the amount of computation performed by fully accurate methods such as DCS increases with the square of the volume. For large volume systems, such increase makes the computation excessively long even for massively parallel devices. The cutoff summation method is based on the observation that many grid calculation problems are based on physical laws in which numerical contributions from particles or samples that are far away from a grid point are tiny and can be collectively treated with an implicit method at much lower algorithmic complexity. Although this tradeoff between algorithmic complexity and accuracy is not unique to parallel programming and is also encountered with sequential implementations, it may present additional challenges to parallel programmers. We show an example of these additional challenges for the cutoff summation algorithm in the rest of this section.",
+      "zh": "对于【1】第 18 章【/1】静电势图中的静电势图计算，我们比较了两种不同的计算方法，即直接库仑求和（DCS）与截断求和（【2】Rodrigues et al., 2008【/2】）。这两种方法暴露出的并行性程度相同，通用性水平也相同；然而，它们体现了算法复杂度与准确度之间的经典权衡。在【3】第 18 章【/3】静电势图中，我们表明截断求和算法通过牺牲少量准确度可以显著提高网格计算的计算效率。该技术所应对的挑战是，诸如 DCS 之类完全精确的方法所执行的计算量随体积的平方增长。对于大体积系统，这种增长会使计算时间过长，即使对于大规模并行设备也是如此。截断求和方法的依据是：许多网格计算问题基于物理定律，其中远离网格点的粒子或样本的数值贡献微乎其微，可以用隐式方法以低得多的算法复杂度统一处理。尽管算法复杂度与准确度之间的这种权衡并非并行编程独有，在串行实现中也会遇到，但它可能给并行程序员带来额外的挑战。在本节其余部分中，我们将展示截断求和算法所面临的这些额外挑战的一个示例。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "In sequential computing, a simple cutoff algorithm handles one atom at a time. For each atom the algorithm iterates through the grid points that fall within a radius of the atom’s coordinate. This is a straightforward procedure, since the grid points are in an array that can be easily indexed as a function of their coordinates. However, this simple procedure does not carry easily to parallel execution. The reason is that the atom-centric decomposition does not work well, owing to its scatter memory access behavior. Therefore we need to use a cutoff binning algorithm based on the grid-centric decomposition: Each thread calculates the energy value at one grid point. The key idea of the algorithm is to first sort the input atoms into bins according to their coordinates. Each bin corresponds to a box in the grid space and contains all atoms whose coordinate falls into the box. We define a “neighborhood” of bins for a grid point to be the collection of bins that contain all the atoms that can contribute to the energy value of a grid point. We described an efficient way of managing neighborhood bins for all grid points in 【1】Chapter 18【/1】, Electrostatic Potential Map. In this algorithm, all blocks iterate through their own neighborhood bins, while all threads in a block scan through the atoms in these neighborhood bins together but make individual decisions on whether each atom falls within its cutoff radius.",
+      "zh": "在串行计算中，简单的截断算法一次处理一个原子。对于每个原子，算法会遍历落在该原子坐标半径范围内的所有网格点。这是一个直截了当的过程，因为网格点存储在一个可以按坐标方便索引的数组中。然而，这种简单的过程不容易迁移到并行执行。原因在于面向原子的分解因其分散的内存访问行为而效果不佳。因此，我们需要使用基于面向网格的分解的截断分箱算法：每个线程计算一个网格点处的能量值。该算法的关键思想是首先根据坐标将输入原子排序到各个箱中。每个箱对应网格空间中的一个盒，包含坐标落入该盒的所有原子。我们将网格点的“邻域”箱定义为：包含所有可能对该网格点能量值作出贡献的原子的那些箱的集合。我们在【1】第 18 章【/1】静电势图中描述了一种为所有网格点管理邻域箱的高效方法。在该算法中，所有线程块遍历各自的邻域箱，而线程块中的所有线程一起扫描这些邻域箱中的原子，但由每个线程自行判断每个原子是否落在其截断半径之内。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "One subtle issue with binning is that bins may end up with different numbers of atoms. Some bins may have many atoms, and some bins may have no atom at all. A well-known solution is to set the bin size at a reasonable level, typically much smaller than the largest possible number of atoms in a bin. The binning process maintains an overflow list. When atoms are sorted into bins, if an atom’s home bin is full, the atom is added to the overflow list instead. After the device has completed executing a cutoff summation kernel for calculating an electrostatic potential map, atoms in the overflow list need to be processed to complete the missing contributions.",
+      "zh": "分箱的一个微妙问题在于，各个箱最终可能包含不同数量的原子。有些箱可能包含许多原子，有些箱则可能一个原子也没有。一个众所周知的解决办法是将箱大小设置在合理的水平，通常远小于一个箱中可能容纳的最大原子数。分箱过程维护一个溢出列表。当原子被排序到箱中时，如果某个原子归属的箱已满，该原子将被加入到溢出列表中。设备完成执行用于计算静电势图的截断求和核函数后，需要处理溢出列表中的原子，以补齐缺失的贡献。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "【1】Fig. 19.2【/1】 shows a comparison of scalability and performance of the various electrostatic potential map algorithms and implementations. Note that the CPU-SSE3 curve is based on a sequential cutoff summation algorithm. For a map with small volumes, around 1000 Å【2】3【/2】, the host (CPU with SSE) executes faster than the DCS kernel, as shown in 【3】Fig. 19.2【/3】. This is because there is not enough work to fully utilize a CUDA device for such a small volume. However, for moderate volumes, between 2000 and 500,000 Å【4】3【/4】, the direct summation kernel performs significantly better than the host, owing to its massive parallelism. However, as we anticipated, the direct summation kernel scales poorly when the volume size reaches about 1,000,000 Å【5】3【/5】 and runs longer than the sequential algorithm on the CPU! This is because the algorithmic complexity of the DCS kernel is higher than the sequential cutoff algorithm and thus the amount of work done by kernel grows much faster than that done by the sequential algorithm. For volume sizes larger than 1,000,000 Å【6】3【/6】 the amount of work is so large that it swamps the hardware execution resources.",
+      "zh": "【1】图 19.2【/1】比较了各种静电势图算法与实现的可扩展性和性能。请注意，CPU-SSE3 曲线基于串行截断求和算法。对于体积较小、约为 1000 Å【2】3【/2】的图，主机（带 SSE 的 CPU）比 DCS 核函数执行得更快，如【3】图 19.2【/3】所示。这是因为对于如此小的体积，没有足够的工作来充分利用 CUDA 设备。然而，对于中等体积（介于 2000 至 500,000 Å【4】3【/4】之间），直接求和核函数凭借其大规模并行性，性能显著优于主机。但是，正如我们所预料的那样，当体积规模达到约 1,000,000 Å【5】3【/5】时，直接求和核函数的可扩展性很差，运行时间比 CPU 上的串行算法还要长！这是因为 DCS 核函数的算法复杂度高于串行截断算法，因此核函数完成的工作量增长速度远快于串行算法。对于大于 1,000,000 Å【6】3【/6】的体积规模，工作量如此之大，以至于压垮了硬件执行资源。"
+    },
+    {
+      "id": "n0037",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 19.2【/1】 Scalability and performance of DCS versus cutoff binning.",
+      "zh": "【1】图 19.2【/1】 DCS 与截断分箱的可扩展性和性能对比。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[9]",
+      "en": "【1】Fig. 19.2【/1】 also shows the running time of three binning-based implementations of the cutoff summation algorithm. The SmallBin implementation corresponds to the neighborhood bin list approach discussed in 【2】Chapter 18【/2】, Electrostatic Potential Map, and allows the blocks running the same kernel to process different neighborhoods of atoms. The SmallBin implementation does incur more instruction overhead for loading atoms from global memory into shared memory. For a moderate volume there is a limited number of atoms in the entire system. The ability to examine a smaller number of atoms does not provide sufficient advantage to overcome the additional instruction overhead. The SmallBin-Overlap implementation overlaps the sequential overflow atom processing with the next kernel execution. It provides a slight but noticeable improvement in running time over the SmallBin implementation. The SmallBin-Overlap implementation achieves a 17× speedup over an efficiently implemented sequential CPU-SSE cutoff summation implementation and maintains the same scalability for large volumes.",
+      "zh": "【1】图 19.2【/1】还展示了截断求和算法三种基于分箱的实现运行时间。SmallBin 实现对应于【2】第 18 章【/2】静电势图中讨论的邻域箱列表方法，允许运行同一核函数的各个线程块处理不同的原子邻域。SmallBin 实现确实会在将原子从全局内存加载到共享内存时产生更多的指令开销。对于中等体积，整个系统中的原子数量有限。能够检查更少数量的原子所带来的优势，不足以抵消额外的指令开销。SmallBin-Overlap 实现将串行的溢出原子处理与下一次核函数执行重叠起来，与 SmallBin 实现相比，运行时间有轻微但明显的改善。SmallBin-Overlap 实现比高效实现的串行 CPU-SSE 截断求和实现获得了 17× 的加速比，并在大体积下保持了相同的可扩展性。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "19.3 Problem decomposition",
+      "zh": "19.3 问题分解"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "After an appropriate algorithm has been selected, for a problem to be solved with parallel computing, the problem must be formulated in such a way that it can be decomposed into subproblems that can be safely solved at the same time. Under such formulation and decomposition the programmer writes code and organizes data to solve these subproblems concurrently. Finding parallelism in large computational problems is often conceptually simple but can be challenging in practice. The key is to identify the work to be performed by each unit of parallel execution so that the inherent parallelism of the problem is well utilized.",
+      "zh": "选定合适的算法之后，要用并行计算求解一个问题，就必须以能够分解为可安全同时求解的子问题的方式来表述该问题。在这种表述与分解之下，程序员编写代码并组织数据以并发求解这些子问题。在大型计算问题中寻找并行性，概念上往往很简单，但在实践中可能颇具挑战。关键在于识别每个并行执行单元要完成的工作，从而使问题的固有并行性得到充分利用。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "The two most common strategies for decomposing a problem for parallel execution are the output-centric and input-centric decompositions. As the names imply, an 【1】output-centric【/1】 decomposition assigns threads to process different units of the output data in parallel, whereas an 【2】input-centric【/2】 decomposition assigns threads to process different units of the input data in parallel. These decomposition strategies are illustrated in 【3】Fig. 19.3【/3】. While both decomposition strategies lead to the same execution results, they can exhibit very different performance in a given hardware system. The output-centric decomposition usually exhibits the gather memory access behavior, in which each thread gathers or collects the effect of input values into an output value. 【4】Fig. 19.3A【/4】 illustrates the gather access behavior. Gather-based access patterns are usually more desirable in CUDA devices because the threads can accumulate their results in their private registers. Also, multiple threads can share input values and can effectively use constant memory caching or shared memory to conserve global memory bandwidth.",
+      "zh": "为并行执行而分解问题的两种最常见策略是面向输出的分解和面向输入的分解。顾名思义，【1】面向输出的【/1】分解将线程分配给输出的不同单元并行处理，而【2】面向输入的【/2】分解将线程分配给输入的不同单元并行处理。这些分解策略在【3】图 19.3【/3】中加以说明。虽然两种分解策略会得到相同的执行结果，但在给定的硬件系统上它们的性能可能大不相同。面向输出的分解通常表现出汇聚（gather）的内存访问行为，即每个线程将输入值的影响汇聚或收集到一个输出值中。【4】图 19.3A【/4】展示了这种汇聚访问行为。基于汇聚的访问模式通常在 CUDA 设备中更为可取，因为线程可以在各自的私有寄存器中累加结果。此外，多个线程可以共享输入值，并能有效地利用常量内存缓存或共享内存来节省全局内存带宽。"
+    },
+    {
+      "id": "n0042",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 19.3【/1】 Problem decomposition strategies. (A) Output-centric. (B) Input-centric.",
+      "zh": "【1】图 19.3【/1】 问题分解策略。(A) 面向输出的分解。(B) 面向输入的分解。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "The input-centric decomposition, by contrast, usually exhibits the scatter memory access behavior, in which each thread scatters or distributes the effect of an input value into the output values. The scatter behavior is illustrated in 【1】Fig. 19.3B【/1】. Scatter-based access patterns are usually undesirable in CUDA devices because multiple threads can update the same grid point at the same time. The grid points must be stored in a memory that can be written by all the threads involved. Atomic operations must be used to prevent race conditions and loss of values during simultaneous writes to an output value by multiple threads. These atomic operations are significantly slower than the register accesses that are used in the output-centric decomposition.",
+      "zh": "相比之下，面向输入的分解通常表现出分散（scatter）的内存访问行为，即每个线程将输入值的影响分散或分发给输出值。分散行为在【1】图 19.3B【/1】中加以说明。基于分散的访问模式在 CUDA 设备中通常不受欢迎，因为多个线程可能同时更新同一个网格点。网格点必须存储在能够被所有相关线程写入的内存中。当多个线程同时写入一个输出值时，必须使用原子操作来防止竞态条件和值丢失。这些原子操作比面向输出的分解中使用的寄存器访问要慢得多。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "However, aside from the gather versus scatter access patterns, other considerations may go into deciding whether an output-centric or input-centric decomposition (or another decomposition) is more suitable for a particular application. These considerations include the amount of parallelism that is exposed by the decomposition, the ease of identifying which input data contributes to which output data, the load balance induced by the decomposition, and others, depending on the application.",
+      "zh": "然而，除了汇聚与分散访问模式之外，还有其他考量因素会影响判定面向输出的分解、面向输入的分解（或其他分解）哪一种更适合特定应用。这些考量包括分解所暴露出的并行性程度、识别哪些输入数据对哪些输出数据作出贡献的难易程度、分解所带来的负载均衡，以及其他取决于应用的考量。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "The distinction between input-centric and output-centric decompositions was most evident in 【1】Chapters 17【/1】, Iterative Magnetic Resonance Imaging Reconstruction, and 【2】18【/2】, Electrostatic Potential Map, where the two strategies were both implemented and explicitly compared. However, problem decomposition is an implicit design decision that has been made throughout many computations discussed in this book. We revisit these computations to highlight the problem decomposition that was chosen in each case and why it is advantageous over alternative decompositions.",
+      "zh": "面向输入的分解与面向输出的分解之间的区别在【1】第 17 章【/1】迭代磁共振成像重建和【2】第 18 章【/2】静电势图中表现得最为明显，在这两章中两种策略都被实现并进行了明确比较。然而，问题分解是一种隐性的设计决策，贯穿于本书讨论的许多计算之中。我们将重新审视这些计算，以突出每种情况下所选择的问题分解方式及其优于其他分解方案的原因。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "The image processing (【1】Chapter 3【/1】, Multidimensional Grids and Data), matrix multiplication (【2】Chapters 3【/2】, 【3】5【/3】, and 【4】6【/4】), Convolution (【5】Chapter 7【/5】), and Stencil (【6】Chapter 8【/6】) computations were all parallelized by using an output-centric decomposition. That is, the threads in these computations are assigned to output elements (image pixels, matrix entries, or grid points) and iterate over the input elements that contribute to them. Alternatively, an input-centric decomposition would assign threads to the input elements and have each thread iterate over the output elements to which its input element contributes and make an update using atomic operations. The clear advantage of the output-centric decomposition over the input-centric decomposition in these cases is avoiding atomics by using a gather access pattern instead of a scatter access pattern. On the other hand, none of the other considerations make the input-centric decomposition favorable. There are enough output elements to expose a high degree of parallelism, identifying which input elements are needed by each output element is straightforward, and all output elements require the same amount of work to be computed, so there is no load imbalance.",
+      "zh": "图像处理（【1】第 3 章【/1】多维网格与数据）、矩阵乘法（【2】第 3 章【/2】、第【3】5【/3】章和第【4】6【/4】章）、卷积（【5】第 7 章【/5】）和模板（【6】第 8 章【/6】）计算都采用了面向输出的分解进行并行化。也就是说，这些计算中的线程被分配给输出元素（图像像素、矩阵条目或网格点），并遍历对它们作出贡献的输入元素。另一种做法是，面向输入的分解会将线程分配给输入元素，让每个线程遍历其输入元素所贡献的输出元素，并使用原子操作进行更新。在这些情况下，面向输出的分解相对于面向输入的分解的明显优势在于，通过使用汇聚访问模式而不是分散访问模式来避免原子操作。另一方面，其他考量因素都没有使面向输入的分解变得有利。输出元素数量充足，足以暴露高度的并行性；识别每个输出元素需要哪些输入元素是直截了当的；所有输出元素需要的计算工作量相同，因此不存在负载不均衡。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "The histogram computation (【1】Chapter 9【/1】, Parallel Histogram) was parallelized by using an input-centric decomposition. That is, each thread is assigned to an input element (or chunk of elements) and updates the output bins on the basis of the input value(s). Since multiple threads may update the same output bin, atomic operations are needed (scatter access pattern). Alternatively, an output-centric decomposition would assign threads to output bins and have each thread search for the inputs that map to the bin and update the bin accordingly. This decomposition would eliminate the atomic operations because each bin would be updated by a single thread (gather access pattern). However, the output-centric decomposition would create many other problems. First, the number of output bins is typically much smaller than the number of input values, so parallelism is substantially reduced. Second, a thread cannot know which input values map to its output bin without inspecting those input values, so each thread will need to iterate over every input value, which is not work efficient. Third, even if threads had some way of quickly identifying which input values mapped to their output bins, each bin would have a different number of input values mapping to it, which would create load imbalance across threads. All these considerations make the input-centric decomposition more favorable for the histogram computation.",
+      "zh": "直方图计算（【1】第 9 章【/1】并行直方图）采用了面向输入的分解进行并行化。也就是说，每个线程被分配给一个输入元素（或一组元素），并根据输入值更新输出箱。由于多个线程可能更新同一个输出箱，因此需要原子操作（分散访问模式）。另一种做法是，面向输出的分解会将线程分配给输出箱，让每个线程搜索映射到该箱的输入并相应更新该箱。这种分解可以消除原子操作，因为每个箱将由单个线程更新（汇聚访问模式）。然而，面向输出的分解会带来许多其他问题。首先，输出箱的数量通常远小于输入值的数量，因此并行性会大幅降低。其次，线程不检查输入值就无法知道哪些输入值映射到其输出箱，因此每个线程都需要遍历每个输入值，这不符合工作效率的要求。第三，即使线程有办法快速识别哪些输入值映射到它们的输出箱，映射到每个箱的输入值数量也各不相同，这会在线程之间造成负载不均衡。所有这些考量都使面向输入的分解更适合直方图计算。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "The merge operation (【1】Chapter 12【/1】, Merge) was parallelized by using an output-centric decomposition; that is, each thread is assigned to an element (or chunk of elements) in the output array and performs a binary search to find the corresponding input element(s) and merge them. While many other computations that favor the output-centric decomposition do so because of the benefit of gathering over scattering, this consideration is not relevant for the merge operation. Every output element in the merge operation is contributed to by only one input element, so an input-centric merge operation would not need to use atomics. However, an input-centric merge operation either would make it more expensive to find the mapping between the input element(s) for which a thread is responsible and the corresponding output element(s) or would incur high load imbalance by having each input thread be responsible for a different number of input elements. For this reason, the output-centric decomposition is preferred.",
+      "zh": "归并操作（【1】第 12 章【/1】归并）采用了面向输出的分解进行并行化；也就是说，每个线程被分配给输出数组中的一个元素（或一组元素），并执行二分查找以找到相应的输入元素并将它们归并。虽然许多其他偏向于面向输出的分解的计算是因为汇聚优于分散而如此选择，但这一考量对归并操作并不适用。在归并操作中，每个输出元素仅由一个输入元素贡献，因此面向输入的归并操作不需要使用原子操作。然而，面向输入的归并操作要么使得查找线程所负责的输入元素与相应输出元素之间的映射关系变得更加昂贵，要么会因为每个输入线程负责不同数量的输入元素而产生严重的负载不均衡。因此，面向输出的分解更受青睐。"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "For sparse matrix computations (【1】Chapter 14【/1】, Sparse Matrix Computation) the SpMV/COO kernel used input-centric decomposition, in which threads were assigned to nonzeros in the input matrix and atomically updated the corresponding element in the output vector (scatter access pattern). The remaining kernels used output-centric decomposition, in which threads were assigned to output vector elements and iterated over input nonzeros (gather access pattern). Although the input-centric SpMV/COO kernel performed atomics, it had other advantages over the output-centric kernels, such as extracting more parallelism and having better load balance. Ultimately, the best decomposition for this computation depends on the input dataset. Moreover, the hybrid ELL-COO format showcases an example in which a hybrid output-centric and input-centric decomposition may be beneficial.",
+      "zh": "对于稀疏矩阵计算（【1】第 14 章【/1】稀疏矩阵计算），SpMV/COO 核函数使用了面向输入的分解，即线程被分配给输入矩阵中的非零元素，并以原子方式更新输出向量中的相应元素（分散访问模式）。其余核函数使用了面向输出的分解，即线程被分配给输出向量的元素，并遍历输入非零元素（汇聚访问模式）。尽管面向输入的 SpMV/COO 核函数执行了原子操作，但它相对于面向输出的核函数还有其他优势，例如能够提取更多并行性和具有更好的负载均衡。最终，对这种计算的最佳分解取决于输入数据集。此外，ELL-COO 混合格式展示了一个示例，其中面向输出与面向输入的混合分解可能是有益的。"
+    }
+  ]
+}

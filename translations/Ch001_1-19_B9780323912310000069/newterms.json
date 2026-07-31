@@ -6,5 +6,13 @@
   {"en": "field-programmable gate arrays", "zh": "现场可编程门阵列"},
   {"en": "out-of-order", "zh": "乱序"},
   {"en": "hyperthreading", "zh": "超线程"},
-  {"en": "concurrency", "zh": "并发"}
+  {"en": "concurrency", "zh": "并发"},
+  {"en": "digital twin", "zh": "数字孪生", "note": "§1.2 p0175 全书（已译部分）首现，已按 §7 中英并列"},
+  {"en": "HDTV / high-definition (HD) TV", "zh": "高清电视", "note": "§1.2 p0165；首现作“数字高清（HD）电视”，正文统一作“高清电视”"},
+  {"en": "NTSC", "zh": "保留英文（电视制式缩写，不译）", "note": "§1.2 p0165"},
+  {"en": "National Institutes of Health (NIH)", "zh": "美国国立卫生研究院（NIH）", "note": "§1.1 p0135"},
+  {"en": "von Neumann", "zh": "冯·诺依曼", "note": "§1.1 p0065；与 §5.1 von Neumann model 呼应，Ch004/Ch005 同款"},
+  {"en": "NVIDIA Tesla A100 / G80", "zh": "保留英文（产品名/芯片代号）", "note": "§1.1 p0085/p0145；与 §5.1 Fermi/Kepler/Pascal 行同类"},
+  {"en": "NVIDIA / Intel / AMD / ARM / Apple / ATI / GE / Siemens", "zh": "保留英文（公司名）", "note": "§1 各处；公司名不译，正文统一保留英文"},
+  {"en": "OpenGL / Direct3D", "zh": "保留英文（图形 API 名）", "note": "§1.1 p0140"}
 ]

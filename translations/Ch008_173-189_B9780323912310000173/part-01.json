@@ -1,0 +1,155 @@
+{
+  "page": "Ch008_173-189_B9780323912310000173",
+  "nodes": [
+    {
+      "id": "n0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[11]",
+      "en": "for all the grid points. This expression can be rewritten as",
+      "zh": "适用于所有网格点。该表达式可以改写为"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[13]",
+      "en": "That is, the calculation of the estimated function derivative value at grid point involves the current estimated function values at grid points [i−1, i, i+1] with coefficients 【M1】【M2】, 0, 【M3】【M4】, which defines a 1D three-point stencil, as shown in 【5】Fig. 8.2A【/5】. If we are approximating higher derivative values at grid points, we would need to use higher-order finite differences. For example, if the differential equation includes up to the second derivative of 【6】f【/6】(【7】x【/7】), we will use a stencil involving [i−2, i−1, i, i+1, i+2], which is a 1D five-point stencil, as shown in 【8】Fig. 8.2B【/8】. In general, if the equation involves up to the nth derivative, the stencil will involve n grid points on each side of the center grid point. 【9】Fig. 8.2C【/9】 shows a 1D seven-point stencil. The number of grid points on each side of the center point is called the 【10】order【/10】 of the stencil, as it reflects the order of the derivative being approximated. According to this definition, the stencils in 【11】Fig. 8.3【/11】 are of order 1, 2, and 3, respectively.",
+      "zh": "也就是说，网格点处估计函数导数值的计算，涉及网格点 [i−1, i, i+1] 处当前估计的函数值，其系数分别为 【M1】【M2】、0、【M3】【M4】，这定义了一个一维三点模板，如 【5】图 8.2A【/5】 所示。如果我们要近似网格点处更高阶的导数值，就需要使用高阶有限差分。例如，如果微分方程包含 【6】f【/6】(【7】x【/7】) 最高到二阶的导数，我们将使用涉及 [i−2, i−1, i, i+1, i+2] 的模板，即一维五点模板，如 【8】图 8.2B【/8】 所示。一般而言，如果方程涉及最高 n 阶导数，模板将涉及中心网格点两侧各 n 个网格点。【9】图 8.2C【/9】 给出了一维七点模板。中心点每侧网格点的个数称为模板的【10】阶数【/10】，因为它反映了所近似的导数的阶数。按照这一定义，【11】图 8.3【/11】 中的模板阶数分别为 1、2 和 3。"
+    },
+    {
+      "id": "n0027",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 8.2【/1】 One-dimensional stencil examples. (A) Three-point (order 1) stencil. (B) Five-point (order 2) stencil. (C) Seven-point (order 3) stencil.",
+      "zh": "【1】图 8.2【/1】 一维模板示例。（A）三点模板（1 阶）。（B）五点模板（2 阶）。（C）七点模板（3 阶）。"
+    },
+    {
+      "id": "n0028",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[6]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 8.3【/1】 (A) Two-dimensional five-point stencil (order 1). (B) Two-dimensional nine-point stencil (order 2). (C) Three-dimensional seven-point stencil (order 1). (D) Three-dimensional 13-point stencil (order 2).",
+      "zh": "【1】图 8.3【/1】 （A）二维五点模板（1 阶）。（B）二维九点模板（2 阶）。（C）三维七点模板（1 阶）。（D）三维 13 点模板（2 阶）。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[14]",
+      "en": "It should be obvious that solving a partial differential equation of two variables would require the function values to be discretized into a two-dimensional (2D) grid, and we will use a 2D stencil to calculate the approximate partial derivatives. If the partial differential equation involves exclusively the partial derivatives by only one of the variables, for example, 【M1】【M2】, but not 【M3】【M4】, we can use 2D stencils whose selected grid points are all along the 【5】x【/5】 axis and 【6】y【/6】 axis. For example, for a partial differential equation involving only first derives by 【7】x【/7】 and first derivatives by 【8】y【/8】, we can use a 2D stencil that involves two grid points on each side of the center point along the 【9】x【/9】 axis and the 【10】y【/10】 axis, which results in the 2D five-point stencil in 【11】Fig. 8.3A【/11】. If the equation involves up to second-order derivatives only by 【12】x【/12】 or by 【13】y【/13】, we will use a 2D nine-point stencil, as shown in 【14】Fig. 8.3B【/14】.",
+      "zh": "显然，求解含两个变量的偏微分方程需要把函数值离散化为二维（2D）网格，我们将使用二维模板来计算近似的偏导数。如果偏微分方程只涉及仅关于其中一个变量的偏导数，例如 【M1】【M2】 而不涉及 【M3】【M4】，我们可以使用所选网格点都位于 【5】x【/5】 轴和 【6】y【/6】 轴上的二维模板。例如，对于只涉及关于 【7】x【/7】 的一阶导数和关于 【8】y【/8】 的一阶导数的偏微分方程，我们可以使用沿 【9】x【/9】 轴和 【10】y【/10】 轴在中心点每侧各包含两个网格点的二维模板，从而得到 【11】图 8.3A【/11】 中的二维五点模板。如果方程只包含关于 【12】x【/12】 或 【13】y【/13】 的最高二阶导数，我们将使用二维九点模板，如 【14】图 8.3B【/14】 所示。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[15]",
+      "en": "【1】Fig. 8.4【/1】 summarizes the concepts of discretization, numerical grids, and application of stencils on the grid points. Functions are discretized into their grid point values which are stored in multi-dimensional arrays. In 【2】Fig. 8.4【/2】 a function of two variables is discretized as a 2D grid which is stored as a 2D array. The stencil that is used in 【3】Fig. 8.4【/3】 is 2D and is used to calculate an approximate derivative value (output) at each grid point from function values at the neighboring grid points and the grid point itself. In this chapter we will focus on the computation pattern in which a stencil is applied to all the relevant input grid points to generate the output values at all grid points, which will be referred to as a 【4】stencil sweep【/4】.",
+      "zh": "【1】图 8.4【/1】 概括了离散化、数值网格以及在网格点上应用模板这些概念。函数被离散化为网格点值，并存储在多维数组中。在 【2】图 8.4【/2】 中，一个二元函数被离散化为二维网格，并以二维数组存储。在 【3】图 8.4【/3】 中使用的模板是二维的，用于根据相邻网格点和该网格点本身的函数值，计算每个网格点处的近似导数值（输出）。本章将聚焦于这样一种计算模式：把模板应用到所有相关的输入网格点上，以生成所有网格点的输出值；这种模式被称为【4】模板扫掠【/4】。"
+    },
+    {
+      "id": "n0031",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[7]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 8.4【/1】 A 2D grid example and a five-point (order 1) stencil used to calculate the approximate derivative values at grid points.",
+      "zh": "【1】图 8.4【/1】 一个二维网格示例，以及用于计算网格点近似导数值的五点（1 阶）模板。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "8.2 Parallel stencil: a basic algorithm",
+      "zh": "8.2 并行模板：基础算法"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "We will first present a basic kernel for stencil sweep. For simplicity we assume that there is no dependence between output grid points when generating the output grid point values within a stencil sweep. We further assume that the grid point values on the boundaries store boundary conditions and will not change from input to output, as illustrated in 【1】Fig. 8.5【/1】. That is, the shaded inside area in the output grid will be calculated, whereas the unshaded boundary cells will remain the same as the input values. This is a reasonable assumption, since stencils are used mainly to solve differential equations with boundary conditions.",
+      "zh": "我们首先给出一个用于模板扫掠的基础核函数。为简单起见，我们假设在一次模板扫掠中生成输出网格点值时，各输出网格点之间不存在依赖关系。我们还假设边界上的网格点值存放的是边界条件，从输入到输出保持不变，如 【1】图 8.5【/1】 所示。也就是说，输出网格中带阴影的内部区域将被计算，而未带阴影的边界单元将保持与输入值相同。这是一个合理的假设，因为模板主要用于求解带边界条件的微分方程。"
+    },
+    {
+      "id": "n0034",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 8.5【/1】 Simplifying boundary condition. The boundary cells contain boundary conditions that will not be updated from one iteration to the next. Thus only the inner output grid points need to be calculated during each stencil sweep.",
+      "zh": "【1】图 8.5【/1】 简化的边界条件。边界单元包含的边界条件在一次迭代到下一次迭代之间不会更新。因此，每次模板扫掠期间只需计算内部的输出网格点。"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "【1】Fig. 8.6【/1】 shows a basic kernel that performs a stencil sweep. This kernel assumes that each thread block is responsible for calculating a tile of output grid values and that each thread is assigned to one of the output grid points. A 2D tiling example of the output grid in which each thread block is responsible for a 4×4 output tile is shown in 【2】Fig. 8.5【/2】. However, since most real-world applications solve three-dimensional (3D) differential equations, the kernel in 【3】Fig. 8.6【/3】 assumes a 3D grid and a 3D seven-point stencil like the one in 【4】Fig. 8.3C【/4】. The assignment of threads to grid points is done with the familiar linear expressions involving the x, y, and z fields of 【5】blockIdx【/5】, 【6】blockDim【/6】, and 【7】threadIdx【/7】 (lines 02–04). Once each thread has been assigned to a 3D grid point, the input values at that grid point and all neighboring grid points are multiplied by different coefficients (c0 to c6 on lines 06–12) and added. The values of these coefficients depend on the differential equation that is being solved, as we explained in the background section.",
+      "zh": "【1】图 8.6【/1】 给出了执行一次模板扫掠的基础核函数。该核函数假设每个线程块负责计算一块输出网格值，并且每个线程被分配到其中一个输出网格点。输出网格的二维分块示例如 【2】图 8.5【/2】 所示，其中每个线程块负责一个 4×4 的输出分块。然而，由于大多数实际应用求解的是三维（3D）微分方程，【3】图 8.6【/3】 中的核函数假设三维网格和三维七点模板，正如 【4】图 8.3C【/4】 中的模板。线程到网格点的分配通过惯用的线性表达式完成，这些表达式涉及 【5】blockIdx【/5】、【6】blockDim【/6】 和 【7】threadIdx【/7】 的 x、y、z 字段（第 02–04 行）。一旦每个线程被分配到三维网格点，该网格点及其所有相邻网格点处的输入值就被乘以不同的系数（第 06–12 行的 c0 至 c6）并相加。这些系数的取值取决于正在求解的微分方程，正如我们在背景一节中所解释的。"
+    },
+    {
+      "id": "n0036",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 8.6【/1】 A basic stencil sweep kernel.",
+      "zh": "【1】图 8.6【/1】 一个基础模板扫掠核函数。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "Let us now calculate the floating-point to global memory access ratio for the kernel in 【1】Fig. 8.6【/1】. Each thread performs 13 floating-point operations (seven multiplications and six additions) and loads seven input values that are 4 bytes each. Therefore the floating-point to global memory access ratio for this kernel is 13/(7*4)=0.46 OP/B (operations per byte). As we discussed in 【2】Chapter 5【/2】, Memory Architecture and Data Locality, this ratio needs to be much larger for the performance of the kernel to be reasonably close to the level that is supported by the arithmetic compute resources. We will need to use a tiling technique like that discussed in 【3】Chapter 7【/3】, Convolution, to elevate the floating-point to global memory access ratio.",
+      "zh": "现在来计算 【1】图 8.6【/1】 中核函数的浮点运算与全局内存访问比。每个线程执行 13 次浮点运算（7 次乘法和 6 次加法），并加载 7 个输入值，每个输入值 4 字节。因此，该核函数的浮点运算与全局内存访问比为 13/(7*4)=0.46 OP/B（每字节操作数）。正如我们在 【2】第 5 章【/2】“内存体系结构与数据局部性”中所讨论的，这个比值需要大得多，核函数的性能才能合理地接近算术计算资源所支持的水平。我们需要使用分块技术来提升浮点运算与全局内存访问比，比如 【3】第 7 章【/3】“卷积”中所讨论的那种分块技术。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "8.3 Shared memory tiling for stencil sweep",
+      "zh": "8.3 面向模板扫掠的共享内存分块"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "As we saw in 【1】Chapter 5【/1】, Memory Architecture and Data Locality, the ratio of floating-point operations to global memory accessing operations can be significantly elevated with shared memory tiling. As the reader probably suspected, the design of shared memory tiling for stencils is almost identical to that of convolution. However, there are a few subtle but important differences.",
+      "zh": "正如我们在 【1】第 5 章【/1】“内存体系结构与数据局部性”中所见，通过共享内存分块可以显著提高浮点运算与全局内存访问操作之比。读者或许已经猜到，为模板设计的共享内存分块与卷积的几乎完全相同。然而，两者存在一些细微但重要的差异。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "【1】Fig. 8.7【/1】 shows the input and output tiles for a 2D five-point stencil applied to a small grid example. A quick comparison with 【2】Figure 7.11【/2】 shows a small difference between convolution and stencil sweep: The input tiles of the five-point stencil do not include the corner grid points. This property will become important when we explore register tiling later in this chapter. For the purpose of shared memory tiling, we can expect the input data reuse in a 2D five-point stencil to be significantly lower than that in a 3×3 convolution. As we discussed in 【3】Chapter 7【/3】, Convolution, the upper bound of the arithmetic to global memory access ratio of a 2D 3×3 convolution is 4.5 OP/B. However, for a 2D five-point stencil, the upper bound on the ratio is only 2.5 OP/B. This is because each output grid point value uses only five input grid values, compared to the nine input pixel values in 3×3 convolution.",
+      "zh": "【1】图 8.7【/1】 给出了应用于一个小型网格示例的二维五点模板的输入分块和输出分块。与 【2】图 7.11【/2】 的快速比较显示出卷积与模板扫掠之间的一个小差异：五点模板的输入分块不包含角上的网格点。这一特性在我们稍后探讨寄存器分块时将变得重要。就共享内存分块而言，可以预期二维五点模板中的输入数据重用明显低于 3×3 卷积中的重用。正如我们在 【3】第 7 章【/3】“卷积”中所讨论的，二维 3×3 卷积的算术运算与全局内存访问比上限为 4.5 OP/B。然而，对于二维五点模板，该比值的上限只有 2.5 OP/B。这是因为每个输出网格点值只使用 5 个输入网格值，而 3×3 卷积则使用 9 个输入像素值。"
+    },
+    {
+      "id": "n0041",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 8.7【/2】【/1】 Input and output tiles for a 2D five-point stencil.",
+      "zh": "【1】【2】图 8.7【/2】【/1】 二维五点模板的输入分块和输出分块。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "The difference is even more pronounced when the number of dimensions and the order of the stencil increases. For example, if we increase the order of the 2D stencil from 1 (one grid point on each side, five-point stencil) to 2 (two grid points on each side, nine-point stencil), the upper bound on the ratio is 4.5 OP/B, compared to 12.5 OP/B for its counterpart 2D 5×5 convolution. This discrepancy is further pronounced when the order of the 2D stencil is increased to 3 (three grid points on each side, 13-point stencil). The upper bound on the ratio is 6.5 OP/B, compared to 24.5 OP/B for its counterpart 2D 7×7 convolution.",
+      "zh": "当维度数和模板阶数增加时，这种差异会更加明显。例如，如果我们将二维模板的阶数从 1（每侧一个网格点，五点模板）提高到 2（每侧两个网格点，九点模板），该比值的上限为 4.5 OP/B，而对应的二维 5×5 卷积为 12.5 OP/B。当二维模板的阶数提高到 3（每侧三个网格点，13 点模板）时，这一差距进一步拉大：该比值的上限为 6.5 OP/B，而对应的二维 7×7 卷积为 24.5 OP/B。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "When we move into 3D, the discrepancy between the upper bound on the arithmetic to global memory access ratio of stencil sweep and convolution is even more pronounced. For example, a 3D third-order stencil (3 points on each side, 19-point stencil) has an upper bound of 9.5 OP/B, compared to 171.5 OP/B for its counterpart 3D 7×7×7 convolution. That is, the benefit of loading of an input grid point value into the shared memory for a stencil sweep can be significantly lower than that for convolution, especially for 3D, which is the prominent use case for stencils. As we will see later in the chapter, this small but significant difference motivates the use of thread coarsening and register tiling in the third dimension.",
+      "zh": "当进入三维时，模板扫掠与卷积在算术运算与全局内存访问比上限上的差距更加明显。例如，三维三阶模板（每侧 3 个点，19 点模板）的上限为 9.5 OP/B，而对应的三维 7×7×7 卷积为 171.5 OP/B。也就是说，对模板扫掠而言，把一个输入网格点值加载到共享内存中的收益可能明显低于卷积，尤其是在三维情形下，而三维正是模板的主要应用场景。稍后在本章中我们将看到，这一微小但重要的差异促使人们在第三个维度上采用线程粗化和寄存器分块。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "Since all the strategies for loading input tiles for convolution apply directly to stencil sweep, we present in 【1】Fig. 8.8【/1】 a kernel like the convolution kernel in 【2】Figure 7.12【/2】 in which blocks are of the same size as input tiles and some of the threads are turned off in calculating output grid point values. The kernel is adapted from the basic stencil sweep kernel in 【3】Fig. 8.6【/3】, so we will focus only on the changes that are made during the adaptation. Like the tiled convolution kernel, the tiled stencil sweep kernel first calculates the beginning x, y, and z coordinates of the input patch that is used for each thread. The value 1 that is subtracted in each expression is because the kernel assumes a 3D seven-point stencil with one grid point on each side (lines 02–04). In general, the value that is subtracted should be the order of the stencil.",
+      "zh": "由于为卷积加载输入分块的所有策略都直接适用于模板扫掠，我们在 【1】图 8.8【/1】 中给出一个类似 【2】图 7.12【/2】 中卷积核函数的核函数：其中线程块与输入分块大小相同，并且计算输出网格点值时关闭部分线程。该核函数改编自 【3】图 8.6【/3】 中的基础模板扫掠核函数，因此我们将只关注改编过程中所做的修改。与分块卷积核函数一样，分块模板扫掠核函数首先计算每个线程所用输入块的起始 x、y、z 坐标。每个表达式中所减去的值 1，是因为该核函数假设三维七点模板每侧只有一个网格点（第 02–04 行）。一般而言，所减去的值应当是模板的阶数。"
+    },
+    {
+      "id": "n0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 8.8【/1】 A 3D seven-point stencil sweep kernel with shared memory tiling.",
+      "zh": "【1】图 8.8【/1】 带共享内存分块的三维七点模板扫掠核函数。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "The kernel allocates an 【1】in_s【/1】 array in shared memory to hold the input tile for each block (line 05). Every thread loads one input element. Like the tiled convolution kernel, each thread loads the beginning element of the cubic input patch that contains the stencil grid point pattern. Because of the subtraction in lines 02–04, it is possible that some of the threads may attempt to load ghost cells of the grid. The conditions 【2】i &gt;=0【/2】, 【3】j &gt;=0【/3】, and 【4】k &gt;=0【/4】 (line 06) guard against these out-of-bound accesses. Because the blocks are larger than the output tiles, it is also possible that some of the threads at the end of the x, y, and z dimensions of a block attempt to access the ghost cells outside the upper bound of each dimension of the grid array. The conditions 【5】I &lt; N【/5】, 【6】j &lt; N【/6】, and 【7】k &lt; N【/7】 (line 6) guard against these out-of-bound accesses. All threads in the thread block collaboratively load the input tile into the shared memory (line 07) and use the barrier synchronization to wait until all input tile grid points are in the shared memory (line 09).",
+      "zh": "该核函数在共享内存中分配一个 【1】in_s【/1】 数组，用来存放每个线程块的输入分块（第 05 行）。每个线程加载一个输入元素。与分块卷积核函数一样，每个线程加载包含模板网格点模式的立方体输入块的起始元素。由于第 02–04 行的减法，部分线程可能试图加载网格的幽灵单元。条件 【2】i &gt;=0【/2】、【3】j &gt;=0【/3】 和 【4】k &gt;=0【/4】 （第 06 行）防止这些越界访问。由于线程块大于输出分块，线程块 x、y、z 维度末尾的部分线程也可能试图访问网格数组各维度上界之外的幽灵单元。条件 【5】I &lt; N【/5】、【6】j &lt; N【/6】 和 【7】k &lt; N【/7】 （第 6 行）防止这些越界访问。线程块中的所有线程协同把输入分块加载到共享内存中（第 07 行），并使用屏障同步等待，直到所有输入分块网格点都进入共享内存（第 09 行）。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "Each block calculates its output tile in lines 10–21. The conditions in line 10 reflect the simplifying assumption that the boundary points of both the input grid and the output hold initial condition values and do not need to be calculated from iteration to iteration by the kernel. Therefore threads whose output grid points fall on these boundary positions are turned off. Note that the boundary grid points form a layer at the surface of the grid.",
+      "zh": "每个线程块在第 10–21 行计算自己的输出分块。第 10 行的条件反映了这样的简化假设：输入网格和输出网格的边界点都存放初始条件值，不需要核函数在一次又一次的迭代中反复计算。因此，输出网格点落在这些边界位置上的线程被关闭。注意，边界网格点在网格表面形成一层。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "The conditions in lines 12–13 turn off the extra threads that were launched just to load the input tile grid points. The conditions allow those threads whose i, j, and k index values fall within the output tile to calculate the output grid points selected by these indices. Finally, each active thread calculates its output grid point value using the input grid points specified by the seven-point stencil.",
+      "zh": "第 12–13 行的条件关闭那些仅为加载输入分块网格点而启动的额外线程。这些条件允许 i、j、k 索引值落在输出分块内的线程计算这些索引所选择的输出网格点。最后，每个活动线程使用七点模板所指定的输入网格点计算其输出网格点值。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "We can evaluate the effectiveness of shared memory tiling by calculating the arithmetic to global memory access ratio that this kernel achieves. Recall that the original stencil sweep kernel achieved a ratio of 0.46 OP/B. With the shared memory tiling kernel, let us assume that each input tile is a cube with T grid points in each dimension and that each output tile has T−2 grid points in each dimension. Therefore each block has (T−2)【1】3【/1】 active threads calculating output grid point values, and each active thread performs 13 floating-point multiplication or addition operations, which is a total of 13*(T−2)【2】3【/2】 floating-point arithmetic operations. Moreover, each block loads an input tile by performing T【3】3【/3】 loads that are 4 bytes each. Therefore the floating point to global memory access ratio of the tiled kernel can be calculated as follows:",
+      "zh": "我们可以通过计算该核函数达到的算术运算与全局内存访问比，来评估共享内存分块的成效。回想一下，原始的模板扫掠核函数达到的比值为 0.46 OP/B。对于共享内存分块核函数，假设每个输入分块是一个立方体，每个维度有 T 个网格点，每个输出分块每个维度有 T−2 个网格点。因此，每个线程块有 (T−2)【1】3【/1】 个活动线程来计算输出网格点值，每个活动线程执行 13 次浮点乘法或加法运算，总共是 13*(T−2)【2】3【/2】 次浮点算术运算。此外，每个线程块通过执行 T【3】3【/3】 次加载（每次 4 字节）来加载一个输入分块。因此，分块核函数的浮点运算与全局内存访问比可以计算如下："
+    }
+  ]
+}

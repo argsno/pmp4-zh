@@ -1,0 +1,155 @@
+{
+  "page": "Ch014_311-329_B9780323912310000100",
+  "nodes": [
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "There are various design considerations that go into the structure of a sparse matrix storage formats. The following is a list of some of the key considerations:",
+      "zh": "稀疏矩阵存储格式的结构涉及多种设计考量。以下是其中一些关键考量的清单："
+    },
+    {
+      "id": "u0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[3]/ul[1]/li[1]",
+      "en": "• Space efficiency (or compaction): the amount of memory capacity that is required to represent the matrix using the storage format",
+      "zh": "• 空间效率（即紧凑化）：使用该存储格式表示矩阵所需的内存容量"
+    },
+    {
+      "id": "u0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[3]/ul[1]/li[2]",
+      "en": "• Flexibility: the extent to which the storage format makes it easy to modify the matrix by adding or removing nonzeros",
+      "zh": "• 灵活性：存储格式在多大程度上便于通过添加或删除非零元素来修改矩阵"
+    },
+    {
+      "id": "u0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[3]/ul[1]/li[3]",
+      "en": "• Accessibility: the kinds of data that the storage format makes it easy to access",
+      "zh": "• 可访问性：存储格式便于访问的数据种类"
+    },
+    {
+      "id": "u0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[3]/ul[1]/li[4]",
+      "en": "• Memory access efficiency: the extent to which the storage format enables an efficient memory access pattern for a particular computation (one facet of regularization)",
+      "zh": "• 内存访问效率：存储格式在多大程度上能为特定计算提供高效的内存访问模式（规整化的一个方面）"
+    },
+    {
+      "id": "u0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[3]/ul[1]/li[5]",
+      "en": "• Load balance: the extent to which the storage format balances the load across different threads for a particular computation (another facet of regularization)",
+      "zh": "• 负载均衡：存储格式在多大程度上能为特定计算在不同线程之间均衡负载（规整化的另一个方面）"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[8]",
+      "en": "Throughout this chapter we will introduce different storage formats and examine how these storage formats compare in each of these design considerations.",
+      "zh": "在本章中，我们将介绍不同的存储格式，并考察这些存储格式在上述每种设计考量上的表现如何。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "14.2 A simple SpMV kernel with the COO format",
+      "zh": "14.2 基于 COO 格式的简单 SpMV 核函数"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "The first sparse matrix storage format that we will discuss is the coordinate list (COO) format. The COO format is illustrated in 【1】Fig. 14.3【/1】. COO stores the nonzero values in a one-dimensional array, which is shown as the 【2】value【/2】 array. Each nonzero element is stored with both its column index and its row index. We have both 【3】colIdx【/3】 and 【4】rowIdx【/4】 arrays to accompany the 【5】value【/5】 array. For example, A[0,0] of our small example is stored at the entry with index 0 in the 【6】value【/6】 array (1 in 【7】value[0]【/7】) with both its column index (0 in 【8】colIdx[0]【/8】) and its row index (0 in 【9】rowIdx[0]【/9】) stored at the same position in the other arrays.",
+      "zh": "我们要讨论的第一种稀疏矩阵存储格式是坐标列表（COO）格式。【1】图 14.3【/1】展示了 COO 格式。COO 将非零值存储在一维数组中，即【2】value【/2】数组。每个非零元素同时存储其列索引和行索引，我们同时使用【3】colIdx【/3】和【4】rowIdx【/4】数组来配合【5】value【/5】数组。例如，我们小例子中的 A[0,0] 存储在【6】value【/6】数组中索引为 0 的条目处（即【7】value[0]【/7】中的 1），其列索引（【8】colIdx[0]【/8】中的 0）和行索引（【9】rowIdx[0]【/9】中的 0）则存储在其他数组的相同位置。"
+    },
+    {
+      "id": "n0034",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 14.3【/2】【/1】 Example of the coordinate list (COO) format.",
+      "zh": "【1】【2】图 14.3【/2】【/1】 坐标列表（COO）格式示例。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "COO completely removes all zero elements from the storage. It does incur storage overhead by introducing the 【1】colIdx【/1】 and 【2】rowIdx【/2】 arrays. In our small example, in which the number of zero elements is not much larger than the number of nonzero elements, the storage overhead is actually more than the space that is saved by not storing the zero elements. However, it should be clear that for sparse matrices in which the vast majority of elements are zeros, the overhead that is introduced is far less than the space that is saved by not storing zeros. For example, in a sparse matrix in which only 1% of the elements are nonzero values, the total storage for the COO representation, including all the overhead, would be around 3% of the space required to store both zero and nonzero elements.",
+      "zh": "COO 完全从存储中去除所有零元素。但它确实会因引入【1】colIdx【/1】和【2】rowIdx【/2】数组而产生存储开销。在我们的小例子中，零元素的数目与非零元素的数目相差不大，存储开销实际上超过了不存储零元素所节省的空间。然而，显然对于绝大多数元素为零的稀疏矩阵而言，所引入的开销远小于不存储零元素所节省的空间。例如，在一个只有 1% 元素为非零值的稀疏矩阵中，COO 表示的总存储量（包括所有开销）大约只需存储零元素和非零元素所需空间的 3%。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "One approach to performing SpMV in parallel using a sparse matrix represented in the COO format is to assign a thread to each nonzero element in the matrix. An example of this parallelization approach is illustrated in 【1】Fig. 14.4【/1】, and the corresponding code is shown in 【2】Fig. 14.5【/2】. In this approach, each thread identifies the index of the nonzero element for which it is responsible (line 02) and ensures that it is within bounds (line 03). Next, the thread identifies the row index (line 04), column index (line 05), and value (line 06) of the nonzero element for which it is responsible from the 【3】rowIdx【/3】, 【4】colIdx【/4】, and 【5】value【/5】 arrays, respectively. It then looks up the input vector value at the location corresponding to the column index, multiplies it by the nonzero value, then accumulates the result to the output value at the corresponding row index (line 07). An atomic operation is used for the accumulation because multiple threads may update the same output element, as is the case with the first two threads mapped to row 0 of the matrix in 【6】Fig. 14.4【/6】. It should be obvious that any SpMV computation code will reflect the storage format assumed. Therefore we add the storage format to the name of the kernel to clarify the combination that was used. We also refer to the SpMV code in 【7】Fig. 14.5【/7】 as SpMV/COO.",
+      "zh": "使用以 COO 格式表示的稀疏矩阵并行执行 SpMV 的一种方法是为矩阵中的每个非零元素分配一个线程。【1】图 14.4【/1】展示了这种并行化方法的示例，相应的代码见【2】图 14.5【/2】。在这种方法中，每个线程确定自己负责的非零元素的索引（第 02 行），并确保其在边界内（第 03 行）。接着，线程分别从【3】rowIdx【/3】、【4】colIdx【/4】和【5】value【/5】数组中读取其负责的非零元素的行索引（第 04 行）、列索引（第 05 行）和值（第 06 行）。然后，它查找与列索引对应位置处的输入向量值，将其与非零值相乘，再将结果累加到对应行索引处的输出值中（第 07 行）。累加需要使用原子操作，因为多个线程可能更新同一个输出元素，【6】图 14.4【/6】中映射到矩阵第 0 行的前两个线程就是这种情况。显然，任何 SpMV 计算代码都会反映其所假定的存储格式。因此，我们在核函数名称中加入存储格式，以明确所使用的组合。我们也将【7】图 14.5【/7】中的 SpMV 代码称为 SpMV/COO。"
+    },
+    {
+      "id": "n0037",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.4【/1】 Example of parallelizing SpMV with the COO format.",
+      "zh": "【1】图 14.4【/1】 使用 COO 格式并行化 SpMV 的示例。"
+    },
+    {
+      "id": "n0038",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.5【/1】 A parallel SpMV/COO kernel.",
+      "zh": "【1】图 14.5【/1】 并行 SpMV/COO 核函数。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "Now we examine the COO format under the design considerations listed in 【1】Section 14.1【/1】: space efficiency, flexibility, accessibility, memory access efficiency, and load balance. For space efficiency we defer the discussion for later, when we have introduced other formats. For flexibility we observe that we can arbitrarily reorder the elements in a COO format without losing any information as long as we reorder the 【2】rowIdx【/2】, 【3】colIdx【/3】, and 【4】value【/4】 arrays in the same way. This is illustrated by using our small example in 【5】Fig. 14.6【/5】, where we have reordered the elements of 【6】rowIdx【/6】, 【7】colIdx【/7】, and 【8】value【/8】. Now 【9】value[0]【/9】 actually contains an element from row 1 and column 3 of the original sparse matrix. Because we have also shifted the row index and column index values along with the data value, we can correctly identify this element’s location in the original sparse matrix.",
+      "zh": "现在我们按照【1】第 14.1 节【/1】列出的设计考量来考察 COO 格式：空间效率、灵活性、可访问性、内存访问效率和负载均衡。关于空间效率，我们将讨论推迟到后面介绍其他格式之后。关于灵活性，我们注意到，只要以相同方式重排【2】rowIdx【/2】、【3】colIdx【/3】和【4】value【/4】数组，就可以任意重排 COO 格式中的元素而不会丢失任何信息。【5】图 14.6【/5】用我们的小例子说明了这一点，其中我们重排了【6】rowIdx【/6】、【7】colIdx【/7】和【8】value【/8】数组的元素。现在【9】value[0]【/9】实际上包含的是原稀疏矩阵第 1 行第 3 列的一个元素。由于我们同时移动了行索引和列索引的值，因此可以正确识别该元素在原稀疏矩阵中的位置。"
+    },
+    {
+      "id": "n0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 14.6【/2】【/1】 Reordering coordinate list (COO) format.",
+      "zh": "【1】【2】图 14.6【/2】【/1】 重排坐标列表（COO）格式。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "In the COO format, we can process the elements in any order we want. The correct 【1】y【/1】 element that is identified by 【2】rowIdx[i]【/2】 will receive the correct contribution from the product of 【3】value[i]【/3】 and 【4】x[colIdx[i]]【/4】. If we make sure that we somehow perform this operation for all elements of 【5】value【/5】, we will calculate the correct final answer regardless of the order in which we process these elements.",
+      "zh": "在 COO 格式中，我们可以按任意顺序处理元素。由【2】rowIdx[i]【/2】确定的正确【1】y【/1】元素将收到来自【3】value[i]【/3】与【4】x[colIdx[i]]【/4】乘积的正确贡献。只要我们设法对【5】value【/5】中的所有元素都执行此运算，无论我们按何种顺序处理这些元素，都能得到正确的最终结果。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "The reader may ask why we would want to reorder these elements. One reason is that the data may be read from a file that does not provide the nonzeros in a particular order, and we still need a consistent way of representing the data. For this reason, COO is a popular choice of storage format when the matrix is initially being constructed. Another reason is that not having to provide any ordering enables nonzeros to be added to the matrix by simply appending entries at the end of each of the three arrays. For this reason, COO is a popular choice of storage format when the matrix is modified throughout the computation. We will see another benefit of the flexibility of the COO format in 【1】Section 14.5【/1】.",
+      "zh": "读者可能会问，我们为什么想要重排这些元素。一个原因是，数据可能来自不按特定顺序提供非零元素的文件，而我们仍然需要一种一致的表示数据的方式。因此，在矩阵最初构建时，COO 是一种常用的存储格式。另一个原因是，由于无需提供任何顺序，只需在这三个数组的末尾追加条目即可向矩阵添加非零元素。因此，当矩阵在整个计算过程中被修改时，COO 也是一种常用的存储格式。我们将在【1】第 14.5 节【/1】中看到 COO 格式灵活性的另一个好处。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "The next design consideration that we look at is accessibility. COO makes it easy to access, for a given nonzero, its corresponding row index and column index. This feature of COO enables parallelization across nonzero elements in SpMV/COO. On the other hand, COO does not make it easy to access, for a given row or column, all the nonzeros in that row or column. For this reason, COO would not be a good choice of format if the computation required a row-wise or column-wise traversal of the matrix.",
+      "zh": "我们考察的下一个设计考量是可访问性。对于给定的非零元素，COO 便于访问其对应的行索引和列索引。这一特性使得 SpMV/COO 能够跨非零元素进行并行化。另一方面，对于给定的行或列，COO 不便于访问该行或列中的所有非零元素。因此，如果计算需要对矩阵进行按行或按列的遍历，COO 就不是一个好的格式选择。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "For memory access efficiency we refer to the physical view in 【1】Fig. 14.4【/1】 for how the threads access the matrix data from memory. The access pattern is such that consecutive threads access consecutive elements in each of the three arrays that form the COO format. Therefore accesses to the matrix by SpMV/COO are coalesced.",
+      "zh": "关于内存访问效率，我们参考【1】图 14.4【/1】中的物理视图，了解线程如何从内存访问矩阵数据。其访问模式是，连续的线程访问构成 COO 格式的三个数组中连续的元素。因此，SpMV/COO 对矩阵的访问是合并的。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[9]",
+      "en": "For load balance we recall that each thread is responsible for a single nonzero value. Hence all threads are responsible for the same amount of work, which means that we do not expect any control divergence to take place in SpMV/COO except for the threads at the boundary.",
+      "zh": "关于负载均衡，我们回顾到每个线程负责一个非零值。因此，所有线程负责相同的工作量，这意味着除了边界上的线程外，SpMV/COO 中预计不会出现任何控制发散。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[10]",
+      "en": "The main drawback of SpMV/COO is the need to use atomic operations. The reason for using atomic operations is that multiple threads are assigned to nonzeros in the same row and therefore need to update the same output value. The atomic operations can be avoided if all the nonzeros in the same row are assigned to the same thread such that the thread will be the only one updating the corresponding output value. However, recall that the COO format does not give this accessibility. In the COO format, it is not easy to access, for a given row, all the nonzeros in that row. In the next section we will see another storage format that provides this accessibility.",
+      "zh": "SpMV/COO 的主要缺点是需要使用原子操作。使用原子操作的原因是，多个线程被分配到同一行的非零元素，因此需要更新同一个输出值。如果同一行的所有非零元素都分配给同一个线程，使该线程成为唯一更新相应输出值的线程，就可以避免使用原子操作。但请记住，COO 格式并不提供这种可访问性。在 COO 格式中，对于给定的行，不便于访问该行中的所有非零元素。在下一节中，我们将看到另一种提供这种可访问性的存储格式。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "14.3 Grouping row nonzeros with the CSR format",
+      "zh": "14.3 使用 CSR 格式对行非零元素分组"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "In the previous section we saw that parallelizing SpMV with the COO format suffers from the use of atomic operations because the same output value is updated by multiple threads. These atomic operations can be avoided if the same thread is responsible for all the nonzeros of a row, which requires the storage format to give us the ability to access, for a given row, all the nonzeros in that row. This kind of accessibility is provided by the compressed sparse row (CSR) storage format.",
+      "zh": "在上一节中，我们看到使用 COO 格式并行化 SpMV 会因多个线程更新同一个输出值而不得不使用原子操作。如果同一个线程负责一行中的所有非零元素，就可以避免这些原子操作，但这要求存储格式能让我们访问给定行的所有非零元素。这种可访问性由压缩稀疏行格式（CSR）提供。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "【1】Fig. 14.7【/1】 illustrates how the matrix in 【2】Fig. 14.1【/2】 can be stored by using the CSR format. Like the COO format, CSR stores the nonzero values in a one-dimensional array shown as the 【3】value【/3】 array in 【4】Fig. 14.2【/4】. However, these nonzero values are grouped by row. For example, we store the nonzero elements of row 0 (1 and 7) first, followed by the nonzero elements of row 1 (5, 3, and 9), followed by the nonzero elements of row 2 (2 and 8), and finally the nonzero elements of row 3 (6).",
+      "zh": "【1】图 14.7【/1】说明了如何使用 CSR 格式存储【2】图 14.1【/2】中的矩阵。与 COO 格式一样，CSR 将非零值存储在一维数组中，即【4】图 14.2【/4】中所示的【3】value【/3】数组。不过，这些非零值按行分组。例如，我们先存储第 0 行的非零元素（1 和 7），再存储第 1 行的非零元素（5、3 和 9），接着存储第 2 行的非零元素（2 和 8），最后存储第 3 行的非零元素（6）。"
+    }
+  ]
+}

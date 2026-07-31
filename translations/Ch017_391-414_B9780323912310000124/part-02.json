@@ -1,0 +1,155 @@
+{
+  "page": "Ch017_391-414_B9780323912310000124",
+  "nodes": [
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[7]",
+      "en": "From a quick inspection of 【1】Fig. 17.4【/1】 we see that the F【2】H【/2】D calculation can be split into two separate loops, as is shown in 【3】Fig. 17.6【/3】, using a technique called 【4】loop fission【/4】 or loop splitting. This transformation takes the body of a loop and splits it into two loops. In the case of F【5】H【/5】D the outer loop consists of two parts: the statements before the inner loop and the inner loop itself. As is shown in 【6】Fig. 17.6【/6】, we can perform loop fission on the outer loop by placing the statements before the inner loop into a first loop and the inner loop into a second loop.",
+      "zh": "快速查看【1】图 17.4【/1】可以看出，F【2】H【/2】D 的计算可以拆分为两个独立的循环，如【3】图 17.6【/3】所示，所用的技术称为【4】循环分裂【/4】（loop splitting）。这种变换取一个循环的循环体，把它拆成两个循环。就 F【5】H【/5】D 而言，外层循环由两部分组成：内层循环之前的语句，以及内层循环本身。如【6】图 17.6【/6】所示，我们可以对外层循环进行循环分裂：把内层循环之前的语句放进第一个循环，把内层循环放进第二个循环。"
+    },
+    {
+      "id": "n0051",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.6【/1】 Loop fission on the F【2】H【/2】D computation.",
+      "zh": "【1】图 17.6【/1】 对 F【2】H【/2】D 计算进行的循环分裂。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[8]",
+      "en": "An important consideration in loop fission is that the transformation changes the relative execution order of the two parts of the original outer loop. In the original outer loop, both parts of the first iteration execute before the second iteration. After fission the first part of all iterations will execute; they are then followed by the second part of all iterations. The reader should be able to verify that this change of execution order does not affect the execution results for F【1】H【/1】D. This is because the execution of the first part of each iteration does not depend on the result of the second part of any preceding iterations of the original outer loop. Loop fission is a transformation that is often done by advanced compilers that are capable of analyzing the (lack of) dependence between statements across loop iterations.",
+      "zh": "循环分裂中一个重要的考量是：这种变换会改变原始外层循环两个部分的相对执行顺序。在原始外层循环中，第一次迭代的两个部分都在第二次迭代之前执行。分裂之后，所有迭代的第一部分会先执行，随后才是所有迭代的第二部分。读者应该能够验证，这种执行顺序的改变不会影响 F【1】H【/1】D 的执行结果。这是因为，每个迭代的第一部分的执行并不依赖原始外层循环中任何先前迭代第二部分的执行结果。循环分裂是能够分析循环迭代之间语句（有无）依赖关系的高级编译器常做的一种变换。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[9]",
+      "en": "With loop fission the F【1】H【/1】D computation is now done in two steps. The first step is a single-level loop that calculates the rMu and iMu elements for use in the second loop. The second step corresponds to the second loop that calculates the F【2】H【/2】D elements based on the rMu and iMu elements calculated in the first step. Each step can now be converted into its own CUDA kernel. The two CUDA kernels will execute sequentially with respect to each other. Since the second loop needs to use the results from the first loop, separating these two loops into two kernels that execute in sequence does not sacrifice any parallelism.",
+      "zh": "经过循环分裂，F【1】H【/1】D 的计算现在分两步进行。第一步是单层循环，计算供第二个循环使用的 rMu 和 iMu 元素。第二步对应第二个循环，它基于第一步计算出的 rMu 和 iMu 元素来计算 F【2】H【/2】D 元素。现在，每一步都可以转换成自己独立的 CUDA 核函数。这两个 CUDA 核函数将按顺序依次执行。由于第二个循环需要使用第一个循环的结果，把这两个循环拆成顺序执行的两个核函数并不会牺牲任何并行性。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[10]",
+      "en": "The cmpMu() kernel in 【1】Fig. 17.7【/1】 implements the first loop. The conversion of the first loop from sequential C code to a CUDA kernel is straightforward: Each thread executes one iteration of the original C code. Since the M value can be very big, reflecting the large number of k-space samples, such a mapping can result in a large number of threads. Since each thread block can have up to 1024 threads in each block, we will need to use multiple blocks to allow the large number of threads. This can be accomplished by having a number of threads in each block, specified by 【2】MU_THREADS_PER_BLOCK【/2】 in 【3】Fig. 17.7【/3】, and by employing 【4】M/MU_THREADS_PER_BLOCK【/4】 blocks needed to cover all M iterations of the original loop. For example, if there are 1,000,000 k-space samples, the kernel could be invoked with a configuration of 1024 threads per block and 1,000,000/1024 = 977 blocks. This is done by defining 【5】MU_THREADS_PER_BLOCK【/5】 as 1024 and using it as the block size and 【6】M/MU_THREADS_PER_BLOCK【/6】 as the grid size during kernel innovation.",
+      "zh": "【1】图 17.7【/1】中的 cmpMu() 核函数实现了第一个循环。将第一个循环从串行 C 代码转换为 CUDA 核函数是直截了当的：每个线程执行原始 C 代码的一次迭代。由于 M 值可能非常大（反映 k 空间样本数量庞大），这种映射可能产生大量线程。由于每个线程块中最多可以有 1024 个线程，我们需要使用多个线程块来容纳这些大量线程。这可以通过在每个线程块中设置一定数量的线程（由【2】MU_THREADS_PER_BLOCK【/2】指定，见【3】图 17.7【/3】）并采用【4】M/MU_THREADS_PER_BLOCK【/4】个线程块来覆盖原始循环的全部 M 次迭代来实现。例如，如果有 1,000,000 个 k 空间样本，核函数可以用每线程块 1024 个线程、共 1,000,000/1024=977 个线程块的配置来调用。具体做法是把【5】MU_THREADS_PER_BLOCK【/5】定义为 1024，并在调用核函数时将其用作线程块大小，把【6】M/MU_THREADS_PER_BLOCK【/6】用作网格大小。"
+    },
+    {
+      "id": "n0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.7【/1】 The cmpMu kernel.",
+      "zh": "【1】图 17.7【/1】 cmpMu 核函数。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[11]",
+      "en": "Within the kernel, each thread can identify the iteration assigned to it by using its 【1】blockIdx【/1】 and 【2】threadIdx【/2】 values. Since the threading structure is one-dimensional, only 【3】blockIdx.x【/3】 and 【4】threadIdx.x【/4】 need to be used. Because each block covers a section of the original iterations, the iteration covered by a thread is 【5】blockIdx.x*MU_THREADS_PER_BLOCK + threadIdx【/5】. For example, assume that 【6】MU_THREADS_PER_BLOCK = 1024【/6】. The thread with 【7】blockIdx.x=0【/7】 and 【8】threadIdx.x=37【/8】 covers the 37th iteration of the original loop, whereas the thread with 【9】blockIdx.x=5【/9】 and 【10】threadIdx.x=2【/10】 covers the 5122nd (5*1024+2) iteration of the original loop. Using this iteration number to access the Mu, Phi, and D arrays ensures that the arrays are covered by the threads in the same way they were covered by the iterations of the original loop. Because every thread writes into its own Mu element, there is no potential conflict between any of these threads.",
+      "zh": "在核函数内部，每个线程可以用自己的【1】blockIdx【/1】和【2】threadIdx【/2】值来识别分配给它的迭代。由于线程结构是一维的，只需要使用【3】blockIdx.x【/3】和【4】threadIdx.x【/4】。由于每个线程块覆盖原始迭代的一段，一个线程所覆盖的迭代为【5】blockIdx.x*MU_THREADS_PER_BLOCK + threadIdx【/5】。例如，假设【6】MU_THREADS_PER_BLOCK = 1024【/6】。那么【7】blockIdx.x=0【/7】且【8】threadIdx.x=37【/8】的线程覆盖原始循环的第 37 次迭代，而【9】blockIdx.x=5【/9】且【10】threadIdx.x=2【/10】的线程覆盖原始循环的第 5122 次（5*1024+2）迭代。用这个迭代编号访问 Mu、Phi 和 D 数组，可以确保线程对这些数组的覆盖方式与原始循环迭代的覆盖方式一致。由于每个线程都写入自己的 Mu 元素，这些线程之间不存在任何潜在冲突。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[12]",
+      "en": "Determining the structure of the second kernel requires a little more work. An inspection of the second loop in 【1】Fig. 17.6【/1】 shows that there are at least three options in designing the second kernel. In the first option, each thread corresponds to one iteration of the inner loop. This option creates the most number of threads and thus exploits the largest amount of parallelism. However, the number of threads would be N*M, with N in the millions and M in hundreds of thousands. Their product would result in too many threads in the grid, more than are needed to fully utilize the device.",
+      "zh": "确定第二个核函数的结构需要多做一些工作。查看【1】图 17.6【/1】中的第二个循环可以看出，设计第二个核函数至少有三种方案。第一种方案让每个线程对应内层循环的一次迭代。这种方案产生的线程数最多，因而利用的并行性也最大。然而，线程数将是 N*M，其中 N 以百万计，M 以数十万计。它们的乘积会导致网格中线程过多，超出充分利用设备所需的线程数。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[13]",
+      "en": "A second option is to use each thread to implement an iteration of the outer loop. This option employs fewer threads than the first option. Instead of generating N*M threads, this option generates M threads. Since M corresponds to the number of k-space samples and a large number of samples, on the order of a hundred thousand, are typically used to calculate F【1】H【/1】D, this option still exploits a large amount of parallelism. However, this kernel suffers the same problem as the kernel in 【2】Fig. 17.5【/2】. That is, each thread will write into all rFhD and iFhD elements, thus creating an extremely large number of conflicts between threads. As is the case of 【3】Fig. 17.5【/3】, the code in 【4】Fig. 17.8【/4】 requires atomic operations that will significantly slow down the parallel execution. Thus this option does not work well.",
+      "zh": "第二种方案是让每个线程实现外层循环的一次迭代。这种方案使用的线程数比第一种方案少。它不是生成 N*M 个线程，而是生成 M 个线程。由于 M 对应 k 空间样本数，而计算 F【1】H【/1】D 时通常使用大量样本（约十万量级），这种方案仍然利用了大量的并行性。然而，这个核函数存在与【2】图 17.5【/2】中核函数相同的问题。也就是说，每个线程都会写入所有 rFhD 和 iFhD 元素，从而在线程之间产生极其大量的冲突。与【3】图 17.5【/3】中的情况一样，【4】图 17.8【/4】中的代码需要原子操作，而这会显著拖慢并行执行。因此，这种方案效果不佳。"
+    },
+    {
+      "id": "n0059",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.8【/1】 Second option of the F【2】H【/2】D kernel.",
+      "zh": "【1】图 17.8【/1】 F【2】H【/2】D 核函数的第二种方案。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[14]",
+      "en": "A third option is to use each thread to compute one pair of rFhD and iFhD output elements. This option requires us to interchange the inner and outer loops and then use each thread to implement an iteration of the new outer loop. The transformation is shown in 【1】Fig. 17.9【/1】. Loop interchange is necessary because the loop being implemented by the CUDA threads must be the outer loop. Loop interchange makes each of the new outer loop iterations process a pair of rFhD and iFhD output elements and makes each inner loop collect the contributions of all input elements to this pair of output elements.",
+      "zh": "第三种方案是让每个线程计算一对 rFhD 和 iFhD 输出元素。这种方案要求我们交换内层循环和外层循环，然后让每个线程实现新的外层循环的一次迭代。这一变换如【1】图 17.9【/1】所示。循环交换是必要的，因为由 CUDA 线程实现的循环必须是外层循环。循环交换使新的外层循环的每次迭代处理一对 rFhD 和 iFhD 输出元素，并让每个内层循环收集所有输入元素对这一对输出元素的贡献。"
+    },
+    {
+      "id": "n0061",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.9【/1】 Loop interchange of the F【2】H【/2】D computation.",
+      "zh": "【1】图 17.9【/1】 F【2】H【/2】D 计算的循环交换。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[15]",
+      "en": "Loop interchange is permissible here because all iterations of both levels of loops are independent of each other. They can be executed in any order relative to one another. Loop interchange, which changes the order of the iterations, is allowed when these iterations can be executed in any order. This option allows us to convert the new outer loop into a kernel to be executed by N threads. Since N corresponds to the number of voxels in the reconstructed image, the N value can be very large for higher-resolution images. For a 128【1】3【/1】 image, there are 128【2】3【/2】 = 2,097,152 threads, resulting in a large amount of parallelism. For higher resolutions, such as 512【3】3【/3】, we may need to either use multidimensional grids, launch multiple grids, or assign multiple voxels to a single thread. The threads in this third option all accumulate into their own rFhD and iFhD elements, since every thread has a unique n value. There is no conflict between threads. This makes this third option the best choice among the three options.",
+      "zh": "在这里，循环交换是允许的，因为两层循环的所有迭代彼此独立，可以按任意相对顺序执行。循环交换会改变迭代的顺序，当这些迭代可以按任意顺序执行时，这种变换就是允许的。这种方案让我们能把新的外层循环转换为由 N 个线程执行的核函数。由于 N 对应重建图像中的体素数，对于分辨率更高的图像，N 值可能非常大。对于 128【1】3【/1】图像，有 128【2】3【/2】=2,097,152 个线程，从而产生大量的并行性。对于 512【3】3【/3】等更高分辨率，我们可能需要使用多维网格、启动多个网格，或者把多个体素分配给同一个线程。第三种方案中的线程都累加到各自的 rFhD 和 iFhD 元素中，因为每个线程都有唯一的 n 值，线程之间没有冲突。这使得第三种方案成为三种方案中的最佳选择。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[16]",
+      "en": "The kernel that is derived from the interchanged loops is shown in 【1】Fig. 17.10【/1】. The outer loop has been stripped away; each thread covers an iteration of the outer (n) loop, where n is equal to 【2】blockIdx.x*FHD_THREADS_PER_BLOCK + threadIdx.x【/2】. Once this iteration (n) value has been identified, the thread executes the inner (m) loop based on that n value. This kernel can be invoked with a number of threads in each block, specified by a global constant 【3】FHD_THREADS_PER_BLOCK【/3】. Assuming that N is the variable that stores the number of voxels in the reconstructed image, 【4】N/FHD_THREADS_PER_BLOCK【/4】 blocks cover all N iterations of the original loop. For example, if there are 2,097,152 voxels, the kernel could be invoked with a configuration of 1024 threads per block and 2,097,152/1024 = 2048 blocks. In 【5】Fig. 17.10【/5】 this is done by assigning 1024 to 【6】FHD_THREADS_PER_BLOCK【/6】 and using it as the block size and 【7】N/FHD_THREADS_PER_BLOCK【/7】 as the grid size during kernel innovation.",
+      "zh": "由交换后的循环得到的核函数如【1】图 17.10【/1】所示。外层循环已被去掉；每个线程覆盖外层（n）循环的一次迭代，其中 n 等于【2】blockIdx.x*FHD_THREADS_PER_BLOCK + threadIdx.x【/2】。一旦确定了这个迭代（n）值，线程就基于该 n 值执行内层（m）循环。这个核函数可以用每个线程块中的一定线程数来调用，该数量由一个全局常量【3】FHD_THREADS_PER_BLOCK【/3】指定。假设 N 是存储重建图像体素数的变量，那么【4】N/FHD_THREADS_PER_BLOCK【/4】个线程块覆盖原始循环的全部 N 次迭代。例如，如果有 2,097,152 个体素，核函数可以用每线程块 1024 个线程、共 2,097,152/1024=2048 个线程块的配置来调用。在【5】图 17.10【/5】中，具体做法是把【6】FHD_THREADS_PER_BLOCK【/6】赋值为 1024，并在调用核函数时将其用作线程块大小，把【7】N/FHD_THREADS_PER_BLOCK【/7】用作网格大小。"
+    },
+    {
+      "id": "n0064",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/div[6]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.10【/1】 Third option of the FHD kernel.",
+      "zh": "【1】图 17.10【/1】 FHD 核函数的第三种方案。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/h3[1]",
+      "en": "Step 2: Getting around the memory bandwidth limitation",
+      "zh": "步骤 2：绕过内存带宽限制"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[1]",
+      "en": "The simple cmpFhD kernel in 【1】Fig. 17.10【/1】 will perform significantly better than the kernels in 【2】Figs. 17.5【/2】 and 【3】17.8【/3】 but will still result in limited speedup, owing to memory bandwidth limitations. A quick analysis shows that the execution is limited by the low compute to global memory access ratio of each thread. In the original loop, each iteration performs at least 14 memory accesses: 【4】kx[m]【/4】, 【5】ky[m]【/5】, 【6】kz[m]【/6】, 【7】x[n]【/7】, 【8】y[n]【/8】, 【9】z[n]【/9】, 【10】rMu[m]【/10】 twice, 【11】iMu[m]【/11】 twice, 【12】rFhD[n]【/12】 read and write, and iFhD[n] read and write. Meanwhile, about 13 floating-point multiplication, addition, or trigonometry operations are performed in each iteration. Therefore the compute to global memory access ratio is 13/(14*4)=0.23 OP/B, which is too low according to our analysis in 【13】Chapter 5【/13】, Memory Architecture and Data Locality. We can immediately improve the compute to global memory access ratio by assigning some of the array elements to automatic variables. As we discussed in 【14】Chapter 5【/14】, Memory Architecture and Data Locality, the automatic variables will reside in registers, thus converting reads and writes to the global memory into reads and writes to on-chip registers. A quick review of the kernel in 【15】Fig. 17.10【/15】 shows that for each thread, the same 【16】x[n]【/16】, 【17】y[n]【/17】, and 【18】z[n]【/18】 elements are used across all iterations of the for-loop (lines 05–06). This means that we can load these elements into automatic variables before the execution enters the loop. The kernel can then use the automatic variables inside the loop, thus converting global memory accesses to register accesses. Furthermore, the loop repeatedly reads from and writes into rFhD[n] and iFhD[n]. We can have the iterations read from and write into two automatic variables and write only the contents of these automatic variables into rFhD[n] and iFhD[n] after the execution exits the loop. The resulting code is shown in 【19】Fig. 17.11【/19】. By increasing the number of registers used by 5 for each thread, we have reduced the memory access done in each iteration from 14 to 7. Thus we have increased the compute to global memory access ratio from 0.23 OP/B to 0.46 OP/B. This is a good improvement and a good use of the precious register resource.",
+      "zh": "【1】图 17.10【/1】中的简单 cmpFhD 核函数性能会明显优于【2】图 17.5【/2】和【3】图 17.8【/3】中的核函数，但由于内存带宽的限制，加速比仍然有限。快速分析表明，执行受制于每个线程偏低的计算访存比。在原始循环中，每次迭代至少执行 14 次内存访问：【4】kx[m]【/4】、【5】ky[m]【/5】、【6】kz[m]【/6】、【7】x[n]【/7】、【8】y[n]【/8】、【9】z[n]【/9】、【10】rMu[m]【/10】两次、【11】iMu[m]【/11】两次，以及【12】rFhD[n]【/12】的读和写、iFhD[n] 的读和写。同时，每次迭代执行约 13 次浮点乘法、加法或三角函数运算。因此，计算访存比为 13/(14*4)=0.23 OP/B，按照我们在【13】第 5 章【/13】《内存体系结构与数据局部性》中的分析，这个比值太低。我们可以通过把部分数组元素赋给自动变量来立即提高计算访存比。正如我们在【14】第 5 章【/14】《内存体系结构与数据局部性》中所讨论的，自动变量会驻留在寄存器中，从而把对全局内存的读写转换成对片上寄存器的读写。快速回顾【15】图 17.10【/15】中的核函数可以看出，对于每个线程，相同的【16】x[n]【/16】、【17】y[n]【/17】和【18】z[n]【/18】元素在 for 循环的所有迭代中都会用到（第 05–06 行）。这意味着我们可以在执行进入循环之前把这些元素加载到自动变量中。核函数随后可以在循环内使用这些自动变量，从而把全局内存访问转换为寄存器访问。此外，循环会反复读写 rFhD[n] 和 iFhD[n]。我们可以让各次迭代读写两个自动变量，并且只在执行退出循环后，才把这两个自动变量的内容写回 rFhD[n] 和 iFhD[n]。由此得到的代码如【19】图 17.11【/19】所示。通过让每个线程多使用 5 个寄存器，我们把每次迭代的内存访问从 14 次减少到 7 次。于是，我们把计算访存比从 0.23 OP/B 提高到 0.46 OP/B。这是一项很好的改进，也是对宝贵的寄存器资源的良好利用。"
+    },
+    {
+      "id": "n0067",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.11【/1】 Using registers to reduce memory accesses in the F【2】H【/2】D kernel.",
+      "zh": "【1】图 17.11【/1】 在 F【2】H【/2】D 核函数中使用寄存器以减少内存访问。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[2]",
+      "en": "Recall that the register usage can limit the occupancy, that is, the number of blocks that can run in a streaming multiprocessor (SM). By increasing the register usage by 5 in the kernel code, we increase the register usage of each thread block by 【1】5*FHD_THREADS_PER_BLOCK【/1】. Assuming that we have 1024 threads per block, we just increased the block register usage by 5120. Since each SM can accommodate a combined register usage of 65,536 registers among all blocks assigned to it (in SM Version 3.5 or higher), we need to be careful, as any further increase of register usage can begin to limit the number of blocks that can be assigned to an SM. Fortunately, the register usage is not a limiting factor to parallelism for this kernel.",
+      "zh": "回顾一下，寄存器使用量会限制占用率，也就是一个流式多处理器（SM）中可以运行的线程块数量。通过把核函数代码中的寄存器使用量增加 5，我们把每个线程块的寄存器使用量增加了【1】5*FHD_THREADS_PER_BLOCK【/1】。假设每个线程块有 1024 个线程，那么线程块的寄存器使用量就增加了 5120。由于每个 SM 在其所分配的所有线程块之间总共可以容纳 65,536 个寄存器（SM 版本 3.5 或更高），我们需要小心，因为寄存器使用量的任何进一步增加都可能开始限制可分配给一个 SM 的线程块数量。幸运的是，对这个核函数而言，寄存器使用量并不是限制并行性的因素。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[3]",
+      "en": "We want to further improve the compute to global memory access ratio by eliminating more global memory accesses in the cmpFhD kernel. The next candidates to consider are the k-space samples kx[m], ky[m], and kz[m]. These array elements are accessed differently than the x[n], y[n], and z[n] elements: Different elements of kx, ky, and kz are accessed in each iteration of the loop in 【1】Fig. 17.11【/1】. This means that we cannot load a k-space element into a register and expect to access that element off a register through all the iterations. Therefore registers will not help here. However, we should notice that the k-space elements are not modified by the kernel. Also, each k-space element is used across all threads in the grid. This means that we might be able to place the k-space elements into the constant memory. Perhaps the constant cache can eliminate most of the DRAM accesses.",
+      "zh": "我们希望进一步消除 cmpFhD 核函数中的全局内存访问，以提高计算访存比。接下来要考虑的候选是 k 空间样本 kx[m]、ky[m] 和 kz[m]。这些数组元素的访问方式与 x[n]、y[n] 和 z[n] 元素不同：在【1】图 17.11【/1】中循环的每次迭代里，访问的是 kx、ky 和 kz 的不同元素。这意味着我们无法把一个 k 空间元素加载到寄存器中，然后指望在全部迭代中都能从寄存器访问该元素。因此，寄存器在这里帮不上忙。不过，我们应该注意到，k 空间元素不会被核函数修改。而且，每个 k 空间元素都会被网格中的所有线程使用。这意味着我们或许可以把 k 空间元素放入常量内存。常量缓存或许能消除大部分 DRAM 访问。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[4]",
+      "en": "An analysis of the loop in 【1】Fig. 17.11【/1】 reveals that the k-space elements are indeed excellent candidates for the constant memory. The index used for accessing kx, ky, and kz is m. We know that m is independent of threadIdx, which implies that all threads in a warp will be accessing the same element of kx, ky, and kz. This is an ideal access pattern for cached constant memory: Every time an element is brought into the cache, it will be used at least by all 32 threads in a warp for a current generation device. This means that for every 32 accesses to the constant memory, at least 31 of them will be served by the cache. This allows the cache to effectively eliminate 96% or more of the accesses to the global memory. Better yet, each time when a constant is accessed from the cache, it can be broadcast to all the threads in a warp. This makes constant memory almost as efficient as registers for accessing k-space elements.【2】【3】2【/3】【/2】",
+      "zh": "对【1】图 17.11【/1】中循环的分析表明，k 空间元素确实是常量内存的理想候选。访问 kx、ky 和 kz 所用的下标是 m。我们知道，m 与 threadIdx 无关，这意味着一个线程束中的所有线程将访问 kx、ky 和 kz 的同一元素。对带缓存的常量内存来说，这是一种理想的访问模式：每当一个元素被取入缓存，在当前一代设备上，它至少会被一个线程束中的全部 32 个线程使用。这意味着每 32 次常量内存访问中，至少有 31 次由缓存服务。这样，缓存就能有效地消除 96% 甚至更多的全局内存访问。更好的是，每次从缓存访问一个常量时，它都可以广播给线程束中的所有线程。这使得常量内存在访问 k 空间元素方面几乎与寄存器一样高效。【2】【3】2【/3】【/2】"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[5]",
+      "en": "However, there is a technical issue involved in placing the k-space elements into the constant memory. Recall that constant memory has a capacity of 64KB. However, the size of the k-space samples can be much larger, on the order of millions. A typical way of working around the limitation of constant memory capacity is to break a large dataset down into chunks of 64KB or smaller. The developer must reorganize the kernel so that the kernel will be invoked multiple times, with each invocation of the kernel consuming only a chunk of the large dataset. This turns out to be quite easy for the cmpFhD kernel.",
+      "zh": "不过，把 k 空间元素放入常量内存涉及一个技术问题。回顾一下，常量内存的容量为 64KB。然而，k 空间样本的规模可能大得多，达到数百万量级。绕过常量内存容量限制的典型做法是，把大型数据集切分成 64KB 或更小的块。开发者必须重新组织核函数，使核函数被多次调用，每次调用只处理大型数据集中的一个块。对 cmpFhD 核函数来说，这相当容易做到。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[6]",
+      "en": "A careful examination of the loop in 【1】Fig. 17.11【/1】 reveals that all threads will sequentially march through the k-space sample arrays. That is, all threads in the grid access the same k-space element during each iteration. For large datasets the loop in the kernel simply iterates more times. This means that we can divide the loop into sections, with each section processing a chunk of the k-space elements that fit into the 64KB capacity of the constant memory.【2】【3】3【/3】【/2】 The host code now invokes the kernel multiple times. Each time the host invokes the kernel, it places a new chunk into the constant memory before calling the kernel function. This is illustrated in 【4】Fig. 17.12【/4】. (For more recent devices and CUDA versions, a “const __restrict__” declaration of kernel parameters makes the corresponding input data available in the read-only data cache, which is a simpler way of getting the same effect as using constant memory.)",
+      "zh": "仔细检查【1】图 17.11【/1】中的循环可以看出，所有线程将顺序地遍历 k 空间样本数组。也就是说，网格中的所有线程在每次迭代中都访问同一个 k 空间元素。对于大型数据集，核函数中的循环只是迭代次数更多。这意味着我们可以把循环划分成若干段，每段处理能够放入常量内存 64KB 容量的一块 k 空间元素。【2】【3】3【/3】【/2】现在，主机代码多次调用核函数。每次主机调用核函数时，都会在调用核函数之前把新的一块数据放入常量内存。这一过程如【4】图 17.12【/4】所示。（对于较新的设备和 CUDA 版本，用“const __restrict__”声明核函数参数可以使相应的输入数据驻留在只读数据缓存中，这是获得与使用常量内存相同效果的更简单方法。）"
+    },
+    {
+      "id": "n0073",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.12【/1】 Host code sequence for chunking k-space data to fit into constant memory.",
+      "zh": "【1】图 17.12【/1】 将 k 空间数据分块以装入常量内存的主机代码序列。"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[7]",
+      "en": "In 【1】Fig. 17.12【/1】 the 【2】cmpFhD【/2】 kernel is called from a loop. The code assumes that kx, ky, and kz arrays are in the host memory. The dimension of kx, ky, and kz is given by M. At each iteration the host code calls the 【3】cudaMemcpyToSymbol()【/3】 function to transfer a chunk of the k-space data into the device constant memory, as was discussed in 【4】Chapter 7【/4】 Convolution, The kernel is then invoked to process the chunk. Note that when M is not a perfect multiple of 【5】CHUNK_SIZE【/5】, the host code will need to have an additional round of 【6】cudaMemcpyToSymbol()【/6】 and one more kernel invocation to finish the remaining k-space data.",
+      "zh": "在【1】图 17.12【/1】中，【2】cmpFhD【/2】核函数在一个循环中被调用。代码假设 kx、ky 和 kz 数组位于主机内存中，其维数由 M 给出。每次迭代时，主机代码都会调用【3】cudaMemcpyToSymbol()【/3】函数，把一块 k 空间数据传送到设备常量内存，正如【4】第 7 章【/4】《卷积》中所讨论的那样；随后调用核函数处理这一块数据。请注意，当 M 不是【5】CHUNK_SIZE【/5】的整数倍时，主机代码还需要额外执行一轮【6】cudaMemcpyToSymbol()【/6】并再调用一次核函数，以处理剩余的 k 空间数据。"
+    }
+  ]
+}

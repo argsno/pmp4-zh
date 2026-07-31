@@ -1,0 +1,47 @@
+{
+  "page": "Ch018_415-431_B9780323912310000094",
+  "nodes": [
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "While DCS is a highly accurate method for calculating the electrostatic potential energy map of a molecular system, it is not a scalable method. The number of operations that are performed by the method grows proportionally with the number of atoms and the number of grid points. When we increase the physical volume of the molecular system to be simulated, we should expect both the number of grid points and the number of atoms to increase proportionally to the physical size. As a result, the number of operations to be performed will be approximately proportional to the square of the physical volume; that is, the number of operations to be performed will grow quadratically with the volume of the system being simulated. This makes the use of DCS method not suitable for simulating realistic biological systems. We show that by slightly reducing the accuracy, a cutoff summation method implemented with the binning technique can dramatically improve the complexity of the computation while retaining a high level of parallelism.",
+      "zh": "虽然 DCS 是计算分子系统静电势能图的高度精确方法，但它不是一种可扩展的方法。该方法执行的操作数随原子数和网格点数成比例增长。当我们增大要模拟的分子系统的物理体积时，网格点数和原子数都应随物理尺寸成比例增加。因此，要执行的操作数将大约与物理体积的平方成正比；也就是说，要执行的操作数将随所模拟系统的体积呈二次增长。这使得 DCS 方法不适合模拟真实的生物系统。我们表明，通过略微降低精度，用分箱技术实现的截断求和方法可以在保持较高并行度的同时，显著改善计算的复杂度。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]",
+      "en": "1. Complete the host code for configuring the grid and calling the kernel in 【1】Fig. 18.6【/1】 with all the execution configuration parameters.",
+      "zh": "1. 完成主机代码，配置网格，并以所有执行配置参数调用【1】图 18.6【/1】中的核函数。"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]",
+      "en": "2. Compare the number of operations (memory loads, floating-point arithmetic, branches) executed in each iteration of the kernel in 【1】Fig. 18.8【/1】 with that in 【2】Fig. 18.6【/2】 for a coarsening factor of 8. Keep in mind that each iteration of the former corresponds to eight iterations of the latter.",
+      "zh": "2. 针对粗化因子为 8 的情况，比较【1】图 18.8【/1】中核函数每次迭代执行的操作数（内存加载、浮点运算、分支）与【2】图 18.6【/2】中核函数的操作数。请记住，前者的每次迭代对应后者的八次迭代。"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]",
+      "en": "3. Give two potential disadvantages associated with increasing the amount of work done in each CUDA thread, as shown in 【1】Section 18.3【/1】.",
+      "zh": "3. 指出增加每个 CUDA 线程所做工作量可能带来的两个潜在缺点，如【1】第 18.3 节【/1】所示。"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[4]",
+      "en": "4. Use 【1】Fig. 18.13【/1】 to explain how control divergence can arise when threads in a block process a bin in the neighborhood list.",
+      "zh": "4. 利用【1】图 18.13【/1】解释当线程块中的线程处理邻域列表中的一个箱时，控制发散是如何产生的。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    }
+  ]
+}

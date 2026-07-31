@@ -1,0 +1,92 @@
+[
+  {
+    "en": "graph search",
+    "zh": "图搜索",
+    "note": "Ch15 核心概念，摘要与正文反复出现"
+  },
+  {
+    "en": "social network",
+    "zh": "社交网络",
+    "note": "keywords、p0080 等；社交网络图同译"
+  },
+  {
+    "en": "driving direction map services",
+    "zh": "驾车路线地图服务",
+    "note": "keywords、p0080"
+  },
+  {
+    "en": "maze routing",
+    "zh": "迷宫布线",
+    "note": "keywords、15.2 节 CAD 布线应用"
+  },
+  {
+    "en": "vertex degree",
+    "zh": "顶点度数",
+    "note": "p0125、p0345 图结构刻画；degree 单独出现时视语境译度数/程度"
+  },
+  {
+    "en": "small world graph",
+    "zh": "小世界图",
+    "note": "p0235 高度数图"
+  },
+  {
+    "en": "linear-algebraic formulation",
+    "zh": "线性代数表述",
+    "note": "keywords、p0270 GraphBLAS 语境"
+  },
+  {
+    "en": "net terminal",
+    "zh": "网络端子",
+    "note": "p0160、p0165 集成电路布线的连接点"
+  },
+  {
+    "en": "wiring block",
+    "zh": "布线块",
+    "note": "p0165、p0170 迷宫布线中的布线块；routing block 同译"
+  },
+  {
+    "en": "block",
+    "zh": "布线块",
+    "note": "glossary false positive：p0165/p0170 中 wiring blocks、routing blocks、each block 的 block 是迷宫布线的普通名词，非 §5 线程块；denylist 未覆盖，已上报"
+  },
+  {
+    "en": "blockage",
+    "zh": "阻塞",
+    "note": "p0165、p0170 布线障碍"
+  },
+  {
+    "en": "wavefront",
+    "zh": "波前",
+    "note": "p0170 BFS 逐层波前"
+  },
+  {
+    "en": "hop",
+    "zh": "跳",
+    "note": "n0036 跳数（hops），对应深度 depth"
+  },
+  {
+    "en": "predecessor",
+    "zh": "前驱",
+    "note": "p0155、p0175、fn2 回溯找路径"
+  },
+  {
+    "en": "outgoing edge",
+    "zh": "出边",
+    "note": "全节反复使用；与 incoming edge 相对"
+  },
+  {
+    "en": "incoming edge",
+    "zh": "入边",
+    "note": "全节反复使用"
+  },
+  {
+    "en": "unweighted graph",
+    "zh": "无权图",
+    "note": "习题 o0050 有向无权图"
+  },
+  {
+    "en": "redundant work",
+    "zh": "冗余工作",
+    "note": "keywords、p0305"
+  }
+]

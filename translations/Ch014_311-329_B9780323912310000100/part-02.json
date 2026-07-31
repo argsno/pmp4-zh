@@ -1,0 +1,155 @@
+{
+  "page": "Ch014_311-329_B9780323912310000100",
+  "nodes": [
+    {
+      "id": "n0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.7【/1】 Example of compressed sparse row (CSR) format.",
+      "zh": "【1】图 14.7【/1】 压缩稀疏行格式（CSR）示例。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "Also similar to the COO format, CSR stores for each nonzero element in the 【1】value【/1】 array its column index at the same position in the 【2】colIdx【/2】 array. Naturally, these column indices are grouped by row as the values are. In 【3】Fig. 14.7【/3】 the nonzeros of each row are sorted by their column indices in increasing order. Sorting the nonzeros in this way results in favorable memory access patterns, but it is not necessary. The nonzeros within each row may not necessarily be sorted by their column index, and the kernel that is presented in this section will still work correctly. When the nonzeros within each row are sorted by their column index, the layout of the 【4】value【/4】 array (and the 【5】colIdx【/5】 array) for CSR can be viewed as the row-major layout of the matrix after eliminating all the zero elements.",
+      "zh": "与 COO 格式类似，CSR 在【1】value【/1】数组中存储每个非零元素，并在【2】colIdx【/2】数组的相同位置存储其列索引。自然地，这些列索引与值一样按行分组。在【3】图 14.7【/3】中，每行的非零元素按其列索引递增排序。以这种方式对非零元素排序会带来有利的内存访问模式，但并非必需。每行内的非零元素不一定按列索引排序，本节介绍的核函数仍能正确工作。当每行内的非零元素按列索引排序时，CSR 的【4】value【/4】数组（以及【5】colIdx【/5】数组）的布局可以看作去除所有零元素后矩阵的行主序布局。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "The key distinction between the COO format and the CSR format is that the CSR format replaces the 【1】rowIdx【/1】 array with a 【2】rowPtrs【/2】 array that stores the starting offset of each row’s nonzeros in the 【3】colIdx【/3】 and 【4】value【/4】 arrays. In 【5】Fig. 14.7【/5】 we show a 【6】rowPtrs【/6】 array whose elements are the indices for the beginning locations of each row. That is, 【7】rowPtrs[0]【/7】 indicates that row 0 starts at location 0 of the 【8】value【/8】 array, 【9】rowPtrs[1]【/9】 indicates that row 1 starts at location 2, and so on. Note that 【10】rowPtrs[4]【/10】 stores the starting location of a nonexistent “row 4.” This is for convenience, as some algorithms need to use the starting location of the next row to delineate the end of the current row. This extra marker gives a convenient way to locate the ending location of row 3.",
+      "zh": "COO 格式与 CSR 格式的关键区别在于，CSR 格式用【2】rowPtrs【/2】数组取代了【1】rowIdx【/1】数组，该数组存储每一行的非零元素在【3】colIdx【/3】和【4】value【/4】数组中的起始偏移量。在【5】图 14.7【/5】中，我们展示了一个【6】rowPtrs【/6】数组，其元素是每行起始位置的索引。也就是说，【7】rowPtrs[0]【/7】表示第 0 行从【8】value【/8】数组的位置 0 开始，【9】rowPtrs[1]【/9】表示第 1 行从位置 2 开始，依此类推。请注意，【10】rowPtrs[4]【/10】存储的是一个并不存在的“第 4 行”的起始位置。这样做是为了方便，因为某些算法需要利用下一行的起始位置来确定当前行的结束位置。这个额外的标记为定位第 3 行的结束位置提供了便捷的方式。"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "To perform SpMV in parallel using a sparse matrix represented in the CSR format, one can assign a thread to each row of the matrix. An example of this parallelization approach is illustrated in 【1】Fig. 14.8【/1】, and the corresponding code is shown in 【2】Fig. 14.9【/2】. In this approach, each thread identifies the row that it is responsible for (line 02) and ensures that it is within bounds (line 03). Next, the thread loops through the nonzero elements of its row to perform the dot product (lines 05–06). To find the row’s nonzero elements, the thread looks up their starting index in the 【3】rowPtrs【/3】 array (【4】rowPtrs[row]【/4】). It also finds where they end by looking up the starting index of the next row’s nonzeros (【5】rowPtrs[row + 1]【/5】). For each nonzero element the thread identifies its column index (line 07) and value (line 08). It then looks up the input value at the location corresponding to the column index, multiplies it by the nonzero value, and accumulates the result to a local variable 【6】sum【/6】 (line 09). The 【7】sum【/7】 variable is initialized to 0 before the dot product loop begins (line 04) and is accumulated to the output vector after the loop is over (line 11). Notice that the accumulation of the 【8】sum【/8】 to the output vector does not require atomic operations. The reason is that each row is traversed by a single thread, so each thread will write to a distinct output value, as illustrated in 【9】Fig. 14.8【/9】.",
+      "zh": "要使用以 CSR 格式表示的稀疏矩阵并行执行 SpMV，可以为矩阵的每一行分配一个线程。【1】图 14.8【/1】展示了这种并行化方法的示例，相应的代码见【2】图 14.9【/2】。在这种方法中，每个线程确定自己负责的行（第 02 行），并确保其在边界内（第 03 行）。接着，线程遍历其所在行的非零元素以执行点积（第 05 至 06 行）。为了找到该行的非零元素，线程在【3】rowPtrs【/3】数组中查找它们的起始索引（【4】rowPtrs[row]【/4】）。它还通过查找下一行非零元素的起始索引（【5】rowPtrs[row + 1]【/5】）来确定它们的结束位置。对于每个非零元素，线程确定其列索引（第 07 行）和值（第 08 行）。然后，它查找与列索引对应位置处的输入值，将其与非零值相乘，并将结果累加到局部变量【6】sum【/6】（第 09 行）。【7】sum【/7】变量在点积循环开始前被初始化为 0（第 04 行），并在循环结束后累加到输出向量（第 11 行）。请注意，将【8】sum【/8】累加到输出向量不需要原子操作。原因是每一行都由单个线程遍历，因此每个线程将写入不同的输出值，如【9】图 14.8【/9】所示。"
+    },
+    {
+      "id": "n0054",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.8【/1】 Example of parallelizing SpMV with the CSR format.",
+      "zh": "【1】图 14.8【/1】 使用 CSR 格式并行化 SpMV 的示例。"
+    },
+    {
+      "id": "n0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.9【/1】 A parallel SpMV/CSR kernel.",
+      "zh": "【1】图 14.9【/1】 并行 SpMV/CSR 核函数。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "Now we examine the CSR format under the design considerations listed in 【1】Section 14.1【/1】: space efficiency, flexibility, accessibility, memory access efficiency, and load balance. For space efficiency we observe that CSR is more space efficient than COO. COO requires three arrays, 【2】rowIdx【/2】, 【3】colIdx【/3】, and 【4】value【/4】, each of which has as many elements as the number of nonzeros. In contrast, CSR requires only two arrays, 【5】colIdx【/5】 and 【6】value【/6】, with as many elements as the number of nonzeros. The third array, 【7】rowPtrs【/7】, requires only as many elements as the number of rows plus one, which makes it substantially smaller than the 【8】rowIdx【/8】 array in COO. This difference makes CSR more space efficient than COO.",
+      "zh": "现在我们按照【1】第 14.1 节【/1】列出的设计考量来考察 CSR 格式：空间效率、灵活性、可访问性、内存访问效率和负载均衡。关于空间效率，我们注意到 CSR 比 COO 更节省空间。COO 需要三个数组【2】rowIdx【/2】、【3】colIdx【/3】和【4】value【/4】，每个数组的元素数都等于非零元素数。相比之下，CSR 只需要两个数组【5】colIdx【/5】和【6】value【/6】，元素数等于非零元素数。第三个数组【7】rowPtrs【/7】只需要行数加一个元素，因此比 COO 中的【8】rowIdx【/8】数组小得多。这一差异使 CSR 比 COO 更节省空间。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "For flexibility we observe that CSR is less flexible than COO when it comes to adding nonzeros to the matrix. In COO a nonzero can be added by simply appending it to the ends of the arrays. In CSR a nonzero to be added must be added to the specific row to which it belongs. This means that the nonzero elements of the later rows would all need to be shifted, and the row pointers of the later rows would all need to be incremented accordingly. For this reason, adding nonzeros to a CSR matrix is substantially more expensive than adding them to a COO matrix.",
+      "zh": "关于灵活性，我们注意到在向矩阵添加非零元素方面，CSR 不如 COO 灵活。在 COO 中，只需将非零元素追加到数组末尾即可。而在 CSR 中，要添加的非零元素必须添加到其所属的特定行中。这意味着后续各行的非零元素都需要移位，后续各行的行指针也需要相应递增。因此，向 CSR 矩阵添加非零元素比向 COO 矩阵添加要昂贵得多。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "For accessibility, CSR makes it easy to access, for a given row, the nonzeros in that row. This feature of CSR enables parallelization across rows in SpMV/CSR, which is what allows it to avoid atomic operations in comparison with SpMV/COO. In a real-world sparse matrix application there are usually thousands to millions of rows, each of which contains tens to hundreds of nonzero elements. This makes parallelization across rows seem very appropriate: There are many threads, and each thread has a substantial amount of work. On the other hand, for some applications the sparse matrix may not have enough rows to fully utilize all the GPU threads. In these kinds of applications the COO format can extract more parallelism, since there are more nonzeros than rows. Moreover, CSR does not make it easy to access, for a given column, all the nonzeros in that column. Thus an application may need to maintain an additional, more column-oriented layout of the matrix if easy access to all elements of a column is needed.",
+      "zh": "关于可访问性，对于给定的行，CSR 便于访问该行中的非零元素。这一特性使 SpMV/CSR 能够跨行并行化，这也是它相对于 SpMV/COO 能够避免原子操作的原因。在现实世界的稀疏矩阵应用中，通常有数千到数百万行，每行包含数十到数百个非零元素。这使得跨行并行化显得非常合适：线程众多，且每个线程都有可观的工作量。另一方面，对于某些应用，稀疏矩阵可能没有足够的行来充分利用所有 GPU 线程。在这类应用中，COO 格式可以挖掘出更多的并行性，因为非零元素的数目多于行数。此外，对于给定的列，CSR 不便于访问该列中的所有非零元素。因此，如果应用需要方便地访问某一列的所有元素，可能还需要维护一种更面向列的矩阵布局。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "For memory access efficiency we refer to the physical view in 【1】Fig. 14.8【/1】 for how the threads access the matrix data from memory during the first iteration of the dot product loop. The access pattern is such that consecutive threads access data elements that are far apart. In particular, threads 0, 1, 2, and 3 will access 【2】value[0]【/2】, 【3】value[2]【/3】, 【4】value[5]【/4】, and【5】value[7]【/5】, respectively, in the first iteration of their dot product loop. They will then access 【6】value[1]【/6】, 【7】value[3]【/7】, 【8】value[6]【/8】, and no data, respectively, in the second iteration, and so on. As a result, the accesses to the matrix by the parallel SpMV/CSR kernel in 【9】Fig. 14.9【/9】 are not coalesced. The kernel does not make efficient use of memory bandwidth.",
+      "zh": "关于内存访问效率，我们参考【1】图 14.8【/1】中的物理视图，了解在点积循环第一次迭代期间线程如何从内存访问矩阵数据。其访问模式是，连续的线程访问相距甚远的数据元素。具体来说，线程 0、1、2 和 3 在各自点积循环的第一次迭代中将分别访问【2】value[0]【/2】、【3】value[2]【/3】、【4】value[5]【/4】和【5】value[7]【/5】；在第二次迭代中分别访问【6】value[1]【/6】、【7】value[3]【/7】、【8】value[6]【/8】，以及不访问任何数据，依此类推。因此，【9】图 14.9【/9】中的并行 SpMV/CSR 核函数对矩阵的访问不是合并的。该核函数未能有效利用内存带宽。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[10]",
+      "en": "For load balance we observe that the SpMV/CSR kernel can potentially have significant control flow divergence in all warps. The number of iterations that are taken by a thread in the dot product loop depends on the number of nonzero elements in the row that is assigned to the thread. Since the distribution of nonzero elements among rows can be random, adjacent rows can have very different number of nonzero elements. As a result, there can be widespread control flow divergence in most or even all warps.",
+      "zh": "关于负载均衡，我们注意到 SpMV/CSR 核函数可能在所有线程束中产生显著的控制流发散。线程在点积循环中执行的迭代次数取决于分配给该线程的行中非零元素的数目。由于非零元素在行之间的分布可能是随机的，相邻行可能具有非常不同的非零元素数目。因此，在大多数甚至所有线程束中可能出现广泛的控制流发散。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[11]",
+      "en": "In summary, we have seen that the advantages of CSR over COO are that it has better space efficiency and that it gives us access to all the nonzeros of a row, allowing us to avoid atomic operations by parallelizing the computation across rows in SpMV/CSR. On the other hand, the disadvantages of CSR over COO are that it provides less flexibility with adding nonzero elements to the sparse matrix, it exhibits a memory access pattern that is not amenable to coalescing, and it causes high control divergence. In the following sections we discuss additional storage formats that sacrifice some space efficiency as compared to CSR in order to improve memory coalescing and reduce control divergence. Note that converting from COO to CSR on the GPU is an excellent exercise for the reader, using multiple fundamental parallel computing primitives, including histogram and prefix sum.",
+      "zh": "总而言之，我们看到 CSR 相对于 COO 的优势在于：它有更好的空间效率，并且让我们能够访问一行的所有非零元素，从而可以在 SpMV/CSR 中通过跨行并行化计算来避免原子操作。另一方面，CSR 相对于 COO 的劣势在于：它向稀疏矩阵添加非零元素的灵活性较低，其内存访问模式不利于合并，并且会导致较高的控制发散。在接下来的章节中，我们将讨论其他存储格式，它们以牺牲部分空间效率为代价，来改善内存合并并减少控制发散。请注意，在 GPU 上使用多种基础并行计算原语（包括直方图和扫描）完成从 COO 到 CSR 的转换，对读者来说是一个极佳的练习。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "14.4 Improving memory coalescing with the ELL format",
+      "zh": "14.4 使用 ELL 格式改善内存合并"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "The problem of noncoalesced memory accesses can be addressed by applying data padding and transposition on the sparse matrix data. These ideas were used in the ELL storage format, whose name came from the sparse matrix package in ELLPACK, a package for solving elliptic boundary value problems (【1】Rice and Boisvert, 1984【/1】).",
+      "zh": "非合并内存访问的问题可以通过对稀疏矩阵数据施加数据填充和转置来解决。这些思想被用于 ELL 存储格式，其名称来源于 ELLPACK 中的稀疏矩阵软件包；ELLPACK 是用于求解椭圆边值问题的软件包（【1】Rice and Boisvert，1984【/1】）。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "A simple way to understand the ELL format is to start with the CSR format, as is illustrated in 【1】Fig. 14.10【/1】. From a CSR representation that groups nonzeros by row, we determine the rows with the maximal number of nonzero elements. We then add padding elements to all other rows after the nonzero elements to make them the same length as the maximal rows. This makes the matrix a rectangular matrix. For our small sparse matrix example we determine that row 1 has the maximal number of elements. We then add one padding element to row 0, one padding element to row 2, and two padding elements to row 3 to make all them the same length. These additional padding elements are shown as squares with an * in 【2】Fig. 14.11【/2】. Now the matrix has become a rectangular matrix. Note that the 【3】colIdx【/3】 array also needs to be padded the same way to preserve its correspondence to the 【4】values【/4】 array.",
+      "zh": "理解 ELL 格式的一种简单方法是从 CSR 格式出发，如【1】图 14.10【/1】所示。在以 CSR 表示按行分组的非零元素后，我们确定具有最多非零元素的行。然后，在其他所有行的非零元素之后添加填充元素，使它们与最长行等长。这样矩阵就变成了矩形矩阵。对于我们的小型稀疏矩阵示例，第 1 行具有最多的元素。我们随后向第 0 行添加一个填充元素，向第 2 行添加一个填充元素，向第 3 行添加两个填充元素，使它们等长。这些额外的填充元素在【2】图 14.11【/2】中以带 * 的方块表示。现在矩阵变成了矩形矩阵。请注意，【3】colIdx【/3】数组也需要以同样的方式进行填充，以保持其与【4】values【/4】数组的对应关系。"
+    },
+    {
+      "id": "n0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.10【/1】 Example of ELL storage format.",
+      "zh": "【1】图 14.10【/1】 ELL 存储格式示例。"
+    },
+    {
+      "id": "n0066",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.11【/1】 Example of parallelizing SpMV with the ELL format.",
+      "zh": "【1】图 14.11【/1】 使用 ELL 格式并行化 SpMV 的示例。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "We can now lay the padded matrix out in column-major order. That is, we will place all elements of column 0 in consecutive memory locations, followed by all elements of column 1, and so on. This is equivalent to transposing the rectangular matrix in the row-major order used by the C language. In terms of our small example, after the transposition, 【1】value[0]【/1】 through 【2】value[3]【/2】 now contain 1, 5, 2, 6, which are the 0th elements of all rows. This is illustrated in the bottom left portion of 【3】Fig. 14.10【/3】. Similarly, 【4】colIdx[0]【/4】 through 【5】colIdx[3]【/5】 contain the column positions of 0th elements of all rows. Note that we no longer need the 【6】rowPtrs【/6】, since the beginning of row 【7】r【/7】 is now simply 【8】value[r]【/8】. With the padded elements it is also very easy to move from the current element of row 【9】r【/9】 to the next element by simply adding the number of rows in the original matrix to the index. For example, the 0th element of row 2 is in 【10】value[2]【/10】, and the next element is in 【11】value[2+4]【/11】, which is equivalent to 【12】value[6]【/12】, where 4 is the number of rows in the original matrix in our small example.",
+      "zh": "现在我们可以按列主序排列填充后的矩阵。也就是说，我们将第 0 列的所有元素放在连续的内存位置中，接着是第 1 列的所有元素，依此类推。这等价于对按 C 语言所用行主序排列的矩形矩阵进行转置。就我们的小例子而言，转置之后，【1】value[0]【/1】到【2】value[3]【/2】现在包含 1、5、2、6，它们是所有行的第 0 个元素。【3】图 14.10【/3】的左下部分对此进行了说明。类似地，【4】colIdx[0]【/4】到【5】colIdx[3]【/5】包含所有行第 0 个元素的列位置。请注意，我们不再需要【6】rowPtrs【/6】，因为第【7】r【/7】行的起始位置现在就是【8】value[r]【/8】。有了填充元素，从第【9】r【/9】行的当前元素移动到下一个元素也非常容易，只需在索引上加上原矩阵的行数即可。例如，第 2 行的第 0 个元素位于【10】value[2]【/10】，下一个元素位于【11】value[2+4]【/11】，即【12】value[6]【/12】，其中 4 是我们小例子中原矩阵的行数。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "We illustrate how to parallelize SpMV using the ELL format in 【1】Fig. 14.11【/1】, along with a parallel SpMV/ELL kernel in 【2】Fig. 14.12【/2】. Like CSR, each thread is assigned to a different row of the matrix (line 02), and a boundary check ensures that the row is within bounds (line 03). Next, a dot product loop goes through the nonzero elements of each row (line 05). Note that the SpMV/ELL kernel assumes that the input matrix has a vector 【3】ellMatrix.nnzPerRow【/3】 that records the number of nonzeros in each row and allows each thread to iterate only through the nonzeros in its assigned row. If the input matrix does not have this vector, the kernel can simply iterate through all elements, including the padding elements, and still execute correctly, since the padding elements have value zero and will not affect the output values. Next, since the compressed matrix is stored in column-major order, the index 【4】i【/4】 of the nonzero element in the one-dimensional array can be found by multiplying the iteration number 【5】t【/5】 by the number of rows and adding the row index (line 06). Next, the thread loads the column index (line 07) and nonzero value (line 08) from the ELL matrix arrays. Note that the accesses to these arrays are coalesced because the index 【6】i【/6】 is expressed in terms of 【7】row【/7】, which itself is expressed in terms of 【8】threadIdx.x【/8】, meaning that consecutive threads have consecutive array indices. Next, the thread looks up the input value, multiplies it by the nonzero value, and accumulates the result to a local variable 【9】sum【/9】 (line 09). The 【10】sum【/10】 variable is initialized to 0 before the dot product loop begins (line 04) and is accumulated to the output vector after the loop is over (line 11).",
+      "zh": "我们在【1】图 14.11【/1】中说明如何使用 ELL 格式并行化 SpMV，并在【2】图 14.12【/2】中给出相应的并行 SpMV/ELL 核函数。与 CSR 一样，每个线程被分配到矩阵的不同行（第 02 行），边界检查确保该行在边界内（第 03 行）。接着，一个点积循环遍历每一行的非零元素（第 05 行）。请注意，SpMV/ELL 核函数假定输入矩阵有一个向量【3】ellMatrix.nnzPerRow【/3】，记录每行非零元素的数目，使每个线程只需遍历其负责的行中的非零元素。如果输入矩阵没有这个向量，核函数可以简单地遍历所有元素（包括填充元素），仍然可以正确执行，因为填充元素的值为零，不会影响输出值。接下来，由于压缩后的矩阵按列主序存储，可以通过将迭代次数【5】t【/5】乘以行数再加上行索引来得到一维数组中非零元素的索引【4】i【/4】（第 06 行）。接着，线程从 ELL 矩阵数组中读取列索引（第 07 行）和非零值（第 08 行）。请注意，对这些数组的访问是合并的，因为索引【6】i【/6】由【7】row【/7】表示，而该行本身又由【8】threadIdx.x【/8】表示，这意味着连续的线程具有连续的数组索引。接着，线程查找输入值，将其与非零值相乘，并将结果累加到局部变量【9】sum【/9】中（第 09 行）。【10】sum【/10】变量在点积循环开始前被初始化为 0（第 04 行），并在循环结束后累加到输出向量中（第 11 行）。"
+    },
+    {
+      "id": "n0069",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.12【/1】 A parallel SpMV/ELL kernel.",
+      "zh": "【1】图 14.12【/1】 并行 SpMV/ELL 核函数。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "Now we examine the ELL format under the design considerations listed in 【1】Section 14.1【/1】: space efficiency, flexibility, accessibility, memory access efficiency, and load balance. For space efficiency we observe that the ELL format is less space efficient than the CSR format, owing to the space overhead of the padding elements. The overhead of the padding elements highly depends on the distribution of nonzeros in the matrix. In situations in which one or a small number of rows have an exceedingly large number of nonzero elements, the ELL format will result in an excessive number of padded elements. Consider our sample matrix; in the ELL format we have replaced a 4 × 4 matrix with a 4 × 3 matrix, and with the overhead from the column indices we are storing more data than was contained in the original 4 × 4 matrix. For a more realistic example, if a 1000 × 1000 sparse matrix has 1% of its elements of nonzero value, then on average, each row has ten nonzero elements. With the overhead, the size of a CSR representation would be about 2% of the uncompressed total size. Assume that one of the rows has 200 nonzero values while all other rows have less than 10. Using the ELL format, we will pad all other rows to 200 elements. This makes the ELL representation about 40% of the uncompressed total size and 20 times larger than the CSR representation. This calls for a method to control the number of padded elements when we convert from the CSR format to the ELL format, which we will introduce in the next section.",
+      "zh": "现在我们按照【1】第 14.1 节【/1】列出的设计考量来考察 ELL 格式：空间效率、灵活性、可访问性、内存访问效率和负载均衡。关于空间效率，我们注意到由于填充元素的空间开销，ELL 格式不如 CSR 格式节省空间。填充元素的开销在很大程度上取决于矩阵中非零元素的分布。当一个或少数几个行拥有极多非零元素时，ELL 格式会产生过多的填充元素。以我们的示例矩阵为例，在 ELL 格式中，我们把 4 × 4 矩阵变成了 4 × 3 矩阵，再加上列索引的开销，我们存储的数据甚至比原 4 × 4 矩阵还多。举个更现实的例子，如果一个 1000 × 1000 的稀疏矩阵有 1% 的元素为非零值，那么平均每行有十个非零元素。考虑开销后，CSR 表示的大小约为未压缩总大小的 2%。假设其中一行有 200 个非零值，而其他所有行都少于 10 个。使用 ELL 格式，我们将所有其他行填充到 200 个元素。这使得 ELL 表示约占未压缩总大小的 40%，是 CSR 表示的 20 倍。这就需要在从 CSR 格式转换到 ELL 格式时，有一种控制填充元素数目的方法，我们将在下一节介绍。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "For flexibility we observe that ELL is more flexible than CSR when it comes to adding nonzeros to the matrix. In CSR, adding a nonzero to a row would require shifting all the nonzeros of the subsequent rows and incrementing their row pointers. However, in ELL, as long as a row does not have the maximum number of nonzeros in the matrix, a nonzero can be added to the row by simply replacing a padding element with an actual value.",
+      "zh": "关于灵活性，我们注意到在向矩阵添加非零元素方面，ELL 比 CSR 更灵活。在 CSR 中，向一行添加非零元素需要移动后续所有行的非零元素并递增它们的行指针。然而，在 ELL 中，只要某一行不是矩阵中非零元素数目最多的行，就可以通过简单地用实际值替换一个填充元素来向该行添加非零元素。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "For accessibility, ELL gives us the accessibility of both CSR and COO. We saw in 【1】Fig. 14.12【/1】 how ELL allows us to access, given a row index, the nonzeros of that row. However, ELL also allows us to access, given the index of a nonzero element, the row and column index of that element. The column index is trivial to find, as it can be accessed from the 【2】colIdx【/2】 array at the same location 【3】i【/3】. However, the row index can also be accessed, owing to the regular nature of the padded matrix. Recall that the index 【4】i【/4】 of the nonzero element was calculated in 【5】Fig. 14.9【/5】 as follows:",
+      "zh": "关于可访问性，ELL 兼具 CSR 和 COO 的可访问性。我们在【1】图 14.12【/1】中看到，给定行索引时，ELL 允许我们访问该行的非零元素。此外，给定非零元素的索引时，ELL 还允许我们访问该元素的行索引和列索引。列索引很容易找到，可以从【2】colIdx【/2】数组的同一位置【3】i【/3】处访问。而由于填充矩阵的规整性，行索引也可以访问。回顾一下，在【5】图 14.9【/5】中，非零元素的索引【4】i【/4】按如下方式计算："
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "Therefore if instead 【1】i【/1】 is given and we would like to find 【2】row【/2】, it can be found as follows:",
+      "zh": "因此，如果反过来给定【1】i【/1】，而我们想求出【2】row【/2】，则可以按如下方式求得："
+    },
+    {
+      "id": "n0074",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "because 【1】row【/1】 is always less than 【2】ellMatrix.numRows【/2】, so 【3】row%ellMatrix.numRows【/3】 is simply 【4】row【/4】 itself. This accessibility of ELL allows parallelization across both rows as well as nonzero elements.",
+      "zh": "因为【1】row【/1】总是小于【2】ellMatrix.numRows【/2】，所以【3】row%ellMatrix.numRows【/3】就是【4】row【/4】本身。ELL 的这种可访问性允许跨行以及跨非零元素进行并行化。"
+    }
+  ]
+}

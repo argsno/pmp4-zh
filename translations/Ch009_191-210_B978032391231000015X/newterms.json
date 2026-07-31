@@ -1,0 +1,82 @@
+[
+  {
+    "en": "value interval",
+    "zh": "值区间",
+    "note": "§9.1 直方图横轴上的取值区间；全节反复使用"
+  },
+  {
+    "en": "bin",
+    "zh": "分箱",
+    "note": "§9.1–9.7 直方图数组元素；histogram bin 译为直方图分箱"
+  },
+  {
+    "en": "private copy",
+    "zh": "私有副本",
+    "note": "§9.4 私有化技术；与 public copy 相对"
+  },
+  {
+    "en": "public copy",
+    "zh": "公有副本",
+    "note": "§9.4 保存所有线程块总结果的副本"
+  },
+  {
+    "en": "commit",
+    "zh": "提交",
+    "note": "§9.4 将私有副本的值写入公有副本的动作"
+  },
+  {
+    "en": "atomic add",
+    "zh": "原子加",
+    "note": "§9.2–9.3 原子操作的一种；atomicAdd() 保留英文"
+  },
+  {
+    "en": "streak",
+    "zh": "连串更新",
+    "note": "§9.6 聚合更新中针对同一直方图元素的连续更新序列"
+  },
+  {
+    "en": "alphabet position",
+    "zh": "字母表位置",
+    "note": "§9.1 文本直方图例子中字符在字母表中的位置"
+  },
+  {
+    "en": "boundary check",
+    "zh": "边界检查",
+    "note": "§9.2 核函数中防止越界访问的检查"
+  },
+  {
+    "en": "feature",
+    "zh": "特征",
+    "note": "§9.1 数据集的直方图形状特征；区别于 feature extraction/feature map"
+  },
+  {
+    "en": "interleaved data partitioning",
+    "zh": "交错数据划分",
+    "note": "§9 摘要；interleaved partitioning 的扩展写法"
+  },
+  {
+    "en": "contiguous segment",
+    "zh": "连续段",
+    "note": "§9.5 连续划分策略中的输入段"
+  },
+  {
+    "en": "kiosk",
+    "zh": "自助终端",
+    "note": "§9.2 取号排队例子中的服务终端"
+  },
+  {
+    "en": "data element",
+    "zh": "数据元素",
+    "note": "全书通用；输入数据的基本单元"
+  },
+  {
+    "en": "clock cycle",
+    "zh": "时钟周期",
+    "note": "全书通用；延迟与周期计量单位"
+  },
+  {
+    "en": "context switching",
+    "zh": "上下文切换",
+    "note": "§9.3 GPU 隐藏内存延迟的机制"
+  }
+]

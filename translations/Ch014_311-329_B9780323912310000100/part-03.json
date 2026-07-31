@@ -1,0 +1,155 @@
+{
+  "page": "Ch014_311-329_B9780323912310000100",
+  "nodes": [
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
+      "en": "For memory access efficiency we refer to the physical view in 【1】Fig. 14.11【/1】 for how the threads access the matrix data from memory during the first iteration of the dot product loop. The access pattern is such that consecutive threads access consecutive data elements. With the elements arranged in column-major order, all adjacent threads are now accessing adjacent memory locations, enabling memory coalescing and thus making more efficient use of memory bandwidth. Some GPU architectures, especially in the older generations, have more strict address alignment rules for memory coalescing. One can force each iteration of the SpMV/ELL kernel to be fully aligned to architecturally specified alignment units such as 64 bytes by adding a few rows to the end of the matrix before transposition.",
+      "zh": "关于内存访问效率，我们参考【1】图 14.11【/1】中的物理视图，了解在点积循环第一次迭代期间线程如何从内存访问矩阵数据。其访问模式是，连续的线程访问连续的数据元素。由于元素按列主序排列，所有相邻线程现在访问相邻的内存位置，从而实现了内存合并，并因此更有效地利用内存带宽。某些 GPU 体系结构，尤其是较老的几代，对内存合并有更严格的地址对齐规则。我们可以在转置之前向矩阵末尾添加几行，从而强制 SpMV/ELL 核函数的每次迭代都完全对齐到体系结构规定的对齐单位（如 64 字节）。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
+      "en": "For load balance we observe that SpMV/ELL still exhibits the same load imbalance as SpMV/CSR because each thread still loops over the number of nonzeros in the row for which it is responsible. Therefore ELL does not address the problem of control divergence.",
+      "zh": "关于负载均衡，我们注意到 SpMV/ELL 仍然表现出与 SpMV/CSR 相同的负载不均衡，因为每个线程仍然要遍历其负责的行中非零元素的数目。因此，ELL 没有解决控制发散的问题。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[12]",
+      "en": "In summary, the ELL format improves on the CSR format by allowing more flexibility to add nonzeros by replacing padding elements, better accessibility, and, most important, more opportunities for memory coalescing in SpMV/ELL. However, ELL has worse space efficiency than CSR, and the control divergence of SpMV/ELL is as bad as that of SpMV/CSR. In the next section we will see how we can improve on the ELL format to address the problems of space efficiency and control divergence.",
+      "zh": "总而言之，ELL 格式相对于 CSR 格式的改进在于：通过替换填充元素提供了更高的添加非零元素的灵活性，更好的可访问性，以及最重要的是，SpMV/ELL 中有更多实现内存合并的机会。然而，ELL 的空间效率不如 CSR，而且 SpMV/ELL 的控制发散与 SpMV/CSR 一样严重。在下一节中，我们将看到如何改进 ELL 格式，以解决空间效率和控制发散的问题。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "14.5 Regulating padding with the hybrid ELL-COO format",
+      "zh": "14.5 使用 ELL-COO 混合格式调节填充"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "The problems of low space efficiency and control divergence in the ELL format are most pronounced when one or a small number of rows have exceedingly large number of nonzero elements. If we have a mechanism to “take away” some elements from these rows, we can reduce the number of padded elements in ELL and also reduce the control divergence. The answer lies in an important use case for the COO format.",
+      "zh": "当一个或少数几个行拥有极多非零元素时，ELL 格式的空间效率低下和控制发散问题最为突出。如果我们有一种机制能“拿走”这些行中的部分元素，就可以减少 ELL 中填充元素的数目，同时也能减少控制发散。答案就在于 COO 格式的一个重要应用场景。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "The COO format can be used to curb the length of rows in the ELL format. Before we convert a sparse matrix to ELL, we can take away some of the elements from the rows with exceedingly large numbers of nonzero elements and place the elements into a separate COO storage. We can use SpMV/ELL on the remaining elements. With the excess elements removed from the extra-long rows, the number of padded elements for other rows can be significantly reduced. We can then use a SpMV/COO to finish the job. This approach of employing two formats to collaboratively complete a computation is often referred to as a hybrid method.",
+      "zh": "COO 格式可用于控制 ELL 格式中行的长度。在将稀疏矩阵转换为 ELL 之前，我们可以从拥有极多非零元素的行中取出部分元素，将其放入一个独立的 COO 存储中。对剩余的元素，我们使用 SpMV/ELL 计算。从超长的行中移除多余元素后，其他行的填充元素数目可以显著减少。然后，我们可以用 SpMV/COO 完成剩余工作。这种采用两种格式协同完成一次计算的方法通常被称为混合方法。"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "【1】Fig. 14.13【/1】 illustrates how an example matrix can be represented using the hybrid ELL-COO format. We see that in the ELL format alone, rows 1 and 6 have the largest number of nonzero elements, causing the other rows to have excessive padding. To address this issue, we remove the last three nonzero elements of row 2 and the last two nonzero elements of row 6 from the ELL representation and move them into a separate COO representation. By removing these elements, we reduce the maximal number of nonzero elements among all rows in the small sparse matrix from 5 to 2. As shown in 【2】Fig. 14.13【/2】, we reduced the number of padded elements from 22 to 3. More important, all threads now need to take only two iterations.",
+      "zh": "【1】图 14.13【/1】说明了一个示例矩阵如何用 ELL-COO 混合格式表示。我们看到，仅使用 ELL 格式时，第 1 行和第 6 行拥有最多的非零元素，导致其他行有过多填充。为解决这个问题，我们从 ELL 表示中取出第 2 行的最后三个非零元素和第 6 行的最后两个非零元素，将它们移入一个独立的 COO 表示。通过移除这些元素，我们将这个小型稀疏矩阵所有行中的最大非零元素数目从 5 减少到 2。如【2】图 14.13【/2】所示，填充元素的数目从 22 个减少到 3 个。更重要的是，所有线程现在只需进行两次迭代。"
+    },
+    {
+      "id": "n0082",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.13【/1】 Hybrid ELL-COO example.",
+      "zh": "【1】图 14.13【/1】 ELL-COO 混合格式示例。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "The reader may wonder whether the additional work done to separate COO elements from an ELL format could incur too much overhead. The answer is that it depends. In situations in which a sparse matrix is used in only one SpMV calculation, this extra work can indeed incur significant overhead. However, in many real-work applications, the SpMV is performed on the same sparse kernel repeatedly in an iterative solver. In each iteration of the solver the x and y vectors vary, but the sparse matrix remains the same, since its elements correspond to the coefficients of the linear system of equations being solved, and these coefficients do not change from iteration to iteration. Therefore the work done to produce both the hybrid ELL and COO representation can be amortized across many iterations. We will come back to this point in the next section.",
+      "zh": "读者可能会想，从 ELL 格式中分离出 COO 元素所做的额外工作是否会带来过高的开销。答案是视情况而定。当稀疏矩阵只在一次 SpMV 计算中使用时，这些额外工作确实会产生显著开销。然而，在许多实际应用中，SpMV 是在迭代求解器中反复对同一个稀疏核函数执行的。在求解器的每次迭代中，x 和 y 向量都会变化，但稀疏矩阵保持不变，因为其元素对应于所求解线性方程组的系数，而这些系数在迭代之间不会改变。因此，生成 ELL-COO 混合表示和 COO 表示所做的工作可以在许多次迭代中分摊。我们将在下一节回到这一点。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "Now we examine the hybrid ELL-COO format under the design considerations listed in 【1】Section 14.1【/1】: space efficiency, flexibility, accessibility, memory access efficiency, and load balance. For space efficiency we observe that the hybrid ELL-COO format has better space efficiency than the ELL format alone because it reduces the amount of padding used.",
+      "zh": "现在我们按照【1】第 14.1 节【/1】列出的设计考量来考察 ELL-COO 混合格式：空间效率、灵活性、可访问性、内存访问效率和负载均衡。关于空间效率，我们注意到 ELL-COO 混合格式比单独使用 ELL 格式具有更好的空间效率，因为它减少了所使用的填充量。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
+      "en": "For flexibility we observe that the hybrid ELL-COO format is more flexible than just ELL when it comes to adding nonzeros to the matrix. With ELL we can add nonzero elements by replacing padding elements for rows that have them. With hybrid COO-ELL we can also add nonzeros by replacing padding elements. However, we can also append nonzeros to the COO part of the format if the row does not have any padding elements that can be replaced in the ELL part.",
+      "zh": "关于灵活性，我们注意到在向矩阵添加非零元素方面，ELL-COO 混合格式比单独的 ELL 更灵活。使用 ELL 时，对于有填充元素的行，我们可以通过替换填充元素来添加非零元素。使用 COO-ELL 混合格式时，我们同样可以通过替换填充元素来添加非零元素。此外，如果某一行在 ELL 部分没有可替换的填充元素，我们还可以将非零元素追加到格式的 COO 部分。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[7]",
+      "en": "For accessibility we observe that the hybrid ELL-COO format sacrifices accessibility compared to the ELL format alone. In particular, it is not always possible to access, given a row index, all the nonzeros in that row. Such an access can be done only for the rows that fit in the ELL part of the format. If the row overflows to the COO part, then finding all the nonzeros of the row would require searching the COO part, which is expensive.",
+      "zh": "关于可访问性，我们注意到与单独使用 ELL 格式相比，ELL-COO 混合格式牺牲了一部分可访问性。具体来说，给定行索引时，并不总能访问该行的所有非零元素。这种访问只能针对适合放在格式 ELL 部分中的行进行。如果某一行溢出到了 COO 部分，那么要找到该行的所有非零元素就需要搜索 COO 部分，这是昂贵的。"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[8]",
+      "en": "For memory access efficiency, both SpMV/ELL and SpMV/COO exhibit coalesced memory accesses to the sparse matrix. Hence their combination will also result in a coalesced access pattern.",
+      "zh": "关于内存访问效率，SpMV/ELL 和 SpMV/COO 对稀疏矩阵的访问都是合并的内存访问。因此，它们的组合也会产生合并访问模式。"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[9]",
+      "en": "For load balance, removing nonzeros from the long rows in the ELL part of the format reduces control divergence of the SpMV/ELL kernel. These nonzeros are placed in the COO part of the format, which does not affect control divergence, since SpMV/COO does not exhibit control divergence, as we have seen.",
+      "zh": "关于负载均衡，从格式 ELL 部分的长行中移除非零元素会减少 SpMV/ELL 核函数的控制发散。这些非零元素被放入格式的 COO 部分，而 COO 部分不会影响控制发散，因为正如我们所见，SpMV/COO 不会表现出控制发散。"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[10]",
+      "en": "In summary, the hybrid ELL-COO format, in comparison with the ELL format alone, improves space efficiency by reducing padding, provides more flexibility for adding nonzeros to the matrix, retains the coalesced memory access pattern, and reduces control divergence. The price that is paid is a small limitation in accessibility, in which it becomes more difficult to access all the nonzeros of a given row if that row overflows to the COO part of the format.",
+      "zh": "总而言之，与单独使用 ELL 格式相比，ELL-COO 混合格式通过减少填充提高了空间效率，为向矩阵添加非零元素提供了更大的灵活性，保留了合并的内存访问模式，并减少了控制发散。所付出的代价是可访问性上的一点限制：如果某一行溢出到格式的 COO 部分，访问该行所有非零元素就会变得更加困难。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "14.6 Reducing control divergence with the JDS format",
+      "zh": "14.6 使用 JDS 格式减少控制发散"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "We have seen that the ELL format can be used to achieve coalesced memory access patterns when accessing the sparse matrix in SpMV and that the hybrid ELL-COO format can further improve space efficiency by reducing padding and can also reduce control divergence. In this section we will look at another format that can achieve coalesced memory access patterns in SpMV and also reduce control divergence without the need to perform any padding. The idea is to sort the rows according to their length, say, from the longest to the shortest. Since the sorted matrix looks largely like a triangular matrix, the format is often referred to as the jagged diagonal storage (JDS) format.",
+      "zh": "我们已经看到，ELL 格式可以在 SpMV 中实现对稀疏矩阵的合并内存访问模式，而 ELL-COO 混合格式可以通过减少填充进一步提高空间效率，并且还能减少控制发散。在本节中，我们将介绍另一种格式，它可以在 SpMV 中实现合并的内存访问模式，同时无需任何填充就能减少控制发散。其思路是按行长度对行进行排序，例如从最长到最短。由于排序后的矩阵看起来大体像一个三角矩阵，这种格式通常被称为锯齿对角存储格式（JDS）。"
+    },
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "【1】Fig. 14.14【/1】 illustrates how a matrix can be stored using the JDS format. First, the nonzeros are grouped by row, as in the CSR and ELL formats. Next, the rows are sorted by the number of nonzeros in each row in increasing order. As we sort the rows, we typically maintain an additional 【2】row【/2】 array that preserves the index of the original row. Whenever we exchange two rows in the sorting process, we also exchange the corresponding elements of the 【3】row【/3】 array. Thus we can always keep track the original position of all rows. After the rows have been sorted, the nonzeros in the 【4】value【/4】 array and their corresponding column indices in the 【5】colIdx【/5】 array are stored in column-major order. A 【6】iterPtr【/6】 array is added to track the beginning of the nonzero elements for each iteration.",
+      "zh": "【1】图 14.14【/1】说明了如何使用 JDS 格式存储矩阵。首先，与 CSR 和 ELL 格式一样，非零元素按行分组。接着，按每行非零元素的数目以递增顺序对行排序。在排序过程中，我们通常维护一个额外的【2】row【/2】数组，用于保留原始行的索引。每当在排序过程中交换两行时，我们也会交换【3】row【/3】数组中相应的元素。这样，我们就能始终跟踪所有行的原始位置。行排序完成后，【4】value【/4】数组中的非零元素及其在【5】colIdx【/5】数组中对应的列索引按列主序存储。此外，还添加一个【6】iterPtr【/6】数组，用于跟踪每次迭代中非零元素的起始位置。"
+    },
+    {
+      "id": "n0093",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 14.14【/2】【/1】 Example of JDS storage format.",
+      "zh": "【1】【2】图 14.14【/2】【/1】 JDS 存储格式示例。"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "【1】Fig. 14.15【/1】 illustrates how SpMV can be parallelized by using the JDS format. Each thread is assigned to a row of the matrix and iterates through the nonzeros of that row, performing the dot product along the way. The threads use the 【2】iterPtr【/2】 array to identify where the nonzeros of each iteration begin. It should be clear from the physical view on the right side of 【3】Fig. 14.15【/3】, which depicts the first iteration for each thread, that the threads access the nonzeros and column indices in the JDS arrays in a coalesced manner. The code for implementing SpMV/JDS is left as an exercise.",
+      "zh": "【1】图 14.15【/1】说明了如何使用 JDS 格式并行化 SpMV。每个线程被分配到矩阵的一行，遍历该行的非零元素，并沿途执行点积。线程使用【2】iterPtr【/2】数组来确定每次迭代的非零元素从哪里开始。【3】图 14.15【/3】右侧的物理视图描绘了每个线程的第一次迭代，从中可以清楚地看到，线程以合并的方式访问 JDS 数组中的非零元素和列索引。实现 SpMV/JDS 的代码留作练习。"
+    },
+    {
+      "id": "n0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.15【/1】 Example of parallelizing SpMV with the JDS format.",
+      "zh": "【1】图 14.15【/1】 使用 JDS 格式并行化 SpMV 的示例。"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[4]",
+      "en": "In another variation of the JDS format, the rows, after being sorted, can be partitioned into sections of rows. Since the rows have been sorted, all rows in a section will likely have more or less uniform numbers of nonzero elements. We can then generate the ELL representation for each section. Within each section we need to pad the rows only to match the row with the maximum number of elements in that section. This would reduce the number of padding elements substantially in comparison to one ELL representation of the entire matrix. In this variation of JDS, the 【1】iterPtr【/1】 array would not be needed. Instead, one would need a section pointer array that points to the beginning of each ELL section only (as opposed to each iteration).",
+      "zh": "在 JDS 格式的另一种变体中，行在排序之后可以被划分成若干行段。由于行已经排序，同一段中的所有行很可能具有大致均匀的非零元素数目。然后，我们可以为每个行段生成 ELL 表示。在每个行段内，我们只需要将各行填充到该段中元素数目最多的行的水平。与对整个矩阵使用一个 ELL 表示相比，这将大幅减少填充元素的数目。在这种 JDS 变体中，不需要【1】iterPtr【/1】数组。相反，需要一个分段指针数组，只指向每个 ELL 行段的起始位置（而不是每次迭代）。"
+    },
+    {
+      "id": "p0370",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[5]",
+      "en": "The reader should ask whether sorting rows will result in incorrect solutions to the linear system of equations. Recall that we can freely reorder equations of a linear system without changing the solution. As long as we reorder the y elements along with the rows, we are effectively reordering the equations. Therefore we will end up with the correct solution. The only extra step is to reorder the final solution back to the original order using the 【1】row【/1】 array. The other question is whether sorting will incur significant overhead. The answer is similar to what we saw in the hybrid ELL-COO method. As long as the SpMV/JDS kernel is used in an iterative solver, one can afford to perform such sorting as well as the reordering of the final solution 【2】x【/2】 elements and amortize the cost among many iterations of the solver.",
+      "zh": "读者应当思考，对行排序是否会导致线性方程组的解不正确。回想一下，我们可以随意重排线性方程组的方程而不改变解。只要在重排行时一起重排 y 元素，我们实际上就是在重排方程。因此，我们最终会得到正确的解。唯一的额外步骤是利用【1】row【/1】数组将最终解重排回原来的顺序。另一个问题是，排序是否会产生显著开销。答案与我们之前在 ELL-COO 混合方法中看到的类似。只要 SpMV/JDS 核函数在迭代求解器中使用，就可以承担这种排序以及最终解【2】x【/2】元素的重排工作，并将成本分摊到求解器的许多次迭代中。"
+    },
+    {
+      "id": "p0375",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[6]",
+      "en": "Now we examine the ELL format under the design considerations listed in 【1】Section 14.1【/1】: space efficiency, flexibility, accessibility, memory access efficiency, and load balance. For space efficiency the JDS format is more space efficient than the ELL format because it avoids padding. The variant of JDS that uses ELL for each section has padding, but the amount of padding is less than that with the ELL format.",
+      "zh": "现在我们按照【1】第 14.1 节【/1】列出的设计考量来考察 JDS 格式：空间效率、灵活性、可访问性、内存访问效率和负载均衡。关于空间效率，JDS 格式比 ELL 格式更节省空间，因为它避免了填充。对每个行段使用 ELL 的 JDS 变体会有填充，但填充量少于 ELL 格式。"
+    },
+    {
+      "id": "p0380",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[7]",
+      "en": "For flexibility the JDS format does not make it easy to add nonzeros to a row of the matrix. It is even less flexible than the CSR format because adding nonzeros changes the sizes of the rows, which may require rows to be resorted.",
+      "zh": "关于灵活性，JDS 格式不便于向矩阵的一行添加非零元素。它甚至比 CSR 格式更不灵活，因为添加非零元素会改变行的大小，可能需要重新对行排序。"
+    }
+  ]
+}

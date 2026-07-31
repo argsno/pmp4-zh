@@ -1,0 +1,107 @@
+[
+  {
+    "en": "processing block",
+    "zh": "处理块",
+    "note": "§4.4 SIMD 执行硬件；SM 内每 8 或 16 个核心组成的执行单元，共享取指/分发单元；图 4.8 说明文字、§4.9 小结亦用"
+  },
+  {
+    "en": "independent thread scheduling",
+    "zh": "独立线程调度",
+    "note": "§4.5 控制发散；Volta 架构起各趟可并发执行的特性（NVIDIA 官方用语，white paper 同文）"
+  },
+  {
+    "en": "context switch",
+    "zh": "上下文切换",
+    "note": "§4.6 补充栏“线程、上下文切换与零开销调度”；p9281 通篇"
+  },
+  {
+    "en": "oversubscription",
+    "zh": "过度订阅",
+    "note": "§4.6 延迟容忍；线程对 SM 的过度订阅（thread oversubscription）"
+  },
+  {
+    "en": "thread block slot",
+    "zh": "线程块槽位",
+    "note": "§4.7 资源划分；SM 中可同时驻留线程块的位置资源；block slot 同译"
+  },
+  {
+    "en": "thread slot",
+    "zh": "线程槽位",
+    "note": "§4.7 资源划分；SM 中可同时驻留线程的位置资源"
+  },
+  {
+    "en": "register spilling",
+    "zh": "寄存器溢出",
+    "note": "§4.7 占用率；编译器把寄存器值溢出到内存以降低每线程寄存器需求的优化手段"
+  },
+  {
+    "en": "SIMD efficiency",
+    "zh": "SIMD 效率",
+    "note": "习题 1 反复出现（§4.5 相关）；发散线程束的执行效率"
+  },
+  {
+    "en": "device property query",
+    "zh": "设备属性查询",
+    "note": "关键词与 §4.8 标题相关（querying device properties）"
+  },
+  {
+    "en": "linear layout",
+    "zh": "线性布局",
+    "note": "§4.4 线程块划分线程束前的线性化排布；linearized row-major layout 中的 linearized 亦译“线性化”"
+  },
+  {
+    "en": "inactive thread",
+    "zh": "非活动线程",
+    "note": "§4.4/§4.5 线程束填充与发散趟中的非活动线程"
+  },
+  {
+    "en": "resident warp",
+    "zh": "驻留线程束",
+    "note": "§4.6 延迟容忍；已分配并驻留在 SM 中的线程束"
+  },
+  {
+    "en": "Volta",
+    "zh": "保留英文",
+    "note": "GPU 架构代号，与 §5.1 Fermi/Kepler/Pascal 同类；§4.5、§4.7"
+  },
+  {
+    "en": "Ampere A100",
+    "zh": "保留英文",
+    "note": "GPU 型号名，§4.1 起通篇的示例硬件"
+  },
+  {
+    "en": "HBM2",
+    "zh": "保留英文",
+    "note": "§4.1 高带宽内存第二代，与 §5.3 词条 high-bandwidth memory（HBM）同族"
+  },
+  {
+    "en": "Cooperative Groups API",
+    "zh": "保留英文",
+    "note": "脚注 1（fn1）；CUDA 编程接口名，用于跨线程块屏障同步的 API"
+  },
+  {
+    "en": "CUDA Occupancy Calculator",
+    "zh": "保留英文",
+    "note": "§4.7 末；NVIDIA 官方占用率计算工具名（可下载电子表格）"
+  },
+  {
+    "en": "reduction",
+    "zh": "下降",
+    "note": "glossary false positive；p9210 “significant reduction in hardware manufacturing cost”为普通英文，非 §5.5 归约模式"
+  },
+  {
+    "en": "reduction",
+    "zh": "下降",
+    "note": "glossary false positive；p0325 “reduction in occupancy from 100% to 75%”与“significant reduction in parallelism and performance”，普通英文"
+  },
+  {
+    "en": "tile",
+    "zh": "小方块",
+    "note": "glossary false positive；p0070 “shown as small tiles inside the SMs”为图中示意的小方块，非 §5.4 分块（tiling/tile）概念"
+  },
+  {
+    "en": "block",
+    "zh": "处理块",
+    "note": "glossary false positive；p0170/n0051/p9190 中 block 均作为 processing block（处理块，新词条）的一部分出现，非 §5.2 线程块（thread block）；需 team lead 将 processing block 纳入术语表或 denylist 以启用包含抑制"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "page": "Ch023_515-518_B9780323912310000203",
+  "nodes": [
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "The same kind of paradigm shift has been taking place in many other areas. Computing has become the primary driving force for virtually all exciting innovations in our society. This has created an insatiable demand for faster computing systems. As we discussed in 【1】Chapter 1【/1】, Introduction, parallel computing is the only viable approach to the growth of computing performance. This powerful demand will continue to motivate the industry to innovate and create more powerful parallel computing devices. One of the highest potential areas for improvement is the level of parallelism in accessing storage data, which has been done with a very low level of parallelism in the past. Radical improvements in accessing massive storage data will likely inspire a whole generation of applications that we currently cannot even imagine.",
+      "zh": "同样的范式转变在许多其他领域也在发生。计算已成为我们社会中几乎所有令人振奋的创新的主要驱动力。这催生了人们对更快计算系统永无止境的需求。正如我们在【1】第 1 章【/1】《引言》中所讨论的，并行计算是计算性能增长唯一可行的途径。这股强劲的需求将继续激励业界创新，制造更强大的并行计算设备。潜力最大的改进方向之一是访问存储数据的并行度——过去这方面的并行度一直极低。在访问海量存储数据方面取得根本性改进，很可能催生整整一代我们目前甚至无法想象的应用。"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "In conclusion, we are at the dawn of a golden age of computing. The industry will continue to recruit and reward highly skilled parallel programmers. Your work will make a real difference in the field of your choice.",
+      "zh": "总而言之，我们正处于计算黄金时代的黎明。业界将继续招募并重奖技能娴熟的并行程序员。你的工作将在你所选择的领域真正产生影响。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[9]",
+      "en": "Enjoy the ride!",
+      "zh": "享受这段旅程吧！"
+    }
+  ]
+}

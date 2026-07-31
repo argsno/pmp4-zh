@@ -1,0 +1,59 @@
+{
+  "page": "Acknowledgments_xxvii-xxviii_B9780323912310000276",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Acknowledgments",
+      "zh": "致谢"
+    },
+    {
+      "id": "p0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "There are so many people who have made special contributions to this fourth edition. We would like first to thank the contributing chapter coauthors. Their names are listed in the chapters to which they made special contributions. Their expertise made a tremendous difference in the technical contents of this new edition. Without the expertise and contribution of these individuals, we would not have been able to cover the topics with the level of insight that we wanted to provide to our readers.",
+      "zh": "有太多人为本书第 4 版作出了特别贡献。我们首先要感谢各章的特邀合著者，他们的名字列在各自作出特别贡献的章节中。他们的专业知识极大地提升了本版的技术内容。没有这些人的专业知识与贡献，我们就无法以我们想带给读者的那种深刻见解来覆盖各个主题。"
+    },
+    {
+      "id": "p0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "We would like to especially acknowledge Ian Buck, the father of CUDA, and John Nickolls, the lead architect of Tesla GPU Computing Architecture. Their teams built excellent infrastructure for this course. Many engineers and researchers at NVIDIA have also contributed to the rapid advancement of CUDA, which supports the efficient implementation of advanced parallel patterns. John passed away while we were working on the second edition. We miss him dearly.",
+      "zh": "我们尤其要感谢 CUDA 之父 Ian Buck，以及 Tesla GPU 计算架构的首席架构师 John Nickolls。他们的团队为本课程构建了出色的基础设施。NVIDIA 的许多工程师和研究人员也为 CUDA 的快速发展作出了贡献，而 CUDA 正是高级并行模式得以高效实现的基础。John 在我们编写第 2 版期间不幸离世，我们深深地怀念他。"
+    },
+    {
+      "id": "p0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[3]",
+      "en": "Our external reviewers have spent numerous hours of their precious time to give us insightful feedback since the third edition: Sonia Lopez Alarcon (Rochester Institute of Technology), Bedrich Benes (Purdue University), Bryan Chin (UCSD), Samuel Cho (Wake Forest University), Kevin Farrell (Institute of Technology, Blanchardstown, Dublin, Ireland), Lahouari Ghouti (King Fahd University of Petroleum and Minerals, Saudi Arabia), Marisa Gil (Universitat Politecnica de Catalunya, Barcelona, Spain), Karen L. Karavanic (Portland State University), Steve Lumetta (University of Illinois at Urbana-Champaign), Dejan Milojici (Hewlett-Packard Labs), Pinar Muyan-Ozcelik (California State University, Sacramento), Greg Peterson (University of Tennessee–Knoxville), José L. Sánchez (University of Castilla–La Mancha), Janche Sang (Cleveland State University), and Jan Verschelde (University of Illinois at Chicago). Their comments helped us to significantly improve the content and readability of the book.",
+      "zh": "自第 3 版以来，我们的外部审稿人耗费了大量宝贵时间，为我们提供了富有洞见的反馈：Sonia Lopez Alarcon (Rochester Institute of Technology)、Bedrich Benes (Purdue University)、Bryan Chin (UCSD)、Samuel Cho (Wake Forest University)、Kevin Farrell (Institute of Technology, Blanchardstown, Dublin, Ireland)、Lahouari Ghouti (King Fahd University of Petroleum and Minerals, Saudi Arabia)、Marisa Gil (Universitat Politecnica de Catalunya, Barcelona, Spain)、Karen L. Karavanic (Portland State University)、Steve Lumetta (University of Illinois at Urbana-Champaign)、Dejan Milojici (Hewlett-Packard Labs)、Pinar Muyan-Ozcelik (California State University, Sacramento)、Greg Peterson (University of Tennessee–Knoxville)、José L. Sánchez (University of Castilla–La Mancha)、Janche Sang (Cleveland State University) 和 Jan Verschelde (University of Illinois at Chicago)。他们的意见帮助我们显著改进了本书的内容与可读性。"
+    },
+    {
+      "id": "p0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[4]",
+      "en": "Steve Merken, Kiruthika Govindaraju, Naomi Robertson, and their staff at Elsevier worked tirelessly on this project.",
+      "zh": "Steve Merken、Kiruthika Govindaraju、Naomi Robertson 以及他们在 Elsevier 的团队成员为这个项目不知疲倦地工作。"
+    },
+    {
+      "id": "p0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[5]",
+      "en": "We would like to especially thank Jensen Huang for providing a great amount of financial and human resources for developing the course that laid the foundation for this book.",
+      "zh": "我们尤其要感谢 Jensen Huang，他为课程开发提供了大量的财力和人力资源，而正是这门课程奠定了本书的基础。"
+    },
+    {
+      "id": "p0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[6]",
+      "en": "We would like to acknowledge Dick Blahut, who challenged us to embark on the project. Beth Katsinas arranged a meeting between Dick Blahut and NVIDIA Vice President Dan Vivoli. Through that gathering, Blahut was introduced to David and challenged David to come to Illinois and create the original ECE498AL course with Wen-mei.",
+      "zh": "我们要感谢 Dick Blahut，是他激励我们开启了整个项目。Beth Katsinas 安排了 Dick Blahut 与 NVIDIA 副总裁 Dan Vivoli 的会面。正是通过那次会面，Blahut 结识了 David，并鼓励 David 前往伊利诺伊，与 Wen-mei 一起创建了最初的 ECE498AL 课程。"
+    },
+    {
+      "id": "p0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[7]",
+      "en": "We would like to especially thank our colleagues Kurt Akeley, Al Aho, Arvind, Dick Blahut, Randy Bryant, Bob Colwell, Bill Dally, Ed Davidson, Mike Flynn, Michael Garland, John Hennessy, Pat Hanrahan, Nick Holonyak, Dick Karp, Kurt Keutzer, Chris Lamb, Dave Liu, David Luebke, Dave Kuck, Nacho Navarro, Sanjay Patel, Yale Patt, David Patterson, Bob Rao, Burton Smith, Jim Smith, and Mateo Valero, who have taken the time to share their insight with us over the years.",
+      "zh": "我们尤其要感谢我们的同事 Kurt Akeley、Al Aho、Arvind、Dick Blahut、Randy Bryant、Bob Colwell、Bill Dally、Ed Davidson、Mike Flynn、Michael Garland、John Hennessy、Pat Hanrahan、Nick Holonyak、Dick Karp、Kurt Keutzer、Chris Lamb、Dave Liu、David Luebke、Dave Kuck、Nacho Navarro、Sanjay Patel、Yale Patt、David Patterson、Bob Rao、Burton Smith、Jim Smith 和 Mateo Valero，多年来他们抽出时间与我们分享他们的见解。"
+    },
+    {
+      "id": "p0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[8]",
+      "en": "We are humbled by the generosity and enthusiasm of all the great people who contributed to the course and the book.",
+      "zh": "所有为课程和本书作出贡献的优秀人士所展现的慷慨与热忱，令我们深受感动。"
+    }
+  ]
+}

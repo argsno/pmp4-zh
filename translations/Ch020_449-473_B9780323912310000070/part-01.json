@@ -1,0 +1,155 @@
+{
+  "page": "Ch020_449-473_B9780323912310000070",
+  "nodes": [
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "20.2 A running example",
+      "zh": "20.2 一个运行示例"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "As a running example we will use a three-dimensional (3D) stencil computation that was introduced in 【1】Chapter 8【/1】, Stencil. We assume that the computation calculates heat transfer based on a finite difference method for solving a partial differential equation that describes the physical laws of heat transfer. In particular, we will use the Jacobi iterative method, in which in each iteration or time step, the value of a grid point is calculated as a weighted sum of neighbors (north, east, south, west, up, down) and its own value from the previous time step. To achieve high numerical stability, multiple indirect neighbors in each direction are also used in the computation of a grid point. This is a 【2】higher-order stencil【/2】 computation, as we discussed in 【3】Chapter 8【/3】, Stencil. For the purpose of this chapter we assume that four points in each direction will be used.",
+      "zh": "作为运行示例，我们将使用在【1】第 8 章【/1】“模板”中介绍过的三维（3D）模板计算。我们假设该计算基于有限差分法计算热传递，用于求解描述热传递物理规律的偏微分方程。特别是，我们将使用雅可比迭代法：在每一次迭代或时间步中，网格点的值被计算为邻居（北、东、南、西、上、下）的加权和与其上一时间步自身值的和。为获得较高的数值稳定性，在计算一个网格点时还会使用每个方向上的多个间接邻居。正如我们在【3】第 8 章【/3】“模板”中所讨论的，这是一种【2】高阶模板【/2】计算。就本章而言，我们假设每个方向使用四个点。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "As is shown in 【1】Fig. 20.2【/1】, there are a total of 24 neighbor points for calculating the next step value of a grid point. Each point in the grid has 【2】x【/2】, 【3】y【/3】, and 【4】z【/4】 coordinates. For a grid point where the coordinate value is 【5】x【/5】 = 【6】i【/6】, 【7】y【/7】 = 【8】j【/8】, and 【9】z【/9】 = 【10】k【/10】, or (【11】i【/11】, 【12】j【/12】, 【13】k【/13】), its 24 neighbors are (【14】i【/14】 − 4, 【15】j【/15】, 【16】k【/16】), (【17】i【/17】 − 3, 【18】j【/18】, 【19】k【/19】), (【20】i【/20】 − 2, 【21】j【/21】, 【22】k【/22】), (【23】i【/23】 − 1, 【24】j【/24】, 【25】k【/25】), (【26】i【/26】 + 1, 【27】j【/27】, 【28】k【/28】), (【29】i【/29】 + 2, 【30】j【/30】, 【31】k【/31】), (【32】i【/32】 + 3, 【33】j【/33】, 【34】k【/34】), (【35】i【/35】 + 4, 【36】j【/36】, 【37】k【/37】), (【38】i【/38】, 【39】j【/39】 − 4, 【40】k【/40】), (【41】i【/41】, 【42】j【/42】 − 3, 【43】k【/43】), (【44】i【/44】, 【45】j【/45】 − 2, 【46】k【/46】), (【47】i【/47】, 【48】j【/48】 − 1, 【49】k【/49】), (【50】i【/50】, 【51】j【/51】 + 1, 【52】k【/52】), (【53】i【/53】, 【54】j【/54】 + 2, 【55】k【/55】), (【56】i【/56】, 【57】j【/57】 + 3, 【58】k【/58】), (【59】i【/59】, 【60】j【/60】 + 4, 【61】k【/61】), (【62】i【/62】, 【63】j【/63】, 【64】k【/64】 − 4), (【65】i【/65】, 【66】j【/66】, 【67】k【/67】 − 3), (【68】i【/68】, 【69】j【/69】, 【70】k【/70】 − 2), (【71】i【/71】, 【72】j【/72】, 【73】k【/73】 − 1), (【74】i【/74】, 【75】j【/75】, 【76】k【/76】 + 1), (【77】i【/77】, 【78】j【/78】, 【79】k【/79】 + 2), (【80】i【/80】, 【81】j【/81】, 【82】k【/82】 + 3) and (【83】i【/83】, 【84】j【/84】, 【85】k【/85】 + 4). Since the data value of each grid point for the next time step is calculated on the basis of the current data values of 25 points (24 neighbors and itself), this is a 25-point stencil computation.",
+      "zh": "如【1】图 20.2【/1】所示，计算一个网格点的下一步值总共需要 24 个邻居点。网格中的每个点都有【2】x【/2】、【3】y【/3】和【4】z【/4】坐标。对于一个坐标值为【5】x【/5】 = 【6】i【/6】、【7】y【/7】 = 【8】j【/8】、【9】z【/9】 = 【10】k【/10】，即（【11】i【/11】，【12】j【/12】，【13】k【/13】）的网格点，其 24 个邻居是（【14】i【/14】 − 4，【15】j【/15】，【16】k【/16】）、（【17】i【/17】 − 3，【18】j【/18】，【19】k【/19】）、（【20】i【/20】 − 2，【21】j【/21】，【22】k【/22】）、（【23】i【/23】 − 1，【24】j【/24】，【25】k【/25】）、（【26】i【/26】 + 1，【27】j【/27】，【28】k【/28】）、（【29】i【/29】 + 2，【30】j【/30】，【31】k【/31】）、（【32】i【/32】 + 3，【33】j【/33】，【34】k【/34】）、（【35】i【/35】 + 4，【36】j【/36】，【37】k【/37】）、（【38】i【/38】，【39】j【/39】 − 4，【40】k【/40】）、（【41】i【/41】，【42】j【/42】 − 3，【43】k【/43】）、（【44】i【/44】，【45】j【/45】 − 2，【46】k【/46】）、（【47】i【/47】，【48】j【/48】 − 1，【49】k【/49】）、（【50】i【/50】，【51】j【/51】 + 1，【52】k【/52】）、（【53】i【/53】，【54】j【/54】 + 2，【55】k【/55】）、（【56】i【/56】，【57】j【/57】 + 3，【58】k【/58】）、（【59】i【/59】，【60】j【/60】 + 4，【61】k【/61】）、（【62】i【/62】，【63】j【/63】，【64】k【/64】 − 4）、（【65】i【/65】，【66】j【/66】，【67】k【/67】 − 3）、（【68】i【/68】，【69】j【/69】，【70】k【/70】 − 2）、（【71】i【/71】，【72】j【/72】，【73】k【/73】 − 1）、（【74】i【/74】，【75】j【/75】，【76】k【/76】 + 1）、（【77】i【/77】，【78】j【/78】，【79】k【/79】 + 2）、（【80】i【/80】，【81】j【/81】，【82】k【/82】 + 3）和（【83】i【/83】，【84】j【/84】，【85】k【/85】 + 4）。由于每个网格点下一步的数据值是基于 25 个点（24 个邻居和它自身）的当前数据值计算得出的，因此这是一个 25 点模板计算。"
+    },
+    {
+      "id": "n0028",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 20.2【/2】【/1】 A 25-point stencil computation example, with four neighbors in each of the 【3】x【/3】, 【4】y【/4】, and 【5】z【/5】 directions.",
+      "zh": "【1】【2】图 20.2【/2】【/1】 25 点模板计算示例，在【3】x【/3】、【4】y【/4】和【5】z【/5】方向上各有四个邻居。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "We assume that the system is modeled as a structured grid in which spacing between grid points is constant within each direction. This allows us to use a 3D array in which each element stores the state of a grid point, as we discussed in 【1】Chapter 8【/1】, Stencil. The physical distance between adjacent elements in each dimension can be represented by a grid spacing variable. Note that this grid data structure is similar to that used in the electrostatic potential calculation in 【2】Chapter 18【/2】, Electrostatic Potential Map. 【3】Fig. 20.3【/3】 illustrates a 3D array that represents a rectangular ventilation duct, with 【4】x【/4】 and 【5】y【/5】 dimensions as the cross sections of the duct and the 【6】z【/6】 dimension the direction of the heat flow along the duct.",
+      "zh": "我们假设系统被建模为结构化网格，在每个方向上网格点之间的间距是恒定的。这使得我们可以使用一个 3D 数组，其中每个元素存储一个网格点的状态，正如我们在【1】第 8 章【/1】“模板”中讨论的那样。每个维度上相邻元素之间的物理距离可以用一个网格间距变量来表示。请注意，这种网格数据结构与【2】第 18 章【/2】“静电势图”中静电势计算所用的数据结构类似。【3】图 20.3【/3】展示了一个表示矩形通风管道的 3D 数组，其中【4】x【/4】和【5】y【/5】维度构成管道的横截面，【6】z【/6】维度是热量沿管道流动的方向。"
+    },
+    {
+      "id": "n0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 20.3【/1】 3D Grid array for the modeling heat transfer in a duct.",
+      "zh": "【1】图 20.3【/1】 用于对管道中热传递进行建模的 3D 网格数组。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "We assume that the data is placed in the memory space in the row-major layout, where 【1】x【/1】 is the lowest dimension, 【2】y【/2】 is the next, and 【3】z【/3】 is the highest. That is, all elements with 【4】y【/4】 = 0 and 【5】z【/5】 = 0 will be placed in consecutive memory locations according to their 【6】x【/6】 coordinate. 【7】Fig. 20.4【/7】 shows a small example of the grid data layout. This small example has only 16 data elements in the grid: two elements in the 【8】x【/8】 dimension, two in the 【9】y【/9】 dimension, and four in the 【10】z【/10】 dimension. Both 【11】x【/11】 elements with 【12】y【/12】 = 0 and 【13】z【/13】 = 0 are placed in memory first. They are followed by all elements with 【14】y【/14】 = 1 and 【15】z【/15】 = 0. The next group will be elements with 【16】y【/16】 = 0 and 【17】z【/17】 = 1.",
+      "zh": "我们假设数据按行主序布局放置在内存空间中，其中【1】x【/1】是最低维，【2】y【/2】次之，【3】z【/3】是最高维。也就是说，所有【4】y【/4】 = 0 且【5】z【/5】 = 0 的元素将按照它们的【6】x【/6】坐标存放在连续的内存位置中。【7】图 20.4【/7】展示了网格数据布局的一个小示例。这个小示例中网格只有 16 个数据元素：【8】x【/8】维两个、【9】y【/9】维两个、【10】z【/10】维四个。【11】x【/11】维的两个元素在【12】y【/12】 = 0 且【13】z【/13】 = 0 时最先放入内存，随后是【14】y【/14】 = 1 且【15】z【/15】 = 0 的所有元素，再下一组是【16】y【/16】 = 0 且【17】z【/17】 = 1 的元素。"
+    },
+    {
+      "id": "n0032",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 20.4【/1】 A small example of memory layout for the 3D grid.",
+      "zh": "【1】图 20.4【/1】 3D 网格内存布局的小示例。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "When one uses a computing cluster, it is common to divide the input data into several partitions, called domain partitions, and assign each partition to a node in the cluster. In 【1】Fig. 20.3【/1】 we show that the 3D array is divided into four domain partitions: D0, D1, D2, and D3. Each of the partitions will be assigned to an MPI compute process.",
+      "zh": "使用计算集群时，常见的做法是将输入数据划分为若干分区（称为域分区），并将每个分区分配给集群中的一个节点。在【1】图 20.3【/1】中，我们展示了 3D 数组被划分为四个域分区：D0、D1、D2 和 D3。每个分区将被分配给一个 MPI 计算进程。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "The domain partitions can be further illustrated with 【1】Fig. 20.4【/1】. The first section, or slice, of four elements (【2】z【/2】 = 0) is in the first partition; the second section (【3】z【/3】 = 1) is in the second partition; the third section (【4】z【/4】 = 2) is in the third partition; and the fourth section (【5】z【/5】 = 3) is in the fourth partition. This is obviously a toy example. In a real application there are typically hundreds or even thousands of elements in each dimension. For the rest of this chapter it is useful to remember that all elements in a 【6】z【/6】 slice are in consecutive memory locations.",
+      "zh": "域分区可以用【1】图 20.4【/1】进一步说明。第一个区段（即切片）包含四个元素（【2】z【/2】 = 0），位于第一个分区；第二个区段（【3】z【/3】 = 1）位于第二个分区；第三个区段（【4】z【/4】 = 2）位于第三个分区；第四个区段（【5】z【/5】 = 3）位于第四个分区。这显然是一个玩具示例。在真实应用中，每个维度通常有数百甚至数千个元素。在本章剩余部分，记住以下事实很有用：一个【6】z【/6】切片中的所有元素位于连续的内存位置中。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "20.3 Message passing interface basics",
+      "zh": "20.3 消息传递接口基础"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "Like CUDA, MPI programs are based on the SPMD parallel programming model. All MPI processes execute the same program. The MPI system provides a set of API functions to establish communication systems that allow the processes to communicate with each other. 【1】Fig. 20.5【/1】 shows five essential MPI functions that set up and tear down the communication system for an MPI application.",
+      "zh": "与 CUDA 一样，MPI 程序基于单程序多数据（SPMD）并行编程模型。所有 MPI 进程执行相同的程序。MPI 系统提供一组 API 函数来建立通信系统，使进程能够相互通信。【1】图 20.5【/1】展示了为 MPI 应用程序建立和拆除通信系统的五个基本 MPI 函数。"
+    },
+    {
+      "id": "n0037",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 20.5【/1】 Basic MPI functions for establishing and closing a communication system.",
+      "zh": "【1】图 20.5【/1】 建立和关闭通信系统的基本 MPI 函数。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "We will use a simple MPI program, shown in 【1】Fig. 20.6【/1】, to illustrate the usage the API functions. To launch an MPI application in a cluster, a user needs to supply the executable file of the program to the 【2】mpirun【/2】 command or the 【3】mpiexec【/3】 command in the login node of the cluster. Each process starts by initializing the MPI runtime with an 【4】MPI_Init()【/4】 call (line 05). This initializes the communication system for all the processes that are running the application. Once the MPI runtime has been initialized, each process calls two functions to prepare for communication. The first function is 【5】MPI_Comm_rank()【/5】 (line 06), which returns a unique number to each calling process, which is called the 【6】MPI rank【/6】 or process id for the process. The numbers that are received by the processes vary from 0 to the number of processes minus 1. The MPI rank for a process is analogous to the expression 【7】blockIdx.x*blockDim.x+threadIdx.x【/7】 for a CUDA thread. It uniquely identifies the process in a communication, which is also equivalent to the phone number in a telephone system. The main differences are that MPI ranks are one-dimensional.",
+      "zh": "我们将使用一个简单的 MPI 程序（如【1】图 20.6【/1】所示）来说明这些 API 函数的用法。要在集群中启动一个 MPI 应用程序，用户需要将程序的可执行文件提供给集群登录节点上的【2】mpirun【/2】命令或【3】mpiexec【/3】命令。每个进程首先通过调用【4】MPI_Init()【/4】（第 05 行）来初始化 MPI 运行时。这会为运行该应用程序的所有进程初始化通信系统。MPI 运行时初始化完成后，每个进程调用两个函数来准备通信。第一个函数是【5】MPI_Comm_rank()【/5】（第 06 行），它向每个调用进程返回一个唯一编号，称为该进程的【6】MPI 进程号【/6】或进程 ID。进程收到的编号从 0 到进程数减 1。一个进程的 MPI 进程号类似于 CUDA 线程的表达式【7】blockIdx.x*blockDim.x+threadIdx.x【/7】。它唯一标识一次通信中的进程，也相当于电话系统中的电话号码。主要的区别是，MPI 进程号是一维的。"
+    },
+    {
+      "id": "n0039",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 20.6【/1】 A simple MPI main program.",
+      "zh": "【1】图 20.6【/1】 一个简单的 MPI 主程序。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "The 【1】MPI_Comm_rank()【/1】 function in line 06 of 【2】Fig. 20.6【/2】 takes two parameters. The first is an MPI built-in type 【3】MPI_Comm【/3】 that specifies the scope of the request, that is, the collection of processes that form the group identified by a 【4】MIP_Comm【/4】 variable. Each variable of the 【5】MPI_comm【/5】 type is commonly referred to as a communicator. 【6】MPI_Comm【/6】 and other MPI built-in types are defined in the “mpi.h” header file (line 01), which should be included in all C program files that use MPI. An MPI application can create one or more 【7】communicators【/7】, each of which is a group of MPI processes for the purpose of communication. 【8】MPI_Comm_rank()【/8】 assigns a unique id to each process in a communicator. In 【9】Fig. 20.6【/9】 the parameter value that is passed is 【10】MPI_COMM_WORLD【/10】, which is used as a default and means that the communicator includes all MPI processes that are running the application.【11】【12】1【/12】【/11】",
+      "zh": "【1】图 20.6【/1】第 06 行中的【2】MPI_Comm_rank()【/2】函数接受两个参数。第一个参数是 MPI 内置类型【3】MPI_Comm【/3】，它指定请求的作用域，即由【4】MIP_Comm【/4】变量标识的进程组。每个【5】MPI_comm【/5】类型的变量通常被称为通信域。【6】MPI_Comm【/6】和其他 MPI 内置类型在“mpi.h”头文件（第 01 行）中定义，所有使用 MPI 的 C 程序文件都应包含该头文件。MPI 应用程序可以创建一个或多个【7】通信域【/7】，每个通信域是出于通信目的的一组 MPI 进程。【8】MPI_Comm_rank()【/8】为通信域中的每个进程分配一个唯一 ID。在【9】图 20.6【/9】中，传入的参数值是【10】MPI_COMM_WORLD【/10】，它被用作默认值，表示该通信域包含运行该应用程序的所有 MPI 进程。【11】【12】1【/12】【/11】"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "The second parameter of the 【1】MPI_Comm_rank()【/1】 function is a pointer to an integer variable into which the function will deposit the returned rank value. In 【2】Fig. 20.6【/2】 a variable pid is declared for this purpose. After the 【3】MPI_Comm_rank()【/3】 has returned, the pid variable will contain the unique id for the calling process.",
+      "zh": "【1】MPI_Comm_rank()【/1】函数的第二个参数是一个指向整型变量的指针，函数会将返回的进程号值存入该变量。在【2】图 20.6【/2】中，为此声明了一个变量 pid。在【3】MPI_Comm_rank()【/3】返回之后，pid 变量将包含调用进程的唯一 ID。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "The second API function is 【1】MPI_Comm_size()【/1】 (line 07), which returns the total number of MPI processes running in the communicator. The 【2】MPI_Comm_size()【/2】 function takes two parameters. The first one is of MPI_Comm type that gives the scope of the request. In 【3】Fig. 20.6【/3】 the parameter value that is passed in is 【4】MPI_COMM_WORLD【/4】, which means that the scope of the 【5】MPI_Comm_size()【/5】 is all the processes in the application. Since the scope is all MPI processes, the returned value is the total number of MPI processes that are running the application. This value is configured by the user when the application is executed by using the mpirun command or the mpiexec command. However, the user may not have requested a sufficient number of processes. Also, the system may or may not be able to create all the processes that the user requested. Therefore it is a good practice for an MPI application program to check the actual number of processes that are running.",
+      "zh": "第二个 API 函数是【1】MPI_Comm_size()【/1】（第 07 行），它返回通信域中运行的 MPI 进程总数。【2】MPI_Comm_size()【/2】函数接受两个参数。第一个参数是 MPI_Comm 类型，给出请求的作用域。在【3】图 20.6【/3】中，传入的参数值是【4】MPI_COMM_WORLD【/4】，这意味着【5】MPI_Comm_size()【/5】的作用域是应用程序中的所有进程。由于作用域覆盖所有 MPI 进程，返回值就是运行该应用程序的 MPI 进程总数。该值由用户在通过 mpirun 命令或 mpiexec 命令执行应用程序时配置。不过，用户可能没有请求足够数量的进程，而且系统也可能无法创建用户请求的全部进程。因此，MPI 应用程序检查实际运行的进程数量是一个好习惯。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "The second parameter is a pointer to an integer variable into which the 【1】MPI_Comm_size()【/1】 function will deposit the return value. In 【2】Fig. 20.6【/2】 a variable np is declared for this purpose. After the function returns, the variable np contains the number of MPI processes that are running the application. In 【3】Fig. 20.6【/3】 we assume that the application requires at least 3 MPI processes. Therefore it checks whether the number of processes is at least 3 (line 08). If not, it calls 【4】MPI_Comm_abort()【/4】 function to terminate the communication connections and return with an error flag value 1 (line 10).",
+      "zh": "第二个参数是一个指向整型变量的指针，【1】MPI_Comm_size()【/1】函数会将返回值存入该变量。在【2】图 20.6【/2】中，为此声明了一个变量 np。函数返回后，变量 np 包含运行该应用程序的 MPI 进程数。在【3】图 20.6【/3】中，我们假设该应用程序至少需要 3 个 MPI 进程，因此它检查进程数是否至少为 3（第 08 行）。如果不是，它就调用【4】MPI_Comm_abort()【/4】函数终止通信连接，并以错误标志值 1 返回（第 10 行）。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "【1】Fig. 20.6【/1】 also shows a common pattern for reporting errors or other chores. There are multiple MPI processes, but we need to report the error only once. The application code designates the process with 【2】pid = 0【/2】 to do the reporting (line 09). This is similar to the pattern in CUDA kernels in which some tasks need to be done by only one of the threads in a thread-block.",
+      "zh": "【1】图 20.6【/1】还展示了报告错误或其他事务的常见模式。虽然存在多个 MPI 进程，但我们只需要报告一次错误。应用程序代码指定由【2】pid = 0【/2】的进程来执行报告（第 09 行）。这与 CUDA 核函数中的模式类似：某些任务只需由线程块中的一个线程来完成。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "As is shown in 【1】Fig. 20.5【/1】, the 【2】MPI_Comm_abort()【/2】 function takes two parameters (line 10). The first sets the scope of the request. In 【3】Fig. 20.6【/3】 the scope is set as 【4】MPI_COMM_WORLD【/4】, which means all MPI processes that are running the application. The second parameter is a code for the type of error that caused the abort. Any number other than 0 indicates that an error has happened.",
+      "zh": "如【1】图 20.5【/1】所示，【2】MPI_Comm_abort()【/2】函数接受两个参数（第 10 行）。第一个参数设置请求的作用域。在【3】图 20.6【/3】中，作用域被设置为【4】MPI_COMM_WORLD【/4】，即运行该应用程序的所有 MPI 进程。第二个参数是一个代码，表示导致中止的错误类型。任何非 0 的数字都表示发生了错误。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "If the number of processes satisfies the requirement, the application program goes on to perform the calculation. In 【1】Fig. 20.6【/1】, the application uses np − 1 processes (【2】pid【/2】 from 0 to np − 2) to perform the calculation (lines 12–13) and one process (the last one whose pid is np − 1) to perform I/O service for the other processes (lines 14–15). We will refer to the process that performs the I/O services as the data server and the processes that perform the calculation as compute processes. In 【3】Fig. 20.6【/3】, if the pid of a process is within the range from 0 to np − 2, it is a compute process and calls the 【4】compute_process()【/4】 function (line 13). If the process pid is np − 1, it is the data server and calls the 【5】data_server()【/5】 function (line 15). This is similar to the pattern in which threads perform different actions according to their thread ids.",
+      "zh": "如果进程数满足要求，应用程序程序就继续进行计算。在【1】图 20.6【/1】中，应用程序使用 np − 1 个进程（【2】pid【/2】从 0 到 np − 2）执行计算（第 12–13 行），并使用一个进程（pid 为 np − 1 的最后一个进程）为其他进程执行 I/O 服务（第 14–15 行）。我们将执行 I/O 服务的进程称为数据服务器，将执行计算的进程称为计算进程。在【3】图 20.6【/3】中，如果一个进程的 pid 在 0 到 np − 2 范围内，它就是计算进程，并调用【4】compute_process()【/4】函数（第 13 行）。如果进程的 pid 是 np − 1，它就是数据服务器，并调用【5】data_server()【/5】函数（第 15 行）。这与线程根据其线程 ID 执行不同操作的模式类似。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[10]",
+      "en": "After the application has completed its computation, it notifies the MPI runtime with a call to 【1】MPI_Finalize()【/1】, which frees all MPI communication resources that are allocated to the application (line 16). The application can then exit with a return value 0, which indicates that no error has occurred (line 17).",
+      "zh": "应用程序完成计算后，通过调用【1】MPI_Finalize()【/1】通知 MPI 运行时，该调用释放分配给应用程序的所有 MPI 通信资源（第 16 行）。随后应用程序可以以返回值 0 退出，表示没有发生错误（第 17 行）。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "20.4 Message passing interface point-to-point communication",
+      "zh": "20.4 消息传递接口点对点通信"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "MPI supports two major types of communication. The first is the point-to-point type, which involves one source process and one destination process. The source process calls the 【1】MPI_Send()【/1】 function, and the destination process calls the 【2】MPI_Recv()【/2】 function. This is analogous to a caller dialing a call and a receiver answering a call in a telephone system.",
+      "zh": "MPI 支持两大类型的通信。第一种是点对点类型，涉及一个源进程和一个目标进程。源进程调用【1】MPI_Send()【/1】函数，目标进程调用【2】MPI_Recv()【/2】函数。这类似于电话系统中主叫方拨号、被叫方接听电话的情形。"
+    }
+  ]
+}

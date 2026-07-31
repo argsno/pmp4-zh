@@ -1,0 +1,155 @@
+{
+  "page": "Ch005_93-121_B9780323912310000185",
+  "nodes": [
+    {
+      "id": "n0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 5.10【/1】 Calculation of the matrix indices in tiled multiplication.",
+      "zh": "【1】图 5.10【/1】 分块乘法中矩阵索引的计算。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "Similarly, the vertical (y) position, or the row index, of the P element to be processed by a thread is calculated as 【1】by*TILE_WIDTH+ty【/1】. Going back to the example in 【2】Fig. 5.7【/2】, the y index of the P element to be calculated by thread【3】0,1【/3】 of block【4】1,0【/4】 is 1*2+0=2. This vertical index is saved in the variable 【5】Row【/5】 for the thread. As shown in 【6】Fig. 5.10【/6】, each thread calculates the P element at the 【7】Col【/7】th column and the 【8】Row【/8】th row. Thus the P element to be calculated by thread【9】0,1【/9】 of block【10】1,0【/10】 is P【11】2,1【/11】.",
+      "zh": "类似地，线程要处理的 P 元素的垂直（y）位置，即行索引，计算为【1】by*TILE_WIDTH+ty【/1】。回到【2】图 5.7【/2】中的示例，线程块【3】1,0【/3】中线程【4】0,1【/4】要计算的 P 元素的 y 索引为 1*2+0=2。这个垂直索引被保存在线程的变量【5】Row【/5】中。如【6】图 5.10【/6】所示，每个线程计算位于第【7】Col【/7】列、第【8】Row【/8】行的 P 元素。因此，线程块【9】1,0【/9】中线程【10】0,1【/10】要计算的 P 元素是 P【11】2,1【/11】。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "Line 16 of 【1】Fig. 5.9【/1】 marks the beginning of the loop that iterates through all the phases of calculating the P element. Each iteration of the loop corresponds to one phase of the calculation shown in 【2】Fig. 5.8【/2】. The 【3】ph【/3】 variable indicates the number of phases that have already been done for the dot product. Recall that each phase uses one tile of M and one tile of N elements. Therefore at the beginning of each phase, 【4】ph*TILE_WIDTH【/4】 pairs of M and N elements have been processed by previous phases.",
+      "zh": "【1】图 5.9【/1】的第 16 行标记了循环的开始，该循环遍历计算 P 元素的各个阶段。循环的每次迭代对应【2】图 5.8【/2】所示计算的一个阶段。【3】ph【/3】变量表示点积已经完成的阶段数。回忆一下，每个阶段使用一个 M 分块和一个 N 分块。因此，在每个阶段开始时，前面的阶段已经处理了【4】ph*TILE_WIDTH【/4】对 M 和 N 元素。"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "In each phase, lines 19 and 20 in 【1】Fig. 5.9【/1】 load the appropriate M and N elements, respectively, into the shared memory. Since we already know the row of M and column of N to be processed by the thread, we now turn our focus to the column index of M and row index of N. As shown in 【2】Fig. 5.10【/2】, each block has 【3】TILE_WIDTH【/3】【4】2【/4】 threads that will collaborate to load 【5】TILE_WIDTH【/5】【6】2【/6】 【7】M【/7】 elements and 【8】TILE_WIDTH【/8】【9】2【/9】 【10】N【/10】 elements into the shared memory. Thus all we need to do is to assign each thread to load one M element and one N element. This is conveniently done by using the 【11】blockIdx【/11】 and 【12】threadIdx【/12】. Note that the beginning column index of the section of M elements to be loaded is 【13】ph*TILE_WIDTH【/13】. Therefore an easy approach is to have every thread load an element that is 【14】tx【/14】 (the 【15】threadIdx.x【/15】 value) positions away from that beginning point. Similarly, the beginning row index of the section of N elements to be loaded is also 【16】ph*TILE_WIDTH【/16】. Therefore every thread loads an element that is 【17】ty【/17】 (the 【18】threadIdx.y【/18】 value) positions away from that beginning point.",
+      "zh": "在每个阶段中，【1】图 5.9【/1】的第 19 行和第 20 行分别把相应的 M 和 N 元素加载到共享内存中。既然我们已经知道线程要处理的 M 的行和 N 的列，现在把注意力转向 M 的列索引和 N 的行索引。如【2】图 5.10【/2】所示，每个线程块有【3】TILE_WIDTH【/3】【4】2【/4】个线程，它们将协作地把【5】TILE_WIDTH【/5】【6】2【/6】个【7】M【/7】元素和【8】TILE_WIDTH【/8】【9】2【/9】个【10】N【/10】元素加载到共享内存中。因此，我们只需给每个线程分配一个 M 元素和一个 N 元素来加载。使用【11】blockIdx【/11】和【12】threadIdx【/12】就可以方便地做到这一点。注意，要加载的 M 元素段的起始列索引为【13】ph*TILE_WIDTH【/13】。因此，一个简单的方法是让每个线程加载一个距该起始点【14】tx【/14】（即【15】threadIdx.x【/15】的值）个位置的元素。类似地，要加载的 N 元素段的起始行索引也是【16】ph*TILE_WIDTH【/16】。因此，每个线程加载一个距该起始点【17】ty【/17】（即【18】threadIdx.y【/18】的值）个位置的元素。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "This is precisely what we have in lines 19 and 20. In line 19, each thread loads 【1】M[Row*Width + ph*TILE_WIDTH + tx]【/1】, where the linearized index is formed with the row index 【2】Row【/2】 and column index 【3】ph*TILE_WIDTH + tx【/3】. Since the value of 【4】Row【/4】 is a linear function of 【5】ty【/5】, each of the 【6】TILE_WIDTH【/6】【7】2【/7】 threads will load a unique M element into the shared memory because each thread has a unique combination of 【8】tx【/8】 and 【9】ty【/9】. Together, these threads will load a dark square subset of M in 【10】Fig. 5.10【/10】. In a similar way, in line 20, each thread loads the appropriate N element to shared memory using the linearized index 【11】(ph*TILE_WIDTH + ty)*Width + Col【/11】. The reader should use the small example in 【12】Figs. 5.7【/12】 and 【13】5.8【/13】 to verify that the address calculation works correctly for individual threads.",
+      "zh": "这正是我们在第 19 行和第 20 行所做的。在第 19 行，每个线程加载【1】M[Row*Width + ph*TILE_WIDTH + tx]【/1】，其中的线性化索引由行索引【2】Row【/2】和列索引【3】ph*TILE_WIDTH + tx【/3】构成。由于【4】Row【/4】的值是【5】ty【/5】的线性函数，这【6】TILE_WIDTH【/6】【7】2【/7】个线程中的每一个都会把一个唯一的 M 元素加载到共享内存，因为每个线程都有唯一的【8】tx【/8】和【9】ty【/9】组合。这些线程合起来将加载【10】图 5.10【/10】中 M 的深色方块子集。类似地，在第 20 行，每个线程使用线性化索引【11】(ph*TILE_WIDTH + ty)*Width + Col【/11】把相应的 N 元素加载到共享内存。读者应该使用【12】图 5.7【/12】和【13】图 5.8【/13】中的小示例来验证地址计算对各个线程是否正确。"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "The barrier 【1】__syncthreads()【/1】 in line 21 ensures that all threads have finished loading the tiles of M and N into 【2】Mds【/2】 and 【3】Nds【/3】 before any of them can move forward. Recall from 【4】Chapter 4【/4】, Compute Architecture and Scheduling, that the call to 【5】__syncthreads()【/5】 can be used to make all threads in a block wait for each other to reach the barrier before any of them can proceed. This is important because the M and N elements to be used by a thread can be loaded by other threads. One needs to ensure that all elements are properly loaded into the shared memory before any of the threads start to use the elements. The loop in line 23 then performs one phase of the dot product based on the tile elements. The progression of the loop for thread【6】ty, tx【/6】 is shown in 【7】Fig. 5.10【/7】, with the access direction of the M and N elements along the arrow marked with k, the loop variable in line 23. Note that these elements will be accessed from 【8】Mds【/8】 and 【9】Nds【/9】, the shared memory arrays holding these M and N elements. The barrier 【10】__syncthreads()【/10】 in line 26 ensures that all threads have finished using the M and N elements in the shared memory before any of them move on to the next iteration and load the elements from the next tiles. Thus none of the threads would load the elements too early and corrupt the input values of other threads.",
+      "zh": "第 21 行的屏障【1】__syncthreads()【/1】确保所有线程都已完成把 M 和 N 分块加载到【2】Mds【/2】和【3】Nds【/3】的工作，之后任何线程才能继续前进。回忆【4】第 4 章【/4】“计算体系结构与调度”中的内容，调用【5】__syncthreads()【/5】可以让线程块中的所有线程等待彼此到达屏障，然后任何线程才能继续。这一点很重要，因为线程要使用的 M 和 N 元素可能由其他线程加载。需要确保所有元素都被正确加载到共享内存中之后，任何线程才能开始使用这些元素。第 23 行的循环随后基于分块元素执行一个阶段的点积。线程【6】ty, tx【/6】的循环推进过程显示在【7】图 5.10【/7】中，M 和 N 元素的访问方向沿着标有 k 的箭头，k 是第 23 行中的循环变量。注意，这些元素将从【8】Mds【/8】和【9】Nds【/9】中访问，它们是存放这些 M 和 N 元素的共享内存数组。第 26 行的屏障【10】__syncthreads()【/10】确保所有线程都已完成对共享内存中 M 和 N 元素的使用，之后任何线程才能进入下一次迭代并从下一组分块加载元素。这样，就不会有线程过早地加载元素，从而破坏其他线程的输入值。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "The two 【1】__syncthreads()【/1】 calls in lines 21 and 26 demonstrate two different types of data dependence that parallel programmers often have to reason about when they are coordinating between threads. The first is called a 【2】read-after-write dependence【/2】 because threads must wait for data to be written to the proper place by other threads before they try to read it. The second is called a 【3】write-after-read dependence【/3】 because a thread must wait for the data to be read by all threads that need it before overwriting it. Other names for read-after-write and write-after-read dependences are true and false dependences, respectively. A read-after-write dependence is a 【4】true dependence【/4】 because the reading thread truly needs the data supplied by the writing thread, so it has no choice but to wait for it. A write-after-read dependence is a 【5】false dependence【/5】 because the writing thread does not need any data from the reading thread. The dependence is caused by the fact that they are reusing the same memory location and would not exist if they used different locations.",
+      "zh": "第 21 行和第 26 行的两次【1】__syncthreads()【/1】调用展示了并行程序员在协调线程时常需要分析的两种不同类型的数据依赖。第一种称为【2】写后读依赖【/2】，因为线程必须先等待其他线程把数据写到适当位置，然后才能读取它。第二种称为【3】读后写依赖【/3】，因为线程必须先等待所有需要该数据的线程读完，然后才能覆盖它。写后读依赖和读后写依赖的别名分别是真依赖和伪依赖。写后读依赖是【4】真依赖【/4】，因为读线程确实需要写线程提供的数据，所以它别无选择，只能等待。读后写依赖是【5】伪依赖【/5】，因为写线程不需要读线程的任何数据。这种依赖是由它们复用同一个内存位置造成的；如果它们使用不同的位置，这种依赖就不会存在。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
+      "en": "The loop nest from line 16 to line 28 illustrates a technique called 【1】strip-mining【/1】, which takes a long-running loop and break it into phases. Each phase involves an inner loop that executes a few consecutive iterations of the original loop. The original loop becomes an outer loop whose role is to iteratively invoke the inner loop so that all the iterations of the original loop are executed in their original order. By adding barrier synchronizations before and after the inner loop, we force all threads in the same block to focus their work on the same section of input data during each phase. Strip-mining is an important means to creating the phases that are needed by tiling in data parallel programs.【2】【3】3【/3】【/2】",
+      "zh": "从第 16 行到第 28 行的循环嵌套展示了一种称为【1】条带挖掘【/1】的技术，它把一个长时间运行的循环分解成多个阶段。每个阶段包含一个内层循环，执行原循环中若干个连续的迭代。原来的循环变成一个外层循环，其作用是反复调用内层循环，使原循环的所有迭代都按原有顺序执行。通过在内层循环前后添加屏障同步，我们强制同一线程块中的所有线程在每个阶段聚焦于同一段输入数据。条带挖掘是数据并行程序中创建分块所需阶段的重要手段。【2】【3】3【/3】【/2】"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
+      "en": "After all phases of the dot product are complete, the execution exits the outer loop. In Line 29, all threads write to their 【1】P【/1】 element using the linearized index calculated from 【2】Row【/2】 and 【3】Col【/3】.",
+      "zh": "当点积的所有阶段都完成后，执行退出外层循环。在第 29 行，所有线程使用由【2】Row【/2】和【3】Col【/3】计算的线性化索引写入各自的【1】P【/1】元素。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[12]",
+      "en": "The benefit of the tiled algorithm is substantial. For matrix multiplication, the global memory accesses are reduced by a factor of 【1】TILE_WIDTH【/1】. With 16×16 tiles, one can reduce the global memory accesses by a factor of 16. This increases the compute to global memory access ratio from 0.25 OP/B to 4 OP/B. This improvement allows the memory bandwidth of a CUDA device to support a higher computation rate. For example, in the A100 GPU which has a global memory bandwidth of 1555 GB/second, this improvement allows the device to achieve (1555 GB/second)*(4 OP/B)=6220 GFLOPS, which is substantially higher than the 389 GFLOPS achieved by the kernel that did not use tiling.",
+      "zh": "分块算法的收益是显著的。对于矩阵乘法，全局内存访问减少了【1】TILE_WIDTH【/1】倍。使用 16×16 的分块，可以把全局内存访问减少 16 倍。这把计算访存比从 0.25 OP/B 提高到 4 OP/B。这一改进使 CUDA 设备的内存带宽能够支持更高的计算速率。例如，在全局内存带宽为 1555 GB/秒的 A100 GPU 上，这一改进使设备能达到 (1555 GB/秒)*(4 OP/B)=6220 GFLOPS，这比未使用分块的核函数所达到的 389 GFLOPS 要高得多。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[13]",
+      "en": "Although tiling improves throughput substantially, 6220 GFLOPS is still only 32% of the device’s peak throughput of 19,500 GFLOPS. One can further optimize the code to reduce the number of global memory accesses and improve throughput. We will see some of these optimizations later in the book, while other advanced optimizations will not be covered. Because of the importance of matrix multiplication in many domains, there are highly optimized libraries, such as cuBLAS and CUTLASS, that already incorporate many of these advanced optimizations. Programmers can use these libraries to immediately achieve close to peak performance in their linear algebra applications.",
+      "zh": "虽然分块大幅提高了吞吐量，但 6220 GFLOPS 仍然只占设备峰值吞吐量 19500 GFLOPS 的 32%。可以进一步优化代码，减少全局内存访问次数并提高吞吐量。我们将在本书后面看到其中一些优化，而另一些高级优化则不会涉及。由于矩阵乘法在许多领域中的重要性，已经有高度优化的库，如 cuBLAS 和 CUTLASS，它们已经整合了许多这类高级优化。程序员可以使用这些库，在其线性代数应用中立即获得接近峰值的性能。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[14]",
+      "en": "The effectiveness of tiling at improving the throughput of matrix multiplication in particular and applications in general is not unique to GPUs. There is a long history of applying tiling (or blocking) techniques to improve performance on CPUs by ensuring that the data that is reused by a CPU thread within a particular time window will be found in the cache. One key difference is that tiling techniques on CPUs rely on the CPU cache to keep reused data on-chip implicitly, whereas tiling techniques on GPUs use shared memory explicitly to keep the data on-chip. The reason is that a CPU core typically runs one or two threads at a time, so a thread can rely on the cache keeping recently used data around. In contrast, a GPU SM runs many threads simultaneously to be able to hide latency. These threads may compete for cache slots, which makes the GPU cache less reliable, necessitating the use of shared memory for important data that is to be reused.",
+      "zh": "分块在提高矩阵乘法乃至一般应用的吞吐量方面的有效性，并非 GPU 独有。在 CPU 上应用分块（或阻塞）技术以提高性能，已有很长的历史，其原理是确保 CPU 线程在特定时间窗口内复用的数据能够在缓存中找到。一个关键区别是：CPU 上的分块技术隐式地依靠 CPU 缓存把复用的数据保留在片上，而 GPU 上的分块技术则显式地使用共享内存把数据保留在片上。原因是 CPU 核心通常一次只运行一两个线程，因此线程可以依靠缓存把最近使用的数据保留在身边。相比之下，GPU SM 同时运行大量线程以隐藏延迟。这些线程可能会争用缓存槽位，使 GPU 缓存不那么可靠，因此对于要复用的重要数据，有必要使用共享内存。"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[15]",
+      "en": "While the performance improvement of the tiled matrix multiplication kernel is impressive, it does make a few simplifying assumptions. First, the width of the matrices is assumed to be a multiple of the width of thread blocks. This prevents the kernel from correctly processing matrices with arbitrary width. The second assumption is that the matrices are square matrices. This is not always true in practice. In the next section we will present a kernel with boundary checks that removes these assumptions.",
+      "zh": "虽然分块矩阵乘法核函数的性能提升令人印象深刻，但它确实做了几个简化假设。首先，假设矩阵的宽度是线程块宽度的倍数。这使核函数无法正确处理任意宽度的矩阵。第二个假设是矩阵是方阵。这在实际中并不总是成立。在下一节中，我们将介绍一个带边界检查的核函数，它消除了这些假设。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "5.5 Boundary checks",
+      "zh": "5.5 边界检查"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "We now extend the tiled matrix multiplication kernel to handle matrices with arbitrary width. The extensions will have to allow the kernel to correctly handle matrices whose width is not a multiple of the tile width. Let’s change the small example in 【1】Fig. 5.7【/1】 to use 3×3 M, N, and P matrices. The revised example is shown in 【2】Fig. 5.11【/2】. Note that the width of the matrices is 3, which is not a multiple of the tile width (which is 2). 【3】Fig. 5.11【/3】 shows the memory access pattern during the second phase of block【4】0,0【/4】. We see that thread【5】0,1【/5】 and thread【6】1,1【/6】 will attempt to load M elements that do not exist. Similarly, we see that thread【7】1,0【/7】 and thread【8】1,1【/8】 will attempt to access N elements that do not exist.",
+      "zh": "我们现在扩展分块矩阵乘法核函数，使其能够处理任意宽度的矩阵。这些扩展必须允许核函数正确处理宽度不是分块宽度倍数的矩阵。我们把【1】图 5.7【/1】中的小示例改为使用 3×3 的 M、N 和 P 矩阵。修改后的示例显示在【2】图 5.11【/2】中。注意，矩阵的宽度为 3，不是分块宽度（2）的倍数。【3】图 5.11【/3】展示了线程块【4】0,0【/4】在第二阶段的内存访问模式。我们看到，线程【5】0,1【/5】和线程【6】1,1【/6】会尝试加载不存在的 M 元素。类似地，线程【7】1,0【/7】和线程【8】1,1【/8】会尝试访问不存在的 N 元素。"
+    },
+    {
+      "id": "n0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 5.11【/1】 Loading input matrix elements that are close to the edge: phase 1 of block【2】0,0【/2】.",
+      "zh": "【1】图 5.11【/1】 加载靠近边缘的输入矩阵元素：线程块【2】0,0【/2】的阶段 1。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "Accessing nonexisting elements is problematic in two ways. In the case of accessing a nonexisting element that is past the end of a row (M accesses by thread【1】0,1【/1】 and thread【2】1,1【/2】 in 【3】Fig. 5.11【/3】), these accesses will be done to incorrect elements. In our example the threads will attempt to access M【4】0,3【/4】 and M【5】1,3【/5】, which do not exist. So what will happen to these memory loads? To answer this question, we need to go back to the linearized layout of two-dimensional matrices. The element after M【6】0,2【/6】 in the linearized layout is M【7】1,0【/7】. Although thead【8】0,1【/8】 is attempting to access M【9】0,3【/9】, it will end up getting M【10】1,0【/10】. The use of this value in the subsequent inner product calculation will obviously corrupt the output value.",
+      "zh": "访问不存在的元素在两方面有问题。对于访问越过行末尾的不存在元素（【3】图 5.11【/3】中线程【1】0,1【/1】和线程【2】1,1【/2】对 M 的访问），这些访问会落到错误的元素上。在我们的示例中，线程会尝试访问不存在的 M【4】0,3【/4】和 M【5】1,3【/5】。那么这些内存加载会发生什么？要回答这个问题，我们需要回到二维矩阵的线性化布局。在线性化布局中，M【6】0,2【/6】之后的下一个元素是 M【7】1,0【/7】。虽然线程【8】0,1【/8】尝试访问 M【9】0,3【/9】，但它最终会得到 M【10】1,0【/10】。在随后的内积计算中使用这个值，显然会破坏输出值。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "A similar problem arises in accessing an element that is past the end of a column (N accesses by thread【1】1,0【/1】 and thread【2】1,1【/2】 in 【3】Fig. 5.11【/3】). These accesses are to memory locations outside the allocated area for the array. In some systems they will return random values from other data structures. In other systems these accesses will be rejected, causing the program to abort. Either way, the outcome of such accesses is undesirable.",
+      "zh": "访问越过列末尾的元素也会出现类似问题（【3】图 5.11【/3】中线程【1】1,0【/1】和线程【2】1,1【/2】对 N 的访问）。这些访问指向数组已分配区域之外的内存位置。在某些系统中，它们会从其他数据结构返回随机值。在其他系统中，这些访问会被拒绝，导致程序中止。无论哪种方式，这类访问的结果都是不可取的。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "From our discussion so far, it may seem that the problematic accesses arise only in the last phase of execution of the threads. This would suggest that we can deal with it by taking special actions during the last phase of the tiled kernel execution. Unfortunately, this is not true. Problematic accesses can arise in all phases. 【1】Fig. 5.12【/1】 shows the memory access pattern of block【2】1,1【/2】 during phase 0. We see that thread【3】1,0【/3】 and thread【4】1,1【/4】 attempt to access nonexisting M elements M【5】3,0【/5】 and M【6】3,1【/6】, whereas thread【7】0,1【/7】 and thread【8】1,1【/8】 attempt to access N【9】0,3【/9】 and N【10】1,3【/10】, which do not exist.",
+      "zh": "从我们迄今的讨论来看，似乎有问题的访问只出现在线程执行的最后一个阶段。这会让我们认为，可以在分块核函数执行的最后阶段采取特殊措施来处理。遗憾的是，事实并非如此。有问题的访问可能出现在所有阶段。【1】图 5.12【/1】展示了线程块【2】1,1【/2】在阶段 0 期间的内存访问模式。我们看到，线程【3】1,0【/3】和线程【4】1,1【/4】尝试访问不存在的 M 元素 M【5】3,0【/5】和 M【6】3,1【/6】，而线程【7】0,1【/7】和线程【8】1,1【/8】尝试访问不存在的 N【9】0,3【/9】和 N【10】1,3【/10】。"
+    },
+    {
+      "id": "n0119",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 5.12【/2】【/1】 Loading input elements during phase 0 of block【3】1,1【/3】.",
+      "zh": "【1】【2】图 5.12【/2】【/1】 线程块【3】1,1【/3】在阶段 0 期间加载输入元素。"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "Note that these problematic accesses cannot be prevented by simply excluding the threads that do not calculate valid P elements. For example, thread【1】1,0【/1】 in block【2】1,1【/2】 does not calculate any valid P element. However, it needs to load M【3】2,1【/3】 during phase 0 for other threads in block【4】1,1【/4】 to use. Furthermore, note that some threads that calculate valid P elements will attempt to access M or N elements that do not exist. For example, as we saw in 【5】Fig. 5.11【/5】, thread【6】0,1【/6】 of block 0,0 calculates a valid P element P【7】0,1【/7】. However, it attempts to access a nonexisting M【8】0,3【/8】 during phase 1. These two facts indicate that we will need to use different boundary condition tests for loading M tiles, loading N tiles, and calculating/storing P elements. A rule of thumb to follow is that every memory access needs to have a corresponding check that ensures that the indices used in the access are within the bounds of the array being accessed.",
+      "zh": "注意，这些有问题的访问不能简单地通过排除那些不计算有效 P 元素的线程来防止。例如，线程块【2】1,1【/2】中的线程【1】1,0【/1】不计算任何有效的 P 元素。然而，它在阶段 0 期间需要为线程块【4】1,1【/4】中的其他线程加载 M【3】2,1【/3】供它们使用。此外，注意有些计算有效 P 元素的线程也会尝试访问不存在的 M 或 N 元素。例如，正如我们在【5】图 5.11【/5】中看到的，线程块 0,0 的线程【6】0,1【/6】计算有效的 P 元素 P【7】0,1【/7】。然而，它在阶段 1 期间尝试访问不存在的 M【8】0,3【/8】。这两个事实表明，我们需要为加载 M 分块、加载 N 分块以及计算/存储 P 元素使用不同的边界条件测试。一条经验法则是：每一次内存访问都需要有相应的检查，确保访问所用的索引在所用数组的边界之内。"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
+      "en": "Let’s start with the boundary test condition for loading input tiles. When a thread is to load an input tile element, it should test whether the input element it is attempting to load is a valid element. This is easily done by examining the y and x indices. For example, in line 19 in 【1】Fig. 5.9【/1】, the linearized index is a derived from a y index of 【2】Row【/2】 and an x index of 【3】ph*TILE_WIDTH + tx【/3】. The boundary condition test would be that both of indices are smaller than 【4】Width【/4】: 【5】Row &lt; Width &amp;&amp; (ph*TILE_WIDTH+tx) &lt; Width【/5】. If the condition is true, the thread should go ahead and load the 【6】M【/6】 element. The reader should verify that the condition test for loading the N element is 【7】(ph*TILE_WIDTH+ty) &lt; Width &amp;&amp; Col &lt; Width【/7】.",
+      "zh": "我们先从加载输入分块的边界测试条件说起。当一个线程要加载一个输入分块元素时，它应该测试它试图加载的输入元素是否是有效元素。这可以通过检查 y 和 x 索引来轻松完成。例如，在【1】图 5.9【/1】的第 19 行，线性化索引由 y 索引【2】Row【/2】和 x 索引【3】ph*TILE_WIDTH + tx【/3】推导而来。边界条件测试将是这两个索引都小于【4】Width【/4】：【5】Row &lt; Width &amp;&amp; (ph*TILE_WIDTH+tx) &lt; Width【/5】。如果条件为真，线程就应该继续加载【6】M【/6】元素。读者应该验证，加载 N 元素的测试条件是【7】(ph*TILE_WIDTH+ty) &lt; Width &amp;&amp; Col &lt; Width【/7】。"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[7]",
+      "en": "If the condition is false, the thread should not load the element. The question is what should be placed into the shared memory location. The answer is 0.0, a value that will not cause any harm if it is used in the inner product calculation. If any thread uses this 0.0 value in the calculation of its inner product, there will not be any change in the inner product value.",
+      "zh": "如果条件为假，线程就不应加载该元素。问题是，共享内存位置中应该放入什么。答案是 0.0，一个即使在内积计算中被使用也不会造成任何损害的值。如果有任何线程在内积计算中使用这个 0.0 值，内积的值不会发生任何变化。"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[8]",
+      "en": "Finally, a thread should store its final inner product value only if it is responsible for calculating a valid P element. The test for this condition is 【1】(Row &lt; Width) &amp;&amp; (Col &lt; Width)【/1】. The kernel code with the additional boundary condition checks is shown in 【2】Fig. 5.13【/2】.",
+      "zh": "最后，只有当线程负责计算有效的 P 元素时，它才应存储其最终的内积值。这个条件的测试是【1】(Row &lt; Width) &amp;&amp; (Col &lt; Width)【/1】。带有附加边界条件检查的核函数代码如【2】图 5.13【/2】所示。"
+    },
+    {
+      "id": "n0124",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 5.13【/1】 Tiled matrix multiplication kernel with boundary condition checks.",
+      "zh": "【1】图 5.13【/1】 带边界条件检查的分块矩阵乘法核函数。"
+    }
+  ]
+}

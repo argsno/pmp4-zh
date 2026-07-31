@@ -1,0 +1,155 @@
+{
+  "page": "Ch017_391-414_B9780323912310000124",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Iterative magnetic resonance imaging reconstruction",
+      "zh": "迭代式磁共振成像重建"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "In this chapter we present the key steps for parallelizing and optimizing a loop-intensive application, iterative reconstruction of magnetic resonance imaging images, from its sequential form. We start with the appropriate organization of parallelization: the scatter approach versus the gather approach. We show that transforming from a scatter approach to a gather approach is key to avoiding atomic operations, which can significantly reduce the performance of parallel execution. We discuss the practical techniques, that is, loop fission and loop interchange, that are needed to enable the gather approach to parallelization. We further present the application of optimization techniques such as promoting array elements into registers, using constant memory/cache for input elements, and using hardware functions to improve the performance of the parallel kernel.",
+      "zh": "在本章中，我们介绍将一个循环密集的应用——磁共振成像的迭代重建——从串行形式进行并行化与优化的关键步骤。我们首先讨论并行化的合理组织方式：分散方法（scatter approach）与汇聚方法（gather approach）。我们说明，从分散方法转变为汇聚方法，是避免原子操作的关键，因为原子操作会显著降低并行执行的性能。我们还讨论了实现汇聚式并行化所需的实用技术，即循环分裂与循环交换。我们进一步介绍了一些优化技术的应用，例如将数组元素提升到寄存器中、为输入元素使用常量内存/缓存，以及使用硬件函数来提升并行核函数的性能。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Statistical estimation methods; matrix-vector multiplication; linear solvers; iterative methods; MRI; non-Cartesian scan trajectory; scatter parallelization; gather parallelization; loop fission; loop interchange; cross-iteration dependence; constant memory; constant cache; signal-to-noise ratio; trigonometry functions",
+      "zh": "统计估计方法；矩阵-向量乘法；线性方程组求解器；迭代法；MRI；非笛卡儿扫描轨迹；分散式并行化；汇聚式并行化；循环分裂；循环交换；跨迭代依赖；常量内存；常量缓存；信噪比；三角函数"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "概要"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】17.1 Background【/1】 391",
+      "zh": "【1】17.1 背景【/1】 391"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】17.2 Iterative reconstruction【/1】 394",
+      "zh": "【1】17.2 迭代重建【/1】 394"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】17.3 Computing F【2】H【/2】D【/1】 396",
+      "zh": "【1】17.3 计算 F【2】H【/2】D【/1】 396"
+    },
+    {
+      "id": "o9020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】17.4 Summary【/1】 412",
+      "zh": "【1】17.4 小结【/1】 412"
+    },
+    {
+      "id": "u0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】Exercises【/1】 413",
+      "zh": "【1】习题【/1】 413"
+    },
+    {
+      "id": "u0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】References【/1】 414",
+      "zh": "【1】参考文献【/1】 414"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "In this chapter we start with the background and problem formulation of a relatively simple application that has traditionally been constrained by the limited capabilities of mainstream computing systems. We show that parallel execution not only speeds up the existing approaches but also allows the applications experts to pursue an approach that has been known to provide benefit but was previously ignored because of the excessive computational requirements. This approach represents an increasingly important class of computational methods that derive statistically optimal estimation of unknown values from a very large amount of observational data. We use an example algorithm and its implementation source code from such an approach to illustrate how a developer can systematically determine the kernel parallelism structure, assign variables into different types of memories, steer around limitations of the hardware, validate results, and assess the impact of performance improvements.",
+      "zh": "在本章中，我们从背景与问题定义入手，介绍一个相对简单的应用——该应用传统上一直受制于主流计算系统有限的计算能力。我们将说明，并行执行不仅能加速现有方法，还能让应用领域的专家采用一种早已被证明有益、却因计算需求过于庞大而一度被弃用的方法。这类方法代表了一类日益重要的计算方法，它们从海量观测数据中推导出未知量的统计最优估计。我们以这类方法中的一个示例算法及其实现源代码为例，说明开发者如何系统地确定核函数的并行性结构、将变量分配到不同类型的存储器中、规避硬件限制、验证结果，并评估性能改进的影响。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "17.1 Background",
+      "zh": "17.1 背景"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "Magnetic resonance imaging (MRI) is commonly used as a medical procedure to safely and noninvasively probe the structure and function of biological tissues in all regions of the body. Images that are generated by using MRI have had a profound impact in both clinical and research settings. MRI consists of two phases: acquisition (scan) and reconstruction. During the acquisition phase, the scanner samples data in the k-space domain (i.e., the spatial frequency domain or Fourier transform domain) along a predefined trajectory. These samples are then transformed into the desired image during the reconstruction phase. Intuitively, the reconstruction phase estimates the shape and texture of the tissues on the basis of the observation k-space data collected from the scanner.",
+      "zh": "磁共振成像（MRI）是一种常用的医学检查手段，可以安全、无创地探查人体各部位生物组织的结构与功能。利用 MRI 生成的图像在临床和研究领域都产生了深远的影响。MRI 包括两个阶段：采集（扫描）与重建。在采集阶段，扫描仪沿预先设定的轨迹在 k 空间域（即空间频率域或傅里叶变换域）内对数据进行采样。随后，这些样本在重建阶段被变换成所需的图像。直观地说，重建阶段根据从扫描仪采集到的观测 k 空间数据，估计组织的形状与纹理。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "The application of MRI is often limited by high noise levels, significant imaging artifacts, and/or long data acquisition times. In clinical settings, short scan times not only increase scanner throughput but also reduce patient discomfort, and this tends to mitigate motion-related artifacts. High image resolution and fidelity are important because they enable early detection of pathology, leading to improved prognoses for patients. However, the goals of short scan time, high resolution, and high signal-to-noise ratio (SNR) often conflict; improvements in one metric tend to come at the expense of one or both of the others. New technological breakthroughs are needed to enable simultaneous improvement on all of three dimensions. This study presents a case in which massively parallel computing provides such a breakthrough.",
+      "zh": "MRI 的应用常常受到高噪声水平、明显成像伪影和/或较长数据采集时间的限制。在临床环境中，缩短扫描时间不仅能提高扫描仪的吞吐量，还能减轻患者的不适，这往往有助于减少运动相关伪影。高图像分辨率与高保真度也很重要，因为它们有助于早期发现病变，从而改善患者的预后。然而，短扫描时间、高分辨率和高信噪比（SNR）这三个目标常常相互冲突；某一指标的改进往往以牺牲其他一个或两个指标为代价。要在三个维度上同时取得进展，就必须有新的技术突破。本研究展示了一个大规模并行计算带来这种突破的案例。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "The reader is referred to MRI textbooks such as 【1】Liang and Lauterbur (1999)【/1】 for the physics principles behind MRI. For this case study, we will focus on the computational complexity in the reconstruction phase and how the complexity is affected by the k-space sampling trajectory. The k-space sampling trajectory used by the MRI scanner can significantly affect the quality of the reconstructed image, the time complexity of the reconstruction algorithm, and the time required for the scanner to acquire the samples. 【2】Eq. (17.1)【/2】 shows a formulation that relates the k-space samples to the reconstructed image for a class of reconstruction methods:",
+      "zh": "关于 MRI 背后的物理原理，我们建议读者参阅诸如【1】Liang and Lauterbur (1999)【/1】这样的 MRI 教科书。在本案例研究中，我们将重点关注重建阶段的计算复杂度，以及 k 空间采样轨迹如何影响这一复杂度。MRI 扫描仪采用的 k 空间采样轨迹会显著影响重建图像的质量、重建算法的时间复杂度，以及扫描仪采集样本所需的时间。【2】式 (17.1)【/2】给出了一类重建方法中 k 空间样本与重建图像之间关系的表达式："
+    },
+    {
+      "id": "n0018",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "【M1】 【2】(17.1)【/2】",
+      "zh": "【M1】 【2】(17.1)【/2】"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "In 【1】Eq. (17.1)【/1】, 【2】m【/2】(【3】r【/3】) is the reconstructed image, 【4】s【/4】(【5】k【/5】) is the measured k-space data, and 【6】W【/6】(【7】k【/7】) is the weighting function that accounts for nonuniform sampling; that is, 【8】W【/8】(【9】k【/9】) decreases the influence of data from k-space regions where a higher density of samples points are taken. For this class of reconstructions, 【10】W【/10】(【11】k【/11】) can also serve as an 【12】apodization【/12】 filtering function that reduces the influence of noise and reduces artifacts due to finite sampling.",
+      "zh": "在【1】式 (17.1)【/1】中，【2】m【/2】（【3】r【/3】）是重建图像，【4】s【/4】（【5】k【/5】）是测量得到的 k 空间数据，【6】W【/6】（【7】k【/7】）是用于校正非均匀采样的加权函数；也就是说，【8】W【/8】（【9】k【/9】）会降低取自采样点密度较高区域的 k 空间数据的影响。对于这类重建方法，【10】W【/10】（【11】k【/11】）还可以充当【12】变迹【/12】滤波函数，以降低噪声的影响，并减少因采样有限而产生的伪影。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "If data are acquired at uniformly spaced Cartesian grid points in the k-space under ideal conditions, then the 【1】W【/1】(【2】k【/2】) weighting function is a constant and can thus be factored out of the summation in 【3】Eq. (17.1)【/3】. Furthermore, with the uniformly spaced Cartesian grid samples, the exponential terms in 【4】Eq. (17.1)【/4】 are uniformly spaced in the k-space. As a result, the reconstruction of 【5】m【/5】(【6】r【/6】) becomes an inverse fast Fourier transform (FFT) on 【7】s【/7】(【8】k【/8】), an extremely efficient computation method. A collection of data measured at such uniformed spaced Cartesian grid points is referred to as a 【9】Cartesian scan trajectory【/9】. 【10】Fig. 17.1A【/10】 depicts a Cartesian scan trajectory. In practice, Cartesian scan trajectories allow straightforward implementation on scanners and are widely used in clinical settings today.",
+      "zh": "在理想条件下，如果数据是在 k 空间中均匀间隔的笛卡儿网格点上采集的，那么【1】W【/1】（【2】k【/2】）加权函数就是一个常数，因而可以从【3】式 (17.1)【/3】的求和中提出。此外，由于样本位于均匀间隔的笛卡儿网格上，【4】式 (17.1)【/4】中的指数项在 k 空间中也是均匀间隔的。于是，对【5】m【/5】（【6】r【/6】）的重建就变成了对【7】s【/7】（【8】k【/8】）的逆快速傅里叶变换（FFT），这是一种极为高效的计算方法。在如此均匀间隔的笛卡儿网格点上测得的数据集合，称为【9】笛卡儿扫描轨迹【/9】。【10】图 17.1A【/10】描绘了笛卡儿扫描轨迹。在实际应用中，笛卡儿扫描轨迹在扫描仪上易于实现，如今在临床上得到广泛应用。"
+    },
+    {
+      "id": "n0021",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.1【/1】 Scanner k-space trajectories and their associated reconstruction strategies: (A) Cartesian trajectory with FFT reconstruction, (B) spiral (or non-Cartesian trajectory in general) followed by gridding to enable FFT reconstruction, (C) spiral (non-Cartesian) trajectory with a linear solver–based reconstruction.",
+      "zh": "【1】图 17.1【/1】 扫描仪的 k 空间轨迹及其对应的重建策略：（A）笛卡儿轨迹配合 FFT 重建，（B）螺旋（或一般的非笛卡儿轨迹）之后进行网格化以启用 FFT 重建，（C）螺旋（非笛卡儿）轨迹配合基于线性方程组求解器的重建。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[7]",
+      "en": "Although the inverse FFT reconstruction of Cartesian scan data is computationally efficient, non-Cartesian scan trajectories often have an advantage in reduced sensitivity to patient motion, better ability to provide self-calibrating field inhomogeneity information, and reduced requirements for scanner hardware performance. As a result, non-Cartesian scan trajectories such as spirals (shown in 【1】Fig. 17.1(C)【/1】), radial lines (also known as projection imaging), and rosettes have been proposed to reduce motion-related artifacts and address scanner hardware performance limitations. These improvements have recently allowed the reconstructed image pixel values to be used for measuring subtle phenomenon such as tissue chemical anomalies before they become anatomical pathology.",
+      "zh": "尽管对笛卡儿扫描数据进行逆 FFT 重建在计算上很高效，但非笛卡儿扫描轨迹往往具有以下优势：对患者运动的敏感度更低、提供自校准场不均匀性信息的能力更强、对扫描仪硬件性能的要求更低。因此，人们提出了螺旋线（如【1】图 17.1(C)【/1】所示）、径向线（也称为投影成像）和玫瑰线等非笛卡儿扫描轨迹，以减少运动相关伪影并应对扫描仪硬件性能的限制。这些改进近来使得重建图像的像素值可用于测量细微现象，例如组织在演变为解剖学病变之前的化学异常。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[8]",
+      "en": "【1】Fig. 17.2【/1】 shows such an MRI reconstruction-based measurement that generates a map of sodium, a heavily regulated substance in normal human tissues. The information can be used to track tissue health in stroke and cancer treatment processes. Because sodium is much less abundant than water molecules in human tissues, measuring sodium levels reliably requires a higher SNR through a higher number of samples and therefore needs to mitigate the extra scan time with non-Cartesian scan trajectories. The improved SNR enables reliable collection of in vivo concentration data on chemical substances, such as sodium, in human tissues. The variation or shifting of the sodium concentration suggests early signs of disease development or tissue death. For example, the sodium map of a human brain shown in 【2】Fig. 17.2【/2】 can be used to give early indication of brain tumor tissue responsiveness to chemotherapy protocols, enabling individualized medicine.",
+      "zh": "【1】图 17.2【/1】展示了这样一种基于 MRI 重建的测量，它生成人体正常组织中受到严格调控的物质——钠——的分布图。这些信息可用于跟踪中风和癌症治疗过程中的组织健康状况。由于人体组织中钠的丰度远低于水分子，要可靠地测量钠含量，就需要通过更多的样本来获得更高的信噪比，因此必须借助非笛卡儿扫描轨迹来抵消额外的扫描时间。更高的信噪比使得可靠地采集人体组织中钠等化学物质的体内浓度数据成为可能。钠浓度的变化或迁移提示疾病发展或组织死亡的早期迹象。例如，【2】图 17.2【/2】所示的人脑钠分布图可用于早期提示脑肿瘤组织对化疗方案的响应情况，从而实现个体化医疗。"
+    },
+    {
+      "id": "n0024",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.2【/1】 Non-Cartesian k-space sample trajectory and accurate linear solver–based reconstruction enable new capabilities with exciting medical applications.",
+      "zh": "【1】图 17.2【/1】 非笛卡儿 k 空间采样轨迹与基于线性方程组求解器的精确重建带来了令人振奋的医学应用新能力。"
+    }
+  ]
+}

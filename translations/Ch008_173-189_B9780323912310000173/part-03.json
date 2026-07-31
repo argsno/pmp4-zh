@@ -1,0 +1,77 @@
+{
+  "page": "Ch008_173-189_B9780323912310000173",
+  "nodes": [
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]",
+      "en": "1. Consider a 3D stencil computation on a grid of size 120×120×120, including boundary cells.【M1】",
+      "zh": "1. 考虑一个在大小为 120×120×120、包含边界单元的网格上进行的三维模板计算。【M1】"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]/ol[1]/li[1]",
+      "en": "a. What is the number of output grid points that is computed during each stencil sweep?",
+      "zh": "a. 每次模板扫掠期间计算出的输出网格点数量是多少？"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]/ol[1]/li[2]",
+      "en": "b. For the basic kernel in 【1】Fig. 8.6【/1】, what is the number of thread blocks that are needed, assuming a block size of 8×8×8?",
+      "zh": "b. 对于 【1】图 8.6【/1】 中的基础核函数，假设线程块大小为 8×8×8，需要多少个线程块？"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]/ol[1]/li[3]",
+      "en": "c. For the kernel with shared memory tiling in 【1】Fig. 8.8【/1】, what is the number of thread blocks that are needed, assuming a block size of 8×8×8?",
+      "zh": "c. 对于 【1】图 8.8【/1】 中带共享内存分块的核函数，假设线程块大小为 8×8×8，需要多少个线程块？"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]/ol[1]/li[4]",
+      "en": "d. For the kernel with shared memory tiling and thread coarsening in 【1】Fig. 8.10【/1】, what is the number of thread blocks that are needed, assuming a block size of 32×32?",
+      "zh": "d. 对于 【1】图 8.10【/1】 中带共享内存分块和线程粗化的核函数，假设线程块大小为 32×32，需要多少个线程块？"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]",
+      "en": "2. Consider an implementation of a seven-point (3D) stencil with shared memory tiling and thread coarsening applied. The implementation is similar to those in 【1】Figs. 8.10【/1】 and 【2】8.12【/2】, except that the tiles are not perfect cubes. Instead, a thread block size of 32×32 is used as well as a coarsening factor of 16 (i.e., each thread block processes 16 consecutive output planes in the z dimension).\n【M3】",
+      "zh": "2. 考虑一个应用了共享内存分块和线程粗化的七点（3D）模板实现。该实现与 【1】图 8.10【/1】 和 【2】8.12【/2】 中的实现类似，区别在于分块不是正立方体。取而代之，使用 32×32 的线程块大小以及 16 的粗化因子（即每个线程块在 z 维度上处理 16 个连续的输出平面）。\n【M3】"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]/ol[1]/li[1]",
+      "en": "a. What is the size of the input tile (in number of elements) that the thread block loads throughout its lifetime?",
+      "zh": "a. 该线程块在其整个生命周期中加载的输入分块大小（以元素个数计）是多少？"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]/ol[1]/li[2]",
+      "en": "b. What is the size of the output tile (in number of elements) that the thread block processes throughout its lifetime?",
+      "zh": "b. 该线程块在其整个生命周期中处理的输出分块大小（以元素个数计）是多少？"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]/ol[1]/li[3]",
+      "en": "c. What is the floating point to global memory access ratio (in OP/B) of the kernel?",
+      "zh": "c. 该核函数的浮点运算与全局内存访问比（以 OP/B 计）是多少？"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]/ol[1]/li[4]",
+      "en": "d. How much shared memory (in bytes) is needed by each thread block if register tiling is not used, as in 【1】Fig. 8.10【/1】?",
+      "zh": "d. 如果不使用寄存器分块，如 【1】图 8.10【/1】 所示，每个线程块需要多少共享内存（以字节计）？"
+    },
+    {
+      "id": "o0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]/ol[1]/li[5]",
+      "en": "e. How much shared memory (in bytes) is needed by each thread block if register tiling is used, as in 【1】Fig. 8.12【/1】?",
+      "zh": "e. 如果使用寄存器分块，如 【1】图 8.12【/1】 所示，每个线程块需要多少共享内存（以字节计）？"
+    }
+  ]
+}

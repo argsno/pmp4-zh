@@ -1,0 +1,7 @@
+[
+  {
+    "en": "cluster",
+    "zh": "集群",
+    "note": "如 heterogeneous computing cluster → 异构计算集群（与 nav.json 中第 20 章标题译法一致）；cluster 不在 §5 术语表中，建议并入 §5.9 或 §5.10"
+  }
+]

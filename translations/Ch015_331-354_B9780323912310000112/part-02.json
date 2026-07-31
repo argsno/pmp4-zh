@@ -1,0 +1,155 @@
+{
+  "page": "Ch015_331-354_B9780323912310000112",
+  "nodes": [
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "【1】Fig. 15.6【/1】 shows the kernel code for the vertex-centric push implementation, and 【2】Fig. 15.7【/2】 shows an example of how this kernel performs a traversal from level 1 (previous level) to level 2 (current level). The kernel starts by assigning a thread to each vertex (line 03), and each thread ensures that its vertex id is within bounds (line 04). Next, each thread checks whether its vertex belongs to the previous level (line 05). In 【3】Fig. 15.7【/3】, only the threads assigned to vertices 1 and 2 will pass this check. The threads that pass this check will then use the CSR 【4】srcPtrs【/4】 array to locate the outgoing edges of the vertex and iterate over them (lines 06–07). For each outgoing edge, the thread finds the neighbor at the destination of the edge using the CSR 【5】dst【/5】 array (line 08). The thread then checks whether the neighbor has not been visited by checking whether the neighbor has been assigned to a level yet (line 09).",
+      "zh": "【1】图 15.6【/1】展示了面向顶点的推送式实现的核函数代码，【2】图 15.7【/2】展示了该核函数如何从第 1 层（前一层）遍历到第 2 层（当前层）的示例。核函数首先为每个顶点分配一个线程（第 03 行），每个线程确保其顶点 id 在边界内（第 04 行）。接着，每个线程检查其顶点是否属于前一层（第 05 行）。在【3】图 15.7【/3】中，只有分配给顶点 1 和 2 的线程能通过这一检查。通过检查的线程随后将使用 CSR【4】srcPtrs【/4】数组定位该顶点的出边并遍历它们（第 06–07 行）。对于每条出边，线程使用 CSR【5】dst【/5】数组找到该边目标处的邻居（第 08 行）。然后线程通过检查该邻居是否已被分配层号来检查它是否未被访问（第 09 行）。"
+    },
+    {
+      "id": "n0051",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 15.6【/2】【/1】 A vertex-centric push (top-down) BFS kernel. 【3】BFS【/3】, breadth-first search.",
+      "zh": "【1】【2】图 15.6【/2】【/1】 一个面向顶点的推送式（自顶向下）BFS 核函数。【3】BFS【/3】，广度优先搜索。"
+    },
+    {
+      "id": "n0052",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 15.7【/1】 Example of a vertex-centric push BFS traversal from level 1 to level 2. 【2】BFS【/2】, breadth-first search.",
+      "zh": "【1】图 15.7【/1】 一个从第 1 层到第 2 层的面向顶点的推送式 BFS 遍历示例。【2】BFS【/2】，广度优先搜索。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "Initially, all vertex levels are set to 【1】UINT_MAX【/1】, which means that the vertex is unreachable. Hence a neighbor has not been visited if its level is still 【2】UINT_MAX【/2】. If the neighbor has not been visited, the thread will label the neighbor as belonging to the current level (line 10). Finally, the thread will set a flag indicating that a new vertex has been visited (line 11). This flag is used by the launching code to decide whether a new grid needs to be launched to process a new level or we have reached the end. Note that multiple threads can assign 1 to the flag and the code will still execute correctly. This property is termed 【3】idempotence【/3】. In an idempotent operation such as this one, we do not need an atomic operation because the threads are not performing a read-modify-write operation. All threads write the same value, so the outcome is the same regardless of how many threads perform a write operation.",
+      "zh": "初始时，所有顶点的层号都设置为【1】UINT_MAX【/1】，这表示该顶点不可达。因此，如果某个邻居的层号仍为【2】UINT_MAX【/2】，则说明该邻居尚未被访问。如果邻居尚未被访问，线程将把该邻居标记为属于当前层（第 10 行）。最后，线程将设置一个标志，表示已访问了一个新顶点（第 11 行）。启动代码使用该标志来决定是否需要启动一个新网格来处理新的一层，还是已经到达了结束点。注意，多个线程可以同时把标志置为 1，代码仍然会正确执行。这一性质被称为【3】幂等性【/3】。在这种幂等操作中，我们不需要原子操作，因为线程没有在执行读-改-写操作。所有线程写入相同的值，因此无论有多少线程执行写操作，结果都是相同的。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "The second vertex-centric parallel implementation assigns each thread to a vertex to iterate over the vertex’s incoming edges. Each thread first checks whether its vertex has been visited yet. If not, the thread will iterate over the incoming edges to find whether any of the neighbors belong to the previous level. If the thread finds a neighbor that belongs to the previous level, the thread will label its vertex as belonging to the current level. This vertex-centric implementation is often referred to as a 【1】bottom-up【/1】 or 【2】pull【/2】 implementation.【3】【4】2【/4】【/3】 Since this implementation requires accessibility to the incoming edges of a given destination vertex (i.e., nonzero elements of a given column of the adjacency matrix), a CSC representation is needed.",
+      "zh": "第二种面向顶点的并行实现将每个线程分配给一个顶点，以遍历该顶点的入边。每个线程首先检查其顶点是否已被访问。如果没有，线程将遍历入边，以找出是否有任何邻居属于前一层。如果线程找到了属于前一层的邻居，它将把其顶点标记为属于当前层。这种面向顶点的实现通常被称为【1】自底向上【/1】实现或【2】拉取式实现【/2】。【3】【4】2【/4】【/3】由于这种实现需要能够访问给定目标顶点的入边（即邻接矩阵给定列中的非零元素），因此需要 CSC 表示。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "【1】Fig. 15.8【/1】 shows the kernel code for the vertex-centric pull implementation, and 【2】Fig. 15.9【/2】 shows an example of how this kernel performs a traversal from level 1 to level 2. The kernel starts by assigning a thread to each vertex (line 03), and each thread ensures that its vertex id is within bounds (line 04). Next, each thread checks whether its vertex has not been visited yet (line 05). In 【3】Fig. 15.9【/3】 the threads that are assigned to vertices 3–8 all pass this check. The threads that pass this check will then use the CSC 【4】dstPtrs【/4】 array to locate the incoming edges of the vertex and iterate over them (lines 06–07). For each incoming edge, the thread finds the neighbor at the source of the edge, using the CSC 【5】src【/5】 array (line 08). The thread then checks whether the neighbor belongs to the previous level (line 09). If so, the thread will label its vertex as belonging to the current level (line 10) and set a flag indicating that a new vertex has been visited (line 11). The thread will also break out of the loop (line 12).",
+      "zh": "【1】图 15.8【/1】展示了面向顶点的拉取式实现的核函数代码，【2】图 15.9【/2】展示了该核函数如何从第 1 层遍历到第 2 层的示例。核函数首先为每个顶点分配一个线程（第 03 行），每个线程确保其顶点 id 在边界内（第 04 行）。接着，每个线程检查其顶点是否尚未被访问（第 05 行）。在【3】图 15.9【/3】中，分配给顶点 3–8 的线程都通过了这一检查。通过检查的线程随后将使用 CSC【4】dstPtrs【/4】数组定位该顶点的入边并遍历它们（第 06–07 行）。对于每条入边，线程使用 CSC【5】src【/5】数组找到该边源处的邻居（第 08 行）。然后线程检查该邻居是否属于前一层（第 09 行）。如果是，线程将把其顶点标记为属于当前层（第 10 行），并设置一个标志，表示已访问了一个新顶点（第 11 行）。线程还将跳出循环（第 12 行）。"
+    },
+    {
+      "id": "n0056",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 15.8【/2】【/1】 A vertex-centric pull (bottom-up) BFS kernel. 【3】BFS【/3】, breadth-first search.",
+      "zh": "【1】【2】图 15.8【/2】【/1】 一个面向顶点的拉取式（自底向上）BFS 核函数。【3】BFS【/3】，广度优先搜索。"
+    },
+    {
+      "id": "n0057",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 15.9【/1】 Example of a vertex-centric pull (bottom-up) traversal from level 1 to level 2.",
+      "zh": "【1】图 15.9【/1】 一个从第 1 层到第 2 层的面向顶点的拉取式（自底向上）遍历示例。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "The justification for breaking out of the loop is as follows. For a thread to establish that its vertex is in the current level, it is sufficient for the thread’s vertex to have one neighbor in the previous level. Therefore it is unnecessary for the thread to check the rest of the neighbors. Only the threads whose vertices do not have any neighbors in the previous level will end up looping over the entire neighbors list. In 【1】Fig. 15.9【/1】, only the thread assigned to vertex 8 will loop over the entire neighbor list without breaking.",
+      "zh": "跳出循环的理由如下。要使一个线程确认其顶点位于当前层，只需该线程的顶点在前一层中有一个邻居即可。因此，该线程没有必要检查其余邻居。只有其顶点在前一层中没有任何邻居的线程，才会遍历完整的邻居列表。在【1】图 15.9【/1】中，只有分配给顶点 8 的线程会不跳出而遍历整个邻居列表。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[10]",
+      "en": "In comparing the push and pull vertex-centric parallel implementations, there are two key differences to consider that have an important impact on performance. The first difference is that in the push implementation a thread loops over its vertex’s entire neighbor list, whereas in the pull implementation a thread may break out of the loop early. For graphs with low degree and low variance, such as road networks or CAD circuit models, this difference may not be important because the neighbor lists are small and similar in size. However, for graphs with high degree and high variance, such as social networks, the neighbor lists are long and may vary substantially in size, resulting in high load imbalance and control divergence across threads. For this reason, breaking out of the loop early can provide substantial performance gains by reducing load imbalance and control divergence.",
+      "zh": "在比较面向顶点的推送式并行实现与拉取式并行实现时，有两个对性能有重要影响的关键差异需要考虑。第一个差异是，在推送式实现中，线程会遍历其顶点的整个邻居列表；而在拉取式实现中，线程可能会提前跳出循环。对于度数低且方差小的图，如道路网络或 CAD 电路模型，这一差异可能并不重要，因为邻居列表很小且大小相近。然而，对于度数高且方差大的图，如社交网络，邻居列表很长且大小可能差异很大，从而导致线程间严重的负载不均衡和控制发散。因此，提前跳出循环可以通过减少负载不均衡和控制发散来带来显著的性能提升。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[11]",
+      "en": "The second important difference between the two implementations is that in the push implementation, only the threads assigned to vertices in the previous level loop over their neighbor list, whereas in the pull implementation, all the threads assigned to any unvisited vertex loop over their neighbor list. For earlier levels, we expect to have a relatively small number of vertices per level and a large number of unvisited vertices in the graph. For this reason, the push implementation typically performs better for earlier levels because it iterates over fewer neighbor lists. In contrast, for later levels, we expect to have more vertices per level and fewer unvisited vertices in the graph. Moreover, the chances of finding a visited neighbor in the pull approach and exiting the loop early are higher. For this reason the pull implementation typically performs better for later levels.",
+      "zh": "这两种实现之间的第二个重要差异是，在推送式实现中，只有分配给前一层的顶点的线程才会遍历其邻居列表；而在拉取式实现中，所有分配给任意未访问顶点的线程都会遍历其邻居列表。对于较早的层，我们预期每层只有相对较少的顶点，而图中未访问的顶点很多。因此，对于较早的层，推送式实现通常表现更好，因为它遍历的邻居列表更少。相比之下，对于较晚的层，我们预期每层有更多顶点，而图中未访问的顶点更少。此外，在拉取式方法中，找到已访问邻居并提前退出循环的几率更高。因此，对于较晚的层，拉取式实现通常表现更好。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[12]",
+      "en": "Based on this observation, a common optimization is to use the push implementation for earlier levels, then switch to the pull implementation for later levels. This approach is often referred to as a 【1】direction-optimized【/1】 implementation. The choice of when to switch between implementations usually depends on the type of graph. Low-degree graphs usually have many levels, and it takes a while to reach a point at which the levels have many vertices and a substantial number of vertices have already been visited. On the other hand, high-degree graphs usually have few levels, and the levels grow very quickly. The high-degree graphs in which it takes only a few levels to get from any vertex to any other vertex are usually referred to as 【2】small world graphs【/2】. Because of these properties, switching from the push implementation to the pull implementation usually happens much earlier for high-degree graphs than for low-degree graphs.",
+      "zh": "基于这一观察，一种常见的优化是：在较早的层使用推送式实现，然后在较晚的层切换到拉取式实现。这种方法通常被称为【1】方向优化的【/1】实现。何时在实现之间切换通常取决于图的类型。低度数的图通常层数很多，需要一段时间才能到达各层拥有许多顶点、且相当数量的顶点已被访问的时刻。另一方面，高度数的图通常层数很少，而且各层增长非常快。只需很少的层数就能从任意顶点到达任意其他顶点的这种高度数图，通常被称为【2】小世界图【/2】。由于这些性质，对于高度数的图，从推送式实现切换到拉取式实现通常比低度数的图早得多。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[13]",
+      "en": "Recall that the push implementation uses a CSR representation of the graph, whereas the pull implementation uses a CSC representation of the graph. For this reason, if a direction-optimized implementation is to be used, both a CSR and a CSC representation of the graph need to be stored. In many applications, such as social networks or maze routing, the graph is undirected, which means that the adjacency matrix is symmetric. In this case, the CSR and CSC representations are equivalent, so only one of them needs to be stored and can be used by both implementations.",
+      "zh": "回想一下，推送式实现使用图的 CSR 表示，而拉取式实现使用图的 CSC 表示。因此，如果要使用方向优化的实现，就需要同时存储图的 CSR 和 CSC 表示。在许多应用中，如社交网络或迷宫布线，图是无向的，这意味着邻接矩阵是对称的。在这种情况下，CSR 和 CSC 表示是等价的，因此只需存储其中一种，两种实现都可以使用。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "15.4 Edge-centric parallelization of breadth-first search",
+      "zh": "15.4 面向边的广度优先搜索并行化"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "In this section we look at an edge-centric parallel implementation of BFS. In this implementation, each thread is assigned to an edge. It checks whether the source vertex of the edge belongs to the previous level and whether the destination vertex of the edge is unvisited. If so, it labels the unvisited destination vertex as belonging to the current level. Since this implementation requires accessibility to the source and destination vertices of a given edge (i.e., row and column indices of a given nonzero), a COO data structure is needed.",
+      "zh": "本节将考察 BFS 的一种面向边的并行实现。在这种实现中，每个线程被分配给一条边。它检查该边的源顶点是否属于前一层，以及该边的目标顶点是否未被访问。如果是，它就把这个未访问的目标顶点标记为属于当前层。由于这种实现需要能够访问给定边的源顶点和目标顶点（即给定非零元素的行索引和列索引），因此需要 COO 数据结构。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "【1】Fig. 15.10【/1】 shows the kernel code for the edge-centric parallel implementation, while 【2】Fig. 15.11【/2】 shows an example of how this kernel performs a traversal from level 1 to level 2. The kernel starts by assigning a thread to each edge (line 03), and each thread ensures that its edge id is within bounds (line 04). Next, each thread finds the source vertex of its edge, using the COO 【3】src【/3】 array (line 05), and checks whether the vertex belongs to the previous level (line 06). In 【4】Fig. 15.11【/4】, only the threads assigned to the outgoing edges of vertices 1 and 2 will pass this check. The threads that pass this check will locate the neighbor at the destination of the edge, using the COO 【5】dst【/5】 array (line 07), and check whether the neighbor has not been visited (line 08). If not, the thread will label the neighbor as belonging to the current level (line 09). Finally, the thread will set a flag indicating that a new vertex has been visited (line 10).",
+      "zh": "【1】图 15.10【/1】展示了面向边的并行实现的核函数代码，【2】图 15.11【/2】展示了该核函数如何从第 1 层遍历到第 2 层的示例。核函数首先为每条边分配一个线程（第 03 行），每个线程确保其边 id 在边界内（第 04 行）。接着，每个线程使用 COO【3】src【/3】数组找到其边的源顶点（第 05 行），并检查该顶点是否属于前一层（第 06 行）。在【4】图 15.11【/4】中，只有分配给顶点 1 和 2 的出边的线程能通过这一检查。通过检查的线程将使用 COO【5】dst【/5】数组定位该边目标处的邻居（第 07 行），并检查该邻居是否未被访问（第 08 行）。如果未访问，线程将把该邻居标记为属于当前层（第 09 行）。最后，线程将设置一个标志，表示已访问了一个新顶点（第 10 行）。"
+    },
+    {
+      "id": "n0066",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 15.10【/2】【/1】 An edge-centric BFS kernel. 【3】BFS【/3】, breadth-first search.",
+      "zh": "【1】【2】图 15.10【/2】【/1】 一个面向边的 BFS 核函数。【3】BFS【/3】，广度优先搜索。"
+    },
+    {
+      "id": "n0067",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 15.11【/1】 Example of an edge-centric traversal from level 1 to level 2.",
+      "zh": "【1】图 15.11【/1】 一个从第 1 层到第 2 层的面向边的遍历示例。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "The edge-centric parallel implementation has two main advantages over the vertex-centric parallel implementations. The first advantage is that the edge-centric implementation exposes more parallelism. In the vertex-centric implementations, if the number of vertices is small, we may not launch enough threads to fully occupy the device. Since a graph typically has many more edges than vertices, the edge-centric implementation can launch more threads. Hence the edge-centric implementation is usually more suitable for small graphs.",
+      "zh": "面向边的并行实现相对于面向顶点的并行实现有两个主要优势。第一个优势是，面向边的实现暴露了更多的并行性。在面向顶点的实现中，如果顶点数量很少，我们可能无法启动足够的线程来完全占满设备。由于图的边数通常远多于顶点数，面向边的实现可以启动更多的线程。因此，面向边的实现通常更适合小图。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "The second advantage of the edge-centric implementation over the vertex-centric implementations is that it exhibits less load imbalance and control divergence. In the vertex-centric implementations, each thread iterates over a different number of edges, depending on the degree of the vertex to which it is assigned. In contrast, in the edge-centric implementation, each thread traverses only one edge. With respect to the vertex-centric implementation the edge-centric implementation is an example of rearranging the mapping of threads to work or data to reduce control divergence, as was discussed in 【1】Chapter 6【/1】, Performance Considerations. The edge-centric implementation is usually more suitable for high-degree graphs that have a large variation in the degrees of vertices.",
+      "zh": "面向边的实现相对于面向顶点的实现的第二个优势是，它表现出更少的负载不均衡和控制发散。在面向顶点的实现中，每个线程遍历不同数量的边，具体取决于其被分配到的顶点的度数。相比之下，在面向边的实现中，每个线程只遍历一条边。相对于面向顶点的实现，面向边的实现是重新排列线程到工作或数据的映射以减少控制发散的一个例子，正如【1】第 6 章【/1】“性能考量”中所讨论的那样。面向边的实现通常更适合顶点度数差异很大的高度数图。"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "The disadvantage of the edge-centric implementation is that it checks every edge in the graph. In contrast, the vertex-centric implementations can skip an entire edge list if the implementation determines that a vertex is not relevant for the level. For example, consider the case in which some vertex 【1】v【/1】 has 【2】n【/2】 edges and is not relevant for a particular level. In the edge-centric implementation our launch includes 【3】n【/3】 threads, one for each edge, and each of these threads independently inspects 【4】v【/4】 and discovers that the edge is irrelevant. In contrast, in the vertex-centric implementations, our launch includes only one thread for 【5】v【/5】 that skips all 【6】n【/6】 edges after inspecting 【7】v【/7】 once to determine that it is irrelevant. Another disadvantage of the edge-centric implementation is that it uses COO, which requires more storage space to store the edges compared to CSR and CSC, which are used by the vertex-centric implementations.",
+      "zh": "面向边的实现的缺点是它会检查图中的每一条边。相比之下，面向顶点的实现如果确定某个顶点与该层无关，就可以跳过整个边列表。例如，考虑这样一种情况：某个顶点【1】v【/1】有【2】n【/2】条边，并且与某一层无关。在面向边的实现中，我们的启动包含【3】n【/3】个线程，每条边一个，每个这样的线程都独立地检查【4】v【/4】，并发现该边无关紧要。相比之下，在面向顶点的实现中，我们的启动只为【5】v【/5】分配一个线程，该线程在检查【6】v【/6】一次以确定其无关紧要后，会跳过所有【7】n【/7】条边。面向边的实现的另一个缺点是它使用 COO，与面向顶点的实现所使用的 CSR 和 CSC 相比，COO 需要更多的存储空间来存储边。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "The reader may have noticed that the code examples in the previous section and this one resemble our implementations of sparse matrix-vector multiplication (SpMV) in 【1】Chapter 14【/1】, Sparse Matrix Computation. In fact, with a slightly different formulation we can express a BFS level iteration entirely in terms of SpMV and a few other vector operations, in which the SpMV operation is the dominant operation. Beyond BFS, many other graph computations can also be formulated in terms of sparse matrix computations, using the adjacency matrix (【2】Jeremy and Gilbert, 2011【/2】). Such a formulation is often referred to as the 【3】linear-algebraic formulation【/3】 of graph problems and is the focus of an API specification known as GraphBLAS. The advantage of linear-algebraic formulations is that they can leverage mature and highly optimized parallel libraries for sparse linear algebra to perform graph computations. The disadvantage of linear-algebraic formulations is that they may miss out on optimizations that take advantage of specific properties of the graph algorithm in question.",
+      "zh": "读者可能已经注意到，上一节和本节中的代码示例与我们【1】第 14 章【/1】“稀疏矩阵计算”中的稀疏矩阵-向量乘法（SpMV）实现类似。事实上，通过稍作不同的表述，我们可以将一次 BFS 层级迭代完全表达为 SpMV 加上少量其他向量运算，其中 SpMV 是主要运算。除了 BFS，许多其他图计算也可以用邻接矩阵以稀疏矩阵运算的形式来表达（【2】Jeremy and Gilbert, 2011【/2】）。这种表述通常被称为图问题的【3】线性代数表述【/3】，是一个名为 GraphBLAS 的 API 规范的核心。线性代数表述的优势在于，它们可以利用成熟且高度优化的并行稀疏线性代数库来执行图计算。线性代数表述的缺点在于，它们可能会错失利用特定图算法性质的优化机会。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "15.5 Improving efficiency with frontiers",
+      "zh": "15.5 利用前沿提升效率"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "In the approaches that we discussed in the previous two sections, we checked every vertex or edge in every iteration for their relevance to the level in question. The advantage of this strategy is that the kernels are highly parallel and do not require any synchronization across threads. The disadvantage is that many unnecessary threads are launched and a lot of wasted work is performed. For example, in the vertex-centric implementations we launch a thread for every vertex in the graph, many of which simply discover that the vertex is not relevant and do not perform any work. Similarly, in the edge-centric implementation we launch a thread for every edge in the graph; many of the threads simply discover that the edge is not relevant and do not perform any useful work.",
+      "zh": "在前两节讨论的方法中，我们在每次迭代中都检查每个顶点或每条边与当前层是否相关。这种策略的优势在于核函数高度并行，不需要线程之间的任何同步。缺点在于启动了大量不必要的线程，并执行了大量浪费的工作。例如，在面向顶点的实现中，我们为图中的每个顶点启动一个线程，其中许多线程只是发现该顶点无关紧要，什么工作也不做。类似地，在面向边的实现中，我们为图中的每条边启动一个线程；许多线程只是发现该边无关紧要，没有执行任何有用的工作。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "In this section we aim to avoid launching unnecessary threads and eliminate the redundant checks that they perform in each iteration. We will focus on the vertex-centric push approach that was presented in 【1】Section 15.3【/1】. Recall that in the vertex-centric push approach, for each level, a thread is launched for each vertex in the graph. The thread checks whether its vertex is in the previous level, and if so, it labels all the vertex’s unvisited neighbors as belonging to the current level. On the other hand, the threads whose vertices are not in the current level do not do anything. Ideally, these threads should not even be launched. To avoid launching these threads, we can have the threads processing the vertices in the previous level collaborate to construct a 【2】frontier【/2】 of the vertices that they visit. Hence for the current level, threads need to be launched only for the vertices in that frontier (【3】Luo et al., 2010【/3】).",
+      "zh": "本节的目标是避免启动不必要的线程，并消除它们在每次迭代中执行的冗余检查。我们将重点讨论【1】第 15.3 节【/1】中介绍的面向顶点的推送式方法。回想一下，在面向顶点的推送式方法中，每一层都会为图中的每个顶点启动一个线程。该线程检查其顶点是否位于前一层，如果是，就把该顶点的所有未访问邻居标记为属于当前层。另一方面，其顶点不在当前层的线程什么也不做。理想情况下，这些线程甚至不应该被启动。为了避免启动这些线程，我们可以让处理前一层顶点的线程协作构建一个它们所访问顶点的【2】前沿【/2】（【3】Luo et al., 2010【/3】）。因此，对于当前层，只需要为前沿中的顶点启动线程。"
+    }
+  ]
+}

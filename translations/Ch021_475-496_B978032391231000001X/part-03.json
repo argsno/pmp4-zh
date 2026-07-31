@@ -1,0 +1,155 @@
+{
+  "page": "Ch021_475-496_B978032391231000001X",
+  "nodes": [
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "As the center separates the four quadrants, one can determine which quadrant each point in the current node belongs to by comparing it with the center point. The number of points in each quadrant are counted (line 26). The device function 【1】count_points_in_children()【/1】 can be found in 【2】Fig. 21.11【/2】. These are simplified for clarity reasons. The threads of the block collaboratively go through the range of points and use atomic operations to update the counters in shared memory for each quadrant.",
+      "zh": "由于中心将四个象限分开，可以通过把每个点与中心点比较来确定当前节点中的每个点属于哪个象限。每个象限中的点数被统计出来（第 26 行）。设备函数【1】count_points_in_children()【/1】 可以在【2】图 21.11【/2】 中找到。为清晰起见，这些函数做了简化。线程块的各线程协同遍历点的范围，并使用原子操作更新共享内存中每个象限的计数器。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
+      "en": "The device function 【1】scan_for_offsets()【/1】 is called then (line 29). As can be seen in 【2】Fig. 21.11【/2】, it performs a scan on the four counters in shared memory. Then it adds the global offset of the parent quadrant to these values to derive the starting offset for each quadrant’s group in the buffer.",
+      "zh": "随后调用设备函数【1】scan_for_offsets()【/1】（第 29 行）。如【2】图 21.11【/2】 所示，它对共享内存中的四个计数器执行一次扫描。然后，它把父象限的全局偏移量加到这些值上，从而得出缓冲区中每个象限组的起始偏移量。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
+      "en": "Using the quadrants’ offsets, the points are reordered with 【1】reorder_points()【/1】 (line 32). For simplicity this device function (【2】Fig. 21.11【/2】) uses an atomic operation on one of the four quadrant counters to derive the location for placing each point.",
+      "zh": "利用各象限的偏移量，使用【1】reorder_points()【/1】 对点进行重排（第 32 行）。为简单起见，这个设备函数（【2】图 21.11【/2】）对四个象限计数器中的一个执行原子操作，以得出每个点的放置位置。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[12]",
+      "en": "Finally, the last thread of the block (line 35) determines the next available location in the node array for children nodes (line 37), prepares the new node contents for the child quadrants (line 40), and launches one child kernel with four thread blocks (line 43). The device function 【1】prepare_children()【/1】 prepares the new node contents for the children by setting the limits of the children’s bounding boxes and the range of points in each quadrant. The 【2】prepare_children()【/2】 function can be found in Figure 13.14 (line 75).",
+      "zh": "最后，线程块中的最后一个线程（第 35 行）确定节点数组中可用于子节点的下一个位置（第 37 行），为子象限准备新的节点内容（第 40 行），并启动一个包含四个线程块的子核函数（第 43 行）。设备函数【1】prepare_children()【/1】 通过设置子节点的边界框界限以及每个象限中点的范围来为子节点准备新的节点内容。【2】prepare_children()【/2】 函数可以在图 13.14 中找到（第 75 行）。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[13]",
+      "en": "The rest of the definitions can be found in 【1】Appendix A21.1【/1】.",
+      "zh": "其余定义见【1】附录 A21.1【/1】。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "21.5 Important considerations",
+      "zh": "21.5 重要考量"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "In this section we will briefly explain some important considerations for the execution behavior of programs that use dynamic parallelism. It is important for a programmer to understand these considerations well in order to use dynamic parallelism confidently.",
+      "zh": "在本节中，我们将简要说明使用动态并行的程序在执行行为方面的一些重要考量。程序员要充分理解这些考量，才能自信地使用动态并行。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[1]/h3[1]",
+      "en": "Memory and data visibility",
+      "zh": "内存与数据可见性"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[1]/p[1]",
+      "en": "When a parent thread passes a memory pointer to a child grid, it must ensure that the memory being pointed to is accessible to the child grid so that the child grid does not attempt to access invalid memory. The memory that can be accessed by both parent threads and their child grids includes global memory, constant memory, and texture memory. A parent thread should not pass pointers to local memory or shared memory to their child grids because local memory and shared memory are private to the thread and the thread block, respectively.",
+      "zh": "当父线程向子网格传递内存指针时，它必须确保所指向的内存对子网格是可访问的，这样子网格就不会试图访问无效的内存。父线程及其子网格都能访问的内存包括全局内存、常量内存和纹理内存。父线程不应向子网格传递指向局部内存或共享内存的指针，因为局部内存和共享内存分别只对线程自身和线程块私有。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[1]/p[2]",
+      "en": "Besides ensuring that the memory that is passed by the parent thread to the child grid is accessible to the child grid, programmers must also be aware of when the data written to that memory by a parent thread will be visible to the child grid and vice versa. There are two points in the execution at which the parent thread and the child grid have the same view of memory: when the parent thread launches the child grid and when the child grid completes as signaled by the completion of a synchronization API call by the parent thread. In other words, when a parent thread launches a child grid, any updates to memory prior to that launch will be seen by the child grid, but there is no such guarantee for updates after that launch. Also, there is no guarantee that any updates to memory made by the child grid will be visible to the parent thread until after the parent thread has synchronized on the completion of the child grid.",
+      "zh": "除了确保父线程传递给子网格的内存对子网格可访问之外，程序员还必须清楚父线程写入该内存的数据何时对子网格可见，反之亦然。在执行的进程中，父线程和子网格对内存有一致视图的时刻有两个：父线程启动子网格的时刻，以及父线程通过同步 API 调用的完成得知子网格完成之时。换句话说，当父线程启动子网格时，子网格能够看到该启动之前对内存的所有更新，但对该启动之后的更新则没有这种保证。同样，在父线程对子网格的完成进行同步之前，子网格对内存所做的任何更新也都没有保证对父线程可见。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[1]/p[3]",
+      "en": "We refer the reader to the CUDA C++ Programming Guide for more details about memory and data visibility between parent threads and child grids (【1】NVIDIA Corporation, 2021【/1】).",
+      "zh": "关于父线程与子网格之间内存和数据可见性的更多细节，请读者参阅 CUDA C++ 编程指南（【1】NVIDIA Corporation, 2021【/1】）。"
+    },
+    {
+      "id": "st0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[2]/h3[1]",
+      "en": "Pending launch pool configuration",
+      "zh": "待启动池配置"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[2]/p[1]",
+      "en": "The pending launch pool is a buffer that tracks the kernels that are executing or waiting to be executed. This pool is allocated a fixed amount of space, thereby supporting a fixed number of pending kernel calls (2048 by default). If this number is exceeded, a virtualized pool is used, leading to a significant slowdown, which can be an order of magnitude or more. To avoid this slowdown, the programmer can increase the size of the fixed pool by executing the 【1】cudaDeviceSetLimit()【/1】 API call from the host function to set the 【2】cudaLimitDevRuntimePendingLaunchCount【/2】 configuration.",
+      "zh": "待启动池是一个缓冲区，用于跟踪正在执行或等待执行的核函数。该池被分配固定大小的空间，因此可以支持固定数量的待启动核函数调用（默认为 2048）。如果超出这个数量，就会使用虚拟化池，导致显著的性能下降，下降幅度可能达到一个数量级或更多。为了避免这种性能下降，程序员可以在主机函数中执行【1】cudaDeviceSetLimit()【/1】 API 调用来设置【2】cudaLimitDevRuntimePendingLaunchCount【/2】 配置，从而增大固定池的大小。"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[2]/p[2]",
+      "en": "For example, in the Bezier curve calculation in 【1】Section 21.3【/1】, if 【2】N_LINES【/2】 is set to 4096, then 4096 child grids will be launched, so half of the launches will use the virtualized pool. This will incur a significant performance penalty. However, if the fixed-size pool is set to 4096, the execution time will be reduced substantially.",
+      "zh": "例如，在【1】第 21.3 节【/1】 的贝塞尔曲线计算中，如果【2】N_LINES【/2】 设为 4096，那么将启动 4096 个子网格，其中一半的启动将使用虚拟化池。这会造成严重的性能损失。然而，如果固定大小池设为 4096，执行时间将大幅缩短。"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[2]/p[3]",
+      "en": "As a general recommendation, the size of the fixed-size pool should be set to the expected number of launched grids (if it exceeds the default size). In the Bezier curves example we would call 【1】cudaDeviceSetLimit(cudaLimitDevRuntimePendingLaunchCount, N_LINES)【/1】 before calling the 【2】computeBezierLines_parent()【/2】 kernel.",
+      "zh": "作为一般性建议，固定大小池的大小应设置为预期启动的网格数量（如果它超过默认大小的话）。在贝塞尔曲线示例中，我们会先调用【1】cudaDeviceSetLimit(cudaLimitDevRuntimePendingLaunchCount, N_LINES)【/1】，再调用【2】computeBezierLines_parent()【/2】 核函数。"
+    },
+    {
+      "id": "st0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[3]/h3[1]",
+      "en": "Streams",
+      "zh": "流"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[3]/p[1]",
+      "en": "Just as host code can use streams to execute kernels concurrently, device threads can use streams in launching grids with dynamic parallelism. The scope of a stream is private to the block in which the stream was created. When a stream is not specified in a kernel call, the default NULL stream in the block is used by all threads. This means that all grids that are launched in the same block will be serialized even if they were launched by different threads. However, it is often the case that grids launched by different threads in a block are independent and can be executed concurrently. Therefore programmers must be careful to explicitly use different streams in each thread if they wish to avoid the performance penalty from serialization.",
+      "zh": "正如主机代码可以使用流来并发执行核函数一样，设备线程在使用动态并行启动网格时也可以使用流。流的范围对其创建所在的线程块是私有的。当核函数调用未指定流时，线程块中所有线程都使用默认的 NULL 流。这意味着在同一线程块中启动的所有网格都将被串行化，即使它们是由不同线程启动的。然而，通常情况下，线程块中不同线程启动的网格是相互独立的，可以并发执行。因此，如果程序员希望避免串行化带来的性能损失，就必须注意在每个线程中显式使用不同的流。"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[3]/p[2]",
+      "en": "The Bezier curves example in 【1】Section 21.3【/1】 launches as many child grids as there are parent threads in the 【2】computeBezierLines_parent()【/2】 kernel (line 19 in 【3】Fig. 21.7【/3】). If the default NULL stream is used, all the grids that are launched by the same parent block will be serialized. Thus using the default NULL stream in launching the 【4】computeBezierLines_child()【/4】 kernel can result in a drastic reduction in parallelism compared to the original kernel without dynamic parallelism.",
+      "zh": "【1】第 21.3 节【/1】 的贝塞尔曲线示例启动的子网格数量与【2】computeBezierLines_parent()【/2】 核函数中的父线程数量相同（【3】图 21.7【/3】 中的第 19 行）。如果使用默认的 NULL 流，同一父线程块启动的所有网格都将被串行化。因此，在启动【4】computeBezierLines_child()【/4】 核函数时使用默认 NULL 流，与不使用动态并行的原核函数相比，会大幅降低并行性。"
+    },
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[3]/p[3]",
+      "en": "If more concurrency is desired, named streams must be created and used in each thread. 【1】Fig. 21.12【/1】 shows the code that should replace line 19 in 【2】Fig. 21.7【/2】. With this code, kernels that are launched from the same thread block will be placed in different streams and can run concurrently. This would better utilize all SMs, leading to a considerable reduction in the execution time.",
+      "zh": "如果需要更高的并发度，则必须在每个线程中创建并使用命名流。【1】图 21.12【/1】 展示了应替换【2】图 21.7【/2】 中第 19 行的代码。使用这段代码后，从同一线程块启动的核函数将被放入不同的流中，可以并发运行。这将更好地利用所有 SM，使执行时间显著缩短。"
+    },
+    {
+      "id": "n0094",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 21.12【/2】【/1】 Child kernel launch with named streams.",
+      "zh": "【1】【2】图 21.12【/2】【/1】 使用命名流的子核函数启动。"
+    },
+    {
+      "id": "st0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[4]/h3[1]",
+      "en": "Nesting depth",
+      "zh": "嵌套深度"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[4]/p[1]",
+      "en": "Kernels that are launched with dynamic parallelism may themselves call other kernels, which may in turn call other kernels, and so on. We saw an example of such a kernel in the quadtree application in 【1】Section 12.4【/1】. Each subordinate launch is considered a new 【2】nesting level【/2】, and the total number of levels that are reached is called the 【3】nesting depth【/3】. The maximum nesting depth supported by current hardware is 24 levels. For this reason, kernels such as the one in the quadtree example should check this limit before deciding whether to make a dynamic launch.",
+      "zh": "通过动态并行启动的核函数本身可以调用其他核函数，而这些核函数又可以继续调用其他核函数，依此类推。我们在【1】第 12.4 节【/1】 的四叉树应用中看到过这样的核函数示例。每一次下级启动都被视为一个新的【2】嵌套层级【/2】，而达到的层级总数称为【3】嵌套深度【/3】。当前硬件支持的最大嵌套深度为 24 层。因此，像四叉树示例中的那种核函数，在决定是否进行动态启动之前，应当检查这个限制。"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/section[4]/p[2]",
+      "en": "In the presence of parent-child synchronization there are additional constraints on the nesting depth due to the amount of memory required by the system to store the state of the parent grid. This constraint is referred to as the 【1】synchronization depth【/1】. We refer the reader to the CUDA C++ Programming Guide for more details about the nesting depth and synchronization depth (【2】NVIDIA Corporation, 2021【/2】).",
+      "zh": "在存在父子同步的情况下，由于系统需要存储父网格状态的内存数量，嵌套深度还会受到额外的限制。这一限制被称为【1】同步深度【/1】。关于嵌套深度和同步深度的更多细节，请读者参阅 CUDA C++ 编程指南（【2】NVIDIA Corporation, 2021【/2】）。"
+    },
+    {
+      "id": "st0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "21.6 Summary",
+      "zh": "21.6 小结"
+    },
+    {
+      "id": "p0370",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "CUDA dynamic parallelism extends the CUDA programming model to allow kernels to call other kernels. This allows each thread to dynamically discover work and launch new grids according to the amount of work that is newly discovered. It also supports dynamic allocation of device memory by threads. As we showed in the Bezier curve calculation example, these extensions can lead to better work balance across threads and blocks as well as more efficient memory usage. CUDA Dynamic Parallelism also helps programmers to implement recursive algorithms, as the quadtree example shows.",
+      "zh": "CUDA 动态并行扩展了 CUDA 编程模型，允许核函数调用其他核函数。这使得每个线程能够动态发现工作，并根据新发现的工作量启动新的网格。它还支持线程动态分配设备内存。正如我们在贝塞尔曲线计算示例中所展示的，这些扩展可以带来更好的线程间和线程块间工作均衡，以及更高效的内存使用。CUDA 动态并行还帮助程序员实现递归算法，正如四叉树示例所示。"
+    }
+  ]
+}

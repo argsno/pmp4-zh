@@ -1,0 +1,155 @@
+{
+  "page": "Ch007_151-171_B9780323912310000082",
+  "nodes": [
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "As we discussed in 【1】Chapter 5【/1】, Memory Architecture and Data Locality (【2】Table 5.1【/2】), the CUDA C allows programmers to declare variables to reside in the constant memory. Like global memory variables, constant memory variables are visible to all thread blocks. The main difference is that the value of a constant memory variable cannot be modified by threads during kernel execution. Furthermore, the size of the constant memory is quite small, currently at 64 KB.",
+      "zh": "正如我们在【1】第 5 章【/1】《内存体系结构与数据局部性》（【2】表 5.1【/2】）中讨论过的，CUDA C 允许程序员声明驻留在常量内存中的变量。与全局内存变量一样，常量内存变量对所有线程块可见。主要区别在于，常量内存变量的值在核函数执行期间不能被线程修改。此外，常量内存的容量相当小，目前为 64 KB。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "To use constant memory, the host code needs to allocate and copy constant memory variables in a different way than global memory variables. We assume that the radius of the filter is specified in the compile-time constant 【1】FILTER_RADIUS【/1】. To declare an F array in constant memory, the host code declares it a global variable as follows:",
+      "zh": "要使用常量内存，主机代码需要以不同于全局内存变量的方式来分配和拷贝常量内存变量。我们假定滤波器的半径在编译期常量【1】FILTER_RADIUS【/1】中指定。为了在常量内存中声明一个 F 数组，主机代码将其声明为全局变量，如下所示："
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "Note that this is a global variable declaration and should be outside any function in the source file. The keyword 【1】__constant__【/1】 (two underscores on each side) tells the compiler that array F should be placed into the device constant memory.",
+      "zh": "请注意，这是一个全局变量声明，应放在源文件中任何函数之外。关键字【1】__constant__【/1】（两侧各两个下划线）告诉编译器，数组 F 应放入设备常量内存中。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "Assume that the host code has already allocated and initialized the mask in a filter 【1】F_h【/1】 array in the host memory with 【2】(2*FILTER_RADIUS+1)2【/2】 elements. The contents of the 【3】F_h【/3】 can be transferred from the host memory to F in the device constant memory as follows:",
+      "zh": "假设主机代码已经分配并在主机内存的滤波器【1】F_h【/1】数组中初始化了掩码，该数组包含【2】(2*FILTER_RADIUS+1)2【/2】个元素。可以将【3】F_h【/3】的内容从主机内存传输到设备常量内存中的 F，如下所示："
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "Note that this is a special memory copy function that informs the CUDA runtime that the data being copied into the constant memory will not be changed during kernel execution. In general, the use of 【1】cudaMemcpyToSymble()【/1】 function is as follows:",
+      "zh": "请注意，这是一个特殊的内存拷贝函数，它告知 CUDA 运行时，拷贝到常量内存中的数据在核函数执行期间不会被修改。一般来说，【1】cudaMemcpyToSymble()【/1】函数的使用方式如下："
+    },
+    {
+      "id": "n0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "where 【1】dest【/1】 is a pointer to the destination location in the constant memory, 【2】src【/2】 is a pointer to the source data in the host memory, and 【3】size【/3】 is the number of bytes to be copied.【4】【5】1【/5】【/4】",
+      "zh": "其中【1】dest【/1】是指向常量内存中目标位置的指针，【2】src【/2】是指向主机内存中源数据的指针，【3】size【/3】是要拷贝的字节数。【4】【5】1【/5】【/4】"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "Kernel functions access constant memory variables as global variables. Therefore their pointers do not need to be passed to the kernel as arguments. We can revise our kernel to use the constant memory as shown in 【1】Fig. 7.9【/1】. Note that the kernel looks almost identical to that in 【2】Fig. 7.7【/2】. The only difference is that F is no longer accessed through a pointer that is passed in as a parameter. It is now accessed as a global variable. Keep in mind that all the C language scoping rules for global variables apply here. If the host code and kernel code are in different files, the kernel code file must include the relevant external declaration information to ensure that the declaration of F is visible to the kernel.",
+      "zh": "核函数像访问全局变量一样访问常量内存变量。因此，它们的指针不需要作为参数传给核函数。我们可以像【1】图 7.9【/1】所示那样修改核函数以使用常量内存。请注意，该核函数与【2】图 7.7【/2】中的核函数看起来几乎完全相同。唯一的区别是，F 不再通过作为参数传入的指针访问，而是作为全局变量访问。请记住，C 语言中关于全局变量的所有作用域规则在这里都适用。如果主机代码和核函数代码位于不同的文件中，那么核函数代码文件必须包含相应的外部声明信息，以确保 F 的声明对核函数可见。"
+    },
+    {
+      "id": "n0057",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.9【/1】 A 2D convolution kernel using constant memory for F.",
+      "zh": "【1】图 7.9【/1】 一个使用常量内存存放 F 的 2D 卷积核函数。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "Like global memory variables, constant memory variables are also located in DRAM. However, because the CUDA runtime knows that constant memory variables are not modified during kernel execution, it directs the hardware to aggressively cache the constant memory variables during kernel execution. To understand the benefit of constant memory usage, we need to first understand more about modern processor memory and cache hierarchies.",
+      "zh": "与全局内存变量一样，常量内存变量也位于 DRAM 中。然而，由于 CUDA 运行时知道常量内存变量在核函数执行期间不会被修改，它会指示硬件在核函数执行期间积极缓存这些常量内存变量。要理解使用常量内存的好处，我们需要先更深入地了解现代处理器的内存和缓存层次结构。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[10]",
+      "en": "As we discussed in 【1】Chapter 6【/1】, Performance Considerations, the long latency and limited bandwidth of DRAM form a bottleneck in virtually all modern processors. To mitigate the effect of this memory bottleneck, modern processors commonly employ on-chip cache memories, or caches, to reduce the number of variables that need to be accessed from the main memory (DRAM), as shown in 【2】Fig. 7.10【/2】.",
+      "zh": "正如我们在【1】第 6 章【/1】《性能考量》中讨论过的，DRAM 的长延迟和有限带宽在几乎所有现代处理器中都构成瓶颈。为了减轻这一内存瓶颈的影响，现代处理器通常采用片上缓存存储器（简称缓存），以减少需要从主存（DRAM）访问的变量数量，如【2】图 7.10【/2】所示。"
+    },
+    {
+      "id": "n0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[6]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.10【/1】 A simplified view of the cache hierarchy of modern processors.",
+      "zh": "【1】图 7.10【/1】 现代处理器缓存层次的简化视图。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[11]",
+      "en": "Unlike the CUDA shared memory, or scratchpad memories in general, caches are “transparent” to programs. That is, to use CUDA shared memory to hold the value of a global variable, a program needs to declare variables as 【1】__shared__【/1】 and explicitly copy the value of the global memory variable into the shared memory variable. On the other hand, in using caches, the program simply accesses the original global memory variables. The processor hardware will automatically retain the most recently or frequently used variables in the cache and remember their original global memory address. When one of the retained variables is used later, the hardware will detect from their addresses that a copy of the variable is available in cache. The value of the variable will then be served from the cache, eliminating the need to access DRAM.",
+      "zh": "与 CUDA 共享内存（更一般地说是便笺存储器）不同，缓存对程序是“透明”的。也就是说，要使用 CUDA 共享内存来保存全局变量的值，程序需要把变量声明为【1】__shared__【/1】，并显式地把全局内存变量的值拷贝到共享内存变量中。而使用缓存时，程序只需访问原来的全局内存变量。处理器硬件会自动在缓存中保留最近或经常使用的变量，并记住它们原来的全局内存地址。当之后用到某个被保留的变量时，硬件会从其地址判断出缓存中已有该变量的副本，然后直接从缓存提供该变量的值，从而无需访问 DRAM。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[12]",
+      "en": "There is a tradeoff between the size of a memory and the speed of a memory. As a result, modern processors often employ multiple levels of caches. The numbering convention for these cache levels reflects the distance to the processor. The lowest level, L1 or level 1, is the cache that is directly attached to a processor core, as shown in 【1】Fig. 7.10【/1】. It runs at a speed close to that of the processor in both latency and bandwidth. However, an L1 cache is small, typically between 16 and 64 KB in capacity. L2 caches are larger, in the range of a few hundred kilobytes to a small number of MBs but can take tens of cycles to access. They are typically shared among multiple processor cores, or streaming multiprocessors (SMs) in a CUDA device, so the access bandwidth is shared among SMs. In some high-end processors today, there are even L3 caches that can be of hundreds of megabytes in size.",
+      "zh": "内存的容量与速度之间存在权衡。因此，现代处理器通常采用多级缓存。这些缓存级别的编号约定反映了它们到处理器的距离。最低一级的 L1（第 1 级）缓存直接挂在处理器核心上，如【1】图 7.10【/1】所示，其延迟和带宽都接近处理器本身的速度。然而，L1 缓存的容量很小，通常为 16 至 64 KB。L2 缓存更大，容量从几百 KB 到几 MB，但访问可能需要几十个时钟周期。它们通常在多个处理器核心（即 CUDA 设备中的流式多处理器（SM））之间共享，因此访问带宽也是各 SM 共享的。在当今一些高端处理器中，甚至还有容量可达数百 MB 的 L3 缓存。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[13]",
+      "en": "Constant memory variables play an interesting role in designing and using memories in massively parallel processors. Since these constant memory variables are not modified during kernel execution, there is no need to support writes by threads when caching them in an SM. Supporting high-throughput writes into a general cache requires sophisticated hardware logic and is costly in terms of chip area and power consumption. Without the need for supporting writes, a specialized cache for constant memory variables can be designed in a highly efficient manner in terms of chip area and power consumption. Furthermore, since the constant memory is quite small (64 KB), a small, specialized cache can be highly effective in capturing the heavily used constant memory variables for each kernel. This specialized cache is called a 【1】constant cache【/1】 in modern GPUs. As a result, when all threads in a warp access the same constant memory variable, as is the case of F in 【2】Fig. 7.9【/2】, where the indices for accessing F are independent of the thread indices, the constant caches can provide a tremendous amount of bandwidth to satisfy the data needs of these threads. Also, since the size of F is typically small, we can assume that all F elements are effectively always accessed from the constant cache. Therefore we can simply assume that no DRAM bandwidth is spent on accesses to the F elements. With the use of constant memory and caching, we have effectively doubled the ratio of floating-point arithmetic to memory access to around 0.5 OP/B (2 operations for every 4 bytes loaded on line 10).",
+      "zh": "常量内存变量在大规模并行处理器的内存设计与使用中扮演着一个有趣的角色。由于这些常量内存变量在核函数执行期间不会被修改，因此在 SM 中缓存它们时，无需支持线程写入。支持向通用缓存进行高吞吐量写入需要复杂的硬件逻辑，在芯片面积和功耗方面代价高昂。由于无需支持写入，可以针对常量内存变量设计专用缓存，使它在芯片面积和功耗方面都非常高效。此外，由于常量内存相当小（64 KB），一个小型的专用缓存就能非常有效地容纳每个核函数大量使用的常量内存变量。这种专用缓存在现代 GPU 中被称为【1】常量缓存【/1】。因此，当一个线程束中的所有线程访问同一个常量内存变量时——如【2】图 7.9【/2】中 F 的情形，其中访问 F 的索引与线程索引无关——常量缓存可以提供巨大的带宽来满足这些线程的数据需求。另外，由于 F 的尺寸通常很小，我们可以假定所有 F 元素实际上总是从常量缓存中访问。因此，我们可以简单假定没有 DRAM 带宽花费在访问 F 元素上。通过使用常量内存和缓存，我们实际上把浮点运算与内存访问之比提高了一倍，达到约 0.5 OP/B（第 10 行每加载 4 字节执行 2 次运算）。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[14]",
+      "en": "As it turns out, the accesses to the input N array elements can also benefit from caching. We will come back to this point in 【1】Section 7.5【/1】.",
+      "zh": "事实证明，对输入 N 数组元素的访问也能从缓存中受益。我们将在【1】第 7.5 节【/1】回到这一点。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "7.4 Tiled convolution with halo cells",
+      "zh": "7.4 带光环单元的分块卷积"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "We can address the memory bandwidth bottleneck of convolution with a tiled convolution algorithm. Recall that in a tiled algorithm, threads collaborate to load input elements into an on-chip memory for subsequent use of these elements. We will first establish the definitions of input and output tiles, since these definitions are important for understanding the design of the algorithm. We will refer to the collection of output elements processed by each block as an 【1】output tile【/1】. Recall that 【2】Fig. 7.6【/2】 shows a toy example of a 16 × 16 2D convolution using 16 blocks of 16 threads each. In that example there are 16 output tiles. Keep in mind that we use 16 threads per block to keep the example small. In practice, there should be at least 32 threads, or one warp, per block and typically many more to achieve good occupancy and data reuse. From this point on, we will assume that the F elements are in the constant memory.",
+      "zh": "我们可以用分块卷积算法来解决卷积的内存带宽瓶颈。回顾一下，在分块算法中，线程协作把输入元素加载到片上内存中，供后续使用。我们首先确立输入分块和输出分块的定义，因为这些定义对理解算法的设计很重要。我们把每个线程块处理的输出元素集合称为一个【1】输出分块【/1】。回顾【2】图 7.6【/2】，它展示了一个 16 × 16 的 2D 卷积小型示例，使用 16 个线程块，每块 16 个线程。在那个示例中一共有 16 个输出分块。请记住，我们使用每块 16 个线程只是为了把示例做小。在实践中，每个线程块至少应有 32 个线程（即一个线程束），通常还要多得多，以获得良好的占用率和数据复用。从现在开始，我们将假定 F 元素位于常量内存中。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "We define an input tile as the collection of input N elements that are needed to calculate the P elements in an output tile. 【1】Fig. 7.11【/1】 shows the input tile (the shaded patch on the left side) that corresponds to an output tile (the shaded patch on the right side). Note that the dimensions of the input tile need to be extended by the radius of the filter (2 in this example) in each direction to ensure that it includes all the halo input elements that are needed for calculating the P elements at the edges of the output tile. This extension can make the input tiles significantly larger than output tiles. In this toy example, each output tile consists of 4【2】2【/2】 = 16 P-elements, whereas each input tile consists of (4 + 4)【3】2【/3】 = 8【4】2【/4】 = 64 elements. In this case, the input tiles are 4× larger than the output tiles. However, this large ratio is because we assume a tiny output tile dimension for ease of visualization in the toy example. In practice, the output tile dimensions would be much larger, and the ratio between input tile size and output tile size would be closer to 1.0. For example, if the output size is 16 × 16 = 256, with the same 5 × 5 filter, the input tile size would be (16 + 4)【5】2【/5】 = 400. The ratio between the input tile size and the output size would be about 1.6. Although this ratio is much less than 4, it shows that the input tile size can still be significantly larger than output tiles even for practical output tile dimensions.",
+      "zh": "我们将输入分块定义为计算一个输出分块中的 P 元素所需的输入 N 元素的集合。【1】图 7.11【/1】展示了与一个输出分块（右侧阴影区域）对应的输入分块（左侧阴影区域）。请注意，输入分块的尺寸需要在每个方向上都向外扩展滤波器半径（本例中为 2），以确保它包含计算输出分块边缘处 P 元素所需的全部光环输入元素。这种扩展会使输入分块明显大于输出分块。在这个小型示例中，每个输出分块包含 4【2】2【/2】= 16 个 P 元素，而每个输入分块包含（4 + 4）【3】2【/3】= 8【4】2【/4】= 64 个元素。在这种情况下，输入分块比输出分块大 4 倍。不过，这个较大的比值是因为我们在小型示例中为便于可视化而假定了极小的输出分块尺寸。在实践中，输出分块的尺寸会大得多，输入分块大小与输出分块大小之比会更接近 1.0。例如，如果输出尺寸为 16 × 16 = 256，在同样的 5 × 5 滤波器下，输入分块大小将为（16 + 4）【5】2【/5】= 400，输入分块大小与输出尺寸之比约为 1.6。虽然这个比值远小于 4，但它表明，即使对于实际规模的输出分块尺寸，输入分块仍然可能明显大于输出分块。"
+    },
+    {
+      "id": "n0068",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.11【/1】 Input tile versus output tile in a 2D convolution.",
+      "zh": "【1】图 7.11【/1】 2D 卷积中的输入分块与输出分块。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "In this section we present a class of tiled convolution algorithms in which all threads in a block first collaboratively load the input tile into the shared memory before they calculate the elements of the output tile by accessing the input elements from the shared memory. This should sound familiar to the reader; the strategy resembles that of the tiled matrix multiplication algorithms that were discussed in 【1】Chapter 5【/1】, Memory Architecture and Data Locality. The main difference is that the tiled matrix multiplication algorithms in 【2】Chapter 5【/2】, Memory Architecture and Data Locality, assume that the input tiles are of the same dimension as the output tiles, whereas the convolution input tiles are larger than the output tiles. This difference between input tile size and output tile size complicates the design of tiled convolution kernels.",
+      "zh": "本节介绍一类分块卷积算法：线程块中的全部线程首先协作把输入分块加载到共享内存中，然后再通过访问共享内存中的输入元素来计算输出分块的元素。读者应该对此感到熟悉；这一策略与【1】第 5 章【/1】《内存体系结构与数据局部性》中讨论的分块矩阵乘法算法类似。主要区别在于，【2】第 5 章【/2】《内存体系结构与数据局部性》中的分块矩阵乘法算法假定输入分块与输出分块的维度相同，而卷积的输入分块大于输出分块。输入分块大小与输出分块大小之间的这种差异使分块卷积核函数的设计变得复杂。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "There are two simple thread organizations for addressing the discrepancy between the input tile size and the output tile size. The first one launches thread blocks whose dimension matches that of the input tiles. This simplifies the loading of the input tiles, as each thread needs to load just one input element. However, since the block dimension is larger than that of the output tile, some of the threads need to be disabled during the calculation of output elements, which can reduce the efficiency of execution resource utilization. The second approach launches blocks whose dimension matches that of the output tiles. On one hand, this second strategy makes the input tile loading more complex, as the threads need to iterate to ensure that all input tile elements are loaded. On the other hand, it simplifies the calculation of the output elements, since the dimension of the block is the same as the output tile, and there is no need to disable any threads during the calculation of output elements. We will present the design of a kernel based on the first thread organization and leave the second organization as an exercise.",
+      "zh": "针对输入分块大小与输出分块大小之间的差异，有两种简单的线程组织方式。第一种是启动维度与输入分块匹配的线程块。这简化了输入分块的加载，因为每个线程只需加载一个输入元素。然而，由于线程块维度大于输出分块，在计算输出元素时需要停用部分线程，这可能会降低执行资源利用的效率。第二种是启动维度与输出分块匹配的线程块。一方面，这种策略使输入分块的加载更复杂，因为线程需要迭代多次，以确保所有输入分块元素都被加载。另一方面，它简化了输出元素的计算，因为线程块维度与输出分块相同，在计算输出元素期间无需停用任何线程。我们将给出基于第一种线程组织方式的核函数设计，并把第二种组织方式留作练习。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "【1】Fig. 7.12【/1】 shows a kernel that is based on the first thread organization. Each thread first calculates the column index (【2】col【/2】) and row index (【3】row【/3】) of the input or output element that it is responsible for loading or computing (lines 06–07). The kernel allocates a shared memory array 【4】N_s【/4】 whose size is the same as an input tile (line 09) and loads the input tile to the shared memory array (lines 10–15). The conditions in line 10 are used by each thread to check whether the input tile element that it is attempting to load is a ghost cell. If so, the thread does not perform a memory load. Rather, it places a zero into the shared memory. All threads perform a barrier synchronization (line 15) to ensure that the entire input tile is in place in the shared memory before any thread is allowed to proceed with the calculation of output elements.",
+      "zh": "【1】图 7.12【/1】展示了基于第一种线程组织方式的核函数。每个线程首先计算它负责加载或计算的输入或输出元素的列索引（【2】col【/2】）和行索引（【3】row【/3】）（第 06–07 行）。该核函数分配一个大小与输入分块相同的共享内存数组【4】N_s【/4】（第 09 行），并把输入分块加载到该共享内存数组中（第 10–15 行）。第 10 行的条件用于让每个线程检查它试图加载的输入分块元素是否为幽灵单元。如果是，该线程不执行内存加载，而是在共享内存中放入一个零。所有线程执行一次屏障同步（第 15 行），以确保整个输入分块都已就位到共享内存中，之后任何线程才可以继续计算输出元素。"
+    },
+    {
+      "id": "n0072",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.12【/1】 A tiled 2D convolution kernel using constant memory for F.",
+      "zh": "【1】图 7.12【/1】 一个使用常量内存存放 F 的分块 2D 卷积核函数。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "Now that all the input tile elements are in the 【1】N_ds【/1】 array, each thread can calculate their output P element value using the 【2】N_ds【/2】 elements. Keep in mind that the output tile is smaller than the input tile and that the blocks are of the same size as the input tiles, so only a subset of the threads in each block will be used to calculate the output tile elements. There are multiple ways in which we can select the threads for this calculation. We use a design that deactivates 【3】FILTER_RADIUS【/3】 exterior layers of threads, as illustrated in 【4】Fig. 7.13【/4】.",
+      "zh": "现在所有输入分块元素都已放入【1】N_ds【/1】数组中，每个线程都可以利用【2】N_ds【/2】元素计算其输出 P 元素的值。请记住，输出分块小于输入分块，而且线程块与输入分块大小相同，因此每个线程块中只有一部分线程会用于计算输出分块元素。选择哪些线程来计算有多种方式。我们采用的设计会停用【3】FILTER_RADIUS【/3】圈外层线程，如【4】图 7.13【/4】所示。"
+    },
+    {
+      "id": "n0074",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.13【/1】 A small example that illustrates the thread organization for using the input tile elements in the shared memory to calculate the output tile elements.",
+      "zh": "【1】图 7.13【/1】 一个小示例，说明利用共享内存中的输入分块元素计算输出分块元素的线程组织方式。"
+    }
+  ]
+}

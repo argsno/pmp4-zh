@@ -1,0 +1,155 @@
+{
+  "page": "Ch018_415-431_B9780323912310000094",
+  "nodes": [
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "【1】Fig. 18.3【/1】 shows the base C code of the DCS code. The function is written to process a two-dimensional (2D) slice of a 3D grid. The function will be called repeatedly for all the slices of the modeled space. The structure of the function is quite simple with three levels of 【2】for【/2】 loops. The outer two levels iterate over the 【3】y【/3】 dimension and the 【4】x【/4】 dimension of the grid point space. For each grid point, the innermost for loop iterates over all atoms, calculating the contribution of electrostatic potential energy from all atoms to the grid point. Note that each atom is represented by four consecutive elements of the atoms[] array. The first three elements store the 【5】x【/5】, 【6】y【/6】, and 【7】z【/7】 coordinates of the atom and the fourth element the electrical charge of the atom. At the end of the innermost loop, the accumulated value of the grid point is written out to the grid data structure. The outer loops then iterate and take the execution to the next grid point.",
+      "zh": "【1】图 18.3【/1】给出了 DCS 代码的基础 C 代码。该函数用于处理 3D 网格的二维（2D）切片，并会对建模空间的所有切片反复调用。函数结构相当简单，包含三层【2】for【/2】循环。最外层两层循环遍历网格点空间的【3】y【/3】维和【4】x【/4】维。对于每个网格点，最内层 for 循环遍历所有原子，计算所有原子对该网格点的静电势能贡献。请注意，每个原子由 atoms[] 数组中四个连续元素表示，其中前三个元素存储原子的【5】x【/5】、【6】y【/6】和【7】z【/7】坐标，第四个元素存储原子的电荷。最内层循环结束时，网格点的累加值被写入网格数据结构。随后外层循环继续迭代，将执行推进到下一个网格点。"
+    },
+    {
+      "id": "n0026",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 18.3【/1】 An unoptimized direct Coulomb summation C code for a two-dimensional slice.",
+      "zh": "【1】图 18.3【/1】 针对二维切片的未优化直接库仑求和 C 代码。"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "Note that the DCS function in 【1】Fig. 18.3【/1】 calculates the 【2】x【/2】 and 【3】y【/3】 coordinates of each grid point on the fly by multiplying the grid point index values by the spacing between grid points. This is a uniform grid method in which all grid points are spaced at the same distance in all three dimensions. The function takes advantage of the fact that all the grid points in the same slice have the same 【4】z【/4】 coordinate. This value is precalculated by the caller of the function and passed in as a function parameter (【5】z【/5】). There are, however, several optimizations that can be done to the sequential C code in 【6】Fig. 18.3【/6】 to significantly improve its execution speed.",
+      "zh": "请注意，【1】图 18.3【/1】中的 DCS 函数通过将网格点索引值乘以网格点间距，即时计算每个网格点的【2】x【/2】和【3】y【/3】坐标。这是一种均匀网格方法，所有网格点在三个维度上均以相同间距排列。该函数利用了同一切片中所有网格点具有相同【4】z【/4】坐标这一事实。该值由函数调用方预先计算，并作为函数参数（【5】z【/5】）传入。不过，对【6】图 18.3【/6】中的串行 C 代码还可以进行若干优化，以显著提高其执行速度。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "【1】Fig. 18.4【/1】 shows a C code for DCS with a few optimizations to improve its execution speed and efficiency. First, the innermost loop (n-loop) in 【2】Fig. 18.3【/2】 has been exchanged into the outermost loop (line 05 in 【3】Fig. 18.4【/3】). Thus the code iterates over all atoms. For each atom the inner loops (i-loop and j-loop) scatter the contribution of the atom to all the grid points. As we discussed in 【4】Chapter 17【/4】, Iterative Magnetic Resonance Imaging Reconstruction, the loop interchange is permissible because the three levels of loops in 【5】Fig. 18.3【/5】 are perfectly nested and all the iterations are independent of each other.",
+      "zh": "【1】图 18.4【/1】给出了经过若干优化以提升执行速度和效率的 DCS C 代码。首先，【2】图 18.3【/2】中的最内层循环（n 循环）被交换到最外层（【3】图 18.4【/3】中的第 05 行）。因此，代码遍历所有原子。对于每个原子，内层循环（i 循环和 j 循环）将该原子的贡献分散到所有网格点。正如我们在【4】第 17 章【/4】《迭代式磁共振成像重建》中所讨论的，循环交换是可行的，因为【5】图 18.3【/5】中的三层循环完全嵌套，且所有迭代彼此独立。"
+    },
+    {
+      "id": "n0029",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 18.4【/1】 An optimized direct Coulomb summation C code for a two-dimensional slice.",
+      "zh": "【1】图 18.4【/1】 针对二维切片的优化直接库仑求和 C 代码。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "The loop interchange enables two optimizations. First, the 【1】z【/1】 components of the distance between an atom and all grid points in the plane are identical and can be calculated once for the entire slice of the grid point. Therefore the calculation can be done outside the two inner loops (lines 6–7). Similarly, the y components of distance between an atom and all grid points in the same row are identical and can be done outside the innermost loop (lines 11–12). In comparison, the 【2】y【/2】 and 【3】z【/3】 components of the distance were both calculated in the innermost loop in 【4】Fig. 18.3【/4】. This drastic reduction in the number of calculations makes the C code in 【5】Fig. 18.4【/5】 much faster. These optimizations cannot be done in 【6】Fig. 18.3【/6】 because the innermost loop iterates over all atoms, so one must recalculate the 【7】x【/7】, 【8】y【/8】, and 【9】z【/9】 components of the distance as they change from atom to atom.",
+      "zh": "循环交换带来了两项优化。首先，一个原子与平面内所有网格点之间距离的【1】z【/1】分量相同，可以针对整个网格点切片只计算一次，因此该计算可以在两个内层循环之外完成（第 6–7 行）。类似地，一个原子与同一行内所有网格点之间距离的 y 分量也相同，可以在最内层循环之外完成（第 11–12 行）。相比之下，在【4】图 18.3【/4】中，距离的【2】y【/2】和【3】z【/3】分量都在最内层循环中计算。这种计算次数的大幅减少使【5】图 18.4【/5】中的 C 代码快得多。这些优化无法在【6】图 18.3【/6】中实现，因为其最内层循环遍历所有原子，随着原子不断变化，必须重新计算距离的【7】x【/7】、【8】y【/8】和【9】z【/9】分量。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "For GPU execution we assume that the host program inputs and maintains the atomic charges and their coordinates in the system memory. It also maintains the grid point data structure in the system memory. The DCS kernel is designed to process a 2D slice of the electrostatic potential grid point structure (not to be confused with thread grids). These grid points are like the grid points for discretization that were discussed in 【1】Chapter 8【/1】, Stencil. For each 2D slice, the CPU transfers its grid data to the device global memory. Similar to the k-space data (【2】Chapter 17【/2】, Iterative Magnetic Resonance Imaging Reconstruction), the atom information is divided into chunks to fit into the constant memory. For each chunk of the atom information, the CPU transfers the chunk into the device constant memory, invokes the DCS kernel to calculate the contribution of the current chunk to the current slice, and prepares to transfer the next chunk. After all chunks of the atom information have been processed for the current slice, the slice is transferred back to update the grid point data structure in the CPU system memory. The system then moves on to the next slice.",
+      "zh": "对于 GPU 执行，我们假设主机程序在系统内存中输入并维护原子电荷及其坐标，同时在系统内存中维护网格点数据结构。DCS 核函数被设计为处理静电势网格点结构的 2D 切片（不要与线程网格混淆）。这些网格点类似于【1】第 8 章【/1】《模板》中讨论的用于离散化的网格点。对于每个 2D 切片，CPU 将其网格数据传送到设备全局内存。与 k 空间数据（【2】第 17 章【/2】《迭代式磁共振成像重建》）类似，原子信息被划分成多个数据块，以适配常量内存。对于原子信息的每个数据块，CPU 将该数据块传送到设备常量内存，调用 DCS 核函数计算当前数据块对当前切片的贡献，并准备传送下一个数据块。当前切片的所有原子信息数据块都处理完毕后，该切片被传送回去，以更新 CPU 系统内存中的网格点数据结构。随后系统继续处理下一个切片。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "Let us now focus on the design of DCS kernel. It is natural to parallelize the optimized C code in 【1】Fig. 18.4【/1】. The resulting kernel is shown in 【2】Fig. 18.5【/2】. The defined constant 【3】CHUNK_SIZE【/3】 specifies the number of atoms that should be transferred into the GPU constant memory for each kernel call. The value of 【4】CHUNK_SIZE*4【/4】 should be less than or equal to 64K. The kernel uses each thread to implement an iteration of the outermost loop in 【5】Fig. 18.4【/5】 and scatters the contribution of its assigned atom to all grid points. Unfortunately, as we learned in 【6】Chapter 17【/6】, Iterative Magnetic Resonance Imaging Reconstruction, this scatter approach to parallelization requires atomic operations for updating the energy grid points (lines 17–18), which significantly reduces the speed of parallel execution.",
+      "zh": "现在让我们聚焦于 DCS 核函数的设计。对【1】图 18.4【/1】中优化后的 C 代码进行并行化是很自然的做法，得到的核函数如【2】图 18.5【/2】所示。定义常量【3】CHUNK_SIZE【/3】指定每次核函数调用应传入 GPU 常量内存的原子数量，【4】CHUNK_SIZE*4【/4】的值应小于或等于 64K。该核函数用每个线程实现【5】图 18.4【/5】中最外层循环的一次迭代，并将其分配的原子贡献分散到所有网格点。遗憾的是，正如我们在【6】第 17 章【/6】《迭代式磁共振成像重建》中所学的，这种分散式并行化方法需要原子操作来更新能量网格点（第 17–18 行），这会显著降低并行执行的速度。"
+    },
+    {
+      "id": "n0033",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 18.5【/2】【/1】 Direct Coulomb summation kernel using the scatter approach.",
+      "zh": "【1】【2】图 18.5【/2】【/1】 采用分散方法的直接库仑求和核函数。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "As we learned in 【1】Chapter 17【/1】, Iterative Magnetic Resonance Imaging Reconstruction, we can instead use a gather approach in which each thread calculates the accumulated contributions of all atoms to one grid point. This is a preferred approach, since each thread will be writing into its own grid point and there is no need to use atomic operations. However, this requires the loops to be arranged in the ordering of the unoptimized C code in 【2】Fig. 18.3【/2】; that is, we would be parallelizing a slower C implementation. This exemplifies a frequently experienced dilemma in parallelizing applications: The optimized sequential code is not as amenable to parallelization as the unoptimized sequential code is. The downside is that we can end up with drastically slower execution within each thread, which can reduce the speed benefit of parallelization. We will return to this point later in this chapter.",
+      "zh": "正如我们在【1】第 17 章【/1】《迭代式磁共振成像重建》中所学的，我们也可以改用汇聚方法，让每个线程计算所有原子对一个网格点的累计贡献。这是一种更可取的方法，因为每个线程将写入自己的网格点，无需使用原子操作。然而，这要求循环按照【2】图 18.3【/2】中未优化 C 代码的顺序排列；也就是说，我们并行化的将是一个速度较慢的 C 实现。这体现了一种在应用并行化中经常遇到的两难困境：经过优化的串行代码不如未经优化的串行代码那样易于并行化。其缺点是我们最终可能使每个线程内的执行速度大大降低，从而削弱并行化带来的速度收益。我们将在本章后面回到这一点。"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "【1】Fig. 18.6【/1】 shows a kernel based on the gather approach. The kernel is based on the unoptimized C code in 【2】Fig. 18.3【/2】. We form a 2D thread grid that matches the 2D potential grid point organization. To do so, we need to modify the two outer loops in lines 04–06 of 【3】Fig. 18.3【/3】 into perfectly nested loops so that we can use each thread to execute one iteration of the two-level loop. We can either perform a loop fission (as we did in the previous case study) or move the calculation of the y coordinate (line 05 of 【4】Fig. 18.3【/4】) into the inner loop. The former would require us to create a new array to hold all y values and would result in two kernels communicating data through the global memory. The latter increases the number of times that the y coordinate will be calculated. In this case, we choose to perform the latter, since there is only a small amount of calculation that can be easily accommodated in the inner loop without significantly increasing the execution time of the inner loop. The amount of work to be absorbed into the inner loop is much smaller than that in 【5】Chapter 17【/5】, Iterative Magnetic Resonance Imaging Reconstruction. The former would have added a kernel launch overhead for a kernel in which threads do little work. The selected transformation allows all i and j iterations to be executed in parallel. This is a tradeoff between the amount of calculation done and the level of parallelism achieved.",
+      "zh": "【1】图 18.6【/1】给出了基于汇聚方法的核函数。该核函数基于【2】图 18.3【/2】中未优化的 C 代码。我们构造一个与 2D 电势网格点组织相匹配的 2D 线程网格。为此，我们需要把【3】图 18.3【/3】第 04–06 行的两个外层循环改造成完全嵌套的循环，从而可以用每个线程执行两层循环的一次迭代。我们既可以选择循环分裂（如同在前一案例研究中所做的那样），也可以将 y 坐标的计算（【4】图 18.3【/4】第 05 行）移入内层循环。前者要求我们创建一个新数组来保存所有 y 值，并导致两个核函数通过全局内存传递数据；后者则会增加 y 坐标的计算次数。在本例中，我们选择后者，因为需要移入内层循环的计算量很小，可以轻松容纳，不会显著增加内层循环的执行时间。需要吸收进内层循环的工作量远小于【5】第 17 章【/5】《迭代式磁共振成像重建》中的情况。前者会为线程工作量很小的核函数增加一次核函数启动开销。所选变换使所有 i 和 j 迭代都能并行执行。这是在计算量与所实现的并行度之间的一种权衡。"
+    },
+    {
+      "id": "n0036",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 18.6【/1】 Direct Coulomb summation kernel using the gather approach.",
+      "zh": "【1】图 18.6【/1】 采用汇聚方法的直接库仑求和核函数。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[9]",
+      "en": "Inside the kernel code in 【1】Fig. 18.6【/1】, the outer two levels of the loop in 【2】Fig. 18.3【/2】 have been removed and are replaced by the execution configuration parameters in the kernel invocation (lines 04–05 of 【3】Fig. 18.6【/3】). Within each thread grid, the thread blocks are organized to calculate the electrostatic potential of tiles of the grid structure. In the simplest kernel, each thread calculates the value at one grid point. In more sophisticated kernels, each thread calculates multiple grid points and exploits the redundancy between the calculations of the grid points to improve execution speed. This is an example of the thread coarsening optimization discussed in 【4】Chapter 6【/4】, Performance Considerations and will be discussed in the next section.",
+      "zh": "在【1】图 18.6【/1】的核函数代码内部，【2】图 18.3【/2】中循环的最外两层已被移除，取而代之的是核函数调用中的执行配置参数（【3】图 18.6【/3】第 04–05 行）。在每个线程网格内，线程块被组织起来计算网格结构各分块的静电势。在最简单的核函数中，每个线程计算一个网格点处的值。在更复杂的核函数中，每个线程计算多个网格点，并利用网格点计算之间的冗余来提高执行速度。这是【4】第 6 章【/4】《性能考量》中讨论的线程粗化优化的一个示例，将在下一节中讨论。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[10]",
+      "en": "The performance of the kernel in 【1】Fig. 18.6【/1】 is quite good, since its execution speed is not hampered by atomic operations. Also, a quick glance over the code shows that each thread does nine floating-point operations for every four memory elements accessed. These atoms[] array elements for each atom are cached in a hardware constant cache memory in each streaming multiprocessor (SM) and are broadcast to many threads. The massive reuse of these constant memory elements across threads makes the constant cache extremely effective, eliminating the vast majority of the DRAM accesses. As a result, global memory bandwidth is not a limiting factor for this kernel.",
+      "zh": "【1】图 18.6【/1】中核函数的性能相当不错，因为其执行速度不受原子操作的拖累。此外，快速浏览代码可以发现，每个线程每访问四个内存元素就执行九次浮点运算。每个原子的这些 atoms[] 数组元素被缓存在每个流式多处理器（SM）的硬件常量缓存中，并广播给众多线程。这些常量内存元素在线程间的大量复用使常量缓存极为高效，消除了绝大部分 DRAM 访问。因此，全局内存带宽不是该核函数的限制因素。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "18.3 Thread coarsening",
+      "zh": "18.3 线程粗化"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "Although the kernel in 【1】Fig. 18.6【/1】 avoids the global memory bottleneck through constant caching, it still needs to execute four constant memory access instructions for every nine floating-point operations performed. These memory access instructions consume hardware resources that could otherwise be used to increase the execution throughput of floating-point instructions. Furthermore, the execution of these memory access instructions consumes energy, an important limiting factor for many large-scale parallel computing systems. This section shows that we can use the thread coarsening technique to fuse several threads together so that the atoms[] data can be fetched once from the constant memory, stored in registers, and used for multiple grid points.",
+      "zh": "虽然【1】图 18.6【/1】中的核函数通过常量缓存避免了全局内存瓶颈，但它仍然需要每执行九次浮点运算就执行四次常量内存访问指令。这些内存访问指令会消耗本可用于提高浮点指令执行吞吐量的硬件资源。此外，执行这些内存访问指令会消耗能量，而能量是许多大规模并行计算系统的重要限制因素。本节表明，我们可以使用线程粗化技术将若干线程融合在一起，使 atoms[] 数据可以一次性从常量内存取出、存入寄存器，并用于多个网格点。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "Furthermore, as shown in 【1】Fig. 18.7【/1】, all energy grid points along the same row (【2】y【/2】 dimension) have the same 【3】y【/3】 coordinate. Therefore the difference between the 【4】y【/4】 coordinate of an atom and the 【5】y【/5】 coordinate of any grid point along a row has the same value. In the DCS kernel in 【6】Fig. 18.6【/6】, this calculation is redundantly done by all threads for all grid points in a row when calculating the distance between the atom and the grid points. We can eliminate this redundancy and improve the execution efficiency.",
+      "zh": "此外，如【1】图 18.7【/1】所示，同一行（【2】y【/2】维）上的所有能量网格点具有相同的【3】y【/3】坐标。因此，一个原子的【4】y【/4】坐标与一行上任何网格点的【5】y【/5】坐标之差都相同。在【6】图 18.6【/6】的 DCS 核函数中，计算原子与网格点之间的距离时，一行中的所有网格点都会由所有线程重复进行这一计算。我们可以消除这种冗余，提高执行效率。"
+    },
+    {
+      "id": "n0042",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 18.7【/2】【/1】 Reusing computation results among multiple grid points.",
+      "zh": "【1】【2】图 18.7【/2】【/1】 在多个网格点之间复用计算结果。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "The idea is to have each thread calculate the electrostatic potential for multiple energy grid points in the same row. The kernel in 【1】Fig. 18.8【/1】 has each thread calculate four grid points. For each atom the code calculates dy, the difference of the y coordinates, only once (line 21). It then calculates the expression dy*dy + dz*dz and saves it to the automatic variable dysqdzsq, which is assigned to a register (line 23). This value is the same for all four grid points. The electrical charge information is also accessed from constant memory and stored in the automatic variable charge (line 24). Therefore the calculation of energy0 through energy3 can all just use the values stored in the registers.",
+      "zh": "思路是让每个线程计算同一行中多个能量网格点的静电势。【1】图 18.8【/1】中的核函数让每个线程计算四个网格点。对于每个原子，代码只计算一次 dy（y 坐标之差，第 21 行），然后计算表达式 dy*dy + dz*dz，并将其保存到自动变量 dysqdzsq 中，该变量被分配到寄存器（第 23 行）。这个值对四个网格点都是相同的。电荷信息也从常量内存中读取，存入自动变量 charge（第 24 行）。因此，energy0 到 energy3 的计算都可以直接使用寄存器中存储的值。"
+    },
+    {
+      "id": "n0044",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 18.8【/1】 Direct Coulomb summation kernel with thread coarsening.",
+      "zh": "【1】图 18.8【/1】 采用线程粗化的直接库仑求和核函数。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "Similarly, the 【1】x【/1】 coordinate of the atom is also read from constant memory and used to calculate dx0 through dx3 (lines 17–20). Altogether, this kernel eliminates three accesses to constant memory for the 【2】y【/2】 coordinate of its atom, three accesses for the 【3】x【/3】 coordinate of its atom, three accesses for the charge of the atom, three floating-point subtraction operations, five floating-point multiply operations, and nine floating-point add operations in processing an atom for four grid points. A quick inspection of the kernel code in 【4】Fig. 18.8【/4】 shows that each iteration of the loop performs four constant memory accesses, three floating-point subtractions, eleven floating-point additions, six floating-point multiplications, and four floating-point divisions for four grid points.",
+      "zh": "类似地，原子的【1】x【/1】坐标也从常量内存读取，用于计算 dx0 到 dx3（第 17–20 行）。总体而言，在为一个原子处理四个网格点时，该核函数消除了对其原子【2】y【/2】坐标的三次常量内存访问、对其原子【3】x【/3】坐标的三次访问、对原子电荷的三次访问、三次浮点减法运算、五次浮点乘法运算和九次浮点加法运算。快速查看【4】图 18.8【/4】中的核函数代码可以发现，循环的每次迭代为四个网格点执行四次常量内存访问、三次浮点减法、十一次浮点加法、六次浮点乘法和四次浮点除法。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "The reader should also verify that the version of DCS kernel in 【1】Fig. 18.6【/1】 performs 16 constant memory accesses, 12 floating-point subtractions, 12 floating-point additions, 12 floating-point multiplications, and 12 floating-point divisions—a total of 48 floating-point operations for the same four grid points. Going from 【2】Fig. 18.6【/2】–【3】Fig. 18.8【/3】, there is a total reduction from 16 constant memory accesses and 48 operations down to 4 constant memory accesses and 24 floating-point operations, a sizable reduction. One can expect a sizable improvement in both the execution time and the energy consumption of the kernel.",
+      "zh": "读者还应验证，【1】图 18.6【/1】中的 DCS 核函数版本为同样的四个网格点执行 16 次常量内存访问、12 次浮点减法、12 次浮点加法、12 次浮点乘法和 12 次浮点除法，共 48 次浮点运算。从【2】图 18.6【/2】到【3】图 18.8【/3】，常量内存访问总数从 16 次降到 4 次，浮点运算总数从 48 次降到 24 次，减少幅度相当可观。可以预期，核函数的执行时间和能量消耗都会有显著改善。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "The cost of the optimization is that more registers are used by each thread. This can potentially reduce the number of threads that can be accommodated by each SM. However, since the number of registers stays within the permissible limit, it does not limit the occupancy of GPU execution resources.",
+      "zh": "该优化的代价是每个线程使用更多寄存器。这可能会减少每个 SM 所能容纳的线程数。不过，由于寄存器数量保持在允许的范围内，它并不会限制 GPU 执行资源的占用率。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "18.4 Memory coalescing",
+      "zh": "18.4 内存合并"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "While the performance of the DCS kernel in 【1】Fig. 18.8【/1】 is quite high, a quick profiling run reveals that the threads perform memory writes inefficiently. In lines 30–33, each thread writes four neighboring grid points. Unfortunately, the write pattern of adjacent threads in each warp will result in uncoalesced global memory writes. There are two problems that cause the uncoalesced write pattern in the kernel. First, each thread calculates four adjacent neighboring grid points. Thus for each statement that writes to the energygrid[] array, the threads in a warp are not accessing adjacent locations. Note that two adjacent threads access memory locations that are four elements apart. Thus the 32 locations to be written by all the threads in a warp are spread out, with three elements in between the loaded/written locations. This problem can be solved by assigning adjacent grid points to adjacent threads in each block. We first assign blockDim.x consecutive grid points in the 【2】x【/2】 dimension to the threads. We then assign the next blockDim.x consecutive grid points to the same threads. We repeat the assignment until each thread has the number of grid points desired. This assignment is illustrated in 【3】Fig. 18.9【/3】.",
+      "zh": "虽然【1】图 18.8【/1】中 DCS 核函数的性能相当高，但快速的分析运行表明，线程执行内存写入的效率不高。在第 30–33 行，每个线程写入四个相邻的网格点。遗憾的是，每个线程束中相邻线程的写入模式会导致非合并的全局内存写入。造成核函数中非合并写入模式的问题有两个。首先，每个线程计算四个相邻的网格点。因此，对于每条写入 energygrid[] 数组的语句，线程束中的线程访问的并不是相邻位置。请注意，两个相邻线程访问的内存位置相隔四个元素。因此，一个线程束中所有线程要写入的 32 个位置是分散开的，被加载/写入的位置之间隔着三个元素。这个问题可以通过在每个线程块中把相邻网格点分配给相邻线程来解决。我们先把【2】x【/2】维上连续 blockDim.x 个网格点分配给各线程，再把接下来连续 blockDim.x 个网格点分配给同样的线程，如此重复，直到每个线程获得所需数量的网格点。这种分配方式如【3】图 18.9【/3】所示。"
+    }
+  ]
+}

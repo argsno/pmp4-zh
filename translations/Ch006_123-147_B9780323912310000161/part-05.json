@@ -1,0 +1,155 @@
+{
+  "page": "Ch006_123-147_B9780323912310000161",
+  "nodes": [
+    {
+      "id": "p0375",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "The fifth optimization in 【1】Table 6.1【/1】 is privatization. This optimization has not yet been introduced, but we mention it here for completeness. Privatization relates to the situation in which multiple threads or blocks need to update a universal output. To avoid the overhead of updating the same data concurrently, a private copy of the data can be created and partially updated, and then a final update can be made to the universal copy from the private copy when done. We will see an example of this optimization in 【2】Chapter 9【/2】, Parallel Histogram, which covers the histogram pattern, in which multiple threads need to update the same histogram counters. We will also see an example of this optimization in 【3】Chapter 15【/3】, Graph Traversal, which covers graph traversal, in which multiple threads need to add entries to the same queue.",
+      "zh": "【1】表 6.1【/1】中的第五个优化是私有化。这一优化尚未介绍过，但为了完整起见，我们在这里提一下。私有化与多个线程或线程块需要更新公共输出的情形有关。为了避免并发更新同一数据所带来的开销，可以创建数据的私有副本并进行部分更新，完成后再从私有副本对公共副本做最终更新。我们将在【2】第 9 章【/2】《并行直方图》中看到这一优化的一个例子，该章介绍直方图模式，其中多个线程需要更新相同的直方图计数器。我们还将在【3】第 15 章【/3】《图遍历》中看到这一优化的一个例子，该章介绍图遍历，其中多个线程需要向同一个队列添加条目。"
+    },
+    {
+      "id": "p0380",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
+      "en": "The sixth optimization in 【1】Table 6.1【/1】 is thread coarsening, in which multiple units of parallelism are assigned to a single thread to reduce the price of parallelism if the hardware was going to serialize the threads anyway. Thread coarsening was introduced in this chapter in the context of tiled matrix multiplication, in which the price of parallelism was loading of the same input tile redundantly by multiple thread blocks that process adjacent output tiles. In this case, assigning one thread block to process multiple adjacent output tiles enables loading an input tile once for all the output tiles. In the second and third parts of the book, we will see thread coarsening applied in different contexts with a different price of parallelism each time. In 【2】Chapter 8【/2】, Stencil, which covers the stencil pattern, thread coarsening is applied to reduce the redundant loading of input data, as in this chapter. In 【3】Chapter 9【/3】, Parallel Histogram, which covers the histogram pattern, thread coarsening helps to reduce the number of private copies that need to be committed to the universal copy in the context of the privatization optimization. In 【4】Chapter 10【/4】, Reduction and Minimizing Divergence, which covers the reduction pattern, and in 【5】Chapter 11【/5】, Prefix Sum (Scan), which covers the scan pattern, thread coarsening is applied to reduce the overhead from synchronization and control divergence. Also in 【6】Chapter 11【/6】, Prefix Sum (Scan), which covers the scan pattern, thread coarsening also helps reduce the redundant work that is performed by the parallel algorithm compared to the sequential algorithm. In 【7】Chapter 12【/7】, Merge, which covers the merge pattern, thread coarsening reduces the number of binary search operations that need to be performed to identify each thread’s input segment. In 【8】Chapter 13【/8】, Sorting, which covers the sort pattern, thread coarsening helps improve memory coalescing.",
+      "zh": "【1】表 6.1【/1】中的第六个优化是线程粗化，即为单个线程分配多个并行工作单元，以便在硬件无论如何都会串行化这些线程的情况下降低并行性代价。线程粗化在本章中以分块矩阵乘法为背景提出，其中的并行性代价是处理相邻输出分块的多个线程块重复加载相同的输入分块。在这种情况下，让一个线程块处理多个相邻的输出分块，就可以只加载一次输入分块而服务于所有输出分块。在本书第二、三部分中，我们将在不同的背景下看到线程粗化的应用，每次面对的并行性代价各不相同。在【2】第 8 章【/2】《模板》中（该章介绍模板模式），线程粗化被用来减少输入数据的重复加载，与本章的情形相同。在【3】第 9 章【/3】《并行直方图》中（该章介绍直方图模式），线程粗化有助于减少在私有化优化背景下需要提交到公共副本的私有副本数量。在【4】第 10 章【/4】《归约与发散最小化》中（该章介绍归约模式）以及【5】第 11 章【/5】《前缀和（扫描）》中（该章介绍扫描模式），线程粗化被用来降低同步和控制发散的开销。同样在【6】第 11 章【/6】《前缀和（扫描）》中（该章介绍扫描模式），线程粗化还有助于减少并行算法相对于串行算法所做的冗余工作。在【7】第 12 章【/7】《归并》中（该章介绍归并模式），线程粗化减少了为确定每个线程的输入片段而需要执行的二分查找次数。在【8】第 13 章【/8】《排序》中（该章介绍排序模式），线程粗化有助于改善内存合并。"
+    },
+    {
+      "id": "p0385",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
+      "en": "Again, the checklist in 【1】Table 6.1【/1】 is not intended to be an exhaustive one, but it contains major types of the optimizations that are common across different computation patterns. These optimizations appear in multiple chapters in the second and third parts of the book. We will also see other optimizations that appear in specific chapters. For example, in 【2】Chapter 7【/2】, Convolution, which covers the convolution pattern, we will introduce the use of constant memory. In 【3】Chapter 10【/3】, Reduction and Minimizing Divergence, which covers the scan pattern, we will introduce the double-buffering optimization.",
+      "zh": "再次强调，【1】表 6.1【/1】中的清单并非穷尽性的，但它包含了不同计算模式中通用的主要优化类型。这些优化会出现在本书第二、三部分的多个章节中。我们还会看到出现在特定章节的其他优化。例如，在【2】第 7 章【/2】《卷积》中（该章介绍卷积模式），我们将介绍常量内存的使用。在【3】第 10 章【/3】《归约与发散最小化》中（该章介绍扫描模式），我们将介绍双缓冲优化。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "6.5 Knowing your computation’s bottleneck",
+      "zh": "6.5 认清计算瓶颈"
+    },
+    {
+      "id": "p0390",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "In deciding what optimization to apply to a specific computation, it is important first to understand what resource is limiting the performance of that computation. The resource that limits the performance of a computation is often referred to as a performance 【1】bottleneck【/1】. Optimizations typically use more of one resource to reduce the burden on another resource. If the optimization that is applied does not target the bottleneck resource, there may be no benefit from the optimization. Worse yet, the optimization attempt may even hurt performance.",
+      "zh": "在决定对特定计算应用什么优化时，首先要理解是什么资源限制了该计算的性能，这一点很重要。限制计算性能的资源通常被称为性能【1】瓶颈【/1】。优化通常是用更多的一种资源来减轻另一种资源的负担。如果应用的优化没有针对瓶颈资源，那么这种优化可能毫无益处。更糟糕的是，这种优化尝试甚至可能损害性能。"
+    },
+    {
+      "id": "p0395",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "For example, shared memory tiling increases the use of shared memory to reduce the pressure on the global memory bandwidth. This optimization is great when the bottleneck resource is the global memory bandwidth and the data being loaded is reused. However, if, for example, the performance is limited by occupancy and occupancy is constrained by the use of too much shared memory already, then applying shared memory tiling is likely to make things worse.",
+      "zh": "例如，共享内存分块通过增加共享内存的使用来减轻全局内存带宽的压力。当瓶颈资源是全局内存带宽且被加载的数据会被重用时，这种优化效果很好。然而，如果性能受限于占用率，而占用率又已经因为共享内存使用过多而受限，那么应用共享内存分块很可能会让情况变得更糟。"
+    },
+    {
+      "id": "p0400",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "To understand what resource is limiting the performance of a computation, GPU computing platforms typically provide various profiling tools. We refer readers to the CUDA documentation for more information on how to use profiling tools to identify the performance bottlenecks of their computations (【1】NVIDIA, Profiler【/1】). Performance bottlenecks may be hardware-specific, meaning that the same computation may encounter different bottlenecks on different devices. For this reason the process of identifying performance bottlenecks and applying performance optimizations requires a good understanding of the GPU architecture and the architectural differences across different GPU devices.",
+      "zh": "为了理解是什么资源限制了计算的性能，GPU 计算平台通常提供各种性能分析工具。关于如何使用性能分析工具来识别计算的性能瓶颈，我们请读者参阅 CUDA 文档（【1】NVIDIA, Profiler【/1】）。性能瓶颈可能是硬件特定的，也就是说，同一计算在不同设备上可能遇到不同的瓶颈。因此，识别性能瓶颈和应用性能优化的过程，需要很好地理解 GPU 体系结构以及不同 GPU 设备之间的体系结构差异。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "6.6 Summary",
+      "zh": "6.6 小结"
+    },
+    {
+      "id": "p0405",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "In this chapter we covered the off-chip memory (DRAM) architecture of a GPU and discussed related performance considerations, such as global memory access coalescing and hiding memory latency with memory parallelism. We then presented an important optimization: thread granularity coarsening. With the insights that were presented in this chapter and earlier chapters, readers should be able to reason about the performance of any kernel code that they come across. We concluded this part of the book by presenting a checklist of common performance optimizations that are widely used to optimize many computations. We will continue to study practical applications of these optimizations in the parallel computation patterns and application case studies in the next two parts of the book.",
+      "zh": "在本章中，我们介绍了 GPU 的片外内存（DRAM）体系结构，并讨论了相关的性能考量，如全局内存访问合并以及利用内存并行性隐藏内存延迟。然后我们提出了一项重要的优化：线程粒度粗化。借助本章及前几章介绍的知识，读者应该能够分析所遇到的任何核函数代码的性能。本书的这一部分以一份常用性能优化清单作结，这些优化被广泛用于优化许多计算。我们将在接下来两部分的并行计算模式和应用案例研究中，继续学习这些优化的实际应用。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[1]",
+      "en": "1. Write a matrix multiplication kernel function that corresponds to the design illustrated in 【1】Fig. 6.4【/1】.",
+      "zh": "1. 编写一个与【1】图 6.4【/1】所示设计相对应的矩阵乘法核函数。"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[2]",
+      "en": "2. For tiled matrix multiplication, of the possible range of values for BLOCK_SIZE, for what values of BLOCK_SIZE will the kernel completely avoid uncoalesced accesses to global memory? (You need to consider only square blocks.)",
+      "zh": "2. 对于分块矩阵乘法，在 BLOCK_SIZE 可能的取值范围中，BLOCK_SIZE 取什么值时核函数能完全避免对全局内存的非合并访问？（只需考虑正方形线程块。）"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]",
+      "en": "3. Consider the following CUDA kernel:【M1】【M2】For each of the following memory accesses, specify whether they are coalesced or uncoalesced or coalescing is not applicable:【M3】",
+      "zh": "3. 考虑以下 CUDA 核函数：【M1】【M2】对于以下每次内存访问，请指明它们是合并访问、非合并访问，还是不适合应用合并：【M3】"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[1]",
+      "en": "a. The access to array 【1】a【/1】 of line 05",
+      "zh": "a. 第 05 行对数组【1】a【/1】的访问"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[2]",
+      "en": "b. The access to array 【1】a_s【/1】 of line 05",
+      "zh": "b. 第 05 行对数组【1】a_s【/1】的访问"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[3]",
+      "en": "c. The access to array 【1】b【/1】 of line 07",
+      "zh": "c. 第 07 行对数组【1】b【/1】的访问"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[4]",
+      "en": "d. The access to array 【1】c【/1】 of line 07",
+      "zh": "d. 第 07 行对数组【1】c【/1】的访问"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[5]",
+      "en": "e. The access to array 【1】bc_s【/1】 of line 07",
+      "zh": "e. 第 07 行对数组【1】bc_s【/1】的访问"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[6]",
+      "en": "f. The access to array 【1】a_s【/1】 of line 10",
+      "zh": "f. 第 10 行对数组【1】a_s【/1】的访问"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[7]",
+      "en": "g. The access to array 【1】d【/1】 of line 10",
+      "zh": "g. 第 10 行对数组【1】d【/1】的访问"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[8]",
+      "en": "h. The access to array 【1】bc_s【/1】 of line 11",
+      "zh": "h. 第 11 行对数组【1】bc_s【/1】的访问"
+    },
+    {
+      "id": "o0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[3]/ol[1]/li[9]",
+      "en": "i. The access to array 【1】e【/1】 of line 11",
+      "zh": "i. 第 11 行对数组【1】e【/1】的访问"
+    },
+    {
+      "id": "o0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[4]",
+      "en": "4. What is the floating point to global memory access ratio (in OP/B) of each of the following matrix-matrix multiplication kernels?【M1】",
+      "zh": "4. 以下每个矩阵-矩阵乘法核函数的浮点运算与全局内存访问之比（以 OP/B 计）是多少？【M1】"
+    },
+    {
+      "id": "o0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[4]/ol[1]/li[1]",
+      "en": "a. The simple kernel described in 【1】Chapter 3【/1】, Multidimensional Grids and Data, without any optimizations applied.",
+      "zh": "a. 【1】第 3 章【/1】《多维网格与数据》中描述的不应用任何优化的简单核函数。"
+    },
+    {
+      "id": "o0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[4]/ol[1]/li[2]",
+      "en": "b. The kernel described in 【1】Chapter 5【/1】, Memory Architecture and Data Locality, with shared memory tiling applied using a tile size of 32×32.",
+      "zh": "b. 【1】第 5 章【/1】《内存体系结构与数据局部性》中描述的核函数，应用共享内存分块，分块大小为 32×32。"
+    }
+  ]
+}

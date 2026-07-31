@@ -1,0 +1,155 @@
+{
+  "page": "Ch013_293-310_B9780323912310000197",
+  "nodes": [
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "The approach we just described is effective at parallelizing a radix sort iteration. However, one major source of inefficiency in this approach is that the writes to the output list exhibit an access pattern that cannot be adequately coalesced. Consider how each thread in 【1】Fig. 13.2【/1】 writes its key to the output list. In the first thread block, the first thread writes to the 0 bucket, the second thread writes to the 1 bucket, the third thread writes to the 0 bucket, and the fourth thread writes to the 1 bucket. Hence threads with consecutive index values are not necessarily writing to consecutive memory locations, resulting in poor coalescing and requiring multiple memory requests to be issued per warp.",
+      "zh": "我们刚才描述的方法可以有效地并行化一次基数排序迭代。然而，该方法的一个主要低效之处在于，对输出列表的写入所呈现的访问模式无法得到充分的内存合并。考虑【1】图 13.2【/1】 中每个线程如何将其键写入输出列表。在第一个线程块中，第一个线程写入 0 桶，第二个线程写入 1 桶，第三个线程写入 0 桶，第四个线程写入 1 桶。因此，索引值连续的线程未必写入连续的内存位置，导致合并效果不佳，每个线程束需要发射多次内存请求。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "Recall from 【1】Chapter 6【/1】, Performance Considerations, that there are various approaches to enable better memory coalescing in kernels: (1) rearranging the threads, (2) rearranging the data that the threads access, or (3) performing the uncoalesceable accesses on shared memory and transferring data between shared memory and global memory in a coalesced way. To optimize for coalescing in this chapter, we will use the third approach. Instead of having all threads write their keys to global memory buckets in an uncoalesced manner, we will have each thread block maintain its own local buckets in the shared memory. That is, we will no longer perform a global sort as shown in 【2】Fig. 13.4【/2】. Rather, the threads in each block will first perform a block-level local sort to separate the keys mapping to the 0 bucket and the keys mapping to the 1 bucket in shared memory. After that, the buckets will be written from shared memory to global memory in a coalesced manner.",
+      "zh": "回顾【1】第 6 章《性能考量》【/1】，有多种方法可以在核函数中实现更好的内存合并：（1）重新排列线程；（2）重新排列线程所访问的数据；或（3）在共享内存中执行不可合并的访问，并以合并的方式在共享内存与全局内存之间传输数据。本章为优化内存合并，将采用第三种方法。我们将不再让所有线程以非合并的方式把键写入全局内存的各个桶，而是让每个线程块在共享内存中维护自己的局部桶。也就是说，我们将不再像【2】图 13.4【/2】 所示那样执行全局排序。相反，每个块中的线程将首先执行一次块级局部排序，在共享内存中把映射到 0 桶的键与映射到 1 桶的键分开。之后，再以合并的方式将各桶从共享内存写入全局内存。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "【1】Fig. 13.5【/1】 shows an example of how memory coalescing can be enhanced for the example in 【2】Fig. 13.2【/2】. In this example, each thread block first performs a local radix sort on the keys that it owns and stores the output list into the shared memory. The local sort can be done in the same way as the global sort was done previously and requires each thread block to perform only a local exclusive scan instead of requiring a global one. After the local sort, each thread block writes its local buckets to the global buckets in a more coalesced way. For example, in 【3】Fig. 13.5【/3】, consider how the first thread block writes out its buckets to global memory. The first two threads both write to adjacent locations in global memory when writing the 0 bucket, while the last two threads also write to adjacent locations in global memory when writing the 1 bucket. Hence the majority of writes to global memory will be coalesced.",
+      "zh": "【1】图 13.5【/1】 展示了如何针对【2】图 13.2【/2】 的示例增强内存合并。在该示例中，每个线程块首先对其所拥有的键执行一次局部基数排序，并将输出列表存储到共享内存中。局部排序可以采用与之前全局排序相同的方式进行，并且每个线程块只需执行一次局部排他式扫描，而无需全局扫描。局部排序之后，每个线程块以更易合并的方式将局部桶写入全局桶。例如，在【3】图 13.5【/3】 中，考虑第一个线程块如何将其各个桶写出到全局内存。前两个线程在写入 0 桶时，都写入全局内存中相邻的位置；后两个线程在写入 1 桶时，也写入全局内存中相邻的位置。因此，对全局内存的大部分写入都将得到合并。"
+    },
+    {
+      "id": "n0053",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 13.5【/1】 Optimizing for memory coalescing by sorting locally in shared memory before sorting into the global memory.",
+      "zh": "【1】图 13.5【/1】 先在共享内存中进行局部排序，再排序写入全局内存，从而优化内存合并。"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "The main challenge in this optimization is for each thread block to identify the beginning position of each of its local buckets in the corresponding global bucket. The beginning position of a thread block's local buckets depends on the sizes of the local buckets in the other thread blocks. In particular, the position of a thread block's local 0 bucket is after all the local 0 buckets of the preceding thread blocks. On the other hand, the position of a thread block's local 1 bucket is after all the local 0 buckets of all the thread blocks and all the local 1 buckets of the preceding thread blocks. These positions can be obtained by performing an exclusive scan on the thread blocks' local bucket sizes.",
+      "zh": "这一优化的主要挑战在于，每个线程块都要确定其每个局部桶在相应全局桶中的起始位置。一个线程块各局部桶的起始位置取决于其他线程块局部桶的大小。具体来说，一个线程块的局部 0 桶的位置位于所有前面线程块的局部 0 桶之后。另一方面，一个线程块的局部 1 桶的位置位于所有线程块的所有局部 0 桶以及所有前面线程块的局部 1 桶之后。这些位置可以通过对各线程块的局部桶大小执行一次排他式扫描来获得。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "【1】Fig. 13.6【/1】 shows an example of how an exclusive scan can be used to find the position of each thread block's local buckets. After completing the local radix sort, each thread block identifies the number of keys in each of its local buckets. Next, each thread block stores these values in a table as shown in 【2】Fig. 13.6【/2】. The table is stored in row-major order, meaning that it places the sizes of the local 0 buckets for all thread blocks consecutively, followed by the sizes of the local 1 buckets. After the table has been constructed, an exclusive scan is executed on the linearized table. The resulting table consists of the beginning positions of each thread block's local buckets, which are the values we are looking for.",
+      "zh": "【1】图 13.6【/1】 展示了如何用排他式扫描求每个线程块局部桶的位置。完成局部基数排序后，每个线程块确定其每个局部桶中键的个数。接下来，每个线程块将这些值存入一张表，如【2】图 13.6【/2】 所示。该表按行主序存储，即先连续存放所有线程块的局部 0 桶的大小，再存放局部 1 桶的大小。表构建完成后，对线性化后的表执行排他式扫描。得到的表由每个线程块各局部桶的起始位置构成，这正是我们要求的值。"
+    },
+    {
+      "id": "n0056",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 13.6【/1】 Finding the destination of each thread block's local buckets.",
+      "zh": "【1】图 13.6【/1】 求每个线程块局部桶的目标位置。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "Once a thread block has identified the beginning position of its local buckets in global memory, the threads in the block can proceed to store their keys from the local buckets to the global buckets. To do so, each thread needs to keep track of the number of keys in the 0 bucket versus the 1 bucket. During the write phase, threads in each block will be writing a key in either of the buckets depending on its thread index values. For example, for block 2 in 【1】Fig. 13.6【/1】, thread 0 writes the single key in the 0 bucket, and threads 1–3 write the three keys in the 1 bucket. In comparison, for block 3 in 【2】Fig. 13.6【/2】, threads 0–2 write the three keys in the 0 bucket, and thread 3 writes the 1 key in the one bucket. Hence each thread needs to test whether it is responsible for writing a key in the local 0 bucket or the 1 bucket. Each block tracks the number of keys in each of its two local buckets so that the threads can determine where their threadIdx values fall and participate in the writing of the 0 bucket keys or 1 bucket keys. We leave the implementation of this optimization as an exercise for the reader.",
+      "zh": "一旦线程块确定了其各局部桶在全局内存中的起始位置，块内的线程就可以继续把键从局部桶存储到全局桶。为此，每个线程需要跟踪 0 桶与 1 桶中键的个数。在写入阶段，每个块中的线程将根据其线程索引值写入两个桶之一。例如，对于【1】图 13.6【/1】 中的块 2，线程 0 写入 0 桶中的唯一一个键，线程 1–3 写入 1 桶中的三个键。相比之下，对于【2】图 13.6【/2】 中的块 3，线程 0–2 写入 0 桶中的三个键，线程 3 写入 1 桶中的那一个键。因此，每个线程都需要测试自己负责写入局部 0 桶还是 1 桶中的键。每个块跟踪其两个局部桶中各自的键数，以便线程能够确定它们的 threadIdx 值落在哪个范围，从而参与写入 0 桶或 1 桶的键。我们将这一优化的实现留作读者的练习。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "13.5 Choice of radix value",
+      "zh": "13.5 基数值的选择"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "So far, we have seen how radix sort can be parallelized by using a 1-bit radix as an example. For the 4-bit keys in the example, four iterations (one for each bit) are needed for the keys to be fully sorted. In general, for 【1】N【/1】-bit keys, 【2】N【/2】 iterations are needed to fully sort the keys. To reduce the number of iterations that are needed, a larger radix value can be used.",
+      "zh": "到目前为止，我们以 1 位基数为例，了解了基数排序如何被并行化。对于示例中的 4 位键，需要四次迭代（每一位一次）才能将键完全排序。一般而言，对于【1】N【/1】 位键，需要【2】N【/2】 次迭代才能将键完全排序。为减少所需的迭代次数，可以使用更大的基数值。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "【1】Fig. 13.7【/1】 shows an example of how radix sort can be performed using a 2-bit radix. Each iteration uses two bits to distribute the keys to buckets. Hence the 4-bit keys can be fully sorted by using only two iterations. In the first iteration the lower two bits are considered. The keys are distributed across four buckets corresponding to the keys where the lower two bits are 00, 01, 10, and 11. In the second iteration the upper two bits are considered. The keys are then distributed across four buckets based on the upper two bits. Similar to the 1-bit example, the order of the keys within each bucket is preserved from the previous iteration. Preserving the order of the keys within each bucket ensures that after the second iteration the keys are fully sorted by all four bits.",
+      "zh": "【1】图 13.7【/1】 展示了如何使用 2 位基数执行基数排序的示例。每次迭代使用两位来把键分布到各个桶中。因此，4 位键只需两次迭代即可完全排序。在第一次迭代中，考虑低两位。键被分布到四个桶中，分别对应低两位为 00、01、10 和 11 的键。在第二次迭代中，考虑高两位。键随后基于高两位被分布到四个桶中。与 1 位示例类似，每个桶内键的顺序保留自上一次迭代。保留每个桶内键的顺序，可以确保第二次迭代之后键按全部四位完全排序。"
+    },
+    {
+      "id": "n0061",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 13.7【/2】【/1】 Radix sort example with 2-bit radix.",
+      "zh": "【1】【2】图 13.7【/2】【/1】 使用 2 位基数的基数排序示例。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "Similar to the 1-bit example, each iteration can be parallelized by assigning a thread to each key in the input list to find the key's destination index and store it in the output list. To optimize for memory coalescing, each thread block can sort its keys locally in the shared memory and then write the local buckets to global memory in a coalesced manner. An example of how to parallelize a radix sort iteration and optimize it for memory coalescing using the shared memory is shown in 【1】Fig. 13.8【/1】.",
+      "zh": "与 1 位示例类似，每次迭代都可以通过为输入列表中的每个键分配一个线程来并行化，由该线程求键的目标索引并将其存储到输出列表中。为优化内存合并，每个线程块可以在共享内存中对其键进行局部排序，然后以合并的方式将各局部桶写入全局内存。【1】图 13.8【/1】 展示了如何并行化一次基数排序迭代，并利用共享内存针对内存合并进行优化的示例。"
+    },
+    {
+      "id": "n0063",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 13.8【/1】 Parallelizing a radix sort iteration and optimizing it for memory coalescing using the shared memory for a 2-bit radix.",
+      "zh": "【1】图 13.8【/1】 对 2 位基数的基数排序迭代进行并行化，并利用共享内存针对内存合并进行优化。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "The key distinction between the 1-bit example and the 2-bit example is how to separate the keys into four buckets instead of two. For the local sort inside of each thread block, a 2-bit radix sort is performed by applying two consecutive 1-bit radix sort iterations. Each of these 1-bit iterations requires its own exclusive scan operation. However, these operations are local to the thread block, so there is no coordination across thread blocks in between the two 1-bit iterations. In general, for an 【1】r【/1】-bit radix, 【2】r【/2】 local 1-bit iterations are needed to sort the keys into 2【3】【4】r【/4】【/3】 local buckets.",
+      "zh": "1 位示例与 2 位示例的关键区别在于如何将键分成四个桶而不是两个。对于每个线程块内部的局部排序，2 位基数排序是通过依次执行两次 1 位基数排序迭代来完成的。这两次 1 位迭代各自需要一次排他式扫描操作。不过，这些操作都是线程块局部的，因此在两次 1 位迭代之间不需要跨线程块进行协调。一般而言，对于【1】r【/1】 位基数，需要【2】r【/2】 次局部 1 位迭代，才能将键排序到 2【3】【4】r【/4】【/3】 个局部桶中。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "After the local sort is complete, each thread block must find the position of each of its local buckets in the global output list. 【1】Fig. 13.9【/1】 shows an example of how the destination of each local bucket can be found for the 2-bit radix example. The procedure is similar to the 1-bit example in 【2】Fig. 13.6【/2】. Each thread block stores the number of keys in each local bucket to a table, which is then scanned to obtain the global position of each of the local buckets. The main distinction from the 1-bit radix example is that each thread block has four local buckets instead of two, so the exclusive scan operation is performed on a table with four rows instead of two. In general, for an 【3】r【/3】-bit radix the exclusive scan operation is performed on a table with 2【4】【5】r【/5】【/4】 rows.",
+      "zh": "局部排序完成后，每个线程块必须求其各局部桶在全局输出列表中的位置。【1】图 13.9【/1】 展示了如何为 2 位基数示例求各局部桶的目标位置。该过程与【2】图 13.6【/2】 中的 1 位示例类似。每个线程块将各局部桶中键的个数存入一张表，随后对该表执行扫描，以获得每个局部桶的全局位置。与 1 位基数示例的主要区别在于，每个线程块有四个局部桶而不是两个，因此排他式扫描操作是对一个包含四行的表执行的，而不是两行。一般而言，对于【3】r【/3】 位基数，排他式扫描操作是对一个包含 2【4】【5】r【/5】【/4】 行的表执行的。"
+    },
+    {
+      "id": "n0066",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 13.9【/1】 Finding the destination of each block's local buckets for a 2-bit radix.",
+      "zh": "【1】图 13.9【/1】 求 2 位基数下每个线程块的局部桶的目标位置。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
+      "en": "We have seen that the advantage of using a larger radix is that it reduces the number of iterations that are needed to fully sort the keys. Fewer iterations means fewer grid launches, global memory accesses, and global exclusive scan operations. However, using a larger radix also has disadvantages. The first disadvantage is that each thread block has more local buckets where each bucket has fewer keys. As a result, each thread block has more distinct global memory bucket sections that it needs to write to and less data that it needs to write to each section. For this reason, the opportunities for memory coalescing decrease as the radix gets larger. The second disadvantage is that the table on which the global exclusive scan is applied gets larger with a larger radix. For this reason, the overhead of the global exclusive scan increases as the radix increases. Therefore the radix cannot be made arbitrarily large. The choice of radix value must strike a balance between the number of iterations on one hand and the memory coalescing behavior as well as the overhead of the global exclusive scan on the other hand. We leave the implementation of radix sort with a multibit radix as an exercise for the reader.",
+      "zh": "我们已经看到，使用更大的基数的好处是可以减少完全排序键所需的迭代次数。更少的迭代意味着更少的网格启动、更少的全局内存访问和更少的全局排他式扫描操作。然而，使用更大的基数也有缺点。第一个缺点是每个线程块有更多的局部桶，而每个桶中的键更少。结果是，每个线程块需要写入更多个不同的全局内存桶区段，而写入每个区段的数据更少。因此，随着基数变大，内存合并的机会随之减少。第二个缺点是，应用全局排他式扫描的表随着基数变大而变大。因此，全局排他式扫描的开销随着基数的增大而增加。所以基数不能任意取大。基数值的选择必须在迭代次数与内存合并行为及全局排他式扫描的开销之间取得平衡。我们将使用多位基数的基数排序的实现留作读者的练习。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "13.6 Thread coarsening to improve coalescing",
+      "zh": "13.6 改善合并访问的线程粗化"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "The price of parallelizing radix sort across many thread blocks is poor coalescing of writes to global memory. Each thread block has its own local buckets that it writes to global memory. Having more thread blocks means having fewer keys per thread block, which means that the local buckets are going to be smaller, exposing fewer opportunities for coalescing when they are written to global memory. If these thread blocks were to be executed in parallel, the price of poor coalescing might be worth paying. However, if these thread blocks were to be serialized by the hardware, the price would be paid unnecessarily.",
+      "zh": "跨多个线程块并行化基数排序的代价，是向全局内存写入时合并效果不佳。每个线程块都有自己的局部桶要写入全局内存。线程块越多，意味着每个线程块的键越少，也就意味着局部桶更小，在写入全局内存时可利用的合并机会更少。如果这些线程块并行执行，合并效果不佳的代价或许还值得付出。但如果这些线程块被硬件串行化，这个代价就付得不值了。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "To address this issue, thread coarsening can be applied whereby each thread is assigned to multiple keys in the input list instead of just one. 【1】Fig. 13.10【/1】 illustrates how thread coarsening can be applied to a radix sort iteration for the 2-bit radix example. In this case, each thread block is responsible for more keys than was the case in the example in 【2】Fig. 13.8【/2】. Consequently, the local buckets of each thread block are larger, exposing more opportunities for coalescing. When we compare 【3】Fig. 13.8【/3】 and 【4】Fig. 13.10【/4】, it is clear that in 【5】Fig. 13.10【/5】 it is more likely the case that consecutive threads write to consecutive memory locations.",
+      "zh": "为解决这一问题，可以应用线程粗化，即让每个线程负责输入列表中的多个键，而不只是一个。【1】图 13.10【/1】 展示了如何将线程粗化应用于 2 位基数示例中的一次基数排序迭代。在这种情况下，每个线程块负责的键比【2】图 13.8【/2】 的示例中更多。因此，每个线程块的局部桶更大，暴露出更多的合并机会。比较【3】图 13.8【/3】 与【4】图 13.10【/4】 可以看出，在【5】图 13.10【/5】 中，连续的线程更可能写入连续的内存位置。"
+    },
+    {
+      "id": "n0071",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 13.10【/1】 Radix sort for a 2-bit radix with thread coarsening to improve memory coalescing.",
+      "zh": "【1】图 13.10【/1】 采用线程粗化改善内存合并的 2 位基数排序。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "Another price for parallelizing radix sort across many thread blocks is the overhead of performing the global exclusive scan to identify the destination of each thread block's local buckets. Recall from 【1】Fig. 13.9【/1】 that the size of the table on which the exclusive scan is performed is proportional to the number of buckets as well as the number of blocks. By applying thread coarsening, the number of blocks is reduced, thereby reducing the size of the table and the overhead of the exclusive scan operation. We leave the application of thread coarsening to radix sort as an exercise for the reader.",
+      "zh": "跨多个线程块并行化基数排序的另一个代价，是为确定每个线程块局部桶的目标位置而执行全局排他式扫描的开销。回顾【1】图 13.9【/1】，执行排他式扫描的表的大小与桶的数量以及块的数量成正比。通过应用线程粗化，块的数量得以减少，从而减小表的大小和排他式扫描操作的开销。我们将线程粗化在基数排序中的应用留作读者的练习。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "13.7 Parallel merge sort",
+      "zh": "13.7 并行归并排序"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[1]",
+      "en": "Radix sort is suitable when keys are to be sorted in lexicographic order. However, if keys are to be sorted on the basis of a complex order defined by a complex comparison operator, then radix sort is not suitable, and a comparison-based sorting algorithm is necessary. Moreover, an implementation of a comparison-based sorting algorithm can be more easily adapted to different types of keys by simply changing the comparison operator. In contrast, adapting an implementation of a noncomparison-based sorting algorithm such as radix sort to different types of keys may involve creating different versions of the implementation. These considerations may make comparison-based sorting more favorable in some cases, despite their higher complexity.",
+      "zh": "当键需要按字典序排序时，基数排序是合适的。然而，如果键需要根据由复杂比较运算符定义的复杂顺序来排序，那么基数排序就不适用，而必须采用基于比较的排序算法。此外，基于比较的排序算法的实现只需更改比较运算符，就能更容易地适应不同类型的键。相比之下，让基于非比较的排序算法（如基数排序）的实现适应不同类型的键，可能需要创建该实现的不同版本。这些考量可能使基于比较的排序在某些情况下更具优势，尽管其复杂度更高。"
+    }
+  ]
+}

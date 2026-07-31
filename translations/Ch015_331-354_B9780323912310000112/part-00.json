@@ -1,0 +1,155 @@
+{
+  "page": "Ch015_331-354_B9780323912310000112",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/h1[1]",
+      "en": "Graph traversal",
+      "zh": "图遍历"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/address[1]/p[1]",
+      "en": "With special contributions from John Owens and Juan Gómez-Luna",
+      "zh": "特别感谢 John Owens 和 Juan Gómez-Luna 的贡献"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter presents the parallel graph traversal pattern. Since graph search computation is about examining the vertex values, there is very little computation on these values once they have been loaded from memory. As a result, the speed of graph search is typically limited by memory bandwidth. This chapter presents a graph data format similar to the compressed sparse row storage format for sparse matrix that helps to minimize the consumption of memory bandwidth. Various strategies for parallelizing graph computations are introduced, including vertex-centric push and pull parallelization and edge-centric parallelization. The use of frontiers is also introduced as a way to support work-efficient iterative algorithms that require dynamic discovery and collection of data to be processed. The privatization technique is applied in the form of block-level queues to minimize serialization in collecting data into the frontiers. The chapter concludes with potential further optimizations on kernel launch overhead and load balance.",
+      "zh": "本章介绍并行图遍历模式。由于图搜索计算的核心是检查顶点的值，一旦这些值从内存中载入，对其进行的计算就很少。因此，图搜索的速度通常受限于内存带宽。本章介绍一种与稀疏矩阵的压缩稀疏行格式类似的图数据格式，它有助于最大程度地减少内存带宽的消耗。本章还介绍图计算并行化的多种策略，包括面向顶点的 push 与 pull 并行化，以及面向边的并行化。此外，本章引入前沿（frontier）的使用，以支持需要动态发现并收集待处理数据的工作高效迭代算法。私有化技术以线程块级队列的形式应用，以最大限度地减少将数据收集到前沿过程中的串行化。本章最后讨论了核函数启动开销和负载均衡方面可能的进一步优化。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Graphs; graph algorithms; graph traversal; breadth-first search; social networks; driving direction map services; maze routing; work efficiency; vertex; edge; vertex-centric parallelization; edge-centric parallelization; idempotence; load balance; direction-optimized parallelization; linear-algebraic formulation; redundant work; frontiers; atomic operations; compare-and-swap; contention; privatization",
+      "zh": "图；图算法；图遍历；广度优先搜索；社交网络；驾车路线地图服务；迷宫布线；工作效率；顶点；边；面向顶点的并行化；面向边的并行化；幂等性；负载均衡；方向优化的并行化；线性代数表述；冗余工作；前沿；原子操作；比较并交换；竞争；私有化"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "概要"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】15.1 Background【/1】 332",
+      "zh": "【1】15.1 背景【/1】 332"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】15.2 Breadth-first search【/1】 335",
+      "zh": "【1】15.2 广度优先搜索【/1】 335"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】15.3 Vertex-centric parallelization of breadth-first search【/1】 338",
+      "zh": "【1】15.3 面向顶点的广度优先搜索并行化【/1】 338"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】15.4 Edge-centric parallelization of breadth-first search【/1】 343",
+      "zh": "【1】15.4 面向边的广度优先搜索并行化【/1】 343"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】15.5 Improving efficiency with frontiers【/1】 345",
+      "zh": "【1】15.5 利用前沿提升效率【/1】 345"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】15.6 Reducing contention with privatization【/1】 348",
+      "zh": "【1】15.6 利用私有化减少竞争【/1】 348"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】15.7 Other optimizations【/1】 350",
+      "zh": "【1】15.7 其他优化【/1】 350"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】15.8 Summary【/1】 352",
+      "zh": "【1】15.8 小结【/1】 352"
+    },
+    {
+      "id": "u0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[9]",
+      "en": "【1】Exercises【/1】 353",
+      "zh": "【1】习题【/1】 353"
+    },
+    {
+      "id": "u0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[10]",
+      "en": "【1】References【/1】 354",
+      "zh": "【1】参考文献【/1】 354"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "A graph is a data structure that represents the relationships between entities. The entities involved are represented as vertices, and the relations are represented as edges. Many important real-world problems are naturally formulated as large-scale graph problems and can benefit from massively parallel computation. Prominent examples include social networks and driving direction map services. There are multiple strategies for parallelizing graph computations, some of which are centered on processing vertices in parallel, while others are centered on processing edges in parallel. Graphs are intrinsically related to sparse matrices. Thus graph computation can also be formulated in terms of sparse matrix operations. However, one can often improve the efficiency of graph computation by exploiting properties that are specific to the type of graph computation being performed. In this chapter we will focus on graph search, a graph computation that underlies many real-world applications.",
+      "zh": "图是一种表示实体之间关系的数据结构。所涉及的实体用顶点表示，关系用边表示。许多重要的现实世界问题天然地可以表述为大规模图问题，并且可以从大规模并行计算中受益。典型的例子包括社交网络和驾车路线地图服务。图计算的并行化有多种策略，其中一些以并行处理顶点为中心，另一些则以并行处理边为中心。图与稀疏矩阵有着内在的联系。因此，图计算也可以用稀疏矩阵运算来表述。然而，人们通常可以利用所执行的图计算类型所特有的性质来提高图计算的效率。本章将重点介绍图搜索——一种支撑许多现实世界应用的图计算。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "15.1 Background",
+      "zh": "15.1 背景"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "A graph data structure represents the relations between entities. For example, in social media, the entities are users, and the relations are connections between users. For another example, in driving direction map services, the entities are locations, and the relations are the roadways between the locations. Some relations are bidirectional, such as friend connections in a social network. Other relations are directional, such as one-way streets in a road network. In this chapter we will focus on directional relations. Bidirectional relations can be represented with two directional relations, one for each direction.",
+      "zh": "图数据结构表示实体之间的关系。例如，在社交媒体中，实体是用户，关系是用户之间的连接。再如，在驾车路线地图服务中，实体是地点，关系是地点之间的道路。有些关系是双向的，例如社交网络中的好友连接。另一些关系是有方向的，例如道路网络中的单行道。本章将重点讨论有方向的关系。双向关系可以用两个有方向的关系来表示，一个方向一个。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "【1】Fig. 15.1【/1】 shows an example of a simple graph with directional edges. A directional relation is represented as an arrowed edge going from a source vertex to a destination vertex. We assign a unique number to each vertex, also called the vertex 【2】id【/2】. There is one edge going from vertex 0 to vertex 1, one edge going from vertex 0 to vertex 2, and so on.",
+      "zh": "【1】图 15.1【/1】展示了一个带有有向边的简单图的示例。有方向的关系用一条从源顶点指向目标顶点的带箭头边来表示。我们为每个顶点分配一个唯一的编号，也称为顶点【2】id【/2】。存在一条从顶点 0 指向顶点 1 的边，一条从顶点 0 指向顶点 2 的边，依此类推。"
+    },
+    {
+      "id": "n0022",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 15.1【/1】 A simple graph example with 9 vertices and 15 directional edges.",
+      "zh": "【1】图 15.1【/1】 一个包含 9 个顶点和 15 条有向边的简单图示例。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "An intuitive representation of a graph is an 【1】adjacency matrix【/1】. If there is an edge going from a source vertex 【2】i【/2】 to a destination vertex 【3】j【/3】, the value of element A[【4】i【/4】][【5】j【/5】] of the adjacency matrix is 1. Otherwise, it is 0. 【6】Fig. 15.2【/6】 shows the adjacency matrix for the simple graph in 【7】Fig. 15.1【/7】. We see that A[1][3] and A[4][5] are 1, since there are edges going from vertex 1 to vertex 3. For clarity we leave the 0 values out of the adjacency matrix. That is, if an element is empty, its value is understood to be 0.",
+      "zh": "图的一种直观表示是【1】邻接矩阵【/1】。如果存在一条从源顶点【2】i【/2】到目标顶点【3】j【/3】的边，则邻接矩阵中元素 A[【4】i【/4】][【5】j【/5】] 的值为 1，否则为 0。【6】图 15.2【/6】展示了【7】图 15.1【/7】中简单图的邻接矩阵。我们看到 A[1][3] 和 A[4][5] 的值为 1，因为存在从顶点 1 到顶点 3 的边。为了清晰起见，我们把邻接矩阵中的 0 值省略。也就是说，如果某个元素为空，其值默认为 0。"
+    },
+    {
+      "id": "n0024",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 15.2【/2】【/1】 Adjacency matrix representation of the simple graph example.",
+      "zh": "【1】【2】图 15.2【/2】【/1】 简单图示例的邻接矩阵表示。"
+    }
+  ]
+}

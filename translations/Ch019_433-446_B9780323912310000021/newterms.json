@@ -1,0 +1,127 @@
+[
+  {
+    "en": "strong scaling",
+    "zh": "强扩展",
+    "note": "Keywords（n0004）；固定问题规模、随处理器数增加而扩展，与弱扩展相对"
+  },
+  {
+    "en": "weak scaling",
+    "zh": "弱扩展",
+    "note": "Keywords（n0004）；随处理器数增加按比例扩大问题规模"
+  },
+  {
+    "en": "algorithmic complexity",
+    "zh": "算法复杂度",
+    "note": "Keywords（n0004）及 19.2 节多处（p0115、p0120、p0125、p0130、p0145）；算法所需的计算步数/复杂度"
+  },
+  {
+    "en": "approximation",
+    "zh": "近似",
+    "note": "Keywords（n0004）；approximate model 亦译为近似模型（p0060）"
+  },
+  {
+    "en": "accuracy",
+    "zh": "准确度",
+    "note": "19.2/19.4 节多处；与 precision（精度）相对，全文区分 accuracy 与 precision"
+  },
+  {
+    "en": "precision",
+    "zh": "精度",
+    "note": "19.4 节 u0020/u0030；浮点 precision 与 accuracy 之辨"
+  },
+  {
+    "en": "definiteness",
+    "zh": "确定性",
+    "note": "19.2 节 p0110；算法三性质之一"
+  },
+  {
+    "en": "effective computability",
+    "zh": "有效可计算性",
+    "note": "19.2 节 p0110；算法三性质之一"
+  },
+  {
+    "en": "finiteness",
+    "zh": "有限性",
+    "note": "19.2 节 p0110；算法三性质之一"
+  },
+  {
+    "en": "overflow list",
+    "zh": "溢出列表",
+    "note": "19.2 节 p0140；分箱已满时存放原子的列表"
+  },
+  {
+    "en": "neighborhood bin",
+    "zh": "邻域箱",
+    "note": "19.2/19.3 节 p0135、p0150；网格点邻域内各箱的集合"
+  },
+  {
+    "en": "cutoff radius",
+    "zh": "截断半径",
+    "note": "19.2 节 p0135；截断求和的半径阈值"
+  },
+  {
+    "en": "grid-centric decomposition",
+    "zh": "面向网格的分解",
+    "note": "19.2/19.3 节 p0135、p0210、p0270；即面向输出的分解"
+  },
+  {
+    "en": "atom-centric decomposition",
+    "zh": "面向原子的分解",
+    "note": "19.2/19.3 节 p0135、p0210；即面向输入的分解"
+  },
+  {
+    "en": "task-level parallelization",
+    "zh": "任务级并行化",
+    "note": "19.1 节 p0095"
+  },
+  {
+    "en": "application-level speedup",
+    "zh": "应用级加速比",
+    "note": "19.1 节 p0090"
+  },
+  {
+    "en": "computational thinker",
+    "zh": "计算思维者",
+    "note": "19.4 节 p0225；指善于计算思维的人"
+  },
+  {
+    "en": "computational scientist",
+    "zh": "计算科学家",
+    "note": "19.4 节 p0270"
+  },
+  {
+    "en": "high-fidelity simulation",
+    "zh": "高保真模拟",
+    "note": "19.4 节 p0270"
+  },
+  {
+    "en": "legacy program",
+    "zh": "遗留程序",
+    "note": "19.4 节 p0260；legacy program codes 遗留程序代码"
+  },
+  {
+    "en": "voxel",
+    "zh": "体素",
+    "note": "19.3 节 p0205；MRI 重建中的体素数据"
+  },
+  {
+    "en": "bin",
+    "zh": "箱",
+    "note": "19.2/19.3 节；分箱单元，bin size 箱大小、home bin 归属箱"
+  },
+  {
+    "en": "pass",
+    "zh": "遍",
+    "note": "19.1 节 p0080/p0085；对力数据结构的独立遍历遍数"
+  },
+  {
+    "en": "scan through",
+    "zh": "扫描",
+    "note": "19.2 节 p0135；glossary false positive——动词用法（all threads scan through the atoms），非扫描（prefix sum）模式，自然译法与术语表渲染恰同为“扫描”"
+  },
+  {
+    "en": "interference between threads",
+    "zh": "线程间干扰",
+    "note": "Abstract（sp0025）与 19.5 节 p0275；摘要与小结中的同一表述"
+  }
+]

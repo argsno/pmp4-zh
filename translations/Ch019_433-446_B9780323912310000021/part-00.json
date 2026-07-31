@@ -1,0 +1,155 @@
+{
+  "page": "Ch019_433-446_B9780323912310000021",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Parallel programming and computational thinking",
+      "zh": "并行编程与计算思维"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces the concept of computational thinking. It first reviews the main goals of parallel programming. It then discusses the thinking process of algorithm selection and problem decomposition. For a given problem the programmer will typically have to select from a variety of algorithms. Some of these algorithms achieve different tradeoffs while maintaining the same numerical accuracy. Others involve sacrificing some level of accuracy to achieve much more scalable running times. For the selected algorithm, different choices of problem decomposition can result in different levels of interference between threads, parallelism exposed, load imbalance, and other performance considerations during parallel execution. Computational thinking skills allow an algorithm designer to work around the roadblocks and reach a good solution.",
+      "zh": "本章介绍计算思维的概念。首先回顾并行编程的主要目标，然后讨论算法选择与问题分解的思考过程。对于给定的问题，程序员通常需要从多种算法中进行选择。其中一些算法在保持相同数值准确度的同时实现了不同的权衡取舍，另一些算法则通过牺牲一定程度的准确度来获得更具可扩展性的运行时间。对于所选的算法，问题分解的不同选择会导致并行执行期间线程间干扰、暴露的并行性、负载不均衡以及其他性能因素处于不同水平。计算思维技能使算法设计者能够绕开障碍并得出良好的解决方案。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Strong scaling; weak scaling; Amdahl’s law; algorithm selection; algorithmic complexity; problem decomposition; output-centric decomposition; input-centric decomposition; gather; scatter; approximation",
+      "zh": "强扩展；弱扩展；阿姆达尔定律；算法选择；算法复杂度；问题分解；面向输出的分解；面向输入的分解；汇聚；分散；近似"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】19.1 Goals of parallel computing【/1】 433",
+      "zh": "【1】19.1 并行计算的目标【/1】 433"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】19.2 Algorithm selection【/1】 436",
+      "zh": "【1】19.2 算法选择【/1】 436"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】19.3 Problem decomposition【/1】 440",
+      "zh": "【1】19.3 问题分解【/1】 440"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】19.4 Computational thinking【/1】 444",
+      "zh": "【1】19.4 计算思维【/1】 444"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】19.5 Summary【/1】 446",
+      "zh": "【1】19.5 小结【/1】 446"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】References【/1】 446",
+      "zh": "【1】参考文献【/1】 446"
+    },
+    {
+      "id": "p0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "We have so far concentrated on practical knowledge in parallel programming, which consists of CUDA programming interface features, the GPU architecture, performance optimization techniques, parallel patterns, and application case studies. In this chapter we switch our discussions to concepts that are more abstract. We generalize parallel programming into a computational thinking process of designing or selecting parallel algorithms and decomposing a domain problem into well-defined and coordinated work units that can each be efficiently performed by the selected algorithms. A programmer with strong computational thinking skills not only analyzes but also transforms the structure of a domain problem: which parts are inherently serial, which parts are amenable to high-performance parallel execution, and the domain-specific tradeoffs that are involved in moving parts from the former category to the latter. With good algorithm selection and problem decomposition the programmer can achieve an appropriate compromise between parallelism, work efficiency, and resource consumption. A strong combination of domain knowledge and computational thinking skills is often needed for creating successful computational solutions to challenging domain problems. This chapter will give the reader more insight into parallel programming and computational thinking in general.",
+      "zh": "到目前为止，我们一直专注于并行编程中的实践知识，包括 CUDA 编程接口特性、GPU 体系结构、性能优化技术、并行模式以及应用案例研究。本章我们将讨论转向更抽象的概念。我们把并行编程概括为一个计算思维过程：设计或选择并行算法，并将领域问题分解为定义明确且彼此协调的工作单元，使得每个单元都能被所选算法高效执行。计算思维技能强的程序员不仅会分析领域问题的结构，还会对其进行改造：哪些部分是本质串行的，哪些部分适合高性能并行执行，以及将部分从前者转移到后者所涉及的领域特定的权衡取舍。凭借良好的算法选择和问题分解，程序员可以在并行性、工作效率与资源消耗之间取得恰当的折中。要针对有挑战性的领域问题创建成功的计算解决方案，往往需要领域知识与计算思维技能的强强结合。本章将让读者对并行编程和计算思维有更深入的总体认识。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "19.1 Goals of parallel computing",
+      "zh": "19.1 并行计算的目标"
+    },
+    {
+      "id": "p0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "Before we discuss the fundamental concepts of parallel programming, it is important for us to first review the three main reasons why people pursue parallel computing. The first goal is to solve a given problem in less time. For example, an investment firm may need to run a financial portfolio scenario risk analysis package on all its portfolios during after-trading hours. Such an analysis could require 200 hours on a sequential computer. However, the portfolio management process may require that analysis be completed in 4 hours to be in time for major decisions based on the resulting information. Using parallel computing may speed up the analysis and allow it to complete within the required time window.",
+      "zh": "在讨论并行编程的基本概念之前，我们有必要先回顾人们追求并行计算的三个主要原因。第一个目标是在更短的时间内解决给定问题。例如，一家投资公司可能需要在收盘后对所有投资组合运行金融投资组合情景风险分析软件包。这种分析在串行计算机上可能需要 200 小时。然而，投资组合管理流程可能要求在 4 小时内完成分析，以便及时依据分析结果做出重大决策。使用并行计算可以加速分析，使其在要求的时间窗口内完成。"
+    },
+    {
+      "id": "p0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "The second goal of using parallel computing is to solve bigger problems within a given amount of time. In our financial portfolio analysis example the investment firm may be able to run the portfolio scenario risk analysis on its current portfolio within a given time window using sequential computing. However, the firm is planning on expanding the number of holdings in its portfolio. The enlarged problem size would cause the sequential analysis to exceed the allowed time window. Parallel computing that reduces the running time of the bigger problem size can help to accommodate the planned expansion to the portfolio.",
+      "zh": "使用并行计算的第二个目标是在给定的时间内解决更大的问题。在我们的金融投资组合分析示例中，投资公司或许能够利用串行计算在给定的时间窗口内对其当前投资组合运行情景风险分析。然而，该公司正计划扩大其投资组合中的持有数量。增大的问题规模会使串行分析超出允许的时间窗口。并行计算能够缩短更大问题规模的运行时间，有助于适应投资组合的计划性扩张。"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "The third goal of using parallel computing is to achieve better solutions for a given problem and a given amount of time. The investment firm may have been using an approximate model in its portfolio scenario risk analysis. Using a more accurate model may increase the computational complexity and increase the running time on a sequential computer beyond the allowed window. For example, a more accurate model may require consideration of interactions between more types of risk factors using a more numerically complex formula. Parallel computing that reduces the running time of the more accurate model may complete the analysis within the allowed time window.",
+      "zh": "使用并行计算的第三个目标是在给定问题和给定时间的情况下获得更好的解决方案。投资公司在其投资组合情景风险分析中可能一直使用近似模型。使用更精确的模型可能会增加计算复杂度，并使串行计算机上的运行时间超出允许的时间窗口。例如，更精确的模型可能要求使用数值上更复杂的公式来考虑更多类型风险因素之间的相互作用。并行计算能缩短更精确模型的运行时间，从而在允许的时间窗口内完成分析。"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "In practice, parallel computing may be driven by a combination of these three goals.",
+      "zh": "在实践中，并行计算可能由这三个目标的组合所驱动。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "It should be clear from our discussion that parallel computing is motivated primarily by increased speed. The first goal is achieved by increased speed in running the existing model on the current problem size. The second goal is achieved by increased speed in running the existing model on a larger problem size. The third goal is achieved by increased speed in running a more complex model on the current problem size. Obviously, the increased speed through parallel computing can be used to achieve a combination of these goals. For example, parallel computing can reduce the runtime of a more complex model on a larger problem size.",
+      "zh": "从我们的讨论中应当清楚：并行计算主要受提升速度的动机驱动。第一个目标通过在当前问题规模上以更高速度运行现有模型来实现；第二个目标通过在更大问题规模上以更高速度运行现有模型来实现；第三个目标通过在当前问题规模上以更高速度运行更复杂的模型来实现。显然，并行计算带来的速度提升可以用来实现这些目标的组合。例如，并行计算可以缩短更复杂模型在更大问题规模上的运行时间。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "It should also be clear from our discussion that applications that are good candidates for parallel computing typically involve large problem sizes and high complexity. That is, these applications process a large amount of data, require much computation in each iteration, and/or perform many iterations on the data. Applications that do not involve large problem sizes or incur high modeling complexity tend to complete within a small amount of time and do not offer much motivation for increased speed.",
+      "zh": "从我们的讨论中还应当清楚：适合并行计算的应用通常涉及较大的问题规模和较高的复杂度。也就是说，这些应用要处理大量数据，每次迭代需要大量计算，并且/或者对数据进行多次迭代。那些既不涉及较大问题规模、也不会产生很高建模复杂度的应用，往往在很短时间内即可完成，因此对提升速度没有多少动机。"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[7]",
+      "en": "A real application often consists of multiple modules that work together. 【1】Fig. 19.1【/1】 shows an overview of the major modules of a molecular dynamics application. For each atom in the system the application needs to calculate the various forms of forces, such as vibrational, rotational, and nonbonded, that are exerted on the atom. Each form of force is calculated with a different method. At the high level, a programmer needs to decide how the work is organized. Note that the amount of work can vary dramatically between these modules. The nonbonded force calculation typically involves interactions among many atoms and incurs many more calculations than the vibrational and rotational forces. Therefore these modules tend to be realized as separate passes over the force data structure.",
+      "zh": "真实应用通常由多个协同工作的模块组成。【1】图 19.1【/1】展示了一个分子动力学应用的主要模块概览。对于系统中的每个原子，应用都需要计算作用于该原子的各种形式的力，例如振动、转动和非键力。每种形式的力都用不同的方法计算。在高层面上，程序员需要决定如何组织这些工作。请注意，这些模块之间的工作量可能相差悬殊。非键力计算通常涉及许多原子之间的相互作用，其计算量远大于振动力和转动力。因此，这些模块往往以对力数据结构的多遍独立遍历来实现。"
+    },
+    {
+      "id": "n0022",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 19.1【/2】【/1】 Major tasks of a molecular dynamics application.",
+      "zh": "【1】【2】图 19.1【/2】【/1】 分子动力学应用的主要任务。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[8]",
+      "en": "The programmer needs to decide whether each pass is worth implementing in a CUDA device. For example, the programmer may decide that the vibrational and rotational force calculations do not involve sufficient amount of work to warrant execution on a GPU device. Such a decision would lead to a CUDA program that launches a kernel that calculates nonbonding force fields for all the grid points while continuing to calculate the vibrational and rotational forces for the grid points on the host. The module that updates atom positions and velocities may also run on the host. It first combines the vibrational and rotational forces from the host and the nonbonding forces from the device. It then uses the combined forces to calculate the new atomic positions and velocities.",
+      "zh": "程序员需要决定每一遍是否值得在 CUDA 设备中实现。例如，程序员可能认为振动和转动力的计算工作量不足以支持在 GPU 设备上执行。这样的决定会带来一个 CUDA 程序：它启动一个核函数来计算所有网格点的非键力场，同时在主机上继续计算网格点的振动和转动力。更新原子位置和速度的模块也可能在主机上运行。它首先合并来自主机的振动和转动力与来自设备的非键力，然后利用合并后的力来计算新的原子位置和速度。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[9]",
+      "en": "The portion of work done by the device will ultimately decide the application-level speedup that is achieved by parallelization. For example, assume that the nonbonding force calculation accounts for 95% of the original sequential execution time and it is accelerated by 100× using a GPU. Further assume that the rest of the application remains on the host and receives no speedup. The application-level speedup is 1/(5%+95%/100)=1/(5%+0.95%)=1/(5.95%)=17×. In the case in which the execution of the host and the CUDA device can be overlapped, the execution time of the parallel section is completely hidden in the host execution time. The application-level speedup would be 1/(5%)=20×. This is a demonstration of Amdahl’s law: The application speedup due to parallel computing is limited by the sequential portion of the application. In this case, even though the sequential portion of the application is quite small (5%), it limits the application-level speedup to 20× despite the nonbonding force calculation having a speedup of 100× and being completely hidden in the shadow of the host execution of the sequential portion. This example illustrates a major challenge in accelerating large applications: The accumulated execution time of small activities that are not worth parallel execution on a CUDA device can become a limiting factor in the speedup that is seen by the end users. We saw this phenomenon in the iterative MRI application study in 【1】Chapter 17【/1】, Iterative Magnetic Resonance Imaging Reconstruction, in which the CG computation becomes a limiting factor of speedup even though it accounts for only about 1% of the execution time of the original application.",
+      "zh": "设备完成的工作占比最终决定并行化所实现的应用级加速比。例如，假设非键力计算占原始串行执行时间的 95%，并使用 GPU 将其加速 100×。再假设应用的其余部分仍留在主机上，未获得任何加速。则应用级加速比为 1/(5%+95%/100)=1/(5%+0.95%)=1/(5.95%)=17×。在主机与 CUDA 设备可以重叠执行的情况下，并行部分的执行时间完全被主机执行时间所隐藏，应用级加速比将达到 1/(5%)=20×。这正是阿姆达尔定律的体现：并行计算带来的应用加速受限于应用中的串行部分。在本例中，尽管应用的串行部分相当小（5%），它仍将应用级加速比限制在 20×，尽管非键力计算的加速比高达 100×且完全隐藏在串行部分的主机执行阴影之中。这个例子说明了加速大型应用面临的一个主要挑战：那些不值得在 CUDA 设备上并行执行的小型活动的累积执行时间，可能成为限制最终用户所获加速比的因素。我们在【1】第 17 章【/1】迭代磁共振成像重建的应用研究中就看到了这一现象：CG 计算尽管仅占原始应用执行时间的约 1%，却成为加速比的限制因素。"
+    }
+  ]
+}

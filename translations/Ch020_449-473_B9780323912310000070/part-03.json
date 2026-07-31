@@ -1,0 +1,155 @@
+{
+  "page": "Ch020_449-473_B9780323912310000070",
+  "nodes": [
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[23]",
+      "en": "【1】Fig. 20.11【/1】 shows part 2 of the compute process code. Lines 16–18 allocate host memory and device memory for the output data. The output data buffer in the device memory will be used with the input data buffer in a double-buffering scheme. That is, they will switch roles in each iteration. We will return to this point and cover the rest of the code in 【2】Fig. 20.11【/2】 later. We are now ready to present the code that performs computation steps on the grid points.",
+      "zh": "【1】图 20.11【/1】展示了计算进程代码的第 2 部分。第 16–18 行为输出数据分配主机内存和设备内存。设备内存中的输出数据缓冲区将与输入数据缓冲区一起用于双缓冲方案，即它们在每次迭代中互换角色。我们稍后将回到这一点并介绍【2】图 20.11【/2】中的其余代码。现在，我们准备介绍对网格点执行计算步骤的代码。"
+    },
+    {
+      "id": "n0076",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 20.11【/1】 Compute process code (part 2).",
+      "zh": "【1】图 20.11【/1】 计算进程代码（第 2 部分）。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "20.5 Overlapping computation and communication",
+      "zh": "20.5 计算与通信重叠"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "A simple way to perform the computation steps is for each compute process to perform a computation step on its entire partition, exchange halo data with the left and right neighbors, and repeat. While this is a very simple strategy, it is not very effective. The reason is that this strategy forces the system to be in one of the two modes. In the first mode, all compute processes are performing computation steps. During this time, the communication network is not used. In the second mode, all compute processes are exchanging halo data with their left and right neighbors. During this time, the computation hardware is not well utilized. Ideally, we would like to achieve better performance by utilizing both the communication network and the computation hardware all the time. This can be achieved by dividing the computation tasks of each compute process into two stages, as illustrated in 【1】Fig. 20.12【/1】.",
+      "zh": "执行计算步骤的一种简单方式是：每个计算进程先对整个分区执行一个计算步骤，然后与左右邻居交换光环数据，如此反复。虽然这是一个非常简单的策略，但效率不高。原因是该策略迫使系统处于两种模式之一。在第一种模式中，所有计算进程都在执行计算步骤，此时通信网络未被使用。在第二种模式中，所有计算进程都在与左右邻居交换光环数据，此时计算硬件没有得到充分利用。理想情况下，我们希望同时利用通信网络和计算硬件以获得更好的性能。这可以通过将每个计算进程的计算任务划分为两个阶段来实现，如【1】图 20.12【/1】所示。"
+    },
+    {
+      "id": "n0079",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 20.12【/1】 A two-stage strategy for overlapping computation with communication.",
+      "zh": "【1】图 20.12【/1】 计算与通信重叠的两阶段策略。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "During the first stage (stage 1), each compute process calculates its boundary slices that will be needed as halo cells by its neighbors in the next iteration. Let’s continue to assume that we use four slices of halo data. 【1】Fig. 20.12【/1】 shows the four halo slices as a dashed transparent piece and the four boundary slices as a colored piece. Note that the colored piece of process 【2】i【/2】 will be copied into the dashed piece of process I + 1 and the colored piece of process I + 1 will be copied into the dashed piece of process 【3】i【/3】 during the next communication. For process 0, the first phase calculates the right four slices of boundary data. For an internal node it calculates the left four slices and the right four slices of its boundary data. For process 【4】n【/4】 − 2, it calculates the left four pieces of its boundary data. The rationale is that these boundary slices are needed by their neighbors for the next iteration. If these boundary slices are calculated first, the data can be communicated to the neighbors while the compute processes calculate the rest of their internal grid points.",
+      "zh": "在第一阶段（阶段 1），每个计算进程计算其边界切片，这些边界切片将在下一次迭代中作为光环单元被其邻居使用。我们继续假设使用四片光环数据。【1】图 20.12【/1】将四片光环切片显示为一个虚线透明件，将四片边界切片显示为一个彩色件。请注意，进程【2】i【/2】的彩色件将在下一次通信中被复制到进程 i + 1 的虚线件中，而进程 i + 1 的彩色件将被复制到进程【3】i【/3】的虚线件中。对于进程 0，第一阶段计算右侧四片边界数据。对于内部节点，它计算其边界数据左侧四片和右侧四片。对于进程【4】n【/4】 − 2，它计算其边界数据左侧四片。这样做的理由是，这些边界切片在下次迭代中被其邻居所需要。如果先计算这些边界切片，那么计算进程在计算其余内部网格点的同时，就可以将数据传送给邻居。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "During the second stage (stage 2), each compute process performs two activities in parallel. The first is to communicate its new boundary values to its neighbor processes. This is done by first copying the data from the device memory into the host memory, followed by sending MPI messages to the neighbors. As we will discuss later, we need to be careful that the data that is received from the neighbors is used in the next iteration, not the current iteration. The second activity is to calculate the rest of the data in the partition. If the communication activity takes a shorter amount of time than the calculation activity, we can hide the communication delay and fully utilize the computing hardware all the time. This is usually achieved by having enough slices in the internal part of each partition to allow each compute process to perform enough computation to hide the communication.",
+      "zh": "在第二阶段（阶段 2），每个计算进程并行执行两项活动。第一项是将新的边界值传送给其邻居进程，做法是先将数据从设备内存复制到主机内存，然后向邻居发送 MPI 消息。正如我们稍后将讨论的，我们需要小心，确保从邻居收到的数据用于下一次迭代而不是当前迭代。第二项是计算分区中的其余数据。如果通信活动所需的时间比计算活动短，我们就能隐藏通信延迟并始终充分利用计算硬件。这通常通过在每个分区的内部部分设置足够的切片来实现，使每个计算进程能够执行足够的计算来隐藏通信。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "To support the parallel activities in stage 2, we need to use two advanced features of the CUDA programming model: 【1】pinned memory allocation【/1】 and 【2】streams【/2】. A pinned memory allocation requests that the memory that is allocated not be paged out by the operating system. This is done with the 【3】cudaHostAlloc()【/3】 API call. Lines 21–24 in 【4】Fig. 20.11【/4】 allocate pinned memory buffers for the left and right boundary slices and the left and right halo slices. The left and right boundary slices need to be sent from the device memory to the left and right neighbor processes. The buffers are used as a host memory staging area for the device to copy data into and are then used as the source buffer for 【5】MPI_Send()【/5】 to neighbor processes. The left and right halo slices need to be received from neighbor processes. The buffers are used as a host memory staging area for 【6】MPI_Recv()【/6】 to use as destination buffers and then to copy data from them to the device memory. These buffers are sometimes referred to as 【7】bounce buffers【/7】, as their main role is to serve as temporary buffers that allow the data to be bounced from the device memory to the remote MPI process and vice versa.",
+      "zh": "为了支持阶段 2 中的并行活动，我们需要使用 CUDA 编程模型的两项高级特性：【1】锁页内存分配【/1】和【2】流【/2】。锁页内存分配要求所分配的内存不被操作系统换出页面。这是通过【3】cudaHostAlloc()【/3】API 调用完成的。【4】图 20.11【/4】的第 21–24 行为左右边界切片和左右光环切片分配了锁页内存缓冲区。左右边界切片需要从设备内存发送到左右邻居进程，这些缓冲区用作设备向其中复制数据的主机内存中转区，随后又用作【5】MPI_Send()【/5】向邻居进程发送时的源缓冲区。左右光环切片需要从邻居进程接收，这些缓冲区用作【6】MPI_Recv()【/6】的目标缓冲区的主机内存中转区，之后再将数据从其中复制到设备内存。这些缓冲区有时被称为【7】弹跳缓冲区（bounce buffers）【/7】，因为其主要作用是充当临时缓冲区，使数据可以从设备内存弹跳到远程 MPI 进程，反之亦然。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "Note that the host memory allocation for the bounce buffers is done with 【1】cudaHostAlloc()【/1】 function rather than the standard 【2】malloc()【/2】 function. The difference is that the 【3】cudaHostAlloc()【/3】 function allocates a 【4】pinned memory【/4】 buffer, sometimes also referred to as 【5】page locked memory【/5】 buffer. We need to know a little more background on the memory management in operating systems in order to fully understand the concept of pinned memory buffers.",
+      "zh": "请注意，弹跳缓冲区的主机内存分配使用【1】cudaHostAlloc()【/1】函数，而不是标准的【2】malloc()【/2】函数。区别在于【3】cudaHostAlloc()【/3】函数分配的是【4】锁页内存【/4】缓冲区，有时也称为【5】锁页内存【/5】缓冲区。为了充分理解锁页内存缓冲区的概念，我们需要再多了解一些操作系统中内存管理的背景知识。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
+      "en": "In a modern computer system the operating system manages virtual memory spaces for applications. Each application has access to a large, consecutive address space. In reality the system has a limited amount of physical memory that needs to be shared among all running applications. This sharing is performed by partitioning the virtual memory space into pages and mapping only the actively used pages into physical memory. When there is much demand for memory, the operating system needs to page out some of the pages from the physical memory to mass storage such as disks. Therefore an application may have its data paged out at any time during its execution.",
+      "zh": "在现代计算机系统中，操作系统为应用程序管理虚拟内存空间。每个应用程序都可以访问一个很大且连续的地址空间。实际上，系统的物理内存有限，需要在所有正在运行的应用程序之间共享。这种共享通过将虚拟内存空间划分为页面，并且只将活跃使用的页面映射到物理内存中来实现。当内存需求很大时，操作系统需要将部分页面从物理内存换出到磁盘等大容量存储设备。因此，应用程序的数据在其执行期间的任何时候都可能被换出。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[7]",
+      "en": "The implementation of 【1】cudaMemcpy()【/1】 uses a type of hardware called a direct memory access (DMA) device. When a 【2】cudaMemcpy()【/2】 function is called to copy between the host and device memories, its implementation uses a DMA operation to complete the task. On the host memory side, the DMA hardware operates on physical addresses; that is, the operating system needs to give a translated physical address to the DMA device. However, there is a chance that the data may be paged out before the DMA operation is complete. The physical memory locations for the data may be reassigned to other data corresponding to a different virtual memory location. In this case, the DMA operation can potentially be corrupted, since its data can be overwritten by the paging activity.",
+      "zh": "【1】cudaMemcpy()【/1】的实现使用一种称为直接内存访问（DMA）设备的硬件。当调用【2】cudaMemcpy()【/2】函数在主机和设备内存之间进行复制时，其实现使用 DMA 操作来完成该任务。在主机内存一侧，DMA 硬件操作的是物理地址；也就是说，操作系统需要向 DMA 设备提供一个转换后的物理地址。然而，数据有可能在 DMA 操作完成之前被换出页面。数据对应的物理内存位置可能被重新分配给对应不同虚拟内存位置的其他数据。在这种情况下，DMA 操作有可能被破坏，因为其数据可能被换页活动覆盖。"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[8]",
+      "en": "A common solution to this data corruption problem is for the CUDA runtime to perform the copy operation in two steps. For a host-to-device copy, the CUDA runtime first copies the source host memory data into a pinned memory buffer, which means that the memory locations are marked so that the paging mechanism will not page out the data. It then uses the DMA device to copy the data from the pinned memory buffer to the device memory. For a device-to-host copy, the CUDA runtime first uses a DMA device to copy the data from the device memory into a pinned memory buffer. It then copies the data from the pinned memory buffer to the destination host memory location. By using an extra pinned memory buffer, the DMA copy will be safe from any paging activities.",
+      "zh": "解决这种数据破坏问题的一种常见方法是让 CUDA 运行时分两步执行复制操作。对于主机到设备的复制，CUDA 运行时先将源主机内存数据复制到锁页内存缓冲区中，这意味着这些内存位置被标记，换页机制不会将数据换出。然后它使用 DMA 设备将数据从锁页内存缓冲区复制到设备内存。对于设备到主机的复制，CUDA 运行时先使用 DMA 设备将数据从设备内存复制到锁页内存缓冲区，然后将数据从锁页内存缓冲区复制到目标主机内存位置。通过使用额外的锁页内存缓冲区，DMA 复制将不受任何换页活动的影响。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[9]",
+      "en": "There are two problems with this approach. One is that the extra copy adds delay to the 【1】cudaMemcpy()【/1】 operation. The second is that the extra complexity involved leads to a synchronous implementation of the 【2】cudaMemcpy()【/2】 function. That is, the host program cannot continue to execute until the 【3】cudaMemcpy()【/3】 function has completed its operation and returned. This serializes all copy operations. To support fast copies with more parallelism, CUDA provides a 【4】cudaMemcpyAsync()【/4】 function.",
+      "zh": "这种方法有两个问题。一是额外的复制给【1】cudaMemcpy()【/1】操作增加了延迟。二是所涉及的额外复杂性导致【2】cudaMemcpy()【/2】函数实现为同步的。也就是说，在【3】cudaMemcpy()【/3】函数完成操作并返回之前，主机程序不能继续执行。这使得所有复制操作串行化。为了支持更多并行性的快速复制，CUDA 提供了【4】cudaMemcpyAsync()【/4】函数。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[10]",
+      "en": "The 【1】cudaMemcpyAsync()【/1】 function requires that the host memory buffer be allocated as a pinned memory buffer. This is done in lines 21–24 in 【2】Fig. 20.11【/2】 for the host memory buffers of the left boundary, right boundary, left halo, and right halo slices. These buffers are allocated with the 【3】cudaHostAlloc()【/3】 function, which ensures that the allocated memory is pinned or page locked from paging activities. Note that the 【4】cudaHostAlloc()【/4】 function takes three parameters. The first two are the same as 【5】cudaMalloc()【/5】. The third specifies some options for more advanced usage. For most basic use cases, we can simply use the default value 【6】cudaHostAllocDefault【/6】.",
+      "zh": "【1】cudaMemcpyAsync()【/1】函数要求主机内存缓冲区作为锁页内存缓冲区分配。这在【2】图 20.11【/2】的第 21–24 行中完成，针对的是左边界、右边界、左光环和右光环切片的主机内存缓冲区。这些缓冲区使用【3】cudaHostAlloc()【/3】函数分配，该函数确保分配的内存被锁定（即锁页）而不受换页活动的影响。请注意，【4】cudaHostAlloc()【/4】函数接受三个参数。前两个与【5】cudaMalloc()【/5】相同。第三个指定一些用于更高级用法的选项。对于大多数基本用例，我们可以直接使用默认值【6】cudaHostAllocDefault【/6】。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[11]",
+      "en": "The second advanced CUDA feature that is used for overlapping communication with computation is 【1】streams【/1】, a feature that supports managed concurrent execution of CUDA API functions. A stream is an ordered sequence of operations. When the host code calls a 【2】cudaMemcpyAsync()【/2】 function or launches a kernel, it can specify a stream as one of its parameters. By specifying a stream in a 【3】cudaMemcpyAsync()【/3】 call, the copy operation is placed into a stream. All operations in the same stream will be done sequentially according to the order in which they are placed into that stream. However, operations in different streams can be executed in parallel without any ordering constraint.",
+      "zh": "用于计算与通信重叠的第二项 CUDA 高级特性是【1】流【/1】，一项支持 CUDA API 函数受控并发执行的功能。流是一个有序的操作序列。当主机代码调用【2】cudaMemcpyAsync()【/2】函数或启动核函数时，可以将一个流指定为参数之一。通过在【3】cudaMemcpyAsync()【/3】调用中指定一个流，复制操作就被放入该流中。同一流中的所有操作将按照放入该流的顺序依次执行。然而，不同流中的操作可以并行执行，不受任何排序约束。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[12]",
+      "en": "Line 25 of 【1】Fig. 20.11【/1】 declares two variables that are of CUDA built-in type 【2】cudaStream_t【/2】. These variables are then used in calling the 【3】cudaStreamCreate()【/3】 function. Each call to 【4】cudaStreamCreate()【/4】 creates a new stream and deposits an identifier of the stream into its parameter. After the calls in lines 26 and 27, the host code can use either stream 0 or stream 1 in subsequent 【5】cudaMemcpyAsync()【/5】 calls and kernel calls.",
+      "zh": "【1】图 20.11【/1】的第 25 行声明了两个 CUDA 内置类型【2】cudaStream_t【/2】的变量。然后这些变量被用于调用【3】cudaStreamCreate()【/3】函数。每次调用【4】cudaStreamCreate()【/4】都会创建一个新流，并将该流的标识符存入其参数中。在第 26 行和第 27 行的调用之后，主机代码可以在后续的【5】cudaMemcpyAsync()【/5】调用和核函数调用中使用流 0 或流 1。"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[13]",
+      "en": "【1】Fig. 20.13【/1】 shows part 3 of the compute process. Line 28 declares an MPI status variable that will be used for MPI send and receive. Lines 29–30 calculate the process id of the left and right neighbors of the compute process. The 【2】left_neighbor【/2】 and 【3】right_neighbor【/3】 variables will be used by compute processes as parameters when they send messages to and receive messages from their neighbors. For process 0, there is no left neighbor, so line 29 assigns an MPI constant 【4】MPI_PROC_NULL【/4】 to 【5】left_neighbor【/5】 to note this fact. For process np − 2, there is no right neighbor, so line 30 assigns 【6】MPI_PROC_NULL【/6】 to right_neighbor. For all the internal processes, lines 29–30 assign pid − 1 to 【7】left_neighbor【/7】 and pid + 1 to 【8】right_neighbor【/8】.",
+      "zh": "【1】图 20.13【/1】展示了计算进程代码的第 3 部分。第 28 行声明了一个 MPI 状态变量，将用于 MPI 发送和接收。第 29–30 行计算计算进程的左右邻居的进程 ID。【2】left_neighbor【/2】和【3】right_neighbor【/3】变量将被计算进程用作与邻居发送和接收消息时的参数。对于进程 0，没有左邻居，因此第 29 行将 MPI 常量【4】MPI_PROC_NULL【/4】赋给【5】left_neighbor【/5】以记录这一事实。对于进程 np − 2，没有右邻居，因此第 30 行将【6】MPI_PROC_NULL【/6】赋给 right_neighbor。对于所有内部进程，第 29–30 行将 pid − 1 赋给【7】left_neighbor【/7】，将 pid + 1 赋给【8】right_neighbor【/8】。"
+    },
+    {
+      "id": "n0092",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 20.13【/1】 Compute process code (part 3).",
+      "zh": "【1】图 20.13【/1】 计算进程代码（第 3 部分）。"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[14]",
+      "en": "Line 31 in 【1】Fig. 20.13【/1】 calls a function to copy the stencil coefficients to the GPU constant memory. The details will not be shown here because the reader should already be familiar with constant memory. Lines 32–36 set up several offsets that will be used to call kernels and exchange data so that the computation and communication can be overlapped. These offsets define the regions of grid points that will need to be calculated at each stage of 【2】Fig. 20.13【/2】. They are also visualized in 【3】Fig. 20.12【/3】.",
+      "zh": "【1】图 20.13【/1】的第 31 行调用一个函数，将模板系数复制到 GPU 常量内存中。这里不展示其细节，因为读者应当已经熟悉常量内存。第 32–36 行设置了若干偏移量，这些偏移量将用于调用核函数和交换数据，以便计算与通信能够重叠。这些偏移量定义了【2】图 20.13【/2】每个阶段需要计算的网格点区域，它们也在【3】图 20.12【/3】中可视化。"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[15]",
+      "en": "Note that the total number of slices in each device memory is four slices of left halo points (dashed white) plus four slices of left boundary points plus 【1】dimx*dimy*(dimz − 8)【/1】 internal points plus four slices of right boundary points plus four slices of right halo points (dashed white). As illustrated in 【2】Fig. 20.14【/2】, variable 【3】left_stage1_offset【/3】 defines the starting point of the slices that are needed in order to calculate the left boundary slices. This includes 12 slices of data: four slices of left neighbor halo points, four slices of boundary points, and four slices of internal points. These slices are the leftmost in the partition, so the offset value is set to 0 by line 34. Variable 【4】right_stage2_offset【/4】 defines the starting point of the slices that are needed for calculating the right boundary slices. This also includes 12 slices: four slices of internal points, four slices of right boundary points, and four slices of right halo cells. The beginning point of these 12 slices can be derived by subtracting 12 from the total number of slices dimz + 8. Therefore the starting offset for these 12 slices is set to 【5】dimx*dimy*(dimz − 4)【/5】 by line 35 (【6】Fig. 20.12【/6】).",
+      "zh": "请注意，每个设备内存中的切片总数为：四片左光环点（白色虚线）加上四片左边界点，再加上【1】dimx*dimy*(dimz − 8)【/1】个内部点，加上四片右边界点，再加上四片右光环点（白色虚线）。如【2】图 20.14【/2】所示，变量【3】left_stage1_offset【/3】定义计算左边界切片所需切片的起始位置，包括 12 片数据：四片左邻居光环点、四片边界点和四片内部点。这些切片位于分区的最左侧，因此第 34 行将偏移值设置为 0。变量【4】right_stage2_offset【/4】定义计算右边界切片所需切片的起始位置，同样包括 12 片：四片内部点、四片右边界点和四片右光环单元。这 12 片的起始位置可以通过从切片总数 dimz + 8 中减去 12 得出，因此第 35 行将这 12 片的起始偏移量设置为【5】dimx*dimy*(dimz − 4)【/5】（【6】图 20.12【/6】）。"
+    },
+    {
+      "id": "n0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 20.14【/2】【/1】 Device memory offsets used for data exchange with neighbor processes.",
+      "zh": "【1】【2】图 20.14【/2】【/1】 用于与邻居进程交换数据的设备内存偏移量。"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[16]",
+      "en": "Line 37 in 【1】Fig. 20.13【/1】 is an MPI barrier synchronization, which is similar to the 【2】CUDA __syncthreads()【/2】 across threads in a block. MPI barrier forces all MPI processes that are specified by the input argument to wait for each other. None of the processes can continue their execution beyond this point until all have reached this point. The reason why we want the barrier synchronization here is to ensure that all compute nodes have received their input data and are ready to perform the computation steps. Since they will be exchanging data with each other, we would like to make them all start at about the same time. Thus we will not be in a situation in which a few tardy processes delay all other processes during the data exchange. 【3】MPI_Barrier()【/3】 is a 【4】collective communication【/4】 function. We will discuss collective communication API functions in more detail in the next section.",
+      "zh": "【1】图 20.13【/1】的第 37 行是 MPI 屏障同步，类似于线程块内各线程之间的【2】CUDA __syncthreads()【/2】。MPI 屏障强制输入参数指定的所有 MPI 进程相互等待。在所有进程都到达该点之前，任何进程都不能继续越过该点执行。我们在这里需要屏障同步的原因，是要确保所有计算节点都已收到输入数据并准备好执行计算步骤。由于它们将相互交换数据，我们希望它们几乎同时开始，这样就不会出现几个拖沓的进程在数据交换期间拖延所有其他进程的情况。【3】MPI_Barrier()【/3】是一个【4】集合通信【/4】函数。我们将在下一节更详细地讨论集合通信 API 函数。"
+    },
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[17]",
+      "en": "Line 38 starts a loop that performs the computation steps. For each iteration, each compute process will perform one cycle of the two-stage process shown in 【1】Fig. 20.12【/1】. Line 39 calls a function that will generate the four slices of the left boundary points in stage 1. We assume that the function will set up the grid configuration and call the stencil kernel that performs one computation step on a region of grid points as described in 【2】Chapter 8【/2】, Stencil. The 【3】call_stencil_kernel()【/3】 function takes several parameters. The first parameter is a pointer to the output data area for the kernel. The second parameter is a pointer to the input data area. In both cases, we add the 【4】left_stage1_offset【/4】 to the input and output data in the device memory. The next three parameters specify the dimensions of the portion of the grid to be processed. Note that we need to have four slices on each side in order to correctly perform the computation for all the points in the four left boundary slices. Line 40 does the same for the right boundary points in stage 1. Note that these kernels will be called within stream 0 and will be executed sequentially.",
+      "zh": "第 38 行开始一个执行计算步骤的循环。每次迭代中，每个计算进程将执行【1】图 20.12【/1】所示两阶段过程的一个周期。第 39 行调用一个函数，在阶段 1 生成左边界点的四片。我们假设该函数将设置网格配置，并调用模板核函数，对一片网格点区域执行一个计算步骤，如【2】第 8 章【/2】“模板”所述。【3】call_stencil_kernel()【/3】函数接受若干参数。第一个参数是指向核函数输出数据区域的指针，第二个参数是指向输入数据区域的指针。在这两种情况下，我们都对设备内存中的输入和输出数据加上【4】left_stage1_offset【/4】。接下来的三个参数指定待处理网格部分的尺寸。请注意，为了正确计算四片左边界切片中的所有点，我们每侧都需要四片。第 40 行在阶段 1 中对右边界点做同样的事情。请注意，这些核函数将在流 0 中调用并按顺序执行。"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[18]",
+      "en": "Line 41 calls the 【1】call_stencil_kernel()【/1】 function, which will call a stencil kernel function to generate the 【2】dimx*dimy*(dimz − 8)【/2】 internal points in stage 2. Note that this also requires four slices of input boundary values on each side, so the total number of input slices is 【3】dimx*dimy*dimz【/3】. The kernel is called in stream 1 and will be executed in parallel with those called by lines 39 and 40.",
+      "zh": "第 41 行调用【1】call_stencil_kernel()【/1】函数，它将调用一个模板核函数，在阶段 2 生成【2】dimx*dimy*(dimz − 8)【/2】个内部点。请注意，这每侧还需要四片输入边界值，因此输入切片总数为【3】dimx*dimy*dimz【/3】。该核函数在流 1 中调用，将与第 39 行和第 40 行调用的核函数并行执行。"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[19]",
+      "en": "【1】Fig. 20.15【/1】 shows part 4 of the compute process code. Line 42 copies the four slices of left boundary points to the host memory in preparation for data exchange with the left neighbor process. Line 43 copies the four slices of the right boundary points to the host memory in preparation for data exchange with the right neighbor process. Both are asynchronous copies in stream 0 and will wait for the two kernels in stream 0 to complete before they copy data. Line 44 is a synchronization that forces the process to wait for all operations in stream 0 to complete before it can continue. This ensures that the left and right boundary points are in the host memory before the process proceeds with data exchange.",
+      "zh": "【1】图 20.15【/1】展示了计算进程代码的第 4 部分。第 42 行将四片左边界点复制到主机内存，为与左邻居进程的数据交换做准备。第 43 行将四片右边界点复制到主机内存，为与右邻居进程的数据交换做准备。两者都是流 0 中的异步复制，将等待流 0 中的两个核函数完成后才开始复制数据。第 44 行是一个同步操作，强制进程等待流 0 中的所有操作完成才能继续，从而确保左右边界点在进程进行数据交换之前已位于主机内存中。"
+    }
+  ]
+}

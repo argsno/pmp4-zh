@@ -1,0 +1,155 @@
+{
+  "page": "Ch006_123-147_B9780323912310000161",
+  "nodes": [
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "We demonstrate the thread coarsening optimization using the tiled matrix multiplication example from 【1】Chapter 5【/1】, Memory Architecture and Data Locality. 【2】Fig. 6.12【/2】 depicts the memory access pattern of computing two horizontally adjacent output tiles of the output matrix 【3】P【/3】. For each of these output tiles, we observe that different input tiles of the matrix 【4】N【/4】 need to be loaded. However, the same input tiles of the matrix 【5】M【/5】 are loaded for both the output tiles.",
+      "zh": "我们用【1】第 5 章【/1】《内存体系结构与数据局部性》中的分块矩阵乘法示例来演示线程粗化优化。【2】图 6.12【/2】描绘了计算输出矩阵【3】P【/3】的两个水平相邻输出分块时的内存访问模式。对于这两个输出分块中的每一个，我们注意到需要加载矩阵【4】N【/4】的不同输入分块。然而，对于这两个输出分块，加载的是矩阵【5】M【/5】中相同的输入分块。"
+    },
+    {
+      "id": "n0076",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 6.12【/2】【/1】 Thread coarsening for tiled matrix multiplication.",
+      "zh": "【1】【2】图 6.12【/2】【/1】 面向分块矩阵乘法的线程粗化。"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "In the tiled implementation in 【1】Chapter 5【/1】, Memory Architecture and Data Locality, each output tile is processed by a different thread block. Because the shared memory contents cannot be shared across blocks, each block must load its own copy of the input tiles of matrix 【2】M【/2】. Although having different thread blocks load the same input tile is redundant, it is a price that we pay to be able to process the two output tiles in parallel using different blocks. If these thread blocks run in parallel, this price may be worth paying. On the other hand, if these thread blocks are serialized by the hardware, the price is paid in vain. In the latter case, it is better for the programmer to have a single thread block process the two output tiles, whereby each thread in the block processes two output elements. This way, the coarsened thread block would load the input tiles of 【3】M【/3】 once and reuse them for multiple output tiles.",
+      "zh": "在【1】第 5 章【/1】《内存体系结构与数据局部性》的分块实现中，每个输出分块由不同的线程块处理。由于共享内存的内容无法在线程块之间共享，每个线程块必须加载矩阵【2】M【/2】输入分块自己的副本。虽然让不同的线程块加载相同的输入分块是冗余的，但这是我们为了能用不同的线程块并行处理两个输出分块所付出的代价。如果这些线程块并行运行，这个代价也许值得付出。另一方面，如果这些线程块被硬件串行化，这个代价就白付了。在后一种情况下，程序员最好让单个线程块处理这两个输出分块，这样块中的每个线程处理两个输出元素。这样一来，粗化后的线程块只需加载一次矩阵【3】M【/3】的输入分块，并让它们服务于多个输出分块。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "【1】Fig. 6.13【/1】 shows how thread coarsening can be applied to the tiled matrix multiplication code from 【2】Chapter 5【/2】, Memory Architecture and Data Locality. On line 02 a constant 【3】COARSE_FACTOR【/3】 is added to represent the 【4】coarsening factor【/4】, which is the number of original units of work for which each coarsened thread is going to be responsible. On line 13 the initialization of the column index is replaced with an initialization of 【5】colStart【/5】, which is the index of the first column for which the thread is responsible, since the thread is now responsible for multiple elements with different column indices. In calculating 【6】colStart【/6】, the block index 【7】bx【/7】 is multiplied by 【8】TILE_WIDTH*COARSE_FACTOR【/8】 instead of just 【9】TILE_WIDTH【/9】, since each thread block is now responsible for 【10】TILE_WIDTH*COARSE_FACTOR【/10】 columns. On lines 16–19, multiple instances of 【11】Pvalue【/11】 are declared and initialized, one for each element for which the coarsened thread is responsible. The loop on line 17 that iterates over the different units of work for which the coarsened thread is responsible is sometimes referred to as a 【12】coarsening loop【/12】. Inside the loop on line 22 that loops over the input tiles, only one tile of 【13】M【/13】 is loaded in each loop iteration, as with the original code. However, for each tile of 【14】M【/14】 that is loaded, multiple tiles of 【15】N【/15】 are loaded and used by the coarsening loop on line 27. This loop first figures out which column of the current tile the coarsened thread is responsible for (line 29), then loads the tile of 【16】N【/16】 (line 32) and uses the tile to compute and update a different 【17】Pvalue【/17】 each iteration (lines 35–37). At the end, on lines 44–47, another coarsening loop is used for each coarsened thread to update the output elements for which it is responsible.",
+      "zh": "【1】图 6.13【/1】展示了如何把线程粗化应用到【2】第 5 章【/2】《内存体系结构与数据局部性》中的分块矩阵乘法代码上。在第 02 行添加了常量【3】COARSE_FACTOR【/3】来表示【4】粗化因子【/4】，即每个粗化后的线程将要负责的原始工作单元数。在第 13 行，列索引的初始化被替换为【5】colStart【/5】的初始化，它是该线程负责的第一列的索引，因为线程现在要负责多个具有不同列索引的元素。在计算【6】colStart【/6】时，线程块索引【7】bx【/7】乘以【8】TILE_WIDTH*COARSE_FACTOR【/8】而不是仅乘以【9】TILE_WIDTH【/9】，因为每个线程块现在负责【10】TILE_WIDTH*COARSE_FACTOR【/10】列。在第 16–19 行，声明并初始化了【11】Pvalue【/11】的多个实例，每个实例对应粗化线程负责的一个元素。第 17 行中遍历粗化线程负责的不同工作单元的循环，有时被称为【12】粗化循环【/12】。在第 22 行遍历输入分块的循环内部，与原始代码一样，每次循环迭代只加载【13】M【/13】的一个分块。然而，对于加载的每个【14】M【/14】分块，会加载【15】N【/15】的多个分块，供第 27 行的粗化循环使用。该循环首先确定当前分块中粗化线程负责哪一列（第 29 行），然后加载【16】N【/16】的分块（第 32 行），并在每次迭代中使用该分块计算和更新不同的【17】Pvalue【/17】（第 35–37 行）。最后，在第 44–47 行，为每个粗化线程使用另一个粗化循环来更新它负责的输出元素。"
+    },
+    {
+      "id": "n0079",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 6.13【/2】【/1】 Code for thread coarsening for tiled matrix multiplication.",
+      "zh": "【1】【2】图 6.13【/2】【/1】 面向分块矩阵乘法的线程粗化代码。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "Thread coarsening is a powerful optimization that can result in substantial performance improvement for many applications. It is an optimization that is commonly applied. However, there are several pitfalls to avoid in applying thread coarsening. First, one must be careful not to apply the optimization when it is unnecessary. Recall that thread coarsening is beneficial when there is a price paid for parallelization that can be reduced with coarsening, such as redundant loading of data, redundant work, synchronization overhead, or others. Not all computations have such a price. For example, in the vector addition kernel in 【1】Chapter 2【/1】, Heterogeneous Data Parallel Computing, no price is paid for processing different vector elements in parallel. Therefore applying thread coarsening to the vector addition kernel would not be expected to make a substantial performance difference. The same applies to the RGB-to-grayscale conversion kernel in 【2】Chapter 3【/2】, Multidimensional Grids and Data.",
+      "zh": "线程粗化是一种强大的优化，可以为许多应用带来显著的性能提升。它是一种常用的优化。然而，应用线程粗化时有几个陷阱需要避免。首先，必须注意不要在不需要时应用这种优化。回顾一下，当并行化需要付出代价且这种代价可以通过粗化来降低时，线程粗化才是有益的，这些代价如重复加载数据、冗余工作、同步开销等。并非所有计算都有这样的代价。例如，在【1】第 2 章【/1】《异构数据并行计算》的向量加法核函数中，并行处理不同的向量元素不需要付出任何代价。因此，对向量加法核函数应用线程粗化预计不会带来明显的性能差异。【2】第 3 章【/2】《多维网格与数据》中的 RGB 转灰度转换核函数也是如此。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "The second pitfall to avoid is not to apply so much coarsening that the hardware resources become underutilized. Recall that exposing as much parallelism as possible to the hardware enables transparent scalability. It provides the hardware with the flexibility of parallelizing or serializing work, depending on the amount of execution resources it has. When programmers coarsen threads, they reduce the amount of parallelism that is exposed to the hardware. If the coarsening factor is too high, not enough parallelism will be exposed to the hardware, resulting in some parallel execution resources being unutilized. In practice, different devices have different amounts of execution resources, so the best coarsening factor is usually device-specific and dataset-specific and needs to be retuned for different devices and datasets. Hence when thread coarsening is applied, scalability becomes less transparent.",
+      "zh": "要避免的第二个陷阱是，不要过度粗化以致硬件资源得不到充分利用。回顾一下，向硬件暴露尽可能多的并行性可以实现透明可扩展性。它为硬件提供了根据其拥有的执行资源数量来并行或串行执行工作的灵活性。当程序员粗化线程时，他们减少了暴露给硬件的并行性。如果粗化因子过高，暴露给硬件的并行性就不够，导致部分并行执行资源闲置。在实践中，不同设备拥有不同数量的执行资源，因此最佳的粗化因子通常因设备和数据集而异，并且需要针对不同的设备和数据集重新调整。因此，应用线程粗化后，可扩展性就不再那么透明了。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "The third pitfall of applying thread coarsening is to avoid increasing resource consumption to such an extent that it hurts occupancy. Depending on the kernel, thread coarsening may require using more registers per thread or more shared memory per thread block. If this is the case, programmers must be careful not to use too many registers or too much shared memory such that the occupancy is reduced. The performance penalty from reducing occupancy may be more detrimental than the performance benefit that thread coarsening may offer.",
+      "zh": "应用线程粗化的第三个陷阱是，要避免把资源消耗增加到损害占用率的程度。根据核函数的不同，线程粗化可能需要每个线程使用更多寄存器，或每个线程块使用更多共享内存。如果出现这种情况，程序员必须注意不要使用过多的寄存器或共享内存，以免降低占用率。降低占用率带来的性能损失，可能比线程粗化带来的性能收益更具破坏性。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "6.4 A checklist of optimizations",
+      "zh": "6.4 优化清单"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "Throughout this first part of the book, we have covered various common optimizations that CUDA programmers apply to improve the performance of their code. We consolidate these optimizations into a single checklist, shown in 【1】Table 6.1【/1】. This checklist is not an exhaustive one, but it contains many of the universal optimizations that are common across different applications and that programmers should first consider. In the second and third parts of the book, we will apply the optimizations in this checklist to various parallel patterns and applications to understand how they operate in different contexts. In this section we will provide a brief review of each optimization and the strategies for applying it.",
+      "zh": "在本书第一部分的整个过程中，我们介绍了 CUDA 程序员为提升代码性能而采用的各种常用优化。我们将这些优化整合成一份清单，如【1】表 6.1【/1】所示。这份清单并非穷尽性的，但它包含了许多在各种应用中通用的优化，程序员应当首先考虑这些优化。在本书第二、三部分，我们将把这份清单中的优化应用到各种并行模式和应用中，以理解它们在不同场景下的运作方式。在本节中，我们将对每种优化及其应用策略做简要回顾。"
+    },
+    {
+      "id": "t0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/p[1]",
+      "en": "Table 6.1",
+      "zh": "表 6.1"
+    },
+    {
+      "id": "n0086",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/caption[1]",
+      "en": "A checklist of optimizations.",
+      "zh": "一份优化清单。"
+    },
+    {
+      "id": "n0087",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/thead[1]/tr[1]/th[1]",
+      "en": "Optimization",
+      "zh": "优化"
+    },
+    {
+      "id": "n0088",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/thead[1]/tr[1]/th[2]",
+      "en": "Benefit to compute cores",
+      "zh": "对计算核心的益处"
+    },
+    {
+      "id": "n0089",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/thead[1]/tr[1]/th[3]",
+      "en": "Benefit to memory",
+      "zh": "对内存的益处"
+    },
+    {
+      "id": "n0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/thead[1]/tr[1]/th[4]",
+      "en": "Strategies",
+      "zh": "策略"
+    },
+    {
+      "id": "n0091",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[1]/td[1]",
+      "en": "Maximizing occupancy",
+      "zh": "最大化占用率"
+    },
+    {
+      "id": "n0092",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[1]/td[2]",
+      "en": "More work to hide pipeline latency",
+      "zh": "更多工作以隐藏流水线延迟"
+    },
+    {
+      "id": "n0093",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[1]/td[3]",
+      "en": "More parallel memory accesses to hide DRAM latency",
+      "zh": "更多并行内存访问以隐藏 DRAM 延迟"
+    },
+    {
+      "id": "n0094",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[1]/td[4]",
+      "en": "Tuning usage of SM resources such as threads per block, shared memory per block, and registers per thread",
+      "zh": "调整 SM 资源的使用，如每线程块的线程数、每线程块的共享内存和每线程的寄存器数"
+    },
+    {
+      "id": "n0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[2]/td[1]",
+      "en": "Enabling coalesced global memory accesses",
+      "zh": "实现合并的全局内存访问"
+    },
+    {
+      "id": "n0096",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[2]/td[2]",
+      "en": "Fewer pipeline stalls waiting for global memory accesses",
+      "zh": "等待全局内存访问的流水线停顿更少"
+    },
+    {
+      "id": "n0097",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[2]/td[3]",
+      "en": "Less global memory traffic and better utilization of bursts/cache lines",
+      "zh": "全局内存流量更少，突发/缓存行的利用率更高"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[2]/td[4]/div[1]/p[1]",
+      "en": "Transfer between global memory and shared memory in a coalesced manner and performing uncoalesced accesses in shared memory (e.g., corner turning)",
+      "zh": "以合并方式在全局内存与共享内存之间传输数据，并在共享内存中执行非合并访问（例如拐角变换）"
+    },
+    {
+      "id": "u0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[2]/td[4]/div[1]/p[2]",
+      "en": "Rearranging the mapping of threads to data",
+      "zh": "重新安排线程到数据的映射"
+    }
+  ]
+}

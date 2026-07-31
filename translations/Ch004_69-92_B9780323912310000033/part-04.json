@@ -1,0 +1,155 @@
+{
+  "page": "Ch004_69-92_B9780323912310000033",
+  "nodes": [
+    {
+      "id": "n0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/p[1]",
+      "en": "Resource and Capability Queries",
+      "zh": "资源与能力查询"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/p[2]",
+      "en": "【1】In everyday life, we often query the resources and capabilities in an environment. For example, when we make a hotel reservation, we can check the amenities that come with a hotel room. If the room comes with a hair dryer, we do not need to bring one. Most American hotel rooms come with hair dryers, while many hotels in other regions do not【/1】.",
+      "zh": "【1】在日常生活中，我们经常查询某个环境中的资源和能力。例如，预订酒店时，我们可以查看酒店房间附带哪些设施。如果房间配有吹风机，我们就不必自带。大多数美国酒店房间都配有吹风机，而世界其他地区的许多酒店则没有【/1】。"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/p[3]",
+      "en": "【1】Some Asian and European hotels provide toothpaste and even toothbrushes, while most American hotels do not. Many American hotels provide both shampoo and conditioner, while hotels in other continents often provide only shampoo【/1】.",
+      "zh": "【1】一些亚洲和欧洲的酒店提供牙膏，甚至牙刷，而大多数美国酒店则不提供。许多美国酒店同时提供洗发水和护发素，而其他大洲的酒店往往只提供洗发水【/1】。"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/p[4]",
+      "en": "【1】If the room comes with a microwave oven and a refrigerator, we can take the leftovers from dinner and expect to eat them the next day. If the hotel has a pool, we can bring swimsuits and take a dip after business meetings. If the hotel does not have a pool but has an exercise room, we can bring running shoes and exercise clothes. Some high-end Asian hotels even provide exercise clothing!【/1】",
+      "zh": "【1】如果房间配有微波炉和冰箱，我们就可以把晚餐的剩菜带回去，第二天再吃。如果酒店有游泳池，我们可以带上泳衣，在商务会议之后游个泳。如果酒店没有游泳池但有健身房，我们可以带上跑鞋和运动服。一些亚洲高端酒店甚至提供运动服装！【/1】"
+    },
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/p[5]",
+      "en": "【1】These hotel amenities are part of the properties, or resources and capabilities, of the hotels. Veteran travelers check the properties at hotel websites, choose the hotels that best match their needs, and pack more efficiently and effectively【/1】.",
+      "zh": "【1】这些酒店设施是酒店属性（即资源和能力）的一部分。经验丰富的旅行者会查看酒店网站上的属性介绍，选择最符合自己需求的酒店，并更高效、更有效地打包行李【/1】。"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[2]",
+      "en": "The amount of resources in each CUDA device SM is specified as part of the 【1】compute capability【/1】 of the device. In general, the higher the compute capability level, the more resources are available in each SM. The compute capability of GPUs tends to increase from generation to generation. The Ampere A100 GPU has compute capability 8.0.",
+      "zh": "每个 CUDA 设备 SM 中的资源量被指定为设备【1】计算能力【/1】的一部分。一般来说，计算能力级别越高，每个 SM 中可用的资源就越多。GPU 的计算能力往往随代际更迭而不断提高。Ampere A100 GPU 的计算能力为 8.0。"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[3]",
+      "en": "In CUDA C, there is a built-in mechanism for the host code to query the properties of the devices that are available in the system. The CUDA runtime system (device driver) has an API function 【1】cudaGetDeviceCount【/1】 that returns the number of available CUDA devices in the system. The host code can find out the number of available CUDA devices by using the following statements:",
+      "zh": "在 CUDA C 中，有一种内置机制让主机代码查询系统中可用设备的属性。CUDA 运行时系统（设备驱动程序）有一个 API 函数【1】cudaGetDeviceCount【/1】，它返回系统中可用 CUDA 设备的数量。主机代码可以用下面的语句查出可用 CUDA 设备的数量："
+    },
+    {
+      "id": "p0380",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[4]",
+      "en": "While it may not be obvious, a modern PC system often has two or more CUDA devices. This is because many PC systems come with one or more “integrated” GPUs. These GPUs are the default graphics units and provide rudimentary capabilities and hardware resources to perform minimal graphics functionalities for modern window-based user interfaces. Most CUDA applications will not perform very well on these integrated devices. This would be a reason for the host code to iterate through all the available devices, query their resources and capabilities, and choose the ones that have enough resources to execute the application with satisfactory performance.",
+      "zh": "虽然这一点可能并不明显，但现代 PC 系统通常有两个或更多的 CUDA 设备。这是因为许多 PC 系统都带有一种或多种“集成”GPU。这些 GPU 是默认的图形单元，提供基本的处理能力和硬件资源，以完成现代基于窗口的用户界面所需的最基本图形功能。大多数 CUDA 应用在这些集成设备上的表现不会很好。这将是主机代码遍历所有可用设备、查询它们的资源和能力，并选出资源足以让应用以令人满意的性能执行的设备的原因。"
+    },
+    {
+      "id": "p0385",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[5]",
+      "en": "The CUDA runtime numbers all the available devices in the system from 0 to 【1】devCount-1【/1】. It provides an API function 【2】cudaGetDeviceProperties【/2】 that returns the properties of the device whose number is given as an argument. For example, we can use the following statements in the host code to iterate through the available devices and query their properties:",
+      "zh": "CUDA 运行时把系统中所有可用设备从 0 到【1】devCount-1【/1】编号。它提供了一个 API 函数【2】cudaGetDeviceProperties【/2】，返回以参数形式给出的设备号的属性。例如，我们可以在主机代码中使用下面的语句遍历可用设备并查询它们的属性："
+    },
+    {
+      "id": "p0415",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[7]",
+      "en": "The built-in type 【1】cudaDeviceProp【/1】 is a C struct type with fields that represent the properties of a CUDA device. The reader is referred to the CUDA C Programming Guide for all the fields of the type. We will discuss a few of these fields that are particularly relevant to the assignment of execution resources to threads. We assume that the properties are returned in the devProp variable whose fields are set by the 【2】cudaGetDeviceProperties【/2】 function. If the reader chooses to name the variable differently, the appropriate variable name will obviously need to be substituted in the following discussion.",
+      "zh": "内置类型【1】cudaDeviceProp【/1】是一个 C 结构体类型，其字段表示 CUDA 设备的属性。该类型的所有字段请读者参阅 CUDA C 编程指南。我们将讨论其中几个与执行资源分配到线程特别相关的字段。我们假定属性通过 devProp 变量返回，其字段由【2】cudaGetDeviceProperties【/2】函数设置。如果读者选择用不同的变量名，那么显然需要在下面的讨论中用相应的变量名替换。"
+    },
+    {
+      "id": "p0420",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[8]",
+      "en": "As the name suggests, the field 【1】devProp.maxThreadsPerBlock【/1】 gives the maximum number of threads allowed in a block in the queried device. Some devices allow up to 1024 threads in each block, and other devices may allow fewer. It is possible that future devices may even allow more than 1024 threads per block. Therefore it is a good idea to query the available devices and determine which ones will allow a sufficient number of threads in each block as far as the application is concerned.",
+      "zh": "顾名思义，字段【1】devProp.maxThreadsPerBlock【/1】给出被查询设备中每个线程块允许的最大线程数。有些设备每个线程块最多允许 1024 个线程，有些设备允许的更少。未来的设备甚至可能允许每个线程块超过 1024 个线程。因此，就应用而言，查询可用设备并确定哪些设备允许每个线程块有足够数量的线程，是一个好主意。"
+    },
+    {
+      "id": "p0425",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[9]",
+      "en": "The number of SMs in the device is given in 【1】devProp.multiProcessorCount【/1】. If the application requires many SMs to achieve satisfactory performance, it should definitely check this property of the prospective device. Furthermore, the clock frequency of the device is in 【2】devProp.clockRate【/2】. The combination the clock rate and the number of SMs gives a good indication of the maximum hardware execution throughput of the device.",
+      "zh": "设备中 SM 的数量由【1】devProp.multiProcessorCount【/1】给出。如果应用需要大量 SM 才能达到令人满意的性能，那么它一定要检查候选设备的这一属性。此外，设备的时钟频率在【2】devProp.clockRate【/2】中。时钟频率与 SM 数量的组合，可以很好地指示该设备的最大硬件执行吞吐量。"
+    },
+    {
+      "id": "p0430",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[10]",
+      "en": "The host code can find the maximum number of threads allowed along each dimension of a block in fields 【1】devProp.maxThreadsDim[0]【/1】 (for the 【2】x【/2】 dimension), 【3】devProp.maxThreadsDim[1]【/3】 (for the 【4】y【/4】 dimension), and 【5】devProp.maxThreadsDim[2]【/5】 (for the 【6】z【/6】 dimension). An example of use of this information is for an automated tuning system to set the range of block dimensions when evaluating the best performing block dimensions for the underlying hardware. Similarly, it can find the maximum number of blocks allowed along each dimension of a grid in 【7】devProp.maxGridSize[0]【/7】 (for the 【8】x【/8】 dimension), 【9】devProp.maxGridSize[1]【/9】 (for the 【10】y【/10】 dimension), and 【11】devProp.maxGridSize[2]【/11】 (for the 【12】z【/12】 dimension). A typical use of this information is to determine whether a grid can have enough threads to handle the entire dataset or some kind of iterative approach is needed.",
+      "zh": "主机代码可以在字段【1】devProp.maxThreadsDim[0]【/1】（【2】x【/2】维）、【3】devProp.maxThreadsDim[1]【/3】（【4】y【/4】维）和【5】devProp.maxThreadsDim[2]【/5】（【6】z【/6】维）中找到线程块每个维度允许的最大线程数。这类信息的一个用法是：让自动调优系统在为底层硬件评估最佳线程块维度时，设置线程块维度的取值范围。类似地，它还可以在【7】devProp.maxGridSize[0]【/7】（【8】x【/8】维）、【9】devProp.maxGridSize[1]【/9】（【10】y【/10】维）和【11】devProp.maxGridSize[2]【/11】（【12】z【/12】维）中找到网格每个维度允许的最大线程块数。这类信息的一个典型用途是判断网格是否能有足够的线程来处理整个数据集，还是需要某种迭代方法。"
+    },
+    {
+      "id": "p0435",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[11]",
+      "en": "The field 【1】devProp.regsPerBlock【/1】 gives the number of registers that are available in each SM. This field can be useful in determining whether the kernel can achieve maximum occupancy on a particular device or will be limited by its register usage. Note that the name of the field is a little misleading. For most compute capability levels, the maximum number of registers that a block can use is indeed the same as the total number of registers that are available in the SM. However, for some compute capability levels, the maximum number of registers that a block can use is less than the total that are available on the SM.",
+      "zh": "字段【1】devProp.regsPerBlock【/1】给出每个 SM 中可用的寄存器数量。这个字段有助于判断核函数在特定设备上是能够达到最大占用率，还是会受其寄存器使用量的限制。注意，这个字段的名字略有误导性。对于大多数计算能力级别，线程块可以使用的最大寄存器数确实与 SM 中可用的寄存器总数相同。然而，对于某些计算能力级别，线程块可以使用的最大寄存器数小于 SM 上可用的寄存器总数。"
+    },
+    {
+      "id": "p0440",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[12]",
+      "en": "We have also discussed that the size of warps depends on the hardware. The size of warps can be obtained from the 【1】devProp.warpSize【/1】 field.",
+      "zh": "我们还讨论过，线程束的大小取决于硬件。线程束的大小可以从【1】devProp.warpSize【/1】字段获得。"
+    },
+    {
+      "id": "p0445",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[13]",
+      "en": "There are many more fields in the 【1】cudaDeviceProp【/1】 type. We will discuss them throughout the book as we introduce the concepts and features that they are designed to reflect.",
+      "zh": "【1】cudaDeviceProp【/1】类型中还有很多其他字段。随着我们逐步介绍这些字段所设计用来反映的概念和特性，我们将在全书中讨论它们。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/h2[1]",
+      "en": "4.9 Summary",
+      "zh": "4.9 小结"
+    },
+    {
+      "id": "p0450",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/p[1]",
+      "en": "A GPU is organized into SM, which consist of multiple processing blocks of cores that share control logic and memory resources. When a grid is launched, its blocks are assigned to SMs in an arbitrary order, resulting in transparent scalability of CUDA applications. The transparent scalability comes with a limitation: Threads in different blocks cannot synchronize with each other.",
+      "zh": "GPU 由 SM 组织而成，SM 又由多个共享控制逻辑和内存资源的核心处理块组成。当网格启动时，其线程块以任意顺序被分配到 SM，从而使 CUDA 应用具有透明可扩展性。透明可扩展性伴随着一个限制：不同线程块中的线程之间不能互相同步。"
+    },
+    {
+      "id": "p0455",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/p[2]",
+      "en": "Threads are assigned to SMs for execution on a block-by-block basis. Once a block has been assigned to an SM, it is further partitioned into warps. Threads in a warp are executed following the SIMD model. If threads in the same warp diverge by taking different execution paths, the processing block executes these paths in passes in which each thread is active only in the pass corresponding to the path that it takes.",
+      "zh": "线程以线程块为单位被分配到 SM 执行。线程块一旦被分配到 SM，就会进一步被划分成线程束。线程束中的线程按照 SIMD 模型执行。如果同一线程束中的线程走不同的执行路径而发生发散，处理块会分趟执行这些路径，每个线程只在与其所走路径相对应的那一趟中处于活动状态。"
+    },
+    {
+      "id": "p0460",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/p[3]",
+      "en": "An SM may have many more threads assigned to it than it can execute simultaneously. At any time, the SM executes instructions of only a small subset of its resident warps. This allows the other warps to wait for long-latency operations without slowing down the overall execution throughput of the massive number of processing units. The ratio of the number of threads assigned to the SM to the maximum number of threads it can support is referred to as 【1】occupancy【/1】. The higher the occupancy of an SM, the better it can hide long-latency operations.",
+      "zh": "SM 被分配的线程数量可能远多于它能够同时执行的线程数。在任何时刻，SM 只执行其驻留线程束中一小部分线程束的指令。这使得其他线程束可以等待长延迟操作，而不会拖慢数量庞大的处理单元的总体执行吞吐量。分配给 SM 的线程数与其所能支持的最大线程数之比称为【1】占用率【/1】。SM 的占用率越高，它就越能更好地隐藏长延迟操作。"
+    },
+    {
+      "id": "p0465",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/p[4]",
+      "en": "Each CUDA device imposes a potentially different limitation on the amount of resources available in each SM. For example, each CUDA device has a limit on the number of blocks, the number of threads, the number of registers, and the amount of other resources that each of its SMs can accommodate. For each kernel, one or more of these resource limitations can become the limiting factor for occupancy. CUDA C provides programmers with the ability to query the resources available in a GPU at runtime.",
+      "zh": "每个 CUDA 设备对每个 SM 中可用资源量的限制可能各不相同。例如，每个 CUDA 设备对每个 SM 所能容纳的线程块数、线程数、寄存器数以及其他资源量都有限制。对于每个核函数，这些资源限制中的一个或多个可能成为占用率的限制因素。CUDA C 为程序员提供了在运行时查询 GPU 中可用资源的能力。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]",
+      "en": "1. Consider the following CUDA kernel and the corresponding host function that calls it:【M1】【M2】",
+      "zh": "1. 考虑下面的 CUDA 核函数以及调用它的相应主机函数：【M1】【M2】"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[1]",
+      "en": "a. What is the number of warps per block?",
+      "zh": "a. 每个线程块的线程束数量是多少？"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[2]",
+      "en": "b. What is the number of warps in the grid?",
+      "zh": "b. 网格中有多少个线程束？"
+    }
+  ]
+}

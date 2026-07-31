@@ -1,0 +1,155 @@
+{
+  "page": "Ch007_151-171_B9780323912310000082",
+  "nodes": [
+    {
+      "id": "n0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 7.2【/2】【/1】 1D convolution, calculation of y[3].",
+      "zh": "【1】【2】图 7.2【/2】【/1】 1D 卷积：y[3] 的计算。"
+    },
+    {
+      "id": "p0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[10]",
+      "en": "Because convolution is defined in terms of neighboring elements, boundary conditions naturally arise in computing output elements that are close to the ends of an array. As shown in 【1】Fig. 7.3【/1】, when we calculate y[1], there is only one x element to the left of x[1]. That is, there are not enough x elements to calculate y[1] according to our definition of convolution. A typical approach to handling such boundary conditions is to assign a default value to these missing x elements. For most applications the default value is 0, which is what we use in 【2】Fig. 7.3【/2】. For example, in audio signal processing, we can assume that the signal volume is 0 before the recording starts and after it ends. In this case, the calculation of y[1] is as follows:",
+      "zh": "由于卷积是根据相邻元素来定义的，因此在计算靠近数组两端的输出元素时，自然会遇到边界条件。如【1】图 7.3【/1】所示，当计算 y[1] 时，x[1] 的左侧只有一个 x 元素。也就是说，按照我们对卷积的定义，没有足够的 x 元素来计算 y[1]。处理此类边界条件的一种典型做法是为这些缺失的 x 元素指定一个默认值。大多数应用把这个默认值取为 0，【2】图 7.3【/2】中我们使用的正是 0。例如，在音频信号处理中，我们可以假定录音开始之前和结束之后的信号音量都是 0。在这种情况下，y[1] 的计算如下："
+    },
+    {
+      "id": "n0027",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[7]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.3【/1】 A 1D convolution boundary condition.",
+      "zh": "【1】图 7.3【/1】 1D 卷积的边界条件。"
+    },
+    {
+      "id": "p0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[12]",
+      "en": "The x element that does not exist in this calculation is illustrated as a dashed box in 【1】Fig. 7.3【/1】. It should be clear that the calculation of y[0] will involve two missing x elements, both of which will be assumed to be 0 for this example. We leave the calculation of y[0] as an exercise. These missing elements are typically referred to as 【2】ghost cells【/2】 in the literature. There are also other types of ghost cells due to the use of tiling in parallel computation. These ghost cells can have significant impact on the effectiveness and/or efficiency of tiling. We will come back to this point soon.",
+      "zh": "该计算中不存在的 x 元素在【1】图 7.3【/1】中用虚线框表示。显然，y[0] 的计算会涉及两个缺失的 x 元素，本例中将它们都假定为 0。我们把 y[0] 的计算留作练习。这些缺失的元素在文献中通常被称为【2】幽灵单元【/2】。由于并行计算中使用了分块，还存在其他类型的幽灵单元。这些幽灵单元会对分块的效果和/或效率产生显著影响。我们很快就会回到这一点。"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[13]",
+      "en": "Also, not all applications assume that the ghost cells contain 0. For example, some applications might assume that the ghost cells contain the same value as the closest valid data element on the edge.",
+      "zh": "此外，并非所有应用都假定幽灵单元的值为 0。例如，有些应用可能假定幽灵单元的值与边缘上最近的有效数据元素相同。"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[14]",
+      "en": "For image processing and computer vision, input data is typically represented as 2D arrays, with pixels in an 【1】x【/1】–【2】y【/2】 space. Image convolutions are therefore 2D convolutions, as illustrated in 【3】Fig. 7.4【/3】. In a 2D convolution the filter f is also a 2D array. Its 【4】x【/4】 and 【5】y【/5】 dimensions determine the range of neighbors to be included in the weighted sum calculation. If we assume that the dimension of the filter is (2【6】r【/6】【7】【8】x【/8】【/7】 + 1) in the 【9】x【/9】 dimension and (2【10】r【/10】【11】【12】y【/12】【/11】 + 1) in the 【13】y【/13】 dimension, the calculation of each 【14】P【/14】 element can be expressed as follows:",
+      "zh": "对于图像处理和计算机视觉，输入数据通常表示为二维数组，像素位于【1】x【/1】–【2】y【/2】空间中。因此图像卷积是 2D 卷积，如【3】图 7.4【/3】所示。在 2D 卷积中，滤波器 f 也是一个 2D 数组。它的【4】x【/4】和【5】y【/5】维度决定了加权求和计算中要包含的邻居范围。如果我们假定滤波器在【9】x【/9】维度上的尺寸为（2【6】r【/6】【7】【8】x【/8】【/7】+ 1），在【13】y【/13】维度上的尺寸为（2【10】r【/10】【11】【12】y【/12】【/11】+ 1），那么每个【14】P【/14】元素的计算可以表示如下："
+    },
+    {
+      "id": "n0031",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[9]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.4【/1】 A 2D convolution example.",
+      "zh": "【1】图 7.4【/1】 一个 2D 卷积示例。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[16]",
+      "en": "In 【1】Fig. 7.4【/1】 we use a 5 × 5 filter for simplicity; that is, 【2】r【/2】【3】【4】y【/4】【/3】 = 2 and 【5】r【/5】【6】【7】x【/7】【/6】 = 2. In general, the filter does not have to be but is typically a square array. To generate an output element, we take the subarray whose center is at the corresponding location in the input array 【8】N【/8】. We then perform pairwise multiplication between elements of the filter array and those of the image array. For our example the result is shown as the 5 × 5 product array below 【9】N【/9】 and 【10】P【/10】 in 【11】Fig. 7.4【/11】. The value of the output element is the sum of all elements of the product array.",
+      "zh": "在【1】图 7.4【/1】中，为简单起见我们使用 5 × 5 的滤波器，即【2】r【/2】【3】【4】y【/4】【/3】= 2 且【5】r【/5】【6】【7】x【/7】【/6】= 2。一般来说，滤波器不一定但通常是方形的数组。为了生成一个输出元素，我们取输入数组【8】N【/8】中以对应位置为中心的子数组，然后将滤波器数组的元素与图像数组的元素逐一相乘。在我们的例子中，结果如【11】图 7.4【/11】中【9】N【/9】和【10】P【/10】下方的 5 × 5 乘积数组所示。输出元素的值就是乘积数组所有元素之和。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[17]",
+      "en": "The example in 【1】Fig. 7.4【/1】 shows the calculation of P2,2. For brevity, we will use 【2】Ny,x【/2】 to denote 【3】N【/3】[【4】y【/4】][【5】x【/5】] in addressing a C array. Since 【6】N【/6】 and 【7】P【/7】 are most likely dynamically allocated arrays, we will be using linearized indices in our actual code examples. The calculation is as follows:",
+      "zh": "【1】图 7.4【/1】中的示例展示了 P2,2 的计算。为简洁起见，在寻址 C 数组时，我们用【2】Ny,x【/2】来表示【3】N【/3】[【4】y【/4】][【5】x【/5】]。由于【6】N【/6】和【7】P【/7】很可能是动态分配的数组，我们在实际代码示例中将使用线性化索引。计算如下："
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[19]",
+      "en": "Like 1D convolution, 2D convolution must also deal with boundary conditions. With boundaries in both the 【1】x【/1】 and 【2】y【/2】 dimensions, there are more complex boundary conditions: The calculation of an output element may involve boundary conditions along a horizontal boundary, a vertical boundary, or both. 【3】Fig. 7.5【/3】 illustrates the calculation of a 【4】P【/4】 element that involves both boundaries. From 【5】Fig. 7.5【/5】 the calculation of 【6】P【/6】【7】1,0【/7】 involves two missing columns and one missing row in the subarray of 【8】N【/8】. As in 1D convolution, different applications assume different default values for these missing 【9】N【/9】 elements. In our example we assume that the default value is 0. These boundary conditions also affect the efficiency of tiling. We will come back to this point soon.",
+      "zh": "与 1D 卷积一样，2D 卷积也必须处理边界条件。由于【1】x【/1】和【2】y【/2】两个维度都存在边界，边界条件更为复杂：输出元素的计算可能涉及水平边界、垂直边界或两者兼有的边界条件。【3】图 7.5【/3】展示了涉及两种边界的一个【4】P【/4】元素的计算。从【5】图 7.5【/5】可以看出，【6】P【/6】【7】1,0【/7】的计算涉及【8】N【/8】子数组中两列和一行缺失。与 1D 卷积一样，不同应用对这些缺失的【9】N【/9】元素假定不同的默认值。在我们的例子中，默认值取为 0。这些边界条件也会影响分块的效率。我们很快就会回到这一点。"
+    },
+    {
+      "id": "n0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[11]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.5【/1】 A 2D convolution boundary condition.",
+      "zh": "【1】图 7.5【/1】 2D 卷积的边界条件。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "7.2 Parallel convolution: a basic algorithm",
+      "zh": "7.2 并行卷积：基础算法"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "The fact that the calculation of all output elements can be done in parallel in a convolution makes convolution an ideal use case for parallel computing. Based on our experience in matrix multiplication, we can quickly write a simple parallel convolution kernel. We will show code examples for 2D convolution, and the reader is encouraged to adapt these code examples to 1D and 3D as exercises. Also, for simplicity we will assume square filters.",
+      "zh": "卷积中所有输出元素的计算都可以并行完成，这一事实使卷积成为并行计算的理想用例。基于我们在矩阵乘法中的经验，我们可以很快写出一个简单的并行卷积核函数。我们将给出 2D 卷积的代码示例，并鼓励读者把这些代码示例改写成 1D 和 3D 版本作为练习。此外，为简单起见，我们将假定滤波器是方形的。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "The first step is to define the major input parameters for the kernel. We assume that the 2D convolution kernel receives five arguments: a pointer to the input array, 【1】N【/1】; a pointer to the filter, 【2】F【/2】; a pointer to the output array, 【3】P【/3】; the radius of the square filter, 【4】r【/4】; the width of the input and output arrays, width; and the height of the input and output arrays, height. Thus we have the following setup:",
+      "zh": "第一步是定义核函数的主要输入参数。我们假定 2D 卷积核函数接收五个参数：指向输入数组的指针【1】N【/1】；指向滤波器的指针【2】F【/2】；指向输出数组的指针【3】P【/3】；方形滤波器的半径【4】r【/4】；输入和输出数组的宽度 width；以及输入和输出数组的高度 height。因此我们有如下设置："
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "The second step is to determine and implement the mapping of threads to output elements. Since the output array is 2D, a simple and good approach is to organize the threads into a 2D grid and have each thread in the grid calculate one output element. Each block, with up to 1024 threads in a block, can calculate up to 1024 output elements. 【1】Fig. 7.6【/1】 shows a toy example in which the input and output are 16 × 16 images. We assume in this toy example that each thread block is organized as a 4 × 4 array of threads: four threads in the 【2】x【/2】 dimension and four in the 【3】y【/3】 dimension. The grid in this example is organized as a 4 × 4 array of blocks. The assignment of threads to output elements—output pixels in this example—is simple: Every thread is assigned to calculate an output pixel whose 【4】x【/4】 and 【5】y【/5】 indices are the same as the thread’s 【6】x【/6】 and 【7】y【/7】 indices.",
+      "zh": "第二步是确定并实现线程到输出元素的映射。由于输出数组是 2D 的，一种简单而有效的做法是把线程组织成 2D 网格，让网格中的每个线程计算一个输出元素。每个线程块最多有 1024 个线程，最多可以计算 1024 个输出元素。【1】图 7.6【/1】展示了一个小型示例，其中输入和输出都是 16 × 16 的图像。在这个小型示例中，我们假定每个线程块组织成 4 × 4 的线程数组：在【2】x【/2】维度上有四个线程，在【3】y【/3】维度上也有四个。本例中的网格组织成 4 × 4 的线程块数组。线程到输出元素（本例中即输出像素）的分配很简单：每个线程负责计算一个输出像素，其【4】x【/4】和【5】y【/5】索引与该线程的【6】x【/6】和【7】y【/7】索引相同。"
+    },
+    {
+      "id": "n0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.6【/1】 Parallelization and thread organization for 2D convolution.",
+      "zh": "【1】图 7.6【/1】 2D 卷积的并行化与线程组织。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "The reader should recognize that the parallelization arrangement in 【1】Fig. 7.6【/1】 is the same as the 【2】ColorToGrayScaleConversion【/2】 example in 【3】Chapter 3【/3】, Multidimensional Grids and Data. Therefore we can use the statements in lines 02 and 03 of the kernel in 【4】Fig. 7.7【/4】 to calculate the output element indices from the block index, block dimension, and thread index for each thread. For example, thread【5】1,1【/5】 of block【6】1,1【/6】 is mapped to output element 【7】P[1*4+1][1*4+1]=P[5][5]【/7】, which is marked as a green square in 【8】Fig. 7.6【/8】.",
+      "zh": "读者应该会注意到，【1】图 7.6【/1】中的并行化安排与【3】第 3 章【/3】《多维网格与数据》中的【2】ColorToGrayScaleConversion【/2】示例相同。因此，我们可以使用【4】图 7.7【/4】中核函数的第 02 和 03 行语句，根据每个线程的线程块索引、线程块维度和线程索引来计算输出元素索引。例如，线程块【6】1,1【/6】中的线程【5】1,1【/5】映射到输出元素【7】P[1*4+1][1*4+1]=P[5][5]【/7】，在【8】图 7.6【/8】中该元素用绿色方块标出。"
+    },
+    {
+      "id": "n0042",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.7【/1】 A 2D convolution kernel with boundary condition handling.",
+      "zh": "【1】图 7.7【/1】 一个带边界条件处理的 2D 卷积核函数。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "Once we have determined the output element indices for each thread, we can identify the input 【1】N【/1】 elements that are needed for calculating the output element. As illustrated in 【2】Fig. 7.6【/2】, the calculation of P[5][5] (green square) by thread【3】1, 1【/3】 of block【4】1, 1【/4】 will use the input elements whose 【5】x【/5】 indices range from 【6】outCol - r=3 to outCol + r=7【/6】 and whose y indices range from 【7】outRow - r=3 to outRow + r=7【/7】. For all threads, 【8】outCol - r and outRow - r【/8】 define the upper-left corner (heavily shaded square) of the patch of input elements (lightly shaded area) needed for 【9】P[outRow][outCol]【/9】. Therefore we can use a doubly nested loop to iterate through all these index values and perform this calculation (lines 05–13 of 【10】Fig. 7.7【/10】).",
+      "zh": "一旦确定了每个线程的输出元素索引，我们就可以找出计算该输出元素所需的输入【1】N【/1】元素。如【2】图 7.6【/2】所示，线程块【4】1, 1【/4】中的线程【3】1, 1【/3】计算 P[5][5]（绿色方块）时，将使用【5】x【/5】索引从【6】outCol - r=3 到 outCol + r=7【/6】、y 索引从【7】outRow - r=3 到 outRow + r=7【/7】的输入元素。对所有线程而言，【8】outCol - r 和 outRow - r【/8】定义了计算【9】P[outRow][outCol]【/9】所需的输入元素区域（浅色区域）的左上角（深色方块）。因此，我们可以使用双重嵌套循环遍历所有这些索引值并执行该计算（【10】图 7.7【/10】的第 05–13 行）。"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "The register variable Pvalue will accumulate all intermediate results to save DRAM bandwidth. The if-statement in the inner for-loop tests whether any of the input 【1】N【/1】 elements that are used are ghost cells on the left, right, top, or bottom side of the 【2】N【/2】 array. Since we assume that 0 values will be used for ghost cells, we can simply skip the multiplication and accumulation of the ghost cell element and its corresponding filter element. After the end of the loop, we release the Pvalue into the output P element (line 14).",
+      "zh": "寄存器变量 Pvalue 将累加所有中间结果，以节省 DRAM 带宽。内层 for 循环中的 if 语句用于检查所使用的输入【1】N【/1】元素中是否有【2】N【/2】数组左侧、右侧、上侧或下侧的幽灵单元。由于我们假定幽灵单元的值为 0，因此可以直接跳过幽灵单元元素及其对应滤波器元素的乘法与累加。循环结束后，我们把 Pvalue 存入输出 P 元素（第 14 行）。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "We make two observations on the kernel in 【1】Fig. 7.7【/1】. First, there will be control flow divergence. The threads that calculate the output elements near the four edges of the P array will need to handle ghost cells. As we showed in 【2】Section 7.1【/2】, each of these threads will encounter a different number of ghost cells. Therefore they will all be somewhat different decisions in the if-statement (line 09). The thread that calculates P[0][0] will skip the multiply-accumulate statement most of the time, whereas the one that calculates P[0][1] will skip fewer times, and so on. The cost of control divergence will depend on the value of width and height of the input array and the radius of the filter. For large input arrays and small filters, control divergence occurs only in computing a small portion of the output elements, which will keep the effect of control divergence small. Since convolution is often applied to large images, we expect the effect of control divergence to range from modest to insignificant.",
+      "zh": "我们对【1】图 7.7【/1】中的核函数有两点观察。首先，会出现控制流发散。计算 P 数组四条边附近输出元素的线程需要处理幽灵单元。正如我们在【2】第 7.1 节【/2】中所展示的，这些线程各自遇到的幽灵单元数量不同，因此它们在 if 语句（第 09 行）中会做出各自不同的判断。计算 P[0][0] 的线程大多数时候都会跳过乘加语句，而计算 P[0][1] 的线程跳过的次数少一些，依此类推。控制发散的开销取决于输入数组的宽度和高度值以及滤波器的半径。对于大型输入数组和小型滤波器，控制发散只发生在计算一小部分输出元素时，因此控制发散的影响很小。由于卷积常用于大型图像，我们预计控制发散的影响从轻微到可以忽略不计。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "A more serious problem is memory bandwidth. The ratio of floating-point arithmetic calculation to global memory accesses is only about 0.25 OP/B (2 operations for every 8 bytes loaded on line 10). As we saw in the matrix multiplication example, this simple kernel can be expected to run only at a tiny fraction of the peak performance. We will discuss two key techniques for reducing the number of global memory accesses in the next two sections.",
+      "zh": "更严重的问题是内存带宽。浮点算术计算与全局内存访问之比只有约 0.25 OP/B（第 10 行每加载 8 字节执行 2 次运算）。正如我们在矩阵乘法示例中看到的，这个简单的核函数的运行速度预计只能达到峰值性能的极小一部分。在接下来的两节中，我们将讨论减少全局内存访问次数的两项关键技术。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "7.3 Constant memory and caching",
+      "zh": "7.3 常量内存与缓存"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "There are three interesting properties in the way the filter array F is used in convolution. First, the size of F is typically small; the radius of most convolution filters is 7 or smaller. Even in 3D convolution the filter typically contains only less than or equal to 7【1】3【/1】 = 343 elements. Second, the contents of F do not change throughout the execution of the convolution kernel. Third, all threads access the filter elements. Even better, all threads access the F elements in the same order, starting from 【2】F[0][0]【/2】 and moving by one element at a time through the iterations of the doubly nested for-loop in 【3】Fig. 7.7【/3】. These three properties make the filter an excellent candidate for constant memory and caching (【4】Fig. 7.8【/4】).",
+      "zh": "滤波器数组 F 在卷积中的使用方式有三个有趣的特性。首先，F 的尺寸通常很小；大多数卷积滤波器的半径为 7 或更小。即使在 3D 卷积中，滤波器通常也只包含不超过 7【1】3【/1】= 343 个元素。其次，在整个卷积核函数的执行过程中，F 的内容不会改变。第三，所有线程都会访问滤波器元素。更好的是，所有线程都按相同的顺序访问 F 元素：从【2】F[0][0]【/2】开始，在【3】图 7.7【/3】中双重嵌套 for 循环的每次迭代中一次移动一个元素。这三个特性使滤波器成为使用常量内存和缓存（【4】图 7.8【/4】）的绝佳候选。"
+    },
+    {
+      "id": "n0049",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.8【/1】 A review of the CUDA memory model.",
+      "zh": "【1】图 7.8【/1】 对 CUDA 内存模型的回顾。"
+    }
+  ]
+}

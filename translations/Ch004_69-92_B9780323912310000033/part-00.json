@@ -1,0 +1,155 @@
+{
+  "page": "Ch004_69-92_B9780323912310000033",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Compute architecture and scheduling",
+      "zh": "计算体系结构与调度"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces key concepts in the compute architectures of modern GPUs that are important to CUDA C programmers. It first gives an overview of the GPU execution resources, such as streaming multiprocessors (SMs). It then discusses how the blocks are assigned to SMs and divided into warps for scheduling purposes. It then gives more details about single-instruction, multiple-data execution hardware, warp scheduling, latency tolerance, control divergence, and effects of resource limitations. The chapter concludes with an introduction to the concept of resource queries.",
+      "zh": "本章介绍现代 GPU 计算体系结构中的一些关键概念，这些概念对 CUDA C 程序员十分重要。本章首先概述 GPU 的执行资源，例如流式多处理器（SM）。随后讨论线程块如何被分配到 SM 并划分成线程束以便调度。接着更详细地介绍单指令多数据执行硬件、线程束调度、延迟容忍、控制发散以及资源限制的影响。本章最后介绍资源查询的概念。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Thread scheduling; warp scheduling; linear layout of threads; control divergence; dynamic resource partitioning; streaming multiprocessors; occupancy; transparent scalability; device property query; barrier synchronization; latency tolerance; zero-overhead thread scheduling; deadlock",
+      "zh": "线程调度；线程束调度；线程的线性布局；控制发散；动态资源划分；流式多处理器；占用率；透明可扩展性；设备属性查询；屏障同步；延迟容忍；零开销线程调度；死锁"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "概要"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】4.1 Architecture of a modern GPU【/1】 70",
+      "zh": "【1】4.1 现代 GPU 的体系结构【/1】 70"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】4.2 Block scheduling【/1】 70",
+      "zh": "【1】4.2 线程块调度【/1】 70"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】4.3 Synchronization and transparent scalability【/1】 71",
+      "zh": "【1】4.3 同步与透明可扩展性【/1】 71"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】4.4 Warps and SIMD hardware【/1】 74",
+      "zh": "【1】4.4 线程束与 SIMD 硬件【/1】 74"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】4.5 Control divergence【/1】 79",
+      "zh": "【1】4.5 控制发散【/1】 79"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】4.6 Warp scheduling and latency tolerance【/1】 83",
+      "zh": "【1】4.6 线程束调度与延迟容忍【/1】 83"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】4.7 Resource partitioning and occupancy【/1】 85",
+      "zh": "【1】4.7 资源划分与占用率【/1】 85"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】4.8 Querying device properties【/1】 87",
+      "zh": "【1】4.8 查询设备属性【/1】 87"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[9]",
+      "en": "【1】4.9 Summary【/1】 90",
+      "zh": "【1】4.9 小结【/1】 90"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[10]",
+      "en": "【1】Exercises【/1】 90",
+      "zh": "【1】习题【/1】 90"
+    },
+    {
+      "id": "u0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[11]",
+      "en": "【1】References【/1】 92",
+      "zh": "【1】参考文献【/1】 92"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "In 【1】Chapter 1【/1】, Introduction, we saw that CPUs are designed to minimize the latency of instruction execution and that GPUs are designed to maximize the throughput of executing instructions. In 【2】Chapters 2【/2】, Heterogeneous Data Parallel Computing and 【3】3【/3】, Multidimensional Grids and Data, we learned the core features of the CUDA programming interface for creating and calling kernels to launch and execute threads. In the next three chapters we will discuss the architecture of modern GPUs, both the compute architecture and the memory architecture, and the performance optimization techniques stemming from the understanding of this architecture. This chapter presents several aspects of the GPU compute architecture that are essential for CUDA C programmers to understand and reason about the performance behavior of their kernel code. We will start by showing a high-level, simplified view of the compute architecture and explore the concepts of flexible resource assignment, scheduling of blocks, and occupancy. We will then advance into thread scheduling, latency tolerance, control divergence, and synchronization. We will finish the chapter with a description of the API functions that can be used to query the resources that are available in the GPU and the tools to help estimate the occupancy of the GPU when executing a kernel. In the following two chapters, we will present the core concepts and programming considerations of the GPU memory architecture. In particular, 【4】Chapter 5【/4】, Memory Architecture and Data Locality, focuses on the on-chip memory architecture, and 【5】Chapter 6【/5】, Performance Considerations, briefly covers the off-chip memory architecture then elaborates on various performance considerations of the GPU architecture as a whole. A CUDA C programmer who masters these concepts is well equipped to write and to understand high-performance parallel kernels.",
+      "zh": "在【1】第 1 章【/1】“引言”中，我们看到 CPU 的设计目标是尽量缩短指令执行的延迟，而 GPU 的设计目标则是尽量提高执行指令的吞吐量。在【2】第 2 章【/2】“异构数据并行计算”和【3】第 3 章【/3】“多维网格与数据”中，我们学习了 CUDA 编程接口的核心特性，包括创建和调用核函数来启动并执行线程。在接下来的三章中，我们将讨论现代 GPU 的体系结构，包括计算体系结构和内存体系结构，以及基于对这些体系结构的理解而产生的性能优化技术。本章介绍 GPU 计算体系结构的若干方面，这些方面对于 CUDA C 程序员理解和分析其核函数代码的性能行为至关重要。我们将首先展示计算体系结构的高层简化视图，并探讨灵活的资源分配、线程块调度和占用率等概念。然后进一步深入线程调度、延迟容忍、控制发散和同步。本章最后将介绍可用于查询 GPU 中可用资源的 API 函数，以及用于估算执行核函数时 GPU 占用率的工具。在接下来的两章中，我们将介绍 GPU 内存体系结构的核心概念和编程要点。具体来说，【4】第 5 章【/4】“内存体系结构与数据局部性”重点介绍片上内存体系结构，而【5】第 6 章【/5】“性能考量”简要介绍片外内存体系结构，然后详细阐述整个 GPU 体系结构的各种性能考量。掌握这些概念的 CUDA C 程序员将有能力编写和理解高性能的并行核函数。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "4.1 Architecture of a modern GPU",
+      "zh": "4.1 现代 GPU 的体系结构"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "【1】Fig. 4.1【/1】 shows a high-level, CUDA C programmer’s view of the architecture of a typical CUDA-capable GPU. It is organized into an array of highly threaded streaming multiprocessors (SMs). Each SM has several processing units called streaming processors or CUDA cores (hereinafter referred to as just 【2】cores【/2】 for brevity), shown as small tiles inside the SMs in 【3】Fig. 4.1【/3】, that share control logic and memory resources. For example, the Ampere A100 GPU has 108 SMs with 64 cores each, totaling 6912 cores in the entire GPU.",
+      "zh": "【1】图 4.1【/1】展示了典型支持 CUDA 的 GPU 体系结构的高层视图（从 CUDA C 程序员的角度看）。GPU 由一组高度线程化的流式多处理器（SM）构成。每个 SM 包含多个称为流处理器或 CUDA 核心的处理单元（为简洁起见，下文简称【2】核心【/2】），在【3】图 4.1【/3】中以 SM 内部的小方块表示，这些处理单元共享控制逻辑和内存资源。例如，Ampere A100 GPU 拥有 108 个 SM，每个 SM 有 64 个核心，整个 GPU 共有 6912 个核心。"
+    },
+    {
+      "id": "n0021",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 4.1【/1】 Architecture of a CUDA-capable GPU.",
+      "zh": "【1】图 4.1【/1】 支持 CUDA 的 GPU 的体系结构。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "The SMs also come with different on-chip memory structures collectively labeled as “Memory” in 【1】Fig. 4.1【/1】. These on-chip memory structures will be the topic of 【2】Chapter 5【/2】, Memory Architecture and Data Locality. GPUs also come with gigabytes of off-chip device memory, referred to as “Global Memory” in 【3】Fig. 4.1【/3】. While older GPUs used graphics double data rate synchronous DRAM, more recent GPUs starting with NVIDIA’s Pascal architecture may use HBM (high-bandwidth memory) or HBM2, which consist of DRAM (dynamic random access memory) modules tightly integrated with the GPU in the same package. For brevity we will broadly refer to all these types of memory as DRAM for the rest of the book. We will discuss the most important concepts involved in accessing GPU DRAMs in 【4】Chapter 6【/4】, Performance Considerations.",
+      "zh": "SM 还带有不同的片上内存结构，在【1】图 4.1【/1】中统称为“Memory”（内存）。这些片上内存结构将是【2】第 5 章【/2】“内存体系结构与数据局部性”的主题。GPU 还带有数 GB 的片外设备内存，在【3】图 4.1【/3】中称为“Global Memory”（全局内存）。早期的 GPU 使用图形双倍数据速率同步 DRAM，而较新的 GPU（从 NVIDIA 的 Pascal 架构开始）可能使用 HBM（高带宽内存）或 HBM2，它们由与 GPU 紧密集成在同一封装中的 DRAM（动态随机存取存储器）模块组成。为简洁起见，在本书其余部分我们将所有这些类型的内存统称为 DRAM。我们将在【4】第 6 章【/4】“性能考量”中讨论访问 GPU DRAM 所涉及的最重要概念。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "4.2 Block scheduling",
+      "zh": "4.2 线程块调度"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "When a kernel is called, the CUDA runtime system launches a grid of threads that execute the kernel code. These threads are assigned to SMs on a block-by-block basis. That is, all threads in a block are simultaneously assigned to the same SM.",
+      "zh": "当核函数被调用时，CUDA 运行时系统启动一个执行核函数代码的线程网格。这些线程按线程块逐个分配到 SM 上。也就是说，一个线程块中的所有线程被同时分配到同一个 SM。"
+    }
+  ]
+}

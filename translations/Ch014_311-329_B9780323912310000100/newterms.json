@@ -1,0 +1,82 @@
+[
+  {
+    "en": "space efficiency",
+    "zh": "空间效率",
+    "note": "14.1 design consideration, recurring through 14.2–14.6"
+  },
+  {
+    "en": "flexibility",
+    "zh": "灵活性",
+    "note": "14.1 design consideration, recurring through 14.2–14.6"
+  },
+  {
+    "en": "accessibility",
+    "zh": "可访问性",
+    "note": "14.1 design consideration, recurring through 14.2–14.6"
+  },
+  {
+    "en": "memory access efficiency",
+    "zh": "内存访问效率",
+    "note": "14.1 design consideration; compound of §5 memory access"
+  },
+  {
+    "en": "dense matrix",
+    "zh": "稠密矩阵",
+    "note": "14.7 p0410, contrast with sparse matrix"
+  },
+  {
+    "en": "dense vector",
+    "zh": "稠密向量",
+    "note": "14.1 p0080"
+  },
+  {
+    "en": "padding element",
+    "zh": "填充元素",
+    "note": "14.4–14.6 padding elements / padded elements"
+  },
+  {
+    "en": "iterative solver",
+    "zh": "迭代求解器",
+    "note": "14.5 p0315, 14.6 p0370"
+  },
+  {
+    "en": "control flow divergence",
+    "zh": "控制流发散",
+    "note": "14.1 p0055, 14.3 p0220; distinct from §5 control divergence"
+  },
+  {
+    "en": "load imbalance",
+    "zh": "负载不均衡",
+    "note": "14.1 p0055, 14.4 p0290"
+  },
+  {
+    "en": "row-major order",
+    "zh": "行主序",
+    "note": "14.4 p0240, C-language layout"
+  },
+  {
+    "en": "column-major order",
+    "zh": "列主序",
+    "note": "14.4–14.6 ELL/JDS storage order"
+  },
+  {
+    "en": "noncoalesced memory access",
+    "zh": "非合并内存访问",
+    "note": "14.4 p0230"
+  },
+  {
+    "en": "compression",
+    "zh": "压缩",
+    "note": "Keywords list"
+  },
+  {
+    "en": "memory alignment",
+    "zh": "内存对齐",
+    "note": "Keywords list"
+  },
+  {
+    "en": "further reduction of control divergence",
+    "zh": "进一步减少控制发散",
+    "note": "glossary false positive — §5 reduction (归约) is the parallel pattern; sp0085 uses reduction as ordinary English for 'decreasing'"
+  }
+]

@@ -1,0 +1,155 @@
+{
+  "page": "Ch010_211-233_B9780323912310000239",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/hgroup[1]/h1[1]",
+      "en": "Reduction",
+      "zh": "归约"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/hgroup[1]/h2[1]",
+      "en": "And minimizing divergence",
+      "zh": "最小化发散"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces the parallel reduction pattern that plays an important role in many data-processing applications. Reduction operators that are associative and commutative allow the reduction computation to be parallelized into a reduction tree and optimized aggressively with several optimization techniques, such as thread index assignment for reduced control and memory divergence, using shared memory for reduced global memory accesses, thread coarsening, and segmented reduction, that are needed to achieve high performance for large inputs.",
+      "zh": "本章介绍并行归约模式，该模式在许多数据处理应用中发挥着重要作用。满足结合性和交换性的归约算子使归约计算能够被并行化为归约树，并可借助若干优化技术进行深度优化，例如用于减少控制发散和内存发散的线程索引分配、用于减少全局内存访问的共享内存使用、线程粗化以及分段归约，这些技术都是在大规模输入上取得高性能所必需的。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Reduction trees; associative operators; commutative operators; identity value; control divergence; memory coalescing; memory divergence; execution resource utilization efficiency; speedup; thread coarsening; barrier synchronization; segmented reduction; thread index to data index mapping",
+      "zh": "归约树；结合性算子；交换性算子；单位元；控制发散；内存合并（访问）；内存发散；执行资源利用率；加速比；线程粗化；屏障同步；分段归约；线程索引到数据索引的映射"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】10.1 Background【/1】 211",
+      "zh": "【1】10.1 背景【/1】 211"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】10.2 Reduction trees【/1】 213",
+      "zh": "【1】10.2 归约树【/1】 213"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】10.3 A simple reduction kernel【/1】 217",
+      "zh": "【1】10.3 简单归约核函数【/1】 217"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】10.4 Minimizing control divergence【/1】 219",
+      "zh": "【1】10.4 最小化控制发散【/1】 219"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】10.5 Minimizing memory divergence【/1】 223",
+      "zh": "【1】10.5 最小化内存发散【/1】 223"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】10.6 Minimizing global memory accesses【/1】 225",
+      "zh": "【1】10.6 最小化全局内存访问【/1】 225"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】10.7 Hierarchical reduction for arbitrary input length【/1】 226",
+      "zh": "【1】10.7 面向任意输入长度的分层归约【/1】 226"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】10.8 Thread coarsening for reduced overhead【/1】 228",
+      "zh": "【1】10.8 降低开销的线程粗化【/1】 228"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[9]",
+      "en": "【1】10.9 Summary【/1】 231",
+      "zh": "【1】10.9 小结【/1】 231"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[10]",
+      "en": "【1】Exercises【/1】 232",
+      "zh": "【1】习题【/1】 232"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "A reduction derives a single value from an array of values. The single value could be the sum, the maximum value, the minimal value, and so on among all elements. The value can also be of various types: integer, single-precision floating-point, double-precision floating-point, half-precision floating-point, characters, and so on. All these types of reductions have the same computation structure. Like a histogram, reduction is an important computation pattern, as it generates a summary from a large amount of data. Parallel reduction is an important parallel pattern that requires parallel threads to coordinate with each other to get correct results. Such coordination must be done carefully to avoid performance bottlenecks, which are commonly found in parallel computing systems. Parallel reduction is therefore a good vehicle for illustrating these performance bottlenecks and introducing techniques for mitigating them.",
+      "zh": "归约从一组数组值中推导出单个值。这个单个值可以是所有元素中的总和、最大值、最小值等。该值的类型也可以多种多样：整数、单精度浮点数、双精度浮点数、半精度浮点数、字符等。所有这些类型的归约都具有相同的计算结构。与直方图一样，归约是一种重要的计算模式，因为它能从大量数据中生成摘要信息。并行归约是一种重要的并行模式，需要并行线程相互协调才能得到正确结果。这种协调必须谨慎进行，以避免性能瓶颈——性能瓶颈在并行计算系统中很常见。因此，并行归约是演示这些性能瓶颈并介绍缓解技术的良好载体。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "10.1 Background",
+      "zh": "10.1 背景"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "Mathematically, a reduction can be defined for a set of items based on a binary operator if the operator has a well-defined identity value. For example, a floating-point addition operator has an identity value of 0.0; that is, an addition of any floating-point value v and value 0.0 results in the value v itself. Thus a reduction can be defined for a set of floating-point numbers based on the addition operator that produces the sum of all the floating-point numbers in the set. For example, for the set {7.0, 2.1, 5.3, 9.0, 11.2}, the sum reduction would produce 7.0+2.1+5.3+9.0+11.2=34.6.",
+      "zh": "从数学上讲，只要算子具有定义良好的单位元，就可以基于该二元算子为某个集合定义归约。例如，浮点加法算子的单位元是 0.0；也就是说，任意浮点值 v 与值 0.0 相加，结果仍是 v 本身。因此，可以基于加法算子为浮点数集合定义归约，其结果即为该集合中所有浮点数之和。例如，对于集合 {7.0, 2.1, 5.3, 9.0, 11.2}，求和归约将得到 7.0+2.1+5.3+9.0+11.2=34.6。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "A reduction can be performed by sequentially going through every element of the array. 【1】Fig. 10.1【/1】 shows a sequential sum reduction code in C. The code initializes the result variable sum to the identity value 0.0. It then uses a for-loop to iterate through the input array that holds the set of values. During the ith iteration, the code performs an addition operation on the current value of sum and the ith element of the input array. In our example, after iteration 0, the sum variable contains 0.0+7.0=7.0. After iteration 1, the sum variable contains 7.0+2.1=9.1. Thus after each iteration, another value of the input array would be added (accumulated) to the sum variable. After iteration 5, the sum variable contains 34.6, which is the reduction result.",
+      "zh": "归约可以通过顺序遍历数组中的每个元素来完成。【1】图 10.1【/1】展示了用 C 语言编写的顺序求和归约代码。该代码将结果变量 sum 初始化为单位元 0.0，然后使用 for 循环遍历存放该组数值的输入数组。在第 i 次迭代中，代码将 sum 的当前值与输入数组的第 i 个元素执行一次加法运算。在我们的示例中，迭代 0 之后，sum 变量中的值为 0.0+7.0=7.0；迭代 1 之后，sum 变量中的值为 7.0+2.1=9.1。因此每经过一次迭代，输入数组中的又一个值就被加（累加）到 sum 变量上。迭代 5 之后，sum 变量中的值为 34.6，即归约结果。"
+    },
+    {
+      "id": "n0022",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 10.1【/2】【/1】 A simple sum reduction sequential code.",
+      "zh": "【1】【2】图 10.1【/2】【/1】 一个简单的求和归约串行代码。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "Reduction can be defined for many other operators. A product reduction can be defined for a floating-point multiplication operator whose identity value is 1.0. A product reduction of a set of floating-point numbers is the product of all these numbers. A minimum (min) reduction can be defined for a minimum comparison operator that returns the smaller value of the two inputs. For real numbers, the identity value for the minimum operator is +∞. A maximum (max) reduction can be defined for a maximum (max) comparison operator that returns the larger value of the two input. For real numbers, the identity value for the maximum operator is −∞.",
+      "zh": "归约也可以针对许多其他算子来定义。对于单位元为 1.0 的浮点乘法算子，可以定义乘积归约：一个浮点数集合的乘积归约结果就是这些数的乘积。对于返回两个输入中较小值的最小值比较算子，可以定义最小值（min）归约。对于实数，最小值算子的单位元是 +∞。对于返回两个输入中较大值的最大值（max）比较算子，可以定义最大值（max）归约。对于实数，最大值算子的单位元是 −∞。"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "【1】Fig. 10.2【/1】 shows a general form of reduction for an operator, which is defined as a function that takes two inputs and returns a value. When an element is visited during an iteration of the for-loop, the action to take depends on the type of reduction being performed. For example, for a max reduction the Operator function performs a comparison between the two inputs and returns the larger value of the two. For a min reduction the values of the two inputs are compared by the operator function, and the smaller value is returned. The sequential algorithm ends when all the elements have been visited by the for-loop. For a set of N elements the for-loop iterates N iterations and produces the reduction result at the exit of the loop.",
+      "zh": "【1】图 10.2【/1】展示了一种针对算子的归约通用形式，其中算子被定义为一个接受两个输入并返回一个值的函数。当 for 循环在迭代中访问到某个元素时，采取的动作取决于正在执行的归约类型。例如，对于最大值归约，Operator 函数对两个输入进行比较并返回其中较大的值；对于最小值归约，算子函数比较两个输入的值并返回较小的值。当 for 循环访问完所有元素后，串行算法结束。对于包含 N 个元素的集合，for 循环迭代 N 次，并在循环结束时得到归约结果。"
+    }
+  ]
+}

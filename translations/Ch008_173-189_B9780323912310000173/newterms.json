@@ -1,0 +1,147 @@
+[
+  {
+    "en": "numerical method",
+    "zh": "数值方法",
+    "note": "关键词/8.1；如 finite-difference method 等具体方法的上位词"
+  },
+  {
+    "en": "differential equation",
+    "zh": "微分方程",
+    "note": "8.1 一般语境，区别于 §5 的 partial differential equation（偏微分方程）"
+  },
+  {
+    "en": "domain decomposition",
+    "zh": "区域分解",
+    "note": "关键词；与 §5.9 domain partitioning（域划分）区分"
+  },
+  {
+    "en": "data reuse",
+    "zh": "数据重用",
+    "note": "全章；与 reuse ratio 配套"
+  },
+  {
+    "en": "reuse ratio",
+    "zh": "重用率",
+    "note": "8.3 分块复用分析（data reuse ratio 同）"
+  },
+  {
+    "en": "tiling efficiency",
+    "zh": "分块效率",
+    "note": "关键词"
+  },
+  {
+    "en": "finite-volume method",
+    "zh": "有限体积法",
+    "note": "8.1 与有限差分法/有限元法并列"
+  },
+  {
+    "en": "regular grid",
+    "zh": "规则网格",
+    "note": "8.1 与 structured grid 同义语境"
+  },
+  {
+    "en": "parallelotope",
+    "zh": "平行多面体",
+    "note": "8.1 数学术语"
+  },
+  {
+    "en": "interpolation",
+    "zh": "插值",
+    "note": "8.1 离散表示；linear or spline 译为线性或样条插值"
+  },
+  {
+    "en": "spline",
+    "zh": "样条",
+    "note": "8.1 线性或样条插值"
+  },
+  {
+    "en": "numerical approximation",
+    "zh": "数值近似",
+    "note": "摘要/8.1/8.6"
+  },
+  {
+    "en": "initial condition",
+    "zh": "初始条件",
+    "note": "8.1/8.3 求解器语境"
+  },
+  {
+    "en": "time slice",
+    "zh": "时间切片",
+    "note": "摘要/8.6 二维图像时间切片"
+  },
+  {
+    "en": "stencil order",
+    "zh": "模板阶数",
+    "note": "8.1 中心点每侧网格点个数；正文亦作模板的阶数"
+  },
+  {
+    "en": "three-point stencil",
+    "zh": "三点模板",
+    "note": "8.1 一维三点模板"
+  },
+  {
+    "en": "five-point stencil",
+    "zh": "五点模板",
+    "note": "全章"
+  },
+  {
+    "en": "seven-point stencil",
+    "zh": "七点模板",
+    "note": "全章"
+  },
+  {
+    "en": "nine-point stencil",
+    "zh": "九点模板",
+    "note": "8.1/8.3"
+  },
+  {
+    "en": "13-point stencil",
+    "zh": "13 点模板",
+    "note": "8.1 图 8.3D/8.3"
+  },
+  {
+    "en": "19-point stencil",
+    "zh": "19 点模板",
+    "note": "8.3 三维三阶"
+  },
+  {
+    "en": "floating-point to global memory access ratio",
+    "zh": "浮点运算与全局内存访问比",
+    "note": "8.2/8.3 OP/B 计量；含无连字符变体 floating point to global memory access ratio"
+  },
+  {
+    "en": "arithmetic to global memory access ratio",
+    "zh": "算术运算与全局内存访问比",
+    "note": "8.3 上限分析"
+  },
+  {
+    "en": "compute to memory access ratio",
+    "zh": "计算访存比",
+    "note": "8.3；与 §5 compute to global memory access ratio 同义变体"
+  },
+  {
+    "en": "halo overhead",
+    "zh": "光环开销",
+    "note": "8.3 小分块导致的重用损失"
+  },
+  {
+    "en": "input tile plane",
+    "zh": "输入分块平面",
+    "note": "8.4 线程粗化；output tile plane 译为输出分块平面"
+  },
+  {
+    "en": "output plane",
+    "zh": "输出平面",
+    "note": "8.4/习题 输出分块的 z 方向平面"
+  },
+  {
+    "en": "active thread",
+    "zh": "活动线程",
+    "note": "8.2/8.3 关闭部分线程后的剩余线程"
+  },
+  {
+    "en": "operations per byte",
+    "zh": "每字节操作数",
+    "note": "8.2 OP/B 单位解释"
+  }
+]

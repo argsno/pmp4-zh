@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="zh-CN" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="前言部分">
+      <option value="Cover.html">封面图</option>
+      <option value="Title_page.html">标题页</option>
+      <option value="Contents.html">目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">致谢</option>
+    </optgroup>
+    <optgroup label="序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">课程资源</option>
+    </optgroup>
+    <optgroup label="第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第一部分：基本概念">
+      <option value="Part1.html">第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html">第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">参考文献</option>
+    </optgroup>
+    <optgroup label="第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html">第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html">第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html">第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">习题</option>
+    </optgroup>
+    <optgroup label="第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第二部分：并行模式">
+      <option value="Part2.html">第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html">第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html">第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">习题</option>
+    </optgroup>
+    <optgroup label="第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html">第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第三部分：高级模式与应用">
+      <option value="Part3.html">第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html" selected>第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html">第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">参考文献</option>
+    </optgroup>
+    <optgroup label="第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">参考文献</option>
+    </optgroup>
+    <optgroup label="第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html">第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">参考文献</option>
+    </optgroup>
+    <optgroup label="第四部分：高级实践">
+      <option value="Part4.html">第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html">第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">参考文献</option>
+    </optgroup>
+    <optgroup label="第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">参考文献</option>
+    </optgroup>
+    <optgroup label="第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Ch013_293-310_B9780323912310000197.html#st0075">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch014_311-329_B9780323912310000100.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/Ch014_311-329_B9780323912310000100.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch014_311-329_B9780323912310000100.html">对照</a></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter" id="c0014">
+<a id="Ch014_311-329_B9780323912310000100"></a><div id="page_311" aria-label="Page 311" epub:type="pagebreak" role="doc-pagebreak"></div><div id="CN"><a id="Ch014_311-329_B9780323912310000100titl"></a>Chapter 14</div><h1 class="chaptitle" epub:type="title" id="tit0010">稀疏矩阵计算</h1><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0085">本章介绍并行的稀疏矩阵-向量计算模式。首先介绍稀疏矩阵的基本概念，稀疏矩阵是大多数元素为零的矩阵。接着介绍坐标列表格式（COO），它是一种不存储矩阵零元素的灵活表示方式。然后介绍基于压缩稀疏行格式（CSR）数据存储的稀疏矩阵核函数。随后介绍带数据填充的 ELL 格式，将其作为改善内存合并的规整化技术。最后介绍基于排序的锯齿对角存储格式（JDS），用于平滑行与行之间的变化，从而在规整化过程中进一步减少控制发散和填充开销。本章表明，相同的稀疏矩阵核函数代码在不同数据集上可能表现出截然不同的性能行为。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">稀疏矩阵；压缩；规整化；依赖数据的执行行为；转置；填充；空间效率；内存访问效率；可访问性；灵活性；内存对齐；内存合并</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">大纲</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">14.1 背景</a> 312</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">14.2 基于 COO 格式的简单 SpMV 核函数</a> 314</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">14.3 使用 CSR 格式对行非零元素分组</a> 317</li>
+<li class="chapoutl1" id="o0025"><a id="p0025"></a><a href="#s0025">14.4 使用 ELL 格式改善内存合并</a> 320</li>
+<li class="chapoutl1" id="o0030"><a id="p0030"></a><a href="#s0030">14.5 使用 ELL-COO 混合格式调节填充</a> 324</li>
+<li class="chapoutl1" id="o0035"><a id="p0035"></a><a href="#s0035">14.6 使用 JDS 格式减少控制发散</a> 325</li>
+<li class="chapoutl1" id="o0040"><a id="p0040"></a><a href="#s0040">14.7 小结</a> 328</li>
+<li class="chapoutl1" id="o0045"><a id="p0045"></a><a href="#s0045">习题</a> 329</li>
+<li class="chapoutl1" id="u0010"><a id="p0050"></a><a href="#bibliog0010">参考文献</a> 329</li>
+</ul>
+</div></nav>
+<p id="p0055" class="textfl"><a id="P311"></a><span id="page_312" aria-label="Page 312" epub:type="pagebreak" role="doc-pagebreak"></span>我们下一个并行模式是稀疏矩阵计算。在稀疏矩阵中，大多数元素为零。存储和处理这些零元素在内存容量、内存带宽、时间和能量上都是浪费的。许多重要的现实世界问题都涉及稀疏矩阵计算。由于这些问题的重要性，人们提出了多种稀疏矩阵存储格式及其相应的处理方法，并在该领域得到广泛应用。所有这些方法都采用了某种紧凑化技术，以避免存储或处理零元素，代价是在数据表示中引入一定程度的非规整性。不幸的是，这种非规整性会导致并行计算中内存带宽利用不足、控制流发散和负载不均衡。因此，在紧凑化与规整化之间取得良好平衡至关重要。某些存储格式以较高的非规整性实现了更高程度的紧凑化；另一些则在保持表示更规整的同时实现了较适度的紧凑化。众所周知，使用每种存储格式进行并行计算的相对性能在很大程度上取决于稀疏矩阵中非零元素的分布。理解稀疏矩阵存储格式及其相应并行算法的丰富研究成果，能为并行程序员解决相关问题中紧凑化和规整化的挑战提供重要的背景知识。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">14.1 背景</h2><p id="p0060" class="textfl">稀疏矩阵是大多数元素为零的矩阵。稀疏矩阵出现在许多科学、工程和金融建模问题中。例如，矩阵可用于表示线性方程组中的系数，矩阵的每一行代表线性方程组中的一个方程。在许多科学和工程问题中，所涉及的大量变量和方程是稀疏耦合的，即每个方程只涉及少数几个变量。<a href="#f0010">图 14.1</a> 对此进行了说明：矩阵的每一列对应一个变量的系数，第 0 列对应 x<sub>0</sub>，第 1 列对应 x<sub>1</sub>，依此类推。例如，第 0 行在第 0 列和第 1 列有非零元素，这表明方程 0 只涉及变量 x<sub>0</sub> 和 x<sub>1</sub>。显然，方程 1 中包含变量 x<sub>0</sub>、x<sub>2</sub> 和 x<sub>3</sub>，方程 2 中包含变量 x<sub>1</sub> 和 x<sub>2</sub>，而方程 3 中只包含变量 x<sub>3</sub>。稀疏矩阵通常以不存储零元素的格式（或表示形式）存储。</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F000100f14-01-9780323912310.jpg" class="img" alt="image" width="344" height="245"/><figcaption class="figleg"><a id="sp0010"></a><span class="fignum">图 14.1</span> 一个简单的稀疏矩阵示例。</figcaption></figure></div><p id="p0070" class="text">矩阵常被用于求解形如 A*X + Y = 0 的 N 个变量、N 个方程的线性方程组，其中 A 是 N × N 矩阵，X 是 N 个变量组成的向量，Y 是 N 个常量组成的向量。目标是求出满足所有方程的 X 变量值。一种直观的方法是对矩阵求逆，从而得到 X = A<sup>−1</sup> × (−Y)。对于中等规模的矩阵，可以通过高斯消元等方法实现。虽然从理论上讲，可以使用这些方法求解由稀疏矩阵表示的方程，但许多稀疏矩阵的巨大规模会使这种直观方法不堪重负。此外，稀疏矩阵的逆往往比原矩阵大得多，因为求逆过程往往会产生许多额外的非零元素，这些元素被称为“填充元”。因此，在解决现实世界的问题时，计算并存储逆矩阵通常是不可行的。</p>
+<p id="p0075" class="text"><span id="page_313" aria-label="Page 313" epub:type="pagebreak" role="doc-pagebreak"></span>以稀疏矩阵表示的线性方程组可以通过迭代方法更好地求解。当稀疏矩阵 A 正定（即对于 R<sup><em>n</em></sup> 中的所有非零向量 x，都有 x<sup>T</sup>Ax > 0）时，可以使用共轭梯度方法迭代求解相应的线性系统，并保证收敛到解（<a href="#bib2" role="doc-biblioref" epub:type="biblioref" id="BIB_2">Hestenes and Stiefel，1952</a>）。共轭梯度方法先猜测 X 的一个解，执行 A*X + Y，检查结果是否接近零向量。如果不是，可以利用梯度向量公式改进猜测的 X，并再次执行 A*X + Y 迭代。这些线性系统的迭代求解方法与我们在<a href="Ch008_173-189_B9780323912310000173.html#Ch008_173-189_B9780323912310000173">第 8 章</a>“模板”中介绍的微分方程迭代求解方法密切相关。</p>
+<p id="p0080" class="text">在求解线性方程组的迭代方法中，最耗时的部分是计算 A*X + Y，即稀疏矩阵-向量乘法与累加。<a href="#f0015">图 14.2</a> 展示了一个矩阵-向量乘法与累加的小例子，其中 A 是稀疏矩阵。A 中的深色方块代表非零元素。相比之下，X 和 Y 通常都是稠密向量，即 X 和 Y 的大部分元素都含有非零值。鉴于其重要性，人们建立了标准化库函数接口，以 SpMV（稀疏矩阵-向量乘法与累加）之名执行此操作。我们将用 SpMV 来说明并行稀疏矩阵计算中不同存储格式之间的重要权衡。</p>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F000100f14-02-9780323912310.jpg" class="img" alt="image" width="603" height="270"/><figcaption class="figleg"><a id="sp0015"></a><span class="fignum">图 14.2</span> 矩阵-向量乘法与累加的小例子。</figcaption></figure></div><p id="p0085" class="text">不同稀疏矩阵存储格式的主要目标是去除矩阵表示中的所有零元素。去除所有零元素不仅节省了存储空间，还消除了从内存中读取这些零元素并与之进行无用的乘法或加法运算的需要。这可以显著降低内存带宽和计算资源的消耗。</p>
+<p id="p0090" class="text"><a id="li0015"></a>稀疏矩阵存储格式的结构涉及多种设计考量。以下是其中一些关键考量的清单：</p><div><ul>
+<li class="bulllist" id="u0015"><a id="p0095"></a>• 空间效率（即紧凑化）：使用该存储格式表示矩阵所需的内存容量</li>
+<li class="bulllist" id="u0020"><a id="p0100"></a>• 灵活性：存储格式在多大程度上便于通过添加或删除非零元素来修改矩阵</li>
+<li class="bulllist" id="u0025"><a id="p0105"></a>• 可访问性：存储格式便于访问的数据种类</li>
+<li class="bulllist" id="u0030"><a id="p0110"></a>• 内存访问效率：存储格式在多大程度上能为特定计算提供高效的内存访问模式（规整化的一个方面）</li>
+<li class="bulllist" id="u0035"><a id="p0115"></a>• 负载均衡：存储格式在多大程度上能为特定计算在不同线程之间均衡负载（规整化的另一个方面）</li>
+</ul></div><p class="text"><span id="page_314" aria-label="Page 314" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<p id="p0120" class="text">在本章中，我们将介绍不同的存储格式，并考察这些存储格式在上述每种设计考量上的表现如何。</p></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">14.2 基于 COO 格式的简单 SpMV 核函数</h2><p id="p0125" class="textfl">我们要讨论的第一种稀疏矩阵存储格式是坐标列表（COO）格式。<a id="Bf0020" href="#f0020">图 14.3</a> 展示了 COO 格式。COO 将非零值存储在一维数组中，即 <span class="inlinecode">value</span> 数组。每个非零元素同时存储其列索引和行索引，我们同时使用 <span class="inlinecode">colIdx</span> 和 <span class="inlinecode">rowIdx</span> 数组来配合 <span class="inlinecode">value</span> 数组。例如，我们小例子中的 A[0,0] 存储在 <span class="inlinecode">value</span> 数组中索引为 0 的条目处（即 <span class="inlinecode">value[0]</span>中的 1），其列索引（<span class="inlinecode">colIdx[0]</span>中的 0）和行索引（<span class="inlinecode">rowIdx[0]</span>中的 0）则存储在其他数组的相同位置。</p>
+<div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F000100f14-03-9780323912310.jpg" class="img" alt="image" width="1007" height="252"/><figcaption class="figleg"><a id="sp0020"></a><span class="fignum"><a href="#Bf0020">图 14.3</a></span> 坐标列表（COO）格式示例。</figcaption></figure></div><p id="p0130" class="text">COO 完全从存储中去除所有零元素。但它确实会因引入 <span class="inlinecode">colIdx</span> 和 <span class="inlinecode">rowIdx</span> 数组而产生存储开销。在我们的小例子中，零元素的数目与非零元素的数目相差不大，存储开销实际上超过了不存储零元素所节省的空间。然而，显然对于绝大多数元素为零的稀疏矩阵而言，所引入的开销远小于不存储零元素所节省的空间。例如，在一个只有 1% 元素为非零值的稀疏矩阵中，COO 表示的总存储量（包括所有开销）大约只需存储零元素和非零元素所需空间的 3%。</p>
+<p id="p0135" class="text"><span id="page_315" aria-label="Page 315" epub:type="pagebreak" role="doc-pagebreak"></span>使用以 COO 格式表示的稀疏矩阵并行执行 SpMV 的一种方法是为矩阵中的每个非零元素分配一个线程。<a href="#f0025">图 14.4</a> 展示了这种并行化方法的示例，相应的代码见<a href="#f0030">图 14.5</a>。在这种方法中，每个线程确定自己负责的非零元素的索引（第 02 行），并确保其在边界内（第 03 行）。接着，线程分别从 <span class="inlinecode">rowIdx</span>、<span class="inlinecode">colIdx</span> 和 <span class="inlinecode">value</span> 数组中读取其负责的非零元素的行索引（第 04 行）、列索引（第 05 行）和值（第 06 行）。然后，它查找与列索引对应位置处的输入向量值，将其与非零值相乘，再将结果累加到对应行索引处的输出值中（第 07 行）。累加需要使用原子操作，因为多个线程可能更新同一个输出元素，<a href="#f0025">图 14.4</a> 中映射到矩阵第 0 行的前两个线程就是这种情况。显然，任何 SpMV 计算代码都会反映其所假定的存储格式。因此，我们在核函数名称中加入存储格式，以明确所使用的组合。我们也将<a href="#f0030">图 14.5</a> 中的 SpMV 代码称为 SpMV/COO。</p>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F000100f14-04-9780323912310.jpg" class="img" alt="image" width="1207" height="383"/><figcaption class="figleg"><a id="sp0025"></a><span class="fignum">图 14.4</span> 使用 COO 格式并行化 SpMV 的示例。</figcaption></figure></div><div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F000100f14-05-9780323912310.jpg" class="img" alt="image" width="1372" height="285"/><figcaption class="figleg"><a id="sp0030"></a><span class="fignum">图 14.5</span> 并行 SpMV/COO 核函数。</figcaption></figure></div><p id="p0140" class="text"><span id="page_316" aria-label="Page 316" epub:type="pagebreak" role="doc-pagebreak"></span>现在我们按照<a href="#s0010">第 14.1 节</a>列出的设计考量来考察 COO 格式：空间效率、灵活性、可访问性、内存访问效率和负载均衡。关于空间效率，我们将讨论推迟到后面介绍其他格式之后。关于灵活性，我们注意到，只要以相同方式重排 <span class="inlinecode">rowIdx</span>、<span class="inlinecode">colIdx</span> 和 <span class="inlinecode">value</span> 数组，就可以任意重排 COO 格式中的元素而不会丢失任何信息。<a id="Bf0035" href="#f0035">图 14.6</a> 用我们的小例子说明了这一点，其中我们重排了 <span class="inlinecode">rowIdx</span>、<span class="inlinecode">colIdx</span> 和 <span class="inlinecode">value</span> 数组的元素。现在 <span class="inlinecode">value[0]</span>实际上包含的是原稀疏矩阵第 1 行第 3 列的一个元素。由于我们同时移动了行索引和列索引的值，因此可以正确识别该元素在原稀疏矩阵中的位置。</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F000100f14-06-9780323912310.jpg" class="img" alt="image" width="951" height="238"/><figcaption class="figleg"><a id="sp0035"></a><span class="fignum"><a href="#Bf0035">图 14.6</a></span> 重排坐标列表（COO）格式。</figcaption></figure></div><p id="p0145" class="text">在 COO 格式中，我们可以按任意顺序处理元素。由 <span class="inlinecode">rowIdx[i]</span>确定的正确 <span class="inlinecode">y</span> 元素将收到来自 <span class="inlinecode">value[i]</span>与 <span class="inlinecode">x[colIdx[i]]</span>乘积的正确贡献。只要我们设法对 <span class="inlinecode">value</span> 中的所有元素都执行此运算，无论我们按何种顺序处理这些元素，都能得到正确的最终结果。</p>
+<p id="p0150" class="text">读者可能会问，我们为什么想要重排这些元素。一个原因是，数据可能来自不按特定顺序提供非零元素的文件，而我们仍然需要一种一致的表示数据的方式。因此，在矩阵最初构建时，COO 是一种常用的存储格式。另一个原因是，由于无需提供任何顺序，只需在这三个数组的末尾追加条目即可向矩阵添加非零元素。因此，当矩阵在整个计算过程中被修改时，COO 也是一种常用的存储格式。我们将在<a href="#s0030">第 14.5 节</a>中看到 COO 格式灵活性的另一个好处。</p>
+<p id="p0155" class="text">我们考察的下一个设计考量是可访问性。对于给定的非零元素，COO 便于访问其对应的行索引和列索引。这一特性使得 SpMV/COO 能够跨非零元素进行并行化。另一方面，对于给定的行或列，COO 不便于访问该行或列中的所有非零元素。因此，如果计算需要对矩阵进行按行或按列的遍历，COO 就不是一个好的格式选择。</p>
+<p id="p0160" class="text">关于内存访问效率，我们参考<a href="#f0025">图 14.4</a> 中的物理视图，了解线程如何从内存访问矩阵数据。其访问模式是，连续的线程访问构成 COO 格式的三个数组中连续的元素。因此，SpMV/COO 对矩阵的访问是合并的。</p>
+<p id="p0165" class="text">关于负载均衡，我们回顾到每个线程负责一个非零值。因此，所有线程负责相同的工作量，这意味着除了边界上的线程外，SpMV/COO 中预计不会出现任何控制发散。</p>
+<p id="p0170" class="text"><span id="page_317" aria-label="Page 317" epub:type="pagebreak" role="doc-pagebreak"></span>SpMV/COO 的主要缺点是需要使用原子操作。使用原子操作的原因是，多个线程被分配到同一行的非零元素，因此需要更新同一个输出值。如果同一行的所有非零元素都分配给同一个线程，使该线程成为唯一更新相应输出值的线程，就可以避免使用原子操作。但请记住，COO 格式并不提供这种可访问性。在 COO 格式中，对于给定的行，不便于访问该行中的所有非零元素。在下一节中，我们将看到另一种提供这种可访问性的存储格式。</p></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">14.3 使用 CSR 格式对行非零元素分组</h2><p id="p0175" class="textfl">在上一节中，我们看到使用 COO 格式并行化 SpMV 会因多个线程更新同一个输出值而不得不使用原子操作。如果同一个线程负责一行中的所有非零元素，就可以避免这些原子操作，但这要求存储格式能让我们访问给定行的所有非零元素。这种可访问性由压缩稀疏行格式（CSR）提供。</p>
+<p id="p0180" class="text"><a href="#f0040">图 14.7</a> 说明了如何使用 CSR 格式存储<a href="#f0010">图 14.1</a> 中的矩阵。与 COO 格式一样，CSR 将非零值存储在一维数组中，即<a href="#f0015">图 14.2</a> 中所示的 <span class="inlinecode">value</span> 数组。不过，这些非零值按行分组。例如，我们先存储第 0 行的非零元素（1 和 7），再存储第 1 行的非零元素（5、3 和 9），接着存储第 2 行的非零元素（2 和 8），最后存储第 3 行的非零元素（6）。</p>
+<div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F000100f14-07-9780323912310.jpg" class="img" alt="image" width="968" height="241"/><figcaption class="figleg"><a id="sp0040"></a><span class="fignum">图 14.7</span> 压缩稀疏行格式（CSR）示例。</figcaption></figure></div><p id="p0185" class="text">与 COO 格式类似，CSR 在 <span class="inlinecode">value</span> 数组中存储每个非零元素，并在 <span class="inlinecode">colIdx</span> 数组的相同位置存储其列索引。自然地，这些列索引与值一样按行分组。在<a href="#f0040">图 14.7</a> 中，每行的非零元素按其列索引递增排序。以这种方式对非零元素排序会带来有利的内存访问模式，但并非必需。每行内的非零元素不一定按列索引排序，本节介绍的核函数仍能正确工作。当每行内的非零元素按列索引排序时，CSR 的 <span class="inlinecode">value</span> 数组（以及 <span class="inlinecode">colIdx</span> 数组）的布局可以看作去除所有零元素后矩阵的行主序布局。</p>
+<p id="p0190" class="text"><span id="page_318" aria-label="Page 318" epub:type="pagebreak" role="doc-pagebreak"></span>COO 格式与 CSR 格式的关键区别在于，CSR 格式用 <span class="inlinecode">rowPtrs</span> 数组取代了 <span class="inlinecode">rowIdx</span> 数组，该数组存储每一行的非零元素在 <span class="inlinecode">colIdx</span> 和 <span class="inlinecode">value</span> 数组中的起始偏移量。在<a href="#f0040">图 14.7</a> 中，我们展示了一个 <span class="inlinecode">rowPtrs</span> 数组，其元素是每行起始位置的索引。也就是说，<span class="inlinecode">rowPtrs[0]</span>表示第 0 行从 <span class="inlinecode">value</span> 数组的位置 0 开始，<span class="inlinecode">rowPtrs[1]</span>表示第 1 行从位置 2 开始，依此类推。请注意，<span class="inlinecode">rowPtrs[4]</span>存储的是一个并不存在的“第 4 行”的起始位置。这样做是为了方便，因为某些算法需要利用下一行的起始位置来确定当前行的结束位置。这个额外的标记为定位第 3 行的结束位置提供了便捷的方式。</p>
+<p id="p0195" class="text"><span id="page_319" aria-label="Page 319" epub:type="pagebreak" role="doc-pagebreak"></span>要使用以 CSR 格式表示的稀疏矩阵并行执行 SpMV，可以为矩阵的每一行分配一个线程。<a href="#f0045">图 14.8</a> 展示了这种并行化方法的示例，相应的代码见<a href="#f0050">图 14.9</a>。在这种方法中，每个线程确定自己负责的行（第 02 行），并确保其在边界内（第 03 行）。接着，线程遍历其所在行的非零元素以执行点积（第 05 至 06 行）。为了找到该行的非零元素，线程在 <span class="inlinecode">rowPtrs</span> 数组中查找它们的起始索引（<span class="inlinecode">rowPtrs[row]</span>）。它还通过查找下一行非零元素的起始索引（<span class="inlinecode">rowPtrs[row + 1]</span>）来确定它们的结束位置。对于每个非零元素，线程确定其列索引（第 07 行）和值（第 08 行）。然后，它查找与列索引对应位置处的输入值，将其与非零值相乘，并将结果累加到局部变量 <span class="inlinecode">sum</span>（第 09 行）。<span class="inlinecode">sum</span> 变量在点积循环开始前被初始化为 0（第 04 行），并在循环结束后累加到输出向量（第 11 行）。请注意，将 <span class="inlinecode">sum</span> 累加到输出向量不需要原子操作。原因是每一行都由单个线程遍历，因此每个线程将写入不同的输出值，如<a href="#f0045">图 14.8</a> 所示。</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F000100f14-08-9780323912310.jpg" class="img" alt="image" width="1153" height="359"/><figcaption class="figleg"><a id="sp0045"></a><span class="fignum">图 14.8</span> 使用 CSR 格式并行化 SpMV 的示例。</figcaption></figure></div><div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F000100f14-09-9780323912310.jpg" class="img" alt="image" width="1374" height="411"/><figcaption class="figleg"><a id="sp0050"></a><span class="fignum">图 14.9</span> 并行 SpMV/CSR 核函数。</figcaption></figure></div><p id="p0200" class="text">现在我们按照<a href="#s0010">第 14.1 节</a>列出的设计考量来考察 CSR 格式：空间效率、灵活性、可访问性、内存访问效率和负载均衡。关于空间效率，我们注意到 CSR 比 COO 更节省空间。COO 需要三个数组 <span class="inlinecode">rowIdx</span>、<span class="inlinecode">colIdx</span> 和 <span class="inlinecode">value</span>，每个数组的元素数都等于非零元素数。相比之下，CSR 只需要两个数组 <span class="inlinecode">colIdx</span> 和 <span class="inlinecode">value</span>，元素数等于非零元素数。第三个数组 <span class="inlinecode">rowPtrs</span> 只需要行数加一个元素，因此比 COO 中的 <span class="inlinecode">rowIdx</span> 数组小得多。这一差异使 CSR 比 COO 更节省空间。</p>
+<p id="p0205" class="text">关于灵活性，我们注意到在向矩阵添加非零元素方面，CSR 不如 COO 灵活。在 COO 中，只需将非零元素追加到数组末尾即可。而在 CSR 中，要添加的非零元素必须添加到其所属的特定行中。这意味着后续各行的非零元素都需要移位，后续各行的行指针也需要相应递增。因此，向 CSR 矩阵添加非零元素比向 COO 矩阵添加要昂贵得多。</p>
+<p id="p0210" class="text">关于可访问性，对于给定的行，CSR 便于访问该行中的非零元素。这一特性使 SpMV/CSR 能够跨行并行化，这也是它相对于 SpMV/COO 能够避免原子操作的原因。在现实世界的稀疏矩阵应用中，通常有数千到数百万行，每行包含数十到数百个非零元素。这使得跨行并行化显得非常合适：线程众多，且每个线程都有可观的工作量。另一方面，对于某些应用，稀疏矩阵可能没有足够的行来充分利用所有 GPU 线程。在这类应用中，COO 格式可以挖掘出更多的并行性，因为非零元素的数目多于行数。此外，对于给定的列，CSR 不便于访问该列中的所有非零元素。因此，如果应用需要方便地访问某一列的所有元素，可能还需要维护一种更面向列的矩阵布局。</p>
+<p id="p0215" class="text">关于内存访问效率，我们参考<a href="#f0045">图 14.8</a> 中的物理视图，了解在点积循环第一次迭代期间线程如何从内存访问矩阵数据。其访问模式是，连续的线程访问相距甚远的数据元素。具体来说，线程 0、1、2 和 3 在各自点积循环的第一次迭代中将分别访问 <span class="inlinecode">value[0]</span>、<span class="inlinecode">value[2]</span>、<span class="inlinecode">value[5]</span>和 <span class="inlinecode">value[7]</span>；在第二次迭代中分别访问 <span class="inlinecode">value[1]</span>、<span class="inlinecode">value[3]</span>、<span class="inlinecode">value[6]</span>，以及不访问任何数据，依此类推。因此，<a href="#f0050">图 14.9</a> 中的并行 SpMV/CSR 核函数对矩阵的访问不是合并的。该核函数未能有效利用内存带宽。</p>
+<p id="p0220" class="text"><span id="page_320" aria-label="Page 320" epub:type="pagebreak" role="doc-pagebreak"></span>关于负载均衡，我们注意到 SpMV/CSR 核函数可能在所有线程束中产生显著的控制流发散。线程在点积循环中执行的迭代次数取决于分配给该线程的行中非零元素的数目。由于非零元素在行之间的分布可能是随机的，相邻行可能具有非常不同的非零元素数目。因此，在大多数甚至所有线程束中可能出现广泛的控制流发散。</p>
+<p id="p0225" class="text">总而言之，我们看到 CSR 相对于 COO 的优势在于：它有更好的空间效率，并且让我们能够访问一行的所有非零元素，从而可以在 SpMV/CSR 中通过跨行并行化计算来避免原子操作。另一方面，CSR 相对于 COO 的劣势在于：它向稀疏矩阵添加非零元素的灵活性较低，其内存访问模式不利于合并，并且会导致较高的控制发散。在接下来的章节中，我们将讨论其他存储格式，它们以牺牲部分空间效率为代价，来改善内存合并并减少控制发散。请注意，在 GPU 上使用多种基础并行计算原语（包括直方图和扫描）完成从 COO 到 CSR 的转换，对读者来说是一个极佳的练习。</p></section><section><a id="s0025"></a><h2 class="h1hd" id="st0040">14.4 使用 ELL 格式改善内存合并</h2><p id="p0230" class="textfl">非合并内存访问的问题可以通过对稀疏矩阵数据施加数据填充和转置来解决。这些思想被用于 ELL 存储格式，其名称来源于 ELLPACK 中的稀疏矩阵软件包；ELLPACK 是用于求解椭圆边值问题的软件包（<a href="#bib3" role="doc-biblioref" epub:type="biblioref" id="BIB_3">Rice and Boisvert，1984</a>）。</p>
+<p id="p0235" class="text"><span id="page_321" aria-label="Page 321" epub:type="pagebreak" role="doc-pagebreak"></span>理解 ELL 格式的一种简单方法是从 CSR 格式出发，如<a href="#f0055">图 14.10</a> 所示。在以 CSR 表示按行分组的非零元素后，我们确定具有最多非零元素的行。然后，在其他所有行的非零元素之后添加填充元素，使它们与最长行等长。这样矩阵就变成了矩形矩阵。对于我们的小型稀疏矩阵示例，第 1 行具有最多的元素。我们随后向第 0 行添加一个填充元素，向第 2 行添加一个填充元素，向第 3 行添加两个填充元素，使它们等长。这些额外的填充元素在<a href="#f0060">图 14.11</a> 中以带 * 的方块表示。现在矩阵变成了矩形矩阵。请注意，<span class="inlinecode">colIdx</span> 数组也需要以同样的方式进行填充，以保持其与 <span class="inlinecode">values</span> 数组的对应关系。</p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F000100f14-10-9780323912310.jpg" class="img" alt="image" width="1374" height="700"/><figcaption class="figleg"><a id="sp0055"></a><span class="fignum">图 14.10</span> ELL 存储格式示例。</figcaption></figure></div><div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F000100f14-11-9780323912310.jpg" class="img" alt="image" width="1342" height="348"/><figcaption class="figleg"><a id="sp0060"></a><span class="fignum">图 14.11</span> 使用 ELL 格式并行化 SpMV 的示例。</figcaption></figure></div><p id="p0240" class="text">现在我们可以按列主序排列填充后的矩阵。也就是说，我们将第 0 列的所有元素放在连续的内存位置中，接着是第 1 列的所有元素，依此类推。这等价于对按 C 语言所用行主序排列的矩形矩阵进行转置。就我们的小例子而言，转置之后，<span class="inlinecode">value[0]</span>到 <span class="inlinecode">value[3]</span>现在包含 1、5、2、6，它们是所有行的第 0 个元素。<a href="#f0055">图 14.10</a> 的左下部分对此进行了说明。类似地，<span class="inlinecode">colIdx[0]</span>到 <span class="inlinecode">colIdx[3]</span>包含所有行第 0 个元素的列位置。请注意，我们不再需要 <span class="inlinecode">rowPtrs</span>，因为第 <span class="inlinecode">r</span> 行的起始位置现在就是 <span class="inlinecode">value[r]</span>。有了填充元素，从第 <span class="inlinecode">r</span> 行的当前元素移动到下一个元素也非常容易，只需在索引上加上原矩阵的行数即可。例如，第 2 行的第 0 个元素位于 <span class="inlinecode">value[2]</span>，下一个元素位于 <span class="inlinecode">value[2+4]</span>，即 <span class="inlinecode">value[6]</span>，其中 4 是我们小例子中原矩阵的行数。</p>
+<p id="p0245" class="text"><span id="page_322" aria-label="Page 322" epub:type="pagebreak" role="doc-pagebreak"></span>我们在<a href="#f0060">图 14.11</a> 中说明如何使用 ELL 格式并行化 SpMV，并在<a href="#f0065">图 14.12</a> 中给出相应的并行 SpMV/ELL 核函数。与 CSR 一样，每个线程被分配到矩阵的不同行（第 02 行），边界检查确保该行在边界内（第 03 行）。接着，一个点积循环遍历每一行的非零元素（第 05 行）。请注意，SpMV/ELL 核函数假定输入矩阵有一个向量 <span class="inlinecode">ellMatrix.nnzPerRow</span>，记录每行非零元素的数目，使每个线程只需遍历其负责的行中的非零元素。如果输入矩阵没有这个向量，核函数可以简单地遍历所有元素（包括填充元素），仍然可以正确执行，因为填充元素的值为零，不会影响输出值。接下来，由于压缩后的矩阵按列主序存储，可以通过将迭代次数 <span class="inlinecode">t</span> 乘以行数再加上行索引来得到一维数组中非零元素的索引 <span class="inlinecode">i</span>（第 06 行）。接着，线程从 ELL 矩阵数组中读取列索引（第 07 行）和非零值（第 08 行）。请注意，对这些数组的访问是合并的，因为索引 <span class="inlinecode">i</span> 由 <span class="inlinecode">row</span> 表示，而该行本身又由 <span class="inlinecode">threadIdx.x</span> 表示，这意味着连续的线程具有连续的数组索引。接着，线程查找输入值，将其与非零值相乘，并将结果累加到局部变量 <span class="inlinecode">sum</span> 中（第 09 行）。<span class="inlinecode">sum</span> 变量在点积循环开始前被初始化为 0（第 04 行），并在循环结束后累加到输出向量中（第 11 行）。</p>
+<div class="pageavoid"><figure class="fig" id="f0065"><img src="../images/F000100f14-12-9780323912310.jpg" class="img" alt="image" width="1374" height="411"/><figcaption class="figleg"><a id="sp0065"></a><span class="fignum">图 14.12</span> 并行 SpMV/ELL 核函数。</figcaption></figure></div><p id="p0250" class="text"><span id="page_323" aria-label="Page 323" epub:type="pagebreak" role="doc-pagebreak"></span>现在我们按照<a href="#s0010">第 14.1 节</a>列出的设计考量来考察 ELL 格式：空间效率、灵活性、可访问性、内存访问效率和负载均衡。关于空间效率，我们注意到由于填充元素的空间开销，ELL 格式不如 CSR 格式节省空间。填充元素的开销在很大程度上取决于矩阵中非零元素的分布。当一个或少数几个行拥有极多非零元素时，ELL 格式会产生过多的填充元素。以我们的示例矩阵为例，在 ELL 格式中，我们把 4 × 4 矩阵变成了 4 × 3 矩阵，再加上列索引的开销，我们存储的数据甚至比原 4 × 4 矩阵还多。举个更现实的例子，如果一个 1000 × 1000 的稀疏矩阵有 1% 的元素为非零值，那么平均每行有十个非零元素。考虑开销后，CSR 表示的大小约为未压缩总大小的 2%。假设其中一行有 200 个非零值，而其他所有行都少于 10 个。使用 ELL 格式，我们将所有其他行填充到 200 个元素。这使得 ELL 表示约占未压缩总大小的 40%，是 CSR 表示的 20 倍。这就需要在从 CSR 格式转换到 ELL 格式时，有一种控制填充元素数目的方法，我们将在下一节介绍。</p>
+<p id="p0255" class="text">关于灵活性，我们注意到在向矩阵添加非零元素方面，ELL 比 CSR 更灵活。在 CSR 中，向一行添加非零元素需要移动后续所有行的非零元素并递增它们的行指针。然而，在 ELL 中，只要某一行不是矩阵中非零元素数目最多的行，就可以通过简单地用实际值替换一个填充元素来向该行添加非零元素。</p>
+<p id="p0260" class="text">关于可访问性，ELL 兼具 CSR 和 COO 的可访问性。我们在<a href="#f0065">图 14.12</a> 中看到，给定行索引时，ELL 允许我们访问该行的非零元素。此外，给定非零元素的索引时，ELL 还允许我们访问该元素的行索引和列索引。列索引很容易找到，可以从 <span class="inlinecode">colIdx</span> 数组的同一位置 <span class="inlinecode">i</span> 处访问。而由于填充矩阵的规整性，行索引也可以访问。回顾一下，在<a href="#f0050">图 14.9</a> 中，非零元素的索引 <span class="inlinecode">i</span> 按如下方式计算：</p>
+<div class="pageavoid"><figure class="fig" id="f010"><img src="../images/F000100u14-01-9780323912310.jpg" class="img" alt="image" width="617" height="60"/></figure>
+</div>
+<p id="p0270" class="text">因此，如果反过来给定 <span class="inlinecode">i</span>，而我们想求出 <span class="inlinecode">row</span>，则可以按如下方式求得：</p>
+<div class="pageavoid"><figure class="fig" id="f015"><img src="../images/F000100u14-02-9780323912310.jpg" class="img" alt="image" width="548" height="60"/></figure>
+</div>
+<p class="text">因为 <span class="inlinecode">row</span> 总是小于 <span class="inlinecode">ellMatrix.numRows</span>，所以 <span class="inlinecode">row%ellMatrix.numRows</span> 就是 <span class="inlinecode">row</span> 本身。ELL 的这种可访问性允许跨行以及跨非零元素进行并行化。</p>
+<p id="p0285" class="text">关于内存访问效率，我们参考<a href="#f0060">图 14.11</a> 中的物理视图，了解在点积循环第一次迭代期间线程如何从内存访问矩阵数据。其访问模式是，连续的线程访问连续的数据元素。由于元素按列主序排列，所有相邻线程现在访问相邻的内存位置，从而实现了内存合并，并因此更有效地利用内存带宽。某些 GPU 体系结构，尤其是较老的几代，对内存合并有更严格的地址对齐规则。我们可以在转置之前向矩阵末尾添加几行，从而强制 SpMV/ELL 核函数的每次迭代都完全对齐到体系结构规定的对齐单位（如 64 字节）。</p>
+<p id="p0290" class="text">关于负载均衡，我们注意到 SpMV/ELL 仍然表现出与 SpMV/CSR 相同的负载不均衡，因为每个线程仍然要遍历其负责的行中非零元素的数目。因此，ELL 没有解决控制发散的问题。</p>
+<p id="p0295" class="text"><span id="page_324" aria-label="Page 324" epub:type="pagebreak" role="doc-pagebreak"></span>总而言之，ELL 格式相对于 CSR 格式的改进在于：通过替换填充元素提供了更高的添加非零元素的灵活性，更好的可访问性，以及最重要的是，SpMV/ELL 中有更多实现内存合并的机会。然而，ELL 的空间效率不如 CSR，而且 SpMV/ELL 的控制发散与 SpMV/CSR 一样严重。在下一节中，我们将看到如何改进 ELL 格式，以解决空间效率和控制发散的问题。</p></section><section><a id="s0030"></a><h2 class="h1hd" id="st0045">14.5 使用 ELL-COO 混合格式调节填充</h2><p id="p0300" class="textfl">当一个或少数几个行拥有极多非零元素时，ELL 格式的空间效率低下和控制发散问题最为突出。如果我们有一种机制能“拿走”这些行中的部分元素，就可以减少 ELL 中填充元素的数目，同时也能减少控制发散。答案就在于 COO 格式的一个重要应用场景。</p>
+<p id="p0305" class="text">COO 格式可用于控制 ELL 格式中行的长度。在将稀疏矩阵转换为 ELL 之前，我们可以从拥有极多非零元素的行中取出部分元素，将其放入一个独立的 COO 存储中。对剩余的元素，我们使用 SpMV/ELL 计算。从超长的行中移除多余元素后，其他行的填充元素数目可以显著减少。然后，我们可以用 SpMV/COO 完成剩余工作。这种采用两种格式协同完成一次计算的方法通常被称为混合方法。</p>
+<p id="p0310" class="text"><a href="#f0070">图 14.13</a> 说明了一个示例矩阵如何用 ELL-COO 混合格式表示。我们看到，仅使用 ELL 格式时，第 1 行和第 6 行拥有最多的非零元素，导致其他行有过多填充。为解决这个问题，我们从 ELL 表示中取出第 2 行的最后三个非零元素和第 6 行的最后两个非零元素，将它们移入一个独立的 COO 表示。通过移除这些元素，我们将这个小型稀疏矩阵所有行中的最大非零元素数目从 5 减少到 2。如<a href="#f0070">图 14.13</a> 所示，填充元素的数目从 22 个减少到 3 个。更重要的是，所有线程现在只需进行两次迭代。</p>
+<div class="pageavoid"><figure class="fig" id="f0070"><img src="../images/F000100f14-13-9780323912310.jpg" class="img" alt="image" width="1372" height="381"/><figcaption class="figleg"><a id="sp0070"></a><span class="fignum">图 14.13</span> ELL-COO 混合格式示例。</figcaption></figure></div><p id="p0315" class="text"><span id="page_325" aria-label="Page 325" epub:type="pagebreak" role="doc-pagebreak"></span>读者可能会想，从 ELL 格式中分离出 COO 元素所做的额外工作是否会带来过高的开销。答案是视情况而定。当稀疏矩阵只在一次 SpMV 计算中使用时，这些额外工作确实会产生显著开销。然而，在许多实际应用中，SpMV 是在迭代求解器中反复对同一个稀疏核函数执行的。在求解器的每次迭代中，x 和 y 向量都会变化，但稀疏矩阵保持不变，因为其元素对应于所求解线性方程组的系数，而这些系数在迭代之间不会改变。因此，生成 ELL-COO 混合表示和 COO 表示所做的工作可以在许多次迭代中分摊。我们将在下一节回到这一点。</p>
+<p id="p0320" class="text">现在我们按照<a href="#s0010">第 14.1 节</a>列出的设计考量来考察 ELL-COO 混合格式：空间效率、灵活性、可访问性、内存访问效率和负载均衡。关于空间效率，我们注意到 ELL-COO 混合格式比单独使用 ELL 格式具有更好的空间效率，因为它减少了所使用的填充量。</p>
+<p id="p0325" class="text">关于灵活性，我们注意到在向矩阵添加非零元素方面，ELL-COO 混合格式比单独的 ELL 更灵活。使用 ELL 时，对于有填充元素的行，我们可以通过替换填充元素来添加非零元素。使用 COO-ELL 混合格式时，我们同样可以通过替换填充元素来添加非零元素。此外，如果某一行在 ELL 部分没有可替换的填充元素，我们还可以将非零元素追加到格式的 COO 部分。</p>
+<p id="p0330" class="text">关于可访问性，我们注意到与单独使用 ELL 格式相比，ELL-COO 混合格式牺牲了一部分可访问性。具体来说，给定行索引时，并不总能访问该行的所有非零元素。这种访问只能针对适合放在格式 ELL 部分中的行进行。如果某一行溢出到了 COO 部分，那么要找到该行的所有非零元素就需要搜索 COO 部分，这是昂贵的。</p>
+<p id="p0335" class="text">关于内存访问效率，SpMV/ELL 和 SpMV/COO 对稀疏矩阵的访问都是合并的内存访问。因此，它们的组合也会产生合并访问模式。</p>
+<p id="p0340" class="text">关于负载均衡，从格式 ELL 部分的长行中移除非零元素会减少 SpMV/ELL 核函数的控制发散。这些非零元素被放入格式的 COO 部分，而 COO 部分不会影响控制发散，因为正如我们所见，SpMV/COO 不会表现出控制发散。</p>
+<p id="p0345" class="text">总而言之，与单独使用 ELL 格式相比，ELL-COO 混合格式通过减少填充提高了空间效率，为向矩阵添加非零元素提供了更大的灵活性，保留了合并的内存访问模式，并减少了控制发散。所付出的代价是可访问性上的一点限制：如果某一行溢出到格式的 COO 部分，访问该行所有非零元素就会变得更加困难。</p></section><section><a id="s0035"></a><h2 class="h1hd" id="st0050">14.6 使用 JDS 格式减少控制发散</h2><p id="p0350" class="textfl"><span id="page_326" aria-label="Page 326" epub:type="pagebreak" role="doc-pagebreak"></span>我们已经看到，ELL 格式可以在 SpMV 中实现对稀疏矩阵的合并内存访问模式，而 ELL-COO 混合格式可以通过减少填充进一步提高空间效率，并且还能减少控制发散。在本节中，我们将介绍另一种格式，它可以在 SpMV 中实现合并的内存访问模式，同时无需任何填充就能减少控制发散。其思路是按行长度对行进行排序，例如从最长到最短。由于排序后的矩阵看起来大体像一个三角矩阵，这种格式通常被称为锯齿对角存储格式（JDS）。</p>
+<p id="p0355" class="text"><a id="Bf0075" href="#f0075">图 14.14</a> 说明了如何使用 JDS 格式存储矩阵。首先，与 CSR 和 ELL 格式一样，非零元素按行分组。接着，按每行非零元素的数目以递增顺序对行排序。在排序过程中，我们通常维护一个额外的 <span class="inlinecode">row</span> 数组，用于保留原始行的索引。每当在排序过程中交换两行时，我们也会交换 <span class="inlinecode">row</span> 数组中相应的元素。这样，我们就能始终跟踪所有行的原始位置。行排序完成后，<span class="inlinecode">value</span> 数组中的非零元素及其在 <span class="inlinecode">colIdx</span> 数组中对应的列索引按列主序存储。此外，还添加一个 <span class="inlinecode">iterPtr</span> 数组，用于跟踪每次迭代中非零元素的起始位置。</p>
+<div class="pageavoid"><figure class="fig" id="f0075"><img src="../images/F000100f14-14-9780323912310.jpg" class="img" alt="image" width="1374" height="645"/><figcaption class="figleg"><a id="sp0075"></a><span class="fignum"><a href="#Bf0075">图 14.14</a></span> JDS 存储格式示例。</figcaption></figure></div><p id="p0360" class="text"><a href="#f0080">图 14.15</a> 说明了如何使用 JDS 格式并行化 SpMV。每个线程被分配到矩阵的一行，遍历该行的非零元素，并沿途执行点积。线程使用 <span class="inlinecode">iterPtr</span> 数组来确定每次迭代的非零元素从哪里开始。<a href="#f0080">图 14.15</a> 右侧的物理视图描绘了每个线程的第一次迭代，从中可以清楚地看到，线程以合并的方式访问 JDS 数组中的非零元素和列索引。实现 SpMV/JDS 的代码留作练习。</p>
+<div class="pageavoid"><figure class="fig" id="f0080"><img src="../images/F000100f14-15-9780323912310.jpg" class="img" alt="image" width="1373" height="394"/><figcaption class="figleg"><a id="sp0080"></a><span class="fignum">图 14.15</span> 使用 JDS 格式并行化 SpMV 的示例。</figcaption></figure></div><p id="p0365" class="text"><span id="page_327" aria-label="Page 327" epub:type="pagebreak" role="doc-pagebreak"></span>在 JDS 格式的另一种变体中，行在排序之后可以被划分成若干行段。由于行已经排序，同一段中的所有行很可能具有大致均匀的非零元素数目。然后，我们可以为每个行段生成 ELL 表示。在每个行段内，我们只需要将各行填充到该段中元素数目最多的行的水平。与对整个矩阵使用一个 ELL 表示相比，这将大幅减少填充元素的数目。在这种 JDS 变体中，不需要 <span class="inlinecode">iterPtr</span> 数组。相反，需要一个分段指针数组，只指向每个 ELL 行段的起始位置（而不是每次迭代）。</p>
+<p id="p0370" class="text">读者应当思考，对行排序是否会导致线性方程组的解不正确。回想一下，我们可以随意重排线性方程组的方程而不改变解。只要在重排行时一起重排 y 元素，我们实际上就是在重排方程。因此，我们最终会得到正确的解。唯一的额外步骤是利用 <span class="inlinecode">row</span> 数组将最终解重排回原来的顺序。另一个问题是，排序是否会产生显著开销。答案与我们之前在 ELL-COO 混合方法中看到的类似。只要 SpMV/JDS 核函数在迭代求解器中使用，就可以承担这种排序以及最终解 <span class="inlinecode">x</span> 元素的重排工作，并将成本分摊到求解器的许多次迭代中。</p>
+<p id="p0375" class="text">现在我们按照<a href="#s0010">第 14.1 节</a>列出的设计考量来考察 JDS 格式：空间效率、灵活性、可访问性、内存访问效率和负载均衡。关于空间效率，JDS 格式比 ELL 格式更节省空间，因为它避免了填充。对每个行段使用 ELL 的 JDS 变体会有填充，但填充量少于 ELL 格式。</p>
+<p id="p0380" class="text">关于灵活性，JDS 格式不便于向矩阵的一行添加非零元素。它甚至比 CSR 格式更不灵活，因为添加非零元素会改变行的大小，可能需要重新对行排序。</p>
+<p id="p0385" class="text"><span id="page_328" aria-label="Page 328" epub:type="pagebreak" role="doc-pagebreak"></span>关于可访问性，JDS 格式与 CSR 格式类似，给定行索引即可访问该行的非零元素。另一方面，与 COO 和 ELL 格式不同，JDS 格式不便于在给定一个非零元素时访问该非零元素的行索引和列索引。</p>
+<p id="p0390" class="text">关于内存访问效率，JDS 格式与 ELL 格式一样，按列主序存储非零元素。因此，JDS 格式使得对稀疏矩阵的访问能够以合并的方式进行。由于 JDS 不需要填充，每次迭代中内存访问的起始位置（如<a href="#f0080">图 14.15</a> 的物理视图所示）可以任意变化。因此，没有简单且廉价的方法来强制 SpMV/JDS 核函数的所有迭代都从体系结构规定的对齐边界开始。由于无法强制对齐，JDS 的内存访问效率可能不如 ELL。</p>
+<p id="p0395" class="text">关于负载均衡，JDS 的独特之处在于它对矩阵的行进行排序，使同一线程束中的线程很可能遍历长度相近的行。因此，JDS 能有效地减少控制发散。</p></section><section><a id="s0040"></a><h2 class="h1hd" id="st0055">14.7 小结</h2><p id="p0400" class="textfl">在本章中，我们把稀疏矩阵计算作为一种重要的并行模式来介绍。稀疏矩阵在许多涉及复杂现象建模的现实世界应用中非常重要。此外，稀疏矩阵计算是许多大型现实世界应用中依赖数据的性能行为的简单例子。由于零元素数量庞大，人们使用紧凑化技术来减少这些零元素的存储量、内存访问次数和计算量。借助这一模式，我们介绍了利用混合方法以及排序/划分进行规整化的概念。这些规整化方法在许多现实世界应用中得到使用。有趣的是，某些规整化技术会向紧凑化的表示中重新引入零元素。我们使用混合方法来缓解可能引入过多零元素的病态情况。建议读者参阅 <a href="#bib1" role="doc-biblioref" epub:type="biblioref" id="BIB_1">Bell and Garland (2009)</a>，并尝试不同的稀疏数据集，以更深入地了解本章介绍的各种 SpMV 核函数依赖数据的性能行为。</p>
+<p id="p0405" class="text">显而易见，并行 SpMV 核函数的执行效率和内存带宽效率都取决于输入数据矩阵的分布。这与我们迄今研究过的大多数核函数有很大不同。然而，这种依赖数据的性能行为在现实世界应用中相当普遍。这也是并行 SpMV 成为如此重要的并行模式的原因之一。它虽然简单，却展现了众多复杂并行应用中的一种重要行为。</p>
+<p id="p0410" class="text"><span id="page_329" aria-label="Page 329" epub:type="pagebreak" role="doc-pagebreak"></span>我们还想就稀疏矩阵计算与稠密矩阵计算的性能作一点补充说明。一般来说，无论是 CPU 还是 GPU，稀疏矩阵计算所能达到的 FLOPS 数值都远低于稠密矩阵计算。这在 SpMV 中尤为明显，因为稀疏矩阵中不存在数据重用。其 OP/B 基本上为 0.25，使得可达到的 FLOPS 速率被限制在峰值性能的一小部分。各种格式对 CPU 和 GPU 都很重要，因为在执行 SpMV 时两者都受内存带宽的限制。过去，人们常常对这类计算在 CPU 和 GPU 上的低 FLOPS 数值感到惊讶。读完本章之后，你就不应再感到惊讶了。</p></section><section><a id="s0045"></a><h2 class="h1hd" id="st0060">习题</h2><a id="p0415"></a><a id="li9010"></a><div><ol>
+<li class="numlista" id="o0050"><a id="p0420"></a><a id="p0425"></a>1. 考虑如下稀疏矩阵：<p class="hiddenClass"><math><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>7</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>8</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>4</mn></mtd><mtd><mn>3</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>2</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable></math></p><div class="showClass" id="eqn1"><img src="../images/F000100si1.png" class="img" alt="image" width="59" height="51"/></div><br/>用以下每种格式表示它：（1）COO，（2）CSR，（3）ELL 和（4）JDS。</li>
+<li class="numlista" id="o0055"><a id="p0430"></a>2. 给定一个整数稀疏矩阵，它有 <em>m</em> 行、<em>n</em> 列和 <em>z</em> 个非零元素，用（1）COO、（2）CSR、（3）ELL 和（4）JDS 表示该矩阵各需要多少个整数？如果所给信息不足以得出答案，请指出缺少哪些信息。</li>
+<li class="numlista" id="o0060"><a id="p0435"></a>3. 使用基础并行计算原语（包括直方图和扫描）实现从 COO 到 CSR 的转换代码。</li>
+<li class="numlista" id="o0065"><a id="p0440"></a>4. 实现生成 ELL-COO 混合格式并用其执行 SpMV 的主机代码。启动 ELL 核函数在设备上执行，并在主机上计算 COO 元素的贡献。</li>
+<li class="numlista" id="o0070"><a id="p0445"></a>5. 实现一个核函数，使用以 JDS 格式存储的矩阵执行并行 SpMV。</li>
+</ol></div></section><footer><section aria-label="bibliography"><a id="bibliog0010"></a><h2 class="reftitle" id="st0065">参考文献</h2><section><p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib1"><a aria-label="noteref" href="#BIB_1">Bell and Garland, 2009</a> Bell, N., Garland, M., 2009. Implementing sparse matrix-vector multiplication on throughput-oriented processors. In: Proceedings of the ACM Conference on High-Performance Computing Networking Storage and Analysis (SC’09).</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib2"><a aria-label="noteref" href="#BIB_2">Hestenes and Stiefel, 1952</a> Hestenes MR, Stiefel E. <cite>Methods of Conjugate Gradients for Solving Linear Systems (PDF)</cite>. <cite><em>J Res Nat Bureau Stand.</em></cite> 1952;49.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib3"><a aria-label="noteref" href="#BIB_3">Rice and Boisvert, 1984</a> Rice JR, Boisvert RF. <cite><em>Solving Elliptic Problems Using ELLPACK</em></cite> Verlag: Springer; 1984;497.</p></section></section></footer></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>

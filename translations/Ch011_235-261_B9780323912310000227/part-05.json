@@ -1,0 +1,125 @@
+{
+  "page": "Ch011_235-261_B9780323912310000227",
+  "nodes": [
+    {
+      "id": "p0505",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[8]",
+      "en": "There is one subtle issue with domino-style algorithms. In GPUs, thread blocks may not always be scheduled linearly according to their blockIdx values, which means that scan block 【1】i【/1】 may be scheduled and performed after scan block 【2】i【/2】+1. In this situation the execution order arranged by the scheduler might contradict the execution order assumed by the adjacent synchronization code and cause performance degradation or even a deadlock. For example, the scheduler may schedule scan block 【3】i【/3】 through scan block 【4】i【/4】+【5】N【/5】 before it schedules scan block 【6】i【/6】−1. If scan block 【7】i【/7】 through scan block 【8】i【/8】+【9】N【/9】 occupy all the streaming multiprocessors, scan block 【10】i【/10】−1 would not be able to start execution until at least one of them finishes execution. However, all of them are waiting for the sum value from scan block 【11】i【/11】−1. This causes the system to deadlock.",
+      "zh": "多米诺式算法有一个微妙的问题。在 GPU 中，线程块并不总是按照 blockIdx 值线性调度，这意味着扫描块【1】i【/1】可能在扫描块【2】i【/2】+1 之后才被调度和执行。在这种情况下，调度器安排的执行顺序可能与相邻同步代码假定的执行顺序相矛盾，导致性能下降甚至死锁。例如，调度器可能在调度扫描块【6】i【/6】−1 之前先调度扫描块【3】i【/3】到扫描块【4】i【/4】+【5】N【/5】。如果扫描块【7】i【/7】到扫描块【8】i【/8】+【9】N【/9】占满了所有流式多处理器，那么扫描块【10】i【/10】−1 要等到其中至少一个执行完毕才能开始执行。然而，它们都在等待来自扫描块【11】i【/11】−1 的和值。这会导致系统死锁。"
+    },
+    {
+      "id": "p0510",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[9]",
+      "en": "There are multiple techniques to resolve this issue (【1】Gupta et al., 2012【/1】; 【2】Yan et al., 2013【/2】). Here, we discuss only one particular method, dynamic block index assignment, and leave the rest as a reference for readers. Dynamic block index assignment decouples the assignment of the thread block index from the built-in 【3】blockIdx.x【/3】. In the single-pass scan, the value of the bid variable of each block is no longer tied to the value of 【4】blockIdx.x【/4】. Instead, it is determined by using the following code at the beginning of the kernel:",
+      "zh": "有多种技术可以解决这个问题（【1】Gupta et al., 2012【/1】；【2】Yan et al., 2013【/2】）。这里我们只讨论其中一种特定方法——动态线程块索引分配，其余留给读者作为参考。动态线程块索引分配把线程块索引的分配与内置的【3】blockIdx.x【/3】解耦。在单遍扫描中，每个线程块的 bid 变量值不再与【4】blockIdx.x【/4】的值绑定。相反，它由核函数开头的下列代码确定："
+    },
+    {
+      "id": "p0515",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[10]",
+      "en": "The leader thread atomically increments a global counter variable pointed to by 【1】blockCounter【/1】. The global counter stores the dynamic block index of the next block that is scheduled. The leader thread then stores the acquired dynamic block index value into a shared memory variable 【2】bid_s【/2】 so that it is accessible by all threads of the block after 【3】__syncthreads()【/3】. This guarantees that all scan blocks are scheduled linearly and prevents a potential deadlock. In other words, if a block obtains a bid value of 【4】i【/4】, then it is guaranteed that a block with value 【5】i【/5】−1 has been scheduled because it has executed the atomic operation.",
+      "zh": "领头线程以原子方式递增一个全局计数器变量，该变量由【1】blockCounter【/1】指向。这个全局计数器保存下一个被调度线程块的动态线程块索引。随后，领头线程把获得的动态线程块索引值存入共享内存变量【2】bid_s【/2】，以便在【3】__syncthreads()【/3】之后线程块的所有线程都能访问它。这保证了所有扫描块按线性顺序调度，并防止潜在的死锁。换句话说，如果一个线程块获得的 bid 值为【4】i【/4】，那么可以保证值为【5】i【/5】−1 的线程块已经被调度，因为它已经执行了原子操作。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/h2[1]",
+      "en": "11.8 Summary",
+      "zh": "11.8 小结"
+    },
+    {
+      "id": "p0520",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[1]",
+      "en": "In this chapter we studied parallel scan, also known as prefix sum, as an important parallel computation pattern. Scan is used to enable parallel allocation of resources to parties whose needs are not uniform. It converts seemingly sequential computation based on mathematical recurrence into parallel computation, which helps to reduce sequential bottlenecks in many applications. We show that a simple sequential scan algorithm performs only 【1】N【/1】−1, or 【2】O【/2】(【3】N【/3】), additions for an input of 【4】N【/4】 elements.",
+      "zh": "在本章中，我们把并行扫描（又称前缀和）作为一种重要的并行计算模式进行了研究。扫描用于支持把资源并行分配给需求各不相同的各方。它把基于数学递推的看似串行的计算转换为并行计算，有助于减少许多应用中的串行瓶颈。我们表明，简单的串行扫描算法处理【4】N【/4】个元素的输入只需执行【1】N【/1】−1 次加法，即【2】O【/2】(【3】N【/3】) 次。"
+    },
+    {
+      "id": "p0525",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[2]",
+      "en": "We first introduced a parallel Kogge-Stone segmented scan algorithm that is fast and conceptually simple but not work-efficient. The algorithm performs 【1】O【/1】(【2】N【/2】*log【3】2【/3】【4】N【/4】) operations, which is more than its sequential counterpart. As the size of the dataset increases, the number of execution units that are needed for a parallel algorithm to break even with the simple sequential algorithm also increases. Therefore Kogge-Stone scan algorithms are typically used to process modest-sized scan blocks in processors with abundant execution resources.",
+      "zh": "我们首先介绍了并行 Kogge-Stone 分段扫描算法，它速度快、概念简单，但工作效率不高。该算法执行【1】O【/1】(【2】N【/2】*log【3】2【/3】【4】N【/4】) 次运算，多于其串行版本。随着数据集规模的增大，并行算法要追平简单串行算法所需的执行单元数量也在增加。因此，Kogge-Stone 扫描算法通常用于在执行资源丰富的处理器上处理规模适中的扫描块（scan block）。"
+    },
+    {
+      "id": "p0530",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[3]",
+      "en": "We then presented a parallel Brent-Kung segmented scan algorithm that is conceptually more complicated. Using a reduction tree phase and a reverse tree phase, the algorithm performs only 2*【1】N【/1】−3, or 【2】O【/2】(【3】N【/3】), additions no matter how large the input datasets are. Such a work-efficient algorithm whose number of operations grows linearly with the size of the input set is often also referred to as a data-scalable algorithm. Although the Brent-Kung algorithm has better work efficiency than the Kogge-Stone algorithm, it requires more steps to complete. Therefore in a system with enough execution resources, the Kogge-Stone algorithm is expected to have better performance despite being less work efficient.",
+      "zh": "随后我们介绍了并行 Brent-Kung 分段扫描算法，它在概念上更复杂。借助归约树阶段和反向树阶段，无论输入数据集多大，该算法都只需执行 2*【1】N【/1】−3 次加法，即【2】O【/2】(【3】N【/3】) 次。这种运算次数随输入集规模线性增长的工作高效算法，也常被称为数据可扩展（data-scalable）算法。虽然 Brent-Kung 算法的工作效率优于 Kogge-Stone 算法，但它需要更多的步数才能完成。因此，在执行资源充足的系统中，可以预期 Kogge-Stone 算法尽管工作效率较低，性能却更好。"
+    },
+    {
+      "id": "p0535",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[4]",
+      "en": "We also applied thread coarsening to mitigate the hardware underutilization and synchronization overhead of parallel scan and to improve its work efficiency. Thread coarsening was applied by having each thread in the block perform a work-efficient sequential scan on its own subsection of input elements before the threads collaborate to perform the less work-efficient block-wide parallel scan to produce the entire block’s section.",
+      "zh": "我们还应用了线程粗化，以缓解并行扫描的硬件未被充分利用和同步开销，并提高其工作效率。线程粗化的做法是：线程块中的每个线程先在自己负责的输入元素子段上执行一次工作高效的串行扫描，然后线程们再协作执行工作效率较低的块内并行扫描，以生成整个线程块的段结果。"
+    },
+    {
+      "id": "p0540",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[5]",
+      "en": "We presented a hierarchical scan approach to extend the parallel scan algorithms to handle input sets of arbitrary sizes. Unfortunately, a straightforward, three-kernel implementation of the segmented scan algorithm incurs redundant global memory accesses whose latencies are not overlapped with computation. For this reason we also presented a domino-style hierarchical scan algorithm to enable a single-pass, single-kernel implementation and improve the global memory access efficiency of the hierarchical scan algorithm. However, this approach requires a carefully designed adjacent block synchronization mechanism using atomic operations, thread memory fence, and barrier synchronization. Special care also must be taken to prevent deadlocks by using dynamic block index assignment.",
+      "zh": "我们介绍了一种分层扫描方法，把并行扫描算法扩展到任意大小的输入集。遗憾的是，分段扫描算法直接的三核函数实现会产生冗余的全局内存访问，而这些访问的延迟无法与计算重叠。因此，我们还介绍了一种多米诺式分层扫描算法，以实现单遍、单核函数实现，并改善分层扫描算法的全局内存访问效率。然而，这种方法需要精心设计的相邻线程块同步机制，使用原子操作、线程内存栅栏和屏障同步。还必须特别注意通过动态线程块索引分配来防止死锁。"
+    },
+    {
+      "id": "p0545",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[6]",
+      "en": "There are further optimization opportunities for even higher performance implementations using, for example, warp-level shuffle operations. In general, implementing and optimizing parallel scan algorithms on GPUs are complex processes, and the average user is more likely to use a parallel scan library for GPUs such as Thrust (【1】Bell and Hoberock, 2012【/1】) than to implement their own scan kernels from scratch. Nevertheless, parallel scan is an important parallel pattern, and it offers an interesting and relevant case study of the tradeoffs that go into optimizing parallel patterns.",
+      "zh": "还有进一步的优化机会可以实现更高性能的实现，例如使用线程束级 shuffle 运算。总的来说，在 GPU 上实现和优化并行扫描算法是复杂的过程，普通用户更可能使用 GPU 的并行扫描库（如 Thrust（【1】Bell and Hoberock, 2012【/1】）），而不是从头实现自己的扫描核函数。尽管如此，并行扫描仍然是一种重要的并行模式，它为优化并行模式时的各种权衡提供了有趣而相关的案例研究。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]",
+      "en": "1. Consider the following array: [4 6 7 1 2 8 5 2]. Perform a parallel inclusive prefix scan on the array, using the Kogge-Stone algorithm. Report the intermediate states of the array after each step.",
+      "zh": "1. 考虑下面的数组：[4 6 7 1 2 8 5 2]。使用 Kogge-Stone 算法对该数组执行并行包含式前缀扫描，并报告每一步之后数组的中间状态。"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[2]",
+      "en": "2. Modify the Kogge-Stone parallel scan kernel in 【1】Fig. 11.3【/1】 to use double-buffering instead of a second call to 【2】__syncthreads()【/2】 to overcome the write-after-read race condition.",
+      "zh": "2. 修改【1】图 11.3【/1】中的 Kogge-Stone 并行扫描核函数，使用双缓冲代替第二次调用【2】__syncthreads()【/2】，以克服读后写竞态条件。"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[3]",
+      "en": "3. Analyze the Kogge-Stone parallel scan kernel in 【1】Fig. 11.3【/1】. Show that control divergence occurs only in the first warp of each block for stride values up to half of the warp size. That is, for warp size 32, control divergence will occur to iterations for stride values 1, 2, 4, 8, and 16.",
+      "zh": "3. 分析【1】图 11.3【/1】中的 Kogge-Stone 并行扫描核函数。证明：对于不超过线程束大小一半的步长值，控制发散只发生在每个线程块的第一个线程束中。也就是说，对于线程束大小为 32 的情形，步长值为 1、2、4、8 和 16 的迭代会出现控制发散。"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[4]",
+      "en": "4. For the Kogge-Stone scan kernel based on reduction trees, assume that we have 2048 elements. Which of the following gives the closest approximation of how many add operations will be performed?",
+      "zh": "4. 对于基于归约树的 Kogge-Stone 扫描核函数，假设我们有 2048 个元素。下列哪个选项最接近将要执行的加法运算次数？"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[5]",
+      "en": "5. Consider the following array: [4 6 7 1 2 8 5 2]. Perform a parallel inclusive prefix scan on the array, using the Brent-Kung algorithm. Report the intermediate states of the array after each step.",
+      "zh": "5. 考虑下面的数组：[4 6 7 1 2 8 5 2]。使用 Brent-Kung 算法对该数组执行并行包含式前缀扫描，并报告每一步之后数组的中间状态。"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[6]",
+      "en": "6. For the Brent-Kung scan kernel, assume that we have 2048 elements. How many add operations will be performed in both the reduction tree phase and the inverse reduction tree phase?",
+      "zh": "6. 对于 Brent-Kung 扫描核函数，假设我们有 2048 个元素。归约树阶段和反向归约树阶段各会执行多少次加法运算？"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[7]",
+      "en": "7. Use the algorithm in 【1】Fig. 11.4【/1】 to complete an exclusive scan kernel.",
+      "zh": "7. 使用【1】图 11.4【/1】中的算法完成一个排他式扫描核函数。"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[8]",
+      "en": "8. Complete the host code and all three kernels for the segmented parallel scan algorithm in 【1】Fig. 11.9【/1】.",
+      "zh": "8. 为【1】图 11.9【/1】中的分段并行扫描算法补全主机代码和全部三个核函数。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    }
+  ]
+}

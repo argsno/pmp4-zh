@@ -1,0 +1,155 @@
+{
+  "page": "FigureA.1_519-536_B9780323912310000215",
+  "nodes": [
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "Now that we have a good understanding of the IEEE floating-point format, we are ready to discuss the concept of arithmetic accuracy. While the precision is determined by the number of mantissa bits that are used in a floating-point number format, the accuracy is determined by the operations that are performed on a floating-point number. The accuracy of a floating-point arithmetic operation is measured by the maximal error that is introduced by the operation. The smaller the error, the higher is the accuracy. The most common source of error in floating-point arithmetic is when the operation generates a result that cannot be exactly represented and thus requires rounding. Rounding occurs if the mantissa of the result value needs too many bits to be represented exactly. For example, a multiplication might generate a product value that consists of twice the number of bits as either of the input values. For another example, adding two floating-point numbers can be done by adding their mantissa values together if the two floating-point values have identical exponents. When two input operands to a floating-point addition have different exponents, the mantissa of the one with the smaller exponent is repeatedly divided by 2 or right-shifted (that is, all the mantissa bits are shifted to the right by one bit position) until the exponents are equal. As a result, the final result can have more bits than the format can accommodate.",
+      "zh": "现在我们对 IEEE 浮点格式有了很好的理解，可以来讨论算术准确性的概念了。精度由浮点数格式中使用的尾数位数决定，而准确性由对浮点数执行的运算决定。浮点算术运算的准确性用该运算引入的最大误差来度量。误差越小，准确性越高。浮点运算中最常见的误差来源是运算产生的结果无法精确表示，因而需要进行舍入。当结果值的尾数需要过多位才能精确表示时，就会发生舍入。例如，乘法可能产生一个乘积，其位数是任一输入值位数的两倍。再如，如果两个浮点值的阶码相同，则可以通过将它们的尾数值相加来完成浮点加法。当浮点加法两个输入操作数的阶码不同时，阶码较小的那个操作数的尾数会被反复除以 2 或右移（也就是将所有尾数位向右移动一个二进制位），直到阶码相等。因此，最终结果可能拥有比该格式所能容纳更多的位。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "Alignment shifting of operands can be illustrated with a simple example based on the 5-bit representation in 【1】Fig. A.4【/1】. Assume that we need to add 1.00【2】B【/2】*2【3】−2【/3】(0, 00, 01) to 1.00*2【4】1【/4】【5】D【/5】 (0, 10, 00), that is, we need to perform the operation 1.00【6】B【/6】*2【7】1【/7】+1.00【8】B【/8】*2【9】−2【/9】. Owing to the difference in exponent values, the mantissa value of the second number needs to be right-shifted by 3 bit positions before it is added to the first mantissa value. That is, the addition becomes 1.00【10】B【/10】*2【11】1【/11】+0.001【12】B【/12】* 2【13】1【/13】. The addition can now be performed by adding the mantissa values together. The ideal result would be 1.001【14】B【/14】*2【15】1【/15】. However, we can see that this ideal result is not a representable number in a 5-bit representation. It would have required three bits of mantissa, and there are only two mantissa bits in the format. Therefore the best one can do is to generate one of the closest representable numbers, which is either 1.01【16】B【/16】*2【17】1【/17】 or 1.00【18】B【/18】*2【19】1【/19】. By doing so, we introduce an error, 0.001【20】B【/20】*2【21】1【/21】, which is half the place value of the least significant place. We refer to this as 0.5【22】D【/22】 ULP (units in the last place). If the hardware is designed to perform arithmetic and rounding operations perfectly, the most error that one should introduce should be no more than 0.5【23】D【/23】 ULP. To the best of our knowledge, this is the accuracy that is achieved by addition and subtraction operations in all CUDA devices today.",
+      "zh": "操作数的对阶移位可以用基于【1】图 A.4【/1】中 5 位表示的简单例子来说明。假设我们需要将 1.00【2】B【/2】*2【3】−2【/3】（0, 00, 01）加到 1.00*2【4】1【/4】【5】D【/5】（0, 10, 00）上，也就是说，需要执行运算 1.00【6】B【/6】*2【7】1【/7】+1.00【8】B【/8】*2【9】−2【/9】。由于阶码值不同，第二个数的尾数值在加到第一个尾数值之前需要右移 3 个二进制位。也就是说，加法变为 1.00【10】B【/10】*2【11】1【/11】+0.001【12】B【/12】*2【13】1【/13】。现在可以通过将尾数值相加来执行加法了。理想结果是 1.001【14】B【/14】*2【15】1【/15】。然而，我们可以看到，这个理想结果在 5 位表示中并不是可表示数。它本需要三位尾数，而该格式只有两位尾数。因此，我们能做到的最好结果就是生成最接近的可表示数之一，即 1.01【16】B【/16】*2【17】1【/17】或 1.00【18】B【/18】*2【19】1【/19】。这样我们就引入了误差 0.001【20】B【/20】*2【21】1【/21】，它是最低有效数位位值的一半。我们称其为 0.5【22】D【/22】 ULP（末位单位）。如果硬件被设计为完美地执行算术与舍入运算，那么引入的最大误差不应超过 0.5【23】D【/23】 ULP。据我们所知，这正是当今所有 CUDA 设备中加法和减法运算所达到的准确性。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "In practice, some of the more complex arithmetic hardware units, such as division and transcendental functions, are typically implemented with polynomial approximation algorithms. If the hardware does not use a sufficient number of terms in the approximation, the result may have an error that is larger than 0.5【1】D【/1】 ULP. For example, if the ideal result of an inversion operation is 1.00【2】B【/2】*2【3】1【/3】 but the hardware generates a 1.10【4】B【/4】*2【5】1【/5】, owing to the use of an approximation algorithm, the error is 2【6】D【/6】 ULP, since the error (1.10【7】B【/7】−1.00【8】B【/8】=0.10【9】B【/9】) is two times bigger than the units in the last place (0.01【10】B【/10】). In practice, the hardware inversion operations in some early devices introduce an error that is twice the place value of the least place of the mantissa, or 2 ULP. Thanks to the more abundant transistors in more recent generations of CUDA devices, their hardware arithmetic operations are much more accurate.",
+      "zh": "在实践中，一些较复杂的算术硬件单元（如除法和超越函数）通常用多项式逼近算法实现。如果硬件在逼近中没有使用足够多的项，结果可能产生大于 0.5【1】D【/1】 ULP 的误差。例如，如果求倒数运算的理想结果是 1.00【2】B【/2】*2【3】1【/3】，但由于使用了逼近算法，硬件生成了 1.10【4】B【/4】*2【5】1【/5】，那么误差为 2【6】D【/6】 ULP，因为该误差（1.10【7】B【/7】−1.00【8】B【/8】=0.10【9】B【/9】）比末位单位（0.01【10】B【/10】）大两倍。在实践中，早期一些设备的硬件求倒数运算会引入两倍于尾数最低位位值的误差，即 2 ULP。得益于较新一代 CUDA 设备中更为充裕的晶体管，其硬件算术运算要精确得多。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "A.5 Algorithm considerations",
+      "zh": "A.5 算法考量"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "Numerical algorithms often need to sum up a large number of values. For example, the dot product in matrix multiplication needs to sum up pairwise products of input matrix elements. Ideally, the order of summing these values should not affect the final total, since addition is an associative operation. However, with finite precision the order of summing these values can affect the accuracy of the final result. For example, suppose we need to perform a sum reduction on four numbers in our 5-bit representation: 1.00【1】B【/1】*2【2】0【/2】+1.00【3】B【/3】*2【4】0【/4】+1.00【5】B【/5】*2【6】−2【/6】+1.00【7】B【/7】*2【8】−2【/8】. If we add up the numbers in strict sequential order, we have the following sequence of operations:",
+      "zh": "数值算法常常需要对大量数值求和。例如，矩阵乘法中的点积需要对输入矩阵元素的两两乘积求和。理想情况下，对这些数值求和的顺序不应影响最终总和，因为加法是结合性运算。然而，在有限精度下，对这些数值求和的顺序会影响最终结果的准确性。例如，假设我们需要对 5 位表示中的四个数执行求和归约：1.00【1】B【/1】*2【2】0【/2】+1.00【3】B【/3】*2【4】0【/4】+1.00【5】B【/5】*2【6】−2【/6】+1.00【7】B【/7】*2【8】−2【/8】。如果严格按顺序逐个相加，则得到如下运算序列："
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "Note that in the second and third steps, the smaller operand simply disappears because it is too small in comparison to the larger operand.",
+      "zh": "注意，在第二步和第三步中，较小的操作数直接消失了，因为它与较大的操作数相比太小。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "Now let’s consider a parallel algorithm in which the first two values are added and the second two operands are added in parallel. The algorithm then adds up the pairwise sum:",
+      "zh": "现在考虑一个并行算法：前两个数值并行相加，后两个操作数也并行相加，然后该算法再把这两个成对和相加："
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "The reader should recognize that this algorithm was is the reduction tree of 【1】Chapter 10【/1】, Reduction and Minimizing Divergence, and it assumes the associativity of the add operation. Note that the results are different from the sequential result. This is because the sum of the third and fourth values is large enough that it now affects the addition result. This discrepancy between sequential algorithms and parallel algorithms often surprises application developers who are not familiar with floating-point precision and accuracy considerations. Although we showed a scenario in which a parallel algorithm produced a more accurate result than a sequential algorithm, the reader should be able to come up with a slightly different scenario in which the parallel algorithm produces a less accurate result than a sequential algorithm would. That is, the associativity of the add operation is not strictly true for floating-point numbers. Experienced application developers either make sure that the variation in the final result can be tolerated or ensure that the data is sorted or grouped in such a way that the parallel algorithm results in the most accurate results.",
+      "zh": "读者应当认出，这个算法正是【1】第 10 章【/1】“归约：最小化发散”中的归约树，它假定了加法运算的结合性。注意，这里的结果与串行结果不同。这是因为第三个值和第四个值之和足够大，现在会影响加法结果。串行算法与并行算法之间的这种差异，常常令不熟悉浮点精度与准确性考量的应用程序开发人员感到惊讶。虽然我们展示的是并行算法比串行算法产生更准确结果的场景，但读者应当能够设想一个略有不同的场景，使并行算法产生的结果比串行算法更不准确。也就是说，对于浮点数而言，加法运算的结合性并非严格成立。经验丰富的应用程序开发人员要么确保最终结果的变动在可容忍范围内，要么确保数据经过排序或分组，使并行算法得到最准确的结果。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "A common technique to maximize floating-point arithmetic accuracy is to presort data before a reduction computation. In our sum reduction example, if we presort the data according to ascending numerical order, we will have the following:",
+      "zh": "最大化浮点算术准确性的一种常用技术是在归约计算之前对数据进行预排序。在我们的求和归约示例中，如果按数值升序对数据进行预排序，将得到如下结果："
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "When we divide up the numbers into groups in a parallel algorithm, say, the first pair in one group and the second pair in another group, numbers with numerical values that are close to each other are in the same group. Obviously, the sign of the numbers needs to be taken into account during the presorting process. Therefore when we perform addition in these groups, we will likely have accurate results. Furthermore, some parallel algorithms use each thread to sequentially reduce values within each group. Having the numbers sorted in ascending order allows a sequential addition to get higher accuracy. This is a reason why sorting is frequently used in massively parallel numerical algorithms. Interested readers should study more advanced techniques, such as compensated summation algorithm, also known as the Kahan summation algorithm, for getting an even more robust approach to accurate summation of floating-point values (【1】Kahan, 1965【/1】).",
+      "zh": "当我们在并行算法中将数分成若干组时（例如，第一对在一组、第二对在另一组），数值相近的数会落在同一组中。显然，在预排序过程中需要考虑数的符号。因此，在这些组内进行加法时，我们很可能得到准确的结果。此外，有些并行算法让每个线程顺序归约各自组内的值。将数按升序排列，可以使顺序加法获得更高的准确性。这正是大规模并行数值算法中经常使用排序的原因之一。感兴趣的读者可以学习更先进的技术，例如补偿求和算法（也称 Kahan 求和算法），以获得更稳健的浮点值精确求和方案（【1】Kahan, 1965【/1】）。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "A.6 Linear solvers and numerical stability",
+      "zh": "A.6 线性方程组求解器与数值稳定性"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "While the order of operations may cause variation in the numerical outcome of reduction operations, it may have even more serious implications for some types of computation, such as solvers for linear systems of equations. In these solvers, different numerical values of input may require different ordering of operations in order to find a solution. If an algorithm fails to follow a desired order of operations for an input, it may fail to find a solution even though the solution exists. Algorithms that can always find an appropriate operation order and thus finding a solution to the problem as long as it exists for any given input values are called 【1】numerically stable【/1】. Algorithms that fall short are referred to as 【2】numerically unstable【/2】.",
+      "zh": "虽然运算顺序可能导致归约运算的数值结果出现差异，但对某些类型的计算（如线性方程组求解器）而言，其影响可能更为严重。在这类求解器中，不同的输入数值可能需要不同的运算顺序才能找到解。如果算法对某个输入未能遵循所期望的运算顺序，那么即使解存在，它也可能找不到解。对于任意给定的输入值，只要问题存在解，总能找到合适的运算顺序从而找到解的算法，称为【1】数值稳定【/1】算法。达不到这一点的算法称为【2】数值不稳定【/2】算法。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "In some cases, numerical stability considerations can make it more difficult to find efficient parallel algorithms for a computational problem. We can illustrate this phenomenon with a solver that is based on Gaussian elimination. Consider the following system of linear equations:",
+      "zh": "在某些情况下，数值稳定性的考量会使寻找计算问题的高效并行算法变得更加困难。我们可以用一个基于高斯消元的求解器来说明这一现象。考虑如下线性方程组："
+    },
+    {
+      "id": "n0063",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "【M1】 【2】(A.3)【/2】",
+      "zh": "【M1】 【2】(A.3)【/2】"
+    },
+    {
+      "id": "n0064",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "【M1】 【2】(A.4)【/2】",
+      "zh": "【M1】 【2】(A.4)【/2】"
+    },
+    {
+      "id": "n0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "【M1】 【2】(A.5)【/2】",
+      "zh": "【M1】 【2】(A.5)【/2】"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "As long as the three planes represented by these equations have an intersection point, we can use Gaussian elimination to derive the solution that gives the coordinate of the intersection point. We show the process of applying Gaussian elimination to this system in 【1】Fig. A.9【/1】, in which variables are systematically eliminated from lower positioned equations.",
+      "zh": "只要这些方程所表示的三个平面有一个交点，我们就可以用高斯消元推导出给出该交点坐标的解。我们在【1】图 A.9【/1】中展示了对该方程组应用高斯消元的过程，其中变量被系统地自位置靠下的方程中消去。"
+    },
+    {
+      "id": "n0067",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure A.9【/1】 Gaussian elimination and backward substitution for solving systems of linear equations.",
+      "zh": "【1】图 A.9【/1】 用于求解线性方程组的高斯消元与回代。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "In the first step, all equations are divided by their coefficient for the X variable: 3 for 【1】Eq. (A.3)【/1】, 2 for 【2】Eq. (A.4)【/2】, and 1 for 【3】Eq. (A.5)【/3】. This makes the coefficients for X in all equations the same. In step 2, 【4】Eq. (A.3)【/4】 is subtracted from 【5】Eqs. (A.4)【/5】 and 【6】(A.5)【/6】. These subtractions eliminate variable X from 【7】Eqs. (A.4)【/7】 and 【8】(A.5)【/8】, as shown in 【9】Fig. A.9【/9】.",
+      "zh": "在第一步中，所有方程都除以各自 X 变量的系数：【1】式 (A.3)【/1】除以 3，【2】式 (A.4)【/2】除以 2，【3】式 (A.5)【/3】除以 1。这使得所有方程中 X 的系数相同。在第二步中，将【4】式 (A.3)【/4】从【5】式 (A.4)【/5】和【6】式 (A.5)【/6】中减去。如【9】图 A.9【/9】所示，这两次减法将变量 X 从【7】式 (A.4)【/7】和【8】式 (A.5)【/8】中消去。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "We can now treat 【1】Eqs. (A.4)【/1】 and 【2】(A.5)【/2】 as a smaller system of equations with one fewer variable than the original equation. Since they do not have variable X, they can be solved independently from 【3】Eq. (A.3)【/3】. We can make more progress by eliminating variable Y from 【4】Eq. (A.5)【/4】. This is done in step 3 by dividing 【5】Eqs. (A.4)【/5】 and 【6】(A.5)【/6】 by the coefficients for their Y variables: −1/6 for 【7】Eq. (A.4)【/7】 and 1/3 for 【8】Eq. (A.5)【/8】. This makes the coefficients for Y in both 【9】Eqs. (A.4)【/9】 and 【10】(A.5)【/10】 the same. In step 4, 【11】Eq. (A.4)【/11】 is subtracted from 【12】Eq. (A.5)【/12】, which eliminates variable Y from 【13】Eq. (A.5)【/13】.",
+      "zh": "现在我们可以把【1】式 (A.4)【/1】和【2】式 (A.5)【/2】视为一个比原方程组少一个变量的更小方程组。由于它们不含变量 X，因此可以独立于【3】式 (A.3)【/3】求解。我们可以从【4】式 (A.5)【/4】中消去变量 Y，从而取得更大进展。这在第三步中完成：将【5】式 (A.4)【/5】和【6】式 (A.5)【/6】分别除以各自 Y 变量的系数——【7】式 (A.4)【/7】除以 −1/6，【8】式 (A.5)【/8】除以 1/3。这使得【9】式 (A.4)【/9】和【10】式 (A.5)【/10】中 Y 的系数相同。在第四步中，从【12】式 (A.5)【/12】中减去【11】式 (A.4)【/11】，从而将变量 Y 从【13】式 (A.5)【/13】中消去。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "For systems with larger number of equations the process would be repeated more. However, since we have only three variables in this example, the third equation has only the Z variable. We simply need to divide 【1】Eq. (A.5)【/1】 by the coefficient for variable Z. This conveniently gives us the solution Z=3.",
+      "zh": "对于方程数更多的方程组，这一过程会重复更多次。不过，由于本示例只有三个变量，第三个方程只含变量 Z。我们只需将【1】式 (A.5)【/1】除以变量 Z 的系数。这样很方便地就得到了解 Z=3。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
+      "en": "With the solution for the Z variable in hand, we can substitute the Z value into 【1】Eq. (A.4)【/1】 to get the solution Y=2. We can then substitute both Z=3 and Y=2 into 【2】Eq. (A.3)【/2】 to get the solution X=1. We now have the complete solution for the original system. It should be obvious why step 6 and step 7 form the second phase of the method called backward substitution. We go backwards from the last equation to the first equation to get solutions for more and more variables.",
+      "zh": "得到 Z 变量的解后，我们可以把 Z 的值代入【1】式 (A.4)【/1】，得到解 Y=2。然后，将 Z=3 和 Y=2 代入【2】式 (A.3)【/2】，得到解 X=1。现在我们得到了原方程组的完整解。为什么第 6 步和第 7 步构成称为回代的方法的第二阶段，应当是一目了然的。我们从最后一个方程回溯到第一个方程，逐一求出越来越多变量的解。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
+      "en": "In general, the equations are stored in matrix forms in computers. Since all calculations involve only the coefficients and the right-hand-side values, we can just store these coefficients and right-hand-side values in a matrix. 【1】Fig. A.10【/1】 shows the matrix view of the Gaussian elimination and backward substitution process. Each row of the matrix corresponds to an original equation. Operations on equations become operations on matrix rows.",
+      "zh": "一般而言，方程组在计算机中存储为矩阵形式。由于所有计算只涉及系数和右端项的值，我们只需将这些系数和右端项的值存储在一个矩阵中即可。【1】图 A.10【/1】展示了高斯消元与回代过程的矩阵视角。矩阵的每一行对应一个原始方程。对方程的操作就变成了对矩阵行的操作。"
+    },
+    {
+      "id": "n0073",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure A.10【/1】 Gaussian elimination and backward substitution in matrix view.",
+      "zh": "【1】图 A.10【/1】 矩阵视角下的高斯消元与回代。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[12]",
+      "en": "After Gaussian elimination the matrix becomes a triangular matrix. This is a very popular type of matrix for various physics and mathematics reasons. We see that the end goal is to make the coefficient part of the matrix into a diagonal form, in which each row has only a value 1 on the diagonal line. This is called an identity matrix because the result of multiplying any matrix multiplied by an identity matrix is itself. This is also the reason why performing Gaussian elimination on a matrix is equivalent to multiplying the matrix by its inverse matrix.",
+      "zh": "经过高斯消元后，矩阵变成三角矩阵。由于各种物理和数学原因，这是一种非常常用的矩阵类型。我们看到，最终目标是把矩阵的系数部分化为对角形式，其中每一行在对角线上只有一个值 1。这称为单位矩阵，因为任何矩阵乘以单位矩阵的结果都是其本身。这也是为什么对矩阵进行高斯消元等价于将该矩阵乘以其逆矩阵。"
+    }
+  ]
+}

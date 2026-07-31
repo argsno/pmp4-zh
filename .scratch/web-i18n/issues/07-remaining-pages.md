@@ -4,8 +4,8 @@
 
 **Blocked by:** 06 — Gate 2 must pass before scaling out, so style and layout are settled first.
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] All 32 translatable pages exist in zh and bilingual with passing validations.
-- [ ] Each page's out-of-glossary terms are recorded in its per-page newterms file.
-- [ ] The English site remains unchanged in behavior and links; only the two new site trees are added.
+- [x] All 32 translatable pages exist in zh and bilingual with passing validations (full `validate` reports 33 ok — 32 translatable pages + Cover, which has zero nodes and passes trivially; the 4 skipped are out-of-scope Index/Contents/Copyright/Title_page).
+- [x] Each page's out-of-glossary terms are recorded in its per-page newterms file.
+- [x] The English site remains unchanged in behavior and links; only the two new site trees are added (`git status` shows no changes under `web/chapters/` or `web/index.html`).

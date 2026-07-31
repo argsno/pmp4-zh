@@ -1,0 +1,155 @@
+{
+  "page": "Ch014_311-329_B9780323912310000100",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Sparse matrix computation",
+      "zh": "稀疏矩阵计算"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces the parallel sparse matrix-vector computation pattern. It starts with the basic concepts of sparse matrices, which are matrices in which most of the elements are zeros. It introduces the coordinate list format as a flexible representation that does not store zero matrix elements. It then introduces a kernel based on compressed sparse row data storage for sparse matrices. The ELL format with data padding is then introduced as a regularization technique for improved memory coalescing. Finally, the jagged diagonal storage format based on sorting is introduced to smooth out variation from one row to the next row, allowing further reduction of control divergence and padding overhead in the regularization process. The chapter shows that the same sparse matrix kernel code can exhibit very different performance behavior on different datasets.",
+      "zh": "本章介绍并行的稀疏矩阵-向量计算模式。首先介绍稀疏矩阵的基本概念，稀疏矩阵是大多数元素为零的矩阵。接着介绍坐标列表格式（COO），它是一种不存储矩阵零元素的灵活表示方式。然后介绍基于压缩稀疏行格式（CSR）数据存储的稀疏矩阵核函数。随后介绍带数据填充的 ELL 格式，将其作为改善内存合并的规整化技术。最后介绍基于排序的锯齿对角存储格式（JDS），用于平滑行与行之间的变化，从而在规整化过程中进一步减少控制发散和填充开销。本章表明，相同的稀疏矩阵核函数代码在不同数据集上可能表现出截然不同的性能行为。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Sparse matrix; compression; regularization; data-dependent execution behavior; transposition; padding; space efficiency; memory access efficiency; accessibility; flexibility; memory alignment; memory coalescing",
+      "zh": "稀疏矩阵；压缩；规整化；依赖数据的执行行为；转置；填充；空间效率；内存访问效率；可访问性；灵活性；内存对齐；内存合并"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】14.1 Background【/1】 312",
+      "zh": "【1】14.1 背景【/1】 312"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】14.2 A simple SpMV kernel with the COO format【/1】 314",
+      "zh": "【1】14.2 基于 COO 格式的简单 SpMV 核函数【/1】 314"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】14.3 Grouping row nonzeros with the CSR format【/1】 317",
+      "zh": "【1】14.3 使用 CSR 格式对行非零元素分组【/1】 317"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】14.4 Improving memory coalescing with the ELL format【/1】 320",
+      "zh": "【1】14.4 使用 ELL 格式改善内存合并【/1】 320"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】14.5 Regulating padding with the hybrid ELL-COO format【/1】 324",
+      "zh": "【1】14.5 使用 ELL-COO 混合格式调节填充【/1】 324"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】14.6 Reducing control divergence with the JDS format【/1】 325",
+      "zh": "【1】14.6 使用 JDS 格式减少控制发散【/1】 325"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】14.7 Summary【/1】 328",
+      "zh": "【1】14.7 小结【/1】 328"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】Exercises【/1】 329",
+      "zh": "【1】习题【/1】 329"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[9]",
+      "en": "【1】References【/1】 329",
+      "zh": "【1】参考文献【/1】 329"
+    },
+    {
+      "id": "p0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Our next parallel pattern is sparse matrix computation. In a sparse matrix the majority of the elements are zeros. Storing and processing these zero elements are wasteful in terms of memory capacity, memory bandwidth, time, and energy. Many important real-world problems involve sparse matrix computation. Because of the importance of these problems, several sparse matrix storage formats and their corresponding processing methods have been proposed and widely used in the field. All these methods employ some type of compaction techniques to avoid storing or processing zero elements at the cost of introducing some level of irregularity into the data representation. Unfortunately, such irregularity can lead to underutilization of memory bandwidth, control flow divergence, and load imbalance in parallel computing. It is therefore important to strike a good balance between compaction and regularization. Some storage formats achieve a higher level of compaction at a high level of irregularity. Others achieve a more modest level of compaction while keeping the representation more regular. The relative performance of a parallel computation using each storage format is known to be heavily dependent on the distribution of nonzero elements in the sparse matrices. Understanding the wealth of work in sparse matrix storage formats and their corresponding parallel algorithms gives a parallel programmer important background for addressing compaction and regularization challenges in solving related problems.",
+      "zh": "我们下一个并行模式是稀疏矩阵计算。在稀疏矩阵中，大多数元素为零。存储和处理这些零元素在内存容量、内存带宽、时间和能量上都是浪费的。许多重要的现实世界问题都涉及稀疏矩阵计算。由于这些问题的重要性，人们提出了多种稀疏矩阵存储格式及其相应的处理方法，并在该领域得到广泛应用。所有这些方法都采用了某种紧凑化技术，以避免存储或处理零元素，代价是在数据表示中引入一定程度的非规整性。不幸的是，这种非规整性会导致并行计算中内存带宽利用不足、控制流发散和负载不均衡。因此，在紧凑化与规整化之间取得良好平衡至关重要。某些存储格式以较高的非规整性实现了更高程度的紧凑化；另一些则在保持表示更规整的同时实现了较适度的紧凑化。众所周知，使用每种存储格式进行并行计算的相对性能在很大程度上取决于稀疏矩阵中非零元素的分布。理解稀疏矩阵存储格式及其相应并行算法的丰富研究成果，能为并行程序员解决相关问题中紧凑化和规整化的挑战提供重要的背景知识。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "14.1 Background",
+      "zh": "14.1 背景"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "A sparse matrix is a matrix in which most of the elements are zeros. Sparse matrices arise in many scientific, engineering, and financial modeling problems. For example, matrices can be used to represent the coefficients in a linear system of equations. Each row of the matrix represents one equation of the linear system. In many science and engineering problems the large number of variables and equations that are involved are sparsely coupled. That is, each equation involves only a small number of variables. This is illustrated in 【1】Fig. 14.1【/1】, in which each column of the matrix corresponds to the coefficients for a variable: column 0 for x【2】0【/2】, column 1 for x【3】1【/3】, and so on. For example, the fact that row 0 has nonzero elements in columns 0 and 1 indicates that only variables x【4】0【/4】 and x【5】1【/5】 are involved in equation 0. It should be clear that variables x【6】0【/6】, x【7】2【/7】, and x【8】3【/8】 are present in equation 1, variables x【9】1【/9】 and x【10】2【/10】 are present in equation 2, and only variable x【11】3【/11】 is present in equation 3. Sparse matrices are typically stored in a format, or representation, that avoids storing zero elements.",
+      "zh": "稀疏矩阵是大多数元素为零的矩阵。稀疏矩阵出现在许多科学、工程和金融建模问题中。例如，矩阵可用于表示线性方程组中的系数，矩阵的每一行代表线性方程组中的一个方程。在许多科学和工程问题中，所涉及的大量变量和方程是稀疏耦合的，即每个方程只涉及少数几个变量。【1】图 14.1【/1】对此进行了说明：矩阵的每一列对应一个变量的系数，第 0 列对应 x【2】0【/2】，第 1 列对应 x【3】1【/3】，依此类推。例如，第 0 行在第 0 列和第 1 列有非零元素，这表明方程 0 只涉及变量 x【4】0【/4】和 x【5】1【/5】。显然，方程 1 中包含变量 x【6】0【/6】、x【7】2【/7】和 x【8】3【/8】，方程 2 中包含变量 x【9】1【/9】和 x【10】2【/10】，而方程 3 中只包含变量 x【11】3【/11】。稀疏矩阵通常以不存储零元素的格式（或表示形式）存储。"
+    },
+    {
+      "id": "n0019",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.1【/1】 A simple sparse matrix example.",
+      "zh": "【1】图 14.1【/1】 一个简单的稀疏矩阵示例。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "Matrices are often used in solving linear systems of N equations of N variables in the form of A*X + Y = 0, where A is an N × N matrix, X is a vector of N variables, and Y is a vector of N constant values. The objective is to solve for the X variable values that will satisfy all the equations. An intuitive approach is to invert the matrix so that X = A【1】−1【/1】 * (−Y). This can be done for matrices of moderate size through methods such as Gaussian elimination. While it is theoretically possible to use these methods to solve the equations that are represented by sparse matrices, the sheer size of many sparse matrices can overwhelm this intuitive approach. Furthermore, an inverse sparse matrix is often much larger than the original because the inversion process tends to generate many additional nonzero elements, which are called “fill-ins.” As a result, it is often impractical to compute and store the inverse matrix in solving real-world problems.",
+      "zh": "矩阵常被用于求解形如 A*X + Y = 0 的 N 个变量、N 个方程的线性方程组，其中 A 是 N × N 矩阵，X 是 N 个变量组成的向量，Y 是 N 个常量组成的向量。目标是求出满足所有方程的 X 变量值。一种直观的方法是对矩阵求逆，从而得到 X = A【1】−1【/1】 × (−Y)。对于中等规模的矩阵，可以通过高斯消元等方法实现。虽然从理论上讲，可以使用这些方法求解由稀疏矩阵表示的方程，但许多稀疏矩阵的巨大规模会使这种直观方法不堪重负。此外，稀疏矩阵的逆往往比原矩阵大得多，因为求逆过程往往会产生许多额外的非零元素，这些元素被称为“填充元”。因此，在解决现实世界的问题时，计算并存储逆矩阵通常是不可行的。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "Linear systems of equations represented in sparse matrices can be better solved with an iterative approach. When the sparse matrix A is positive-definite (i.e., x【1】T【/1】Ax &gt; 0 for all nonzero vectors x in R【2】【3】n【/3】【/2】), one can use conjugate gradient methods to iteratively solve the corresponding linear system with guaranteed convergence to a solution (【4】Hestenes and Stiefel, 1952【/4】). Conjugate gradient methods guess a solution for X, and perform A*X + Y, and see whether the result is close to a 0 vector. If not, we can use a gradient vector formula to refine the guessed X and perform another iteration of A*X + Y. These iterative solution methods for linear systems are closely related to the iterative solution methods for differential equations that we introduced in 【5】Chapter 8【/5】, Stencil.",
+      "zh": "以稀疏矩阵表示的线性方程组可以通过迭代方法更好地求解。当稀疏矩阵 A 正定（即对于 R【2】【3】n【/3】【/2】 中的所有非零向量 x，都有 x【1】T【/1】Ax > 0）时，可以使用共轭梯度方法迭代求解相应的线性系统，并保证收敛到解（【4】Hestenes and Stiefel，1952【/4】）。共轭梯度方法先猜测 X 的一个解，执行 A*X + Y，检查结果是否接近零向量。如果不是，可以利用梯度向量公式改进猜测的 X，并再次执行 A*X + Y 迭代。这些线性系统的迭代求解方法与我们在【5】第 8 章【/5】“模板”中介绍的微分方程迭代求解方法密切相关。"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "The most time-consuming part of iterative approaches to solving linear systems of equations is in the evaluation of A*X + Y, which is a sparse matrix-vector multiplication and accumulation. 【1】Fig. 14.2【/1】 shows a small example of matrix-vector multiplication and accumulation in which A is a sparse matrix. The dark squares in A represent nonzero elements. In contrast, both X and Y are typically dense vectors. That is, most of the elements of X and Y hold nonzero values. Owing to its importance, standardized library function interfaces have been created to perform this operation under the name SpMV (sparse matrix vector multiplication and accumulation). We will use SpMV to illustrate the important tradeoffs between different storage formats in parallel sparse matrix computation.",
+      "zh": "在求解线性方程组的迭代方法中，最耗时的部分是计算 A*X + Y，即稀疏矩阵-向量乘法与累加。【1】图 14.2【/1】展示了一个矩阵-向量乘法与累加的小例子，其中 A 是稀疏矩阵。A 中的深色方块代表非零元素。相比之下，X 和 Y 通常都是稠密向量，即 X 和 Y 的大部分元素都含有非零值。鉴于其重要性，人们建立了标准化库函数接口，以 SpMV（稀疏矩阵-向量乘法与累加）之名执行此操作。我们将用 SpMV 来说明并行稀疏矩阵计算中不同存储格式之间的重要权衡。"
+    },
+    {
+      "id": "n0023",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 14.2【/1】 A small example of matrix-vector multiplication and accumulation.",
+      "zh": "【1】图 14.2【/1】 矩阵-向量乘法与累加的小例子。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "The main objective of the different sparse matrix storage formats is to remove all the zero elements from the matrix representation. Removing all the zero elements not only saves storage but also eliminates the need to fetch these zero elements from memory and perform useless multiplication or addition operations with them. This can significantly reduce the consumption of memory bandwidth and computation resources.",
+      "zh": "不同稀疏矩阵存储格式的主要目标是去除矩阵表示中的所有零元素。去除所有零元素不仅节省了存储空间，还消除了从内存中读取这些零元素并与之进行无用的乘法或加法运算的需要。这可以显著降低内存带宽和计算资源的消耗。"
+    }
+  ]
+}

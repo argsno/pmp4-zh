@@ -1,0 +1,155 @@
+{
+  "page": "Ch002_23-46_B9780323912310000148",
+  "nodes": [
+    {
+      "id": "n0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 2.8【/1】 A more complete version of vecAdd().",
+      "zh": "【1】图 2.8【/1】 vecAdd() 的一个更完整版本。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[14]",
+      "en": "Compared to 【1】Fig. 2.5【/1】, the 【2】vecAdd【/2】 function in 【3】Fig. 2.8【/3】 is complete for Part 1 and Part 3. Part 1 allocates device global memory for 【4】A_d【/4】, 【5】B_d【/5】, and 【6】C_d【/6】 and transfers 【7】A_h【/7】 to 【8】A_d【/8】 and 【9】B_h【/9】 to 【10】B_d【/10】. This is done by calling the 【11】cudaMalloc【/11】 and 【12】cudaMemcpy【/12】 functions. The readers are encouraged to write their own function calls with the appropriate parameter values and compare their code with that shown in 【13】Fig. 2.8【/13】. Part 2 calls the kernel and will be described in the following subsection. Part 3 copies the vector sum data from the device to the host so that the values will be available in the main function. This is accomplished with a call to the 【14】cudaMemcpy【/14】 function. It then frees the memory for 【15】A_d【/15】, 【16】B_d【/16】, and 【17】C_d【/17】 from the device global memory, which is done by calls to the 【18】cudaFree【/18】 function (【19】Fig. 2.9【/19】).",
+      "zh": "与【1】图 2.5【/1】相比，【3】图 2.8【/3】中的【2】vecAdd【/2】函数在第 1 部分和第 3 部分上是完整的。第 1 部分为【4】A_d【/4】、【5】B_d【/5】和【6】C_d【/6】分配设备全局内存，并把【7】A_h【/7】传输到【8】A_d【/8】、【9】B_h【/9】传输到【10】B_d【/10】。这通过调用【11】cudaMalloc【/11】和【12】cudaMemcpy【/12】函数完成。我们鼓励读者自行写出带适当参数值的函数调用，并与【13】图 2.8【/13】中所示的代码进行比较。第 2 部分调用核函数，将在下面的小节中介绍。第 3 部分把向量求和的数据从设备复制到主机，使这些值在 main 函数中可用。这通过调用【14】cudaMemcpy【/14】函数完成。随后，它通过调用【18】cudaFree【/18】函数（【19】图 2.9【/19】），释放【15】A_d【/15】、【16】B_d【/16】和【17】C_d【/17】在设备全局内存中的内存。"
+    },
+    {
+      "id": "n0077",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[1]",
+      "en": "Error Checking and Handling in CUDA",
+      "zh": "CUDA 中的错误检查与处理"
+    },
+    {
+      "id": "p0755",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[2]",
+      "en": "【1】In general, it is important for a program to check and handle errors. CUDA API functions return flags that indicate whether an error has occurred when they served the request. Most errors are due to inappropriate argument values used in the call【/1】.",
+      "zh": "【1】一般来说，程序对错误进行检查和处理是很重要的。CUDA API 函数在处理请求后会返回标志，指示是否发生了错误。大多数错误是由调用中使用了不当的实参值造成的【/1】。"
+    },
+    {
+      "id": "p0760",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[3]",
+      "en": "【1】For brevity, we will not show error checking code in our examples. For example【/1】, 【2】Fig. 2.9【/2】 【3】shows a call to cudaMalloc:【/3】",
+      "zh": "【1】为简洁起见，我们在示例中不展示错误检查代码。例如【/1】，【2】图 2.9【/2】【3】展示了对 cudaMalloc 的一次调用：【/3】"
+    },
+    {
+      "id": "p0765",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[4]",
+      "en": "【1】cudaMalloc((void**) &amp;A_d, size);【/1】",
+      "zh": "调用代码如下：【1】cudaMalloc((void**) &amp;A_d, size);【/1】。"
+    },
+    {
+      "id": "p0770",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[5]",
+      "en": "【1】In practice, we should surround the call with code that test for error condition and print out error messages so that the user can be aware of the fact that an error has occurred. A simple version of such checking code is as follows:【/1】",
+      "zh": "【1】在实践中，我们应该在调用前后加上检测错误条件并打印错误信息的代码，让用户能够知道发生了错误。这种检查代码的一个简单版本如下：【/1】"
+    },
+    {
+      "id": "p0800",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[6]",
+      "en": "【1】This way, if the system is out of device memory, the user will be informed about the situation. This can save many hours of debugging time【/1】.",
+      "zh": "【1】这样，如果系统设备内存不足，用户就能得知这一情况。这可以节省大量调试时间【/1】。"
+    },
+    {
+      "id": "p0805",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[7]",
+      "en": "【1】One could define a C macro to make the checking code more concise in the source【/1】.",
+      "zh": "【1】可以定义一个 C 宏，让检查代码在源码中更加简洁【/1】。"
+    },
+    {
+      "id": "n0084",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 2.9【/1】 All threads in a grid execute the same kernel code.",
+      "zh": "【1】图 2.9【/1】 网格中的所有线程都执行相同的核函数代码。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "2.5 Kernel functions and threading",
+      "zh": "2.5 核函数与线程"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "We are now ready to discuss more about the CUDA C kernel functions and the effect of calling these kernel functions. In CUDA C, a kernel function specifies the code to be executed by all threads during a parallel phase. Since all these threads execute the same code, CUDA C programming is an instance of the well-known single-program multiple-data (SPMD) (【1】Atallah, 1998【/1】) parallel programming style, a popular programming style for parallel computing systems.【2】【3】5【/3】【/2】",
+      "zh": "我们现在可以更详细地讨论 CUDA C 核函数以及调用这些核函数的效果了。在 CUDA C 中，核函数规定了并行阶段所有线程要执行的代码。由于所有这些线程执行的是同一份代码，CUDA C 编程是众所周知的单程序多数据（SPMD）（【1】Atallah, 1998【/1】）并行编程风格的一个实例——这是一种在并行计算系统中很流行的编程风格。【2】【3】5【/3】【/2】"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "When a program’s host code calls a kernel, the CUDA runtime system launches a grid of threads that are organized into a two-level hierarchy. Each grid is organized as an array of 【1】thread blocks【/1】, which we will refer to as blocks for brevity. All blocks of a grid are of the same size; each block can contain up to 1024 threads on current systems.【2】【3】6【/3】【/2】 【4】Fig. 2.9【/4】 shows an example in which each block consists of 256 threads. Each thread is represented by a curly arrow stemming from a box that is labeled with the thread’s index number in the block.",
+      "zh": "当程序的主机代码调用核函数时，CUDA 运行时系统会启动一个线程网格，这些线程按两级层次组织。每个网格组织为【1】线程块【/1】的数组，为简洁起见，我们以后把线程块简称为块。网格中所有线程块的大小相同；在当前的系统中，每个线程块最多可以包含 1024 个线程。【2】【3】6【/3】【/2】【4】图 2.9【/4】显示了一个示例，其中每个线程块由 256 个线程组成。每个线程用从一个方框引出的曲线箭头表示，方框上标有该线程在块中的索引号。"
+    },
+    {
+      "id": "n0088",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/p[1]",
+      "en": "Built-in Variables",
+      "zh": "内置变量"
+    },
+    {
+      "id": "p0810",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/p[2]",
+      "en": "【1】Many programming languages have built-in variables. These variables have special meaning and purpose. The values of these variables are often pre-initialized by the runtime system and are typically read-only in the program. The programmers should refrain from redefining these variables for any other purposes【/1】.",
+      "zh": "【1】许多编程语言都有内置变量。这些变量具有特殊的意义和用途，其值通常由运行时系统预先初始化，在程序中一般是只读的。程序员不应出于任何其他目的重新定义这些变量【/1】。"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "The total number of threads in each thread block is specified by the host code when a kernel is called. The same kernel can be called with different numbers of threads at different parts of the host code. For a given grid of threads, the number of threads in a block is available in a built-in variable named 【1】blockDim【/1】. The 【2】blockDim【/2】 variable is a struct with three unsigned integer fields (【3】x【/3】, 【4】y【/4】, and 【5】z【/5】) that help the programmer to organize the threads into a one-, two-, or three-dimensional array. For a one-dimensional organization, only the 【6】x【/6】 field is used. For a two-dimensional organization, the 【7】x【/7】 and 【8】y【/8】 fields are used. For a three-dimensional structure, all three 【9】x【/9】, 【10】y【/10】, and 【11】z【/11】 fields are used. The choice of dimensionality for organizing threads usually reflects the dimensionality of the data. This makes sense because the threads are created to process data in parallel, so it is only natural that the organization of the threads reflects the organization of the data. In 【12】Fig. 2.9【/12】, each thread block is organized as a one-dimensional array of threads because the data are one-dimensional vectors. The value of the 【13】blockDim.x【/13】 variable indicates the total number of threads in each block, which is 256 in 【14】Fig. 2.9【/14】. In general, it is recommended that the number of threads in each dimension of a thread block be a multiple of 32 for hardware efficiency reasons. We will revisit this later.",
+      "zh": "每个线程块中的线程总数由主机代码在调用核函数时指定。同一个核函数可以在主机代码的不同位置以不同的线程数来调用。对于给定的线程网格，块中的线程数可以从名为【1】blockDim【/1】的内置变量中获取。【2】blockDim【/2】是一个结构体，包含三个无符号整数字段（【3】x【/3】、【4】y【/4】和【5】z【/5】），帮助程序员把线程组织成一维、二维或三维数组。一维组织只使用【6】x【/6】字段；二维组织使用【7】x【/7】和【8】y【/8】字段；三维结构则使用全部三个字段【9】x【/9】、【10】y【/10】和【11】z【/11】。组织线程时维度的选择通常反映数据的维度。这是合理的，因为创建线程正是为了并行处理数据，线程的组织反映数据的组织是再自然不过的事。在【12】图 2.9【/12】中，每个线程块都组织为一维线程数组，因为数据是一维向量。【13】blockDim.x【/13】变量的值表示每个块中的线程总数，在【14】图 2.9【/14】中为 256。一般来说，出于硬件效率的考虑，建议线程块每一维上的线程数都是 32 的倍数。我们稍后会再讨论这一点。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "CUDA kernels have access to two more built-in variables (【1】threadIdx【/1】 and 【2】blockIdx【/2】) that allow threads to distinguish themselves from each other and to determine the area of data each thread is to work on. The 【3】threadIdx【/3】 variable gives each thread a unique coordinate within a block. In 【4】Fig. 2.9【/4】, since we are using a one-dimensional thread organization, only 【5】threadIdx.x【/5】 is used. The 【6】threadIdx.x【/6】 value for each thread is shown in the small shaded box of each thread in 【7】Fig. 2.9【/7】. The first thread in each block has value 0 in its 【8】threadIdx.x【/8】 variable, the second thread has value 1, the third thread has value 2, and so on.",
+      "zh": "CUDA 核函数还可以访问另外两个内置变量（【1】threadIdx【/1】和【2】blockIdx【/2】），它们让线程能够彼此区分，并确定每个线程要处理的数据区域。【3】threadIdx【/3】变量给线程块中的每个线程一个唯一的坐标。在【4】图 2.9【/4】中，由于我们使用一维线程组织方式，只使用【5】threadIdx.x【/5】。每个线程的【6】threadIdx.x【/6】值显示在【7】图 2.9【/7】中每个线程的小阴影方框里。每个线程块中的第一个线程其【8】threadIdx.x【/8】变量值为 0，第二个线程为 1，第三个线程为 2，依此类推。"
+    },
+    {
+      "id": "n0092",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/p[1]",
+      "en": "Hierarchical Organizations",
+      "zh": "层次化组织"
+    },
+    {
+      "id": "p0815",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/p[2]",
+      "en": "【1】Like CUDA threads, many real-world systems are organized hierarchically. The U.S. telephone system is a good example. At the top level, the telephone system consists of “areas” each of which corresponds to a geographical area. All telephone lines within the same area have the same 3-digit “area code”. A telephone area is sometimes larger than a city. For example, many counties and cities of central Illinois are within the same telephone area and share the same area code 217. Within an area, each phone line has a seven-digit local phone number, which allows each area to have a maximum of about ten million numbers【/1】.",
+      "zh": "【1】与 CUDA 线程类似，现实世界中的许多系统也是按层次组织的，美国的电话系统就是一个很好的例子。在最高层，电话系统由若干“区域”组成，每个区域对应一个地理区域。同一区域内的所有电话线路共享同一个 3 位“区号”。一个电话区域有时比一个城市还要大。例如，伊利诺伊州中部的许多县市就属于同一个电话区域，共享区号 217。在区域内部，每条电话线路有一个 7 位本地电话号码，这使得每个区域最多可以容纳约一千万个号码【/1】。"
+    },
+    {
+      "id": "p0820",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/p[3]",
+      "en": "【1】One can think of each phone line as a CUDA thread, with the area code as the value of blockIdx and the seven-digital local number as the value of threadIdx. This hierarchical organization allows the system to have a very large number of phone lines while preserving “locality” for calling the same area. That is, when dialing a phone line in the same area, a caller only needs to dial the local number. As long as we make most of our calls within the local area, we seldom need to dial the area code. If we occasionally need to call a phone line in another area, we dial 1 and the area code, followed by the local number. (This is the reason why no local number in any area should start with a 1.) The hierarchical organization of CUDA threads also offers a form of locality. We will study this locality soon【/1】.",
+      "zh": "【1】我们可以把每条电话线路看作一个 CUDA 线程，把区号看作 blockIdx 的值，把 7 位本地号码看作 threadIdx 的值。这种层次化组织让系统能够容纳非常多的电话线路，同时保留拨打同一区域内电话的“局部性”：也就是说，拨打同一区域内的电话线路时，打电话的人只需要拨本地号码。只要大部分电话都是在本区域内拨打，我们几乎不需要拨区号。如果偶尔需要拨打另一区域的电话线路，我们需要先拨 1 和区号，然后再拨本地号码。（这正是任何区域的本地号码都不能以 1 开头的原因。）CUDA 线程的层次化组织同样提供了一种形式的局部性。我们很快就会研究这种局部性【/1】。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
+      "en": "The 【1】blockIdx【/1】 variable gives all threads in a block a common block coordinate. In 【2】Fig. 2.9【/2】, all threads in the first block have value 0 in their 【3】blockIdx.x【/3】 variables, those in the second thread block value 1, and so on. Using an analogy with the telephone system, one can think of 【4】threadIdx.x【/4】 as local phone number and 【5】blockIdx.x【/5】 as area code. The two together gives each telephone line in the whole country a unique phone number. Similarly, each thread can combine its 【6】threadIdx【/6】 and 【7】blockIdx【/7】 values to create a unique global index for itself within the entire grid.",
+      "zh": "【1】blockIdx【/1】变量给一个块中的所有线程一个共同的块坐标。在【2】图 2.9【/2】中，第一个块中的所有线程其【3】blockIdx.x【/3】变量值都为 0，第二个线程块中的线程为 1，依此类推。借用电话系统的类比，我们可以把【4】threadIdx.x【/4】看作本地电话号码，把【5】blockIdx.x【/5】看作区号。两者结合起来，就给全国每条电话线路分配了一个唯一的电话号码。类似地，每个线程都可以把它的【6】threadIdx【/6】和【7】blockIdx【/7】值组合起来，在整个网格内为自己构造一个唯一的全局索引。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[7]",
+      "en": "In 【1】Fig. 2.9【/1】 a unique global index i is calculated as i【2】=【/2】【3】blockIdx.x【/3】 * 【4】blockDim.x【/4】 + 【5】threadIdx.x【/5】. Recall that 【6】blockDim【/6】 is 256 in our example. The 【7】i【/7】 values of threads in block 0 range from 0 to 255. The 【8】i【/8】 values of threads in block 1 range from 256 to 511. The 【9】i【/9】 values of threads in block 2 range from 512 to 767. That is, the 【10】i【/10】 values of the threads in these three blocks form a continuous coverage of the values from 0 to 767. Since each thread uses 【11】i【/11】 to access 【12】A【/12】, 【13】B【/13】, and 【14】C【/14】, these threads cover the first 768 iterations of the original loop. By launching a grid with a larger number of blocks, one can process larger vectors. By launching a grid with 【15】n【/15】 or more threads, one can process vectors of length 【16】n【/16】.",
+      "zh": "在【1】图 2.9【/1】中，唯一的全局索引 i 按 i【2】=【/2】【3】blockIdx.x【/3】 * 【4】blockDim.x【/4】 + 【5】threadIdx.x【/5】计算。回顾一下，在我们的示例中【6】blockDim【/6】为 256。块 0 中线程的【7】i【/7】值范围是 0 到 255，块 1 中线程的【8】i【/8】值范围是 256 到 511，块 2 中线程的【9】i【/9】值范围是 512 到 767。也就是说，这三个块中线程的【10】i【/10】值连续覆盖了 0 到 767。由于每个线程用【11】i【/11】访问【12】A【/12】、【13】B【/13】和【14】C【/14】，这些线程就覆盖了原循环的前 768 次迭代。通过启动包含更多线程块的网格，可以处理更大的向量；通过启动包含【15】n【/15】个或更多线程的网格，可以处理长度为【16】n【/16】的向量。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[8]",
+      "en": "【1】Fig. 2.10【/1】 shows a kernel function for vector addition. Note that we do not use the “【2】_h【/2】” and “【3】_d【/3】” convention in kernels, since there is no potential confusion. We will not have any access to the host memory in our examples. The syntax of a kernel is ANSI C with some notable extensions. First, there is a CUDA-C-specific keyword “【4】__global__【/4】” in front of the declaration of the 【5】vecAddKernel【/5】 function. This keyword indicates that the function is a kernel and that it can be called to generate a grid of threads on a device.",
+      "zh": "【1】图 2.10【/1】展示了用于向量加法的核函数。请注意，在核函数中我们不使用“【2】_h【/2】”和“【3】_d【/3】”约定，因为这里不存在混淆的可能；在我们的示例中也访问不到主机内存。核函数的语法是 ANSI C，外加一些值得注意的扩展。首先，在【5】vecAddKernel【/5】函数的声明前面有一个 CUDA C 特有的关键字“【4】__global__【/4】”。这个关键字表示该函数是一个核函数，可以被调用来在设备上生成一个线程网格。"
+    },
+    {
+      "id": "n0098",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 2.10【/1】 A vector addition kernel function.",
+      "zh": "【1】图 2.10【/1】 一个向量加法核函数。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[9]",
+      "en": "In general, CUDA C extends the C language with three qualifier keywords that can be used in function declarations. The meaning of these keywords is summarized in 【1】Fig. 2.11【/1】. The “【2】__global__【/2】” keyword indicates that the function being declared is a CUDA C kernel function. Note that there are two underscore characters on each side of the word “【3】global【/3】.” Such a kernel function is executed on the device and can be called from the host. In CUDA systems that support 【4】dynamic parallelism【/4】, it can also be called from the device, as we will see in 【5】Chapter 21【/5】, CUDA Dynamic Parallelism. The important feature is that calling such a kernel function results in a new grid of threads being launched on the device.",
+      "zh": "总的来说，CUDA C 为 C 语言扩展了三个可用于函数声明的限定符关键字，这些关键字的含义总结在【1】图 2.11【/1】中。“【2】__global__【/2】”关键字表示所声明的函数是 CUDA C 核函数。请注意，“【3】global【/3】”这个词的两侧各有两个下划线字符。这种核函数在设备上执行，可以从主机调用。在支持【4】动态并行【/4】的 CUDA 系统中，它也可以从设备调用，我们将在【5】第 21 章【/5】（CUDA 动态并行）中看到这一点。它的重要特征是：调用这样的核函数会在设备上启动一个新的线程网格。"
+    }
+  ]
+}

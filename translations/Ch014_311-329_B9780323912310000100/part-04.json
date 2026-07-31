@@ -1,0 +1,89 @@
+{
+  "page": "Ch014_311-329_B9780323912310000100",
+  "nodes": [
+    {
+      "id": "p0385",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[8]",
+      "en": "For accessibility the JDS format is similar to the CSR format in that it allows us to access, given a row index, the nonzero elements of that row. On the other hand, it does not make it easy to access, given a nonzero, the row index and column index of that nonzero, as the COO and ELL formats do.",
+      "zh": "关于可访问性，JDS 格式与 CSR 格式类似，给定行索引即可访问该行的非零元素。另一方面，与 COO 和 ELL 格式不同，JDS 格式不便于在给定一个非零元素时访问该非零元素的行索引和列索引。"
+    },
+    {
+      "id": "p0390",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[9]",
+      "en": "For memory access efficiency the JDS format is like the ELL format in that it stores the nonzeros in column-major order. Accordingly, the JDS format enables accesses to the sparse matrix to happen in a coalesced manner. Because JDS does not require padding, the starting location of memory accesses in each iteration, as shown in the physical view of 【1】Fig. 14.15【/1】, can vary in arbitrary ways. As a result, there is no simple, inexpensive way to force all iterations of the SpMV/JDS kernel to start at architecturally specified alignment boundaries. This lack of option to force alignment can make memory accesses for JDS less efficient than those in ELL.",
+      "zh": "关于内存访问效率，JDS 格式与 ELL 格式一样，按列主序存储非零元素。因此，JDS 格式使得对稀疏矩阵的访问能够以合并的方式进行。由于 JDS 不需要填充，每次迭代中内存访问的起始位置（如【1】图 14.15【/1】的物理视图所示）可以任意变化。因此，没有简单且廉价的方法来强制 SpMV/JDS 核函数的所有迭代都从体系结构规定的对齐边界开始。由于无法强制对齐，JDS 的内存访问效率可能不如 ELL。"
+    },
+    {
+      "id": "p0395",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[10]",
+      "en": "For load balance, the unique feature of JDS is that it sorts the rows of the matrix such that threads in the same warp are likely to iterate over rows of similar length. Therefore JDS is effective at reducing control divergence.",
+      "zh": "关于负载均衡，JDS 的独特之处在于它对矩阵的行进行排序，使同一线程束中的线程很可能遍历长度相近的行。因此，JDS 能有效地减少控制发散。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "14.7 Summary",
+      "zh": "14.7 小结"
+    },
+    {
+      "id": "p0400",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[1]",
+      "en": "In this chapter we presented sparse matrix computation as an important parallel pattern. Sparse matrices are important in many real-world applications that involve modeling complex phenomenon. Furthermore, sparse matrix computation is a simple example of data-dependent performance behavior of many large real-world applications. Due to the large amount of zero elements, compaction techniques are used to reduce the amount of storage, memory accesses, and computation performed on these zero elements. Using this pattern, we introduce the concept of regularization using hybrid methods and sorting/partitioning. These regularization methods are used in many real-world applications. Interestingly, some of the regularization techniques reintroduce zero elements into the compacted representations. We use hybrid methods to mitigate the pathological cases in which we could introduce too many zero elements. Readers are referred to 【1】Bell and Garland (2009)【/1】 and encouraged to experiment with different sparse datasets to gain more insight into the data-dependent performance behavior of the various SpMV kernels presented in this chapter.",
+      "zh": "在本章中，我们把稀疏矩阵计算作为一种重要的并行模式来介绍。稀疏矩阵在许多涉及复杂现象建模的现实世界应用中非常重要。此外，稀疏矩阵计算是许多大型现实世界应用中依赖数据的性能行为的简单例子。由于零元素数量庞大，人们使用紧凑化技术来减少这些零元素的存储量、内存访问次数和计算量。借助这一模式，我们介绍了利用混合方法以及排序/划分进行规整化的概念。这些规整化方法在许多现实世界应用中得到使用。有趣的是，某些规整化技术会向紧凑化的表示中重新引入零元素。我们使用混合方法来缓解可能引入过多零元素的病态情况。建议读者参阅【1】Bell and Garland (2009)【/1】，并尝试不同的稀疏数据集，以更深入地了解本章介绍的各种 SpMV 核函数依赖数据的性能行为。"
+    },
+    {
+      "id": "p0405",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[2]",
+      "en": "It should be clear that both the execution efficiency and memory bandwidth efficiency of the parallel SpMV kernels depend on the distribution of the input data matrix. This is quite different from most of the kernels we have studied so far. However, such data-dependent performance behavior is quite common in real-world applications. This is one of the reasons why parallel SpMV is such an important parallel pattern. It is simple, yet it illustrates an important behavior in many complex parallel applications.",
+      "zh": "显而易见，并行 SpMV 核函数的执行效率和内存带宽效率都取决于输入数据矩阵的分布。这与我们迄今研究过的大多数核函数有很大不同。然而，这种依赖数据的性能行为在现实世界应用中相当普遍。这也是并行 SpMV 成为如此重要的并行模式的原因之一。它虽然简单，却展现了众多复杂并行应用中的一种重要行为。"
+    },
+    {
+      "id": "p0410",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[3]",
+      "en": "We would like to make an additional remark on the performance of sparse matrix computation as compared to dense matrix computation. In general, the FLOPS ratings that are achieved by either CPUs or GPUs are much lower for sparse matrix computation than for dense matrix computation. This is especially true for SpMV, in which there is no data reuse in the sparse matrix. The OP/B is essentially 0.25, limiting the achievable FLOPS rate to a small fraction of the peak performance. The various formats are important for both CPUs and GPUs, since both are limited by memory bandwidth when performing SpMV. People are often surprised by the low FLOPS rating of this type of computation on both CPUs and GPUs in the past. After reading this chapter, you should be no longer be surprised.",
+      "zh": "我们还想就稀疏矩阵计算与稠密矩阵计算的性能作一点补充说明。一般来说，无论是 CPU 还是 GPU，稀疏矩阵计算所能达到的 FLOPS 数值都远低于稠密矩阵计算。这在 SpMV 中尤为明显，因为稀疏矩阵中不存在数据重用。其 OP/B 基本上为 0.25，使得可达到的 FLOPS 速率被限制在峰值性能的一小部分。各种格式对 CPU 和 GPU 都很重要，因为在执行 SpMV 时两者都受内存带宽的限制。过去，人们常常对这类计算在 CPU 和 GPU 上的低 FLOPS 数值感到惊讶。读完本章之后，你就不应再感到惊讶了。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[1]",
+      "en": "1. Consider the following sparse matrix:【M1】【M2】【M3】Represent it in each of the following formats: (1) COO, (2) CSR, (3) ELL, and (4) JDS.",
+      "zh": "1. 考虑如下稀疏矩阵：【M1】【M2】【M3】用以下每种格式表示它：（1）COO，（2）CSR，（3）ELL 和（4）JDS。"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[2]",
+      "en": "2. Given a sparse matrix of integers with 【1】m【/1】 rows, 【2】n【/2】 columns, and 【3】z【/3】 nonzeros, how many integers are needed to represent the matrix in (1) COO, (2) CSR, (3) ELL, and (4) JDS? If the information that is provided is not enough to allow an answer, indicate what information is missing.",
+      "zh": "2. 给定一个整数稀疏矩阵，它有【1】m【/1】行、【2】n【/2】列和【3】z【/3】个非零元素，用（1）COO、（2）CSR、（3）ELL 和（4）JDS 表示该矩阵各需要多少个整数？如果所给信息不足以得出答案，请指出缺少哪些信息。"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[3]",
+      "en": "3. Implement the code to convert from COO to CSR using fundamental parallel computing primitives, including histogram and prefix sum.",
+      "zh": "3. 使用基础并行计算原语（包括直方图和扫描）实现从 COO 到 CSR 的转换代码。"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[4]",
+      "en": "4. Implement the host code for producing the hybrid ELL-COO format and using it to perform SpMV. Launch the ELL kernel to execute on the device, and compute the contributions of the COO elements on the host.",
+      "zh": "4. 实现生成 ELL-COO 混合格式并用其执行 SpMV 的主机代码。启动 ELL 核函数在设备上执行，并在主机上计算 COO 元素的贡献。"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[5]",
+      "en": "5. Implement a kernel that performs parallel SpMV using a matrix stored in the JDS format.",
+      "zh": "5. 实现一个核函数，使用以 JDS 格式存储的矩阵执行并行 SpMV。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    }
+  ]
+}

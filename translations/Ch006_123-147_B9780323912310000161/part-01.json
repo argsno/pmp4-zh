@@ -1,0 +1,155 @@
+{
+  "page": "Ch006_123-147_B9780323912310000161",
+  "nodes": [
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "Each time a DRAM location is accessed, a range of consecutive locations that include the requested location are accessed. Many sensors are provided in each DRAM chip, and they all work in parallel. Each senses the content of a bit within these consecutive locations. Once detected by the sensors, the data from all these consecutive locations can be transferred at high speed to the processor. These consecutive locations accessed and delivered are referred to as DRAM 【1】bursts【/1】. If an application makes focused use of data from these bursts, the DRAMs can supply the data at a much higher rate than would be the case if a truly random sequence of locations were accessed.",
+      "zh": "每次访问 DRAM 中的某个位置时，会访问包含该位置在内的一段连续位置。每块 DRAM 芯片中配备了许多检测器，它们全部并行工作，每个检测器检测这段连续位置中某一位的内容。一旦被检测器检测出来，这段连续位置的全部数据就可以高速传输给处理器。这些被访问并交付的连续位置称为【1】DRAM 突发传输【/1】。如果应用集中使用这些突发中的数据，DRAM 就能以比真正随机访问位置序列时高得多的速率提供数据。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "Recognizing the burst organization of modern DRAMs, current CUDA devices employ a technique that allows programmers to achieve high global memory access efficiency by organizing memory accesses of threads into favorable patterns. This technique takes advantage of the fact that threads in a warp execute the same instruction at any given point in time. When all threads in a warp execute a load instruction, the hardware detects whether they access consecutive global memory locations. In other words, the most favorable access pattern is achieved when all threads in a warp access consecutive global memory locations. In this case, the hardware combines, or 【1】coalesces【/1】, all these accesses into a consolidated access to consecutive DRAM locations. For example, for a given load instruction of a warp, if thread 0 accesses global memory location X, thread 1 accesses location X + 1, thread 2 accesses location X + 2, and so on, all these accesses will be coalesced, or combined into a single request for consecutive locations when accessing the DRAM.【2】【3】2【/3】【/2】 Such coalesced access allows the DRAM to deliver data as a burst.【4】【5】3【/5】【/4】",
+      "zh": "认识到现代 DRAM 的突发组织方式后，当前的 CUDA 设备采用了一种技术，让程序员可以通过把线程的内存访问组织成有利的模式来获得较高的全局内存访问效率。该技术利用了这样一个事实：线程束中的线程在任意时刻都执行同一条指令。当一个线程束中的所有线程执行一条加载指令时，硬件会检测它们是否访问连续的全局内存位置。换句话说，当线程束中的所有线程访问连续的全局内存位置时，就实现了最有利的访问模式。在这种情况下，硬件会【1】合并【/1】所有这些访问，即组合成对连续 DRAM 位置的一次合并访问。例如，对于线程束的一条加载指令，如果线程 0 访问全局内存位置 X，线程 1 访问位置 X+1，线程 2 访问位置 X+2，依此类推，那么在访问 DRAM 时，所有这些访问都会被合并，即组合成对连续位置的一次请求。【2】【3】2【/3】【/2】这样的合并访问使 DRAM 能够以突发方式交付数据。【4】【5】3【/5】【/4】"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "To understand how to effectively use the coalescing hardware, we need to review how the memory addresses are formed in accessing C multidimensional array elements. Recall from 【1】Chapter 3【/1】, Multidimensional Grids and Data, (【2】Fig. 3.3【/2】 is replicated here as 【3】Fig. 6.1【/3】 for convenience) that multidimensional array elements in C and CUDA are placed into the linearly addressed memory space according to the row-major convention. Recall that the term 【4】row-major【/4】 refers to the fact that the placement of data preserves the structure of rows: All adjacent elements in a row are placed into consecutive locations in the address space. In 【5】Fig. 6.1【/5】 the four elements of row 0 are first placed in their order of appearance in the row. Elements in row 1 are then placed, followed by elements of row 2, followed by elements of row 3. It should be clear that M【6】0,0【/6】 and M【7】1,0【/7】, though they appear to be consecutive in the two-dimensional matrix, are placed four locations apart in the linearly addressed memory.",
+      "zh": "要理解如何有效利用合并硬件，我们需要回顾在访问 C 语言多维数组元素时内存地址是如何形成的。回顾【1】第 3 章【/1】《多维网格与数据》（为方便起见，【2】图 3.3【/2】在这里作为【3】图 6.1【/3】复现）可知，C 语言和 CUDA 中的多维数组元素按照行主序约定存放在线性寻址的内存空间中。回顾一下，【4】行主序【/4】一词指的是数据存放方式保留了行的结构：一行中所有相邻元素被放到地址空间中连续的位置。在【5】图 6.1【/5】中，第 0 行的四个元素先按其在该行中的出现顺序存放，然后存放第 1 行的元素，接着是第 2 行的元素，再接着是第 3 行的元素。应当清楚，M【6】0,0【/6】和 M【7】1,0【/7】虽然在二维矩阵中看起来相邻，但在线性寻址的内存中却相隔四个位置。"
+    },
+    {
+      "id": "n0028",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 6.1【/1】 Placing matrix elements into a linear array based on row-major order.",
+      "zh": "【1】图 6.1【/1】 按行主序将矩阵元素放入线性数组。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "Let’s assume that the multidimensional array in 【1】Fig. 6.1【/1】 is a matrix that is used as the second input matrix in matrix multiplication. In this case, consecutive threads in a warp that are assigned to consecutive output elements will iterate through consecutive columns of this input matrix. The top left part of 【2】Fig. 6.2【/2】 shows the code for this computation, and the top right part shows the logical view of the access pattern: consecutive threads iterating through consecutive columns. One can tell by inspecting the code that the accesses to 【3】M【/3】 can be coalesced. The index of the array 【4】M【/4】 is 【5】k*Width+col【/5】. The variables 【6】k【/6】 and 【7】Width【/7】 have the same value across all threads in the warp. The variable 【8】col【/8】 is defined as 【9】blockIdx.x*blockDim.x+threadIdx.x【/9】, which means that consecutive threads (with consecutive 【10】threadIdx.x【/10】 values) will have consecutive values of 【11】col【/11】 and will therefore access consecutive elements of 【12】M【/12】.",
+      "zh": "假设【1】图 6.1【/1】中的多维数组是矩阵乘法中用作第二个输入矩阵的矩阵。在这种情况下，线程束中分配给连续输出元素的连续线程将遍历该输入矩阵的连续列。【2】图 6.2【/2】的左上部分展示了该计算的代码，右上部分展示了访问模式的逻辑视图：连续线程遍历连续列。通过检查代码可以看出，对【3】M【/3】的访问可以被合并。数组【4】M【/4】的索引是【5】k*Width+col【/5】。变量【6】k【/6】和【7】Width【/7】在线程束的所有线程中取值相同。变量【8】col【/8】定义为【9】blockIdx.x*blockDim.x+threadIdx.x【/9】，这意味着连续线程（【10】threadIdx.x【/10】值连续）将拥有连续的【11】col【/11】值，因此将访问【12】M【/12】的连续元素。"
+    },
+    {
+      "id": "n0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 6.2【/1】 A coalesced access pattern.",
+      "zh": "【1】图 6.2【/1】 一种合并访问模式。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[7]",
+      "en": "The bottom part of 【1】Fig. 6.2【/1】 shows the physical view of the access pattern. In iteration 0, consecutive threads will access consecutive elements in row 0 that are adjacent in memory, shown as “Loads for iteration 0” in 【2】Fig. 6.2【/2】. In iteration 1, consecutive threads will access consecutive elements in row 1 that are also adjacent in memory, shown as “Loads for iteration 1” in 【3】Fig. 6.2【/3】. This process continues for all rows. As we can see, the memory access pattern that is formed by the threads during this process is a favorable one that can be coalesced. Indeed, in all the kernels that we have implemented so far, our memory accesses have been naturally coalesced.",
+      "zh": "【1】图 6.2【/1】的下半部分展示了该访问模式的物理视图。在第 0 次迭代中，连续线程将访问第 0 行中在内存里相邻的连续元素，如【2】图 6.2【/2】中的“第 0 次迭代的加载”所示。在第 1 次迭代中，连续线程将访问第 1 行中同样在内存里相邻的连续元素，如【3】图 6.2【/3】中的“第 1 次迭代的加载”所示。这个过程对所有行持续进行。正如我们所见，线程在此过程中形成的内存访问模式是一种有利于合并的模式。事实上，在我们迄今实现的所有核函数中，内存访问都是自然合并的。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[8]",
+      "en": "Now assume that the matrix was stored in column-major order instead of row-major order. There could be various reasons why this might be the case. For example, we might be multiplying by the transpose of a matrix that is stored in row-major order. In linear algebra we often need to use both the original and transposed forms of a matrix. It would be better to avoid creating and storing both forms. A common practice is to create the matrix in one form, say, the original form. When the transposed form is needed, its elements can be accessed by accessing the original form by switching the roles of the row and column indices. In C this is equivalent to viewing the transposed matrix as a column-major layout of the original matrix. Regardless of the reason, let’s observe the memory access pattern that is achieved when the second input matrix to our matrix multiplication example is stored in column-major order.",
+      "zh": "现在假设该矩阵按列主序而不是行主序存放。造成这种情况的原因可能多种多样。例如，我们可能要乘以一个以行主序存放的矩阵的转置。在线性代数中，我们经常需要同时使用矩阵的原始形式和转置形式。最好避免创建并存放两种形式。常见的做法是只创建一种形式的矩阵，比如原始形式。当需要转置形式时，可以通过交换行索引和列索引的角色来访问原始形式，从而得到转置形式的元素。在 C 语言中，这相当于把转置矩阵视为原始矩阵的列主序布局。无论原因如何，让我们观察一下，当矩阵乘法示例中的第二个输入矩阵以列主序存放时，会得到什么样的内存访问模式。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[9]",
+      "en": "【1】Fig. 6.3【/1】 illustrates how consecutive threads iterate through consecutive columns when the matrix is stored in column-major order. The top left part of 【2】Fig. 6.3【/2】 shows the code, and the top right part shows the logical view of the memory accesses. The program is still trying to have each thread access a column of matrix M. One can tell by inspecting the code that the accesses to 【3】M【/3】 are not favorable for coalescing. The index of the array 【4】M【/4】 is 【5】col*Width+k【/5】. As before, 【6】col【/6】 is defined as 【7】blockIdx.x*blockDim.x+threadIdx.x【/7】, which means that consecutive threads (with consecutive 【8】threadIdx.x【/8】 values) will have consecutive values of 【9】col【/9】. However, in the index to 【10】M【/10】, 【11】col【/11】 is multiplied by 【12】Width【/12】, which means that consecutive threads will access elements of 【13】M【/13】 that are 【14】Width【/14】 apart. Therefore the accesses are not favorable for coalescing.",
+      "zh": "【1】图 6.3【/1】展示了当矩阵以列主序存放时，连续线程如何遍历连续列。【2】图 6.3【/2】的左上部分展示了代码，右上部分展示了内存访问的逻辑视图。程序仍然试图让每个线程访问矩阵 M 的一列。通过检查代码可以看出，对【3】M【/3】的访问不利于合并。数组【4】M【/4】的索引是【5】col*Width+k【/5】。与前面一样，【6】col【/6】定义为【7】blockIdx.x*blockDim.x+threadIdx.x【/7】，这意味着连续线程（【8】threadIdx.x【/8】值连续）将拥有连续的【9】col【/9】值。然而，在【10】M【/10】的索引中，【11】col【/11】要乘以【12】Width【/12】，这意味着连续线程将访问【13】M【/13】中相隔【14】Width【/14】个位置的那些元素。因此这些访问不利于合并。"
+    },
+    {
+      "id": "n0034",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 6.3【/1】 An uncoalesced access pattern.",
+      "zh": "【1】图 6.3【/1】 一种非合并访问模式。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[10]",
+      "en": "In the bottom portion of 【1】Fig. 6.3【/1】, we can see that the physical view of the memory accesses is quite different from that in 【2】Fig. 6.2【/2】. In iteration 0, consecutive threads will logically access consecutive elements in row 0, but this time they are not adjacent in memory because of the column-major layout. These loads are shown as “Loads for iteration 0” in 【3】Fig. 6.3【/3】. Similarly, in iteration 1, consecutive threads will access consecutive elements in row 1 that are also not adjacent in memory. For a realistic matrix there are typically hundreds or even thousands of elements in each dimension. The M elements that are accessed in each iteration by neighboring threads can be hundreds or even thousands of elements apart. The hardware will determine that accesses to these elements are far away from each other and cannot be coalesced.",
+      "zh": "在【1】图 6.3【/1】的下半部分，我们可以看到内存访问的物理视图与【2】图 6.2【/2】中的大不相同。在第 0 次迭代中，连续线程在逻辑上访问第 0 行的连续元素，但这一次由于列主序布局，它们在内存中并不相邻。这些加载如【3】图 6.3【/3】中的“第 0 次迭代的加载”所示。类似地，在第 1 次迭代中，连续线程将访问第 1 行的连续元素，它们在内存中同样不相邻。对于实际的矩阵，每一维通常有数百甚至数千个元素。相邻线程在每次迭代中访问的 M 元素可能相隔数百甚至数千个元素。硬件将判定对这些元素的访问彼此相距甚远，无法合并。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[11]",
+      "en": "There are various strategies for optimizing code to achieve memory coalescing when the computation is not naturally amenable to it. One strategy is to rearrange how threads are mapped to the data; another strategy is to rearrange the layout of the data itself. We will discuss these strategies in 【1】Section 6.4【/1】 and see examples throughout this book of how they can be applied. Yet another strategy is to transfer the data between global memory and shared memory in a coalesced manner and carry out the unfavorable access pattern in shared memory, which provides faster access latency. We will also see example optimizations that use this strategy throughout this book, including an optimization that we will apply now to matrix-matrix multiplication in which the second input matrix is in column-major layout. This optimization is called 【2】corner turning【/2】.",
+      "zh": "当计算本身不容易实现内存合并时，有多种优化代码的策略。一种策略是重新安排线程到数据的映射；另一种策略是重新安排数据本身的布局。我们将在【1】第 6.4 节【/1】中讨论这些策略，并在本书中看到它们的应用示例。还有一种策略是以合并的方式在全局内存与共享内存之间传输数据，而在延迟更低的共享内存中执行不利的访问模式。我们也会在本书中看到使用这种策略的优化示例，包括我们现在将要应用于矩阵-矩阵乘法的一种优化，其中第二个输入矩阵采用列主序布局。这种优化称为【2】拐角变换【/2】。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[12]",
+      "en": "【1】Fig. 6.4【/1】 illustrates an example of how corner turning can be applied. In this example, A is an input matrix that is stored in row-major layout in global memory, and B is an input matrix that is stored in column-major layout in global memory. They are multiplied to produce an output matrix C that is stored in row-major layout in global memory. The example illustrates how four threads that are responsible for the four consecutive elements at the top edge of the output tile load the input tile elements.",
+      "zh": "【1】图 6.4【/1】展示了如何应用拐角变换的一个示例。在该示例中，A 是一个以行主序布局存放在全局内存中的输入矩阵，B 是一个以列主序布局存放在全局内存中的输入矩阵。两者相乘得到输出矩阵 C，C 以行主序布局存放在全局内存中。该示例展示了负责输出分块顶部边缘四个连续元素的四个线程如何加载输入分块元素。"
+    },
+    {
+      "id": "n0038",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 6.4【/1】 Applying corner turning to coalesce accesses to matrix B, which is stored in column-major layout.",
+      "zh": "【1】图 6.4【/1】 应用拐角变换来合并对矩阵 B 的访问，矩阵 B 以列主序布局存放。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[13]",
+      "en": "The access to the input tile in matrix A is similar to that in 【1】Chapter 5【/1】, Memory Architecture and Data Locality. The four threads load the four elements at the top edge of the input tile. Each thread loads an input element whose local row and column indices within the input tile are the same as those of the thread’s output element within the output tile. These accesses are coalesced because consecutive threads access consecutive elements in the same row of A that are adjacent in memory according to the row-major layout.",
+      "zh": "对矩阵 A 中输入分块的访问与【1】第 5 章【/1】《内存体系结构与数据局部性》中的类似。四个线程加载输入分块顶部边缘的四个元素。每个线程加载一个输入元素，该元素在输入分块内的局部行、列索引与该线程的输出元素在输出分块内的局部行、列索引相同。这些访问是合并的，因为连续线程访问 A 中同一行的连续元素，根据行主序布局，它们在内存中相邻。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[14]",
+      "en": "On the other hand, the access to the input tile in matrix B needs to be different from that in 【1】Chapter 5【/1】, Memory Architecture and Data Locality. 【2】Fig. 6.4(A)【/2】 shows what the access pattern would be like if we used the same arrangement as in 【3】Chapter 5【/3】, Memory Architecture and Data Locality. Even though the four threads are logically loading the four consecutive elements at the top edge of the input tile, the elements that are loaded by consecutive threads are far away from each other in the memory because of the column-major layout of the B elements. In other words, consecutive threads that are responsible for consecutive elements in the same row of the output tile load nonconsecutive locations in memory, which results in uncoalesced memory accesses.",
+      "zh": "另一方面，对矩阵 B 中输入分块的访问需要与【1】第 5 章【/1】《内存体系结构与数据局部性》中的不同。【2】图 6.4(A)【/2】展示了如果我们采用与【3】第 5 章【/3】《内存体系结构与数据局部性》中相同的安排，会得到什么样的访问模式。尽管四个线程在逻辑上加载输入分块顶部边缘的四个连续元素，但由于 B 的元素采用列主序布局，连续线程加载的元素在内存中相距很远。换句话说，负责输出分块同一行中连续元素的连续线程会加载内存中不相邻的位置，从而产生非合并的内存访问。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[15]",
+      "en": "This problem can be solved by assigning the four consecutive threads to load the four consecutive elements at the left edge (the same column) in the input tile, as shown in 【1】Fig. 6.4(B)【/1】. Intuitively, we are exchanging the roles of threadIdx.x and threadIdx.y when each thread calculates the linearized index for loading the B input tile. Since B is in column-major layout, consecutive elements in the same column are adjacent in memory. Hence consecutive threads load input elements that are adjacent in memory, which ensures that the memory accesses are coalesced. The code can be written to place the tile of B elements into the shared memory in either column-major layout or row-major layout. Either way, after the input tile has been loaded, each thread can access its inputs with little performance penalty. This is because shared memory is implemented with SRAM technology and does not require coalescing.",
+      "zh": "这个问题可以通过让四个连续线程加载输入分块左边缘（同一列）的四个连续元素来解决，如【1】图 6.4(B)【/1】所示。直观地说，我们在让每个线程计算加载 B 输入分块的线性化索引时，交换了 threadIdx.x 和 threadIdx.y 的角色。由于 B 采用列主序布局，同一列中的连续元素在内存中相邻。因此连续线程加载的输入元素在内存中相邻，这保证了内存访问是合并的。代码可以写成把 B 的元素分块以列主序布局或行主序布局放入共享内存。无论采用哪种方式，输入分块加载完成后，每个线程都可以以很小的性能代价访问其输入。这是因为共享内存采用 SRAM 技术实现，不需要合并。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[16]",
+      "en": "The main advantage of memory coalescing is that it reduces global memory traffic by combining multiple memory accesses into a single access. Accesses can be combined when they take place at the same time and access adjacent memory locations. Traffic congestion does not arise only in computing. Most of us have experienced traffic congestion in highway systems, as illustrated in 【1】Fig. 6.5【/1】. The root cause of highway traffic congestion is that there are too many cars all trying to travel on a road that is designed for a much smaller number of vehicles. When congestion occurs, the travel time for each vehicle is greatly increased. Commute time to work can easily double or triple when there is traffic congestion.",
+      "zh": "内存合并的主要优势在于，它把多次内存访问合并成一次访问，从而减少全局内存流量。当访问同时发生且访问相邻的内存位置时，它们可以被合并。流量拥堵不只出现在计算领域。我们大多数人都经历过高速公路系统的交通拥堵，如【1】图 6.5【/1】所示。高速公路交通拥堵的根本原因是，有太多汽车都试图行驶在一条为数量少得多的车辆设计的道路上。一旦发生拥堵，每辆车的行驶时间都会大大增加。出现交通拥堵时，通勤时间很容易翻倍甚至增至三倍。"
+    },
+    {
+      "id": "n0043",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[6]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 6.5【/2】【/1】 Reducing traffic congestion in highway systems.",
+      "zh": "【1】【2】图 6.5【/2】【/1】 减少高速公路系统的交通拥堵。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[17]",
+      "en": "Most solutions for reducing traffic congestion involve the reduction of the number of cars on the road. Assuming that the number of commuters is constant, people need to share rides in order to reduce the number of cars on the road. A common way to share rides is carpooling, in which the members of a group of commuters take turns driving the group to work in one vehicle. Governments usually need to have policies to encourage carpooling. In some countries the government simply disallows certain classes of cars to be on the road on a daily basis. For example, cars with odd license plate numbers may not be allowed on the road on Monday, Wednesday, or Friday. This encourages people whose cars are allowed on different days to form a carpool group. In other countries the government may provide incentives for behavior that reduces the number of cars on the road. For example, in certain countries, some lanes of congested highways are designated as carpool lanes; only cars with more than two or three people are allowed to use these lanes. There are also countries where the government makes gasoline so expensive that people form carpools to save money. All these measures for encouraging carpooling are designed to overcome the fact that carpooling requires extra effort, as we show in 【1】Fig. 6.6【/1】.",
+      "zh": "减少交通拥堵的大多数解决方案都涉及减少道路上的汽车数量。假设通勤人数不变，人们需要共享乘车以减少道路上的汽车数量。共享乘车的一种常见方式是拼车，即一组通勤者轮流驾驶一辆车带大家去上班。政府通常需要制定政策来鼓励拼车。在一些国家，政府干脆不允许某几类汽车在特定日期上路。例如，牌照为奇数的汽车周一、周三或周五可能不允许上路。这鼓励了在不同日期可以上路的车主组成拼车小组。在其他国家，政府可能对减少道路车辆数量的行为提供激励。例如，在某些国家，拥堵高速公路的某些车道被指定为拼车车道，只有载有两人或三人以上的汽车才能使用这些车道。还有一些国家通过让汽油变得非常昂贵，促使人们为了省钱而拼车。所有这些鼓励拼车的措施，都是为了克服拼车需要额外付出努力这个事实，如【1】图 6.6【/1】所示。"
+    },
+    {
+      "id": "n0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[7]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 6.6【/1】 Carpooling requires synchronization among people.",
+      "zh": "【1】图 6.6【/1】 拼车需要人们之间的同步。"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[18]",
+      "en": "Carpooling requires workers who wish to carpool to compromise and agree on a common commute schedule. The top half of 【1】Fig. 6.6【/1】 shows a good schedule pattern for carpooling. Time goes from left to right. Worker A and Worker B have similar schedules for sleep, work, and dinner. This allows these two workers to easily go to work and return home in one car. Their similar schedules allow them to more easily agree on a common departure time and return time. This is not the case for the schedules shown in the bottom half of 【2】Fig. 6.6【/2】. Worker A and Worker B have very different schedules in this case. Worker A parties until sunrise, sleeps during the day, and goes to work in the evening. Worker B sleeps at night, goes to work in the morning, and returns home for dinner at 6:00 pm. The schedules are so wildly different that these two workers cannot possibly coordinate a common time to drive to work and return home in one car.",
+      "zh": "拼车要求想要拼车的员工相互妥协，就共同的通勤时间表达成一致。【1】图 6.6【/1】的上半部分展示了一种良好的拼车时间表模式。时间从左到右。员工 A 和员工 B 的睡眠、工作、晚餐时间安排相似。这使这两位员工很容易开一辆车上下班。相似的时间安排让他们更容易就共同的出发和回家时间达成一致。而【2】图 6.6【/2】下半部分所示的时间表则不是这样。在这种情况下，员工 A 和员工 B 的时间安排差异巨大。员工 A 狂欢到日出，白天睡觉，晚上去上班。员工 B 晚上睡觉，早上上班，下午 6:00 回家吃晚饭。他们的时间表差异如此之大，以至于这两位员工根本不可能协调出共同的时间开一辆车上下班。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[19]",
+      "en": "Memory coalescing is very similar to carpooling arrangements. We can think of the data as the commuters and the DRAM access requests as the vehicles. When the rate of DRAM requests exceeds the provisioned access bandwidth of the DRAM system, traffic congestion rises, and the arithmetic units become idle. If multiple threads access data from the same DRAM location, they can potentially form a “carpool” and combine their accesses into one DRAM request. However, this requires the threads to have similar execution schedules so that their data accesses can be combined into one. Threads in the same warp are perfect candidates because they all execute a load instruction simultaneously by virtue of SIMD execution.",
+      "zh": "内存合并与拼车安排非常相似。我们可以把数据看作通勤者，把 DRAM 访问请求看作车辆。当 DRAM 请求的速率超过 DRAM 系统配置的访问带宽时，交通拥堵就会加剧，算术单元就会闲置。如果多个线程访问同一 DRAM 位置的数据，它们就有可能组成一个“拼车组”，把各自的访问合并成一个 DRAM 请求。然而，这要求线程有相似的执行时间安排，以便它们的数据访问能合并成一次。同一线程束中的线程是理想的候选者，因为它们凭借 SIMD 执行方式同时执行同一条加载指令。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "6.2 Hiding memory latency",
+      "zh": "6.2 隐藏内存延迟"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "As we explained in 【1】Section 6.1【/1】, DRAM bursting is a form of parallel organization: Multiple locations are accessed in the DRAM core array in parallel. However, bursting alone is not sufficient to realize the level of DRAM access bandwidth required by modern processors. DRAM systems typically employ two more forms of parallel organization: banks and channels. At the highest level, a processor contains one or more channels. Each channel is a memory controller with a bus that connects a set of DRAM banks to the processor. 【2】Fig. 6.7【/2】 illustrates a processor that contains four channels, each with a bus that connects four DRAM banks to the processor. In real systems a processor typically has one to eight channels, and a large number of banks is connected to each channel.",
+      "zh": "正如我们在【1】第 6.1 节【/1】中解释的那样，DRAM 突发是并行组织的一种形式：DRAM 核心阵列中的多个位置被并行访问。然而，仅靠突发还不足以实现现代处理器所需的 DRAM 访问带宽水平。DRAM 系统通常还采用另外两种并行组织形式：存储体和通道。在最高层级上，处理器包含一个或多个通道。每个通道是一个内存控制器，带有将一组 DRAM 存储体连接到处理器的总线。【2】图 6.7【/2】展示了一个包含四个通道的处理器，每个通道都有一条将四个 DRAM 存储体连接到处理器的总线。在真实系统中，处理器通常有 1 至 8 个通道，每个通道连接大量存储体。"
+    }
+  ]
+}

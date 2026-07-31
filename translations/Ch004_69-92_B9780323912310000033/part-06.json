@@ -1,0 +1,65 @@
+{
+  "page": "Ch004_69-92_B9780323912310000033",
+  "nodes": [
+    {
+      "id": "o0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[7]/ol[1]/li[3]",
+      "en": "c. 32 blocks with 32 threads each",
+      "zh": "c. 32 个线程块，每块 32 个线程"
+    },
+    {
+      "id": "o0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[7]/ol[1]/li[4]",
+      "en": "d. 64 blocks with 32 threads each",
+      "zh": "d. 64 个线程块，每块 32 个线程"
+    },
+    {
+      "id": "o0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[7]/ol[1]/li[5]",
+      "en": "e. 32 blocks with 64 threads each",
+      "zh": "e. 32 个线程块，每块 64 个线程"
+    },
+    {
+      "id": "o0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[8]",
+      "en": "8. Consider a GPU with the following hardware limits: 2048 threads per SM, 32 blocks per SM, and 64K (65,536) registers per SM. For each of the following kernel characteristics, specify whether the kernel can achieve full occupancy. If not, specify the limiting factor.【M1】",
+      "zh": "8. 考虑一个具有以下硬件限制的 GPU：每个 SM 2048 个线程、每个 SM 32 个线程块、每个 SM 64K（65,536）个寄存器。对于下列每种核函数特征，请说明该核函数能否达到满占用率。如果不能，请指出限制因素。【M1】"
+    },
+    {
+      "id": "o0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[8]/ol[1]/li[1]",
+      "en": "a. The kernel uses 128 threads per block and 30 registers per thread.",
+      "zh": "a. 核函数每个线程块使用 128 个线程，每个线程使用 30 个寄存器。"
+    },
+    {
+      "id": "o0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[8]/ol[1]/li[2]",
+      "en": "b. The kernel uses 32 threads per block and 29 registers per thread.",
+      "zh": "b. 核函数每个线程块使用 32 个线程，每个线程使用 29 个寄存器。"
+    },
+    {
+      "id": "o0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[8]/ol[1]/li[3]",
+      "en": "c. The kernel uses 256 threads per block and 34 registers per thread.",
+      "zh": "c. 核函数每个线程块使用 256 个线程，每个线程使用 34 个寄存器。"
+    },
+    {
+      "id": "o0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[9]",
+      "en": "9. A student mentions that they were able to multiply two 1024×1024 matrices using a matrix multiplication kernel with 32×32 thread blocks. The student is using a CUDA device that allows up to 512 threads per block and up to 8 blocks per SM. The student further mentions that each thread in a thread block calculates one element of the result matrix. What would be your reaction and why?",
+      "zh": "9. 一名学生提到，他们用 32×32 的线程块运行矩阵乘法核函数，成功将两个 1024×1024 的矩阵相乘。该学生使用的 CUDA 设备每个线程块最多允许 512 个线程，每个 SM 最多允许 8 个线程块。该学生还提到，线程块中的每个线程计算结果矩阵的一个元素。你会作何反应？为什么？"
+    },
+    {
+      "id": "st0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    },
+    {
+      "id": "fn1",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[1]",
+      "en": "【1】【2】1【/2】【/1】Threads in different blocks can perform barrier synchronization through the Cooperative Groups API. However, there are several important restrictions that must be obeyed to ensure that all threads involved are indeed simultaneously executing on the SMs. Interested readers are referred to the CUDA C Programming Guide for proper use of the Cooperative Groups API.",
+      "zh": "【1】【2】1【/2】【/1】不同线程块中的线程可以通过 Cooperative Groups API 执行屏障同步。然而，必须遵守几个重要的限制条件，才能确保所有涉及的线程确实同时在各 SM 上执行。关于 Cooperative Groups API 的正确用法，感兴趣的读者请参阅 CUDA C 编程指南。"
+    }
+  ]
+}

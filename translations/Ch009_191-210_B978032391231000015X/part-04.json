@@ -1,0 +1,95 @@
+{
+  "page": "Ch009_191-210_B978032391231000015X",
+  "nodes": [
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[1]",
+      "en": "1. Assume that each atomic operation in a DRAM system has a total latency of 100 ns. What is the maximum throughput that we can get for atomic operations on the same global memory variable?",
+      "zh": "1. 假设 DRAM 系统中每次原子操作的总延迟为 100 ns。对于同一全局内存变量上的原子操作，我们能获得的最大吞吐量是多少？"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[2]",
+      "en": "2. For a processor that supports atomic operations in L2 cache, assume that each atomic operation takes 4 ns to complete in L2 cache and 100 ns to complete in DRAM. Assume that 90% of the atomic operations hit in L2 cache. What is the approximate throughput for atomic operations on the same global memory variable?",
+      "zh": "2. 对于一个在 L2 缓存中支持原子操作的处理器，假设每次原子操作在 L2 缓存中完成需要 4 ns，在 DRAM 中完成需要 100 ns。再假设 90% 的原子操作在 L2 缓存中命中。对于同一全局内存变量上的原子操作，其近似吞吐量是多少？"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[3]",
+      "en": "3. In Exercise 1, assume that a kernel performs five floating-point operations per atomic operation. What is the maximum floating-point throughput of the kernel execution as limited by the throughput of the atomic operations?",
+      "zh": "3. 在习题 1 中，假设核函数每次原子操作执行 5 次浮点运算。受原子操作吞吐量的限制，核函数执行的最大浮点吞吐量是多少？"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[4]",
+      "en": "4. In Exercise 1, assume that we privatize the global memory variable into shared memory variables in the kernel and that the shared memory access latency is 1 ns. All original global memory atomic operations are converted into shared memory atomic operation. For simplicity, assume that the additional global memory atomic operations for accumulating privatized variable into the global variable adds 10% to the total execution time. Assume that a kernel performs five floating-point operations per atomic operation. What is the maximum floating-point throughput of the kernel execution as limited by the throughput of the atomic operations?",
+      "zh": "4. 在习题 1 中，假设我们在核函数中把全局内存变量私有化为共享内存变量，且共享内存访问延迟为 1 ns。所有原来的全局内存原子操作都被转换为共享内存原子操作。为简单起见，假设把私有化变量累加到全局变量所需的额外全局内存原子操作会使总执行时间增加 10%。再假设核函数每次原子操作执行 5 次浮点运算。受原子操作吞吐量的限制，核函数执行的最大浮点吞吐量是多少？"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[5]",
+      "en": "5. To perform an atomic add operation to add the value of an integer variable Partial to a global memory integer variable Total, which one of the following statements should be used?【M1】",
+      "zh": "5. 要把整型变量 Partial 的值加到全局内存整型变量 Total 上，应该使用下列哪个语句？【M1】"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[5]/ol[1]/li[1]",
+      "en": "a. atomicAdd(Total, 1);",
+      "zh": "a. 使用 atomicAdd(Total, 1);"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[5]/ol[1]/li[2]",
+      "en": "b. atomicAdd(&amp;Total, &amp;Partial);",
+      "zh": "b. 使用 atomicAdd(&amp;Total, &amp;Partial);"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[5]/ol[1]/li[3]",
+      "en": "c. atomicAdd(Total, &amp;Partial);",
+      "zh": "c. 使用 atomicAdd(Total, &amp;Partial);"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[5]/ol[1]/li[4]",
+      "en": "d. atomicAdd(&amp;Total, Partial);",
+      "zh": "d. 使用 atomicAdd(&amp;Total, Partial);"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[6]",
+      "en": "6. Consider a histogram kernel that processes an input with 524,288 elements to produce a histogram with 128 bins. The kernel is configured with 1024 threads per block.【M1】",
+      "zh": "6. 考虑一个直方图核函数：它处理含 524,288 个元素的输入，生成含 128 个分箱的直方图。该核函数配置为每线程块 1024 个线程。【M1】"
+    },
+    {
+      "id": "o0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[6]/ol[1]/li[1]",
+      "en": "a. What is the total number of atomic operations that are performed on global memory by the kernel in 【1】Fig. 9.6【/1】 where no privatization, shared memory, and thread coarsening are used?",
+      "zh": "a. 在不使用私有化、共享内存和线程粗化的情况下，【1】图 9.6【/1】中的核函数在全局内存上执行的原子操作总数是多少？"
+    },
+    {
+      "id": "o0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[6]/ol[1]/li[2]",
+      "en": "b. What is the maximum number of atomic operations that may be performed on global memory by the kernel in 【1】Fig. 9.10【/1】 where privatization and shared memory are used but not thread coarsening?",
+      "zh": "b. 在使用私有化和共享内存但不使用线程粗化的情况下，【1】图 9.10【/1】中的核函数在全局内存上最多可能执行的原子操作数是多少？"
+    },
+    {
+      "id": "o0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[6]/ol[1]/li[3]",
+      "en": "c. What is the maximum number of atomic operations that may be performed on global memory by the kernel in 【1】Fig. 9.14【/1】 where privatization, shared memory, and thread coarsening are used with a coarsening factor of 4?",
+      "zh": "c. 在使用私有化、共享内存和线程粗化（粗化因子为 4）的情况下，【1】图 9.14【/1】中的核函数在全局内存上最多可能执行的原子操作数是多少？"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    },
+    {
+      "id": "fn1",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[1]",
+      "en": "【1】【2】1【/2】【/1】Note that this is similar but not the same as the write-after-read race condition in 【3】Chapter 10【/3】, Reduction and Minimizing Divergence, when we discussed the need for a barrier synchronization between the reads from and writes to the XY array in each iteration of the Kogge-Stone scan kernel.",
+      "zh": "【1】【2】1【/2】【/1】请注意，这与【3】第 10 章【/3】“归约与最小化发散”中讨论的写后读竞态条件相似但不完全相同：在那里，我们讨论了在 Kogge-Stone 扫描核函数的每次迭代中，对 XY 数组的读与写之间需要进行屏障同步。"
+    }
+  ]
+}

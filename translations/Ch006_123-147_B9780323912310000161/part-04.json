@@ -1,0 +1,155 @@
+{
+  "page": "Ch006_123-147_B9780323912310000161",
+  "nodes": [
+    {
+      "id": "u0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[2]/td[4]/div[1]/p[3]",
+      "en": "Rearranging the layout of the data",
+      "zh": "重新安排数据的布局"
+    },
+    {
+      "id": "n0101",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[3]/td[1]",
+      "en": "Minimizing control divergence",
+      "zh": "最小化控制发散"
+    },
+    {
+      "id": "n0102",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[3]/td[2]",
+      "en": "High SIMD efficiency (fewer idle cores during SIMD execution)",
+      "zh": "更高的 SIMD 效率（SIMD 执行期间空闲核心更少）"
+    },
+    {
+      "id": "n0103",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[3]/td[3]",
+      "en": "–",
+      "zh": "–"
+    },
+    {
+      "id": "u0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[3]/td[4]/div[1]/p[1]",
+      "en": "Rearranging the mapping of threads to work and/or data",
+      "zh": "重新安排线程到工作单元和/或数据的映射"
+    },
+    {
+      "id": "u0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[3]/td[4]/div[1]/p[2]",
+      "en": "Rearranging the layout of the data",
+      "zh": "重新安排数据的布局"
+    },
+    {
+      "id": "n0106",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[4]/td[1]",
+      "en": "Tiling of reused data",
+      "zh": "对重用数据分块"
+    },
+    {
+      "id": "n0107",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[4]/td[2]",
+      "en": "Fewer pipeline stalls waiting for global memory accesses",
+      "zh": "等待全局内存访问的流水线停顿更少"
+    },
+    {
+      "id": "n0108",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[4]/td[3]",
+      "en": "Less global memory traffic",
+      "zh": "全局内存流量更少"
+    },
+    {
+      "id": "n0109",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[4]/td[4]",
+      "en": "Placing data that is reused within a block in shared memory or registers so that it is transferred between global memory and the SM only once",
+      "zh": "将线程块内重用的数据放入共享内存或寄存器，使其只在全局内存与 SM 之间传输一次"
+    },
+    {
+      "id": "n0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[5]/td[1]",
+      "en": "Privatization (covered later)",
+      "zh": "私有化（后面章节会讲到）"
+    },
+    {
+      "id": "n0111",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[5]/td[2]",
+      "en": "Fewer pipeline stalls waiting for atomic updates",
+      "zh": "等待原子更新的流水线停顿更少"
+    },
+    {
+      "id": "n0112",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[5]/td[3]",
+      "en": "Less contention and serialization of atomic updates",
+      "zh": "原子更新的竞争与串行化更少"
+    },
+    {
+      "id": "n0113",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[5]/td[4]",
+      "en": "Applying partial updates to a private copy of the data and then updating the universal copy when done",
+      "zh": "先对数据的私有副本进行部分更新，完成后再更新公共副本"
+    },
+    {
+      "id": "n0114",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[6]/td[1]",
+      "en": "Thread coarsening",
+      "zh": "线程粗化"
+    },
+    {
+      "id": "n0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[6]/td[2]",
+      "en": "Less redundant work, divergence, or synchronization",
+      "zh": "冗余工作、发散或同步更少"
+    },
+    {
+      "id": "n0116",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[6]/td[3]",
+      "en": "Less redundant global memory traffic",
+      "zh": "冗余的全局内存流量更少"
+    },
+    {
+      "id": "n0117",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/table[1]/tbody[1]/tr[6]/td[4]",
+      "en": "Assigning multiple units of parallelism to each thread to reduce the price of parallelism when it is incurred unnecessarily",
+      "zh": "为每个线程分配多个并行工作单元，以减少无谓付出的并行性代价"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "The first optimization in 【1】Table 6.1【/1】 is maximizing the occupancy of threads on SMs. This optimization was introduced in 【2】Chapter 4【/2】, Compute Architecture and Scheduling, where the importance of having many more threads than cores was emphasized as a way to have enough work available to hide long-latency operations in the core pipeline. To maximize occupancy, programmers can tune the resource usage of their kernels to ensure that the maximum number of blocks or registers allowed per SM do not limit the number of threads that can be assigned to the SM simultaneously. In 【3】Chapter 5【/3】, Memory Architecture and Data Locality, shared memory was introduced as another resource whose usage should be carefully tuned so as not to limit occupancy. In this chapter, the importance of maximizing occupancy was discussed as a means for also hiding memory latency, not just core pipeline latency. Having many threads executing simultaneously ensures that enough memory accesses are generated to fully utilize the memory bandwidth.",
+      "zh": "【1】表 6.1【/1】中的第一个优化是最大化 SM 上线程的占用率。这一优化在【2】第 4 章【/2】《计算体系结构与调度》中提出，当时强调了线程数量远多于核心数量的重要性，这是为了保证有足够的工作来隐藏核心流水线中的长延迟操作。为了最大化占用率，程序员可以调整核函数的资源使用，确保每个 SM 允许的最大线程块数或寄存器数不会限制可同时分配给该 SM 的线程数。在【3】第 5 章【/3】《内存体系结构与数据局部性》中，共享内存被介绍为另一种需要仔细调整使用量以免限制占用率的资源。在本章中，最大化占用率的重要性还被讨论为一种同时隐藏内存延迟的手段，而不仅仅是隐藏核心流水线延迟。大量线程同时执行，可以确保产生足够多的内存访问来充分利用内存带宽。"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "The second optimization in 【1】Table 6.1【/1】 is using coalesced global memory accesses by ensuring that threads in the same warp access adjacent memory locations. This optimization was introduced in this chapter, where the hardware’s ability to combine accesses to adjacent memory locations into a single memory request was emphasized as a way for reducing global memory traffic and improving the utilization of DRAM bursts. So far, the kernels that we have looked at in this part of the book have exhibited coalesced accesses naturally. However, we will see many examples in the second and third parts of the book in which memory access patterns are more irregular, thereby requiring more effort to achieve coalescing.",
+      "zh": "【1】表 6.1【/1】中的第二个优化是通过确保同一线程束中的线程访问相邻的内存位置，来实现合并的全局内存访问。这一优化在本章提出，其中强调硬件可以把对相邻内存位置的访问合并成一次内存请求，这是减少全局内存流量、提高 DRAM 突发传输利用率的一种方式。到目前为止，本书这一部分中我们看过的核函数都自然地表现出合并访问。然而，在本书第二、三部分中，我们将看到许多内存访问模式更不规则、因而需要付出更多努力才能实现合并的例子。"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "There are multiple strategies that can be employed for achieving coalescing in applications with irregular access patterns. One strategy is to load data from global memory to shared memory in a coalesced manner and then perform the irregular accesses on shared memory. We have already seen an example of this strategy in this chapter, namely, corner turning. We will see another example of this strategy in 【1】Chapter 12【/1】, Merge, which covers the merge pattern. In this pattern, threads in the same block need to perform a binary search in the same array, so they collaborate to load that array from global memory to shared memory in a coalesced manner, and then each performs the binary search in shared memory. We will also see an example of this strategy in 【2】Chapter 13【/2】, Sorting, which covers the sort pattern. In this pattern, threads write out results to an array in a scattered manner, so they can collaborate to perform their scattered accesses in the shared memory, then write the result from the shared memory to the global memory with more coalescing enabled for elements with nearby destinations.",
+      "zh": "对于访问模式不规则的应用，有多种策略可以用来实现合并。一种策略是以合并的方式把数据从全局内存加载到共享内存，然后在共享内存上执行不规则访问。我们在本章已经看到过这种策略的一个例子，即拐角变换。我们将在【1】第 12 章【/1】《归并》中看到这种策略的另一个例子，该章介绍归并模式。在这种模式中，同一线程块中的线程需要对同一个数组执行二分查找，因此它们协作以合并的方式把该数组从全局内存加载到共享内存，然后每个线程在共享内存中执行二分查找。我们还将在【2】第 13 章【/2】《排序》中看到这种策略的一个例子，该章介绍排序模式。在这种模式中，线程以分散的方式把结果写入数组，因此它们可以协作在共享内存中执行分散访问，再以更强的合并把结果从共享内存写回全局内存——目标位置相近的元素的写回可以合并。"
+    },
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "Another strategy for achieving coalescing in applications with irregular access patterns is to rearrange how the threads are mapped to the data elements. We will see an example of this strategy in 【1】Chapter 10【/1】, Reduction and Minimizing Divergence, which covers the reduction pattern. Yet another strategy for achieving coalescing in applications with irregular access patterns is to rearrange how the data itself is laid out. We will see an example of this strategy in 【2】Chapter 14【/2】, Sparse Matrix Computation which covers sparse matrix computation and storage formats, particularly in discussing the ELL and JDS formats.",
+      "zh": "对于访问模式不规则的应用，实现合并的另一种策略是重新安排线程到数据元素的映射。我们将在【1】第 10 章【/1】《归约与发散最小化》中看到这种策略的一个例子，该章介绍归约模式。对于访问模式不规则的应用，实现合并的还有一种策略是重新安排数据本身的布局。我们将在【2】第 14 章【/2】《稀疏矩阵计算》中看到这种策略的一个例子，该章介绍稀疏矩阵计算与存储格式，特别是在讨论 ELL 和 JDS 格式时。"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "The third optimization in 【1】Table 6.1【/1】 is minimizing control divergence. Control divergence was introduced in 【2】Chapter 4【/2】, Compute Architecture and Scheduling, where the importance of threads in the same warp taking the same control path was emphasized as a means for ensuring that all cores are productively utilized during SIMD execution. So far, the kernels that we have looked at in this part of the book have not exhibited control divergence, except for the inevitable divergence at boundary conditions. However, we will see many examples in the second and third parts of the book in which control divergence can be a significant detriment to performance.",
+      "zh": "【1】表 6.1【/1】中的第三个优化是最小化控制发散。控制发散在【2】第 4 章【/2】《计算体系结构与调度》中提出，当时强调了同一线程束中的线程走相同控制路径的重要性，这是确保 SIMD 执行期间所有核心都得到有效利用的手段。到目前为止，本书这一部分中我们看过的核函数都没有表现出控制发散，除了边界条件处不可避免的发散。然而，在本书第二、三部分中，我们将看到许多控制发散会显著损害性能的例子。"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "There are multiple strategies that can be employed for minimizing control divergence. One strategy is to rearrange how the work and/or data is distributed across the threads to ensure that threads in one warp are all used before threads in other warps are used. We will see an example of this strategy in 【1】Chapter 10【/1】, Reduction and Minimizing Divergence, which covers the reduction pattern, and 【2】Chapter 11【/2】, Prefix Sum (Scan), which covers the scan pattern. The strategy of rearranging how work and/or data is distributed across threads can also be used to ensure that threads in the same warp have similar workloads. We will see an example of this in 【3】Chapter 15【/3】, Graph Traversal, which covers graph traversal, in which we will discuss the tradeoffs between vertex-centric and edge-centric parallelization schemes. Another strategy for minimizing control divergence is to rearrange how the data is laid out to ensure that threads in the same warp that process adjacent data have similar workloads. We will see an example of this strategy in 【4】Chapter 14【/4】, Sparse Matrix Computation, which covers sparse matrix computation and storage formats, particularly when discussing the JDS format.",
+      "zh": "有多种策略可以用来最小化控制发散。一种策略是重新安排工作和/或数据在线程之间的分布，确保一个线程束中的线程都在其他线程束的线程被使用之前得到使用。我们将在【1】第 10 章【/1】《归约与发散最小化》中看到这种策略的一个例子，该章介绍归约模式；也将在【2】第 11 章【/2】《前缀和（扫描）》中看到，该章介绍扫描模式。重新安排工作和/或数据在线程之间分布的策略，也可以用来确保同一线程束中的线程具有相似的工作负载。我们将在【3】第 15 章【/3】《图遍历》中看到这种策略的一个例子，该章介绍图遍历，我们将讨论面向顶点的与面向边的并行化方案之间的取舍。最小化控制发散的另一种策略是重新安排数据的布局，确保同一线程束中处理相邻数据的线程具有相似的工作负载。我们将在【4】第 14 章【/4】《稀疏矩阵计算》中看到这种策略的一个例子，该章介绍稀疏矩阵计算与存储格式，特别是在讨论 JDS 格式时。"
+    },
+    {
+      "id": "p0370",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "The fourth optimization in 【1】Table 6.1【/1】 is tiling data that is reused within a block by placing it in the shared memory or registers and accessing it repetitively from there, such that it needs to be transferred between global memory and the SM only once. Tiling was introduced in 【2】Chapter 5, Memory Architecture and Data Locality, in【/2】 the context of matrix multiplication, in which threads processing the same output tile collaborate to load the corresponding input tiles to the shared memory and then access these input tiles repetitively from the shared memory. We will see this optimization applied again in most of the parallel patterns in the second and third parts of the book. We will observe the challenges of applying tiling when the input and output tiles have different dimensions. This challenge arises in 【3】Chapter 7【/3】, Convolution, which covers the convolution pattern, and in 【4】Chapter 8【/4】, Stencil, which covers the stencil pattern. We will also observe that tiles of data can be stored in registers, not just shared memory. This observation is most pronounced in 【5】Chapter 8【/5】, Stencil, which covers the stencil pattern. We will additionally observe that tiling is applicable to output data that is accessed repeatedly, not just input data.",
+      "zh": "【1】表 6.1【/1】中的第四个优化是把线程块内重用的数据分块，将其放入共享内存或寄存器，并从这里反复访问，这样它只需要在全局内存与 SM 之间传输一次。分块是在【2】第 5 章《内存体系结构与数据局部性》中【/2】以矩阵乘法为背景提出的，其中处理同一输出分块的线程协作把相应的输入分块加载到共享内存，然后从共享内存反复访问这些输入分块。在本书第二、三部分的大多数并行模式中，我们都会再次看到这种优化的应用。我们将会看到，当输入分块和输出分块的维度不同时，应用分块会面临挑战。这一挑战出现在【3】第 7 章【/3】《卷积》中，该章介绍卷积模式；也出现在【4】第 8 章【/4】《模板》中，该章介绍模板模式。我们还会看到，数据分块可以存放在寄存器中，而不仅仅存放在共享内存中。这一现象在【5】第 8 章【/5】《模板》中最为明显，该章介绍模板模式。此外我们还会看到，分块也适用于被反复访问的输出数据，而不仅仅是输入数据。"
+    }
+  ]
+}

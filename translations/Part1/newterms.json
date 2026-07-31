@@ -1,0 +1,12 @@
+[
+  {
+    "en": "Fundamental Concepts",
+    "zh": "基本概念",
+    "note": "Part1 分部页主标题（parttitle）；与 nav.json 的 Part I: Fundamental Concepts→第一部分：基本概念 对应，Part2/3/4 分部标题可参照此命名方式"
+  },
+  {
+    "en": "Outline",
+    "zh": "大纲",
+    "note": "Part1 分部页章节列表标题（partoutlhd）；与 nav.json 的 Chapter Outline→本章概要 区分，各分部页统一用 大纲"
+  }
+]

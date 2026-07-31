@@ -1,0 +1,155 @@
+{
+  "page": "Ch020_449-473_B9780323912310000070",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/hgroup[1]/h1[1]",
+      "en": "Programming a heterogeneous computing cluster",
+      "zh": "编写异构计算集群程序"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/hgroup[1]/h2[1]",
+      "en": "An introduction to CUDA streams",
+      "zh": "CUDA 流入门"
+    },
+    {
+      "id": "n0002",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/address[1]/p[1]",
+      "en": "With special contributions from Isaac Gelado and Javier Cabezas",
+      "zh": "特别贡献：Isaac Gelado 与 Javier Cabezas"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces joint Message Passing Interface (MPI)/CUDA programming using the stencil pattern. It presents a sufficient number of basic MPI concepts for the reader to understand a simple MPI/CUDA program. It then focuses on the practical use of pinned memory and asynchronous data transfers to enable overlapping computation with communication. The chapter ends with an overview of how CUDA-aware MPI systems help to simplify the code and improve efficiency.",
+      "zh": "本章介绍基于模板模式的消息传递接口（MPI）/CUDA 联合编程。本章讲解足够数量的 MPI 基本概念，使读者能够理解一个简单的 MPI/CUDA 程序；随后重点介绍锁页内存与异步数据传输的实际应用，以实现计算与通信的重叠。本章末尾概述了 CUDA 感知的 MPI 系统如何帮助简化代码并提高效率。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "MPI; message passing; communication; overlapping communication with computation; asynchronous; domain partition; collective; point-to-point communication; pinned memory; page-locked memory; CUDA streams; barrier",
+      "zh": "MPI；消息传递；通信；计算与通信重叠；异步；域划分；集合通信；点对点通信；锁页内存；CUDA 流；屏障"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0008",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】20.1 Background【/1】 449",
+      "zh": "【1】20.1 背景【/1】 449"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】20.2 A running example【/1】 450",
+      "zh": "【1】20.2 一个运行示例【/1】 450"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】20.3 Message passing interface basics【/1】 452",
+      "zh": "【1】20.3 消息传递接口基础【/1】 452"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】20.4 Message passing interface point-to-point communication【/1】 455",
+      "zh": "【1】20.4 消息传递接口点对点通信【/1】 455"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】20.5 Overlapping computation and communication【/1】 462",
+      "zh": "【1】20.5 计算与通信重叠【/1】 462"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】20.6 Message passing interface collective communication【/1】 470",
+      "zh": "【1】20.6 消息传递接口集合通信【/1】 470"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】20.7 CUDA aware message passing interface【/1】 471",
+      "zh": "【1】20.7 CUDA 感知的 MPI【/1】 471"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】20.8 Summary【/1】 472",
+      "zh": "【1】20.8 小结【/1】 472"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[9]",
+      "en": "【1】Exercises【/1】 472",
+      "zh": "【1】习题【/1】 472"
+    },
+    {
+      "id": "u0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[10]",
+      "en": "【1】References【/1】 473",
+      "zh": "【1】参考文献【/1】 473"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "So far, we have focused on programming a heterogeneous computing system with one host and one device. In high-performance computing (HPC), applications require the aggregate computing power of a cluster of computing nodes. Many of the HPC clusters today have one or more hosts and one or more devices in each node. Historically, these clusters have been programmed predominately with Message Passing Interface (MPI). In this chapter we will present an introduction to joint MPI/CUDA programming. We will present only the MPI concepts that programmers need to understand to scale their heterogeneous applications to multiple nodes in a cluster environment. In particular, we will focus on domain partitioning, point-to-point communication, and collective communication in the context of scaling a CUDA kernel into multiple nodes.",
+      "zh": "到目前为止，我们一直专注于使用一个主机和一个设备编写异构计算系统程序。在高性能计算（HPC）中，应用程序需要计算节点集群的聚合计算能力。如今许多 HPC 集群的每个节点都有一个或多个主机和一个或多个设备。历史上，这些集群主要使用消息传递接口（MPI）来编程。本章我们将介绍 MPI/CUDA 联合编程。我们只介绍程序员在集群环境中将异构应用扩展到多个节点所需理解的 MPI 概念。特别是，我们将重点介绍在将 CUDA 核函数扩展到多个节点的背景下，域划分、点对点通信和集合通信。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "20.1 Background",
+      "zh": "20.1 背景"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "Although practically no top supercomputers used GPUs before 2009, the need for better energy efficiency has led to fast adoption of GPUs in recent years. Many of the top supercomputers in the world today use both CPUs and GPUs in each node. The effectiveness of this approach is validated by their high rankings in the Green500 list, which reflects their high energy efficiency.",
+      "zh": "尽管在 2009 年之前几乎没有顶级超级计算机使用 GPU，但对更高能效的需求促使近年来 GPU 被快速采用。如今世界上许多顶级超级计算机在每个节点中同时使用 CPU 和 GPU。这一方法的有效性已通过它们在 Green500 榜单上的高排名得到验证，而该榜单正反映了它们的高能效。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "The dominating programming interface for computing clusters today is MPI (【1】Gropp et al., 1999【/1】), which is a set of API functions for communication between processes running in a computing cluster. MPI assumes a distributed memory model in which processes exchange information by sending messages to each other. When an application uses API communication functions, it does not need to deal with the details of the interconnect network. The MPI implementation allows the processes to address each other using logical numbers, in much the same way as using phone numbers in a telephone system: Telephone users can dial each other using phone numbers without knowing exactly where the called person is and how the call is routed.",
+      "zh": "当今计算集群的主导编程接口是 MPI（【1】Gropp et al., 1999【/1】），它是一组用于计算集群中各进程之间通信的 API 函数。MPI 采用分布式内存模型，进程之间通过相互发送消息来交换信息。当应用程序使用 API 通信函数时，它无需处理互连网络的细节。MPI 实现允许进程使用逻辑编号相互寻址，这与电话系统中使用电话号码的方式非常相似：电话用户可以用电话号码互相拨号，而无需确切知道被叫者身在何处以及呼叫是如何被路由的。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "In a typical MPI application, data and work are partitioned among processes. As is shown in 【1】Fig. 20.1【/1】, each node can contain one or more processes, shown as clouds within nodes. As these processes progress, they may need data from each other. This need is satisfied by sending and receiving messages. In some cases, the processes also need to synchronize with each other and generate collective results when collaborating on a large task. This is done with collective communication API functions.",
+      "zh": "在典型的 MPI 应用中，数据和任务在进程之间划分。如【1】图 20.1【/1】所示，每个节点可以包含一个或多个进程，图中以节点内的云朵表示。随着这些进程的运行，它们可能彼此需要对方的数据。这种需求通过发送和接收消息来满足。在某些情况下，进程在协作完成大型任务时，还需要彼此同步并产生集合结果，这通过集合通信 API 函数来完成。"
+    },
+    {
+      "id": "n0024",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 20.1【/2】【/1】 Programmer’s view of MPI processes. 【3】MPI【/3】, Message Passing Interface.",
+      "zh": "【1】【2】图 20.1【/2】【/1】 MPI 进程的程序员视角。【3】MPI【/3】，消息传递接口。"
+    }
+  ]
+}

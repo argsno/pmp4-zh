@@ -1,0 +1,155 @@
+{
+  "page": "Ch009_191-210_B978032391231000015X",
+  "nodes": [
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "9.5 Coarsening",
+      "zh": "9.5 粗化"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "We have seen that privatization is effective in reducing the contention of atomic operations and that storing the privatized histogram in the shared memory reduces the latency of each atomic operation. However, the overhead of privatization is the need to commit the private copies to the public copy. This commit operation is done once per thread block. Hence the more thread blocks we use, the larger this overhead is. The overhead is usually worth paying when the thread blocks are executed in parallel. However, if the number of thread blocks that are launched exceeds the number that can be executed simultaneously by the hardware, the hardware schedule will serialize these thread blocks. In this case, the privatization overhead is incurred unnecessarily.",
+      "zh": "我们已经看到，私有化能有效减少原子操作的竞争，而把私有化直方图存放在共享内存中可以降低每次原子操作的延迟。然而，私有化的开销在于需要把私有副本提交到公有副本。这种提交操作每个线程块执行一次。因此，使用的线程块越多，开销就越大。当线程块并行执行时，这笔开销通常是值得的。但是，如果启动的线程块数量超过了硬件能同时执行的线程块数量，硬件调度就会把这些线程块串行化。在这种情况下，私有化的开销就是白白付出的。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "We can reduce the overhead of privatization via thread coarsening. In other words, we can reduce the number of private copies that are committed to the public copy by reducing the number of blocks and having each thread process multiple input elements. In this section we look at two strategies for assigning multiple input elements to a thread: contiguous partitioning and interleaved partitioning.",
+      "zh": "我们可以通过线程粗化来降低私有化的开销。换句话说，可以通过减少线程块数量、让每个线程处理多个输入元素，来减少需要提交到公有副本的私有副本数量。本节我们考察为线程分配多个输入元素的两种策略：连续划分和交错划分。"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "【1】Fig. 9.11【/1】 shows an example of the contiguous partitioning strategy. The input is partitioned into contiguous segments, and each segment is assigned to a thread. 【2】Fig. 9.12【/2】 shows the histogram kernel with coarsening applied using the contiguous partitioning strategy. The difference from 【3】Fig. 9.10【/3】 is on lines 09–10. In 【4】Fig. 9.10【/4】 the input element index 【5】i【/5】 corresponded to the global thread index, so each thread received one input element. In 【6】Fig. 9.11【/6】 the input elements index 【7】i【/7】 is the index of a loop that iterates from 【8】tid*CFACTOR【/8】 to 【9】(tid + 1)*CFACTOR【/9】 where 【10】CFACTOR【/10】 is the coarsening factor. Therefore each thread takes a contiguous segment of 【11】CFACTOR【/11】 elements. The 【12】min【/12】 operation in the loop bound ensures that the threads at the end do not read out of bounds.",
+      "zh": "【1】图 9.11【/1】展示了连续划分策略的一个示例。输入被划分为连续的段，每一段分配给一个线程。【2】图 9.12【/2】展示了采用连续划分策略应用粗化的直方图核函数。它与【3】图 9.10【/3】的区别在第 09–10 行。在【4】图 9.10【/4】中，输入元素的索引【5】i【/5】与全局线程索引对应，因此每个线程获得一个输入元素。在【6】图 9.11【/6】中，输入元素的索引【7】i【/7】是一个循环的索引，该循环从【8】tid*CFACTOR【/8】迭代到【9】(tid + 1)*CFACTOR【/9】，其中【10】CFACTOR【/10】是粗化因子。因此，每个线程取一段连续的【11】CFACTOR【/11】个元素。循环边界中的【12】min【/12】运算确保末尾的线程不会越界读取。"
+    },
+    {
+      "id": "n0079",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.11【/1】 Contiguous partitioning of input elements.",
+      "zh": "【1】图 9.11【/1】 输入元素的连续划分。"
+    },
+    {
+      "id": "n0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.12【/1】 Histogram kernel with coarsening using contiguous partitioning.",
+      "zh": "【1】图 9.12【/1】 采用连续划分进行粗化的直方图核函数。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "Partitioning data into contiguous segments is conceptually simple and intuitive. On a CPU, where parallel execution typically involves a small number of threads, contiguous partitioning is often the best-performing strategy, since the sequential access pattern by each thread makes good use of cache lines. Since each CPU cache typically supports only a small number of threads, there is little interference in cache usage by different threads. The data in cache lines, once brought in for a thread, can be expected to remain for the subsequent accesses.",
+      "zh": "把数据划分为连续段在概念上简单直观。在 CPU 上，并行执行通常只涉及少量线程，连续划分往往是最优性能策略，因为每个线程的顺序访问模式能很好地利用缓存行。由于每个 CPU 缓存通常只支持少量线程，不同线程在缓存使用上几乎没有干扰。缓存行中的数据一旦为某个线程取入，就可以预期它会一直保留到后续访问。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "In contrast, contiguous partitioning on GPUs results in a suboptimal memory access pattern. As we learned in 【1】Chapter 5【/1】, Memory Architecture and Data Locality, the large number of simultaneously active threads in an SM typically causes so much interference in the cache that one cannot expect data to remain in the cache for all the sequential accesses by a single thread. Instead, we need to make sure that threads in a warp access consecutive locations to enable memory coalescing. This observation motivates interleaved partitioning.",
+      "zh": "相比之下，GPU 上的连续划分会导致次优的内存访问模式。正如我们在【1】第 5 章【/1】“内存体系结构与数据局部性”中所学的，SM 中同时活跃的线程数量很大，通常会在缓存中造成大量干扰，以至于不能指望数据在缓存中保留到单个线程的所有顺序访问完成。相反，我们需要确保线程束中的线程访问连续的位置，以便实现内存合并。这一观察启发了交错划分。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
+      "en": "【1】Fig. 9.13【/1】 shows an example of the interleaved partitioning strategy. During the first iteration, the eight threads access characters 0 through 7 (“programm”). With memory coalescing, all the elements will be fetched with only one DRAM access. During the second iteration the four threads access the characters “ing mass” in one coalesced memory access. It should be clear why this is called interleaved partitioning: The partitions to be processed by different threads are interleaved with each other. Obviously, this is a toy example, and in reality, there will be many more threads. There are also more subtle performance considerations. For example, each thread should process four characters (a 32-bit word) in each iteration to fully utilize the interconnect bandwidth between the caches and the SMs.",
+      "zh": "【1】图 9.13【/1】展示了交错划分策略的一个示例。在第一次迭代中，8 个线程访问第 0 至 7 个字符（“programm”）。借助内存合并，所有元素只需一次 DRAM 访问就能取回。在第二次迭代中，这 4 个线程通过一次合并的内存访问访问字符“ing mass”。交错划分这一名称的由来应当很清楚了：不同线程要处理的分块彼此交错。显然，这只是一个玩具示例，现实中线程要多得多。此外还有一些更微妙的性能考量。例如，每个线程在每次迭代中应处理 4 个字符（一个 32 位字），以充分利用缓存与 SM 之间的互连带宽。"
+    },
+    {
+      "id": "n0084",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 9.13【/2】【/1】 Interleaved partitioning of input elements.",
+      "zh": "【1】【2】图 9.13【/2】【/1】 输入元素的交错划分。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[7]",
+      "en": "【1】Fig. 9.14【/1】 shows the histogram kernel with coarsening applied by using the interleaved partitioning strategy. The difference from 【2】Figs. 9.10【/2】 and 【3】9.12【/3】 is again on lines 09–10. In the first iteration of the loop, each thread accesses the 【4】data【/4】 array using its global thread index: Thread 0 accesses element 0, thread 1 accesses element 1, thread 2 accesses element 2, and so on. Thus all threads jointly process the first blockDim.x*gridDim.x elements of the input. In the second iteration, all threads add blockDim.x*gridDim.x to their indices and jointly process the next section of blockDim.x*gridDim.x elements.",
+      "zh": "【1】图 9.14【/1】展示了采用交错划分策略应用粗化的直方图核函数。它与【2】图 9.10【/2】和【3】图 9.12【/3】的区别同样在第 09–10 行。在循环的第一次迭代中，每个线程用它的全局线程索引访问【4】data【/4】数组：线程 0 访问元素 0，线程 1 访问元素 1，线程 2 访问元素 2，依此类推。这样所有线程就共同处理了输入的前 blockDim.x*gridDim.x 个元素。在第二次迭代中，所有线程在自己的索引上加 blockDim.x*gridDim.x，共同处理接下来的 blockDim.x*gridDim.x 个元素。"
+    },
+    {
+      "id": "n0086",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.14【/1】 Histogram kernel with coarsening using interleaved partitioning.",
+      "zh": "【1】图 9.14【/1】 采用交错划分进行粗化的直方图核函数。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[8]",
+      "en": "When the index of a thread exceeds the valid range of the input buffer (its private 【1】i【/1】 variable value is greater than or equal to 【2】length【/2】), the thread has completed processing its partition and will exit the loop. Since the size of the buffer might not be a multiple of the total number of threads, some of the threads might not participate in the processing of the last section. Therefore some threads will execute one fewer loop iteration than others.",
+      "zh": "当线程的索引超出输入缓冲区的有效范围（即它的私有【1】i【/1】变量值大于或等于【2】length【/2】）时，该线程就完成了自己分块的处理，将退出循环。由于缓冲区的大小可能不是线程总数的整数倍，部分线程可能不参与最后一个段的处理。因此，有些线程执行的循环迭代次数会比其他线程少一次。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "9.6 Aggregation",
+      "zh": "9.6 聚合"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "Some datasets have a large concentration of identical data values in localized areas. For example, in pictures of the sky, there can be large patches of pixels of identical value. Such a high concentration of identical values causes heavy contention and reduced throughput of parallel histogram computation.",
+      "zh": "有些数据集的局部区域高度集中着相同的数据值。例如，在天空的照片中，可能存在大片取值相同的像素。这种高度集中的相同取值会造成严重的竞争，降低并行直方图计算的吞吐量。"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "For such datasets a simple and yet effective optimization is for each thread to aggregate consecutive updates into a single update if they are updating the same element of the histogram (【1】Merrill, 2015【/1】). Such aggregation reduces the number of atomic operations to the highly contended histogram elements, thus improving the effective throughput of the computation.",
+      "zh": "对于这类数据集，一个简单而有效的优化是：如果线程连续更新的都是直方图的同一个元素，就让每个线程把这些连续更新聚合成一次更新（【1】Merrill, 2015【/1】）。这种聚合减少了发往竞争激烈的直方图元素的原子操作数量，从而提高了计算的有效吞吐量。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "【1】Fig. 9.15【/1】 shows an aggregated text histogram kernel. The key changes compared to the kernel in 【2】Fig. 9.14【/2】 are as follows: Each thread declares an additional 【3】accumulator【/3】 variable (line 09) that keeps track of the number of updates aggregated thus far and a 【4】prevBinIdx【/4】 variable (line 10) that tracks the index of the histogram bin that was last encountered and is being aggregated. Each thread initializes the 【5】accumulator【/5】 variable to zero, indicating that no updates has been initially aggregated, and the 【6】prevBinIdx【/6】 to −1 so that no alphabet input will match it.",
+      "zh": "【1】图 9.15【/1】展示了一个聚合式文本直方图核函数。与【2】图 9.14【/2】中的核函数相比，关键变化如下：每个线程额外声明一个【3】accumulator【/3】变量（第 09 行），用来记录到目前为止已聚合的更新次数；还声明一个【4】prevBinIdx【/4】变量（第 10 行），用来记录最近遇到并正在聚合的直方图分箱索引。每个线程把【5】accumulator【/5】变量初始化为 0，表示初始时尚未聚合任何更新；把【6】prevBinIdx【/6】初始化为 −1，使任何字母输入都不会与它匹配。"
+    },
+    {
+      "id": "n0092",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 9.15【/2】【/1】 An aggregated text histogram kernel.",
+      "zh": "【1】【2】图 9.15【/2】【/1】 一个聚合式文本直方图核函数。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[4]",
+      "en": "When an alphabet data is found, the thread compares the index of the histogram element to be updated with that being aggregated (line 16). If the index is the same, the thread simply increments the accumulator (line 17), extending the streak of aggregated updates by one. If the index is different, the streak of aggregated updates to the histogram element has ended. The thread uses atomic operation to add the 【1】accumulator【/1】 value to the histogram element whose index is tracked by 【2】prevBinIdx【/2】 (lines 19–21). This effectively flushes out the total contribution of the previous streak of aggregated updates.",
+      "zh": "当遇到一个字母数据时，线程会比较待更新的直方图元素索引与正在聚合的索引（第 16 行）。如果索引相同，线程只需递增 accumulator（第 17 行），把这一连串聚合更新再延长一次。如果索引不同，对该直方图元素的一连串聚合更新就结束了。线程用原子操作把【1】accumulator【/1】的值加到索引由【2】prevBinIdx【/2】跟踪的直方图元素上（第 19–21 行）。这实际上把上一连串聚合更新的总贡献冲刷了出去。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[5]",
+      "en": "With this scheme, the update is always at least one element behind. In the extreme case in which there is no streak, all the updates will simply always be one element behind. This is the reason why after a thread has completed scanning all input elements and exited the loop, the threads need to check whether there is a need to flush out the 【1】accumulator【/1】 value (line 27). If so, the accumulator value is flushed to the right 【2】histo_s【/2】 element (line 28).",
+      "zh": "在这种方案下，更新总是至少落后一个元素。在没有连串更新这一最极端的情况下，所有更新都总是落后一个元素。正因如此，在线程扫描完所有输入元素并退出循环之后，线程需要检查是否还有必要把【1】accumulator【/1】的值冲刷出来（第 27 行）。如果有必要，就把 accumulator 的值冲刷到正确的【2】histo_s【/2】元素中（第 28 行）。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[6]",
+      "en": "One important observation is that the aggregated kernel requires more statements and variables. Thus if the contention rate is low, an aggregated kernel may execute at lower speed than the simple kernel. However, if the data distribution leads to heavy contention in atomic operation execution, aggregation may result in significantly higher speed. The added if-statement can potentially exhibit control divergence. However, if there is either no contention or heavy contention, there will be little control divergence, since the threads would either all be flushing the accumulator value or all be in a streak. In the case in which some threads will be in a streak and some will be flushing out their accumulator values, the control divergence is likely to be compensated by the reduced contention.",
+      "zh": "一个重要观察是，聚合式核函数需要更多的语句和变量。因此，如果竞争率低，聚合式核函数的执行速度可能低于简单核函数。但是，如果数据分布导致原子操作执行时竞争激烈，聚合就可能带来显著更高的速度。新增的 if 语句可能会表现出控制发散。不过，如果要么没有竞争、要么竞争激烈，就几乎不会出现控制发散，因为线程要么全部在冲刷 accumulator 的值，要么全部处于连串更新中。在有些线程处于连串更新、有些线程在冲刷 accumulator 值的情况下，控制发散很可能会被减轻的竞争所抵消。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "9.7 Summary",
+      "zh": "9.7 小结"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[1]",
+      "en": "Computing histograms is important for analyzing large datasets. It also represents an important class of parallel computation patterns in which the output location of each thread is data-dependent, which makes it infeasible to apply the owner-computes rule. It is therefore a natural vehicle for introducing the concept of read-modify-write race conditions and the practical use of atomic operations that ensure the integrity of concurrent read-modify-write operations to the same memory location.",
+      "zh": "计算直方图对分析大型数据集非常重要。它还代表了一类重要的并行计算模式：在这类模式中，每个线程的输出位置取决于数据，因此无法应用属主计算规则。因此，直方图自然成为引入读-改-写竞态条件概念以及原子操作实际应用的载体——原子操作保证了作用于同一内存位置的并发读-改-写操作的完整性。"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[2]",
+      "en": "Unfortunately, as we explained in this chapter, atomic operations have much lower throughput than simpler memory read or write operations because their throughput is approximately the inverse of two times the memory latency. Thus in the presence of heavy contention, histogram computation can have surprisingly low computation throughput. Privatization is introduced as an important optimization technique that systematically reduces contention and can further enable the use of shared memory, which supports low latency and thus high throughput. In fact, supporting fast atomic operations among threads in a block is an important use case of the shared memory. Coarsening was also applied to reduce the number of private copies that need to be merged, and different coarsening strategies that use contiguous partitioning and interleaved partitioning were compared. Finally, for datasets that cause heavy contention, aggregation can also lead to significantly higher execution speed.",
+      "zh": "遗憾的是，正如我们在本章中说明的，原子操作的吞吐量远低于简单的内存读或写操作，因为其吞吐量大约等于两倍内存延迟的倒数。因此，在竞争激烈的情况下，直方图计算的计算吞吐量可能低得出乎意料。本章把私有化作为一种重要的优化技术加以介绍，它能系统地减少竞争，还能进一步支持共享内存的使用——共享内存延迟低，因而吞吐量高。事实上，支持线程块内线程之间的快速原子操作，是共享内存的一个重要用例。本章还应用了粗化来减少需要归并的私有副本数量，并比较了采用连续划分与交错划分的不同粗化策略。最后，对于会造成激烈竞争的数据集，聚合也能带来显著更高的执行速度。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    }
+  ]
+}

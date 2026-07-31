@@ -1,0 +1,155 @@
+{
+  "page": "Ch005_93-121_B9780323912310000185",
+  "nodes": [
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[9]",
+      "en": "With the boundary condition checks, the tile matrix multiplication kernel is just one step away from being a general matrix multiplication kernel. In general, matrix multiplication is defined for rectangular matrices: a j×k M matrix multiplied with a k×l N matrix results in a j×l P matrix. Our kernel can handle only square matrices so far.",
+      "zh": "有了边界条件检查，分块矩阵乘法核函数距离通用的矩阵乘法核函数只有一步之遥。一般来说，矩阵乘法针对矩形矩阵定义：j×k 的 M 矩阵与 k×l 的 N 矩阵相乘，得到 j×l 的 P 矩阵。我们的核函数到目前为止只能处理方阵。"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[10]",
+      "en": "Fortunately, it is quite easy to extend our kernel further into a general matrix multiplication kernel. We need to make a few simple changes. First, the 【1】Width【/1】 argument is replaced by three unsigned integer arguments: 【2】j【/2】, 【3】k【/3】, 【4】l【/4】. Where 【5】Width【/5】 is used to refer to the height of M or height of P, replace it with 【6】j【/6】. Where 【7】Width【/7】 is used to refer to the width of M or height of N, replace it with 【8】k【/8】. Where 【9】Width【/9】 is used to refer to the width of N or width of P, replace it with 【10】l【/10】. The revision of the kernel with these changes is left as an exercise.",
+      "zh": "幸运的是，把我们的核函数进一步扩展为通用矩阵乘法核函数是相当容易的。我们需要做几个简单的修改。首先，把【1】Width【/1】参数替换为三个无符号整数参数：【2】j【/2】、【3】k【/3】、【4】l【/4】。凡是用【5】Width【/5】表示 M 的高度或 P 的高度的地方，都用【6】j【/6】替换。凡是用【7】Width【/7】表示 M 的宽度或 N 的高度的地方，都用【8】k【/8】替换。凡是用【9】Width【/9】表示 N 的宽度或 P 的宽度的地方，都用【10】l【/10】替换。带有这些修改的核函数修订留作练习。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "5.6 Impact of memory usage on occupancy",
+      "zh": "5.6 内存使用对占用率的影响"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "Recall that in 【1】Chapter 4【/1】, Compute Architecture and Scheduling, we discussed the importance of maximizing the occupancy of threads on SMs to be able to tolerate long latency operations. The memory usage of a kernel plays an important role in occupancy tuning. While CUDA registers and shared memory can be extremely effective at reducing the number of accesses to global memory, one must be careful to stay within the SM’s capacity of these memories. Each CUDA device offers limited resources, which limits the number threads that can simultaneously reside in the SM for a given application. In general, the more resources each thread requires, the fewer the number of threads that can reside in each SM.",
+      "zh": "回忆【1】第 4 章【/1】“计算体系结构与调度”中的内容，我们讨论了最大化 SM 上线程占用率对于容忍长延迟操作的重要性。核函数的内存使用在占用率调优中起着重要作用。虽然 CUDA 寄存器和共享内存在减少全局内存访问次数方面可以极其有效，但必须小心不要超出 SM 对这些内存的容量。每个 CUDA 设备提供的资源有限，这限制了对给定应用而言可以同时驻留在 SM 中的线程数量。一般来说，每个线程需要的资源越多，每个 SM 中可以驻留的线程就越少。"
+    },
+    {
+      "id": "p0370",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "We saw in 【1】Chapter 4【/1】, Compute Architecture and Scheduling, how register usage can be a limiting factor for occupancy. Shared memory usage can also limit the number of threads that can be assigned to each SM. For example, the A100 GPU can be configured to have up to 164 KB of shared memory per SM and supports a maximum of 2048 threads per SM. Thus for all 2048 thread slots to be used, a thread block should not use more than an average of (164 KB)/(2048 threads)=82 B/thread. In the tiled matrix multiplication example, every block has 【2】TILE_WIDTH【/2】【3】2【/3】 threads, and uses 【4】TILE_WIDTH【/4】【5】2【/5】*4B of shared memory for 【6】Mds【/6】 and 【7】TILE_WIDTH【/7】【8】2【/8】*4B of shared memory for 【9】Nds【/9】. Thus the thread block uses an average of (【10】TILE_WIDTH【/10】【11】2【/11】*4B + 【12】TILE_WIDTH【/12】【13】2【/13】*4B)/(【14】TILE_WIDTH【/14】【15】2【/15】 threads)=8 B/thread of shared memory. Therefore the tiled matrix multiplication kernel’s occupancy is not limited by the shared memory.",
+      "zh": "我们在【1】第 4 章【/1】“计算体系结构与调度”中看到，寄存器使用如何成为占用率的限制因素。共享内存的使用也会限制可以分配给每个 SM 的线程数量。例如，A100 GPU 可以配置为每个 SM 最多 164 KB 的共享内存，并且支持每个 SM 最多 2048 个线程。因此，要使用全部 2048 个线程槽位，一个线程块平均使用的共享内存不应超过 (164 KB)/(2048 个线程)=82 B/线程。在分块矩阵乘法示例中，每个线程块有【2】TILE_WIDTH【/2】【3】2【/3】个线程，并使用【4】TILE_WIDTH【/4】【5】2【/5】*4B 的共享内存存放【6】Mds【/6】，使用【7】TILE_WIDTH【/7】【8】2【/8】*4B 的共享内存存放【9】Nds【/9】。因此，该线程块平均使用 (【10】TILE_WIDTH【/10】【11】2【/11】*4B + 【12】TILE_WIDTH【/12】【13】2【/13】*4B)/(【14】TILE_WIDTH【/14】【15】2【/15】 个线程)=8 B/线程 的共享内存。因此，分块矩阵乘法核函数的占用率不受共享内存的限制。"
+    },
+    {
+      "id": "p0375",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "However, consider a kernel that has thread blocks that use 32 KB of shared memory, each of which has 256 threads. In this case, the kernel uses an average of (32 KB)/(256 threads)=132 B/thread of shared memory. With such shared memory usage, the kernel cannot achieve full occupancy. Each SM can host a maximum of only (164 KB)/(132 B/thread)=1272 threads. Therefore the maximum achievable occupancy of this kernel will be (1272 assigned threads)/(2048 maximum threads)=62%.",
+      "zh": "然而，考虑一个线程块使用 32 KB 共享内存、每个线程块有 256 个线程的核函数。在这种情况下，核函数平均使用 (32 KB)/(256 个线程)=132 B/线程 的共享内存。在如此高的共享内存使用量下，核函数无法达到满占用率。每个 SM 最多只能容纳 (164 KB)/(132 B/线程)=1272 个线程。因此，这个核函数能达到的最大占用率为 (1272 个已分配线程)/(2048 个最大线程)=62%。"
+    },
+    {
+      "id": "p0380",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[4]",
+      "en": "Note that the size of shared memory in each SM can also vary from device to device. Each generation or model of devices can have a different amount of shared memory in each SM. It is often desirable for a kernel to be able to use different amounts of shared memory according to the amount available in the hardware. That is, we may want a host code to dynamically determine the size of the shared memory and adjust the amount of shared memory that is used by a kernel. This can be done by calling the 【1】cudaGetDeviceProperties【/1】 function. Assume that variable 【2】&amp;devProp【/2】 is passed to the function. In this case, the field 【3】devProp.sharedMemPerBlock【/3】 gives the amount of shared memory that is available in each SM. The programmer can then determine the amount of shared memory that should be used by each block.",
+      "zh": "注意，每个 SM 中共享内存的大小也因设备而异。每一代或每一种型号的设备，其每个 SM 中的共享内存数量都可能不同。核函数通常希望能够根据硬件中可用的共享内存数量来使用不同量的共享内存。也就是说，我们可能希望主机代码动态地确定共享内存的大小，并调整核函数使用的共享内存量。这可以通过调用【1】cudaGetDeviceProperties【/1】函数来完成。假设变量【2】&amp;devProp【/2】被传给该函数。在这种情况下，字段【3】devProp.sharedMemPerBlock【/3】给出每个 SM 中可用的共享内存量。程序员随后可以确定每个线程块应使用的共享内存量。"
+    },
+    {
+      "id": "p0385",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[5]",
+      "en": "Unfortunately, the kernels in 【1】Figs. 5.9【/1】 and 【2】5.13【/2】 do not support any dynamic adjustment of shared memory usage by the host code. The declarations that are used in 【3】Fig. 5.9【/3】 hardwire the size of its shared memory usage to a compile-time constant:",
+      "zh": "遗憾的是，【1】图 5.9【/1】和【2】图 5.13【/2】中的核函数不支持主机代码对共享内存使用量进行任何动态调整。【3】图 5.9【/3】中使用的声明把其共享内存使用量硬编码为编译期常量："
+    },
+    {
+      "id": "p0400",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[6]",
+      "en": "That is, the size of 【1】Mds【/1】 and 【2】Nds【/2】 is set to be 【3】TILE_WIDTH【/3】【4】2【/4】 elements, whatever the value of 【5】TILE_WIDTH【/5】 is set to be at compile time. Since the code contains",
+      "zh": "也就是说，无论【5】TILE_WIDTH【/5】在编译时被设置为多少，【1】Mds【/1】和【2】Nds【/2】的大小都被设定为【3】TILE_WIDTH【/3】【4】2【/4】个元素。由于代码包含"
+    },
+    {
+      "id": "p0410",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[7]",
+      "en": "both 【1】Mds【/1】 and 【2】Nds【/2】 will have 256 elements. If we want to change the size of 【3】Mds【/3】 and 【4】Nds【/4】, we need to change the value of 【5】TILE_WIDTH【/5】 and recompile the code. The kernel cannot easily adjust its shared memory usage at runtime without recompilation.",
+      "zh": "【1】Mds【/1】和【2】Nds【/2】都将有 256 个元素。如果我们想改变【3】Mds【/3】和【4】Nds【/4】的大小，就需要改变【5】TILE_WIDTH【/5】的值并重新编译代码。不重新编译，核函数无法轻易地在运行时调整其共享内存使用量。"
+    },
+    {
+      "id": "p0415",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[8]",
+      "en": "We can enable such adjustment with a different style of declaration in CUDA by adding a 【1】C extern【/1】 keyword in front of the shared memory declaration and omitting the size of the array in the declaration. Based on this style, the declarations for 【2】Mds【/2】 and 【3】Nds【/3】 need to be merged into one dynamically allocated array:",
+      "zh": "我们可以用 CUDA 中另一种风格的声明来启用这种调整：在共享内存声明前加上【1】C extern【/1】关键字，并在声明中省略数组的大小。基于这种风格，【2】Mds【/2】和【3】Nds【/3】的声明需要合并为一个动态分配的数组："
+    },
+    {
+      "id": "p0425",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[9]",
+      "en": "Since there is only one merged array, we will also need to manually define where the 【1】Mds【/1】 section of the array starts and where the 【2】Nds【/2】 section starts. Note that the merged array is one-dimensional. We will need to access it by using a linearized index based on the vertical and horizontal indices.",
+      "zh": "由于只有一个合并后的数组，我们还需要手动定义数组中【1】Mds【/1】段从哪里开始、【2】Nds【/2】段从哪里开始。注意，合并后的数组是一维的。我们需要基于垂直和水平索引，使用线性化索引来访问它。"
+    },
+    {
+      "id": "p0430",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[10]",
+      "en": "At runtime, when we call the kernel, we can dynamically configure the amount of shared memory to be used for each block according to the device query result and supply that as a third configuration parameter to the kernel call. For example, the revised kernel could be launched with the following statements:",
+      "zh": "在运行时，当我们调用核函数时，可以根据设备查询结果动态地配置每个线程块使用的共享内存量，并把它作为第三个配置参数提供给核函数调用。例如，修改后的核函数可以用下面的语句启动："
+    },
+    {
+      "id": "p0445",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[11]",
+      "en": "where 【1】size_t【/1】 is a built-in type for declaring a variable to hold the size information for dynamically allocated data structures. The size is expressed in number of bytes. In our matrix multiplication example, for a 16×16 tile, we have a size of 2×16×16×4=2048 bytes to accommodate both 【2】Mds【/2】 and 【3】Nds【/3】. We have omitted the details of the calculation for setting the value of size at runtime and leave it as an exercise for the reader.",
+      "zh": "其中【1】size_t【/1】是一种内建类型，用于声明一个变量来保存动态分配的数据结构的大小信息。该大小以字节数表示。在我们的矩阵乘法示例中，对于 16×16 的分块，我们有 2×16×16×4=2048 字节的大小来容纳【2】Mds【/2】和【3】Nds【/3】。我们省略了在运行时设置 size 值的计算细节，把它留作读者的练习。"
+    },
+    {
+      "id": "p0450",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[12]",
+      "en": "In 【1】Fig. 5.14【/1】 we show how one can modify the kernel code in 【2】Figs. 5.9【/2】 and 【3】5.11【/3】 to use dynamically sized shared memory for the 【4】Mds【/4】 and 【5】Nds【/5】 arrays. It may also be useful to pass the sizes of each section of the array as arguments into the kernel function. In this example we added two arguments: The first argument is the size of the 【6】Mds【/6】 section, and the second argument is the size of the 【7】Nds【/7】 section, both in terms of bytes. Note that in the host code above, we passed size/2 as the values of these arguments, which is 1024 bytes. With the assignments in lines 06 and 07, the rest of the kernel code can use 【8】Mds【/8】 and 【9】Nds【/9】 as the base of the array and use a linearized index to access the 【10】Mds【/10】 and 【11】Nds【/11】 elements. For example, instead of using 【12】Mds[ty][tx]【/12】, one would use 【13】Mds[ty*TILE_WIDTH+tx].【/13】",
+      "zh": "在【1】图 5.14【/1】中，我们展示了如何修改【2】图 5.9【/2】和【3】图 5.11【/3】中的核函数代码，为【4】Mds【/4】和【5】Nds【/5】数组使用动态大小的共享内存。把数组各段的大小作为参数传入核函数也可能很有用。在这个示例中，我们添加了两个参数：第一个参数是【6】Mds【/6】段的大小，第二个参数是【7】Nds【/7】段的大小，都以字节为单位。注意，在上面的主机代码中，我们传入了 size/2 作为这些参数的值，即 1024 字节。借助第 06 行和第 07 行的赋值，核函数代码的其余部分可以把【8】Mds【/8】和【9】Nds【/9】用作数组的基址，并使用线性化索引访问【10】Mds【/10】和【11】Nds【/11】元素。例如，不用【12】Mds[ty][tx]【/12】，而用【13】Mds[ty*TILE_WIDTH+tx].【/13】"
+    },
+    {
+      "id": "n0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 5.14【/2】【/1】 Tiled matrix multiplication kernel with dynamically sized shared memory usage.",
+      "zh": "【1】【2】图 5.14【/2】【/1】 使用动态大小共享内存的分块矩阵乘法核函数。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "5.7 Summary",
+      "zh": "5.7 小结"
+    },
+    {
+      "id": "p0455",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[1]",
+      "en": "In summary, the execution speed of a program in modern processors can be severely limited by the speed of the memory. To achieve good utilization of the execution throughput of a CUDA devices, one needs to strive for a high compute to global memory access ratio in the kernel code. If the ratio is low, the kernel is memory-bound. That is, its execution speed is limited by the rate at which its operands are accessed from memory.",
+      "zh": "总而言之，在现代处理器中，程序的执行速度可能严重受限于内存的速度。为了充分利用 CUDA 设备的执行吞吐量，需要努力在核函数代码中获得较高的计算访存比。如果这个比值较低，核函数就是访存受限的。也就是说，它的执行速度受限于从内存访问其操作数的速率。"
+    },
+    {
+      "id": "p0460",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[2]",
+      "en": "CUDA provides access to registers, shared memory, and constant memory. These memories are much smaller than the global memory but can be accessed at much higher speed. Using these memories effectively requires redesign of the algorithm. We use matrix multiplication as an example to illustrate tiling, a popular strategy to enhance locality of data access and enable effective use of shared memory. In parallel programming, tiling uses barrier synchronization to force multiple threads to jointly focus on a subset of the input data at each phase of the execution so that the subset data can be placed into these special memory types to enable much higher access speed.",
+      "zh": "CUDA 提供对寄存器、共享内存和常量内存的访问。这些内存比全局内存小得多，但访问速度要高得多。有效使用这些内存需要对算法进行重新设计。我们以矩阵乘法为例说明分块，这是一种增强数据访问局部性、实现共享内存有效利用的常用策略。在并行编程中，分块使用屏障同步，强制多个线程在每个执行阶段共同聚焦于输入数据的一个子集，以便该子集数据可以被放入这些特殊类型的内存中，从而实现高得多的访问速度。"
+    },
+    {
+      "id": "p0465",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[3]",
+      "en": "However, it is important for CUDA programmers to be aware of the limited sizes of these special types of memory. Their capacities are implementation dependent. Once their capacities have been exceeded, they limit the number of threads that can be executing simultaneously in each SM and can negatively affect the GPU’s computation throughput as well as its ability to tolerate latency. The ability to reason about hardware limitations when developing an application is a key aspect of parallel programming.",
+      "zh": "然而，CUDA 程序员必须意识到这些特殊类型内存的有限容量。它们的容量取决于具体实现。一旦超出这些容量，它们就会限制每个 SM 中能同时执行的线程数量，并可能对 GPU 的计算吞吐量及其容忍延迟的能力产生不利影响。在开发应用时具备对硬件限制的推理能力，是并行编程的一个关键方面。"
+    },
+    {
+      "id": "p0470",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[4]",
+      "en": "Although we introduced tiled algorithms in the context of CUDA C programming, it is an effective strategy for achieving high-performance in virtually all types of parallel computing systems. The reason is that an application must exhibit locality in data access to make effective use of high-speed memories in these systems. For example, in a multicore CPU system, data locality allows an application to effectively use on-chip data caches to reduce memory access latency and achieve high performance. These on-chip data caches are also of limited size and require the computation to exhibit locality. Therefore the reader will also find the tiled algorithm useful when developing a parallel application for other types of parallel computing systems using other programming models.",
+      "zh": "虽然我们是在 CUDA C 编程的语境下介绍分块算法的，但它在几乎所有类型的并行计算系统中都是实现高性能的有效策略。原因是应用必须在数据访问中表现出局部性，才能有效利用这些系统中的高速内存。例如，在多核 CPU 系统中，数据局部性使应用能够有效利用片上数据缓存来降低内存访问延迟并实现高性能。这些片上数据缓存同样容量有限，要求计算表现出局部性。因此，读者在使用其他编程模型为其他类型的并行计算系统开发并行应用时，也会发现分块算法很有用。"
+    },
+    {
+      "id": "p0475",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[5]",
+      "en": "Our goal for this chapter was to introduce the concept of locality, tiling, and different CUDA memory types. We introduced a tiled matrix multiplication kernel using shared memory. We further studied the need for boundary test conditions to allow for arbitrary data dimensions in applying tiling techniques. We also briefly discussed the use of dynamically sized shared memory allocation so that the kernel can adjust the size of shared memory that is used by each block according to the hardware capability. We did not discuss the use of registers in tiling. We will explain the use of registers in tiled algorithms when we discuss parallel algorithm patterns in Part II of the book.",
+      "zh": "本章的目标是介绍局部性、分块以及不同类型 CUDA 内存的概念。我们介绍了一个使用共享内存的分块矩阵乘法核函数。我们还进一步研究了在应用分块技术时，为支持任意数据维度而进行边界测试的必要性。我们还简要讨论了动态大小共享内存分配的使用，使核函数能够根据硬件能力调整每个线程块使用的共享内存大小。我们没有讨论分块中寄存器的使用。我们将在本书第二部分讨论并行算法模式时，解释分块算法中寄存器的使用。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[1]",
+      "en": "1. Consider matrix addition. Can one use shared memory to reduce the global memory bandwidth consumption? Hint: Analyze the elements that are accessed by each thread and see whether there is any commonality between threads.",
+      "zh": "1. 考虑矩阵加法。能否使用共享内存来减少全局内存带宽的消耗？提示：分析每个线程访问的元素，看看线程之间是否存在任何共性。"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[2]",
+      "en": "2. Draw the equivalent of 【1】Fig. 5.7【/1】 for a 8×8 matrix multiplication with 2×2 tiling and 4×4 tiling. Verify that the reduction in global memory bandwidth is indeed proportional to the dimension size of the tiles.",
+      "zh": "2. 画出相当于【1】图 5.7【/1】的示意图，分别针对 8×8 矩阵乘法使用 2×2 分块和 4×4 分块的情况。验证全局内存带宽的减少确实与分块的维数大小成正比。"
+    }
+  ]
+}

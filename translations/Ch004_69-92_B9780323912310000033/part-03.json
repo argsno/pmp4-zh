@@ -1,0 +1,155 @@
+{
+  "page": "Ch004_69-92_B9780323912310000033",
+  "nodes": [
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "When an instruction to be executed by a warp needs to wait for the result of a previously initiated long-latency operation, the warp is not selected for execution. Instead, another resident warp that is no longer waiting for results of previous instructions will be selected for execution. If more than one warp is ready for execution, a priority mechanism is used to select one for execution. This mechanism of filling the latency time of operations from some threads with work from other threads is often called “latency tolerance” or “latency hiding” (see the “Latency Tolerance” sidebar).",
+      "zh": "当某个线程束要执行的指令需要等待先前发起的某个长延迟操作的结果时，该线程束不会被选中执行。相反，会挑选另一个已不再等待先前指令结果的驻留线程束来执行。如果有多个线程束都准备好了，则使用一种优先级机制从中选一个执行。这种用其他线程的工作来填充部分线程操作延迟时间的机制，通常被称为“延迟容忍”或“延迟隐藏”（参见“延迟容忍”补充栏）。"
+    },
+    {
+      "id": "n0076",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/p[1]",
+      "en": "Latency Tolerance",
+      "zh": "延迟容忍"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/p[2]",
+      "en": "【1】Latency tolerance is needed in many everyday situations. For example, in post offices, each person who is trying to ship a package should ideally have filled out all the forms and labels before going to the service counter. However, as we all have experienced, some people wait for the service desk clerk to tell them which form to fill out and how to fill out the form【/1】.",
+      "zh": "【1】延迟容忍在许多日常情境中都是需要的。例如，在邮局里，每个想寄包裹的人都应该在去服务台之前填好所有表格和标签。然而，正如我们都经历过的，有些人会等着服务台工作人员告诉他们该填哪张表格、如何填写【/1】。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/p[3]",
+      "en": "【1】When there is a long line in front of the service desk, it is important to maximize the productivity of the service clerks. Letting a person fill out the form in front of the clerk while everyone waits is not a good approach. The clerk should be helping the next customers who are waiting in line while the person fills out the form. These other customers are “ready to go” and should not be blocked by the customer who needs more time to fill out a form【/1】.",
+      "zh": "【1】当服务台前排着长队时，最大限度地提高服务人员的工作效率就很重要。让一个人站在工作人员面前填表而其他所有人都等着，并不是一个好办法。这个人填表期间，工作人员应该去帮助排在后面的其他顾客。这些顾客“随时可以办理”，不应被那位需要更多时间填表的顾客挡住【/1】。"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/p[4]",
+      "en": "【1】This is why a good clerk would politely ask the first customer to step aside to fill out the form while the clerk serves other customers. In most cases, instead of going to the end of the line, the first customer will be served as soon as he or she finishes the form and the clerk finishes serving the current customer【/1】.",
+      "zh": "【1】这就是为什么一位好的工作人员会礼貌地请第一位顾客站到一旁填表，同时继续为其他顾客服务。在大多数情况下，第一位顾客不需要排到队尾，只要他或她填完表、工作人员也服务完当前顾客，就会立即得到服务【/1】。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/p[5]",
+      "en": "【1】We can think of these post office customers as warps and the clerk as a hardware execution unit. The customer who needs to fill out the form corresponds to a warp whose continued execution is dependent on a long-latency operation【/1】.",
+      "zh": "【1】我们可以把这些邮局顾客想象成线程束，把工作人员想象成硬件执行单元。需要填表的顾客对应一个其后续执行依赖于某个长延迟操作的线程束【/1】。"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[4]",
+      "en": "Note that warp scheduling is also used for tolerating other types of operation latencies, such as pipelined floating-point arithmetic and branch instructions. With enough warps around, the hardware will likely find a warp to execute at any point in time, thus making full use of the execution hardware while the instructions of some warps wait for the results of these long-latency operations. The selection of warps that are ready for execution does not introduce any idle or wasted time into the execution timeline, which is referred to as 【1】zero-overhead thread scheduling【/1】 (see the “Threads, Context-switching, and Zero-overhead Scheduling” sidebar). With warp scheduling, the long waiting time of warp instructions is “hidden” by executing instructions from other warps. This ability to tolerate long operation latencies is the main reason why GPUs do not dedicate nearly as much chip area to cache memories and branch prediction mechanisms as CPUs do. As a result, GPUs can dedicate more chip area to floating-point execution and memory access channel resources.",
+      "zh": "请注意，线程束调度也用于容忍其他类型的操作延迟，例如流水线浮点运算和分支指令。只要有足够多的线程束在场，硬件在任意时刻都可能找到某个可执行的线程束，从而在部分线程束的指令等待这些长延迟操作结果的同时，充分利用执行硬件。对已准备好执行的线程束的挑选，不会在执行时间线上引入任何空闲或浪费的时间，这被称为【1】零开销线程调度【/1】（参见“线程、上下文切换与零开销调度”补充栏）。借助线程束调度，线程束指令的长时间等待被其他线程束指令的执行“隐藏”了起来。这种容忍长操作延迟的能力，是 GPU 不像 CPU 那样把几乎同样多的芯片面积用于缓存和分支预测机制的主要原因。因此，GPU 可以把更多的芯片面积用于浮点执行和内存访问通道资源。"
+    },
+    {
+      "id": "n0082",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[2]/p[1]",
+      "en": "Threads, Context-switching, and Zero-overhead Scheduling",
+      "zh": "线程、上下文切换与零开销调度"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[2]/p[2]",
+      "en": "【1】Based on the von Neumann model, we are ready to more deeply understand how threads are implemented. A thread in modern computers is a program and the state of executing the program on a von Neumann Processor. Recall that a thread consists of the code of a program, the instruction in the code that is being executed, and value of its variables and data structures【/1】.",
+      "zh": "【1】基于冯·诺依曼模型，我们可以更深入地理解线程是如何实现的。在现代计算机中，一个线程就是一个程序以及该程序在冯·诺依曼处理器上执行的状态。回想一下，线程由程序的代码、代码中正在执行的指令，以及其变量和数据结构的值组成【/1】。"
+    },
+    {
+      "id": "p9280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[2]/p[3]",
+      "en": "【1】In a computer based on the von Neumann model, the code of the program is stored in the memory. The PC keeps track of the address of the instruction of the program that is being executed. The IR holds the instruction that is being executed. The register and memory hold the values of the variables and data structures【/1】.",
+      "zh": "【1】在基于冯·诺依曼模型的计算机中，程序代码存储在内存里。PC 跟踪程序中正在执行的指令的地址。IR 保存正在执行的指令。寄存器和内存保存变量和数据结构的值【/1】。"
+    },
+    {
+      "id": "p9281",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[2]/p[4]",
+      "en": "【1】Modern processors are designed to allow context-switching, where multiple threads can time-share a processor by taking turns to make progress. By carefully saving and restoring the PC value and the contents of registers and memory, we can suspend the execution of a thread and correctly resume the execution of the thread later. However, saving and restoring register contents during context-switching in these processors can incur significant overhead in terms of added execution time【/1】.",
+      "zh": "【1】现代处理器被设计成支持上下文切换，即多个线程可以轮流取得进展，分时共享一个处理器。通过仔细地保存和恢复 PC 值以及寄存器和内存的内容，我们可以挂起一个线程的执行，并在稍后正确地恢复该线程的执行。然而，在这些处理器中进行上下文切换时，保存和恢复寄存器内容会带来显著的开销，表现为额外增加的执行时间【/1】。"
+    },
+    {
+      "id": "p9282",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[2]/p[5]",
+      "en": "【1】Zero-overhead scheduling refers to the GPU's ability to put a warp that needs to wait for a long-latency instruction result to sleep and activate a warp that is ready to go without introducing any extra idle cycles in the processing units. Traditional CPUs incur such idle cycles because switching the execution from one thread to another requires saving the execution state (such as register contents of the out-going thread) to memory and loading the execution state of the incoming thread from memory. GPU SMs achieves zero-overhead scheduling by holding all the execution states for the assigned warps in the hardware registers so there is no need to save and restore states when switching from one warp to another【/1】.",
+      "zh": "【1】零开销调度指的是 GPU 的这种能力：让需要等待长延迟指令结果的线程束进入休眠，并激活一个随时可以执行的线程束，而不会在处理单元中引入任何额外的空闲周期。传统 CPU 之所以会产生这类空闲周期，是因为把执行从一个线程切换到另一个线程，需要把执行状态（例如离开线程的寄存器内容）保存到内存，并从内存载入进入线程的执行状态。GPU 的 SM 通过把分配给它的所有线程束的执行状态保存在硬件寄存器中来实现零开销调度，因此在从一个线程束切换到另一个线程束时，无需保存和恢复状态【/1】。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[6]",
+      "en": "For latency tolerance to be effective, it is desirable for an SM to have many more threads assigned to it than can be simultaneously supported with its execution resources to maximize the chance of finding a warp that is ready to execute at any point in time. For example, in an Ampere A100 GPU, an SM has 64 cores but can have up to 2048 threads assigned to it at the same time. Thus the SM can have up to 32 times more threads assigned to it than its cores can support at any given clock cycle. This oversubscription of threads to SMs is essential for latency tolerance. It increases the chances of finding another warp to execute when a currently executing warp encounters a long-latency operation.",
+      "zh": "要使延迟容忍行之有效，理想的做法是让分配给 SM 的线程数量远多于其执行资源所能同时支持的数量，从而在任意时刻都能最大限度地找到可执行的线程束。例如，Ampere A100 GPU 的 SM 有 64 个核心，但可以同时分配给它多达 2048 个线程。因此，分配给 SM 的线程数量可以是其核心在任意一个时钟周期内所能支持数量的 32 倍之多。这种线程对 SM 的过度订阅对延迟容忍至关重要。它增加了在当前执行的线程束遇到长延迟操作时找到另一个线程束来执行的机会。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "4.7 Resource partitioning and occupancy",
+      "zh": "4.7 资源划分与占用率"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[1]",
+      "en": "We have seen that it is desirable to assign many warps to an SM in order to tolerate long-latency operations. However, it may not always be possible to assign to the SM the maximum number of warps that the SM supports. The ratio of the number of warps assigned to an SM to the maximum number it supports is referred to as 【1】occupancy【/1】. To understand what may prevent an SM from reaching maximum occupancy, it is important first to understand how SM resources are partitioned.",
+      "zh": "我们已经看到，为了容忍长延迟操作，给 SM 分配尽可能多的线程束是可取的。然而，把 SM 所支持的最大线程束数量分配给 SM 并不总是可行的。分配给 SM 的线程束数量与其支持的最大线程束数量之比称为【1】占用率【/1】。要理解是什么因素可能阻止 SM 达到最大占用率，首先理解 SM 的资源是如何划分的很重要。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[2]",
+      "en": "The execution resources in an SM include registers, shared memory (discussed in 【1】Chapter 5【/1】, Memory Architecture and Data Locality), thread block slots, and thread slots. These resources are dynamically partitioned across threads to support their execution. For example, an Ampere A100 GPU can support a maximum of 32 blocks per SM, 64 warps (2048 threads) per SM, and 1024 threads per block. If a grid is launched with a block size of 1024 threads (the maximum allowed), the 2048 thread slots in each SM are partitioned and assigned to 2 blocks. In this case, each SM can accommodate up to 2 blocks. Similarly, if a grid is launched with a block size of 512, 256, 128, or 64 threads, the 2048 thread slots are partitioned and assigned to 4, 8, 16, or 32 blocks, respectively.",
+      "zh": "SM 中的执行资源包括寄存器、共享内存（在【1】第 5 章【/1】“内存体系结构与数据局部性”中讨论）、线程块槽位和线程槽位。这些资源在线程之间动态划分，以支持线程的执行。例如，Ampere A100 GPU 每个 SM 最多支持 32 个线程块、每个 SM 最多 64 个线程束（2048 个线程）、每个线程块最多 1024 个线程。如果用大小为 1024 个线程的线程块（所允许的最大值）启动网格，则每个 SM 中的 2048 个线程槽位会被划分并分配给 2 个线程块。在这种情况下，每个 SM 最多可容纳 2 个线程块。类似地，如果用大小为 512、256、128 或 64 个线程的线程块启动网格，2048 个线程槽位将分别被划分并分配给 4、8、16 或 32 个线程块。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[3]",
+      "en": "This ability to dynamically partition thread slots among blocks makes SMs versatile. They can either execute many blocks each having few threads or execute few blocks each having many threads. This dynamic partitioning can be contrasted with a fixed partitioning method in which each block would receive a fixed amount of resources regardless of its real needs. Fixed partitioning results in wasted thread slots when a block requires fewer threads than the fixed partition supports and fails to support blocks that require more thread slots than that.",
+      "zh": "这种在线程块之间动态划分线程槽位的能力使 SM 具有很高的灵活性。它们既可以执行许多线程数很少的线程块，也可以执行少量线程数很多的线程块。这种动态划分可以与固定划分方法形成对比：在固定划分中，每个线程块无论实际需要多少资源，都获得固定的资源量。当线程块需要的线程数少于固定划分所支持的数量时，固定划分会导致线程槽位浪费；而当线程块需要的线程槽位多于固定划分提供的数量时，固定划分又无法支持。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[4]",
+      "en": "Dynamic partitioning of resources can lead to subtle interactions between resource limitations, which can cause underutilization of resources. Such interactions can occur between block slots and thread slots. In the example of the Ampere A100, we saw that the block size can be varied from 1024 to 64, resulting in 2–32 blocks per SM, respectively. In all these cases, the total number of threads assigned to the SM is 2048, which maximizes occupancy. Consider, however, the case when each block has 32 threads. In this case, the 2048 thread slots would need to be partitioned and assigned to 64 blocks. However, the Volta SM can support only 32 blocks slots at once. This means that only 1024 of the thread slots will be utilized, that is, 32 blocks with 32 threads each. The occupancy in this case is (1024 assigned threads)/(2048 maximum threads) = 50%. Therefore to fully utilize the thread slots and achieve maximum occupancy, one needs at least 64 threads in each block.",
+      "zh": "资源的动态划分可能导致各种资源限制之间产生微妙的相互作用，从而造成资源利用不足。这种相互作用可能发生在线程块槽位与线程槽位之间。在 Ampere A100 的例子中，我们看到线程块大小可以从 1024 变化到 64，分别使每个 SM 有 2–32 个线程块。在所有上述情况下，分配给 SM 的线程总数都是 2048，这使占用率达到最大。然而，考虑每个线程块有 32 个线程的情况。此时 2048 个线程槽位需要被划分并分配给 64 个线程块。但是，Volta 的 SM 一次最多只能支持 32 个线程块槽位。这意味着只有 1024 个线程槽位会被利用，也就是 32 个线程块、每块 32 个线程。此时的占用率为 (1024 个已分配线程)/(2048 个最大线程) = 50%。因此，要充分利用线程槽位并达到最大占用率，每个线程块至少需要有 64 个线程。"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[5]",
+      "en": "Another situation that could negatively affect occupancy occurs when the maximum number of threads per block is not divisible by the block size. In the example of the Ampere A100, we saw that up to 2048 threads per SM can be supported. However, if a block size of 768 is selected, the SM will be able to accommodate only 2 thread blocks (1536 threads), leaving 512 thread slots unutilized. In this case, neither the maximum threads per SM nor the maximum blocks per SM are reached. The occupancy in this case is (1536 assigned threads)/(2,048 maximum threads) = 75%.",
+      "zh": "另一种可能对占用率产生负面影响的情况是：每个线程块的最大线程数不能被线程块大小整除。在 Ampere A100 的例子中，我们看到每个 SM 最多可以支持 2048 个线程。然而，如果选择 768 作为线程块大小，SM 将只能容纳 2 个线程块（1536 个线程），留下 512 个线程槽位未利用。在这种情况下，既达不到每个 SM 的最大线程数，也达不到每个 SM 的最大线程块数。此时的占用率为 (1536 个已分配线程)/(2048 个最大线程) = 75%。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[6]",
+      "en": "The preceding discussion does not consider the impact of other resource constraints, such as registers and shared memory. We will see in 【1】Chapter 5【/1】, Memory Architecture and Data Locality, that automatic variables declared in a CUDA kernel are placed into registers. Some kernels may use many automatic variables, and others may use few of them. Therefore one should expect that some kernels require many registers per thread and some require few. By dynamically partitioning registers in an SM across threads, the SM can accommodate many blocks if they require few registers per thread and fewer blocks if they require more registers per thread.",
+      "zh": "前面的讨论没有考虑其他资源约束的影响，例如寄存器和共享内存。我们将在【1】第 5 章【/1】“内存体系结构与数据局部性”中看到，在 CUDA 核函数中声明的自动变量会被放入寄存器。有些核函数可能使用很多自动变量，有些则用得很少。因此可以预期，有些核函数每个线程需要很多寄存器，有些则只需要很少。通过在 SM 中把寄存器动态划分给线程，SM 可以在每个线程所需寄存器很少时容纳许多线程块，而在每个线程所需寄存器较多时容纳较少的线程块。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[7]",
+      "en": "One does, however, need to be aware of potential impact of register resource limitations on occupancy. For example, the Ampere A100 GPU allows a maximum of 65,536 registers per SM. To run at full occupancy, each SM needs enough registers for 2048 threads, which means that each thread should not use more than (65,536 registers)/(2048 threads) = 32 registers per thread. For example, if a kernel uses 64 registers per thread, the maximum number of threads that can be supported with 65,536 registers is 1024 threads. In this case, the kernel cannot run with full occupancy regardless of what the block size is set to be. Instead, the occupancy will be at most 50%. In some cases, the compiler may perform register spilling to reduce the register requirement per thread and thus elevate the level of occupancy. However, this is typically at the cost of increased execution time for the threads to access the spilled register values from memory and may cause the total execution time of the grid to increase. A similar analysis is done for the shared memory resource in 【1】Chapter 5【/1】, Memory Architecture and Data Locality.",
+      "zh": "不过，确实需要留意寄存器资源限制对占用率的潜在影响。例如，Ampere A100 GPU 每个 SM 最多允许 65,536 个寄存器。要以满占用率运行，每个 SM 需要为 2048 个线程提供足够的寄存器，这意味着每个线程使用的寄存器数不应超过 (65,536 个寄存器)/(2048 个线程) = 每个线程 32 个寄存器。例如，如果某个核函数每个线程使用 64 个寄存器，那么 65,536 个寄存器最多可以支持 1024 个线程。在这种情况下，无论线程块大小如何设置，该核函数都无法以满占用率运行，占用率至多为 50%。在某些情况下，编译器可能会执行寄存器溢出，以减少每个线程的寄存器需求，从而提高占用率水平。然而，这通常以增加线程从内存访问被溢出的寄存器值的执行时间为代价，并可能导致整个网格的总执行时间增加。关于共享内存资源的类似分析将在【1】第 5 章【/1】“内存体系结构与数据局部性”中进行。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[8]",
+      "en": "Assume that a programmer implements a kernel that uses 31 registers per thread and configures it with 512 threads per block. In this case, the SM will have (2048 threads)/(512 threads/block) = 4 blocks running simultaneously. These threads will use a total of (2048 threads)×(31 registers/thread) = 63,488 registers, which is less than the 65,536 register limit. Now assume that the programmer declares another two automatic variables in the kernel, bumping the number of registers used by each thread to 33. The number of registers required by 2048 threads is now 67,584 registers, which exceeds the register limit. The CUDA runtime system may deal with this situation by assigning only 3 blocks to each SM instead of 4, thus reducing the number of registers required to 50,688 registers. However, this reduces the number of threads running on an SM from 2048 to 1536; that is, by using two extra automatic variables, the program saw a reduction in occupancy from 100% to 75%. This is sometimes referred to as a “performance cliff,” in which a slight increase in resource usage can result in significant reduction in parallelism and performance achieved (【1】Ryoo et al., 2008【/1】).",
+      "zh": "假设程序员实现了一个每个线程使用 31 个寄存器的核函数，并配置为每个线程块 512 个线程。此时，SM 将有 (2048 个线程)/(512 个线程/线程块) = 4 个线程块同时运行。这些线程总共使用 (2048 个线程)×(31 个寄存器/线程) = 63,488 个寄存器，低于 65,536 个寄存器的限制。现在假设程序员在核函数中又声明了两个自动变量，使每个线程使用的寄存器数增加到 33。此时 2048 个线程所需的寄存器数为 67,584 个，超过了寄存器上限。CUDA 运行时系统可能会通过只给每个 SM 分配 3 个线程块而不是 4 个来处理这种情况，从而把所需寄存器数减少到 50,688 个。但这会把 SM 上运行的线程数从 2048 减少到 1536；也就是说，仅仅多用了两个自动变量，程序占有的占用率就从 100% 下降到了 75%。这种现象有时被称为“性能悬崖”：资源使用量的微小增加，会导致并行度和性能的显著下降（【1】Ryoo 等，2008【/1】）。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[9]",
+      "en": "It should be clear to the reader that the constraints of all the dynamically partitioned resources interact with each other in a complex manner. Accurate determination of the number of threads running in each SM can be difficult. The reader is referred to the CUDA Occupancy Calculator (【1】CUDA Occupancy Calculator【/1】, Web) which is a downloadable spreadsheet that calculates the actual number of threads running on each SM for a particular device implementation given the usage of resources by a kernel.",
+      "zh": "读者应当清楚，所有动态划分资源的约束之间会以复杂的方式相互作用。要精确确定每个 SM 中运行的线程数是困难的。读者可参阅 CUDA 占用率计算器（【1】CUDA Occupancy Calculator【/1】，Web），它是一个可下载的电子表格，在给定核函数资源使用情况的情况下，计算出特定设备实现上每个 SM 实际运行的线程数。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/h2[1]",
+      "en": "4.8 Querying device properties",
+      "zh": "4.8 查询设备属性"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[1]",
+      "en": "Our discussion on partitioning of SM resources raises an important question: How do we find out the amount of resources available for a particular device? When a CUDA application executes on a system, how can it find out the number of SMs in a device and the number of blocks and threads that can be assigned to each SM? The same questions apply to other kinds of resources, some of which we have not discussed so far. In general, many modern applications are designed to execute on a wide variety of hardware systems. There is often a need for the application to 【1】query【/1】 the available resources and capabilities of the underlying hardware in order to take advantage of the more capable systems while compensating for the less capable systems (see the “Resource and Capability Queries” sidebar).",
+      "zh": "我们关于 SM 资源划分的讨论引出了一个重要问题：我们如何获知特定设备可用的资源量？当 CUDA 应用在某个系统上执行时，它如何获知设备中 SM 的数量，以及每个 SM 可以分配多少个线程块和线程？其他种类的资源也存在同样的问题，其中一些我们还没有讨论过。一般来说，许多现代应用被设计成在各种各样的硬件系统上运行。应用常常需要【1】查询【/1】底层硬件可用的资源和能力，以便利用能力更强的系统，同时弥补能力较弱的系统（参见“资源与能力查询”补充栏）。"
+    }
+  ]
+}

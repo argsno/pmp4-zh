@@ -1,0 +1,155 @@
+{
+  "page": "Ch009_191-210_B978032391231000015X",
+  "nodes": [
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[15]",
+      "en": "【1】Fig. 9.6【/1】 shows a CUDA kernel that performs parallel histogram computation. The code is similar to the sequential code in 【2】Fig. 9.2【/2】 with two key distinctions. The first distinction is that the loop over input elements is replaced with a thread index calculation (line 02) and a boundary check (line 03) to assign a thread to each input element. The second distinction is that the increment expression in 【3】Fig. 9.2【/3】:",
+      "zh": "【1】图 9.6【/1】展示了一个执行并行直方图计算的 CUDA 核函数。该代码与【2】图 9.2【/2】中的串行代码类似，但有两点关键区别。第一点区别是，对输入元素的循环被替换为线程索引计算（第 02 行）和边界检查（第 03 行），从而为每个输入元素分配一个线程。第二点区别是，【3】图 9.2【/3】中的递增表达式："
+    },
+    {
+      "id": "n0051",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[16]",
+      "en": "becomes an 【1】atomicAdd()【/1】 function call in 【2】Fig. 9.6【/2】 (line 06). The address of the location to be updated, 【3】&amp;(histo[alphabet_position/4])【/3】, is the first argument. The value to be added to the location, 1, is the second argument. This ensures that any simultaneous updates to any 【4】histo【/4】 array element by different threads are properly serialized.",
+      "zh": "递增表达式变成【1】atomicAdd()【/1】函数调用，如【2】图 9.6【/2】所示（第 06 行）。待更新位置的地址【3】&amp;(histo[alphabet_position/4])【/3】是第一个参数。要加到该位置的值 1 是第二个参数。这确保了不同线程对任何【4】histo【/4】数组元素的同时更新都会被正确地串行化。"
+    },
+    {
+      "id": "n0052",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[8]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.6【/1】 A CUDA kernel for calculation histogram.",
+      "zh": "【1】图 9.6【/1】 一个用于计算直方图的 CUDA 核函数。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "9.3 Latency and throughput of atomic operations",
+      "zh": "9.3 原子操作的延迟与吞吐量"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "The atomic operation that is used in the kernel of 【1】Fig. 9.6【/1】 ensures the correctness of updates by serializing any simultaneous updates to a location. As we know, serializing any portion of a massively parallel program can drastically increase the execution time and reduce the execution speed of the program. Therefore it is important that such serialized operations account for as little execution time as possible.",
+      "zh": "【1】图 9.6【/1】的核函数中所使用的原子操作，通过串行化对同一位置的任何同时更新来保证更新的正确性。我们知道，把大规模并行程序的任何一部分串行化都会大幅增加执行时间、降低程序的执行速度。因此，让这类被串行化的操作占用的执行时间尽可能少，是非常重要的。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "As we learned in 【1】Chapter 5【/1】, Memory Architecture and Data Locality, the access latency to data in DRAMs can take hundreds of clock cycles. In 【2】Chapter 4【/2】, Compute Architecture and Scheduling, we learned that GPUs use zero-cycle context switching to tolerate such latency. In 【3】Chapter 6【/3】, Performance Considerations, we learned that as long as we have many threads whose memory access latencies can overlap with each other, the execution speed is limited by the throughput of the memory system. Therefore it is important that GPUs make full use DRAM bursts, banks, and channels to achieve high memory access throughput.",
+      "zh": "正如我们在【1】第 5 章【/1】“内存体系结构与数据局部性”中所学的，访问 DRAM 中数据的延迟可能长达数百个时钟周期。在【2】第 4 章【/2】“计算体系结构与调度”中，我们学习了 GPU 如何利用零周期上下文切换来容忍这种延迟。在【3】第 6 章【/3】“性能考量”中，我们学习了只要存在大量内存访问延迟可以相互重叠的线程，执行速度就会受限于内存系统的吞吐量。因此，GPU 充分利用 DRAM 突发传输、存储体和通道来实现高内存访问吞吐量，是非常重要的。"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "It should be clear to the reader at this point that the key to high memory access throughput is to have many DRAM accesses that are simultaneously in progress. Unfortunately, this strategy breaks down when many atomic operations update the same memory location. In this case, the read-modify-write sequence of a trailing thread cannot start until the read-modify-write sequence of a leading thread is complete. As is shown in 【1】Fig. 9.7【/1】, the execution of atomic operations at the same memory location is such that there can be only one in progress. The duration of each atomic operation is approximately the latency of a memory load (left section of the atomic operation time) plus the latency of a memory store (right section of the atomic operation time). The length of these time sections of each read-modify-write operation, usually hundreds of clock cycles, defines the minimum amount of time that must be dedicated to servicing each atomic operation and limits the throughput, or the rate at which atomic operations can be performed.",
+      "zh": "读到此处，读者应当清楚，高内存访问吞吐量的关键在于同时有大量 DRAM 访问正在进行。遗憾的是，当许多原子操作更新同一个内存位置时，这一策略就会失效。在这种情况下，滞后线程的读-改-写序列必须等领先线程的读-改-写序列完成之后才能开始。如【1】图 9.7【/1】所示，对同一内存位置的原子操作的执行方式使得任何时刻只能有一个原子操作正在进行。每次原子操作的持续时间大约等于一次内存加载的延迟（原子操作时间的左段）加上一次内存存储的延迟（原子操作时间的右段）。每次读-改-写操作的这些时间段的长度，通常为数百个时钟周期，决定了服务每个原子操作必须花费的最短时间，并限制了吞吐量，也就是执行原子操作的速度。"
+    },
+    {
+      "id": "n0057",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 9.7【/2】【/1】 The throughput of an atomic operation is determined by the memory access latency.",
+      "zh": "【1】【2】图 9.7【/2】【/1】 原子操作的吞吐量由内存访问延迟决定。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "For example, assume a memory system with a 64-bit (8-byte) double data rate DRAM interface per channel, eight channels, 1 GHz clock frequency, and typical access latency of 200 cycles. The peak access throughput of the memory system is 8 (bytes/transfer) * 2 (transfers per clock per channel) * 1 G (clocks per second) * 8 (channels) = 128 GB/s. Assuming that each data accessed is 4 bytes, the system has a peak access throughput of 32 G data elements per second.",
+      "zh": "例如，假设一个内存系统的每个通道具有 64 位（8 字节）双倍数据速率（double data rate）DRAM 接口，共 8 个通道，时钟频率为 1 GHz，典型访问延迟为 200 个时钟周期。该内存系统的峰值访问吞吐量为 8（字节/传输）* 2（每时钟每通道传输次数）* 1 G（每秒时钟数）* 8（通道）= 128 GB/s。假设每次访问的数据为 4 字节，则系统的峰值访问吞吐量为每秒 32 G 个数据元素。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "However, in performing atomic operations on a particular memory location, the highest throughput that one can achieve is one atomic operation every 400 cycles (200 cycles for the read and 200 cycles for the write). This translates into a time-based throughput of 1/400 atomics/clock * 1 G (clocks/second) = 2.5 M atomics/second. This is dramatically lower than most users expect from a GPU memory system. Furthermore, the long latency of the sequence of atomic operations will likely dominate the kernel execution time and can dramatically lower the execution speed of the kernel.",
+      "zh": "然而，对特定内存位置执行原子操作时，能达到的最高吞吐量是每 400 个时钟周期一次原子操作（读 200 个周期，写 200 个周期）。这换算成基于时间的吞吐量为 1/400 原子操作/时钟 * 1 G（每秒时钟数）= 2.5 M 原子操作/秒。这远低于大多数用户对 GPU 内存系统的预期。此外，原子操作序列的漫长延迟很可能会主导核函数的执行时间，并大幅降低核函数的执行速度。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "In practice, not all atomic operations will be performed on a single memory location. In our text histogram example, the histogram has seven intervals. If the input characters were uniformly distributed in the alphabet, the atomic operations would be evenly distributed among the histo elements. This would boost the throughput to 7*2.5 M = 17.5 M atomic operations per second. In reality, the boost factor tends to be much lower than the number of intervals in the histogram because the characters tend to have a biased distribution in the alphabet. For example, in 【1】Fig. 9.1【/1】 we see that the characters in the example phrase are heavily biased toward the m-p and q-t intervals. The heavy contention traffic to update these intervals will likely reduce the achievable throughput to only around (28/10)*2.5 M = 7 M.",
+      "zh": "在实践中，并不是所有原子操作都会作用于同一个内存位置。在我们的文本直方图例子中，直方图有 7 个区间。如果输入字符在字母表中均匀分布，原子操作就会均匀分布在各个 histo 元素之间，从而把吞吐量提高到 7*2.5 M = 17.5 M 次原子操作/秒。实际上，提升倍数往往远低于直方图的区间数，因为字符在字母表中的分布往往有偏向。例如，在【1】图 9.1【/1】中可以看到，示例短语中的字符高度偏向 m-p 和 q-t 区间。更新这些区间的竞争流量很大，可能使可达吞吐量降到只有大约 (28/10)*2.5 M = 7 M。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "One approach to improving the throughput of atomic operations is to reduce the access latency to the heavily contended locations. Cache memories are the primary tool for reducing memory access latency. For this reason, modern GPUs allow atomic operations to be performed in the last-level cache, which is shared among all streaming multiprocessors (SMs). During an atomic operation, if the updated variable is found in the last-level cache, it is updated in the cache. If it cannot be found in the last-level cache, it triggers a cache miss and is brought into the cache, where it is updated. Since the variables that are updated by atomic operations tend to be heavily accessed by many threads, these variables tend to remain in the cache once they have been brought in from DRAM. Because the access time to the last-level cache is in tens of cycles rather than hundreds of cycles, the throughput of atomic operations is improved by at least an order of magnitude compared to early generations of GPU. This is an important reason why most modern GPUs support atomic operations in the last-level cache.",
+      "zh": "提高原子操作吞吐量的一种方法是降低对竞争激烈位置的访问延迟。缓存是降低内存访问延迟的主要工具。出于这个原因，现代 GPU 允许在末级缓存中执行原子操作，该缓存由所有流式多处理器（SM）共享。执行原子操作时，如果要更新的变量在末级缓存中找到，就在缓存中更新它；如果在末级缓存中找不到，就会触发缓存未命中，将该变量取入缓存后再更新。由于原子操作更新的变量往往被许多线程频繁访问，这些变量一旦从 DRAM 取入缓存，往往会一直留在缓存中。由于访问末级缓存的耗时是几十个时钟周期而不是几百个，与早期几代 GPU 相比，原子操作的吞吐量至少提高了一个数量级。这就是大多数现代 GPU 在末级缓存中支持原子操作的重要原因。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "9.4 Privatization",
+      "zh": "9.4 私有化"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "Another approach to improving the throughput of atomic operations is to alleviate the contention by directing the traffic away from the heavily contended locations. This can be achieved with a technique referred to as 【1】privatization【/1】 that is commonly used to address the heavy output interference problems in parallel computing. The idea is to replicate highly contended output data structures into private copies so that each subset of threads can update its private copy. The benefit is that the private copies can be accessed with much less contention and often at much lower latency. These private copies can dramatically increase the throughput for updating the data structures. The downside is that the private copies need to be merged into the original data structure after the computation completes. One must carefully balance between the level of contention and the merging cost. Therefore in massively parallel systems, privatization is typically done for subsets of threads rather than individual threads.",
+      "zh": "提高原子操作吞吐量的另一种方法是把访问流量从竞争激烈的位置引开，以减轻竞争。这可以通过一种称为【1】私有化【/1】的技术来实现，该技术常用于解决并行计算中严重的输出干扰问题。其思路是把竞争激烈的输出数据结构复制成多份私有副本，让每一组线程更新自己的私有副本。这样做的好处是访问私有副本时的竞争要小得多，延迟也往往低得多。这些私有副本可以大幅提高数据结构的更新吞吐量。缺点是在计算完成后，需要把私有副本归并回原始数据结构。人们必须仔细权衡竞争程度与归并成本。因此在大规模并行系统中，私有化通常针对线程子集而非单个线程进行。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "In our text histogram example we can create multiple private histograms and designate a subset of threads to update each of them. For example, we can create two private copies and have even-index blocks to update one of them and odd-index blocks to update the other. For another example, we can create four private copies and have blocks whose indices are of the form 4【1】n【/1】+【2】i【/2】 to update the ith private version for 【3】I【/3】=0, …, 3. A common approach is to create a private copy for each thread block. This approach has multiple advantages that we will see later.",
+      "zh": "在我们的文本直方图例子中，可以创建多个私有直方图，并指定一组线程来更新其中的每一份。例如，我们可以创建两份私有副本，让偶数索引的线程块更新其中一份，让奇数索引的线程块更新另一份。再如，我们可以创建四份私有副本，让索引形如 4【1】n【/1】+【2】i【/2】的线程块更新第 i 份私有版本，其中 【3】I【/3】=0, …, 3。一种常见做法是为每个线程块创建一份私有副本。这种方法有多个优点，我们稍后会看到。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "【1】Fig. 9.8【/1】 shows an example of how privatization is applied to the text histogram example from 【2】Fig. 9.3【/2】. In this example the threads are organized into thread blocks, each of which consists of eight threads (in practice, thread blocks are much larger). Each thread block receives a private copy of the histogram that it updates. As shown in 【3】Fig. 9.8【/3】, rather than having contention across all the threads that update the same histogram bin, contention will be experienced only between threads in the same block and when the private copies are being merged at the end.",
+      "zh": "【1】图 9.8【/1】展示了如何将私有化应用到【2】图 9.3【/2】的文本直方图例子中。在这个例子中，线程被组织成线程块，每个线程块由 8 个线程组成（实际上，线程块要大得多）。每个线程块都获得一份自己更新的直方图私有副本。如【3】图 9.8【/3】所示，竞争不再发生在所有更新同一直方图分箱的线程之间，而只发生在同一线程块内的线程之间，以及最后归并私有副本的时候。"
+    },
+    {
+      "id": "n0066",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.8【/1】 Private copies of histogram reduce contention of atomic operations.",
+      "zh": "【1】图 9.8【/1】 直方图的私有副本减少了原子操作的竞争。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "【1】Fig. 9.9【/1】 presents a simple kernel that creates and associates a private copy of the histogram to every block. In this scheme, up to 1024 threads would work on a copy of the histogram. In this kernel the private histograms are in the global memory. These private copies will likely be cached in the L2 cache for reduced latency and improved throughput.",
+      "zh": "【1】图 9.9【/1】展示了一个简单的核函数，它为每个线程块创建并关联一份直方图私有副本。在这种方案中，最多可有 1024 个线程处理同一份直方图副本。该核函数中的私有直方图位于全局内存中。这些私有副本很可能会被缓存在 L2 缓存中，从而降低延迟、提高吞吐量。"
+    },
+    {
+      "id": "n0068",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.9【/1】 Histogram kernel with private versions in global memory for thread blocks.",
+      "zh": "【1】图 9.9【/1】 为线程块在全局内存中存放私有版本的直方图核函数。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "The first part of the kernel in 【1】Fig. 9.9【/1】 (lines 02–08) is similar to the kernel in 【2】Fig. 9.6【/2】 with one key distinction. The kernel in 【3】Fig. 9.9【/3】 assumes that the host code will allocate enough device memory for the 【4】histo【/4】 array to hold all the private copies of the histogram, which amounts to gridDim.x*NUM_BINS*4 bytes. This is reflected in line 06, where each thread adds an offset of blockIdx.x*NUM_BINS to the index when performing atomic add on 【5】histo【/5】 elements (bins of the histogram). This offset shifts the position to the private copy for the block to which the thread belongs. In this case, the level of contention is reduced by a factor that is approximately the number of active blocks across all SMs. The effect of reduced contention can result in orders of magnitude of improvement in the update throughput for the kernel.",
+      "zh": "【1】图 9.9【/1】中核函数的第一部分（第 02–08 行）与【2】图 9.6【/2】中的核函数类似，只有一点关键区别。【3】图 9.9【/3】中的核函数假设主机代码会为【4】histo【/4】数组分配足够的设备内存，以容纳直方图的全部私有副本，其大小为 gridDim.x*NUM_BINS*4 字节。这一点体现在第 06 行：每个线程在对【5】histo【/5】元素（直方图的分箱）执行原子加时，会在索引上加上 blockIdx.x*NUM_BINS 的偏移量。该偏移量把位置移到该线程所属线程块的私有副本上。这样一来，竞争程度就会降低，降低的倍数大致等于所有 SM 上活动线程块的数量。竞争减少的效果可以使该核函数的更新吞吐量提升几个数量级。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "At the end of the execution, each thread block will commit the values in private copy into the version produced by block 0 (lines 09–17). That is, we promote the private copy of block 0 into a public copy that will hold the total results from all block. The threads in the block first wait for each other to finish updating the private copy (line 10). Next, the threads iterate over the private histogram bins (line 11), each thread being responsible for committing one or more of the private bins. A loop is used to accommodate an arbitrary number of bins. Each thread reads the value of the private bin for which it is responsible (line 13) and checks whether the bin is nonzero (line 13). If it is, the thread commits the value by atomically adding it to the copy of block 0 (line 14). Note that the addition needs to be performed atomically because threads from multiple blocks can be simultaneously performing the addition on the same location. Therefore at the end of the kernel execution, the final histogram will be in the first NUM_BINS elements of the histo array. Since only one thread from each block will be updating any given histo array element during this phase of the kernel execution, the level of contention for each location is very modest.",
+      "zh": "在执行结束时，每个线程块会把私有副本中的值提交到线程块 0 产生的副本中（第 09–17 行）。也就是说，我们把线程块 0 的私有副本提升为一份公有副本，用它保存所有线程块的总结果。块内线程首先互相等待，直到各自完成对私有副本的更新（第 10 行）。接着，线程们遍历私有直方图的分箱（第 11 行），每个线程负责提交一个或多个私有分箱。循环用来容纳任意数量的分箱。每个线程读取自己负责的私有分箱的值（第 13 行），并检查该分箱是否为非零（第 13 行）。如果是非零，线程就通过原子加把该值提交到线程块 0 的副本中（第 14 行）。注意，这种加法必须以原子方式执行，因为来自多个线程块的线程可能同时在同一位置执行加法。因此，在核函数执行结束时，最终的直方图将位于 histo 数组的前 NUM_BINS 个元素中。由于在核函数执行的这一阶段，每个线程块只有一个线程会更新给定的 histo 数组元素，每个位置的竞争程度都非常低。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "One benefit of creating a private copy of the histogram on a per-thread-block basis is that the threads can use 【1】__syncthreads()【/1】 to wait for each other before committing. If the private copy were accessed by multiple blocks, we would have needed to call another kernel to merge the private copies or used other sophisticated techniques. Another benefit of creating a private copy of the histogram on a per-thread-block basis is that if the number of bins in the histogram is small enough, the private copy of the histogram can be declared in shared memory. Using shared memory would not be possible if the private copy were accessed by multiple blocks because blocks do not have visibility of each other’s shared memory.",
+      "zh": "按线程块创建直方图私有副本的一个好处是，线程在提交前可以用【1】__syncthreads()【/1】互相等待。如果私有副本被多个线程块访问，我们就需要调用另一个核函数来归并私有副本，或者使用其他复杂的技术。按线程块创建直方图私有副本的另一个好处是，如果直方图的分箱数足够少，就可以把直方图的私有副本声明在共享内存中。如果私有副本被多个线程块访问，就无法使用共享内存，因为线程块之间彼此看不到对方的共享内存。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "Recall that any reduction in latency directly translates into improved throughput of atomic operations on the same memory location. The latency for accessing memory can be dramatically reduced by placing data in the shared memory. Shared memory is private to each SM and has very short access latency (a few cycles). This reduced latency directly translates into increased throughput of atomic operations.",
+      "zh": "回顾一下：同一内存位置上任何延迟的下降都会直接转化为原子操作吞吐量的提升。把数据放到共享内存中，可以大幅降低访问内存的延迟。共享内存对每个 SM 是私有的，访问延迟非常短（只有几个时钟周期）。这种延迟的下降直接转化为原子操作吞吐量的提升。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "【1】Fig. 9.10【/1】 shows a privatized histogram kernel that stores the private copies in the shared memory instead of global memory. The key difference from the kernel code in 【2】Fig. 9.9【/2】 is that the private copy of the histogram is allocated in shared memory in the 【3】histo_s【/3】 array and is initialized to 0 in parallel by the threads of the block (line 02–06). The barrier synchronization (line 07) ensures that all bins of the private histogram have been properly initialized before any thread starts to update them. The remaining code is identical to that in 【4】Fig. 9.9【/4】 except that the first atomic operation is performed on the elements of the shared memory array 【5】histo_s【/5】 (line 13) and the private bin value is later read from there (line 19).",
+      "zh": "【1】图 9.10【/1】展示了一个私有化直方图核函数，它将私有副本存放在共享内存而非全局内存中。它与【2】图 9.9【/2】中核函数代码的关键区别在于：直方图的私有副本在共享内存的【3】histo_s【/3】数组中分配，并由线程块内的线程并行初始化为 0（第 02–06 行）。屏障同步（第 07 行）确保私有直方图的所有分箱都在任何线程开始更新它们之前被正确初始化。其余代码与【4】图 9.9【/4】中的完全相同，区别仅在于第一次原子操作是对共享内存数组【5】histo_s【/5】的元素执行的（第 13 行），私有分箱的值稍后也从那里读取（第 19 行）。"
+    },
+    {
+      "id": "n0074",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.10【/1】 A privatized text histogram kernel using the shared memory.",
+      "zh": "【1】图 9.10【/1】 使用共享内存的私有化文本直方图核函数。"
+    }
+  ]
+}

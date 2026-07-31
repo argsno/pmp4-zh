@@ -1,0 +1,227 @@
+[
+  {
+    "en": "page fault",
+    "zh": "页错误",
+    "note": "22.1 统一内存；page fault handling 页错误处理，memory page fault 内存页错误"
+  },
+  {
+    "en": "managed memory",
+    "zh": "托管内存",
+    "note": "22.1 统一内存小节；CUDA 6 unified memory 创建的托管内存池"
+  },
+  {
+    "en": "virtual address space",
+    "zh": "虚拟地址空间",
+    "note": "22.1；32/49/64 位虚拟寻址相关"
+  },
+  {
+    "en": "physical address space",
+    "zh": "物理地址空间",
+    "note": "22.1"
+  },
+  {
+    "en": "virtual address",
+    "zh": "虚拟地址",
+    "note": "22.1"
+  },
+  {
+    "en": "address space",
+    "zh": "地址空间",
+    "note": "22.1 通用"
+  },
+  {
+    "en": "system interconnect",
+    "zh": "系统互连",
+    "note": "22.1；如 PCIe 总线、NVLink"
+  },
+  {
+    "en": "halo exchange",
+    "zh": "光环交换",
+    "note": "22.1 p0190；模板示例中不同 GPU 间的通信，由 halo cell（§5.4 光环单元）派生"
+  },
+  {
+    "en": "Unified Virtual Addressing",
+    "zh": "统一虚拟寻址",
+    "note": "22.1；CUDA 4 引入的特性名"
+  },
+  {
+    "en": "coherence",
+    "zh": "一致性",
+    "note": "22.1；coherence mechanism 一致性机制，区别于 §5.3 cache coherence（缓存一致性）"
+  },
+  {
+    "en": "data migration",
+    "zh": "数据迁移",
+    "note": "22.1 统一内存；migrate 迁移"
+  },
+  {
+    "en": "legacy library",
+    "zh": "遗留库",
+    "note": "22.1；尚未移植到 GPU 的传统库"
+  },
+  {
+    "en": "memory copy",
+    "zh": "内存拷贝",
+    "note": "22.1；device-to-device memory copies 设备到设备内存拷贝"
+  },
+  {
+    "en": "system memory",
+    "zh": "系统内存",
+    "note": "22.1；即主机内存"
+  },
+  {
+    "en": "predication",
+    "zh": "断言执行",
+    "note": "22.3 控制流效率；compiler-driven predication 编译器驱动的断言执行技术，勿与推测执行混淆"
+  },
+  {
+    "en": "PC sampling",
+    "zh": "PC 采样",
+    "note": "22.4 关键路径分析性能剖析；CUDA 7.5 引入的指令级剖析"
+  },
+  {
+    "en": "lambda",
+    "zh": "lambda 表达式",
+    "note": "22.2；C++11 lambdas、device lambdas（设备端 lambda）、extended lambdas（扩展 lambda）"
+  },
+  {
+    "en": "metaprogramming",
+    "zh": "元编程",
+    "note": "22.2；与 lambda 结合的模板元编程技术"
+  },
+  {
+    "en": "virtual function",
+    "zh": "虚函数",
+    "note": "22.2；C++ 等面向对象语言中的虚函数"
+  },
+  {
+    "en": "ray tracing",
+    "zh": "光线追踪",
+    "note": "22.3/22.5"
+  },
+  {
+    "en": "load imbalance",
+    "zh": "负载不均衡",
+    "note": "22.2 协作核函数小节；区别于 §5.4 load balance（负载均衡）"
+  },
+  {
+    "en": "multikernel execution",
+    "zh": "多核函数执行",
+    "note": "22 关键词；多个核函数并行执行"
+  },
+  {
+    "en": "kernel queues",
+    "zh": "核函数队列",
+    "note": "22 关键词"
+  },
+  {
+    "en": "unified virtual memory",
+    "zh": "统一虚拟内存",
+    "note": "22 关键词；区别于 unified memory（§5.3 统一内存）"
+  },
+  {
+    "en": "cooperating kernels",
+    "zh": "协作核函数",
+    "note": "22 关键词；与 §5.2 cooperative kernel（协作核函数）同义"
+  },
+  {
+    "en": "zero-copy system memory access",
+    "zh": "零拷贝系统内存访问",
+    "note": "22 关键词；由 zero-copy memory（§5.3 零拷贝内存）派生"
+  },
+  {
+    "en": "kernel invocation",
+    "zh": "核函数调用",
+    "note": "22.3 p0335；区别于 kernel launch（§5.2 核函数启动）"
+  },
+  {
+    "en": "floating-point arithmetic",
+    "zh": "浮点运算",
+    "note": "22.3；double/single-precision floating-point arithmetic 双/单精度浮点运算"
+  },
+  {
+    "en": "VLIW",
+    "zh": "VLIW（超长指令字）",
+    "note": "22.3；VLIW systems"
+  },
+  {
+    "en": "exception handling",
+    "zh": "异常处理",
+    "note": "22.2 核函数中的异常处理"
+  },
+  {
+    "en": "debugger",
+    "zh": "调试器",
+    "note": "22.2；CUDA debugger、breakpoint 断点"
+  },
+  {
+    "en": "dynamically linked library",
+    "zh": "动态链接库",
+    "note": "22.2；dynamic libraries for device code 设备代码的动态库"
+  },
+  {
+    "en": "system call",
+    "zh": "系统调用",
+    "note": "22.2"
+  },
+  {
+    "en": "mutex",
+    "zh": "互斥量",
+    "note": "22.2；mutual exclusion 互斥"
+  },
+  {
+    "en": "work queue",
+    "zh": "工作队列",
+    "note": "22.2 协作核函数小节"
+  },
+  {
+    "en": "call frame stack",
+    "zh": "调用帧栈",
+    "note": "22.2 p0245；CUDA 线程的大规模并行调用帧栈"
+  },
+  {
+    "en": "Visual Profiler",
+    "zh": "Visual Profiler",
+    "note": "保留英文（NVIDIA 工具名）；22.4"
+  },
+  {
+    "en": "CUDA FORTRAN",
+    "zh": "CUDA FORTRAN",
+    "note": "保留英文（编程接口名）；22.4"
+  },
+  {
+    "en": "C++AMP",
+    "zh": "C++AMP",
+    "note": "保留英文（编程接口名）；22.4"
+  },
+  {
+    "en": "OpenACC",
+    "zh": "OpenACC",
+    "note": "保留英文（编程接口名）；22.4"
+  },
+  {
+    "en": "collective operations",
+    "zh": "集合操作",
+    "note": "22.3 p0335；区别于 §5.9 collective communication（集合通信）"
+  },
+  {
+    "en": "batch",
+    "zh": "打包",
+    "note": "22.2 p0275；\"batch\" multiple kernels 把多个核函数打包成更大的核函数"
+  },
+  {
+    "en": "in core",
+    "zh": "常驻内存",
+    "note": "glossary false positive; 22.1 p0230，\"the entire dataset to be in core\" 指整个数据集驻留内存，非硬件核心（core）术语误报"
+  },
+  {
+    "en": "speed reduction",
+    "zh": "速度大幅降低",
+    "note": "glossary false positive; 22.3 p0300，归约（reduction）术语误报，此处为普通词义"
+  },
+  {
+    "en": "reduction in application development, porting, and maintenance cost",
+    "zh": "应用开发、移植和维护成本的下降",
+    "note": "glossary false positive; 22.5 p0385，归约（reduction）术语误报，此处为普通词义"
+  }
+]

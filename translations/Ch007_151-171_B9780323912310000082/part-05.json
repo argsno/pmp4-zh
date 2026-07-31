@@ -1,0 +1,23 @@
+{
+  "page": "Ch007_151-171_B9780323912310000082",
+  "nodes": [
+    {
+      "id": "o0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[9]",
+      "en": "9. Revise the 2D kernel in 【1】Fig. 7.9【/1】 to perform 3D convolution.",
+      "zh": "9. 修改【1】图 7.9【/1】中的 2D 核函数，使其执行 3D 卷积。"
+    },
+    {
+      "id": "o9145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[10]",
+      "en": "10. Revise the tiled 2D kernel in 【1】Fig. 7.12【/1】 to perform 3D convolution.",
+      "zh": "10. 修改【1】图 7.12【/1】中的分块 2D 核函数，使其执行 3D 卷积。"
+    },
+    {
+      "id": "fn1",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/div[1]/p[1]",
+      "en": "【1】【2】1【/2】【/1】The function can take two more arguments, namely, 【3】offset【/3】 and 【4】kind【/4】, but these are seldom used and are often omitted. The reader is referred to CUDA C Programming Guide for details of these arguments.",
+      "zh": "【1】【2】1【/2】【/1】该函数还可以接受另外两个参数，即【3】offset【/3】和【4】kind【/4】，但这两个参数很少使用，通常省略。有关这些参数的详细信息，请读者参阅 CUDA C 编程指南。"
+    }
+  ]
+}

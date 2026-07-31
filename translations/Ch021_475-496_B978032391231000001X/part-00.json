@@ -1,0 +1,155 @@
+{
+  "page": "Ch021_475-496_B978032391231000001X",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/h1[1]",
+      "en": "CUDA dynamic parallelism",
+      "zh": "CUDA 动态并行"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/address[1]/p[1]",
+      "en": "With special contributions from Juan Gómez-Luna",
+      "zh": "特别贡献：Juan Gómez-Luna"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces CUDA dynamic parallelism, an extension to the CUDA programming model that enables a CUDA kernel to create more thread grids by calling other kernels. Dynamic parallelism allows algorithms that dynamically discover new work to prepare and launch grids without burdening the host or resorting to complex software techniques. The chapter starts with a simple pattern that benefits from dynamic parallelism. It then uses two advanced examples, Bezier Curve calculation and Quad Tree construction, to illustrate some of the important subtleties and details that programmers will likely encounter when using dynamic parallelism in real applications. It ends with important considerations regarding the practical use of dynamic parallelism, including memory data visibility, pending launch pool configuration, streams, and nesting depth.",
+      "zh": "本章介绍 CUDA 动态并行，它是 CUDA 编程模型的一个扩展，允许 CUDA 核函数通过调用其他核函数来创建更多的线程网格。动态并行使得能够动态发现新工作的算法无需加重主机的负担或诉诸复杂的软件技术，即可准备并启动网格。本章以一个受益于动态并行的简单模式开始，然后使用两个高级示例——贝塞尔曲线计算和四叉树构建——来说明程序员在真实应用中使用动态并行时可能遇到的一些重要细节与微妙之处。最后，本章讨论了动态并行实际使用中的重要考量，包括内存数据可见性、待启动池配置、流以及嵌套深度。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Dynamic work discovery; irregular work distribution; time-space work variation; grid launch; streams; synchronization; recursive kernel calls",
+      "zh": "动态工作发现；不规则工作分布；时空工作变化；网格启动；流；同步；递归核函数调用"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】21.1 Background【/1】 476",
+      "zh": "【1】21.1 背景【/1】 476"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】21.2 Dynamic parallelism overview【/1】 478",
+      "zh": "【1】21.2 动态并行概述【/1】 478"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】21.3 An example: Bezier curves【/1】 481",
+      "zh": "【1】21.3 示例：贝塞尔曲线【/1】 481"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】21.4 A recursive example: quadtrees【/1】 484",
+      "zh": "【1】21.4 递归示例：四叉树【/1】 484"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】21.5 Important considerations【/1】 490",
+      "zh": "【1】21.5 重要考量【/1】 490"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】21.6 Summary【/1】 492",
+      "zh": "【1】21.6 小结【/1】 492"
+    },
+    {
+      "id": "u0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】Exercises【/1】 493",
+      "zh": "【1】习题【/1】 493"
+    },
+    {
+      "id": "u0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】A21.1 Support code for quadtree example【/1】 495",
+      "zh": "【1】A21.1 四叉树示例的支持代码【/1】 495"
+    },
+    {
+      "id": "u0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[9]",
+      "en": "【1】References【/1】 497",
+      "zh": "【1】参考文献【/1】 497"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "CUDA dynamic parallelism is an extension to the CUDA programming model that enables a kernel to call other kernels, thereby allowing threads executing on the device to launch new grids of threads. In early versions of CUDA, grids could be launched only from the host code. Algorithms that involved recursion, irregular loop structures, time-space variation, or other constructs that do not fit a flat and single level of parallelism needed to be implemented with multiple kernel calls from the host, which increases the burden on the host, the amount of host-device communication, and the total execution time. In some cases, programmers resort to loop serialization and other awkward techniques to support these algorithmic needs at the cost of software maintainability. The support for dynamic parallelism allows algorithms that dynamically discover new work to prepare and launch new grids without burdening the host or impacting the software maintainability. This chapter describes the extended capabilities of CUDA that enable dynamic parallelism, including the modifications and additions to the CUDA programming interface, as well as guidelines and best practices for exploiting this added capacity.",
+      "zh": "CUDA 动态并行是 CUDA 编程模型的一个扩展，它允许核函数调用其他核函数，从而使在设备上执行的线程能够启动新的线程网格。在早期的 CUDA 版本中，网格只能从主机代码中启动。涉及递归、不规则循环结构、时空变化或其他不适合扁平且单层并行结构的算法，需要通过主机进行多次核函数调用来实现，这会增加主机的负担、主机与设备之间的通信量以及总执行时间。在某些情况下，程序员不得不借助循环串行化和其他笨拙的技术来满足这些算法需求，代价是软件可维护性下降。动态并行的支持使得能够动态发现新工作的算法可以准备并启动新网格，而无需加重主机的负担或影响软件可维护性。本章描述了使 CUDA 具备动态并行能力的扩展特性，包括对 CUDA 编程接口的修改与新增，以及利用这一新增能力的指南和最佳实践。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "21.1 Background",
+      "zh": "21.1 背景"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "Many real-world applications employ algorithms that have either a variation of work across space or a dynamically varying amount of work performed over time. For example, 【1】Fig. 21.1【/1】 shows a turbulence simulation example in which the level of required modeling details varies across both space and time. As the combustion flow moves from left to right, the range of activities and intensity increases. The level of details required to model the right side of the model is much higher than that for the left side of the model. On one hand, using a fixed fine grid would incur too much work for no gain for the left side of the model. On the other hand, using a fixed coarse grid would sacrifice too much accuracy for the right side of the model. Ideally, one should use fine grids for the parts of the model that require more details and coarse grids for the parts that do not.",
+      "zh": "许多真实世界的应用采用这样的算法：其工作在空间上存在差异，或者随时间动态变化的工作量。例如，【1】图 21.1【/1】 展示了一个湍流模拟示例，其中所需的建模细节级别在空间和时间上都各不相同。随着燃烧流从左向右移动，活动范围和强度不断增加。建模模型右侧所需的细节级别远高于模型左侧。一方面，对模型左侧使用固定的细网格会带来无谓的过多工作量；另一方面，对模型右侧使用固定的粗网格又会牺牲过多的精度。理想情况下，应该对模型需要更多细节的部分使用细网格，对不需要那么多细节的部分使用粗网格。"
+    },
+    {
+      "id": "n0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 21.1【/1】 Fixed versus dynamic grids for a turbulence simulation model.",
+      "zh": "【1】图 21.1【/1】 湍流模拟模型的固定网格与动态网格。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "Thus far, we have assumed that all kernels are called from the host code. The amount of work done by a thread grid is predetermined in calling the kernel function. With the single-program, multiple-data programming style for the kernel code, it is tedious if not extremely difficult to have thread blocks use different grid spacing. As a result, this limitation favors the use of a fixed and uniform (regular) grid system. To achieve the desired accuracy, such a fixed grid approach, as illustrated in the upper right portion of 【1】Fig. 21.1【/1】, typically needs to accommodate the most demanding parts of the model and maintain unnecessary extra data as well as perform unnecessary extra work in parts that do not require as much detail.",
+      "zh": "到目前为止，我们一直假设所有核函数都是从主机代码调用的。线程网格所完成的工作量在调用核函数时就已经预先确定。由于核函数代码采用单程序、多数据的编程风格，要让不同的线程块使用不同的网格间距即使不是极其困难，也是非常繁琐的。因此，这种限制偏向于使用固定且均匀（规则）的网格系统。为了达到期望的精度，这种固定网格方法——如【1】图 21.1【/1】 右上方所示——通常需要满足模型中最苛刻的部分，并在不需要那么多细节的部分维护多余的数据、执行多余的工作。"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "A more desirable approach is shown as the dynamic grid in the lower right portion of 【1】Fig. 21.1【/1】. As the simulation algorithm detects fast-changing simulation quantities in some areas of the model, it refines the grid in those areas to achieve the desired level of accuracy. Such refinement does not need to be done for the areas that do not exhibit such intensive activity. Thus the algorithm can dynamically direct more computational resources to the areas of the model that benefit from additional work.",
+      "zh": "一种更可取的方法如【1】图 21.1【/1】 右下方的动态网格所示。当模拟算法检测到模型某些区域中的模拟量快速变化时，它会在这些区域细化网格，以达到期望的精度水平。对于没有表现出这种剧烈活动的区域，则不需要进行这种细化。因此，算法可以动态地将更多的计算资源引导到模型那些能从额外工作中获益的区域。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "【1】Fig. 21.2【/1】 shows a conceptual comparison of behavior between a system without dynamic parallelism and another one with dynamic parallelism with respect to the simulation model in 【2】Fig. 21.1【/2】. Without dynamic parallelism the host thread must launch all grids. If new work is discovered, such as refining an area in the model during the execution of a grid, the grid needs to terminate, report back to the host, and have the host launch new grids. This is illustrated in 【3】Fig. 21.2A【/3】, in which the host launches a grid, receives information from this grid after its termination, and launches subsequent grids for any new work that is discovered by the completed grid. The figure depicts the subsequent grids as being launched one after the other; however, sophisticated optimizations may be applied, such as launching independent grids in different streams or combining them so that they can run in parallel.",
+      "zh": "【1】图 21.2【/1】 从概念上比较了对于【2】图 21.1【/2】 中的模拟模型，没有动态并行的系统与具有动态并行的系统在行为上的差异。没有动态并行时，主机线程必须启动所有网格。如果发现了新工作，例如在某个网格执行过程中需要细化模型的某个区域，则该网格必须终止、向主机汇报，并由主机启动新的网格。这如【3】图 21.2A【/3】 所示：主机启动一个网格，在该网格终止后接收其信息，并为已完成网格发现的任何新工作启动后续网格。图中把后续网格描绘为一个接一个地启动；不过也可以应用更精细的优化，例如在不同的流中启动相互独立的网格，或将它们合并起来以便并行运行。"
+    },
+    {
+      "id": "n0024",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 21.2【/1】 Grid launch patterns for algorithms with dynamic work variation, (A) without and (B) with dynamic parallelism.",
+      "zh": "【1】图 21.2【/1】 具有动态工作变化的算法的网格启动模式：(A) 不使用动态并行，(B) 使用动态并行。"
+    }
+  ]
+}

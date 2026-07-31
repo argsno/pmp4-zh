@@ -1,0 +1,155 @@
+{
+  "page": "FigureA.1_519-536_B9780323912310000215",
+  "nodes": [
+    {
+      "id": "n0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure A.3【/2】【/1】 Representable numbers of a 3-bit unsigned integer format.",
+      "zh": "【1】【2】图 A.3【/2】【/1】 3 位无符号整数格式的可表示数。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[3]",
+      "en": "The representable numbers of a floating-point format can be visualized in a similar manner. In 【1】Fig. A.4【/1】 we show all the representable numbers of what we have so far and two variations. We use a 5-bit format to keep the size of the table manageable. The format consists of 1-bit S, 2-bit E (excess-1 coded), and 2-bit M (with “1.” part omitted). The no-zero column gives the representable numbers of the format we discussed thus far. The reader is encouraged to generate at least part of the no-zero column using 【2】Eq. (A.2)【/2】. Note that with this format, 0 is not one of the representable numbers.",
+      "zh": "浮点格式的可表示数也可以用类似的方式可视化。在【1】图 A.4【/1】中，我们展示了迄今讨论格式的所有可表示数以及两种变体。我们采用 5 位格式，以保持表格规模可控。该格式由 1 位 S、2 位 E（移码 1 编码）和 2 位 M（省略“1.”部分）组成。no-zero（无零）列给出的是迄今讨论的该格式的可表示数。我们鼓励读者利用【2】式 (A.2)【/2】自行推导 no-zero 列的至少一部分。注意，在该格式中，0 不是可表示数之一。"
+    },
+    {
+      "id": "n0027",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure A.4【/1】 Representable numbers of no-zero, abrupt underflow, and denormalized formats.",
+      "zh": "【1】图 A.4【/1】 no-zero、突然下溢和非规格化格式的可表示数。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[4]",
+      "en": "A quick look at how these representable numbers populate the number line, as shown in 【1】Fig. A.5【/1】, provides further insights into these representable numbers. In 【2】Fig. A.5【/2】 we show only the positive representable numbers. The negative numbers are symmetric to their positive counterparts on the other side of 0.",
+      "zh": "快速浏览这些可表示数在数轴上的分布情况，如【1】图 A.5【/1】所示，可以进一步洞察这些可表示数。在【2】图 A.5【/2】中，我们只显示正的可表示数。负数与 0 另一侧对应的正数对称。"
+    },
+    {
+      "id": "n0029",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure A.5【/1】 Representable numbers of the no-zero representation.",
+      "zh": "【1】图 A.5【/1】 no-zero 表示的可表示数。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[5]",
+      "en": "We can make five observations. First, the exponent bits define the major intervals of representable numbers. In 【1】Fig. A.5【/1】 there are three major intervals on each side of 0 because there are two exponent bits. Basically, the major intervals are between powers of 2. With two bits of exponents and one reserved bit pattern (11), there are three powers of 2 (2【2】−1【/2】=0.5【3】D【/3】, 2【4】0【/4】=1.0【5】D【/5】, 2【6】1【/6】=2.0【7】D【/7】), each of which starts an interval of representable numbers. Keep in mind that there are also three powers of 2 (−2【8】−1【/8】=−0.5【9】D【/9】, −2【10】0【/10】=−1.0【11】D【/11】, −2【12】1【/12】=−2.0【13】D【/13】) on the left of zero that are not shown in 【14】Fig. A.5【/14】.",
+      "zh": "我们可以得出五点观察结论。第一，阶码位定义可表示数的主要区间。在【1】图 A.5【/1】中，0 的两侧各有三个主要区间，因为有两位阶码。大体上，主要区间位于 2 的各次幂之间。两位阶码加上一个保留位模式（11），共有三个 2 的幂（2【2】−1【/2】=0.5【3】D【/3】、2【4】0【/4】=1.0【5】D【/5】、2【6】1【/6】=2.0【7】D【/7】），每个 2 的幂开启一个可表示数区间。请记住，0 的左侧还有三个 2 的幂（−2【8】−1【/8】=−0.5【9】D【/9】、−2【10】0【/10】=−1.0【11】D【/11】、−2【12】1【/12】=−2.0【13】D【/13】），它们没有显示在【14】图 A.5【/14】中。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[6]",
+      "en": "The second observation is that the mantissa bits define the number of representable numbers in each interval. With two mantissa bits we have four representable numbers in each interval. In general, with N mantissa bits, we have 2【1】N【/1】 representable numbers in each interval. If a value to be represented falls within one of the intervals, it will be rounded to one of these representable numbers. Obviously, the larger the number of representable numbers in each interval, the more precisely we can represent a value in the region. Therefore the number of mantissa bits determines the 【2】precision【/2】 of the representation.",
+      "zh": "第二点观察是，尾数位决定每个区间内可表示数的数目。两位尾数使每个区间内有四个可表示数。一般而言，N 位尾数使每个区间内有 2【1】N【/1】个可表示数。如果要表示的数值落在某一区间内，它将被舍入到这些可表示数之一。显然，每个区间内的可表示数越多，我们在该区域内表示数值就越精确。因此，尾数的位数决定表示的【2】精度【/2】。"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[7]",
+      "en": "The third observation is that 0 is not representable in this format. It is missing from the representable numbers in the no-zero columns of 【1】Fig. A.5【/1】. Because 0 is one of the most important numbers, not being able to represent 0 in a number representation system is a serious deficiency. We will address this deficiency soon.",
+      "zh": "第三点观察是，0 在此格式中不可表示。从【1】图 A.5【/1】no-zero 列的可表示数中可以看到，0 是缺失的。由于 0 是最重要的数字之一，在数字表示体系中无法表示 0 是一个严重的缺陷。我们很快就会解决这一缺陷。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[8]",
+      "en": "The fourth observation is that the representable numbers become closer to each other toward the neighborhood of 0. Each interval is half the size of the previous interval as we move toward zero. In 【1】Fig. A.5【/1】 the rightmost interval is of width 2, the next interval is of width 1, and the next interval is of width 0.5. Although not shown in 【2】Fig. A.5【/2】, there are three intervals on the left of zero. They contain the representable negative numbers. The leftmost interval is of width 2, the next interval is of width 1, and the next interval is width 0.5. Since every interval has the same representable numbers, four in 【3】Fig. A.5【/3】, the representable numbers becomes closer to each other as we move toward zero. In other words, the representative numbers become closer as their absolute values become smaller. This is a desirable trend because as the absolute values of these numbers become smaller, it is more important to represent them more precisely. The distance between representable numbers determines the maximal rounding error for a value that falls into the interval. For example, if you have one billion dollars in your bank account, you might not even notice that there is a $1 rounding error in calculating your balance. However, if the total balance is $10, having a $1 rounding error would be much more noticeable!",
+      "zh": "第四点观察是，在 0 附近，可表示数彼此靠得越来越近。越靠近 0，每个区间的大小都是前一个区间的一半。在【1】图 A.5【/1】中，最右侧区间宽度为 2，其左侧相邻区间宽度为 1，再往左的区间宽度为 0.5。虽然在【2】图 A.5【/2】中没有显示，但 0 的左侧有三个区间，它们包含可表示的负数。最左侧区间宽度为 2，其右侧相邻区间宽度为 1，再往右的区间宽度为 0.5。由于每个区间拥有相同数目的可表示数（【3】图 A.5【/3】中为四个），越靠近 0，可表示数彼此靠得越近。换言之，可表示数的绝对值越小，它们彼此越接近。这是一个理想的趋势，因为当这些数的绝对值变小时，更精确地表示它们变得更加重要。可表示数之间的距离决定了落入该区间的数值的最大舍入误差。例如，如果你的银行账户里有 10 亿美元，你甚至可能都不会注意到计算余额时存在 1 美元的舍入误差。然而，如果账户总余额只有 10 美元，那么 1 美元的舍入误差就明显得多了！"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[9]",
+      "en": "The fifth observation is that, unfortunately, the trend of increasing density of representable numbers and thus the increasing precision of representing numbers in the intervals as we move toward 0 does not hold near 0. That is, there is a gap of representable numbers in the immediate vicinity of 0. This is because the range of normalized mantissa precludes 0. This is another serious deficiency. The representation introduces significantly larger (4×) errors in representing numbers between 0 and 0.5 compared to the errors for the larger numbers between 0.5 and 1.0. In general, with m bits in the mantissa, this style of representation would introduce 2【1】m【/1】 times more error in the interval closest to zero than in the next interval. For numerical methods that rely on accurate detection of convergence conditions based on very small data values, such deficiency can cause instability in execution time and inaccuracy of results. Furthermore, some algorithms generate small numbers and eventually use them as denominators. The errors in representing these small numbers can be greatly magnified in the division process and cause numerical instability in these algorithms.",
+      "zh": "遗憾的是，第五点观察是：随着我们趋近 0，可表示数密度增大、区间内数值表示精度随之提高的趋势在 0 附近并不成立。也就是说，紧邻 0 的区域存在一个可表示数空白。这是因为规格化尾数的取值范围排除了 0。这是另一个严重的缺陷。与表示 0.5 至 1.0 之间较大数时的误差相比，该表示法在表示 0 至 0.5 之间的数时引入的误差明显更大（4 倍）。一般而言，在尾数有 m 位的情况下，这种表示法在离 0 最近的区间内引入的误差将是相邻区间的 2【1】m【/1】倍。对于依赖基于极小数据值准确检测收敛条件的数值方法而言，这种缺陷会导致执行时间不稳定和结果不准确。此外，有些算法会生成小数并将其用作分母。表示这些小数的误差在除法过程中可能被大幅放大，从而在这些算法中造成数值不稳定。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[10]",
+      "en": "One method that can accommodate 0 into a normalized floating-point number system is the 【1】abrupt underflow【/1】 convention, which is illustrated in the second set of columns in 【2】Fig. A.4【/2】. Whenever E is 0, the number is interpreted as 0. In our 5-bit format, this method takes away eight representable numbers (four positive and four negative) in the vicinity of 0 (between −1.0 and +1.0) and makes them all 0. Because of its simplicity, some minicomputers in the 1980s used the abrupt underflow convention. Even to this day, some arithmetic units that need to operate at high speed still use the abrupt underflow convention. Although this method makes 0 a representable number, it creates an even larger gap between representable numbers in the vicinity of 0, as shown in 【3】Fig. A.6【/3】. It is obvious, when compared with 【4】Fig. A.5【/4】, that the gap of representable numbers has been enlarged significantly (by 2×) from 0.5 to 1.0. As we explained earlier, this is very problematic for many numerical algorithms whose correctness reply on accurate representation of small numbers near zero.",
+      "zh": "能将 0 纳入规格化浮点数系统的一种方法是【1】突然下溢【/1】约定，如【2】图 A.4【/2】中第二组列所示。只要 E 为 0，该数就被解释为 0。在我们的 5 位格式中，这种方法会取走 0 附近（−1.0 至 +1.0 之间）的八个可表示数（四个正数和四个负数），并将它们全部变为 0。由于实现简单，20 世纪 80 年代的一些小型计算机采用了突然下溢约定。时至今日，一些需要高速运行的算术单元仍在使用突然下溢约定。尽管这种方法使 0 成为可表示数，但它在 0 附近的可表示数之间制造了更大的空白，如【3】图 A.6【/3】所示。与【4】图 A.5【/4】相比可以明显看出，0.5 至 1.0 之间的可表示数空白被显著扩大（2 倍）。如前所述，这对许多正确性依赖于准确表示零附近小数的数值算法来说问题很大。"
+    },
+    {
+      "id": "n0036",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure A.6【/1】 Representable numbers of the abrupt underflow format.",
+      "zh": "【1】图 A.6【/1】 突然下溢格式的可表示数。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[11]",
+      "en": "The actual method that was adopted by the IEEE standard is called denormalization. The method relaxes the normalization requirement for numbers very close to 0. As is shown in 【1】Fig. A.6【/1】, whenever E=0, the mantissa is no longer assumed to be of the form 1.XX. Rather, it is assumed to be 0.XX. The value of the exponent is assumed to be the same as in the previous interval. For example, in 【2】Fig. A.4【/2】 the denormalized representation 00001 has exponent value 00 and mantissa value 01. The mantissa is assumed to be 0.01, and the exponent value is assumed to be the same as that of the previous interval: 0 rather than −1. That is, the value that 00001 represents is now 0.01*2【3】0【/3】=2【4】−2【/4】. 【5】Fig. A.7【/5】 shows the representable numbers for the denormalized format. The representation now has uniformly spaced representable numbers in the close vicinity of 0. Intuitively, the denormalized convention takes the four numbers in the last interval of representable numbers of a no-zero representation and spreads them out to cover the gap area. This eliminates the undesirable gap in the previous two methods. Note that the distances between representable numbers in the last two intervals are actually identical. In general, if the n-bit exponent is 0, the value is",
+      "zh": "IEEE 标准实际采用的方法称为非规格化（denormalization）。该方法放宽了非常接近 0 的数的规格化要求。如【1】图 A.6【/1】所示，只要 E=0，尾数就不再被假定为 1.XX 的形式，而是被假定为 0.XX。阶码的值被假定为与前一区间相同。例如，在【2】图 A.4【/2】中，非规格化表示 00001 的阶码值为 00，尾数值为 01。尾数被假定为 0.01，阶码值被假定为与前一区间相同，即 0 而非 −1。也就是说，00001 现在表示的值为 0.01*2【3】0【/3】=2【4】−2【/4】。【5】图 A.7【/5】显示了非规格化格式的可表示数。该表示法现在在紧邻 0 的区域具有均匀间隔的可表示数。直观地讲，非规格化约定取 no-zero 表示最后一组可表示数区间中的四个数，并将它们铺开以覆盖空白区域。这样就消除了前两种方法中不理想的空白。注意，最后两个区间内可表示数之间的距离实际上完全相同。一般而言，如果 n 位阶码为 0，则其值为"
+    },
+    {
+      "id": "n0038",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/div[7]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure A.7【/2】【/1】 Representable numbers of a denormalization format.",
+      "zh": "【1】【2】图 A.7【/2】【/1】 非规格化格式的可表示数。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[13]",
+      "en": "As we can see, the denormalization formula is quite complex. The hardware also needs to be able to detect whether a number falls into the denormalized interval and choose the appropriate representation for that number. The amount of hardware required to implement denormalization at high speed is quite significant. Implementations that use a moderate amount of hardware often introduce thousands of clock cycles of delay whenever a denormalized number needs to be generated or used. This was the reason why early generations of CUDA devices did not support denormalization. However, virtually all recent generations of CUDA devices do support denormalization, thanks to the increasing number of available transistors of more recent fabrication processes. More specifically, all CUDA devices of compute capability 1.3 and up support denormalized double-precision operands, and all devices of compute capability 2.0 and up support denormalized single-precision operands.",
+      "zh": "可以看到，非规格化公式相当复杂。硬件还需要能够检测一个数是否落入非规格化区间，并为该数选择适当的表示。高速实现非规格化所需的硬件量相当可观。使用中等规模硬件的实现，在需要生成或使用非规格化数时，往往会引入数千个时钟周期的延迟。这正是早期几代 CUDA 设备不支持非规格化的原因。然而，得益于较新制造工艺提供的日益增多的晶体管，近年来的几乎所有 CUDA 设备都支持非规格化。具体而言，计算能力 1.3 及以上的所有 CUDA 设备都支持非规格化双精度操作数，计算能力 2.0 及以上的所有设备都支持非规格化单精度操作数。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[14]",
+      "en": "In summary, the precision of a floating-point representation is measured by the maximal error that we can introduce to a floating-point number by representing that number as one of the representable numbers. The smaller the error, the higher is the precision. The precision of a floating-point representation can be improved by adding more bits to the mantissa. Adding one bit to the representation of the mantissa improves the precision by reducing the maximal error by half. Thus a number system has higher precision when it uses more bits for the mantissa. This is reflected in double-precision versus single-precision numbers in the IEEE standard.",
+      "zh": "总之，浮点表示的精度按如下方式度量：将某浮点数表示为可表示数之一时，我们可能对该数引入的最大误差。误差越小，精度越高。通过向尾数增加更多位可以提高浮点表示的精度。尾数表示每增加一位，最大误差减半，从而精度提高。因此，为尾数使用更多位的数体系精度更高。这一点体现在 IEEE 标准中双精度数与单精度数的对比上。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "A.3 Special bit patterns and precision in IEEE format",
+      "zh": "A.3 IEEE 格式中的特殊位模式与精度"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "We now turn to more specific details of the actual IEEE format. When all exponent bits are 1s, the number that is represented is an infinity value if the mantissa is 0. It is not a number (NaN) if the mantissa is not 0. All special bit patterns of the IEEE floating-point format are described in 【1】Fig. A.8【/1】.",
+      "zh": "现在我们来看实际 IEEE 格式更具体的细节。当阶码位全为 1 时，若尾数为 0，所表示的数是无穷大值；若尾数不为 0，则所表示的是非数（NaN）。IEEE 浮点格式的所有特殊位模式在【1】图 A.8【/1】中给出。"
+    },
+    {
+      "id": "n0043",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure A.8【/2】【/1】 Special bit patterns in the IEEE standard format.",
+      "zh": "【1】【2】图 A.8【/2】【/1】 IEEE 标准格式中的特殊位模式。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "All other numbers are normalized floating-point numbers. Single-precision numbers have 1-bit S, 8-bit E, and 23-bit M. Double-precision numbers have 1-bit S, 11-bit E, and 52-bit M. Since a double-precision number has 29 more bits for the mantissa, the largest error for representing a number is reduced to 1/2【1】29【/1】 of that of the single-precision format! With the additional 3 bits of exponent, the double-precision format also extends the number of intervals of representable numbers. This extends the range of representable numbers to very large as well as very small values.",
+      "zh": "所有其他数都是规格化浮点数。单精度数有 1 位 S、8 位 E 和 23 位 M。双精度数有 1 位 S、11 位 E 和 52 位 M。由于双精度数的尾数多出 29 位，表示一个数的最大误差降为单精度格式的 1/2【1】29【/1】！凭借额外的 3 位阶码，双精度格式还扩展了可表示数的区间数目。这使可表示数的范围扩展到非常大和非常小的数值。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "All representable numbers fall between −∞ (negative infinity) and +∞ (positive infinity). An ∞ can be created by overflow, for example, a large number divided by a very small number. Any representable number divided by +∞ or −∞ results in 0.",
+      "zh": "所有可表示数都介于 −∞（负无穷）和 +∞（正无穷）之间。∞ 可由上溢产生，例如一个大数除以一个极小的数。任何可表示数除以 +∞ 或 −∞ 都得到 0。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "NaN is generated by operations whose input values do not make sense, such as 0/0, 0*∞, ∞/∞, ∞ −∞. NaN is also used for data that has not been properly initialized in a program. There are two types of NaN in the IEEE standard: signaling and quiet. Signaling NaNs should be represented with the most significant mantissa bit cleared, whereas quiet NaNs are represented with the most significant mantissa bit set.",
+      "zh": "NaN 由输入值没有意义的运算产生，如 0/0、0*∞、∞/∞、∞−∞。NaN 也用于程序中未正确初始化的数据。IEEE 标准中有两种 NaN：发信号 NaN 和静默 NaN。发信号 NaN 的表示应将尾数最高有效位清零，而静默 NaN 的表示应将尾数最高有效位置 1。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "Signaling NaNs cause an exception when used as input to arithmetic operations. For example, the operation (1.0 + signaling NaN) raises an exception signal to the operating system. Signaling NaNs are used in situations in which the programmer would like to make sure that the program execution is interrupted whenever any NaN values are used in floating-point computations. These situations usually mean that there is something wrong with the execution of the program. In mission critical applications the execution cannot continue until the validity of the execution can be verified by a separate means. For example, software engineers often mark all the uninitialized data as signaling NaN. This practice ensures the detection of using uninitialized data during program execution. The current generation of GPU hardware does not support signaling NaN, owing to the difficulty of supporting accurate signaling during massively parallel execution.",
+      "zh": "发信号 NaN 用作算术运算的输入时会引起异常。例如，运算 (1.0 + signaling NaN) 会向操作系统发出异常信号。发信号 NaN 用于以下情形：程序员希望确保每当浮点计算中使用任何 NaN 值时，程序执行都被中断。这些情形通常意味着程序执行出现了问题。在关键任务应用中，在执行的有效性得到独立方式的验证之前，执行不能继续。例如，软件工程师常常把所有未初始化的数据标记为发信号 NaN。这种做法能确保在程序执行期间发现对未初始化数据的使用。当前的 GPU 硬件不支持发信号 NaN，因为在大规模并行执行期间支持准确的信号发送很困难。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "A quiet NaN generates another quiet NaN without causing an exception when it is used as input to an arithmetic operation. For example, the operation (1.0 + quiet NaN) generates a quiet NaN. Quiet NaNs are typically used in applications in which the user can review the output and decide whether the application should be rerun with a different input for more valid results. When the results are printed, quiet NaNs are printed as “NaN” so that the user can spot them in the output file easily.",
+      "zh": "静默 NaN 用作算术运算的输入时，会生成另一个静默 NaN，而不引起异常。例如，运算 (1.0 + quiet NaN) 会生成一个静默 NaN。静默 NaN 通常用于这样的应用：用户可以查看输出，并决定是否应使用不同输入重新运行应用以得到更有效的结果。打印结果时，静默 NaN 会以“NaN”的形式打印出来，使用户可以很容易地在输出文件中发现它们。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "A.4 Arithmetic accuracy and rounding",
+      "zh": "A.4 算术精度与舍入"
+    }
+  ]
+}

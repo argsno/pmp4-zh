@@ -1,0 +1,155 @@
+{
+  "page": "Ch011_235-261_B9780323912310000227",
+  "nodes": [
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "With an inclusive scan operation, we can calculate the locations of all the cutting points based on the amount ordered by each person. That is, given an addition operation and an order input array [3 1 7 0 4 1 6 3], the inclusive scan operation returns [3 4 11 11 15 16 22 25]. The numbers in the return array are the cutting locations. With this information, one can simultaneously make all the eight cuts that will generate the sections that each person ordered. The first cut point is at the 3-inch location, so the first section will be 3 inches, as ordered by Person 0. The second cut point is at the 4-inch location; therefore the second section will be 1-inch long, as ordered by Person 1. The final cut point will be at the 25-inch location, which will produce a 3-inch-long section, since the previous cut point is at the 22-inch point. This gives Person 7 what she ordered. Note that since all the cut points are known from the scan operation, all cuts can be done in parallel or in any arbitrary sequence.",
+      "zh": "借助包含式扫描运算，我们可以根据每个人订购的量算出所有切割点的位置。也就是说，给定加法运算和一个订单输入数组 [3 1 7 0 4 1 6 3]，包含式扫描运算返回 [3 4 11 11 15 16 22 25]。返回数组中的数字就是切割位置。有了这些信息，就可以同时完成全部八次切割，从而得到每个人订购的香肠段。第一个切割点在 3 英寸位置，因此第一段是 3 英寸，正如第 0 个人所订购的。第二个切割点在 4 英寸位置，因此第二段长 1 英寸，正如第 1 个人所订购的。最后一个切割点在 25 英寸位置，由于前一个切割点在 22 英寸位置，因此这一段长 3 英寸，第 7 个人得到了她订购的量。请注意，由于扫描运算给出了所有切割点，所有切割都可以并行进行，或以任意顺序进行。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "In summary, an intuitive way of thinking about inclusive scan is that the operation takes a request from a group of people and identifies all the cut points that allow the orders to be served all at once. The order could be for sausage, bread, campground space, or a contiguous chunk of memory in a computer. As long as we can quickly calculate all the cut points, all orders can be served in parallel.",
+      "zh": "总之，理解包含式扫描的一种直观方式是：该运算接受一组人的请求，并找出所有能一次性满足所有订单的切割点。订单可以是香肠、面包、露营场地，也可以是计算机中一段连续的内存。只要我们能快速算出所有切割点，所有订单就可以并行得到满足。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[7]",
+      "en": "An 【1】exclusive scan【/1】 operation is similar to an inclusive scan operation with a slightly different arrangement of the output array:",
+      "zh": "【1】排他式扫描【/1】运算与包含式扫描运算类似，只是输出数组的排列略有不同："
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[9]",
+      "en": "That is, each output element 【1】excludes【/1】 the effect of the corresponding input element. The first output element is 【2】i【/2】, the identity value for operator ⊕, while the last output element only reflects the contribution of up to 【3】x【/3】【4】【5】n【/5】−2【/4】. An identity value for a binary operator is defined as a value that, when used as an input operand, causes the operation to generate an output value that is the same as the other input operand’s value. In the case of the addition operator, the identity value is 0, as any number added with zero will result in itself.",
+      "zh": "也就是说，每个输出元素【1】排除【/1】了对应输入元素的影响。第一个输出元素是【2】i【/2】，即算子 ⊕ 的单位元，而最后一个输出元素只反映截至【3】x【/3】【4】【5】n【/5】−2【/4】的贡献。二元算子的单位元定义为：当它作为输入操作数参与运算时，运算生成的输出值与另一个输入操作数的值相同。就加法算子而言，单位元是 0，因为任何数与零相加仍等于它本身。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[10]",
+      "en": "The applications of an exclusive scan operation are pretty much the same as those for inclusive scan. The inclusive scan provides slightly different information. In the sausage example, an exclusive scan would return [0 3 4 11 11 15 16 22], which are the beginning points of the cut sections. For example, the section for Person 0 starts at the 0-inch point. For another example, the section for Person 7 starts at the 22-inch point. The beginning point information is important in applications such as memory allocation, in which the allocated memory is returned to the requester via a pointer to its beginning point.",
+      "zh": "排他式扫描运算的应用与包含式扫描的应用基本相同，只是提供的信息略有不同。在香肠例子中，排他式扫描将返回 [0 3 4 11 11 15 16 22]，这些是各香肠段的起点。例如，第 0 个人的香肠段从 0 英寸位置开始；又如，第 7 个人的香肠段从 22 英寸位置开始。起点信息在内存分配等应用中非常重要，因为分配得到的内存是通过指向其起点的指针交还给请求者的。"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[11]",
+      "en": "Note that it is easy to convert between the inclusive scan output and the exclusive scan output. One simply needs to shift all elements and fill in an element. When converting from inclusive to exclusive, one can simply shift all elements to the right and fill in identity value for the 0th element. When converting from exclusive to inclusive, one needs to shift all elements to the left and fill in the last element with the previous last element ⊕ the last input element. It is just a matter of convenience that we can directly generate an inclusive or exclusive scan depending on whether we care about the cut points or the beginning points for the sections. Therefore we will present parallel algorithms and implementations only for inclusive scan.",
+      "zh": "请注意，在包含式扫描输出与排他式扫描输出之间转换很容易，只需移动所有元素并填入一个元素即可。从包含式转换为排他式时，只需把所有元素右移一位，并在第 0 个元素处填入单位元。从排他式转换为包含式时，需要把所有元素左移一位，并用“前一个末元素 ⊕ 最后一个输入元素”填入末元素。到底直接生成包含式还是排他式扫描，取决于我们关心的是各段的切割点还是起点，这只是一个便利性问题。因此，本书只介绍包含式扫描的并行算法与实现。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[12]",
+      "en": "Before we present parallel scan algorithms and their implementations, we would like to show a sequential inclusive scan algorithm and its implementation. We will assume that the operator involved is addition. The code in 【1】Fig. 11.1【/1】 assumes that the input elements are in the 【2】x【/2】 array and the output elements are to be written into the 【3】y【/3】 array.",
+      "zh": "在介绍并行扫描算法及其实现之前，我们先展示一个串行包含式扫描算法及其实现。我们假设涉及的算子是加法。【1】图 11.1【/1】中的代码假设输入元素位于【2】x【/2】数组中，输出元素将被写入【3】y【/3】数组。"
+    },
+    {
+      "id": "n0032",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 11.1【/1】 A simple sequential implementation of inclusive scan based on addition.",
+      "zh": "【1】图 11.1【/1】 基于加法的包含式扫描的简单串行实现。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[13]",
+      "en": "The code initializes the output element y[0] with the value of input element x[0] (line 02). In each iteration of the loop (lines 03–05), the loop body adds one more input element to the previous output element (which stores the accumulation of all the previous input elements) to generate one more output element.",
+      "zh": "代码用输入元素 x[0] 的值初始化输出元素 y[0]（第 02 行）。在循环的每次迭代中（第 03–05 行），循环体在前一个输出元素（它保存了此前所有输入元素的累加值）上再加一个输入元素，从而生成下一个输出元素。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[14]",
+      "en": "It should be clear that the work done by the sequential implementation of inclusive scan in 【1】Fig. 11.1【/1】 is linearly proportional to the number of input elements; that is, the computational complexity of the sequential algorithm is 【M2】【M3】.",
+      "zh": "显然，【1】图 11.1【/1】中包含式扫描的串行实现所完成的工作与输入元素的数量成线性关系；也就是说，该串行算法的计算复杂度为【M2】【M3】。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[15]",
+      "en": "In 【1】Sections 11.2【/1】–【2】11.5【/2】, we will present alternative algorithms for performing parallel 【3】segmented scan【/3】, in which every thread block will perform a scan on a segment, that is, a section, of elements in the input array in parallel. We will then present in 【4】Sections 11.6【/4】 and 【5】11.7【/5】 methods that combine the segmented scan results into the scan output for the entire input array.",
+      "zh": "在【1】第 11.2 节【/1】至【2】11.5【/2】中，我们将介绍执行并行【3】分段扫描【/3】的其他算法，其中每个线程块将并行地对输入数组中的一个段（即一段元素）执行扫描。随后，我们将在【4】第 11.6 节【/4】和【5】11.7【/5】中介绍把各分段扫描结果合并为整个输入数组扫描输出的方法。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "11.2 Parallel scan with the Kogge-Stone algorithm",
+      "zh": "11.2 基于 Kogge-Stone 算法的并行扫描"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "We start with a simple parallel inclusive scan algorithm by performing a reduction operation for each output element. One might be tempted to use each thread to perform sequential reduction as shown in 【1】Fig. 10.2【/1】 for one output element. After all, this allows the calculations for all output elements to be performed in parallel. Unfortunately, this approach will be unlikely to improve the execution time over the sequential scan code in 【2】Fig. 11.1【/2】. This is because the calculation of 【3】y【/3】【4】【5】n【/5】−1【/4】 will take 【6】n【/6】 steps, the same number of steps taken by the sequential scan code, and each step (iteration) in the reduction involves the same amount of work as each iteration of the sequential scan. Since the completion time of a parallel program is limited by the thread that takes the longest time, this approach is unlikely be any faster than sequential scan. In fact, with limited computing resources, the execution time of this naïve parallel scan algorithm can be much longer than that of the sequential algorithm. The computation cost, or the total number of operations performed, would unfortunately be much higher for the proposed approach. Since the number of reduction steps for output element 【7】i【/7】 would be 【8】i【/8】, the total number of steps performed by all threads would be",
+      "zh": "我们先从一种简单的并行包含式扫描算法入手：为每个输出元素执行一次归约运算。有人可能会想用每个线程为某个输出元素执行如【1】图 10.2【/1】所示的串行归约。毕竟，这样所有输出元素的计算就可以并行进行了。遗憾的是，这种方法不太可能比【2】图 11.1【/2】中的串行扫描代码更快。原因是：计算【3】y【/3】【4】【5】n【/5】−1【/4】需要【6】n【/6】步，与串行扫描代码所需步数相同，而归约中的每一步（每次迭代）所做的工作也与串行扫描的每次迭代相同。由于并行程序的完成时间取决于耗时最长的线程，这种方法不太可能比串行扫描更快。事实上，在计算资源有限的情况下，这种朴素的并行扫描算法的执行时间可能比串行算法长得多。遗憾的是，所提出的这种方法其计算成本——即执行的运算总次数——要高得多。由于输出元素【7】i【/7】的归约步数为【8】i【/8】，所有线程执行的总步数为"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "That is, the proposed approach has a computation complexity of 【1】O【/1】(【2】N【/2】【3】2【/3】), which is higher than the complexity of the sequential scan, which is 【4】O【/4】(【5】N【/5】), while offering no speedup. The higher computational complexity means that considerably more execution resources need to be provisioned. This is obviously a bad idea.",
+      "zh": "也就是说，所提出的方法的计算复杂度为【1】O【/1】(【2】N【/2】【3】2【/3】)，高于串行扫描的复杂度【4】O【/4】(【5】N【/5】)，且并未带来任何加速比。更高的计算复杂度意味着需要配置多得多的执行资源。这显然不是一个好主意。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "A better approach is to adapt the parallel reduction tree in 【1】Chapter 10【/1】, Reduction and Minimizing Divergence, to calculate each output element with a reduction tree of the relevant input elements. There are multiple ways to design the reduction tree for each output element. Since the reduction tree for element 【2】i【/2】 involves 【3】i【/3】 add operations, this approach would still increase the computational complexity to 【4】O【/4】(【5】N【/5】【6】2【/6】) unless we find a way to share the partial sums across the reduction trees of different output elements. We present such a sharing approach that is based on the Kogge-Stone algorithm, which was originally invented for designing fast adder circuits in the 1970s (【7】Kogge &amp; Stone, 1973【/7】). This algorithm is still being used in the design of high-speed computer arithmetic hardware.",
+      "zh": "更好的做法是改造【1】第 10 章【/1】归约：最小化发散中的并行归约树，为每个输出元素用相关输入元素构造一棵归约树。为每个输出元素设计归约树有多种方式。由于元素【2】i【/2】的归约树需要【3】i【/3】次加法，除非我们找到一种在不同输出元素的归约树之间共享部分和的方法，否则这种方法仍会把计算复杂度提高到【4】O【/4】(【5】N【/5】【6】2【/6】)。我们介绍一种基于 Kogge-Stone 算法的共享方法，该算法最初是 20 世纪 70 年代为设计快速加法器电路而发明的（【7】Kogge &amp; Stone, 1973【/7】）。该算法至今仍被用于高速计算机算术硬件的设计。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "The algorithm, illustrated in 【1】Fig. 11.2【/1】, is an in-place scan algorithm that operates on an array XY that originally contains input elements. It iteratively evolves the contents of the array into output elements. Before the algorithm begins, we assume that XY[i] contains input element 【2】x【/2】【3】【4】i【/4】【/3】. After 【5】k【/5】 iterations, XY[i] will contain the sum of up to 2【6】【7】k【/7】【/6】 input elements at and before the location. For example, after one iteration, XY[i] will contain 【8】x【/8】【9】【10】i【/10】−1【/9】+【11】x【/11】【12】【13】i【/13】【/12】 and at the end of iteration 2, XY[i] will contain 【14】x【/14】【15】【16】i【/16】−3【/15】+【17】x【/17】【18】【19】i【/19】−2【/18】+【20】x【/20】【21】【22】i【/22】−1【/21】+【23】x【/23】【24】【25】i【/25】【/24】, and so on.",
+      "zh": "【1】图 11.2【/1】所示的算法是一种原地（in-place）扫描算法，作用于一个最初包含输入元素的数组 XY。它迭代地把数组的内容演化为输出元素。算法开始前，我们假设 XY[i] 包含输入元素【2】x【/2】【3】【4】i【/4】【/3】。经过【5】k【/5】次迭代后，XY[i] 将包含该位置及其之前最多 2【6】【7】k【/7】【/6】个输入元素的和。例如，一次迭代后，XY[i] 将包含【8】x【/8】【9】【10】i【/10】−1【/9】+【11】x【/11】【12】【13】i【/13】【/12】；到第二次迭代结束时，XY[i] 将包含【14】x【/14】【15】【16】i【/16】−3【/15】+【17】x【/17】【18】【19】i【/19】−2【/18】+【20】x【/20】【21】【22】i【/22】−1【/21】+【23】x【/23】【24】【25】i【/25】【/24】，依此类推。"
+    },
+    {
+      "id": "n0041",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 11.2【/1】 A parallel inclusive scan algorithm based on Kogge-Stone adder design.",
+      "zh": "【1】图 11.2【/1】 基于 Kogge-Stone 加法器设计的并行包含式扫描算法。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "【1】Fig. 11.2【/1】 illustrates the algorithm with a 16-element input example. Each vertical line represents an element of the XY array, with XY[0] in the leftmost position. The vertical direction shows the progress of iterations, starting from the top of the figure. For inclusive scan, by definition, 【2】y【/2】【3】0【/3】 is 【4】x【/4】【5】0【/5】, so XY[0] contains its final answer. In the first iteration, each position other than XY[0] receives the sum of its current content and that of its left neighbor. This is illustrated by the first row of addition operators in 【6】Fig. 11.2【/6】. As a result, XY[i] contains 【7】x【/7】【8】【9】i【/9】−1【/8】+【10】x【/10】【11】【12】i【/12】【/11】. This is reflected in the labeling boxes under the first row of addition operators in 【13】Fig. 11.2【/13】. For example, after the first iteration, XY[3] contains x【14】2【/14】+x【15】3【/15】, shown as ∑【16】x【/16】【17】2【/17】…【18】x【/18】【19】3【/19】. Note that after the first iteration, XY[1] is equal to 【20】x【/20】【21】0【/21】+【22】x【/22】【23】1【/23】, which is the final answer for this position. So, there should be no further changes to XY[1] in subsequent iterations.",
+      "zh": "【1】图 11.2【/1】用一个包含 16 个元素的输入示例说明了该算法。每条竖线代表 XY 数组中的一个元素，XY[0] 位于最左端。竖直方向表示迭代的推进过程，从图的上方开始。对于包含式扫描，根据定义【2】y【/2】【3】0【/3】等于【4】x【/4】【5】0【/5】，因此 XY[0] 从一开始就保存着它的最终答案。在第一次迭代中，除 XY[0] 之外的每个位置都把自己的当前内容与左邻位置的内容相加，这在【6】图 11.2【/6】中由第一行加法算子表示。于是，XY[i] 保存【7】x【/7】【8】【9】i【/9】−1【/8】+【10】x【/10】【11】【12】i【/12】【/11】。这反映在【13】图 11.2【/13】中第一行加法算子下方的标注框中。例如，第一次迭代后，XY[3] 保存 x【14】2【/14】+x【15】3【/15】，记作 ∑【16】x【/16】【17】2【/17】…【18】x【/18】【19】3【/19】。请注意，第一次迭代后，XY[1] 等于【20】x【/20】【21】0【/21】+【22】x【/22】【23】1【/23】，这就是该位置的最终答案。因此，在后续迭代中 XY[1] 不应再发生变化。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "In the second iteration, each position other than XY[0] and XY[1] receives the sum of its current content and that of the position that is two elements away. This is illustrated in the labeled boxes below the second row of addition operators. As a result, XY[i] becomes 【1】x【/1】【2】【3】i【/3】−3【/2】+【4】x【/4】【5】【6】i【/6】-2【/5】+【7】x【/7】【8】【9】i【/9】-1【/8】+【10】x【/10】【11】【12】i【/12】【/11】. For example, after the second iteration, XY[3] becomes 【13】x【/13】【14】0【/14】+【15】x【/15】【16】1【/16】+【17】x【/17】【18】2【/18】+【19】x【/19】【20】3【/20】, shown as ∑【21】x【/21】【22】0【/22】…【23】x【/23】【24】3【/24】. Note that after the second iteration, XY[2] and XY[3] have reached their final answers and will not need to be changed in subsequent iterations. The reader is encouraged to work through the rest of the iterations.",
+      "zh": "在第二次迭代中，除 XY[0] 和 XY[1] 之外的每个位置都把自己的当前内容与相隔两个元素的位置的内容相加，这在第二行加法算子下方的标注框中有所展示。于是，XY[i] 变为【1】x【/1】【2】【3】i【/3】−3【/2】+【4】x【/4】【5】【6】i【/6】-2【/5】+【7】x【/7】【8】【9】i【/9】-1【/8】+【10】x【/10】【11】【12】i【/12】【/11】。例如，第二次迭代后，XY[3] 变为【13】x【/13】【14】0【/14】+【15】x【/15】【16】1【/16】+【17】x【/17】【18】2【/18】+【19】x【/19】【20】3【/20】，记作 ∑【21】x【/21】【22】0【/22】…【23】x【/23】【24】3【/24】。请注意，第二次迭代后，XY[2] 和 XY[3] 已达到其最终答案，后续迭代不再需要修改。建议读者自行推演其余的迭代。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "【1】Fig. 11.3【/1】 shows the parallel implementation of the algorithm illustrated in 【2】Fig. 11.2【/2】. We implement a kernel that performs local scans on different segments (sections) of the input that are each small enough for a single block to handle. Later, we will make final adjustments to consolidate these sectional scan results for large input arrays. The size of a section is defined as a compile-time constant 【3】SECTION_SIZE【/3】. We assume that the kernel function will be called using 【4】SECTION_SIZE【/4】 as the block size, so there will be the same number of threads and section elements. We assign each thread to evolve the contents of one XY element.",
+      "zh": "【1】图 11.3【/1】展示了【2】图 11.2【/2】所示算法的并行实现。我们实现的核函数对输入中不同的段（片段）执行局部扫描，每个段都足够小，可以交给单个线程块处理。稍后，我们将做最终调整，把各个分段的扫描结果合并起来，以处理大型输入数组。段的大小定义为编译期常量【3】SECTION_SIZE【/3】。我们假设调用核函数时以【4】SECTION_SIZE【/4】作为线程块大小，这样线程数与段内元素数相同。我们为每个线程分配一个 XY 元素，由它来演化该元素的内容。"
+    },
+    {
+      "id": "n0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 11.3【/1】 A Kogge-Stone kernel for inclusive (segmented) scan.",
+      "zh": "【1】图 11.3【/1】 用于包含式（分段）扫描的 Kogge-Stone 核函数。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[9]",
+      "en": "The implementation shown in 【1】Fig. 11.3【/1】 assumes that input values were originally in a global memory array X, whose address is passed into the kernel as an argument (line 01). We will have all the threads in the block collaboratively load the X array elements into a shared memory array XY (line 02). This is done by having each thread calculate its global data index 【2】i=blockIdx.x*blockDim.x+threadIdx.x【/2】 (line 03) for the output vector element position it is responsible for. Each thread loads the input element at that position into the shared memory at the beginning of the kernel (lines 04–08). At the end of the kernel, each thread will write its result into the assigned output array Y (lines 18–20).",
+      "zh": "【1】图 11.3【/1】所示的实现假设输入值原本位于全局内存数组 X 中，该数组的地址作为参数传入核函数（第 01 行）。我们将让线程块中的所有线程协作，把 X 数组的元素加载到共享内存数组 XY 中（第 02 行）。具体做法是：每个线程先计算它所负责的输出向量元素位置的全局数据索引【2】i=blockIdx.x*blockDim.x+threadIdx.x【/2】（第 03 行），然后在核函数开始时把该位置的输入元素加载到共享内存中（第 04–08 行）。核函数结束时，每个线程把自己的结果写入分配的输出数组 Y（第 18–20 行）。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[10]",
+      "en": "We now focus on the implementation of the iterative calculations for each XY element in 【1】Fig. 11.3【/1】 as a for-loop (lines 09–17). The loop iterates through the reduction tree for the XY array position that is assigned to a thread. When the stride value becomes greater than a thread’s 【2】threadIdx.x【/2】 value, it means that the thread’s assigned XY position has already accumulated all the required input values and the thread no longer needs to be active (lines 12 and 15). Note that we use a barrier synchronization (line 10) to make sure that all threads have finished their previous iteration before any of them starts the next iteration. This is the same use of 【3】__syncthreads()【/3】 as in the reduction discussion in 【4】Chapter 10【/4】, Reduction and Minimizing Divergence.",
+      "zh": "下面我们聚焦【1】图 11.3【/1】中每个 XY 元素的迭代计算的实现，它体现为一个 for 循环（第 09–17 行）。循环沿着分配给该线程的 XY 数组位置的归约树迭代。当步长值大于线程的【2】threadIdx.x【/2】值时，说明该线程负责的 XY 位置已经累加了所有需要的输入值，该线程不再需要保持活跃（第 12 和 15 行）。请注意，我们使用屏障同步（第 10 行）来确保在所有线程开始下一次迭代之前，所有线程都已完成上一次迭代。这与【3】__syncthreads()【/3】在【4】第 10 章【/4】归约：最小化发散的归约讨论中的用法相同。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[11]",
+      "en": "There is, however, a very important difference compared to reduction in updating of the XY elements (lines 12–16) in each iteration of the for-loop. Note that each active thread first stores the partial sum for its position into a temp variable (in a register). After all threads have completed a second barrier synchronization (line 14), all of them store their partial sum values to their XY positions (line 16). The need for the extra temp and 【1】__syncthreads()【/1】 has to do with a write-after-read data dependence hazard in these updates. Each active thread adds the XY value at its own position 【2】(XY[threadIdx.x])【/2】 and that at a position of another thread 【3】(XY[threadIdx.x-stride])【/3】. If a thread 【4】i【/4】 writes to its output position before another thread 【5】【6】i+stride【/6】【/5】 has had the chance to read the old value at that position, the new value can corrupt the addition performed by the other thread. The corruption may or may not occur, depending on the execution timing of the threads involved, which is referred to as a race condition. Note that this race condition is different from the one we saw in 【7】Chapter 9【/7】, Parallel Histogram, with the histogram pattern. The race condition in 【8】Chapter 9【/8】, Parallel Histogram, was a read-modify-write race condition that can be solved with atomic operations. For the write-after-read race condition that we see here, a different solution is required.",
+      "zh": "然而，与归约相比，for 循环每次迭代中对 XY 元素的更新（第 12–16 行）有一个非常重要的区别。请注意，每个活跃线程首先把自己位置的部分和存入临时变量（在寄存器中）。在所有线程完成第二次屏障同步（第 14 行）之后，它们才把自己的部分和值写入各自的 XY 位置（第 16 行）。需要额外的临时变量和【1】__syncthreads()【/1】与这些更新中存在的读后写数据依赖危险有关。每个活跃线程把自己位置上的 XY 值【2】(XY[threadIdx.x])【/2】与另一个线程位置上的 XY 值【3】(XY[threadIdx.x-stride])【/3】相加。如果线程【4】i【/4】在另一个线程【5】【6】i+stride【/6】【/5】有机会读取该位置的旧值之前写入其输出位置，新值就可能破坏另一个线程所执行的加法。这种破坏是否发生取决于所涉线程的执行时序，被称为竞态条件。请注意，这种竞态条件与我们在【7】第 9 章【/7】并行直方图直方图模式中看到的竞态条件不同。【8】第 9 章【/8】并行直方图中的竞态条件是可以用原子操作解决的读-改-写竞态条件。而这里看到的读后写竞态条件需要不同的解决方案。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[12]",
+      "en": "The race condition can be easily observed in 【1】Fig. 11.2【/1】. Let us examine the activities of thread 4 (【2】x【/2】【3】4【/3】) and thread 6 (【4】x【/4】【5】6【/5】) during iteration 2, which is represented as the addition operations in the second row from the top. Note that thread 6 needs to add the old value of XY[4] (【6】x【/6】【7】3【/7】+【8】x【/8】【9】4【/9】) to the old value XY[6] (【10】x【/10】【11】【12】5【/12】【/11】【13】+x【/13】【14】【15】6【/15】【/14】) to generate the new value of XY[6] (【16】x【/16】【17】3【/17】+【18】x【/18】【19】4【/19】+【20】x【/20】【21】5【/21】+【22】x【/22】【23】6【/23】). However, if thread 4 stores its addition result for the iteration (【24】x【/24】【25】1【/25】+【26】x【/26】【27】2【/27】+【28】x【/28】【29】3【/29】+【30】x【/30】【31】4【/31】) into XY[4] too early, thread 6 could end up using the new value as its input and store (【32】x【/32】【33】1【/33】+【34】x【/34】【35】2【/35】+【36】x【/36】【37】3【/37】+【38】x【/38】【39】4【/39】+【40】x【/40】【41】5【/41】+【42】x【/42】【43】6【/43】) into XY[6]. Since 【44】x【/44】【45】1【/45】+【46】x【/46】【47】2【/47】 will be added again to XY[6] by thread 6 in the third iteration, the final answer in XY[6] will become (2【48】x【/48】【49】1【/49】+【50】2x【/50】【51】2【/51】+【52】x【/52】【53】3【/53】+【54】x【/54】【55】4【/55】+【56】x【/56】【57】5【/57】+【58】x【/58】【59】6【/59】), which is obviously incorrect. On the other hand, if thread 6 happens to read the old value in XY[4] before thread 4 overwrites it during iteration 2, the results will be correct. That is, the execution result of the code may or may not be correct, depending on the timing of thread execution, and the execution results can vary from run to run. Such lack of reproducibility can make debugging a nightmare.",
+      "zh": "这种竞态条件在【1】图 11.2【/1】中很容易观察到。让我们考察线程 4（【2】x【/2】【3】4【/3】）和线程 6（【4】x【/4】【5】6【/5】）在第二次迭代中的活动，该迭代由自上而下第二行的加法运算表示。请注意，线程 6 需要把 XY[4] 的旧值（【6】x【/6】【7】3【/7】+【8】x【/8】【9】4【/9】）与 XY[6] 的旧值（【10】x【/10】【11】【12】5【/12】【/11】【13】+x【/13】【14】【15】6【/15】【/14】）相加，以生成 XY[6] 的新值（【16】x【/16】【17】3【/17】+【18】x【/18】【19】4【/19】+【20】x【/20】【21】5【/21】+【22】x【/22】【23】6【/23】）。然而，如果线程 4 过早地把它本次迭代的加法结果（【24】x【/24】【25】1【/25】+【26】x【/26】【27】2【/27】+【28】x【/28】【29】3【/29】+【30】x【/30】【31】4【/31】）写入 XY[4]，线程 6 就可能把这个新值当作输入，并把（【32】x【/32】【33】1【/33】+【34】x【/34】【35】2【/35】+【36】x【/36】【37】3【/37】+【38】x【/38】【39】4【/39】+【40】x【/40】【41】5【/41】+【42】x【/42】【43】6【/43】）存入 XY[6]。由于在第三次迭代中，线程 6 将再次把【44】x【/44】【45】1【/45】+【46】x【/46】【47】2【/47】加到 XY[6] 上，XY[6] 中的最终答案将变成（2【48】x【/48】【49】1【/49】+【50】2x【/50】【51】2【/51】+【52】x【/52】【53】3【/53】+【54】x【/54】【55】4【/55】+【56】x【/56】【57】5【/57】+【58】x【/58】【59】6【/59】），这显然是不正确的。另一方面，如果线程 6 恰好在第二次迭代中、线程 4 覆盖 XY[4] 之前读到了 XY[4] 的旧值，结果就是正确的。也就是说，代码的执行结果正确与否取决于线程执行的时序，而且执行结果可能因运行而异。这种不可复现性会让调试变成一场噩梦。"
+    }
+  ]
+}

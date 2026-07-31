@@ -1,0 +1,17 @@
+{
+  "page": "Ch005_93-121_B9780323912310000185",
+  "nodes": [
+    {
+      "id": "fn2",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/div[1]/p[2]",
+      "en": "【1】【2】2【/2】【/1】One can use CUDA memory fencing to ensure data coherence between thread blocks if the number of thread blocks is smaller than the number of SMs in the CUDA device. See the CUDA Programming Guide for more details.",
+      "zh": "【1】【2】2【/2】【/1】如果线程块的数量小于 CUDA 设备中 SM 的数量，可以使用 CUDA 内存栅栏来确保线程块之间的数据一致性。更多细节请参阅 CUDA Programming Guide。"
+    },
+    {
+      "id": "fn3",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/div[1]/p[3]",
+      "en": "【1】【2】3【/2】【/1】The reader should note that strip-mining has long been used in programming CPUs. Strip-mining followed by loop interchange is often used to enable tiling for improved locality in sequential programs. Strip-mining is also the main vehicle for vectorizing compilers to generate vector or SIMD instructions for CPU programs.",
+      "zh": "【1】【2】3【/2】【/1】读者应该注意，条带挖掘在 CPU 编程中已长期使用。条带挖掘后接循环交换，常被用于在串行程序中实现分块以改善局部性。条带挖掘也是向量化编译器为 CPU 程序生成向量或 SIMD 指令的主要手段。"
+    }
+  ]
+}

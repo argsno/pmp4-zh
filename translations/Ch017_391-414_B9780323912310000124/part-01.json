@@ -1,0 +1,155 @@
+{
+  "page": "Ch017_391-414_B9780323912310000124",
+  "nodes": [
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[9]",
+      "en": "Image reconstruction from non-Cartesian trajectory data presents both challenges and opportunities. The main challenge arises from the fact that the exponential terms are no longer uniformly spaced; the summation does not have the form of an FFT anymore. Therefore one can no longer perform reconstruction by directly applying an inverse FFT to the k-space samples. In a commonly used approach called gridding, the samples are first interpolated onto a uniform Cartesian grid and then reconstructed by using the FFT (see 【1】Fig. 17.1B【/1】). For example, a convolution approach to gridding takes a k-space data point, convolves it with a gridding convolution mask, and accumulates the results on a Cartesian grid. As we saw in 【2】Chapter 7【/2】, Convolution, is quite computationally intensive and is an important pattern for massively parallel computing. The reader already has the skills for accelerating convolution gridding computation with parallel computing and thus facilitating the application of the current FFT approach to non-Cartesian trajectory data.",
+      "zh": "从非笛卡儿轨迹数据进行图像重建，既是挑战也是机遇。主要挑战源于指数项不再均匀间隔，求和也不再具有 FFT 的形式。因此，无法再通过对 k 空间样本直接施加逆 FFT 来重建。在一种称为网格化的常用方法中，样本首先被插值到均匀的笛卡儿网格上，然后利用 FFT 进行重建（见【1】图 17.1B【/1】）。例如，卷积网格化方法取一个 k 空间数据点，将其与网格化卷积掩模进行卷积，并将结果累加到笛卡儿网格上。正如我们在【2】第 7 章【/2】《卷积》中所见，这种计算的计算量相当大，是大规模并行计算的一个重要模式。读者已具备用并行计算加速卷积网格化计算的技能，因而能够将现有的 FFT 方法应用于非笛卡儿轨迹数据。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[10]",
+      "en": "In this chapter we will cover an iterative, statistically optimal image reconstruction method that can accurately model imaging physics and bound the noise error in the resulting image pixel values. Such statistically optimal methods are gaining importance in the wake of big data analytics. However, such iterative reconstruction methods have been impractical for large-scale three-dimensional (3D) problems, owing their excessive computational requirements compared to gridding. Recently, these reconstructions have become viable in clinical settings because of the wide availability of GPUs. An iterative reconstruction algorithm that used to take hours using high-end sequential CPUs to reconstruct an image of moderate resolution now takes only minutes using both CPUs and GPUs, a delay that is acceptable in clinical settings.",
+      "zh": "在本章中，我们将介绍一种迭代的、统计最优的图像重建方法，它能够精确地对成像物理过程建模，并约束所得图像像素值中的噪声误差。在大数据分析兴起的背景下，这类统计最优方法正变得越来越重要。然而，与网格化相比，这类迭代重建方法的计算需求过高，一直难以用于大规模三维（3D）问题。近来，由于 GPU 的广泛普及，这些重建方法在临床环境中已变得可行。过去，使用高端串行 CPU 重建一幅中等分辨率的图像，需要耗费数小时；如今，同时使用 CPU 和 GPU 只需几分钟，这样的延迟在临床环境中是可以接受的。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "17.2 Iterative reconstruction",
+      "zh": "17.2 迭代重建"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "Haldar and Liang proposed a linear solver–based iterative reconstruction algorithm (【1】Stone et al., 2008【/1】) for non-Cartesian scan data, as shown in 【2】Fig. 17.1C【/2】. The algorithm allows for explicitly modeling the physics of the scanner data acquisition process and can thus reduce the artifacts in the reconstructed image. However, it is computationally expensive. We use this as an example of innovative methods that have required too much computation time to be considered practical. We will show that massively parallel execution can reduce the reconstruction time to the order of a minute so that the new imaging capabilities, such as sodium imaging, can be deployed in clinical settings.",
+      "zh": "Haldar 和 Liang 为处理非笛卡儿扫描数据提出了一种基于线性方程组求解器的迭代重建算法（【1】Stone et al., 2008【/1】），如【2】图 17.1C【/2】所示。该算法可以显式地对扫描仪数据采集过程的物理机制建模，从而减少重建图像中的伪影。不过，它的计算开销很大。我们把它作为一类创新方法的例子，这类方法由于所需计算时间过长而一直被认为不切实际。我们将说明，大规模并行执行可以把重建时间缩短到分钟量级，从而使钠成像等新的成像能力得以在临床环境中部署。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "【1】Fig. 17.3【/1】 shows a solution of the quasi-Bayesian estimation problem formulation of the iterative linear solver–based reconstruction approach, where ρ is a vector containing voxel values for the reconstructed image, F is a matrix that models the physics of imaging process, D is a vector of data samples from the scanner, and W is a matrix that can incorporate prior information such as anatomical constraints. F【2】H【/2】 and W【3】H【/3】 are the Hermitian transpose (or conjugate transpose) of F and W, respectively, by taking the transpose and then taking the complex conjugate of each entry (the complex conjugate of 【M4】【M5】 being 【M6】【M7】. In clinical settings, the anatomical constraints represented in W are derived from one or more high-resolution, high-SNR water molecule scans of the patient. These water molecule scans reveal features such as the location of anatomical structures. The matrix W is derived from these reference images. The problem is to solve for ρ given all the other matrices and vectors.",
+      "zh": "【1】图 17.3【/1】展示了迭代式基于线性方程组求解器的重建方法的准贝叶斯估计问题公式化描述的一个解，其中 ρ 是包含重建图像体素值的向量，F 是模拟成像物理过程的矩阵，D 是来自扫描仪的数据样本向量，W 是能够纳入解剖约束等先验信息的矩阵。F【2】H【/2】与 W【3】H【/3】分别是 F 与 W 的厄米转置（或共轭转置），即先转置，再对每个元素取复共轭（【M4】【M5】的复共轭为【M6】【M7】）。在临床环境中，W 中所体现的解剖约束来自对患者进行的一次或多次高分辨率、高信噪比水分子扫描。这些水分子扫描揭示了解剖结构位置等特征。矩阵 W 由这些参考图像导出。问题是在给定其他所有矩阵和向量的情况下求解 ρ。"
+    },
+    {
+      "id": "n0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.3【/1】 An iterative linear solver–based approach to reconstructing non-Cartesian k-space sample data.",
+      "zh": "【1】图 17.3【/1】 一种基于线性方程组求解器的迭代方法，用于重建非笛卡儿 k 空间样本数据。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "On the surface, the computational solution to the problem formulation in 【1】Fig. 17.3【/1】 should be very straightforward. It involves matrix multiplication and addition (F【2】H【/2】F+λW【3】H【/3】W), matrix-vector multiplication (F【4】H【/4】D), matrix inversion (F【5】H【/5】F+λW【6】H【/6】W)【7】−1【/7】, and finally matrix multiplication ((F【8】H【/8】F+λW【9】H【/9】W)【10】−1【/10】*F【11】H【/11】D). However, the sizes of the matrices make this straightforward approach extremely time-consuming. The dimensions of F【12】H【/12】 and F matrices are determined by the number of voxels in the 3D reconstructed image and the number of k-space samples used in the reconstruction. Even in a modest resolution 128【13】3【/13】-voxel reconstruction, there are 128【14】3【/14】=2 million columns in F with N elements in each column, where N is the number of k-space samples that are used (size of D). Obviously, F is extremely large. Such massive dimensions are commonly encountered in big data analytics when one tries to use iterative solver methods to estimate the major contributing factors of a massive amount of noisy observational data.",
+      "zh": "表面上看，对【1】图 17.3【/1】中问题公式的求解应该非常简单。它涉及矩阵乘法与加法（F【2】H【/2】F+λW【3】H【/3】W）、矩阵-向量乘法（F【4】H【/4】D）、矩阵求逆（F【5】H【/5】F+λW【6】H【/6】W）【7】−1【/7】，最后还有矩阵乘法（(F【8】H【/8】F+λW【9】H【/9】W)【10】−1【/10】*F【11】H【/11】D）。然而，矩阵的规模使得这种直接方法极其耗时。F【12】H【/12】与 F 矩阵的维数由三维重建图像中的体素数以及重建所用的 k 空间样本数决定。即便是在中等分辨率的 128【13】3【/13】体素重建中，F 也有 128【14】3【/14】=200 万列，每列有 N 个元素，其中 N 是所使用的 k 空间样本数（即 D 的大小）。显然，F 极其庞大。当人们试图用迭代求解方法从海量含噪观测数据中估计主要影响因素时，这种规模的维数在大数据分析中十分常见。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "The sizes of the matrices that are involved are so large that the matrix operations that are involved in a direct solution of the equation in 【1】Fig. 17.3【/1】 using methods such as Gaussian elimination are practically intractable. An iterative method for matrix inversion, such as the conjugate gradient (CG) algorithm, is therefore preferred. The CG algorithm reconstructs the image by iteratively solving the equation in 【2】Fig. 17.3【/2】 for ρ. During each iteration the CG algorithm updates the current image estimate ρ to improve the value of the quasi-Bayesian cost function. The computational efficiency of the CG technique is determined largely by the efficiency of matrix-vector multiplication operations involving F【3】H【/3】F+λW【4】H【/4】W and ρ, as these operations are required during each iteration of the CG algorithm.",
+      "zh": "所涉及的矩阵规模如此之大，以至于用高斯消元等方法直接求解【1】图 17.3【/1】中的方程所需的矩阵运算实际上难以处理。因此，人们更倾向于采用共轭梯度（CG）算法等矩阵求逆的迭代方法。CG 算法通过迭代求解【2】图 17.3【/2】中的方程来重建图像 ρ。在每次迭代中，CG 算法都会更新当前的图像估计 ρ，以改进准贝叶斯代价函数的值。CG 技术的计算效率在很大程度上取决于涉及 F【3】H【/3】F+λW【4】H【/4】W 与 ρ 的矩阵-向量乘法运算的效率，因为 CG 算法的每次迭代都需要这些运算。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "Fortunately, the matrix W often has a sparse structure that permits efficient implementation of W【1】H【/1】W, and the matrix F【2】H【/2】F is Toeplitz, which enables efficient matrix-vector multiplication via the FFT. 【3】Stone et al. (2008)【/3】 present a GPU-accelerated method for calculating Q, a data structure that allows us to quickly calculate matrix-vector multiplication involving F【4】H【/4】F without actually calculating F【5】H【/5】F itself. The calculation of Q can take days on a high-end CPU core. Since F models the physics of the image process, it needs to be done only once for a given scanner and planned trajectory. Thus Q needs to be calculated only once and is used for multiple scans using the same scan trajectory.",
+      "zh": "幸运的是，矩阵 W 通常具有稀疏结构，可以高效地实现 W【1】H【/1】W；矩阵 F【2】H【/2】F 是 Toeplitz 矩阵，可以通过 FFT 高效地进行矩阵-向量乘法。【3】Stone et al. (2008)【/3】提出了一种 GPU 加速的计算 Q 的方法。Q 是一种数据结构，它使我们无需真正计算 F【4】H【/4】F 本身，就能快速完成涉及 F【5】H【/5】F 的矩阵-向量乘法。在高端 CPU 核心上，计算 Q 可能需要数天。由于 F 是对成像过程物理机制的建模，对于给定的扫描仪和既定轨迹，它只需要计算一次。因此 Q 也只需计算一次，并且可供使用同一条扫描轨迹的多次扫描共用。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "The matrix-vector multiply to calculate F【1】H【/1】D takes about one order of magnitude less time than Q but can still take about 3 hours for a 128【2】3【/2】-voxel reconstruction on a high-end sequential CPU. Recall that D is the vector of data samples from the scanner. Thus since F【3】H【/3】D needs to be computed for every image acquisition, it is desirable to reduce the computation time of F【4】H【/4】D to minutes.【5】【6】1【/6】【/5】 We will show the details of this process. As it turns out, the core computational structure of Q is identical to that of F【7】H【/7】D; Q just involves much more computation because it deals with matrix multiplication rather than just matrix-vector multiplication. Thus it suffices to discuss one of them from the parallelization perspective. We will focus on F【8】H【/8】D, since this is the one that will need to be run for each data acquisition.",
+      "zh": "计算 F【1】H【/1】D 所需的矩阵-向量乘法比计算 Q 大约快一个数量级，但在高端串行 CPU 上，一次 128【2】3【/2】体素重建仍可能需要约 3 小时。回顾一下，D 是来自扫描仪的数据样本向量。因此，由于每次图像采集都需要计算 F【3】H【/3】D，我们希望能把 F【4】H【/4】D 的计算时间缩短到分钟量级。【5】【6】1【/6】【/5】我们将展示这一过程的细节。事实证明，Q 的核心计算结构与 F【7】H【/7】D 完全相同；Q 只是涉及的计算量更大，因为它处理的是矩阵乘法，而不仅仅是矩阵-向量乘法。因此，从并行化的角度出发，只讨论其中之一就足够了。我们将重点关注 F【8】H【/8】D，因为每次数据采集都需要运行它。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "The “find ρ” step in 【1】Fig. 17.3【/1】 performs the actual CG based on F【2】H【/2】D. As we explain earlier, precalculation of Q makes this step much less computationally intensive than F【3】H【/3】D, accounting for less than 1% of the execution of the reconstruction of each image on a sequential CPU. As a result, we will leave the CG solver out of the parallelization scope and focus on F【4】H【/4】D in this chapter. However, we will revisit its status at the end of the chapter.",
+      "zh": "【1】图 17.3【/1】中的“求解 ρ”步骤基于 F【2】H【/2】D 执行实际的 CG 计算。如前所述，预先计算 Q 使这一步骤的计算强度远低于 F【3】H【/3】D，在串行 CPU 上只占每幅图像重建执行的不到 1%。因此，本章将把 CG 求解器排除在并行化范围之外，专注于 F【4】H【/4】D。不过，我们会在本章结尾重新审视它的地位。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "17.3 Computing F【1】H【/1】D",
+      "zh": "17.3 计算 F【1】H【/1】D"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "【1】Fig. 17.4【/1】 shows a sequential C implementation of the computations for the core step of computing a data structure for computing F【2】H【/2】D. The computations start with an outer loop that iterates through the k-space samples (line 01). A quick glance at 【3】Fig. 17.4【/3】 shows that the C implementation of F【4】H【/4】D is an excellent candidate for acceleration because it exhibits substantial data parallelism. The algorithm first computes the real and imaginary components of Mu (rMu and iMu) at the current sample point in the k-space. It then enters an inner n-loop that computes the contribution of the current k-space sample to the real and imaginary components of F【5】H【/5】D at each voxel in the image space. Keep in mind that M is the total number of k-space samples and N is the total number of voxels in the reconstructed image. The value of F【6】H【/6】D at any voxel depends on the values of all k-space sample points. However, no voxel elements of F【7】H【/7】D depend on any other voxel elements of F【8】H【/8】D. Therefore all elements of F【9】H【/9】D can be computed in parallel. Specifically, all iterations of the outer loop can be done in parallel, and all iterations of the inner loop can be done in parallel. However, the calculations of the inner loop have a dependence on the calculation done by the preceding statements in the same iteration of the outer loop.",
+      "zh": "【1】图 17.4【/1】展示了用于计算 F【2】H【/2】D 的数据结构这一核心步骤的串行 C 实现。计算从一个遍历 k 空间样本的外层循环开始（第 01 行）。快速浏览【3】图 17.4【/3】即可看出，F【4】H【/4】D 的 C 实现具有可观的数据并行性，是加速的理想候选。该算法首先在 k 空间的当前采样点计算 Mu 的实部与虚部分量（rMu 和 iMu）。随后进入内层 n 循环，计算当前 k 空间样本对图像空间中每个体素处 F【5】H【/5】D 实部与虚部分量的贡献。请记住，M 是 k 空间样本的总数，N 是重建图像中体素的总数。任意体素处 F【6】H【/6】D 的值取决于所有 k 空间采样点的值。然而，F【7】H【/7】D 的任何体素元素都不依赖 F【8】H【/8】D 的其他体素元素。因此，F【9】H【/9】D 的所有元素都可以并行计算。具体而言，外层循环的所有迭代可以并行执行，内层循环的所有迭代也可以并行执行。不过，内层循环的计算依赖于同一外层循环迭代中前面语句的计算结果。"
+    },
+    {
+      "id": "n0038",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.4【/1】 Computation of F【2】H【/2】D.",
+      "zh": "【1】图 17.4【/1】 F【2】H【/2】D 的计算。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "Despite the algorithm’s abundant inherent parallelism, potential performance bottlenecks are evident. First, in the loop that computes the elements of F【1】H【/1】D, the ratio of floating-point operations to memory accesses is at best 0.75 OP/B and at worst 0.25 OP/B. The best case assumes that the sin and cos trigonometry operations are computed by using five-element Taylor series that require 13 and 12 floating-point operations, respectively. The worst case assumes that each trigonometric operation is computed as a single operation in hardware. As we saw in 【2】Chapter 5【/2】, Memory Architecture and Data Locality, a substantially higher floating-point arithmetic to global memory access ratio is needed for the kernel not to be limited by memory bandwidth. Thus the memory accesses will clearly limit the performance of the kernel unless the ratio is drastically increased.",
+      "zh": "尽管该算法具有丰富的内在并行性，潜在的性能瓶颈也显而易见。首先，在计算 F【1】H【/1】D 元素的循环中，浮点运算与内存访问之比最高为 0.75 OP/B，最低为 0.25 OP/B。最优情况假设 sin 和 cos 三角函数运算使用五元泰勒级数来计算，分别需要 13 次和 12 次浮点运算。最差情况假设每个三角运算在硬件中作为单次运算执行。正如我们在【2】第 5 章【/2】《内存体系结构与数据局部性》中所见，核函数要不受内存带宽限制，就需要明显更高的浮点运算与全局内存访问之比。因此，除非大幅提高这一比值，否则内存访问显然会限制核函数的性能。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "Second, the ratio of floating-point arithmetic to floating-point trigonometry functions is only 13:2. Thus a GPU-based implementation must tolerate or avoid stalls due to the long latency and low throughput of the sin and cos operations. Without a good way to reduce the cost of trigonometry functions, the performance will likely be dominated by the time that is spent in these functions.",
+      "zh": "其次，浮点算术与浮点三角函数之比仅为 13:2。因此，基于 GPU 的实现必须容忍或避免 sin 和 cos 运算因长延迟和低吞吐量而造成的停顿。如果没有好的办法降低三角函数运算的成本，性能很可能将由在这些函数上花费的时间主导。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "We are now ready to take the steps in converting F【1】H【/1】D from sequential C code to a CUDA kernel.",
+      "zh": "现在，我们可以着手把 F【1】H【/1】D 从串行 C 代码转换为 CUDA 核函数了。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/h3[1]",
+      "en": "Step 1: Determine the kernel parallelism structure",
+      "zh": "步骤 1：确定核函数的并行性结构"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[1]",
+      "en": "The conversion of the loops in 【1】Fig. 17.4【/1】 into a CUDA kernel is conceptually straightforward. Since all iterations of the outer loop of 【2】Fig. 17.4【/2】 can be executed in parallel, we can simply convert the outer loop into a CUDA kernel by mapping its iterations to CUDA threads. 【3】Fig. 17.5【/3】 shows a kernel from such a straightforward conversion. Each thread implements an iteration of the original outer loop; that is, we use each thread to calculate the contribution of one k-space sample to all F【4】H【/4】D elements. The original outer loop has M iterations, and M can be in the millions. We obviously need to have a large number of thread blocks to generate enough threads to implement all these iterations.",
+      "zh": "将【1】图 17.4【/1】中的循环转换为 CUDA 核函数在概念上是直截了当的。由于【2】图 17.4【/2】外层循环的所有迭代都可以并行执行，我们只需把外层循环的迭代映射到 CUDA 线程，就能把它转换为 CUDA 核函数。【3】图 17.5【/3】展示了由这种直接转换得到的核函数。每个线程实现原始外层循环的一次迭代；也就是说，我们用每个线程来计算一个 k 空间样本对所有 F【4】H【/4】D 元素的贡献。原始外层循环有 M 次迭代，而 M 可能达到数百万。显然，我们需要大量的线程块来产生足够的线程，以实现所有这些迭代。"
+    },
+    {
+      "id": "n0044",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 17.5【/1】 First version of the F【2】H【/2】D kernel.",
+      "zh": "【1】图 17.5【/1】 F【2】H【/2】D 核函数的第一版。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[2]",
+      "en": "To make performance tuning easy, we declare a constant 【1】FHD_THREADS_PER_BLOCK【/1】 that defines the number of threads in each thread block when we invoke the cmpFhD kernel. Thus we will use 【2】M/FHD_THREADS_PER_BLOCK【/2】 for the grid size and 【3】FHD_THREADS_PER_BLOCK【/3】 for the block size when invoking the kernel. Within the kernel, each thread calculates the original iteration of the outer loop that it is assigned to cover, using the familiar formula 【4】blockIdx.x*FHD_THREADS_PER_BLOCK + threadIdx.x【/4】. For example, assume that there are 1,000,000 k-space samples and we decide to use 1024 threads per block. The grid size at kernel innovation will be 1,000,000/1024=977 blocks. The block size will be 1,024. The calculation of m for each thread will be equivalent to 【5】blockIdx.x*1024+threadIdx【/5】.",
+      "zh": "为了方便性能调优，我们声明一个常量【1】FHD_THREADS_PER_BLOCK【/1】，用于在调用 cmpFhD 核函数时定义每个线程块中的线程数。因此，调用核函数时，我们将用【2】M/FHD_THREADS_PER_BLOCK【/2】作为网格大小，用【3】FHD_THREADS_PER_BLOCK【/3】作为线程块大小。在核函数内部，每个线程用熟悉的公式【4】blockIdx.x*FHD_THREADS_PER_BLOCK + threadIdx.x【/4】来计算它被指派覆盖的原始外层循环迭代。例如，假设有 1,000,000 个 k 空间样本，我们决定每个线程块使用 1024 个线程。调用核函数时网格大小为 1,000,000/1024=977 个线程块。线程块大小为 1,024。每个线程对 m 的计算等价于【5】blockIdx.x*1024+threadIdx【/5】。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[3]",
+      "en": "While the kernel of 【1】Fig. 17.5【/1】 exploits ample parallelism, it suffers from a major problem: All threads write into all rFhD and iFhD voxel elements. This means that the kernel must use atomic operations in the global memory in the inner loop in order to keep threads from trashing each other’s contributions to the voxel value (lines 10–11). As we saw in 【2】Chapter 9【/2】, Parallel Histogram, heavy use of atomic operations on global memory data can seriously reduce the performance of parallel execution. Furthermore, the size of the rFhD and iFhD arrays, which is the total number of voxels in the reconstructed image, makes privatization in shared memory infeasible. We need to explore other options.",
+      "zh": "虽然【1】图 17.5【/1】中的核函数利用了充足的并行性，但它有一个重大问题：所有线程都要写入所有 rFhD 和 iFhD 体素元素。这意味着核函数必须在内层循环中对全局内存使用原子操作，以防止线程互相破坏彼此对体素值的贡献（第 10–11 行）。正如我们在【2】第 9 章【/2】《并行直方图》中所见，对全局内存数据大量使用原子操作会严重降低并行执行的性能。此外，rFhD 和 iFhD 数组的大小——即重建图像中体素的总数——使得在共享内存中进行私有化不可行。我们需要探索其他方案。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[4]",
+      "en": "The arrangement for each thread to take an input element (k-space sample in this application) and update all or many output elements (voxels of the reconstructed image in this application) is referred to as the 【1】scatter approach【/1】. Intuitively, each thread scatters the effect of an input to many output values. Unfortunately, threads in the scatter approach can update the same output elements and potentially trash each other’s contributions. Thus atomic operations are needed for a scatter approach in general and tend to negatively impact the performance of parallel execution.",
+      "zh": "每个线程取一个输入元素（本应用中即 k 空间样本），并更新全部或许多输出元素（本应用中即重建图像的体素）这种安排，称为【1】分散方法【/1】。直观地说，每个线程把一个输入的影响分散到许多输出值上。遗憾的是，在分散方法中，线程可能更新相同的输出元素，从而可能破坏彼此的贡献。因此，分散方法通常需要原子操作，而这往往会对并行执行的性能产生负面影响。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[5]",
+      "en": "A potentially better alternative to the scatter approach is to use each thread to calculate one output element by collecting the contributions from all input elements, which is referred to as the 【1】gather approach【/1】. The gather approach ensures that the threads update only their designated output elements and never interfere with each other. In our application, parallelization based on the gather approach assigns each thread to calculate one pair of rFhD and iFhD elements from all k-space samples. As a result, there is no interference between threads and no need for atomic operations.",
+      "zh": "分散方法一个可能更好的替代方案是：让每个线程通过收集所有输入元素的贡献来计算一个输出元素，这称为【1】汇聚方法【/1】。汇聚方法确保线程只更新自己负责的输出元素，彼此之间互不干扰。在我们的应用中，基于汇聚方法的并行化让每个线程负责从所有 k 空间样本计算一对 rFhD 和 iFhD 元素。这样，线程之间没有干扰，也不需要原子操作。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[6]",
+      "en": "To adopt the gather approach, we need to make the n-loop the outer loop so that we can assign each iteration of the n-loop to a thread. This can be done by swapping the inner loop and the outer loop in 【1】Fig. 17.4【/1】 so that each of the new outer loop iterations processes one rFhD/iFhD element pair. That is, each of the new outer loop iterations will execute the new inner loop that accumulates the contribution of all k-space samples to the rFhD/iFhD element pair handled by the outer loop iteration. This transformation of the loop structure is called 【2】loop interchange【/2】. It requires a perfectly nested loop, meaning that there is no statement between the outer for-loop statement and the inner for-loop statement. However, this is not true for the FhD code in 【3】Fig. 17.4【/3】. We need to find a way to move the calculation of rMu and iMu elements out of the way.",
+      "zh": "要采用汇聚方法，我们需要把 n 循环作为外层循环，从而可以把 n 循环的每次迭代分配给一个线程。这可以通过交换【1】图 17.4【/1】中的内层循环与外层循环来实现，使新的外层循环每次迭代处理一对 rFhD/iFhD 元素。也就是说，新的外层循环每次迭代将执行新的内层循环，后者把所有 k 空间样本对当前外层循环迭代所处理的 rFhD/iFhD 元素对的贡献累加起来。这种循环结构变换称为【2】循环交换【/2】。它要求循环是完美嵌套的，也就是说，外层 for 循环语句与内层 for 循环语句之间不能有任何语句。然而，【3】图 17.4【/3】中的 FhD 代码并不满足这一点。我们需要找到一种方法，把 rMu 和 iMu 元素的计算挪到一边。"
+    }
+  ]
+}

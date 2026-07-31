@@ -1,0 +1,149 @@
+{
+  "page": "Ch015_331-354_B9780323912310000112",
+  "nodes": [
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[1]",
+      "en": "In this chapter we have seen the challenges that are associated with parallelizing graph computations, using breadth-first search as an example. We started with a brief introduction to the representation of graphs. We discussed the differences between vertex-centric and edge-centric parallel implementations and observed the tradeoffs between them. We also saw how to eliminate redundant work by using frontiers and optimized the use of frontiers by using privatization. We also briefly discussed other advanced optimizations to reduce synchronization overhead and improve load balance.",
+      "zh": "在本章中，我们以广度优先搜索为例，看到了并行化图计算所面临的挑战。我们从图表示的简要介绍开始。我们讨论了面向顶点的并行实现与面向边的并行实现之间的差异，并观察了它们之间的权衡。我们还看到了如何使用前沿来消除冗余工作，以及如何通过私有化来优化前沿的使用。我们还简要讨论了减少同步开销和改善负载均衡的其他高级优化。"
+    },
+    {
+      "id": "st0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]",
+      "en": "1. Consider the following directed unweighted graph:【M1】【M2】",
+      "zh": "1. 考虑如下有向无权图：【M1】【M2】"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[1]",
+      "en": "a. Represent the graph using an adjacency matrix.",
+      "zh": "a. 用邻接矩阵表示该图。"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[2]",
+      "en": "b. Represent the graph in the CSR format. The neighbor list of each vertex must be sorted.",
+      "zh": "b. 用 CSR 格式表示该图。每个顶点的邻居列表必须有序。"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]",
+      "en": "c. Parallel BFS is executed on this graph starting from vertex 0 (i.e., vertex 0 is in level 0). For each iteration of the BFS traversal:【M1】",
+      "zh": "c. 在该图上从顶点 0 开始执行并行 BFS（即顶点 0 位于第 0 层）。对于 BFS 遍历的每次迭代：【M1】"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[1]",
+      "en": "i. If a vertex-centric push implementation is used:【M1】",
+      "zh": "i. 如果使用面向顶点的推送式实现：【M1】"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[1]/ol[1]/li[1]",
+      "en": "1. How many threads are launched?",
+      "zh": "1. 启动了多少个线程？"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[1]/ol[1]/li[2]",
+      "en": "2. How many threads iterate over their vertex’s neighbors?",
+      "zh": "2. 有多少个线程遍历其顶点的邻居？"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[2]",
+      "en": "ii. If a vertex-centric pull implementation is used:【M1】",
+      "zh": "ii. 如果使用面向顶点的拉取式实现：【M1】"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[2]/ol[1]/li[1]",
+      "en": "1. How many threads are launched?",
+      "zh": "1. 启动了多少个线程？"
+    },
+    {
+      "id": "o0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[2]/ol[1]/li[2]",
+      "en": "2. How many threads iterate over their vertex’s neighbors?",
+      "zh": "2. 有多少个线程遍历其顶点的邻居？"
+    },
+    {
+      "id": "o0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[2]/ol[1]/li[3]",
+      "en": "3. How many threads label their vertex?",
+      "zh": "3. 有多少个线程标记其顶点？"
+    },
+    {
+      "id": "o0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[3]",
+      "en": "iii. If an edge-centric implementation is used:【M1】",
+      "zh": "iii. 如果使用面向边的实现：【M1】"
+    },
+    {
+      "id": "o0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[3]/ol[1]/li[1]",
+      "en": "1. How many threads are launched?",
+      "zh": "1. 启动了多少个线程？"
+    },
+    {
+      "id": "o0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[3]/ol[1]/li[2]",
+      "en": "2. How many threads may label a vertex?",
+      "zh": "2. 有多少个线程可能标记某个顶点？"
+    },
+    {
+      "id": "o0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[4]",
+      "en": "iv. If a vertex-centric push frontier-based implementation is used:【M1】",
+      "zh": "iv. 如果使用基于前沿的面向顶点的推送式实现：【M1】"
+    },
+    {
+      "id": "o0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[4]/ol[1]/li[1]",
+      "en": "1. How many threads are launched?",
+      "zh": "1. 启动了多少个线程？"
+    },
+    {
+      "id": "o0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[4]/ol[1]/li[2]",
+      "en": "2. How many threads iterate over their vertex’s neighbors?",
+      "zh": "2. 有多少个线程遍历其顶点的邻居？"
+    },
+    {
+      "id": "o0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[2]",
+      "en": "2. Implement the host code for the direction-optimized BFS implementation described in 【1】Section 15.3【/1】.",
+      "zh": "2. 为【1】第 15.3 节【/1】所述的方向优化的 BFS 实现编写主机代码。"
+    },
+    {
+      "id": "o0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[3]",
+      "en": "3. Implement the single-block BFS kernel described in 【1】Section 15.7【/1】.",
+      "zh": "3. 实现【1】第 15.7 节【/1】所述的单线程块 BFS 核函数。"
+    },
+    {
+      "id": "st0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    },
+    {
+      "id": "fn1",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[1]",
+      "en": "【1】【2】1【/2】【/1】If we are constructing a BFS tree, this implementation can be seen as assigning threads to parent vertices in the BFS tree in search of their children, hence the name 【3】top-down【/3】. This terminology assumes that the root of the tree is on the top and the leaves of the tree are at the bottom. 【4】Push【/4】 refers to each active vertex’s action of pushing its depth via its outgoing edges to all its neighbors.",
+      "zh": "【1】【2】1【/2】【/1】如果我们在构建一棵 BFS 树，这种实现可以看作是把线程分配给 BFS 树中的父顶点，让它们寻找自己的子顶点，因此得名【3】自顶向下【/3】。这一术语假定树的根在顶部，树的叶子在底部。【4】推送（Push）【/4】指的是每个活跃顶点通过其出边，把它的深度推送给所有邻居的动作。"
+    },
+    {
+      "id": "fn2",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[2]",
+      "en": "【1】【2】2【/2】【/1】If we are constructing a BFS tree, this implementation can be seen as assigning threads to potential child vertices in the BFS tree in search of their parents, hence, the name 【3】bottom-up【/3】. 【4】Pull【/4】 refers to each vertex’s action of reaching back to its predecessors and pulling active status from them.",
+      "zh": "【1】【2】2【/2】【/1】如果我们在构建一棵 BFS 树，这种实现可以看作是把线程分配给 BFS 树中潜在的子顶点，让它们寻找自己的父顶点，因此得名【3】自底向上【/3】。【4】拉取（Pull）【/4】指的是每个顶点回头够到其前驱、并从它们那里拉取活跃状态的动作。"
+    }
+  ]
+}

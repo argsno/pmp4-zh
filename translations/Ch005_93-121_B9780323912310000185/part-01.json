@@ -1,0 +1,155 @@
+{
+  "page": "Ch005_93-121_B9780323912310000185",
+  "nodes": [
+    {
+      "id": "p9156",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/p[5]",
+      "en": "【1】As an example, points A【2】1【/2】 and A【3】2【/3】 both represent memory-bound applications, while A【4】3【/4】 represents a compute-bound application. A【5】1【/5】 uses resources efficiently and operates close to the peak memory bandwidth, whereas A【6】2【/6】 does not. For A【7】2【/7】, there may be room for additional optimizations to improve throughput by improving memory bandwidth utilization. However, for A【8】1【/8】 the only way to improve throughput is to increase the computational intensity of the application【/1】.",
+      "zh": "【1】例如，点 A【2】1【/2】和 A【3】2【/3】都代表访存受限的应用，而 A【4】3【/4】代表计算受限的应用。A【5】1【/5】高效地利用资源，运行在接近峰值内存带宽的水平，而 A【6】2【/6】则不然。对于 A【7】2【/7】，或许还有通过改善内存带宽利用率来进一步提高吞吐量的优化空间。然而，对于 A【8】1【/8】，提高吞吐量的唯一途径是提高应用的算术强度【/1】。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "To achieve higher performance for this kernel, we need to increase the compute to global memory access ratio of the kernel by reducing the number of global memory accesses it performs. For example, to fully utilize the 19,500 GFLOPS that the A100 GPU provides, a ratio of at least (19,500 GOP/second)/(1555 GB/second)=12.5 OP/B is needed. This ratio means that for every 4-byte floating point value accessed, there must be about 50 floating-point operations performed! The extent to which such a ratio can be achieved depends on the intrinsic data reuse in the computation at hand. We refer the reader to the “The Roofline Model” sidebar for a useful model for analyzing a program’s potential performance with respect to its compute intensity.",
+      "zh": "为了进一步提高这个核函数的性能，我们需要通过减少它所执行的全局内存访问次数，来提高核函数的计算访存比。例如，要充分利用 A100 GPU 提供的 19500 GFLOPS，至少需要 (19500 GOP/秒)/(1555 GB/秒)=12.5 OP/B 的比值。这意味着每访问一个 4 字节的浮点数值，就必须执行大约 50 次浮点运算！这个比值能在多大程度上达到，取决于当前计算中数据的内在重用程度。我们请读者参阅“Roofline 模型”边栏，那里提供了一个有用的模型，可用于根据程序的算术强度分析其潜在性能。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "As we will see, matrix multiplication presents opportunities for reduction of global memory accesses that can be captured with relatively simple techniques. The execution speed of matrix multiplication functions can vary by orders of magnitude, depending on the level of reduction of global memory accesses. Therefore matrix multiplication provides an excellent initial example for such techniques. This chapter introduces a commonly used technique for reducing the number of global memory accesses and demonstrates the technique on matrix multiplication.",
+      "zh": "正如我们将看到的，矩阵乘法为减少全局内存访问提供了机会，而这些机会可以用相对简单的技术来把握。矩阵乘法函数的执行速度可能相差若干数量级，具体取决于全局内存访问的减少程度。因此，矩阵乘法为这类技术提供了一个极好的入门示例。本章将介绍一种常用的减少全局内存访问次数的技术，并在矩阵乘法上演示这一技术。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "5.2 CUDA memory types",
+      "zh": "5.2 CUDA 内存类型"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "A CUDA device contains several types of memory that can help programmers to improve the compute to global memory access ratio. 【1】Fig. 5.2【/1】 shows these CUDA device memories. At the bottom of the figure, we see global memory and constant memory. Both these types of memory can be written (W) and read (R) by the host. The global memory can also be written and read by the device, whereas the constant memory supports short-latency, high-bandwidth read-only access by the device. We introduced global memory in 【2】Chapter 2【/2】, Heterogeneous Data Parallel Computing, and we will look at constant memory in detail in 【3】Chapter 7【/3】, Convolution.",
+      "zh": "CUDA 设备包含多种类型的内存，可以帮助程序员提高计算访存比。【1】图 5.2【/1】展示了这些 CUDA 设备内存。在图的底部，我们可以看到全局内存和常量内存。这两种内存都可以由主机写入（W）和读取（R）。全局内存还可以由设备写入和读取，而常量内存支持设备进行低延迟、高带宽的只读访问。我们在【2】第 2 章【/2】“异构数据并行计算”中介绍了全局内存，并将在【3】第 7 章【/3】“卷积”中详细研究常量内存。"
+    },
+    {
+      "id": "n0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 5.2【/1】 An (incomplete) overview of the CUDA device memory model. An important type of CUDA memory that is not shown in this figure is the texture memory, since its use is not covered in this textbook.",
+      "zh": "【1】图 5.2【/1】 CUDA 设备内存模型（不完整）总览。本图未展示的一种重要 CUDA 内存类型是纹理内存，因为本书不涉及它的使用。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "Another type of memory is the local memory, which can also be read and written. The local memory is actually placed in global memory and has similar access latency, but it is not shared across threads. Each thread has its own section of global memory that it uses as its own private local memory where it places data that is private to the thread but cannot be allocated in registers. This data includes statically allocated arrays, spilled registers, and other elements of the thread’s call stack.",
+      "zh": "另一种内存类型是局部内存，它同样可以被读取和写入。局部内存实际上位于全局内存之中，具有相似的访问延迟，但它不在线程之间共享。每个线程都有自己的一段全局内存，用作其私有的局部内存，存放对该线程而言私有、但无法分配到寄存器中的数据。这些数据包括静态分配的数组、溢出的寄存器，以及线程调用栈中的其他元素。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "Registers and shared memory in 【1】Fig. 5.2【/1】 are on-chip memories. Variables that reside in these types of memory can be accessed at very high speed in a highly parallel manner. Registers are allocated to individual threads; each thread can access only its own registers (see the “CPU versus GPU Register Architecture” sidebar). A kernel function typically uses registers to hold frequently accessed variables that are private to each thread. Shared memory is allocated to thread blocks; all threads in a block can access shared memory variables declared for the block. Shared memory is an efficient means by which threads can cooperate by sharing their input data and intermediate results. By declaring a CUDA variable in one of the CUDA memory types, a CUDA programmer dictates the visibility and access speed of the variable.",
+      "zh": "【1】图 5.2【/1】中的寄存器和共享内存都是片上内存。存放于这两种内存中的变量，可以以非常高的速度、高度并行地被访问。寄存器分配给各个线程；每个线程只能访问自己的寄存器（见“CPU 与 GPU 的寄存器体系结构”边栏）。核函数通常使用寄存器来保存各线程私有的、被频繁访问的变量。共享内存分配给线程块；一个线程块中的所有线程都可以访问为该线程块声明的共享内存变量。共享内存是线程之间共享输入数据和中间结果、从而进行协作的一种高效手段。通过在某种 CUDA 内存类型中声明一个 CUDA 变量，CUDA 程序员就决定了该变量的可见性和访问速度。"
+    },
+    {
+      "id": "n0033",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/p[1]",
+      "en": "CPU vs. GPU Register Architecture",
+      "zh": "CPU 与 GPU 的寄存器体系结构"
+    },
+    {
+      "id": "p9185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/p[2]",
+      "en": "【1】The different design objectives across the CPUs and GPUs result in different register architectures. As we saw in【/1】 【2】【3】Chapter 4【/3】【/2】, 【4】Compute Architecture and Scheduling, when CPUs context switch between different threads, they save the registers of the outgoing thread to memory and restore the registers of the incoming thread from memory. In contrast, GPUs achieve zero-overhead scheduling by keeping the registers of all the threads that are scheduled on the processing block in the processing block's register file. This way, switching between warps of threads is instantaneous because the registers of the incoming threads are already in the register file. Consequently, GPU register files need to be substantially larger than CPU register files【/4】.",
+      "zh": "【1】CPU 与 GPU 不同的设计目标导致了不同的寄存器体系结构。正如我们在【/1】【2】【3】第 4 章【/3】【/2】、【4】“计算体系结构与调度”一章中所见，CPU 在线程之间进行上下文切换时，会把离开线程的寄存器保存到内存中，并从内存中恢复进入线程的寄存器。相比之下，GPU 通过在处理块（block）的寄存器文件中保存调度到该处理块的所有线程的寄存器，实现了零开销调度。这样，在线程束之间切换是瞬时完成的，因为进入线程的寄存器已经位于寄存器文件之中。因此，GPU 的寄存器文件需要比 CPU 的寄存器文件大得多【/4】。"
+    },
+    {
+      "id": "p9165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/p[3]",
+      "en": "【1】We also saw in【/1】 【2】【3】Chapter 4【/3】【/2】, 【4】Compute Architecture and Scheduling, that GPUs support dynamic resource partitioning where an SM may provision few registers per thread and execute a large number of threads, or it my provision more registers per thread and execute fewer threads. For this reason, GPU register files need to be designed to support such dynamic partitioning of registers. In contrast, the CPU register architecture dedicates a fixed set of registers per thread regardless of the thread's actual demand for registers【/4】.",
+      "zh": "【1】我们还在【/1】【2】【3】第 4 章【/3】【/2】、【4】“计算体系结构与调度”中看到，GPU 支持动态资源划分：一个 SM 可以给每个线程配备少量寄存器并执行大量线程，也可以给每个线程配备更多寄存器而执行较少的线程。因此，GPU 的寄存器文件需要设计为支持这种寄存器动态划分。相比之下，CPU 的寄存器体系结构为每个线程分配一组固定的寄存器，而不考虑线程对寄存器的实际需求【/4】。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "To fully appreciate the difference between registers, shared memory, and global memory, we need to go into a little more detail about how these different memory types are realized and used in modern processors. As we discussed in the “Warps and SIMD Hardware” sidebar in 【1】Chapter 4【/1】, Compute Architecture and Scheduling, virtually all modern processors find their root in the model proposed by John von Neumann in 1945, which is shown in 【2】Fig. 5.3【/2】. CUDA devices are no exception. The global memory in a CUDA device maps to the Memory box in 【3】Fig. 5.3【/3】. The processor box corresponds to the processor chip boundary that we typically see today. The global memory is off the processor chip and is implemented with DRAM technology, which implies long access latencies and relatively low access bandwidth. The registers correspond to the “Register File” of the von Neumann model. The Register File is on the processor chip, which implies very short access latency and drastically higher access bandwidth when compared to the global memory. In a typical device, the aggregated access bandwidth of all the register files across all the SMs is at least two orders of magnitude higher than that of the global memory. Furthermore, whenever a variable is stored in a register, its accesses no longer consume off-chip global memory bandwidth. This will be reflected as an increased compute to global memory access ratio.",
+      "zh": "为了充分理解寄存器、共享内存和全局内存之间的区别，我们需要更深入地了解这些不同类型的内存在现代处理器中是如何实现和使用的。正如我们在【1】第 4 章【/1】“计算体系结构与调度”的“线程束与 SIMD 硬件”边栏中讨论的那样，几乎所有现代处理器都源于约翰·冯·诺依曼于 1945 年提出的模型，如【2】图 5.3【/2】所示。CUDA 设备也不例外。CUDA 设备中的全局内存对应于【3】图 5.3【/3】中的“内存”方框。处理器方框对应我们今天通常看到的处理器芯片边界。全局内存在处理器芯片之外，采用 DRAM 技术实现，这意味着较长的访问延迟和相对较低的访问带宽。寄存器对应于冯·诺依曼模型中的“寄存器文件”。寄存器文件位于处理器芯片上，与全局内存相比，访问延迟非常短，访问带宽也高得多。在典型的设备中，所有 SM 上所有寄存器文件的聚合访问带宽至少比全局内存高两个数量级。此外，只要变量存放在寄存器中，对它的访问就不再消耗片外全局内存带宽。这将体现为计算访存比的提高。"
+    },
+    {
+      "id": "n0037",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 5.3【/1】 Memory versus registers in a modern computer based on the von Neumann model.",
+      "zh": "【1】图 5.3【/1】 基于冯·诺依曼模型的现代计算机中内存与寄存器的对比。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "A subtler point is that each access to registers involves fewer instructions than an access to the global memory. Arithmetic instructions in most modern processors have “built-in” register operands. For example, a floating-point addition instruction might be of the following form:",
+      "zh": "一个更微妙的点是：访问寄存器所需的指令比访问全局内存更少。大多数现代处理器中的算术指令都有“内建”的寄存器操作数。例如，一条浮点加法指令可能具有如下形式："
+    },
+    {
+      "id": "n0039",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "where r2 and r3 are the register numbers that specify the location in the register file where the input operand values can be found. The location for storing the floating-point addition result value is specified by r1. Therefore when an operand of an arithmetic instruction is in a register, no additional instruction is required to make the operand value available to the arithmetic and logic unit (ALU), where the arithmetic calculation is done.",
+      "zh": "其中 r2 和 r3 是寄存器编号，指定在寄存器文件中存放输入操作数值的位置。浮点加法结果值的存放位置由 r1 指定。因此，当算术指令的操作数位于寄存器中时，不需要额外的指令就能把操作数值提供给算术逻辑单元（ALU），算术计算在那里完成。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "Meanwhile, if an operand value is in the global memory, the processor needs to perform a memory load operation to make the operand value available to the ALU. For example, if the first operand of a floating-point addition instruction is in the global memory, the instructions that are involved will likely look like the following example:",
+      "zh": "与此同时，如果操作数值位于全局内存中，处理器需要执行一次内存加载操作，才能把操作数值提供给 ALU。例如，如果一条浮点加法指令的第一个操作数位于全局内存中，涉及的指令很可能看起来像下面的示例："
+    },
+    {
+      "id": "n0041",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "where the load instruction adds an offset value to the contents of r4 to form an address for the operand value. It then accesses the global memory and places the value into register r2. Once the operand value is in r2, the fadd instruction performs the floating-point addition using the values in r2 and r3 and places the result into r1. Since the processor can fetch and execute only a limited number of instructions per clock cycle, the version with an additional load will likely take more time to process than the one without. This is another reason why placing the operands in registers can improve execution speed.",
+      "zh": "其中加载指令把偏移值加到 r4 的内容上，形成操作数值的地址，然后访问全局内存并把数值放入寄存器 r2。一旦操作数值位于 r2 中，fadd 指令就使用 r2 和 r3 中的值执行浮点加法，并把结果放入 r1。由于处理器每个时钟周期只能取回和执行有限数量的指令，带额外加载的版本很可能比不带加载的版本花费更多时间。这是把操作数放在寄存器中可以改善执行速度的另一个原因。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[9]",
+      "en": "Finally, there is yet another subtle reason why placing an operand value in registers is preferable. In modern computers the energy that is consumed for accessing a value from the register file is at least an order of magnitude lower than for accessing a value from the global memory. Accessing a value from registers has a tremendous advantage in energy efficiency over accessing the value from the global memory. We will look at more details of the speed and energy difference in accessing these two hardware structures in modern computers soon. On the other hand, as we will soon learn, the number of registers that are available to each thread is quite limited in today’s GPUs. As we saw in 【1】Chapter 4【/1】, Compute Architecture and Scheduling, the occupancy that is achieved for an application can be reduced if the register usage in full-occupancy scenarios exceeds the limit. Therefore we also need to avoid oversubscribing to this limited resource whenever possible.",
+      "zh": "最后，还有一个更微妙的理由说明为什么把操作数值放在寄存器中是更好的选择。在现代计算机中，从寄存器文件访问一个数值所消耗的能量，至少比从全局内存访问一个数值低一个数量级。从寄存器访问数值在能效上比从全局内存访问数值有巨大优势。我们很快将更详细地研究在现代计算机中访问这两种硬件结构在速度和能量上的差异。另一方面，正如我们很快将了解到的，在当今的 GPU 中，每个线程可用的寄存器数量相当有限。正如我们在【1】第 4 章【/1】“计算体系结构与调度”中所见，如果满占用率场景下的寄存器使用量超过上限，应用的占用率就会降低。因此，只要有可能，我们也需要避免过度占用这一有限资源。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[10]",
+      "en": "【1】Fig. 5.4【/1】 shows the shared memory and registers in a CUDA device. Although both are on-chip memories, they differ significantly in functionality and cost of access. Shared memory is designed as part of the memory space that resides on the processor chip. When the processor accesses data that resides in the shared memory, it needs to perform a memory load operation, just as in accessing data in the global memory. However, because shared memory resides on-chip, it can be accessed with much lower latency and much higher throughput than the global memory. Because of the need to perform a load operation, shared memory has longer latency and lower bandwidth than registers. In computer architecture terminology the shared memory is a form of 【2】scratchpad memory【/2】.",
+      "zh": "【1】图 5.4【/1】展示了 CUDA 设备中的共享内存和寄存器。虽然两者都是片上内存，但在功能和访问成本上差别很大。共享内存是位于处理器芯片上的内存空间的一部分。当处理器访问存放在共享内存中的数据时，它需要执行一次内存加载操作，就像访问全局内存中的数据一样。然而，由于共享内存位于片上，它的访问延迟比全局内存低得多，吞吐量也高得多。由于需要执行加载操作，共享内存的延迟比寄存器长，带宽比寄存器低。用计算机体系结构的术语来说，共享内存是一种【2】便笺存储器【/2】。"
+    },
+    {
+      "id": "n0044",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[6]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 5.4【/1】 Shared memory versus registers in a CUDA device SM.",
+      "zh": "【1】图 5.4【/1】 CUDA 设备 SM 中共享内存与寄存器的对比。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[11]",
+      "en": "One important difference between the shared memory and registers in CUDA is that variables that reside in the shared memory are accessible by all threads in a block. This contrasts with register data, which is private to a thread. That is, shared memory is designed to support efficient, high-bandwidth sharing of data among threads in a block. As shown in 【1】Fig. 5.4【/1】, a CUDA device SM typically employs multiple processing units to allow multiple threads to make simultaneous progress (see the “Threads” sidebar) in 【2】Chapter 2【/2】, Heterogeneous Data Parallel Computing. Threads in a block can be spread across these processing units. Therefore the hardware implementations of the shared memory in these CUDA devices are typically designed to allow multiple processing units to simultaneously access its contents to support efficient data sharing among threads in a block. We will be learning several important types of parallel algorithms that can greatly benefit from such efficient data sharing among threads.",
+      "zh": "CUDA 中共享内存与寄存器的一个重要区别是：存放在共享内存中的变量可以被一个线程块中的所有线程访问。这与寄存器数据形成对比——寄存器数据对单个线程是私有的。也就是说，共享内存的设计目标，是支持线程块内线程之间高效、高带宽的数据共享。如【1】图 5.4【/1】所示，CUDA 设备 SM 通常采用多个处理单元，让多个线程能够同时取得进展（见【2】第 2 章【/2】“异构数据并行计算”中的“线程”边栏）。一个线程块中的线程可以分布在这些处理单元上。因此，这些 CUDA 设备中共享内存的硬件实现通常被设计成允许多个处理单元同时访问其内容，以支持线程块内线程之间的高效数据共享。我们将学习几种重要的并行算法类型，它们都能从这种线程间高效的数据共享中受益匪浅。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[12]",
+      "en": "It should be clear by now that registers, local memory, shared memory, and global memory all have different functionalities, latencies, and bandwidth. It is therefore important to understand how to declare a variable so that it will reside in the intended type of memory. 【1】Table 5.1【/1】 presents the CUDA syntax for declaring program variables into the various memory types. Each such declaration also gives its declared CUDA variable a scope and lifetime. Scope identifies the set of threads that can access the variable: a single thread only, all threads of a block, or all threads of all grids. If a variable’s scope is a single thread, a private version of the variable will be created for every thread; each thread can access only its private version of the variable. For example, if a kernel declares a variable whose scope is a thread and it is launched with one million threads, one million versions of the variable will be created so that each thread initializes and uses its own version of the variable.",
+      "zh": "到现在应该已经清楚了：寄存器、局部内存、共享内存和全局内存具有不同的功能、延迟和带宽。因此，理解如何声明变量，使它存放在所期望的内存类型中，是很重要的。【1】表 5.1【/1】给出了把程序变量声明到各种内存类型中的 CUDA 语法。每种这样的声明也会赋予所声明的 CUDA 变量一个作用域和生命周期。作用域标识可以访问该变量的线程集合：仅单个线程、一个线程块的所有线程，还是所有网格的所有线程。如果变量的作用域是单个线程，那么将为每个线程创建该变量的一个私有版本；每个线程只能访问其私有的变量版本。例如，如果一个核函数声明了一个作用域为单个线程的变量，并且该核函数以一百万个线程启动，那么将创建一百万个该变量的版本，以便每个线程初始化并使用自己的变量版本。"
+    },
+    {
+      "id": "t0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/p[1]",
+      "en": "Table 5.1",
+      "zh": "表 5.1"
+    },
+    {
+      "id": "n0048",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/caption[1]",
+      "en": "CUDA variable declaration type qualifiers and the properties of each type.",
+      "zh": "CUDA 变量声明的类型限定符及每种类型对应的属性。"
+    },
+    {
+      "id": "n0049",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/thead[1]/tr[1]/th[1]",
+      "en": "Variable declaration",
+      "zh": "变量声明"
+    }
+  ]
+}

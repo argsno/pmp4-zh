@@ -1,0 +1,155 @@
+{
+  "page": "Ch011_235-261_B9780323912310000227",
+  "nodes": [
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[13]",
+      "en": "The race condition is overcome with the temporary variable used in line 13 and the 【1】__syncthreads( )【/1】 barrier in line 14. In line 13, all active threads first perform addition and write into their private temp variables. Therefore none of the old values in XY locations will be overwritten. The barrier 【2】__syncthread( )【/2】 in line 14 ensures that all active threads have completed their read of the old XY values before any of them can move forward and perform a write. Thus it is safe for the statement in line 16 to overwrite the XY locations.",
+      "zh": "竞态条件是通过第 13 行的临时变量和第 14 行的【1】__syncthreads( )【/1】屏障来克服的。在第 13 行，所有活跃线程先执行加法，并把结果写入各自的私有临时变量，因此 XY 位置中的任何旧值都不会被覆盖。第 14 行的屏障【2】__syncthread( )【/2】确保所有活跃线程都已读完 XY 的旧值，之后任何一个线程才能继续向前执行写操作。因此，第 16 行的语句覆盖 XY 位置是安全的。"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[14]",
+      "en": "The reason why an updated XY position may be used by another active thread is that the Kogge-Stone approach reuses the partial sums across reduction trees to reduce the computational complexity. We will study this point further in 【1】Section 11.3【/1】. The reader might wonder why the reduction tree kernels in 【2】Chapter 10【/2】, Reduction and Minimizing Divergence, did not need to use temporary variables and an extra 【3】__syncthreads()【/3】. The answer is that there is no race condition caused by a write-after-read hazard in these reduction kernels. This is because the elements written to by the active threads in an iteration are not read by any of the other active threads during the same iteration. This should be apparent by inspecting 【4】Fig. 10.7 and 10.8【/4】. For example, in 【5】Fig. 10.8【/5】, each active thread takes its inputs from its own position 【6】(input[threadIdx.x])【/6】 and a position that is of stride distance to the right 【7】(input[threadIdx.x+stride])【/7】. None of the stride distance positions are updated by any active threads during any given iteration. Therefore all active threads will always be able to read the old value of their respective 【8】input[threadIdx.x]【/8】. Since the execution within a thread is always sequential, each thread will always be able to read the old value in 【9】input[threadIdx.x]【/9】 before writing the new value into the position. The reader should verify that the same property holds in 【10】Fig. 10.7【/10】.",
+      "zh": "更新后的 XY 位置之所以可能被另一个活跃线程使用，是因为 Kogge-Stone 方法在归约树之间复用了部分和，以降低计算复杂度。我们将在【1】第 11.3 节【/1】中进一步研究这一点。读者可能会想，为什么【2】第 10 章【/2】归约：最小化发散中的归约树核函数不需要使用临时变量和额外的【3】__syncthreads()【/3】。答案在于：这些归约核函数中不存在由读后写危险引发的竞态条件。这是因为在一次迭代中，活跃线程写入的那些元素不会被同一迭代中的任何其他活跃线程读取。查看【4】图 10.7 和图 10.8【/4】即可明白这一点。例如，在【5】图 10.8【/5】中，每个活跃线程从自己的位置【6】(input[threadIdx.x])【/6】和右侧相距一个步长的位置【7】(input[threadIdx.x+stride])【/7】取得输入。在任意一次迭代中，没有任何活跃线程会更新这些相距一个步长的位置。因此，所有活跃线程总能读到各自的【8】input[threadIdx.x]【/8】旧值。由于线程内的执行总是串行的，每个线程总能先读到【9】input[threadIdx.x]【/9】的旧值，再向该位置写入新值。读者可以自行验证【10】图 10.7【/10】也具有同样的性质。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[15]",
+      "en": "If we want to avoid having a second barrier synchronization on every iteration, another way to overcome the race condition is to use separate arrays for input and output. If separate arrays are used, the location that is being written to is different from the location that is being read from, so there is no longer any potential write-after-read race condition. This approach would require having two shared memory buffers instead of one. In the beginning, we load from the global memory to the first buffer. In the first iteration we read from the first buffer and write to the second buffer. After the iteration is over, the second buffer has the most up-to-date results, and the results in the first buffer are no longer needed. Hence in the second iteration we read from the second buffer and write to the first buffer. Following the same reasoning, in the third iteration we read from the first buffer and write to the second buffer. We continue alternating input/output buffers until the iterations complete. This optimization is called 【1】double-buffering【/1】. Double-buffering is commonly used in parallel programming as a way to overcome write-after-read race conditions. We leave the implementation of this optimization as an exercise for the reader.",
+      "zh": "如果我们希望在每次迭代中都避免第二次屏障同步，克服竞态条件的另一种方法是分别为输入和输出使用独立的数组。如果使用独立数组，写入的位置与读取的位置不同，就不再存在读后写竞态条件的可能。这种方法需要两个共享内存缓冲区，而不是一个。开始时，我们从全局内存加载到第一个缓冲区。在第一次迭代中，我们从第一个缓冲区读、向第二个缓冲区写。迭代结束后，第二个缓冲区保存的是最新的结果，第一个缓冲区中的结果不再需要。因此，在第二次迭代中，我们从第二个缓冲区读、向第一个缓冲区写。依此类推，在第三次迭代中，我们从第一个缓冲区读、向第二个缓冲区写。我们不断交替输入/输出缓冲区，直到迭代全部完成。这种优化称为【1】双缓冲【/1】。双缓冲在并行编程中常被用来克服读后写竞态条件。我们把这种优化的实现留作读者的练习。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[16]",
+      "en": "Furthermore, as is shown in 【1】Fig. 11.2【/1】, the actions on the smaller positions of XY end earlier than those on the larger positions (see the if-statement condition). This will cause some level of control divergence in the first warp when stride values are small. Note that adjacent threads will tend to execute the same number of iterations. The effect of divergence should be quite modest for large block sizes, since divergence will arise only in the first warp. The detailed analysis is left as an exercise for the reader.",
+      "zh": "此外，如【1】图 11.2【/1】所示，XY 较小位置上的操作比较大位置上的结束得更早（见 if 语句的条件）。在步长值较小时，这会在第一个线程束中造成一定程度的控制发散。请注意，相邻线程往往执行相同次数的迭代。由于发散只出现在第一个线程束中，对于大的线程块来说，发散的影响应当相当有限。详细的分析留作读者的练习。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[17]",
+      "en": "Although we have shown only an inclusive scan kernel, we can easily convert an inclusive scan kernel to an exclusive scan kernel. Recall that an exclusive scan is equivalent to an inclusive scan with all elements shifted to the right by one position and element 0 filled with the identity value. This is illustrated in 【1】Fig. 11.4【/1】. Note that the only real difference is the alignment of elements on top of the picture. All labeling boxes are updated to reflect the new alignment. All iterative operations remain the same.",
+      "zh": "虽然我们只展示了包含式扫描核函数，但我们很容易把包含式扫描核函数转换为排他式扫描核函数。回顾一下：排他式扫描等价于把所有元素向右移动一位、并在第 0 个元素处填入单位元的包含式扫描。这在【1】图 11.4【/1】中有所展示。请注意，唯一真正的区别是图中元素的对齐方式。所有标注框都已更新以反映新的对齐方式，所有迭代运算保持不变。"
+    },
+    {
+      "id": "n0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 11.4【/1】 A parallel exclusive scan algorithm based on Kogge-Stone adder design.",
+      "zh": "【1】图 11.4【/1】 基于 Kogge-Stone 加法器设计的并行排他式扫描算法。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[18]",
+      "en": "We can now easily convert the kernel in 【1】Fig. 11.3【/1】 into an exclusive scan kernel. The only modification we need to make is to load 0 into XY[0] and 【2】X[i-1]【/2】 into 【3】XY[threadIdx.x]【/3】, as shown in the following code:",
+      "zh": "我们现在可以很容易地把【1】图 11.3【/1】中的核函数转换为排他式扫描核函数。唯一需要做的修改是：把 0 加载到 XY[0]，并把【2】X[i-1]【/2】加载到【3】XY[threadIdx.x]【/3】，如下面的代码所示："
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[19]",
+      "en": "By substituting these four lines of code for lines 04–08 of 【1】Fig. 11.3【/1】, we convert the inclusive scan kernel into an exclusive scan kernel. We leave the work to finish the exclusive scan kernel as an exercise for the reader.",
+      "zh": "用这四行代码替换【1】图 11.3【/1】的第 04–08 行，就可以把包含式扫描核函数转换为排他式扫描核函数。完成这个排他式扫描核函数的剩余工作留作读者的练习。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "11.3 Speed and work efficiency consideration",
+      "zh": "11.3 速度与工作效率考量"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "One important consideration in analyzing parallel algorithms is 【1】work efficiency【/1】. The work efficiency of an algorithm refers to the extent to which the work that is performed by the algorithm is close to the minimum amount of work needed for the computation. For example, the minimum number of additions required by the scan operation is 【2】N【/2】−1 additions, or 【3】O【/3】(【4】N【/4】), which is the number of additions that the sequential algorithm performs. However, as we saw in the beginning of 【5】Section 11.2【/5】, the naïve parallel algorithm performs 【6】N【/6】*(【7】N【/7】−1)/2 additions, or 【8】O【/8】(【9】N【/9】【10】2【/10】), which is substantially larger than the sequential algorithm. For this reason, the naïve parallel algorithm is not work efficient.",
+      "zh": "分析并行算法时，一个重要的考量是【1】工作效率【/1】。算法的工作效率指的是该算法完成的工作与完成该计算所需的最小工作量之间的接近程度。例如，扫描运算所需的最少加法次数是【2】N【/2】−1 次，即【3】O【/3】(【4】N【/4】)，这也是串行算法执行的加法次数。然而，正如我们在【5】第 11.2 节【/5】开头所看到的，朴素的并行算法要执行【6】N【/6】*(【7】N【/7】−1)/2 次加法，即【8】O【/8】(【9】N【/9】【10】2【/10】)，比串行算法多得多。因此，朴素并行算法不是工作高效的。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "We now analyze the work efficiency of the Kogge-Stone kernel in 【1】Fig. 11.3【/1】, focusing on the work of a single thread block. All threads iterate up to log【2】2【/2】【3】N【/3】 steps, where 【4】N【/4】 is the 【5】SECTION_SIZE【/5】. In each iteration the number of inactive threads is equal to the stride size. Therefore we can calculate the amount of work done (one iteration of the for-loop, represented by the add operation in 【6】Fig. 8.1【/6】) for the algorithm as",
+      "zh": "现在我们分析【1】图 11.3【/1】中 Kogge-Stone 核函数的工作效率，重点考察单个线程块的工作量。所有线程最多迭代 log【2】2【/2】【3】N【/3】 步，其中【4】N【/4】是【5】SECTION_SIZE【/5】。每次迭代中，非活跃线程的数量等于步长值。因此，该算法完成的工作量（即 for 循环的一次迭代，由【6】图 8.1【/6】中的加法运算表示）可以计算为"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "The first part of each term is independent of stride, and its summation adds up to 【1】N【/1】*log【2】2【/2】 (【3】N【/3】). The second part is a familiar geometric series and sums up to (【4】N【/4】−1). So, the total amount of work done is",
+      "zh": "每一项的第一部分与步长无关，其求和得到【1】N【/1】*log【2】2【/2】(【3】N【/3】)。第二部分是常见的几何级数，其和为 (【4】N【/4】−1)。因此，完成的总工作量为"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "The good news is that the computational complexity of the Kogge-Stone approach is 【1】O【/1】(【2】N【/2】*log【3】2【/3】(【4】N【/4】)), better than the 【5】O【/5】(【6】N【/6】【7】2【/7】) complexity of a naïve approach that performs complete reduction trees for all output elements. The bad news is that the Kogge-Stone algorithm is still not as work efficient as the sequential algorithm. Even for modest-sized sections, the kernel in 【8】Fig. 11.3【/8】 does much more work than the sequential algorithm. In the case of 512 elements, the kernel does approximately eight times more work than the sequential code. The ratio will increase as 【9】N【/9】 becomes larger.",
+      "zh": "好消息是，Kogge-Stone 方法的计算复杂度为【1】O【/1】(【2】N【/2】*log【3】2【/3】(【4】N【/4】))，优于为所有输出元素构造完整归约树的朴素方法的【5】O【/5】(【6】N【/6】【7】2【/7】) 复杂度。坏消息是，Kogge-Stone 算法的工作效率仍然不如串行算法。即使对于规模适中的段，【8】图 11.3【/8】中的核函数完成的工作也比串行算法多得多。以 512 个元素为例，该核函数完成的工作约为串行代码的八倍。随着【9】N【/9】变大，这一比例还会增大。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "Although the Kogge-Stone algorithm performs more computations than the sequential algorithm, it does so in fewer steps because of parallel execution. The for-loop of the sequential code executes 【1】N【/1】 iterations. As for the kernel code, the for-loop of each thread executes up to log【2】2【/2】N iterations, which defines the minimal number of steps needed for executing the kernel. With unlimited execution resources, the reduction in the number of steps of the kernel code over the sequential code would be approximately 【3】N【/3】/log【4】2【/4】(【5】N【/5】). For 【6】N【/6】=512, the reduction in the number of steps would be about 512/9=56.9×.",
+      "zh": "虽然 Kogge-Stone 算法比串行算法执行更多的计算，但由于并行执行，它所用的步数更少。串行代码的 for 循环要执行【1】N【/1】次迭代。至于核函数代码，每个线程的 for 循环最多执行 log【2】2【/2】N 次迭代，这定义了执行核函数所需的最少步数。在拥有无限执行资源的情况下，核函数代码相对于串行代码的步数减少约为【3】N【/3】/log【4】2【/4】(【5】N【/5】)。对于【6】N【/6】=512，步数约减少 512/9=56.9 倍。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "In a real CUDA GPU device, the amount of work done by the Kogge-Stone kernel is more than the theoretical 【1】N【/1】*log2(【2】N【/2】)−(【3】N【/3】−1). This is because we are using 【4】N【/4】 threads. While many of the threads stop participating in the execution of the for-loop, some of them still consume execution resources until the entire warp completes execution. Realistically, the amount of execution resources consumed by the Kogge-Stone is closer to 【5】N【/5】*log2(【6】N【/6】).",
+      "zh": "在真实的 CUDA GPU 设备上，Kogge-Stone 核函数完成的工作量大于理论值【1】N【/1】*log2(【2】N【/2】)−(【3】N【/3】−1)。这是因为我们使用了【4】N【/4】个线程。虽然许多线程不再参与 for 循环的执行，但其中一些线程在所在线程束完成执行之前仍会消耗执行资源。实际上，Kogge-Stone 消耗的执行资源更接近【5】N【/5】*log2(【6】N【/6】)。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "We will use the concept of computation steps as an approximate indicator for comparing between scan algorithms. The sequential scan should take approximately 【1】N【/1】 steps to process 【2】N【/2】 input elements. For example, the sequential scan should take approximately 1024 steps to process 1024 input elements. With 【3】P【/3】 execution units in the CUDA device, we can expect the Kogge-Stone kernel to execute for (【4】N【/4】*log2(【5】N【/5】))/【6】P【/6】 steps. If 【7】P【/7】 is equal to 【8】N【/8】, that is, if we have enough execution units to process all input element in parallel, then we need log2(【9】N【/9】) steps, as we saw earlier. However, 【10】P【/10】 could be smaller than 【11】N【/11】. For example, if we use 1024 threads and 32 execution units to process 1024 input elements, the kernel will likely take (1024*10)/32=320 steps. In this case, we expect to achieve a 1024/320=3.2×reduction in the number of steps.",
+      "zh": "我们将使用计算步数的概念作为比较各扫描算法的近似指标。串行扫描处理【1】N【/1】个输入元素大约需要【2】N【/2】步。例如，串行扫描处理 1024 个输入元素大约需要 1024 步。在 CUDA 设备有【3】P【/3】个执行单元的情况下，我们可以预期 Kogge-Stone 核函数执行 (【4】N【/4】*log2(【5】N【/5】))/【6】P【/6】 步。如果【7】P【/7】等于【8】N【/8】，也就是说，如果我们有足够的执行单元并行处理所有输入元素，那么只需要 log2(【9】N【/9】) 步，正如我们之前看到的。然而，【10】P【/10】可能小于【11】N【/11】。例如，如果我们用 1024 个线程和 32 个执行单元处理 1024 个输入元素，核函数很可能需要 (1024*10)/32=320 步。在这种情况下，我们预期步数减少 1024/320=3.2 倍。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[10]",
+      "en": "The additional work done by the Kogge-Stone kernel over the sequential code is problematic in two ways. First, the use of hardware for executing the parallel kernel is much less efficient. If the hardware does not have enough resources (i.e., if 【1】P【/1】 is small), the parallel algorithm could end up needing more steps than the sequential algorithm. Hence the parallel algorithm will be slower. Second, all the extra work consumes additional energy. This makes the kernel less appropriate for power-constrained environments such as mobile applications.",
+      "zh": "Kogge-Stone 核函数相对于串行代码多完成的工作有两个方面的问题。第一，用于执行并行核函数的硬件效率要低得多。如果硬件没有足够的资源（即【1】P【/1】较小），并行算法最终可能需要比串行算法更多的步数，因此并行算法会更慢。第二，所有额外的工作都会消耗额外的能量。这使得该核函数不太适合功耗受限的环境，例如移动应用。"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[11]",
+      "en": "The strength of the Kogge-Stone kernel is that it can achieve very good execution speed when there is enough hardware resources. It is typically used to calculate the scan result for a section with a modest number of elements, such as 512 or 1024. This, of course, assumes that GPUs can provide sufficient hardware resources and use the additional parallelism to tolerate latencies. As we have seen, its execution has a very limited amount of control divergence. In newer GPU architecture generations its computation can be efficiently performed with shuffle instructions within warps. We will see later in this chapter that it is an important component of the modern high-speed parallel scan algorithms.",
+      "zh": "Kogge-Stone 核函数的优势在于，当硬件资源充足时，它能达到非常好的执行速度。它通常用于计算元素数量适中（例如 512 或 1024）的段的扫描结果。当然，这要假设 GPU 能提供足够的硬件资源，并利用额外的并行性来容忍延迟。正如我们所看到的，它的执行中控制发散非常有限。在较新的 GPU 架构代次中，它的计算可以借助线程束内的 shuffle 指令高效完成。我们将在本章后面看到，它是现代高速并行扫描算法的重要组成部分。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "11.4 Parallel scan with the Brent-Kung algorithm",
+      "zh": "11.4 基于 Brent-Kung 算法的并行扫描"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "While the Kogge-Stone kernel in 【1】Fig. 11.3【/1】 is conceptually simple, its work efficiency is quite low for some practical applications. Just by inspecting 【2】Figs. 11.2【/2】 and 【3】11.4【/3】, we can see that there are potential opportunities for further sharing of some intermediate results. However, to allow more sharing across multiple threads, we need to strategically calculate the intermediate results and distribute them to different threads, which may require additional computation steps.",
+      "zh": "【1】图 11.3【/1】中的 Kogge-Stone 核函数虽然在概念上很简单，但对某些实际应用来说，它的工作效率相当低。仅查看【2】图 11.2【/2】和图【3】11.4【/3】就可以看到，进一步共享某些中间结果存在可能的机会。然而，为了在多个线程之间实现更多共享，我们需要策略性地计算中间结果，并把它们分发给不同的线程，而这可能需要额外的计算步数。"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "As we know, the fastest parallel way to produce sum values for a set of values is a reduction tree. With sufficient execution units, a reduction tree can generate the sum for 【1】N【/1】 values in log【2】2【/2】(【3】N【/3】) time units. The tree can also generate several sub-sums that can be used in the calculation of some of the scan output values. This observation was used as a basis for the Kogge-Stone adder design and also forms the basis of the Brent-Kung adder design (【4】Brent &amp; Kung, 1979【/4】). The Brent-Kung adder design can also be used to implement a parallel scan algorithm with better work efficiency.",
+      "zh": "如我们所知，为一组值快速产生和值的并行方式是归约树。在足够的执行单元支持下，归约树可以在 log【2】2【/2】(【3】N【/3】) 个时间单位内生成【1】N【/1】个值的和。归约树还能生成若干子部分和，可用于计算某些扫描输出值。这一观察曾是 Kogge-Stone 加法器设计的基础，也构成了 Brent-Kung 加法器设计（【4】Brent &amp; Kung, 1979【/4】）的基础。Brent-Kung 加法器设计还可以用来实现工作效率更好的并行扫描算法。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "【1】Fig. 11.5【/1】 illustrates the steps for a parallel inclusive scan algorithm based on the Brent-Kung adder design. In the top half of 【2】Fig. 11.5【/2】, we produce the sum of all 16 elements in four steps. We use the minimal number of operations needed to generate the sum. During the first step, only the odd element of XY[i] will be updated to XY[i-1]+XY[i]. During the second step, only the XY elements whose indices are of the form of 4*【3】n【/3】−1, which are 3, 7, 11, and 15 in 【4】Fig. 11.5【/4】, will be updated. During the third step, only the XY elements whose indices are of the form 8*【5】n【/5】−1, which are 7 and 15, will be updated. Finally, during the fourth step, only XY[15] is updated. The total number of operations performed is 8+4+2+1=15. In general, for a scan section of 【6】N【/6】 elements, we would do (【7】N【/7】/2)+(【8】N【/8】/4)+…+2+1=【9】N【/9】−1 operations for this reduction phase.",
+      "zh": "【1】图 11.5【/1】展示了基于 Brent-Kung 加法器设计的并行包含式扫描算法的各步骤。在【2】图 11.5【/2】的上半部分，我们用四步求出全部 16 个元素的和，使用的运算次数是生成该和所需的最少次数。第一步，只更新 XY[i] 中下标为奇数的元素，使其变为 XY[i-1]+XY[i]。第二步，只更新下标形如 4*【3】n【/3】−1 的 XY 元素，即【4】图 11.5【/4】中的 3、7、11 和 15。第三步，只更新下标形如 8*【5】n【/5】−1 的 XY 元素，即 7 和 15。最后，第四步只更新 XY[15]。执行的总运算次数为 8+4+2+1=15。一般而言，对于包含【6】N【/6】个元素的扫描段，这个归约阶段需要执行 (【7】N【/7】/2)+(【8】N【/8】/4)+…+2+1=【9】N【/9】−1 次运算。"
+    },
+    {
+      "id": "n0072",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 11.5【/1】 A parallel inclusive scan algorithm based on Brent-Kung adder design.",
+      "zh": "【1】图 11.5【/1】 基于 Brent-Kung 加法器设计的并行包含式扫描算法。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "The second part of the algorithm is to use a reverse tree to distribute the partial sums to the positions that can use them to complete the result of those positions. The distribution of partial sums is illustrated in the bottom half of 【1】Fig. 11.5【/1】. To understand the design of the reverse tree, we should first analyze the needs for additional values to complete the scan output at each position of XY. It should be apparent from an inspection of 【2】Fig. 11.5【/2】 that the additions in the reduction tree always accumulate input elements in a continuous range. Therefore we know that the values that have been accumulated into each position of XY can always be expressed as a range of input elements 【3】x【/3】【4】【5】i【/5】【/4】…【6】x【/6】【7】【8】j【/8】【/7】, where 【9】x【/9】【10】【11】i【/11】【/10】 is the starting position and 【12】x【/12】【13】【14】j【/14】【/13】 is the ending position (inclusive).",
+      "zh": "算法的第二部分是用一棵反向树把部分和分发到能够使用它们的各个位置，以完成这些位置的结果。部分和的分发在【1】图 11.5【/1】的下半部分展示。要理解反向树的设计，我们应首先分析 XY 各位置完成扫描输出还需要哪些额外的值。查看【2】图 11.5【/2】不难发现，归约树中的加法总是累加连续范围内的输入元素。因此我们知道，累加到 XY 每个位置的值总可以表示为一个输入元素范围【3】x【/3】【4】【5】i【/5】【/4】…【6】x【/6】【7】【8】j【/8】【/7】，其中【9】x【/9】【10】【11】i【/11】【/10】是起始位置，【12】x【/12】【13】【14】j【/14】【/13】是结束位置（含）。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "【1】Fig. 11.6【/1】 shows the state of each position (column), including both the values already accumulated into the position and the need for additional input element values at each level (row) of the reverse tree. The state of each position initially and after each level of additions in the reverse tree is expressed as the input elements, in the form 【2】x【/2】【3】【4】i【/4】【/3】…【5】x【/5】【6】【7】j【/7】【/6】, that have already been accounted for in the position. For example, 【8】x【/8】【9】8【/9】…【10】x【/10】【11】11【/11】 in row Initial and column 11 indicates that the values of 【12】x【/12】【13】8【/13】, 【14】x【/14】【15】9【/15】, 【16】x【/16】【17】10【/17】, and 【18】x【/18】【19】11【/19】 have been accumulated into XY[11] before the reverse tree begins (right after the reduction phase shown in the bottom portion of 【20】Fig. 11.5【/20】). At the end of the reduction tree phase, we have quite a few positions that are complete with the final scan values. In our example, XY[0], XY[1], XY[3], XY[7], and XY[15] are all complete with their final answers.",
+      "zh": "【1】图 11.6【/1】展示了每个位置（列）的状态，包括已累加到该位置的值，以及反向树每一层（行）还需要哪些输入元素值。每个位置的初始状态以及反向树中每层加法之后的状态，都用已经计入该位置的输入元素表示，形式为【2】x【/2】【3】【4】i【/4】【/3】…【5】x【/5】【6】【7】j【/7】【/6】。例如，在初始行（Initial）第 11 列中的【8】x【/8】【9】8【/9】…【10】x【/10】【11】11【/11】表示，在反向树开始之前（即【20】图 11.5【/20】下半部分所示的归约阶段刚结束时），【12】x【/12】【13】8【/13】、【14】x【/14】【15】9【/15】、【16】x【/16】【17】10【/17】和【18】x【/18】【19】11【/19】的值已经累加到 XY[11] 中。归约树阶段结束时，我们已有不少位置得到了完整的最终扫描值。在我们的例子中，XY[0]、XY[1]、XY[3]、XY[7] 和 XY[15] 都已得到各自的最终答案。"
+    }
+  ]
+}

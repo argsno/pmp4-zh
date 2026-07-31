@@ -1,0 +1,155 @@
+{
+  "page": "Ch007_151-171_B9780323912310000082",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/hgroup[1]/h1[1]",
+      "en": "Convolution",
+      "zh": "卷积"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/hgroup[1]/h2[1]",
+      "en": "An introduction to constant memory and caching",
+      "zh": "常量内存与缓存入门"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter presents convolution as an important parallel computation pattern. While convolution is used in many applications such as computer vision and video processing, it also represents a general pattern that forms the basis of many parallel algorithms. We start with the concept of convolution. We then present a basic parallel convolution algorithm whose execution speed is limited by DRAM bandwidth for accessing both the input and mask elements. We then introduce the constant memory and a simple modification to the kernel and host code to practically eliminate all the DRAM accesses. This is followed by an input tiling kernel that eliminates most of the DRAM accesses for the input elements. We show that the code can be simplified with data caching in more recent devices. We then move into a two-dimensional convolution kernel along with an analysis of the effectiveness of tiling as a function of tile sizes for one- and two-dimensional convolution.",
+      "zh": "本章将卷积作为一种重要的并行计算模式来介绍。虽然卷积被用于计算机视觉和视频处理等许多应用中，但它也代表了一种通用模式，构成许多并行算法的基础。我们从卷积的概念讲起。然后给出一个基础并行卷积算法，其执行速度受限于访问输入元素和掩码元素所需的 DRAM 带宽。接着介绍常量内存，以及对核函数和主机代码做的一个简单修改，从而实际上消除了所有 DRAM 访问。随后是一个输入分块核函数，它消除了访问输入元素所需的大部分 DRAM 访问。我们还会说明，在较新的设备上，利用数据缓存可以简化代码。最后进入二维卷积核函数，并分析分块效果如何随一维和二维卷积的分块大小而变化。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Convolution; convolution filters; tiling; ghost cells; halo cells; tiling efficiency; constant memory; constant cache",
+      "zh": "卷积；卷积滤波器；分块；幽灵单元；光环单元；分块效率；常量内存；常量缓存"
+    },
+    {
+      "id": "st9020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "概要"
+    },
+    {
+      "id": "o0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】7.1 Background【/1】 152",
+      "zh": "【1】7.1 背景【/1】 152"
+    },
+    {
+      "id": "o0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】7.2 Parallel convolution: a basic algorithm【/1】 156",
+      "zh": "【1】7.2 并行卷积：基础算法【/1】 156"
+    },
+    {
+      "id": "o0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】7.3 Constant memory and caching【/1】 159",
+      "zh": "【1】7.3 常量内存与缓存【/1】 159"
+    },
+    {
+      "id": "o0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】7.4 Tiled convolution with halo cells【/1】 163",
+      "zh": "【1】7.4 带光环单元的分块卷积【/1】 163"
+    },
+    {
+      "id": "o0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】7.5 Tiled convolution using caches for halo cells【/1】 168",
+      "zh": "【1】7.5 利用缓存处理光环单元的分块卷积【/1】 168"
+    },
+    {
+      "id": "o0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】7.6 Summary【/1】 170",
+      "zh": "【1】7.6 小结【/1】 170"
+    },
+    {
+      "id": "o0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】Exercises【/1】 171",
+      "zh": "【1】习题【/1】 171"
+    },
+    {
+      "id": "p0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "In the next several chapters we will discuss a set of important patterns of parallel computation. These patterns are the basis of a wide range of parallel algorithms that appear in many parallel applications. We will start with convolution, which is a popular array operation that is used in various forms in signal processing, digital recording, image processing, video processing, and computer vision. In these application areas, convolution is often performed as a filter that transforms signals and pixels into more desirable values. Our image blur kernel is such a filter that smoothes out the signal values so that one can see the big picture trend. For another example, Gaussian filters are convolution filters that can be used to sharpen boundaries and edges of objects in images.",
+      "zh": "在接下来的几章中，我们将讨论一组重要的并行计算模式。这些模式是许多并行应用中出现的各种并行算法的基础。我们将从卷积讲起，它是一种常用的数组运算，以各种形式用于信号处理、数字录音、图像处理、视频处理和计算机视觉。在这些应用领域中，卷积常以滤波器的形式执行，将信号和像素转换为更理想的值。我们的图像模糊核函数就是这样一个滤波器，它平滑信号值，使人们能够看出整体趋势。再如，高斯滤波器是卷积滤波器，可用于锐化图像中物体的边界和边缘。"
+    },
+    {
+      "id": "p0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "Convolution typically performs a significant number of arithmetic operations to generate each output element. For large datasets such as high-definition images and videos in which there are many output elements (pixels), the amount of computation can be huge. On one hand, each output data element of convolution can be calculated independently of each other, a desirable trait for parallel computing. On the other hand, there is a substantial amount of input data sharing in processing different output data elements with somewhat challenging boundary conditions. This makes convolution an important use case for sophisticated tiling methods and input data staging methods, which are the focus of this chapter.",
+      "zh": "卷积在生成每个输出元素时通常会执行大量的算术运算。对于高清图像和视频这样包含大量输出元素（像素）的大型数据集，计算量可能非常巨大。一方面，卷积的每个输出数据元素都可以彼此独立地计算，这是并行计算的一个理想特性。另一方面，处理不同的输出数据元素时存在大量的输入数据共享，且边界条件颇具挑战性。这使得卷积成为复杂分块方法和输入数据暂存方法的重要应用场景，这些正是本章的重点。"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "7.1 Background",
+      "zh": "7.1 背景"
+    },
+    {
+      "id": "p0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "Convolution is an array operation in which each output data element is a weighted sum of the corresponding input element and a collection of input elements that are centered on it. The weights that are used in the weighted sum calculation are defined by a filter array, commonly referred to as the 【1】convolution kernel【/1】. Since there is an unfortunate name conflict between the CUDA kernel functions and convolution kernels, we will refer to these filter arrays as 【2】convolution filters【/2】 to avoid confusion.",
+      "zh": "卷积是一种数组运算，其中每个输出数据元素是对应的输入元素与以它为中心的一组输入元素的加权和。加权求和计算中所用的权重由滤波器数组定义，该数组通常被称为【1】卷积核（convolution kernel）【/1】。由于 CUDA 核函数与卷积核（convolution kernel）之间存在令人遗憾的名称冲突，为了避免混淆，我们将这些滤波器数组称为【2】卷积滤波器【/2】。"
+    },
+    {
+      "id": "p0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "Convolution can be performed on input data of different dimensionality: one-dimensional (1D) (e.g., audio), two-dimensional (2D) (e.g., photo), three-dimensional (3D) (e.g., video), and so on. In audio digital signal processing, the input 1D array elements are sampled signal volume over time. That is, the input data element 【1】x【/1】【2】【3】i【/3】【/2】 is the 【4】i【/4】th sample of the audio signal volume. A convolution on 1D data, referred to as 1D convolution, is mathematically defined as a function that takes an input data array of 【5】n【/5】 elements [【6】x【/6】【7】0【/7】, 【8】x【/8】【9】1【/9】, …, 【10】x【/10】【11】【12】n【/12】−1【/11】] and a filter array of 【13】2r【/13】 + 1 elements [【14】f【/14】【15】0【/15】, 【16】f【/16】【17】1【/17】, …, 【18】f【/18】【19】2r【/19】] and returns an output data array 【20】y【/20】:",
+      "zh": "卷积可以对不同维度的输入数据执行：一维（1D）（如音频）、二维（2D）（如照片）、三维（3D）（如视频）等等。在音频数字信号处理中，输入的 1D 数组元素是按时间采样的信号音量。也就是说，输入数据元素【1】x【/1】【2】【3】i【/3】【/2】是音频信号音量的第【4】i【/4】个采样。对 1D 数据执行的卷积（称为 1D 卷积）在数学上定义为这样一个函数：它以包含【5】n【/5】个元素的输入数据数组 [【6】x【/6】【7】0【/7】, 【8】x【/8】【9】1【/9】, …, 【10】x【/10】【11】【12】n【/12】−1【/11】] 和包含【13】2r【/13】+ 1 个元素的滤波器数组 [【14】f【/14】【15】0【/15】, 【16】f【/16】【17】1【/17】, …, 【18】f【/18】【19】2r【/19】] 为输入，并返回输出数据数组【20】y【/20】："
+    },
+    {
+      "id": "p0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "Since the size of the filter is an odd number (【M1】【M2】, the weighted sum calculation is symmetric around the element that is being calculated. That is, the weighted sum involves 【M3】【M4】 input elements on each side of the position that is being calculated, which is the reason why 【M5】【M6】 is referred to as the 【7】radius【/7】 of the filter.",
+      "zh": "由于滤波器的大小是奇数（【M1】【M2】，因此加权求和计算围绕被计算的元素对称。也就是说，加权求和涉及被计算位置每一侧的【M3】【M4】个输入元素，这正是【M5】【M6】被称为滤波器【7】半径【/7】的原因。"
+    },
+    {
+      "id": "p0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "【1】Fig. 7.1【/1】 shows a 1D convolution example in which a five-element (【2】r【/2】 = 2) convolution filter 【3】f【/3】 is applied to a seven-element input array 【4】x【/4】. We will follow the C language convention by which x and y elements are indexed from 0 to 6 and f elements are indexed from 0 to 4. Since the filter radius is 2, each output element is calculated as the weighted sum of the corresponding input element, two elements on the left, and two elements on the right.",
+      "zh": "【1】图 7.1【/1】展示了一个 1D 卷积示例，其中将一个五元素（【2】r【/2】= 2）的卷积滤波器【3】f【/3】应用于一个七元素的输入数组【4】x【/4】。我们将遵循 C 语言的约定：x 和 y 元素的下标从 0 到 6，f 元素的下标从 0 到 4。由于滤波器半径为 2，每个输出元素都按对应输入元素、其左侧两个元素和右侧两个元素的加权和来计算。"
+    },
+    {
+      "id": "n0022",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 7.1【/1】 A 1D convolution example, inside elements.",
+      "zh": "【1】图 7.1【/1】 一个针对内部元素的 1D 卷积示例。"
+    },
+    {
+      "id": "p0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "For example, the value of y[2] is generated as the weighted sum of x[0] (i.e., x[2 − 2]) through x[4] (i.e., x[2 + 2]). In this example we arbitrarily assume that the values of the x elements are [8, 2, 5, 4, 1, 7, 3]. The f elements define the weights, whose values are 1, 3, 5, 3, 1 in this example. Each f element is multiplied to the corresponding x element values before the products are summed together. As shown in 【1】Fig. 7.1【/1】, the calculation for y[2] is as follows:",
+      "zh": "例如，y[2] 的值由 x[0]（即 x[2 − 2]）到 x[4]（即 x[2 + 2]）的加权和生成。在本例中，我们任意假定 x 元素的值依次为 [8, 2, 5, 4, 1, 7, 3]。f 元素定义权重，本例中其值为 1, 3, 5, 3, 1。每个 f 元素先与对应的 x 元素值相乘，再把所有乘积相加。如【1】图 7.1【/1】所示，y[2] 的计算如下："
+    },
+    {
+      "id": "p0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[8]",
+      "en": "In 【1】Fig. 7.1【/1】 the calculation for y[i] can be viewed as an inner product between the subarray of x that starts at x[I − 2] and the f array. 【2】Fig. 7.2【/2】 shows the calculation for y[3]. The calculation is shifted by one x element from that of 【3】Fig. 7.1【/3】. That is, the value of y[3] is the weighted sum of x[1] (i.e., x[3 − 2]), through x[5] (i.e., x[3 + 2]). We can think of the calculation for x[3] is as following inner product:",
+      "zh": "在【1】图 7.1【/1】中，y[i] 的计算可以看作从 x[I − 2] 开始的 x 子数组与 f 数组之间的内积。【2】图 7.2【/2】展示了 y[3] 的计算。该计算相对【3】图 7.1【/3】中的计算沿 x 元素平移了一个位置。也就是说，y[3] 的值是 x[1]（即 x[3 − 2]）到 x[5]（即 x[3 + 2]）的加权和。我们可以把 x[3] 的计算看作如下内积："
+    }
+  ]
+}

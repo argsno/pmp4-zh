@@ -1,0 +1,155 @@
+{
+  "page": "Ch009_191-210_B978032391231000015X",
+  "nodes": [
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "Although one might not know the exact encoded value of each letter, one can assume that the encoded value of a letter is the encoded value of “a” plus the alphabet position difference between that letter and “a.” In the input, each character is stored in its encoded value. Thus the expression data[i] – “a” (line 03) derives the alphabet position of the letter with the alphabet position of “a” being 0. If the position value is greater than or equal to 0 and less than 26, the data character is indeed a lowercase alphabet letter (line 04). Keep in mind that we defined the intervals such that each interval contains four alphabet letters. Therefore the interval index for the letter is its alphabet position value divided by 4. We use the interval index to increment the appropriate 【1】histo【/1】 array element (line 05).",
+      "zh": "虽然人们可能不知道每个字母的确切编码值，但可以假设某个字母的编码值等于“a”的编码值加上该字母与“a”之间的字母表位置差。在输入中，每个字符都以它的编码值存储。因此，表达式 data[i] – “a”（第 03 行）推导出该字母的字母表位置，其中“a”的字母表位置为 0。如果该位置值大于或等于 0 且小于 26，那么这个数据字符确实是小写字母（第 04 行）。请记住，我们定义的区间中每个区间包含 4 个字母。因此，该字母的区间索引等于它的字母表位置值除以 4。我们用区间索引来递增相应的【1】histo【/1】数组元素（第 05 行）。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "The C code in 【1】Fig. 9.2【/1】 is quite simple and efficient. The computational complexity of the algorithm is O(N), where N is the number of input data elements. The data array elements are accessed sequentially in the for-loop, so the CPU cache lines are well used whenever they are fetched from the system DRAM. The 【2】histo【/2】 array is so small that it fits well in the level-one (L1) data cache of the CPU, which ensures fast updates to the 【3】histo【/3】 elements. For most modern CPUs, one can expect the execution speed of this code to be memory bound, that is, limited by the rate at which the 【4】data【/4】 elements can be brought from DRAM into the CPU cache.",
+      "zh": "【1】图 9.2【/1】中的 C 代码相当简单而高效。该算法的计算复杂度为 O(N)，其中 N 是输入数据元素的个数。for 循环按顺序访问 data 数组的元素，因此每当这些元素从系统 DRAM 中取回时，CPU 缓存行都能得到充分利用。【2】histo【/2】数组非常小，可以很好地装入 CPU 的一级（L1）数据缓存中，从而保证对【3】histo【/3】元素的快速更新。对大多数现代 CPU 而言，可以预期这段代码的执行速度是访存受限的，也就是说，其速度受限于【4】data【/4】元素从 DRAM 送入 CPU 缓存的速度。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "9.2 Atomic operations and a basic histogram kernel",
+      "zh": "9.2 原子操作与基础直方图核函数"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "The most straightforward approach to parallelizing histogram computation is to launch as many threads as there are data elements and have each thread process one input element. Each thread reads its assigned input element and increments the appropriate interval counter for the character. 【1】Fig. 9.3【/1】 illustrates an example of this parallelization strategy. Note that multiple threads need to update the same counter (m-p), which is a conflict that is referred to as 【2】output interference【/2】. Programmers must understand the concepts of race conditions and atomic operations in order to confidently handle such output interferences in their parallel code.",
+      "zh": "并行化直方图计算最直接的方法是启动与数据元素数量一样多的线程，让每个线程处理一个输入元素。每个线程读取分配给它的输入元素，并递增该字符对应的区间计数器。【1】图 9.3【/1】展示了这一并行化策略的一个示例。注意，多个线程需要更新同一个计数器（m-p），这种冲突被称为【2】输出干扰【/2】。程序员必须理解竞态条件和原子操作的概念，才能在自己的并行代码中有把握地处理这类输出干扰。"
+    },
+    {
+      "id": "n0029",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.3【/1】 Basic parallelization of a histogram.",
+      "zh": "【1】图 9.3【/1】 直方图的基础并行化。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "An increment to an interval counter in the histo array is an update, or read-modify-write, operation on a memory location. The operation involves reading the memory location (read), adding one to the original value (modify), and writing the new value back to the memory location (write). Read-modify-write is a frequently used operation for coordinating collaborative activities.",
+      "zh": "对 histo 数组中某个区间计数器的递增，就是对内存中一个位置的更新操作，也就是读-改-写操作。该操作包括读取内存位置（读）、在原值上加 1（改），以及将新值写回该内存位置（写）。读-改-写是协调协作活动中常用的操作。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "For example, when we make a flight reservation with an airline, we bring up the seat map and look for available seats (read), we pick a seat to reserve (modify), and that changes the seat status to unavailable in the seat map (write). A bad potential scenario can happen as follows:",
+      "zh": "例如，当我们在航空公司预订航班时，会调出座位图寻找可用的座位（读），选一个要预订的座位（改），这样就把该座位在座位图中的状态改为不可用（写）。一个可能出问题的场景如下："
+    },
+    {
+      "id": "u0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/ul[1]/li[1]",
+      "en": "• Two customers simultaneously bring up seat map of the same flight.",
+      "zh": "• 两位顾客同时调出同一航班的座位图。"
+    },
+    {
+      "id": "u0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/ul[1]/li[2]",
+      "en": "• Both customers pick the same seat, say, 9C.",
+      "zh": "• 两位顾客选择了同一个座位，比如 9C。"
+    },
+    {
+      "id": "u0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/ul[1]/li[3]",
+      "en": "• Both customers change the status of seat 9C to unavailable.",
+      "zh": "• 两位顾客都把座位 9C 的状态改为不可用。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "After the sequence, both customers think that they have seat 9C. We can imagine that they will have an unpleasant situation when they board the flight and find out that one of them cannot take the reserved seat! Believe it or not, such unpleasant situations happen in real life because of flaws in airline reservation software.",
+      "zh": "经过上述过程后，两位顾客都认为自己拥有座位 9C。可以想象，当他们登机后发现其中一人无法坐那个预订的座位时，场面会很不愉快！信不信由你，由于航空公司订票软件的缺陷，这样的不愉快场面在现实生活中确实会发生。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "For another example, some stores allow customers to wait for service without standing in line. They ask each customer to take a number from one of the kiosks. There is a display that shows the number that will be served next. When a service agent becomes available, the agent asks the customer to present the ticket that matches the number, verifies the ticket, and updates the display number to the next higher number. Ideally, all customers will be served in the order in which they enter the store. An undesirable outcome would be that two customers simultaneously sign in at two kiosks and both receive tickets with the same number. When a service agent calls for that number, both customers expect to be the one who should receive service.",
+      "zh": "再举一个例子：有些商店允许顾客不排队等候服务。他们让每位顾客从自助终端上取一个号。有一块显示屏显示下一个将要被服务的号码。当有服务人员空闲时，该服务人员会请顾客出示与号码相符的票据，核对票据，然后将显示屏上的号码更新为下一个更大的号码。理想情况下，所有顾客都会按照进入商店的顺序得到服务。一种不理想的结果是：两位顾客同时在两个终端签到，并且拿到了相同的号码。当服务人员叫到这个号码时，两位顾客都认为自己才是应该接受服务的那个人。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "In both examples, undesirable outcomes are caused by a phenomenon called read-modify-write 【1】race condition【/1】, in which the outcome of two or more simultaneous update operations varies depending on the relative timing of the operations that are involved.【2】【3】1【/3】【/2】 Some outcomes are correct, and some are incorrect. 【4】Fig. 9.4【/4】 illustrates a race condition when two threads attempt to update the same histo element in our text histogram example. Each row in 【5】Fig. 9.4【/5】 shows the activity during a time period, with time progressing from top to bottom.",
+      "zh": "在这两个例子中，不理想的结果都是由一种被称为读-改-写【1】竞态条件【/1】的现象造成的：当两个或多个更新操作同时进行时，其结果会随这些操作之间的相对时序而变化。【2】【3】1【/3】【/2】有些结果是正确的，有些则是错误的。【4】图 9.4【/4】展示了在我们这个文本直方图例子中两个线程试图更新同一个 histo 元素时出现的竞态条件。【5】图 9.4【/5】中的每一行都显示了一个时间段内的活动，时间自上而下推进。"
+    },
+    {
+      "id": "n0038",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.4【/1】 Race condition in updating a 【2】histo【/2】 array element: (A) One possible interleaving of instructions; (B) Another possible interleaving of instructions.",
+      "zh": "【1】图 9.4【/1】 更新【2】histo【/2】数组元素时的竞态条件：（A）指令的一种可能交错方式；（B）指令的另一种可能交错方式。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "【1】Fig. 9.4A【/1】 depicts a scenario in which thread 1 completes all three parts of its read-modify-write sequence during time periods 1 through 3 before thread 2 starts its sequence at time period 4. The value in the parenthesis in front of each operation shows the value being written into the destination, assuming that the value of histo[x] was initially 0. In this scenario the value of histo[x] afterwards is 2, exactly what one would expect. That is, both threads successfully incremented histo[x]. The element value starts with 0 and becomes 2 after the operations complete.",
+      "zh": "【1】图 9.4A【/1】描绘的场景中，线程 1 在第 1 至 3 个时间段内完成了其读-改-写序列的全部三个部分，之后线程 2 才在第 4 个时间段开始它的序列。每个操作前面括号中的值表示写入目标位置的值，这里假设 histo[x] 的初始值为 0。在这个场景中，histo[x] 之后的值是 2，与预期完全一致。也就是说，两个线程都成功递增了 histo[x]。该元素的值从 0 开始，在操作完成后变为 2。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "In 【1】Fig. 9.4B【/1】 the read-modify-write sequences of the two threads overlap. Note that thread 1 writes the new value into histo[x] at time period 4. When thread 2 reads histo[x] at time period 3, it still has the value 0. As a result, the new value that it calculates and eventually writes to histo[x] is 1 rather than 2. The problem is that thread 2 read histo[x] too early, before thread 1 had completed its update. The net outcome is that the value of histo[x] afterwards is 1, which is incorrect. The update by thread 1 is lost.",
+      "zh": "在【1】图 9.4B【/1】中，两个线程的读-改-写序列发生了重叠。注意，线程 1 在第 4 个时间段把新值写入 histo[x]。当线程 2 在第 3 个时间段读取 histo[x] 时，它得到的仍然是 0。结果，线程 2 计算并最终写入 histo[x] 的新值是 1 而不是 2。问题在于线程 2 读取 histo[x] 太早，早在线程 1 完成其更新之前。最终结果是 histo[x] 之后的值变成 1，这是不正确的。线程 1 的更新丢失了。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[9]",
+      "en": "During parallel execution, threads can run in any order relative to each other. In our example, thread 2 can easily start its update sequence ahead of thread 1. 【1】Fig. 9.5【/1】 shows two such scenarios. In 【2】Fig. 9.5A【/2】, thread 2 completes its update before thread 1 starts its. In 【3】Fig. 9.5B【/3】, thread 1 starts its update before thread 2 has completed its. It should be obvious that the sequences in 【4】Fig. 9.5A【/4】 result in a correct outcome for histo[x], but those in 【5】Fig. 9.5B【/5】 produce an incorrect outcome.",
+      "zh": "在并行执行过程中，线程之间可以按任意相对顺序运行。在我们的例子中，线程 2 完全可能在线程 1 之前开始它的更新序列。【1】图 9.5【/1】展示了两种这样的场景。在【2】图 9.5A【/2】中，线程 2 在线程 1 开始更新之前就完成了自己的更新。在【3】图 9.5B【/3】中，线程 1 在线程 2 完成更新之前就开始了自己的更新。显而易见，【4】图 9.5A【/4】中的序列使 histo[x] 得到正确的结果，而【5】图 9.5B【/5】中的序列则产生错误的结果。"
+    },
+    {
+      "id": "n0042",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.5【/1】 Race condition scenarios in which thread 2 runs ahead of thread 1: (A) One possible interleaving of instructions; (B) Another possible interleaving of instructions.",
+      "zh": "【1】图 9.5【/1】 线程 2 领先于线程 1 时的竞态条件场景：（A）指令的一种可能交错方式；（B）指令的另一种可能交错方式。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[10]",
+      "en": "The fact that the final value of histo[x] varies depending on the relative timing of the operations that are involved indicates that there is a race condition. We can eliminate such variation by eliminating the possible interleaving of operation sequences of thread 1 and thread 2. That is, we would like to allow the timings shown in 【1】Figs. 9.4A【/1】 and 【2】9.5A【/2】 while eliminating the possibilities shown in 【3】Figs. 9.4B【/3】 and 【4】9.5B【/4】. This can be accomplished by using 【5】atomic operations【/5】.",
+      "zh": "histo[x] 的最终值随所涉操作的相对时序而变化，这一事实说明存在竞态条件。我们可以通过消除线程 1 与线程 2 操作序列之间可能的交错来消除这种变化。也就是说，我们希望保留【1】图 9.4A【/1】和【2】图 9.5A【/2】所示的时序，同时消除【3】图 9.4B【/3】和【4】图 9.5B【/4】所示的可能性。这可以通过使用【5】原子操作【/5】来实现。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[11]",
+      "en": "An atomic operation on a memory location is an operation that performs a read-modify-write sequence on the memory location in such a way that no other read-modify-write sequence to the location can overlap with it. That is, the read, modify, and write parts of the operation form an undividable unit, hence the name atomic operation. In practice, atomic operations are realized with hardware support to lock out other operations to the same location until the current operation is complete. In our example, such support eliminates the possibility depicted in 【1】Figs. 9.4B【/1】 and 【2】9.5B【/2】, since the trailing thread cannot start its update sequence until the leading thread has completed its.",
+      "zh": "对内存位置执行的原子操作，是指以这样一种方式对该位置执行读-改-写序列的操作：对同一位置的任何其他读-改-写序列都不能与之重叠。也就是说，该操作的读、改、写三个部分构成一个不可分割的整体，因此得名原子操作。在实践中，原子操作通过硬件支持实现，硬件会锁定对同一位置的其他操作，直到当前操作完成。在我们的例子中，这种支持消除了【1】图 9.4B【/1】和【2】图 9.5B【/2】所示的可能性，因为滞后的线程必须等领先的线程完成其更新序列后才能开始自己的更新序列。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[12]",
+      "en": "It is important to remember that atomic operations do not enforce any particular execution order between threads. In our example, both orders shown in 【1】Figs. 9.4A【/1】 and 【2】9.5A【/2】 are allowed by atomic operations. Thread 1 can run either ahead of or behind thread 2. The rule that is being enforced is that if both threads perform atomic operations on the same memory location, the atomic operation that is performed by the trailing thread cannot be started until the atomic operation of the leading thread completes. This effectively serializes the atomic operations that are being performed on a memory location.",
+      "zh": "需要记住的是，原子操作并不强制线程之间的任何特定执行顺序。在我们的例子中，【1】图 9.4A【/1】和【2】图 9.5A【/2】所示的两种顺序都是原子操作所允许的。线程 1 既可以在线程 2 之前运行，也可以在其之后运行。被强制执行的规则是：如果两个线程对同一内存位置执行原子操作，那么滞后线程执行的原子操作必须等领先线程的原子操作完成之后才能开始。这实际上使作用于同一内存位置的原子操作串行化了。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[13]",
+      "en": "Atomic operations are usually named according to the modification that is performed on the memory location. In our text histogram example we are adding a value to the memory location, so the atomic operation is called atomic add. Other types of atomic operations include subtraction, increment, decrement, minimum, maximum, logical and, and logical or. A CUDA kernel can perform an atomic add operation on a memory location through a function call:",
+      "zh": "原子操作通常根据对内存位置执行的修改方式来命名。在我们的文本直方图例子中，我们要向内存位置加一个值，因此该原子操作被称为原子加。其他类型的原子操作包括减法、自增、自减、取最小值、取最大值、逻辑与和逻辑或。CUDA 核函数可以通过函数调用来对内存位置执行原子加操作："
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[14]",
+      "en": "The atomicAdd function is an intrinsic function (see the sidebar “Intrinsic Functions”) that is compiled into a hardware atomic operation instruction. This instruction reads the 32-bit word pointed to by the address argument in global or shared memory, adds val to the old content, and stores the result back to memory at the same address. The function returns the old value at the address.",
+      "zh": "atomicAdd 函数是一种内建函数（见侧边栏“内建函数”），它会被编译成一条硬件原子操作指令。这条指令读取地址参数在全局内存或共享内存中所指向的 32 位字，将 val 加到旧内容上，再把结果存回同一地址的内存中。该函数返回该地址处的旧值。"
+    },
+    {
+      "id": "n0048",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[6]/p[1]",
+      "en": "Intrinsic Functions",
+      "zh": "内建函数"
+    },
+    {
+      "id": "p9145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[6]/p[2]",
+      "en": "【1】Modern processors often offer special instructions that either perform critical functionality (such as the atomic operations) or substantial performance enhancement (such as vector instructions). These instructions are typically exposed to the programmers as intrinsic functions, or simply instrinsics. From the programmer’s perspective, these are library functions. However, they are treated in a special way by compilers; each such call is translated into the corresponding special instruction. There is typically no function call in the final code, just the special instructions in line with the user code. All major modern compilers, such as the GNU Compiler Collection (gcc), Intel C Compiler, and Clang/LLVM C Compiler support intrinsics【/1】.",
+      "zh": "【1】现代处理器常常提供一些特殊指令，它们要么执行关键功能（如原子操作），要么带来显著的性能提升（如向量指令）。这些指令通常以内建函数的形式提供给程序员，简称 intrinsics。从程序员的角度看，它们是库函数。然而，编译器会以特殊方式对待它们：每一次这类调用都会被翻译成对应的特殊指令。最终代码中通常没有函数调用，只有与用户代码内联在一起的特殊指令。所有主流现代编译器，例如 GNU 编译器套件（gcc）、Intel C 编译器以及 Clang/LLVM C 编译器，都支持内建函数【/1】。"
+    }
+  ]
+}

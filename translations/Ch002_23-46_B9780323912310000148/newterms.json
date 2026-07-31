@@ -1,0 +1,62 @@
+[
+  {
+    "en": "color-to-grayscale conversion",
+    "zh": "彩色到灰度转换",
+    "note": "§2.1 运行示例，贯穿本章多处出现"
+  },
+  {
+    "en": "grayscale image",
+    "zh": "灰度图像",
+    "note": "§2.1 图 2.1 及正文"
+  },
+  {
+    "en": "luminance",
+    "zh": "亮度",
+    "note": "§2.1 加权求和公式处"
+  },
+  {
+    "en": "weighted sum",
+    "zh": "加权求和",
+    "note": "§2.1 亮度计算公式；正文亦写作 加权和"
+  },
+  {
+    "en": "task decomposition",
+    "zh": "任务分解",
+    "note": "§2.1 旁注“任务并行与数据并行”"
+  },
+  {
+    "en": "execution configuration parameter",
+    "zh": "执行配置参数",
+    "note": "§2.2/§2.6；与 §5 的 execution configuration 对应"
+  },
+  {
+    "en": "loop parallelism",
+    "zh": "循环级并行",
+    "note": "§2.5 核函数与循环的等价关系"
+  },
+  {
+    "en": "global index",
+    "zh": "全局索引",
+    "note": "§2.5 blockIdx/threadIdx 组合索引"
+  },
+  {
+    "en": "hierarchical organization",
+    "zh": "层次化组织",
+    "note": "§2.5 电话系统类比"
+  },
+  {
+    "en": "source-level debugger",
+    "zh": "源代码级调试器",
+    "note": "§2.2 旁注“线程”"
+  },
+  {
+    "en": "ceiling division",
+    "zh": "向上取整除法",
+    "note": "§2.6 网格线程块数计算"
+  },
+  {
+    "en": "data index",
+    "zh": "数据索引",
+    "note": "习题 1–3 题干的映射表达式"
+  }
+]

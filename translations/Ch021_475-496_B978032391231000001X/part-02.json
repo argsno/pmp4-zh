@@ -1,0 +1,155 @@
+{
+  "page": "Ch021_475-496_B978032391231000001X",
+  "nodes": [
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/h3[1]",
+      "en": "Bezier curve calculation (without dynamic parallelism)",
+      "zh": "贝塞尔曲线计算（不使用动态并行）"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/p[1]",
+      "en": "【1】Fig. 21.6【/1】 shows part of a CUDA C program that calculates the coordinates of points on a Bezier curve. The 【2】computeBezierLines【/2】 kernel starting at line 13 is designed to use a block to calculate the curve points for a set of three control points (of the quadratic Bezier formula). Each thread block first computes a measure of the curvature of the curve defined by the three control points. Intuitively, the larger the curvature, the more points it takes to draw a smooth quadratic Bezier curve for the three control points. This defines the amount of work to be done by each block. This is reflected in lines 20 and 21, in which the total number of points to be calculated by the current thread block is proportional to the curvature value.",
+      "zh": "【1】图 21.6【/1】 展示了计算贝塞尔曲线上点坐标的 CUDA C 程序的一部分。从第 13 行开始的【2】computeBezierLines【/2】 核函数设计为使用一个线程块来计算一组三个控制点（按二次贝塞尔公式）的曲线点。每个线程块首先计算由这三个控制点确定的曲线的曲率度量。直观地说，曲率越大，绘制这三个控制点的平滑二次贝塞尔曲线所需的点就越多。这决定了每个线程块要完成的工作量。这反映在第 20 行和第 21 行：当前线程块要计算的点总数与曲率值成正比。"
+    },
+    {
+      "id": "n0052",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 21.6【/1】 Bezier curve calculation without dynamic parallelism.",
+      "zh": "【1】图 21.6【/1】 不使用动态并行的贝塞尔曲线计算。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/p[2]",
+      "en": "In the for-loop in line 24, all threads calculate a consecutive set of Bezier curve points in each iteration. The detailed calculation in the loop body is based on the formula that we presented earlier. The key point is that the number of iterations taken by threads in a block can be very different from the number taken by threads in another block. Depending on the scheduling policy, such variation of the amount of work done by each thread block can result in decreased utilization of streaming multiprocessors (SMs) and thus reduced performance.",
+      "zh": "在第 24 行的 for 循环中，所有线程在每次迭代中计算一组连续的贝塞尔曲线点。循环体内的具体计算基于我们前面给出的公式。关键在于，一个线程块中的线程执行的迭代次数可能与另一个线程块中的线程执行的迭代次数大不相同。根据调度策略的不同，这种每个线程块工作量上的差异可能导致流式多处理器（SM）利用率下降，从而降低性能。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/h3[1]",
+      "en": "Bezier curve calculation (with dynamic parallelism)",
+      "zh": "贝塞尔曲线计算（使用动态并行）"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/p[1]",
+      "en": "【1】Fig. 21.7【/1】 shows a Bezier curve calculation code using dynamic parallelism. It breaks the 【2】computeBezierLines【/2】 kernel in 【3】Fig. 21.6【/3】 into two kernels. The first part, 【4】computeBezierLines_parent【/4】, discovers the amount of work to be done for each control point. The second part, 【5】computeBezierLines_child【/5】, performs the calculation.",
+      "zh": "【1】图 21.7【/1】 展示了使用动态并行的贝塞尔曲线计算代码。它把【3】图 21.6【/3】 中的【2】computeBezierLines【/2】 核函数拆分成两个核函数。第一部分【4】computeBezierLines_parent【/4】 确定每个控制点需要完成的工作量，第二部分【5】computeBezierLines_child【/5】 执行计算。"
+    },
+    {
+      "id": "n0056",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 21.7【/1】 Bezier calculation with dynamic parallelism.",
+      "zh": "【1】图 21.7【/1】 使用动态并行的贝塞尔计算。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/p[2]",
+      "en": "With the new organization the amount of work that is done for each set of control points by the 【1】computeBezierLines_parent【/1】 kernel is much smaller than that for the original 【2】computeBezierLines【/2】 kernel. Therefore we use one thread to do this work in 【3】computeBezierLines_parent【/3】 rather than using one block in 【4】computeBezierLines【/4】. In line 58, we need to launch only one thread per set of control points. This is reflected by dividing the 【5】N_LINES【/5】 by 【6】BLOCK_DIM【/6】 to form the number of blocks in the kernel launch configuration.",
+      "zh": "在新的组织方式下，【1】computeBezierLines_parent【/1】 核函数为每组控制点完成的工作量比原来的【2】computeBezierLines【/2】 核函数小得多。因此，在【3】computeBezierLines_parent【/3】 中，我们用单个线程来完成这项工作，而不是像【4】computeBezierLines【/4】 那样使用一个线程块。在第 58 行，我们只需要为每组控制点启动一个线程。这体现在核函数启动配置中：用【6】BLOCK_DIM【/6】 除【5】N_LINES【/5】 得到线程块的数量。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/p[3]",
+      "en": "There are two key differences between the 【1】computeBezierLines_parent【/1】 kernel and the 【2】computeBezierLines【/2】 kernel. First, the index that is used to access the control points is formed on a thread basis (line 08 in 【3】Fig. 21.7【/3】) rather than a block basis (line 14 in 【4】Fig. 21.6【/4】). This is because the work for each control point is done by a thread rather than a block, as we mentioned earlier in the chapter. Second, the memory for storing the calculated Bezier curve points is dynamically determined and allocated in line 15 in 【5】Fig. 21.7【/5】. This allows the code to assign just enough memory to each set of control points to be placed in the 【6】bLines【/6】 variable. Note that in 【7】Fig. 21.6【/7】, each 【8】BezierLine【/8】 element is declared with the maximum possible number of points (line 09). On the other hand, the declaration in 【9】Fig. 21.7【/9】 has only a pointer to a dynamically allocated storage. Allowing a kernel to call the 【10】cudaMalloc()【/10】 function can lead to substantial reduction of memory usage for situations in which the curvature of control points varies significantly.",
+      "zh": "【1】computeBezierLines_parent【/1】 核函数与【2】computeBezierLines【/2】 核函数之间有两个关键差异。首先，用于访问控制点的索引是基于线程生成的（【3】图 21.7【/3】 中的第 08 行），而不是基于线程块生成的（【4】图 21.6【/4】 中的第 14 行）。这是因为如本章前面所述，每个控制点的工作由单个线程而不是线程块完成。其次，用于存储计算出的贝塞尔曲线点的内存在【5】图 21.7【/5】 的第 15 行被动态确定并分配。这样，代码就可以为每组控制点分配恰好足够的内存，并将其放入【6】bLines【/6】 变量。请注意，在【7】图 21.6【/7】 中，每个【8】BezierLine【/8】 元素都按最大可能的点数声明（第 09 行）。而在【9】图 21.7【/9】 中，声明只有一个指向动态分配存储空间的指针。允许核函数调用【10】cudaMalloc()【/10】 函数，可以在控制点曲率变化显著的情况下大幅减少内存使用。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/p[4]",
+      "en": "Once a thread of the 【1】computeBezierLines_parent【/1】 kernel has determined the amount of work needed by its set of control points, it calls the 【2】computeBezierLines_child【/2】 kernel and launches a child grid to do the work (line 19 in 【3】Fig. 21.7【/3】). In our example, every thread from the parent grid creates a new grid for its assigned set of control points. This way, the work that is done by each thread block is balanced. The amount of work that is done by each child grid varies.",
+      "zh": "当【1】computeBezierLines_parent【/1】 核函数中的某个线程确定了它的控制点组所需的工作量后，它会调用【2】computeBezierLines_child【/2】 核函数，并启动一个子网格来完成这些工作（【3】图 21.7【/3】 中的第 19 行）。在我们的示例中，父网格中的每个线程都为分配给它的控制点组创建一个新网格。这样一来，每个线程块完成的工作量就是均衡的。每个子网格完成的工作量各不相同。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/p[5]",
+      "en": "Dynamic parallelism kernel calls have the same asynchronous semantics as kernel calls from the host. That is, once the child kernel has been called, the parent thread that called it may proceed to execute the subsequent code without waiting for the child grid to complete. If the parent thread wishes to wait for its child grid to complete, it must perform an explicit synchronization similar to what a host thread would do. If no explicit synchronization is made, then the thread can finish executing, but there is an implicit synchronization at the end. The implicit synchronization ensures that all child grids have terminated before the parent grid terminates. We refer the reader to the CUDA C++ Programming Guide for more details about the semantics of parent-child grid synchronization (【1】NVIDIA Corporation, 2021【/1】).",
+      "zh": "动态并行的核函数调用与主机发起的核函数调用具有相同的异步语义。也就是说，一旦子核函数被调用，调用它的父线程就可以继续执行后续代码，而无需等待子网格完成。如果父线程希望等待其子网格完成，它必须执行显式同步，与主机线程的做法类似。如果不进行显式同步，线程可以结束执行，但在结束时存在一次隐式同步。隐式同步确保父网格终止前所有子网格都已终止。关于父子网格同步语义的更多细节，请读者参阅 CUDA C++ 编程指南（【1】NVIDIA Corporation, 2021【/1】）。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/p[6]",
+      "en": "After 【1】computeBezierLines_parent【/1】 terminates, the memory allocated inside the kernel using 【2】cudaMalloc【/2】 still needs to be freed. For this reason, an additional kernel 【3】freeVertexMem【/3】 is implemented (lines 42–47) to be called by the host. This kernel frees all storage allocated to the vertices in the 【4】bLines_d【/4】 data structure in parallel (line 61). This kernel is necessary because vertex storage allocated on the device by a device kernel has to be freed by a device kernel. We refer the reader to the CUDA C++ Programming Guide for more details about the use of 【5】cudaMalloc【/5】 and 【6】cudaFree【/6】 on the device (【7】NVIDIA Corporation, 2021【/7】).",
+      "zh": "在【1】computeBezierLines_parent【/1】 终止后，核函数内部使用【2】cudaMalloc【/2】 分配的内存仍需要释放。为此，实现了一个额外的核函数【3】freeVertexMem【/3】（第 42–47 行），由主机调用。该核函数并行释放【4】bLines_d【/4】 数据结构中为顶点分配的所有存储空间（第 61 行）。这个核函数是必要的，因为设备核函数在设备上分配的顶点存储空间必须由设备核函数来释放。关于在设备上使用【5】cudaMalloc【/5】 和【6】cudaFree【/6】 的更多细节，请读者参阅 CUDA C++ 编程指南（【7】NVIDIA Corporation, 2021【/7】）。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "21.4 A recursive example: quadtrees",
+      "zh": "21.4 递归示例：四叉树"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "Dynamic parallelism also allows programmers to implement recursive algorithms. In this section we illustrate the use of dynamic parallelism for implementing recursion with a 【1】quadtree【/1】 (【2】Finkel and Bentley, 1974【/2】). Quadtrees partition a two-dimensional space by recursively subdividing it into four equally sized 【3】quadrants【/3】. Each quadrant is considered to be a 【4】node【/4】 of the quadtree and contains a number of points. If the number of points in a quadrant is greater than a fixed minimum, the quadrant will be recursively subdivided into four more quadrants, that is, four child nodes.",
+      "zh": "动态并行还允许程序员实现递归算法。在本节中，我们用四叉树【1】（quadtree）【/1】（【2】Finkel and Bentley, 1974【/2】）来说明如何利用动态并行实现递归。四叉树通过递归地将二维空间细分为四个大小相等的【3】象限【/3】来划分该空间。每个象限被认为是四叉树的一个【4】节点【/4】，其中包含一定数量的点。如果某个象限中的点数大于某个固定的最小值，该象限将被递归细分为四个象限，即四个子节点。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "【1】Fig. 21.8【/1】 illustrates the construction of a quadtree with dynamic parallelism. In this implementation, one node (quadrant) is assigned to one block. Initially (depth=0), one block (block 0) is assigned the entire two-dimensional space (root node of the quadtree), which contains all points. It divides the space into four quadrants and launches one block for each quadrant (depth=1). These child blocks (blocks 00 through 03) will again subdivide their quadrants if they contain more points than a fixed minimum. In this example we assume that the minimum is two; thus blocks 00 and 02 do not launch children. Blocks 01 and 03 launch a grid with four blocks each.",
+      "zh": "【1】图 21.8【/1】 说明了使用动态并行构建四叉树的过程。在这个实现中，一个节点（象限）分配给一个线程块。最初（depth=0），一个线程块（线程块 0）被分配整个二维空间（四叉树的根节点），其中包含所有点。它把空间划分为四个象限，并为每个象限启动一个线程块（depth=1）。这些子线程块（线程块 00 至 03）如果包含的点数超过固定的最小值，将再次细分它们各自的象限。在本例中，我们假设最小值为 2，因此线程块 00 和 02 不启动子线程块，而线程块 01 和 03 各自启动一个含四个线程块的网格。"
+    },
+    {
+      "id": "n0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 21.8【/1】 Quadtree example. Each block is assigned to one quadrant. If the number of points in a quadrant is more than two, the block launches four child blocks. Shadowed blocks are active blocks in each level of depth.",
+      "zh": "【1】图 21.8【/1】 四叉树示例。每个线程块被分配一个象限。如果某个象限中的点数超过两个，该线程块就启动四个子线程块。阴影中的线程块是每一深度层级的活动线程块。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "As the flow graph in the right-hand side of 【1】Fig. 21.8【/1】 shows, a block first checks whether the number of points in its quadrant is greater than the minimum required for further division and whether the maximum depth has not been reached. If either of the conditions fails, the work for the quadrant is complete, and the block returns. Otherwise, the block computes the center of the bounding box that surrounds its quadrant. The center is in the middle of four new quadrants. The number of points in each of them is counted. A four-element scan operation is used to compute the offsets to the locations where the points will be stored. Then the points are reordered so that those points in the same quadrant are grouped together and placed into their section of the point storage. Finally, the block launches a child grid with four blocks, one for each of the four new quadrants.",
+      "zh": "如【1】图 21.8【/1】 右侧的流程图所示，线程块首先检查其象限中的点数是否大于进一步细分所需的最小值，以及是否尚未达到最大深度。如果两个条件中有任何一个不满足，该象限的工作就完成了，线程块返回。否则，线程块计算包围其象限的边界框的中心。该中心位于四个新象限的中间。随后统计每个新象限中的点数。使用一个四元素的扫描操作来计算各点存储位置的偏移量。然后对点进行重排，使同一象限中的点归在一起，放入点存储区中各自的分段。最后，线程块启动一个包含四个线程块的子网格，每个线程块对应四个新象限中的一个。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "【1】Fig. 21.9【/1】 continues the small example in 【2】Fig. 21.8【/2】 and illustrates in detail how the points are reordered at each level of depth. For the example we assume that each quadrant must have more than two points to be further divided. The algorithm uses two buffers to store the points and reorder them. The points should be in buffer 0 at the end of the algorithm. Thus it might be necessary to swap the buffer contents before leaving if the points are in buffer 1 when the terminating condition is met.",
+      "zh": "【1】图 21.9【/1】 接着【2】图 21.8【/2】 中的小示例，详细说明了在每个深度层级如何对点进行重排。在本例中，我们假设每个象限必须包含两个以上的点才能进一步划分。算法使用两个缓冲区来存储点并对其重排。算法结束时，点应当位于缓冲区 0 中。因此，如果在满足终止条件时点还在缓冲区 1 中，则在退出前可能有必要交换缓冲区内容。"
+    },
+    {
+      "id": "n0068",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 21.9【/1】 Quadtree example. At each level of depth, a block groups all points in the same quadrant together. (A) shows the initial input list in Buffer 0, (B) The list after being rearranged into four sublists that correspond to the four quadrants, (C) shows the list after being rearranged to reflect the second-level quadrants, (D) shows the list after being rearranged to reflect the third-level quadrant, (E) the final list is copied into Buffer 0 for return to the caller.",
+      "zh": "【1】图 21.9【/1】 四叉树示例。在每个深度层级，线程块把同一象限中的所有点归在一起。(A) 显示缓冲区 0 中的初始输入列表；(B) 显示列表被重排为对应四个象限的四个子列表之后的状况；(C) 显示列表被重排以反映第二层象限后的状况；(D) 显示列表被重排以反映第三层象限后的状况；(E) 最终列表被复制到缓冲区 0 以返回给调用者。"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "In the initial kernel call from the host code (for depth=0), block 0 is assigned all the points that reside in buffer 0, shown in 【1】Fig. 21.9A【/1】. Block 0 further divides the quadrant into four child quadrants, groups together all points in the same child quadrant, and stores the points according to the quadrants into buffer 1, as shown in 【2】Fig. 21.9B【/2】. Its four children, block 00 to block 03, are assigned each of the four new quadrants, shown as marked ranges in 【3】Fig. 21.9B【/3】. Blocks 00 and 02 will not launch children, since the number of points in their respective assigned quadrant is only 2. Blocks 01 and 03 reorder their points to group those in the same quadrant and launch four child blocks each, as shown in 【4】Fig. 21.9C【/4】. Blocks 010, 011, 012, 013, 030, 031, and 032 do not launch children (they have two or fewer points) and do not need to swap points (they are already in buffer 0). Only block 033 reorders its points and launches four blocks, as shown in 【5】Fig. 21.9D【/5】. Blocks 0330 to 0333 will exit after swapping their points to buffer 0, which can be seen in 【6】Fig. 21.9E【/6】.",
+      "zh": "在主机代码的初始核函数调用中（depth=0），线程块 0 被分配缓冲区 0 中的所有点，如【1】图 21.9A【/1】 所示。线程块 0 进一步把象限划分为四个子象限，把同一子象限中的所有点归在一起，并按象限把点存入缓冲区 1，如【2】图 21.9B【/2】 所示。它的四个子线程块（线程块 00 至 03）被分别分配四个新象限，如【3】图 21.9B【/3】 中标记的范围所示。线程块 00 和 02 不会启动子线程块，因为它们各自被分配象限中的点数只有 2。线程块 01 和 03 对它们的点进行重排以归组同一象限中的点，并各自启动四个子线程块，如【4】图 21.9C【/4】 所示。线程块 010、011、012、013、030、031 和 032 不启动子线程块（它们有 2 个或更少的点），也不需要交换点（它们已经在缓冲区 0 中）。只有线程块 033 对它的点进行重排并启动四个线程块，如【5】图 21.9D【/5】 所示。线程块 0330 至 0333 在把它们的点交换到缓冲区 0 之后退出，这可以在【6】图 21.9E【/6】 中看到。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "The kernel code in 【1】Fig. 21.10【/1】 implements the flow graph from 【2】Fig. 21.8【/2】. The quadtree is implemented with a node array, in which each element contains all the pertinent information for one node of the quadtree (definition given in 【3】Appendix A21.1【/3】). As the quadtree is constructed, new nodes will be created and placed into the array during the execution of the kernels. The kernel code assumes that the 【4】node【/4】 parameter points to the next available location in the node array.",
+      "zh": "【1】图 21.10【/1】 中的核函数代码实现了【2】图 21.8【/2】 中的流程图。四叉树用一个节点数组实现，数组中的每个元素包含四叉树一个节点的所有相关信息（定义见【3】附录 A21.1【/3】）。在四叉树构建过程中，核函数执行期间会创建新节点并放入数组中。核函数代码假设【4】node【/4】 参数指向节点数组中下一个可用的位置。"
+    },
+    {
+      "id": "n0071",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 21.10【/2】【/1】 Quadtree with dynamic parallelism: recursive kernel (support code in 【3】Appendix A210.1【/3】).",
+      "zh": "【1】【2】图 21.10【/2】【/1】 使用动态并行的四叉树：递归核函数（支持代码见【3】附录 A210.1【/3】）。"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "Every block starts by checking the number of points in its node (quadrant). A point is a pair of floats representing 【1】x【/1】 and 【2】y【/2】 coordinates (definition in 【3】Appendix A21.1【/3】). If the number of points is less than or equal to the minimum or if the maximum depth is reached (line 11), the block will exit. The maximum depth may be specified on the basis of application requirements or hardware constraints (see 【4】Section 12.5【/4】). Before exiting, the block may need to write its points from buffer 1 to buffer 0 if necessary. This is because the output is expected in buffer 0 after the quadtree is complete. The transfer of points from buffer 1 to buffer 0 is done in the device function 【5】check_num_points_and_depth()【/5】 shown in 【6】Fig. 21.11【/6】.",
+      "zh": "每个线程块首先检查其节点（象限）中的点数。一个点是一对表示【1】x【/1】 和【2】y【/2】 坐标的浮点数（定义见【3】附录 A21.1【/3】）。如果点数小于或等于最小值，或者达到了最大深度（第 11 行），线程块将退出。最大深度可以根据应用需求或硬件限制来指定（参见【4】第 12.5 节【/4】）。退出之前，如有必要，线程块可能需要把它的点从缓冲区 1 写入缓冲区 0。这是因为四叉树构建完成后，期望输出位于缓冲区 0 中。将点从缓冲区 1 传输到缓冲区 0 的工作在设备函数【5】check_num_points_and_depth()【/5】 中完成，如【6】图 21.11【/6】 所示。"
+    },
+    {
+      "id": "n0073",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 21.11【/1】 Quadtree with dynamic parallelism: device functions (support code in 【2】Appendix A21.1【/2】).",
+      "zh": "【1】图 21.11【/1】 使用动态并行的四叉树：设备函数（支持代码见【2】附录 A21.1【/2】）。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "Next, the center of the bounding box is computed (line 17). A bounding box is defined by its top-left and bottom-right corners. The coordinates of the top-left and the bottom-right corner points of the bounding box for the current node are given as part of the node data by the caller. The coordinates of the center are computed as the coordinates of the middle point between these two corner points. The definition of a bounding box (including function 【1】compute_center()【/1】) is given in 【2】Appendix A21.1【/2】.",
+      "zh": "接下来，计算边界框的中心（第 17 行）。边界框由其左上角和右下角定义。当前节点边界框的左上角和右下角顶点的坐标由调用者作为节点数据的一部分提供。中心的坐标按这两个角点之间中点的坐标计算。边界框的定义（包括函数【1】compute_center()【/1】）见【2】附录 A21.1【/2】。"
+    }
+  ]
+}

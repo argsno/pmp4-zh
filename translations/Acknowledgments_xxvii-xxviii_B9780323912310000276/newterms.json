@@ -1,0 +1,22 @@
+[
+  {
+    "en": "coauthor",
+    "zh": "合著者",
+    "note": "本页各章特邀合著者（contributing chapter coauthors）译作合著者"
+  },
+  {
+    "en": "external reviewer",
+    "zh": "外部审稿人",
+    "note": "致谢部分用语，指受邀审阅书稿的外部专家"
+  },
+  {
+    "en": "lead architect",
+    "zh": "首席架构师",
+    "note": "Tesla GPU Computing Architecture 的首席架构师（lead architect of ...）"
+  },
+  {
+    "en": "father of CUDA",
+    "zh": "CUDA 之父",
+    "note": "对 Ian Buck 的称谓，CUDA 保留不译"
+  }
+]

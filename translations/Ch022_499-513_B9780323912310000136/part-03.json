@@ -1,0 +1,107 @@
+{
+  "page": "Ch022_499-513_B9780323912310000136",
+  "nodes": [
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[5]/p[1]",
+      "en": "The speed of random memory access is much faster in Fermi and Kepler than in earlier GPU architectures. Programmers can be less concerned about memory coalescing. This allows more CPU algorithms to be directly used in the GPU as an acceptable base, further smoothing the path of porting applications that access a diversity of data structures, such as ray tracing, and other applications that are heavily object-oriented and may be difficult to convert into perfectly tiled arrays.",
+      "zh": "在 Fermi 和 Kepler 中，随机内存访问的速度比早期 GPU 架构快得多。程序员可以不必那么在意内存合并。这使更多 CPU 算法能够直接在 GPU 上用作可接受的基础，进一步铺平了移植那些访问多种多样数据结构的应用的路径，例如光线追踪，以及其他高度面向对象、可能难以转换成完美分块数组的应用。"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[5]/p[2]",
+      "en": "The Pascal GPU architecture incorporated HBM2 (High-Bandwidth Memory version 2) 3D-stacked DRAM memory, which provided up to 3× the memory bandwidth of previous-generation NVIDIA Maxwell architecture GPUs. Pascal was also the first architecture to support the NVLink processor interconnect, which gave Tesla P100 up to 5× the GPU-GPU and GPU-CPU communication performance of PCI Express 3.0. This interconnect greatly improved the scalability of multi-GPU computation within a node as well as the efficiency of data sharing between GPUs and NVLink-capable CPUs.",
+      "zh": "Pascal GPU 架构采用了第二代高带宽内存（HBM2，High-Bandwidth Memory version 2）3D 堆叠 DRAM 内存，其内存带宽最高可达上一代 NVIDIA Maxwell 架构 GPU 的 3 倍。Pascal 还是第一个支持 NVLink 处理器互连的架构，NVLink 使 Tesla P100 的 GPU-GPU 和 GPU-CPU 通信性能达到 PCI Express 3.0 的 5 倍。这种互连极大地改善了节点内多 GPU 计算的可扩展性，以及 GPU 与支持 NVLink 的 CPU 之间数据共享的效率。"
+    },
+    {
+      "id": "st0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "22.4 Programming environment",
+      "zh": "22.4 编程环境"
+    },
+    {
+      "id": "st0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/section[1]/h3[1]",
+      "en": "Unified device memory space",
+      "zh": "统一的设备内存空间"
+    },
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/section[1]/p[1]",
+      "en": "In early CUDA devices, shared memory, local memory, and global memory formed their own separate address spaces. The developer could use pointers into the global memory but not others. Starting with the Fermi architecture that was introduced in 2009, these memories became parts of a unified address space. This unified address space enabled a single set of load/store instructions and pointer addresses to access any of the GPU memory spaces (global, local, or shared memory) rather than different instructions and pointers for each. This made it easier to abstract away which memory contains a particular operand, allowing the programmer to deal with this only during allocation and making it simpler to pass CUDA data objects into other procedures and functions, irrespective of which memory area they come from.",
+      "zh": "在早期的 CUDA 设备中，共享内存、局部内存和全局内存各自拥有独立的地址空间。开发者可以使用指向全局内存的指针，但不能使用指向其他内存的指针。从 2009 年推出的 Fermi 架构开始，这些内存成为统一地址空间的一部分。这一统一地址空间使同一套加载/存储指令和指针地址就能访问任何 GPU 内存空间（全局、局部或共享内存），而不必为每种内存使用不同的指令和指针。这使得抽象掉“某个操作数存放在哪块内存”变得更容易，程序员只需在分配时考虑这一点，而且无论 CUDA 数据对象来自哪块内存区域，把它传给其他过程和函数都变得更简单。"
+    },
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/section[1]/p[2]",
+      "en": "This made CUDA code modules much more “composable.” That is, a CUDA device function can accept a pointer that may point to any of these memories. For example, without unified GPU address space, a device function needs to have one implementation for each type of memory in which one of its arguments can reside. Unified GPU address space allows variables in all main types of GPU memories to be accessed in the same way, thus allowing one device function to accept arguments that can reside in different types of GPU memory. The code will run faster if a function argument pointer points to a shared memory location and more slowly if it points to a global memory location. The programmer can still perform manual data placement and transfers as a performance optimization. This capability has significantly reduced the cost of building production-quality CUDA libraries. This also enabled full C and C++ pointer support, which was a significant advancement at the time.",
+      "zh": "这使 CUDA 代码模块更具“可组合性”。也就是说，CUDA 设备函数可以接受一个可能指向任何这些内存的指针。例如，如果没有统一的 GPU 地址空间，设备函数就需要为参数可能驻留的每种内存各编写一个实现。统一的 GPU 地址空间使所有主要类型 GPU 内存中的变量都能以相同方式访问，从而允许一个设备函数接受可驻留在不同类型 GPU 内存中的参数。如果函数参数指针指向共享内存位置，代码运行会更快；如果指向全局内存位置，则会慢一些。程序员仍然可以进行手动数据放置和传输作为性能优化。这一能力显著降低了构建生产级 CUDA 库的成本，还实现了完整的 C 和 C++ 指针支持，这在当时是一项重大进步。"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/section[1]/p[3]",
+      "en": "Future CUDA compilers will include enhanced support for C++ templates and virtual function calls in kernel functions. Although the hardware enhancements, such as runtime function calling capability, are in place, enhanced C++ language support in the compiler has been taking more time. With these enhancements, future CUDA compilers will support most mainstream C++ features. For example, using C++ features such as new, delete, constructors, and destructors in kernel functions is already supported.",
+      "zh": "未来的 CUDA 编译器将包含对 C++ 模板和核函数中虚函数调用的增强支持。虽然运行时函数调用能力等硬件增强已经就位，但编译器中增强的 C++ 语言支持需要更多时间。借助这些增强，未来的 CUDA 编译器将支持大多数主流的 C++ 特性。例如，在核函数中使用 new、delete、构造函数和析构函数等 C++ 特性已经得到支持。"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/section[1]/p[4]",
+      "en": "New and evolved programming interfaces continue to improve the productivity of heterogeneous parallel programmers. OpenACC allows developers to annotate their sequential loops with compiler directives to enable a compiler to generate CUDA kernels. One can use the Thrust library of parallel type-generic functions, classes, and iterators to describe their computation and have the underlying mechanism generate and configure the kernels that implement the computation. CUDA FORTRAN allows FORTRAN programmers to develop CUDA kernels in their familiar language. In particular, CUDA FORTRAN offers strong support for indexing into multidimensional arrays. C++AMP allows developers to describe their kernels as parallel loops that operate on logical data structures, such as multidimensional arrays in a C++ application. We fully expect that new innovations will continue to arise to further boost the productivity of developers in this exciting area.",
+      "zh": "新的和不断演进的编程接口继续提高异构并行程序员的生产力。OpenACC 允许开发者用编译器指令标注串行循环，使编译器能够生成 CUDA 核函数。开发者可以使用 Thrust 库中的并行泛型函数、类和迭代器来描述其计算，由底层机制生成并配置实现该计算的核函数。CUDA FORTRAN 让 FORTRAN 程序员可以用自己熟悉的语言开发 CUDA 核函数。特别是，CUDA FORTRAN 对多维数组的索引提供了强有力的支持。C++AMP 允许开发者把核函数描述为作用于逻辑数据结构（如 C++ 应用中的多维数组）的并行循环。我们完全相信，新的创新将不断涌现，进一步提振开发者在这个激动人心的领域中的生产力。"
+    },
+    {
+      "id": "st0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/section[2]/h3[1]",
+      "en": "Profiling with critical path analysis",
+      "zh": "带关键路径分析的性能剖析"
+    },
+    {
+      "id": "p0370",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/section[2]/p[1]",
+      "en": "In heterogeneous applications that do significant computation on both CPUs and GPUs, it can be a challenge to locate the best place to spend optimization effort. Ideally, when optimizing code, one would like to target the locations in the application that will provide the highest speedup for the least effort. To this end, CUDA 7.5 introduced PC sampling, providing instruction-level profiling so that the user could pinpoint specific lines of code that are taking the most time in his or her application.",
+      "zh": "在 CPU 和 GPU 上都进行大量计算的异构应用中，确定在哪里投入优化努力可能颇具挑战。理想情况下，优化代码时，人们希望瞄准应用中能以最少努力带来最高加速比的位置。为此，CUDA 7.5 引入了 PC 采样，提供指令级性能剖析，使用户能够定位应用中耗时最多的具体代码行。"
+    },
+    {
+      "id": "p0375",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/section[2]/p[2]",
+      "en": "However, a challenge facing the users of such profilers is that the longest-running kernel in an application is not always the most critical optimization target. As 【1】Fig. 22.2【/1】 shows, Kernel X is the longer-running kernel. However, its execution time is fully overlapped with the CPU execution activity A. Any further improvement in the execution time of Kernel X without simultaneous improvement in the execution time of A is unlikely to improve the application performance. While the execution time of Kernel Y is not as long as that of kernel X, it is on the critical path of the application execution. The CPU is idling while waiting for the completion of Kernel Y. Speeding up Kernel Y will reduce the time the CPU spends waiting, so it is the best optimization target.",
+      "zh": "然而，这类性能分析器的用户面临的一个挑战是：应用中运行时间最长的核函数并不总是最关键、最值得优化的目标。如【1】图 22.2【/1】所示，核函数 X 是运行时间较长的核函数，但它的执行时间与 CPU 执行活动 A 完全重叠。如果不同时缩短 A 的执行时间，那么缩短核函数 X 执行时间的任何进一步改进都不太可能改善应用性能。核函数 Y 的执行时间虽然不如核函数 X 长，但它位于应用执行的关键路径上。CPU 在等待核函数 Y 完成时空闲。加速核函数 Y 将减少 CPU 等待的时间，因此它是最佳的优化目标。"
+    },
+    {
+      "id": "n0086",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/section[2]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 22.2【/2】【/1】 Importance of critical path analysis for identifying the key kernels to optimize.",
+      "zh": "【1】【2】图 22.2【/2】【/1】关键路径分析对于识别需要优化的关键核函数非常重要。"
+    },
+    {
+      "id": "p0380",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/section[2]/p[3]",
+      "en": "In 2016 the Visual Profiler in CUDA 8 provided a critical path analysis between GPU kernels and CPU CUDA API calls, enabling more precise targeting of optimization efforts. 【1】Fig. 22.3【/1】 shows critical path analysis in the CUDA 8 Visual Profiler. GPU kernels, copies, and API calls that are not on the critical path are grayed out. Only the activities that are on the critical path of the application execution are highlighted in color. This allows the user to easily identify the kernels and other activities to target the user’s optimization efforts.",
+      "zh": "2016 年，CUDA 8 中的 Visual Profiler 提供了 GPU 核函数与 CPU CUDA API 调用之间的关键路径分析，使优化努力能够更精准地投放。【1】图 22.3【/1】展示了 CUDA 8 Visual Profiler 中的关键路径分析。不在关键路径上的 GPU 核函数、拷贝和 API 调用都会变灰，只有位于应用执行关键路径上的活动才会以彩色高亮显示。这使用户能够轻松识别需要瞄准的核函数和其他活动，以便集中优化努力。"
+    },
+    {
+      "id": "n0088",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/section[2]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 22.3【/2】【/1】 Application critical path analysis in CUDA 8 Visual Profiler.",
+      "zh": "【1】【2】图 22.3【/2】【/1】CUDA 8 Visual Profiler 中的应用关键路径分析。"
+    },
+    {
+      "id": "st0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "22.5 Future outlook",
+      "zh": "22.5 未来展望"
+    },
+    {
+      "id": "p0385",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "The evolution of CUDA continues to increase its support for developer productivity and modern software engineering practices. With the new capabilities and programming language support, the range of applications that will be able to get reasonable performance at minimal development cost will expand significantly. Developers have experienced the reduction in application development, porting, and maintenance cost compared to previous CUDA systems. The existing applications that have been developed with Thrust and similar high-level tools that automatically generate CUDA code will also likely get an immediate boost in their performance. While the benefit of hardware enhancements in memory architecture, kernel execution control, and compute core performance will be visible in the associated SDK releases, the true potential of these enhancements may take years to be fully exploited in the SDKs and runtimes. We predict an exciting time for innovations from both industry and academia in programming tools and runtime environments for GPU computing in the next few years.",
+      "zh": "CUDA 的演进持续增强对开发者生产力和现代软件工程实践的支持。凭借新的能力和编程语言支持，能够以最低开发成本获得合理性能的应用范围将显著扩大。与以往的 CUDA 系统相比，开发者已经体验到应用开发、移植和维护成本的下降。使用 Thrust 及类似自动生成 CUDA 代码的高级工具开发的现有应用，其性能也很可能会立即获得提升。内存体系结构、核函数执行控制和计算核心性能方面的硬件增强，其好处将在相应的 SDK 版本中显现，但这些增强的真正潜力可能需要数年时间才能在 SDK 和运行时中充分发挥。我们预测，未来几年，工业界和学术界在 GPU 计算的编程工具和运行时环境方面将迎来激动人心的创新时代。"
+    },
+    {
+      "id": "st0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    }
+  ]
+}

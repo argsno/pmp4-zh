@@ -1,0 +1,155 @@
+{
+  "page": "Ch005_93-121_B9780323912310000185",
+  "nodes": [
+    {
+      "id": "n0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/thead[1]/tr[1]/th[2]",
+      "en": "Memory",
+      "zh": "内存"
+    },
+    {
+      "id": "n0051",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/thead[1]/tr[1]/th[3]",
+      "en": "Scope",
+      "zh": "作用域"
+    },
+    {
+      "id": "n0052",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/thead[1]/tr[1]/th[4]",
+      "en": "Lifetime",
+      "zh": "生命周期"
+    },
+    {
+      "id": "n0053",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[1]/td[1]",
+      "en": "Automatic variables other than arrays",
+      "zh": "除数组以外的自动变量"
+    },
+    {
+      "id": "n0054",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[1]/td[2]",
+      "en": "Register",
+      "zh": "寄存器"
+    },
+    {
+      "id": "n0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[1]/td[3]",
+      "en": "Thread",
+      "zh": "线程"
+    },
+    {
+      "id": "n0056",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[1]/td[4]",
+      "en": "Grid",
+      "zh": "网格"
+    },
+    {
+      "id": "n0057",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[2]/td[1]",
+      "en": "Automatic array variables",
+      "zh": "自动数组变量"
+    },
+    {
+      "id": "n0058",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[2]/td[2]",
+      "en": "Local",
+      "zh": "局部"
+    },
+    {
+      "id": "n0059",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[2]/td[3]",
+      "en": "Thread",
+      "zh": "线程"
+    },
+    {
+      "id": "n0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[2]/td[4]",
+      "en": "Grid",
+      "zh": "网格"
+    },
+    {
+      "id": "n0061",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[3]/td[1]",
+      "en": "__device__ __shared__ int SharedVar;",
+      "zh": "__device__ __shared__ int SharedVar;（共享内存变量声明）"
+    },
+    {
+      "id": "n0062",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[3]/td[2]",
+      "en": "Shared",
+      "zh": "共享"
+    },
+    {
+      "id": "n0063",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[3]/td[3]",
+      "en": "Block",
+      "zh": "线程块"
+    },
+    {
+      "id": "n0064",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[3]/td[4]",
+      "en": "Grid",
+      "zh": "网格"
+    },
+    {
+      "id": "n0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[4]/td[1]",
+      "en": "__device__ int GlobalVar;",
+      "zh": "__device__ int GlobalVar;（全局变量声明）"
+    },
+    {
+      "id": "n0066",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[4]/td[2]",
+      "en": "Global",
+      "zh": "全局"
+    },
+    {
+      "id": "n0067",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[4]/td[3]",
+      "en": "Grid",
+      "zh": "网格"
+    },
+    {
+      "id": "n0068",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[4]/td[4]",
+      "en": "Application",
+      "zh": "应用"
+    },
+    {
+      "id": "n0069",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[5]/td[1]",
+      "en": "__device__ __constant__ int ConstVar;",
+      "zh": "__device__ __constant__ int ConstVar;（常量变量声明）"
+    },
+    {
+      "id": "n0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[5]/td[2]",
+      "en": "Constant",
+      "zh": "常量"
+    },
+    {
+      "id": "n0071",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[5]/td[3]",
+      "en": "Grid",
+      "zh": "网格"
+    },
+    {
+      "id": "n0072",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[7]/table[1]/tbody[1]/tr[5]/td[4]",
+      "en": "Application",
+      "zh": "应用"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[13]",
+      "en": "Lifetime tells the portion of the program’s execution duration when the variable is available for use: either within a grid’s execution or throughout the entire application. If a variable’s lifetime is within a grid’s execution, it must be declared within the kernel function body and will be available for use only by the kernel’s code. If the kernel is invoked several times, the value of the variable is not maintained across these invocations. Each invocation must initialize the variable in order to use it. On the other hand, if a variable’s lifetime is throughout the entire application, it must be declared outside of any function body. The contents of these variables are maintained throughout the execution of the application and available to all kernels.",
+      "zh": "生命周期说明变量在程序执行过程中的哪一段时间内可供使用：要么在一个网格的执行期间内，要么在整个应用执行期间内。如果变量的生命周期局限在一个网格的执行期间，它就必须在核函数体内声明，并且只能被该核函数的代码使用。如果该核函数被调用多次，变量的值不会在这些调用之间保持。每次调用都必须初始化该变量才能使用它。另一方面，如果变量的生命周期覆盖整个应用的执行，它就必须在任何函数体之外声明。这些变量的内容会在整个应用执行期间一直保持，并且所有核函数都可以使用。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[14]",
+      "en": "We refer to variables that are not arrays as 【1】scalar【/1】 variables. As shown in 【2】Table 5.1【/2】, all automatic scalar variables that are declared in kernel and device functions are placed into registers. The scopes of these automatic variables are within individual threads. When a kernel function declares an automatic variable, a private copy of that variable is generated for every thread that executes the kernel function. When a thread terminates, all its automatic variables cease to exist. In 【3】Fig. 5.1【/3】, variables 【4】blurRow【/4】, 【5】blurCol【/5】, 【6】curRow【/6】, 【7】curCol【/7】, 【8】pixels【/8】, and 【9】pixVal【/9】 are all automatic variables and fall into this category. Note that accessing these variables is extremely fast and parallel, but one must be careful not to exceed the limited capacity of the register storage in the hardware implementations. Using a large number of registers can negatively affect the occupancy of each SM, as we saw in 【10】Chapter 4【/10】, Compute Architecture and Scheduling.",
+      "zh": "我们把不是数组的变量称为【1】标量【/1】变量。如【2】表 5.1【/2】所示，在核函数和设备函数中声明的所有自动标量变量都被放入寄存器。这些自动变量的作用域局限于各个线程。当一个核函数声明一个自动变量时，会为执行该核函数的每个线程生成该变量的一个私有副本。当一个线程终止时，它的所有自动变量都不复存在。在【3】图 5.1【/3】中，变量【4】blurRow【/4】、【5】blurCol【/5】、【6】curRow【/6】、【7】curCol【/7】、【8】pixels【/8】和【9】pixVal【/9】都是自动变量，属于这一类。注意，访问这些变量非常快且高度并行，但必须小心不要超出硬件实现中寄存器存储的有限容量。使用大量寄存器会对每个 SM 的占用率产生不利影响，正如我们在【10】第 4 章【/10】“计算体系结构与调度”中所见。"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "page": "Ch013_293-310_B9780323912310000197",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/h1[1]",
+      "en": "Sorting",
+      "zh": "排序"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/address[1]/p[1]",
+      "en": "With special contributions from Michael Garland",
+      "zh": "特别贡献者：Michael Garland"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter covers two types of sorting methods that rearrange keys (and their associated values) on GPUs into a desired order in parallel. The first type of sorting method is radix sort, which sorts keys by distributing them across buckets. We show that using the shared memory for output tiling and applying thread coarsening improves coalescing and reduces the overhead of the global exclusive scan. Although radix sort has the advantage of having a computational complexity that is lower than O(N*log(N)), it does not work for keys with complex ordering requirements. Therefore we also briefly look at the parallelization of comparison-based sorting that is applicable to general types of keys and comparison operations. A class of comparison-based sorting algorithms that is amenable to parallelization is merge sort. Merge sort can be parallelized by performing independent merge operations of different input segments in parallel as well as parallelizing within each merge operation. We also briefly discuss other popular parallel sorting algorithms.",
+      "zh": "本章介绍两类在 GPU 上并行地将键（及其关联值）重排为所需顺序的排序方法。第一类排序方法是基数排序，它通过将键分布到各个桶中来排序。我们将说明，利用共享内存进行输出分块并应用线程粗化，可以改善合并效果并降低全局排他式扫描的开销。虽然基数排序的优点是计算复杂度低于 O(N*log(N))，但它不适用于具有复杂排序要求的键。因此，我们还将简要考察适用于一般键类型和比较操作的基于比较的排序的并行化。一类适合并行化的基于比较的排序算法是归并排序。归并排序可以通过并行地对不同输入段执行相互独立的归并操作，并在每次归并操作内部进行并行化来实现并行化。我们还将简要讨论其他流行的并行排序算法。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Counting sort; radix sort; bucketing; comparison sort; merge sort; divide and conquer; memory coalescing; shared memory; thread coarsening; transposition sort; bitonic sort; sorting networks; sample sort; top-down sort methods; bottom-up sort methods",
+      "zh": "计数排序；基数排序；分桶；比较排序；归并排序；分治；内存合并；共享内存；线程粗化；转置排序；双调排序；排序网络；样本排序；自顶向下排序方法；自底向上排序方法"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】13.1 Background【/1】 294",
+      "zh": "【1】13.1 背景【/1】 294"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】13.2 Radix sort【/1】 295",
+      "zh": "【1】13.2 基数排序【/1】 295"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】13.3 Parallel radix sort【/1】 296",
+      "zh": "【1】13.3 并行基数排序【/1】 296"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】13.4 Optimizing for memory coalescing【/1】 300",
+      "zh": "【1】13.4 针对内存合并的优化【/1】 300"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】13.5 Choice of radix value【/1】 302",
+      "zh": "【1】13.5 基数值的选择【/1】 302"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】13.6 Thread coarsening to improve coalescing【/1】 305",
+      "zh": "【1】13.6 改善合并访问的线程粗化【/1】 305"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】13.7 Parallel merge sort【/1】 306",
+      "zh": "【1】13.7 并行归并排序【/1】 306"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】13.8 Other parallel sort methods【/1】 308",
+      "zh": "【1】13.8 其他并行排序方法【/1】 308"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[9]",
+      "en": "【1】13.9 Summary【/1】 309",
+      "zh": "【1】13.9 小结【/1】 309"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[10]",
+      "en": "【1】Exercises【/1】 310",
+      "zh": "【1】习题【/1】 310"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[11]",
+      "en": "【1】References【/1】 310",
+      "zh": "【1】参考文献【/1】 310"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Sorting algorithms place the data elements of a list into a certain order. Sorting is foundational to modern data and information services, since the computational complexity of retrieving information from datasets can be significantly reduced if the dataset is in proper order. For example, sorting is often used to canonicalize the data for fast comparison and reconciliation between data lists. Also, the efficiency of many data-processing algorithms can be improved if the data is in certain order. Because of their importance, efficient sorting algorithms have been the subject of many computer science research efforts. Even with these efficient algorithms, sorting large data lists is still time consuming and can benefit from parallel execution. Parallelizing efficient sorting algorithms is challenging and requires elaborate designs. This chapter presents the parallel designs for two important types of efficient sorting algorithms: radix sort and merge sort. Most of the chapter is dedicated to radix sort; merge sort is discussed briefly on the basis of the parallel merge pattern that was covered in 【1】Chapter 12【/1】, Merge. Other popular parallel sorting algorithms, such as transposition sort and sampling sort, are also briefly discussed.",
+      "zh": "排序算法将列表中的数据元素按某种顺序排列。排序是现代数据与信息服务的基础，因为如果数据集顺序得当，从中检索信息的计算复杂度可以显著降低。例如，排序常被用来规范化数据，以便在数据列表之间进行快速比较与核对。此外，如果数据处于特定顺序，许多数据处理算法的效率也会得到提高。由于排序的重要性，高效的排序算法一直是众多计算机科学研究工作的主题。即使有了这些高效算法，对大型数据列表进行排序仍然十分耗时，可以从并行执行中受益。对高效的排序算法进行并行化颇具挑战性，需要精巧的设计。本章介绍两类重要高效排序算法——基数排序和归并排序——的并行设计。本章的大部分内容围绕基数排序展开；归并排序则基于【1】第 12 章《归并》【/1】中介绍的并行归并模式加以简要讨论。其他流行的并行排序算法，如转置排序和样本排序，也会简要提及。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "13.1 Background",
+      "zh": "13.1 背景"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "Sorting is one of the earliest applications for computers. A sorting algorithm arranges the elements of a list into a certain order. The order to be enforced by a sorting algorithm depends on the nature of these elements. Examples of popular orders are numerical order for numbers and lexicographical order for text strings. More formally, any sorting algorithm must satisfy the following two conditions:",
+      "zh": "排序是计算机最早的应用之一。排序算法将列表中的元素按某种顺序排列。排序算法所要实施的顺序取决于这些元素的性质。常见顺序的示例有：对数字按数值顺序排列，对文本字符串按字典序排列。更形式化地说，任何排序算法都必须满足以下两个条件："
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/ol[1]/li[1]",
+      "en": "1. The output is in either nondecreasing or nonincreasing order. For nondecreasing order, each element is no smaller than the previous element according to the desired order. For nonincreasing order, each element is no larger than the previous element according to the desired order.",
+      "zh": "1. 输出按非递减顺序或非递增顺序排列。对于非递减顺序，根据所需顺序，每个元素都不小于前一个元素。对于非递增顺序，根据所需顺序，每个元素都不大于前一个元素。"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/ol[1]/li[2]",
+      "en": "2. The output is a permutation of the input. That is, the algorithm must retain all of the original input elements while reordering them into the output.",
+      "zh": "2. 输出是输入的一个排列。也就是说，算法必须保留输入的所有原始元素，同时将它们重新排列为输出。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "In its simplest form, the elements of a list can be sorted according to the values of each element. For example, the list [5, 2, 7, 1, 3, 2, 8] can be sorted into a nondecreasing order output [1, 2, 2, 3, 5, 7, 8].",
+      "zh": "在最简单的形式中，列表中的元素可以按照每个元素的值进行排序。例如，列表 [5, 2, 7, 1, 3, 2, 8] 可以排序为非递减顺序的输出 [1, 2, 2, 3, 5, 7, 8]。"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "page": "Ch006_123-147_B9780323912310000161",
+  "nodes": [
+    {
+      "id": "o0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/ol[1]/li[4]/ol[1]/li[3]",
+      "en": "c. The kernel described in this chapter with shared memory tiling applied using a tile size of 32×32 and thread coarsening applied using a coarsening factor of 4.",
+      "zh": "c. 本章描述的核函数，应用共享内存分块（分块大小为 32×32）以及线程粗化（粗化因子为 4）。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    },
+    {
+      "id": "fn1",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[1]",
+      "en": "【1】【2】1【/2】【/1】Recent CUDA devices use on-chip caches for global memory data. Such caches automatically coalesce more of the kernel access patterns and somewhat reduce the need for programmers to manually rearrange their access patterns. However, even with caches, coalescing techniques will continue to have significant effects on kernel execution performance in the foreseeable future.",
+      "zh": "【1】【2】1【/2】【/1】近期的 CUDA 设备使用片上缓存来处理全局内存数据。此类缓存会自动合并更多的核函数访问模式，并在一定程度上减少程序员手动重新安排访问模式的需要。然而，即使在有缓存的情况下，合并技术在未来可预见的一段时期内仍将对核函数执行性能产生显著影响。"
+    },
+    {
+      "id": "fn2",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[2]",
+      "en": "【1】【2】2【/2】【/1】Different CUDA devices may also impose alignment requirements on the global memory address X. For example, in some CUDA devices, X is required to be aligned to 16-word (i.e., 64-byte) boundaries. That is, the lower six bits of X should all be 0 bits. Such alignment requirements have been relaxed in recent CUDA devices, owing to the presence of second-level caches.",
+      "zh": "【1】【2】2【/2】【/1】不同的 CUDA 设备还可能对全局内存地址 X 施加对齐要求。例如，在某些 CUDA 设备中，X 需要对齐到 16 字（即 64 字节）的边界，也就是说，X 的低六位应全部为 0。由于二级缓存的存在，近期的 CUDA 设备已放宽了此类对齐要求。"
+    },
+    {
+      "id": "fn3",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[3]",
+      "en": "【1】【2】3【/2】【/1】Note that modern CPUs also recognize the DRAM burst organization in their cache memory design. A CPU cache line typically maps to one or more DRAM bursts. Applications that make full use of bytes in each cache line they touch tend to achieve much higher performance than those that randomly access memory locations. The techniques that we present in this chapter can be adapted to help CPU programs to achieve high performance.",
+      "zh": "【1】【2】3【/2】【/1】请注意，现代 CPU 在其缓存内存设计中同样利用了 DRAM 突发组织。一条 CPU 缓存行通常对应一次或多次 DRAM 突发传输。能够充分利用每条所接触缓存行中字节的应用，往往比随机访问内存位置的应用获得高得多的性能。我们在本章介绍的技术可以加以调整，帮助 CPU 程序实现高性能。"
+    }
+  ]
+}

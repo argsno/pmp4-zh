@@ -1,0 +1,155 @@
+{
+  "page": "Ch022_499-513_B9780323912310000136",
+  "nodes": [
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[2]/p[1]",
+      "en": "Early CUDA systems did not support exception handling in kernel code. While not a significant limitation for performance-critical portions of many high-performance applications, it often incurs software engineering cost in production quality applications that rely on exceptions to detect and handle rare conditions without executing code to explicitly test for such conditions.",
+      "zh": "早期的 CUDA 系统不支持核函数代码中的异常处理。虽然这对许多高性能应用中性能关键的部分来说不是重大局限，但在依赖异常来检测和处理罕见情况、无需显式编写测试代码的生产级应用中，它常常带来软件工程成本。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[2]/p[2]",
+      "en": "With the availability of limited exception handling support, CUDA debuggers allow a user to perform step-by-step execution, to set breakpoints, and or to run a kernel until an invalid memory access happens. In each case, the user can inspect the values of the kernel’s local and global variables when the execution is suspended. In our experience, the CUDA debugger is a very helpful tool to detect out-of-bounds memory accesses and potential race conditions.",
+      "zh": "凭借有限的异常处理支持，CUDA 调试器允许用户逐步执行、设置断点，或运行核函数直到发生无效内存访问。无论哪种情况，用户都可以在执行挂起时检查核函数的局部变量和全局变量的值。根据我们的经验，CUDA 调试器是检测越界内存访问和潜在竞态条件的非常有用的工具。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[3]/h3[1]",
+      "en": "Simultaneous execution of multiple grids",
+      "zh": "多个网格的并发执行"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[3]/p[1]",
+      "en": "The earliest CUDA systems allowed only one grid to execute on each GPU device at any point in time. Multiple grids could be submitted for execution using CUDA streams, but they were buffered in a queue that released the next grid after the current one had completed execution. The Fermi GPU architecture and its successors allowed multiple grids from the same application to be executed simultaneously, which reduces the pressure for the application developer to “batch” multiple kernels into a larger kernel in order to more fully utilize a device. Also, it is sometimes beneficial to partition work into chunks that can execute with different levels of priority.",
+      "zh": "最早的 CUDA 系统在任一时刻只允许一个网格在每台 GPU 设备上执行。多个网格可以通过 CUDA 流提交执行，但它们会在队列中缓冲，直到当前网格执行完毕后才释放下一个网格。Fermi GPU 架构及其后继架构允许同一应用的多个网格同时执行，这减轻了应用开发者为了更充分地利用设备而把多个核函数“打包”成一个更大核函数的压力。此外，有时把工作划分成可按不同优先级执行的块也是有益的。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[3]/p[2]",
+      "en": "A typical example of the benefit of executing multiple grids simultaneously is for parallel cluster applications that segment work into “local” and “remote” partitions, in which remote work is involved in interactions with other nodes and resides on the critical path of global progress (【1】Chapter 20【/1】, Programming a Heterogeneous Computing Cluster). In previous CUDA systems, grids needed to perform a lot of work to utilize the device efficiently, and one had to be careful not to launch local work such that global work could be blocked. This meant choosing between underutilizing the device while waiting for remote work to arrive or eagerly starting on local work to keep the device productive at the cost of increased latency for completing remote work units (【2】Phillips and Stone, 2009【/2】). With multiple grid execution the application can use much smaller grid sizes for launching work, and as a result, when high-priority remote work arrives, it can start running with low latency instead of being stuck behind a large grid of local computation.",
+      "zh": "同时执行多个网格的好处的一个典型例子是并行集群应用，这类应用把工作划分为“本地”和“远程”两个部分，其中远程工作涉及与其他节点的交互，并且处于全局进度的关键路径上（【1】第 20 章【/1】《编写异构计算集群程序》）。在之前的 CUDA 系统中，网格需要执行大量工作才能高效利用设备，而且必须小心不能启动会阻塞全局工作的本地工作。这意味着要做出选择：要么在等待远程工作到达时让设备利用不足，要么急切地开始本地工作以保持设备高效，代价是完成远程工作单元的延迟增加（【2】Phillips and Stone, 2009【/2】）。借助多网格执行，应用可以用小得多的网格尺寸来启动工作，因此当高优先级远程工作到达时，它可以低延迟地开始运行，而不是被大型本地计算网格挡在后面。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[4]/h3[1]",
+      "en": "Hardware queues and dynamic parallelism",
+      "zh": "硬件队列与动态并行"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[4]/p[1]",
+      "en": "In the Kepler architecture and CUDA 5, the multiple grid launch facility was extended by the addition of multiple hardware queues, which allow much more efficient scheduling of thread blocks from multiple grids from multiple streams. In addition, CUDA dynamic parallelism, which was covered in 【1】Chapter 21【/1】, CUDA Dynamic Parallelism, allows GPU work creation: GPU grids can launch child grids asynchronously, dynamically, and in a data-dependent or compute load–dependent fashion. This reduces CPU-GPU interaction and synchronization, since the GPU can now manage more complex workloads independently. The CPU is in turn free to perform other useful computation.",
+      "zh": "在 Kepler 架构和 CUDA 5 中，多网格启动设施通过增加多个硬件队列而得到扩展，这些队列可以更高效地调度来自多个流的多个网格的线程块。此外，CUDA 动态并行（已在【1】第 21 章【/1】《CUDA 动态并行》中介绍）允许在 GPU 上创建工作：GPU 网格可以异步、动态地启动子网格，并且启动方式可以依赖于数据或计算负载。这减少了 CPU 与 GPU 之间的交互和同步，因为 GPU 现在可以独立管理更复杂的工作负载，CPU 则得以腾出手来执行其他有用的计算。"
+    },
+    {
+      "id": "st0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[5]/h3[1]",
+      "en": "Interruptable grids",
+      "zh": "可中断网格"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[5]/p[1]",
+      "en": "The Fermi GPU architecture allowed a running grid to be “canceled,” enabling the creation of CUDA-accelerated apps that allow the user to abort a long-running calculation at any time without requiring significant design effort on the part of the programmer. This enables implementation of user-level task scheduling systems that can better perform load balance between GPU nodes of a computing system and allows more graceful handling of cases in which one GPU is heavily loaded and may be running more slowly than its peers (【1】Stone &amp; Hwu, 2009【/1】).",
+      "zh": "Fermi GPU 架构允许“取消”正在运行的网格，从而能够创建这样的 CUDA 加速应用：用户可以在任何时候中止长时间运行的计算，而不需要程序员为此付出大量的设计工作。这使实现用户级任务调度系统成为可能，该系统可以在计算系统的 GPU 节点之间更好地进行负载均衡，并且可以更从容地处理某个 GPU 负载过重、运行速度可能慢于其他 GPU 的情况（【1】Stone &amp; Hwu, 2009【/1】）。"
+    },
+    {
+      "id": "st0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[6]/h3[1]",
+      "en": "Cooperative kernels",
+      "zh": "协作核函数"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[6]/p[1]",
+      "en": "GPU kernels working on irregular data often suffer from load imbalance. CUDA 11 introduced the cooperative kernels to alleviate this problem. A cooperative kernel can execute up to a maximum number of thread blocks that would completely fill the GPU, and the CUDA runtime guarantees that all the thread blocks will execute concurrently. This concurrency guarantee enables thread blocks to safely cooperate without deadlock over shared mutual exclusion mechanisms (e.g., a mutex) that can be used to protect shared data structures (e.g., work queues). Cooperative kernels require a special API, 【1】cudaLaunchCooperativeKernel()【/1】, and provide a device API to identify and partition groups of threads. Cooperative kernels are not limited to a single device but can be called to run in multiple devices using 【2】cudaLaunchCooperativeKernelMultiDevice()【/2】.",
+      "zh": "处理不规则数据的 GPU 核函数常常遭受负载不均衡之苦。CUDA 11 引入了协作核函数来缓解这一问题。协作核函数最多可以执行足以完全占满 GPU 的线程块数量，CUDA 运行时保证所有这些线程块会并发执行。这一并发性保证使线程块能够安全协作，而不会在共享互斥机制（例如互斥量）上发生死锁——这些机制可用于保护共享数据结构（例如工作队列）。协作核函数需要特殊的 API【1】cudaLaunchCooperativeKernel()【/1】，并提供设备端 API 来识别和划分线程组。协作核函数不限于单个设备，也可以使用【2】cudaLaunchCooperativeKernelMultiDevice()【/2】在多个设备上运行。"
+    },
+    {
+      "id": "st0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "22.3 Memory bandwidth and compute throughput",
+      "zh": "22.3 内存带宽与计算吞吐量"
+    },
+    {
+      "id": "st0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/h3[1]",
+      "en": "Double-precision speed",
+      "zh": "双精度速度"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[1]",
+      "en": "Early devices performed double-precision floating-point arithmetic with significant speed reduction (around eight times slower) compared to single-precision. The floating-point arithmetic units of Fermi and its successors were significantly strengthened to perform double-precision arithmetic at about half the speed of single-precision. Applications that are intensive in double-precision floating-point arithmetic benefited tremendously.",
+      "zh": "早期的设备执行双精度浮点运算时，与单精度相比速度大幅降低（大约慢 8 倍）。Fermi 及其后继架构的浮点运算单元得到了显著加强，双精度运算速度约为单精度的二分之一。大量进行双精度浮点运算的应用从中受益匪浅。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[2]",
+      "en": "In practice, the most significant benefit was obtained by developers who were porting CPU-based numerical applications to GPUs. With the improved double-precision speed, they had little incentive to spend the effort to evaluate whether their applications or portions of their applications could fit into single-precision. This significantly reduced the development cost for porting CPU applications to GPUs and addressed a major criticism of GPUs in their earliest days by the HPC community.",
+      "zh": "在实践中，获益最大的是把基于 CPU 的数值应用移植到 GPU 的开发者。凭借改进后的双精度速度，他们没有多大动力去花力气评估自己的应用或应用的一部分能否放进单精度。这显著降低了把 CPU 应用移植到 GPU 的开发成本，也回应了 HPC 社区在 GPU 问世之初对 GPU 的一大批评。"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[3]",
+      "en": "Some applications that were operating on smaller input data types (8-bit, 16-bit, or single-precision floating-point) continued to benefit from using single-precision arithmetic, owing to the reduced bandwidth of using 32-bit versus 64-bit data. Applications such as medical imaging, remote sensing, radio astronomy, seismic analysis, and other natural data frequently fit into this category. The Pascal GPU architecture introduced new hardware support for computing with 16-bit half-precision numbers to further improve the performance and energy efficiency of applications whose data can fit into the half-precision representation. For example, in A100 based on the Ampere architecture, the 16-bit half-precision arithmetic throughput using tensor cores is 156 TFLOPS, a dramatic improvement compared to its 19.5 TFLOPS single-precision throughput.",
+      "zh": "一些处理较小输入数据类型（8 位、16 位或单精度浮点）的应用，由于使用 32 位而非 64 位数据可降低带宽占用，继续从单精度运算中受益。医学成像、遥感、射电天文学、地震分析等应用，以及其他自然数据，常常属于这一类。Pascal GPU 架构为使用 16 位半精度数进行计算引入了新的硬件支持，以进一步提升数据能容纳进半精度表示的应用的性能和能效。例如，在基于 Ampere 架构的 A100 上，使用张量核心的 16 位半精度运算吞吐量达到 156 TFLOPS，相比其 19.5 TFLOPS 的单精度吞吐量是巨大的提升。"
+    },
+    {
+      "id": "st0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/h3[1]",
+      "en": "Better control flow efficiency",
+      "zh": "更好的控制流效率"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[1]",
+      "en": "Starting with the Fermi GPU architecture, CUDA systems adopted a general compiler-driven predication technique (【1】Mahlke et al., 1995【/1】) that can more effectively handle control flow than previous CUDA systems. While this technique was moderately successful in VLIW systems, it provided even more dramatic speed improvements in GPU warp-style SIMD execution systems. This capability broadens the range of applications that can take advantage of GPUs. In particular, major performance benefits can potentially be realized for applications that are very data-driven, such as ray tracing, quantum chemistry visualization, and cellular automata simulation.",
+      "zh": "从 Fermi GPU 架构开始，CUDA 系统采用了一种通用的编译器驱动的断言执行（predication）技术（【1】Mahlke et al., 1995【/1】），比以往的 CUDA 系统能更有效地处理控制流。虽然该技术在 VLIW 系统中只是取得中等成功，但在 GPU 线程束式 SIMD 执行系统中却带来了更惊人的速度提升。这一能力拓宽了能够利用 GPU 的应用范围。特别是，对光线追踪、量子化学可视化、元胞自动机模拟等高度数据驱动的应用，有可能实现重大的性能收益。"
+    },
+    {
+      "id": "st0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/h3[1]",
+      "en": "Configurable caching and scratchpad",
+      "zh": "可配置缓存与便笺存储器"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/p[1]",
+      "en": "The shared memory in early CUDA systems served as a programmer-managed scratchpad memory and increased the speed of applications in which key data structures have localized and predictable access patterns. Starting with the Fermi GPU architecture, the shared memory was enhanced to a larger on-chip memory that can be configured to be partially cache memory and partially shared memory, which allows coverage of both predictable and less predictable access patterns to benefit from on-chip memory. This configurability allows programmers to apportion the resources according to the best fit for their application.",
+      "zh": "早期 CUDA 系统中的共享内存充当程序员管理的便笺存储器，提升了那些关键数据结构具有局部化、可预测访问模式的应用的速度。从 Fermi GPU 架构开始，共享内存被增强为更大的片上内存，可以配置为一部分是缓存、一部分是共享内存，从而使可预测和较不可预测的访问模式都能受益于片上内存。这种可配置性使程序员可以根据应用的最佳匹配来分配资源。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/p[2]",
+      "en": "Applications in an early design stage that are ported directly from CPU code will benefit greatly from caching as the dominant part of the on-chip memory. This further smoothes the performance-tuning process by increasing the level of “easy performance” when a developer ports a CPU application to GPU.",
+      "zh": "处于早期设计阶段、直接从 CPU 代码移植的应用，将因缓存作为片上内存的主导部分而大受裨益。这进一步平滑了性能调优过程，提高了开发者把 CPU 应用移植到 GPU 时可获得的“轻松性能”水平。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[3]/p[3]",
+      "en": "Existing CUDA applications and those that have predictable access patterns have the ability to increase their use of fast shared memory while retaining the same device “occupancy” they had on previous-generation devices. For CUDA applications whose performance or capabilities are limited by the size of the shared memory, the increase in size will be a welcome improvement. For example, in stencil computation (【1】Chapter 8【/1】, Stencil, and 【2】Chapter 20【/2】, Programming a Heterogeneous Computing Cluster), such as finite difference methods for computational fluid dynamics, the increased shared memory capacity improves the memory bandwidth efficiency and the performance of the application.",
+      "zh": "现有的 CUDA 应用以及那些访问模式可预测的应用，可以在保持与上一代设备相同设备“占用率”的同时，增加对快速共享内存的使用。对性能或能力受共享内存大小限制的 CUDA 应用来说，共享内存容量的增加将是受欢迎的改进。例如，在模板计算中（【1】第 8 章【/1】《模板》和【2】第 20 章【/2】《编写异构计算集群程序》），如用于计算流体动力学的有限差分法，增加的共享内存容量改善了内存带宽效率和应用的性能。"
+    },
+    {
+      "id": "st0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/h3[1]",
+      "en": "Enhanced atomic operations",
+      "zh": "增强的原子操作"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[4]/p[1]",
+      "en": "The atomic operations in the Fermi GPU architecture were much faster than those in previous CUDA systems, and the atomic operations in Kepler were even faster. In addition, the Kepler atomic operations were more general. The atomic operations over shared memory variables in the Maxwell GPU architecture were further enhanced in their throughput. Atomic operations are frequently used in random scatter computation patterns, such as histograms (【1】Chapter 9【/1】, Parallel Histogram: An Introduction to Atomic Operations and Privatization). Faster atomic operations reduce the need for algorithm transformations such as prefix sum (【2】Chapter 11【/2】, Prefix Sum (Scan): An Introduction to Work Efficiency in Parallel Algorithms) (【3】Sengupta et al., 2007【/3】) and sorting (【4】Chapter 13【/4】, Sorting) (【5】Satish et al., 2009【/5】) for implementing such random scattering computations. These transformations tend to increase the number of kernel invocations as well as the total number of operations that are needed to perform the target computation. Faster atomic operations can also reduce the need for involving the host CPU in algorithms that do collective operations or where multiple thread blocks update shared data structures, thus reducing the data transfer pressure between CPU and GPU.",
+      "zh": "Fermi GPU 架构中的原子操作比以往 CUDA 系统中的快得多，而 Kepler 中的原子操作更快。此外，Kepler 的原子操作更为通用。Maxwell GPU 架构中针对共享内存变量的原子操作，其吞吐量得到了进一步提升。原子操作常用于随机分散计算模式，如直方图（【1】第 9 章【/1】《并行直方图：原子操作与私有化入门》）。更快的原子操作减少了对算法变换的需求，例如用扫描（【2】第 11 章【/2】《前缀和（扫描）：并行算法中的工作效率入门》）（【3】Sengupta et al., 2007【/3】）和排序（【4】第 13 章【/4】《排序》）（【5】Satish et al., 2009【/5】）来实现此类随机分散计算。这些变换往往会增加执行目标计算所需的核函数调用次数，以及操作总数。更快的原子操作还可以减少在需要进行集合操作或由多个线程块更新共享数据结构的算法中动用主机 CPU 的需求，从而减轻 CPU 与 GPU 之间的数据传输压力。"
+    },
+    {
+      "id": "st0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[5]/h3[1]",
+      "en": "Enhanced global memory access",
+      "zh": "增强的全局内存访问"
+    }
+  ]
+}

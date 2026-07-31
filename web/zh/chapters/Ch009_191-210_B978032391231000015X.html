@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="zh-CN" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="前言部分">
+      <option value="Cover.html">封面图</option>
+      <option value="Title_page.html">标题页</option>
+      <option value="Contents.html">目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">致谢</option>
+    </optgroup>
+    <optgroup label="序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">课程资源</option>
+    </optgroup>
+    <optgroup label="第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第一部分：基本概念">
+      <option value="Part1.html">第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html">第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">参考文献</option>
+    </optgroup>
+    <optgroup label="第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html">第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html">第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html">第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">习题</option>
+    </optgroup>
+    <optgroup label="第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第二部分：并行模式">
+      <option value="Part2.html">第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html">第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html" selected>第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">习题</option>
+    </optgroup>
+    <optgroup label="第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html">第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第三部分：高级模式与应用">
+      <option value="Part3.html">第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html">第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html">第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">参考文献</option>
+    </optgroup>
+    <optgroup label="第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">参考文献</option>
+    </optgroup>
+    <optgroup label="第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html">第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">参考文献</option>
+    </optgroup>
+    <optgroup label="第四部分：高级实践">
+      <option value="Part4.html">第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html">第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">参考文献</option>
+    </optgroup>
+    <optgroup label="第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">参考文献</option>
+    </optgroup>
+    <optgroup label="第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Ch008_173-189_B9780323912310000173.html#st0055">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch009_191-210_B978032391231000015X.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/Ch009_191-210_B978032391231000015X.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch009_191-210_B978032391231000015X.html">对照</a></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter">
+<a id="Ch009_191-210_B978032391231000015X"></a><div id="page_191" aria-label="Page 191" epub:type="pagebreak" role="doc-pagebreak"></div><div id="CN"><a id="Ch009_191-210_B978032391231000015Xtitl"></a>Chapter 9</div><hgroup>
+<h1 class="chaptitle" epub:type="title" id="tit0010">并行直方图</h1>
+<h2 class="chapsubt" epub:type="subtitle">原子操作与私有化入门</h2></hgroup><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0085">本章介绍并行直方图计算模式以及原子操作的概念。本章说明对同一位置的原子操作会被串行化，其吞吐量由其延迟决定。本章还介绍四种重要的优化技术：基于线程粗化的交错数据划分以改善内存合并，利用缓存降低原子操作的延迟并提高其吞吐量，通过私有化减少竞争，以及通过聚合减少竞争。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">直方图；特征提取；输出干扰；竞态条件；原子操作；读-改-写；访存受限；内存延迟；内存吞吐量；内存合并；连续划分；交错划分</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">大纲</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">9.1 背景</a> 192</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">9.2 原子操作与基础直方图核函数</a> 194</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">9.3 原子操作的延迟与吞吐量</a> 198</li>
+<li class="chapoutl1" id="o0025"><a id="p0025"></a><a href="#s0025">9.4 私有化</a> 200</li>
+<li class="chapoutl1" id="o0030"><a id="p0030"></a><a href="#s0030">9.5 粗化</a> 203</li>
+<li class="chapoutl1" id="o0035"><a id="p0035"></a><a href="#s0035">9.6 聚合</a> 206</li>
+<li class="chapoutl1" id="o0040"><a id="p0040"></a><a href="#s0040">9.7 小结</a> 208</li>
+<li class="chapoutl1" id="u0010"><a id="p0045"></a><a href="#s0045">习题</a> 209</li>
+<li class="chapoutl1" id="u0015"><a id="p0050"></a><a href="#bibliog0010">参考文献</a> 210</li>
+</ul>
+</div></nav>
+<p id="p0055" class="textfl"><a id="P191"></a><span id="page_192" aria-label="Page 192" epub:type="pagebreak" role="doc-pagebreak"></span>到目前为止，我们介绍过的并行计算模式都允许将计算每个输出元素的任务独占式地分配给（或者说归属于）一个线程。因此这些模式适用于属主计算规则，即每个线程都可以写入其指定的一个或多个输出元素，而无需担心其他线程的干扰。本章介绍并行直方图计算模式，在这种模式中，每个输出元素都可能被任意线程更新。因此，线程在更新输出元素时必须相互协调，避免任何可能破坏最终结果的干扰。实际上，还有许多其他重要的并行计算模式难以轻易避免输出干扰。因此，并行直方图算法为这些模式中出现的输出干扰提供了一个例子。我们首先考察一种基线方法，它使用<em>原子操作</em>将每个元素的更新串行化。这种基线方法简单但效率低下，执行速度常常不尽如人意。然后，我们将介绍一些广泛使用的优化技术，尤其是私有化，以便在保持正确性的同时显著提升执行速度。这些技术的成本与收益取决于底层硬件以及输入数据的特征。因此，开发人员理解这些技术的关键思想、并能在不同情形下推演其适用性，是非常重要的。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">9.1 背景</h2><p id="p0060" class="textfl">直方图展示的是数据集中各数据值的出现次数或百分比。最常见的直方图形式是：值区间沿横轴绘制，每个区间内数据值的个数用从横轴升起的矩形（即条形）的高度表示。例如，可以用直方图来展示短语“programming massively parallel processors”中各个字母出现的频率。为简单起见，我们假设输入短语全部由小写字母组成。通过观察可以看到，字母“a”出现 4 次，“b”出现 0 次，“c”出现 1 次，依此类推。我们把每个值区间定义为字母表中连续 4 个字母的范围。于是第一个值区间是“a”到“d”，第二个值区间是“e”到“h”，依此类推。<a href="#f0010">图 9.1</a> 根据我们对值区间的定义，展示了短语“programming massively parallel processors”中字母出现的频率。</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F00015Xf09-01-9780323912310.jpg" class="img" alt="image" width="1300" height="536"/><figcaption class="figleg"><a id="sp0010"></a><span class="fignum">图 9.1</span> 短语“programming massively parallel processors”的直方图表示。</figcaption></figure></div><p id="p0065" class="text">直方图提供了数据集的实用摘要。在我们的例子中可以看到，所表示的短语由集中于字母表中段区间的字母构成，而在靠后的区间则明显稀疏。直方图的形状有时被称为数据集的一个<em>特征</em>，它提供了一种快速判断数据集中是否存在显著现象的方法。例如，信用卡账户的购买类别与购买地点直方图的形状可用于检测欺诈使用。当直方图的形状明显偏离常态时，系统会发出潜在风险的警报。</p>
+<p id="p0070" class="text"><span id="page_193" aria-label="Page 193" epub:type="pagebreak" role="doc-pagebreak"></span>许多应用领域都依赖直方图来汇总数据集以进行数据分析，计算机视觉便是其中之一。不同类型物体图像（例如人脸与汽车）的直方图往往呈现不同的形状。例如，人们可以绘制图像或图像某个区域的像素亮度值直方图。晴朗天空的这种直方图可能只在亮度谱的高值区间内有少量很高的条形。通过将图像划分为子区域并分析这些子区域的直方图，可以快速识别图像中可能包含目标物体的感兴趣子区域。计算图像子区域直方图的过程是计算机视觉中<em>特征提取</em>的重要途径，这里的特征指图像中感兴趣的模式。实际上，每当有大量数据需要分析以提炼出有意义的事件时，直方图往往都会作为基础计算被使用。信用卡欺诈检测和计算机视觉显然符合这一描述。其他有此需求的应用领域包括语音识别、网站购买推荐，以及科学数据分析，例如天体物理学中天体运动的关联分析。</p>
+<p id="p0075" class="text">直方图很容易以串行方式计算。<a href="#f0015">图 9.2</a> 展示了一个计算<a href="#f0010">图 9.1</a> 所定义直方图的串行函数。为简单起见，该直方图函数被要求只识别小写字母。C 代码假设输入数据集以 <span class="inlinecode">char</span> 数组 <span class="inlinecode">data</span> 的形式传入，直方图将生成到 <span class="inlinecode">int</span> 数组 <span class="inlinecode">histo</span> 中（第 01 行）。输入数据项的个数由函数参数 <span class="inlinecode">length</span> 指定。for 循环（第 02–07 行）依次遍历数组，识别所访问位置 <span class="inlinecode">data[i]</span>处字符的字母表索引，将该索引存入 alphabet_position 变量，并递增与该区间对应的 <span class="inlinecode">histo[alphabet_position/4]</span>元素。字母表索引的计算依赖于如下事实：输入字符串基于标准 ASCII 码表示，字母表字母“a”到“z”按照其在字母表中的顺序被编码为连续的值。</p>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F00015Xf09-02-9780323912310.jpg" class="img" alt="image" width="1374" height="340"/><figcaption class="figleg"><a id="sp0015"></a><span class="fignum">图 9.2</span> 一个为输入文本字符串计算直方图的简单 C 函数。</figcaption></figure></div><p id="p0080" class="text"><span id="page_194" aria-label="Page 194" epub:type="pagebreak" role="doc-pagebreak"></span>虽然人们可能不知道每个字母的确切编码值，但可以假设某个字母的编码值等于“a”的编码值加上该字母与“a”之间的字母表位置差。在输入中，每个字符都以它的编码值存储。因此，表达式 data[i] – “a”（第 03 行）推导出该字母的字母表位置，其中“a”的字母表位置为 0。如果该位置值大于或等于 0 且小于 26，那么这个数据字符确实是小写字母（第 04 行）。请记住，我们定义的区间中每个区间包含 4 个字母。因此，该字母的区间索引等于它的字母表位置值除以 4。我们用区间索引来递增相应的 <span class="inlinecode">histo</span> 数组元素（第 05 行）。</p>
+<p id="p0085" class="text"><a href="#f0015">图 9.2</a> 中的 C 代码相当简单而高效。该算法的计算复杂度为 O(N)，其中 N 是输入数据元素的个数。for 循环按顺序访问 data 数组的元素，因此每当这些元素从系统 DRAM 中取回时，CPU 缓存行都能得到充分利用。<span class="inlinecode">histo</span> 数组非常小，可以很好地装入 CPU 的一级（L1）数据缓存中，从而保证对 <span class="inlinecode">histo</span> 元素的快速更新。对大多数现代 CPU 而言，可以预期这段代码的执行速度是访存受限的，也就是说，其速度受限于 <span class="inlinecode">data</span> 元素从 DRAM 送入 CPU 缓存的速度。</p></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">9.2 原子操作与基础直方图核函数</h2><p id="p0090" class="textfl">并行化直方图计算最直接的方法是启动与数据元素数量一样多的线程，让每个线程处理一个输入元素。每个线程读取分配给它的输入元素，并递增该字符对应的区间计数器。<a href="#f0020">图 9.3</a> 展示了这一并行化策略的一个示例。注意，多个线程需要更新同一个计数器（m-p），这种冲突被称为<em>输出干扰</em>。程序员必须理解竞态条件和原子操作的概念，才能在自己的并行代码中有把握地处理这类输出干扰。</p>
+<div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F00015Xf09-03-9780323912310.jpg" class="img" alt="image" width="1373" height="577"/><figcaption class="figleg"><a id="sp0020"></a><span class="fignum">图 9.3</span> 直方图的基础并行化。</figcaption></figure></div><p id="p0095" class="text"><span id="page_195" aria-label="Page 195" epub:type="pagebreak" role="doc-pagebreak"></span>对 histo 数组中某个区间计数器的递增，就是对内存中一个位置的更新操作，也就是读-改-写操作。该操作包括读取内存位置（读）、在原值上加 1（改），以及将新值写回该内存位置（写）。读-改-写是协调协作活动中常用的操作。</p>
+<p id="p0100" class="text"><a id="li0015"></a>例如，当我们在航空公司预订航班时，会调出座位图寻找可用的座位（读），选一个要预订的座位（改），这样就把该座位在座位图中的状态改为不可用（写）。一个可能出问题的场景如下：</p><div><ul>
+<li class="bulllist" id="u0020"><a id="p0105"></a>• 两位顾客同时调出同一航班的座位图。</li>
+<li class="bulllist" id="u0025"><a id="p0110"></a>• 两位顾客选择了同一个座位，比如 9C。</li>
+<li class="bulllist" id="u0030"><a id="p0115"></a>• 两位顾客都把座位 9C 的状态改为不可用。</li>
+</ul></div><p id="p0120" class="text">经过上述过程后，两位顾客都认为自己拥有座位 9C。可以想象，当他们登机后发现其中一人无法坐那个预订的座位时，场面会很不愉快！信不信由你，由于航空公司订票软件的缺陷，这样的不愉快场面在现实生活中确实会发生。</p>
+<p id="p0125" class="text">再举一个例子：有些商店允许顾客不排队等候服务。他们让每位顾客从自助终端上取一个号。有一块显示屏显示下一个将要被服务的号码。当有服务人员空闲时，该服务人员会请顾客出示与号码相符的票据，核对票据，然后将显示屏上的号码更新为下一个更大的号码。理想情况下，所有顾客都会按照进入商店的顺序得到服务。一种不理想的结果是：两位顾客同时在两个终端签到，并且拿到了相同的号码。当服务人员叫到这个号码时，两位顾客都认为自己才是应该接受服务的那个人。</p>
+<p id="p0130" class="text"><span id="page_196" aria-label="Page 196" epub:type="pagebreak" role="doc-pagebreak"></span>在这两个例子中，不理想的结果都是由一种被称为读-改-写<em>竞态条件</em>的现象造成的：当两个或多个更新操作同时进行时，其结果会随这些操作之间的相对时序而变化。<sup><a aria-label="noteref" href="#fn1" id="Cfn1">1</a></sup> 有些结果是正确的，有些则是错误的。<a href="#f0025">图 9.4</a> 展示了在我们这个文本直方图例子中两个线程试图更新同一个 histo 元素时出现的竞态条件。<a href="#f0025">图 9.4</a> 中的每一行都显示了一个时间段内的活动，时间自上而下推进。</p>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F00015Xf09-04-9780323912310.jpg" class="img" alt="image" width="1379" height="346"/><figcaption class="figleg"><a id="sp0025"></a><span class="fignum">图 9.4</span> 更新 <span class="inlinecode">histo</span> 数组元素时的竞态条件：（A）指令的一种可能交错方式；（B）指令的另一种可能交错方式。</figcaption></figure></div><p id="p0135" class="text"><a href="#f0025">图 9.4A</a> 描绘的场景中，线程 1 在第 1 至 3 个时间段内完成了其读-改-写序列的全部三个部分，之后线程 2 才在第 4 个时间段开始它的序列。每个操作前面括号中的值表示写入目标位置的值，这里假设 histo[x] 的初始值为 0。在这个场景中，histo[x] 之后的值是 2，与预期完全一致。也就是说，两个线程都成功递增了 histo[x]。该元素的值从 0 开始，在操作完成后变为 2。</p>
+<p id="p0140" class="text">在<a href="#f0025">图 9.4B</a> 中，两个线程的读-改-写序列发生了重叠。注意，线程 1 在第 4 个时间段把新值写入 histo[x]。当线程 2 在第 3 个时间段读取 histo[x] 时，它得到的仍然是 0。结果，线程 2 计算并最终写入 histo[x] 的新值是 1 而不是 2。问题在于线程 2 读取 histo[x] 太早，早在线程 1 完成其更新之前。最终结果是 histo[x] 之后的值变成 1，这是不正确的。线程 1 的更新丢失了。</p>
+<p id="p0145" class="text">在并行执行过程中，线程之间可以按任意相对顺序运行。在我们的例子中，线程 2 完全可能在线程 1 之前开始它的更新序列。<a href="#f0030">图 9.5</a> 展示了两种这样的场景。在<a href="#f0030">图 9.5A</a> 中，线程 2 在线程 1 开始更新之前就完成了自己的更新。在<a href="#f0030">图 9.5B</a> 中，线程 1 在线程 2 完成更新之前就开始了自己的更新。显而易见，<a href="#f0030">图 9.5A</a> 中的序列使 histo[x] 得到正确的结果，而<a href="#f0030">图 9.5B</a> 中的序列则产生错误的结果。</p>
+<div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F00015Xf09-05-9780323912310.jpg" class="img" alt="image" width="1322" height="372"/><figcaption class="figleg"><a id="sp0030"></a><span class="fignum">图 9.5</span> 线程 2 领先于线程 1 时的竞态条件场景：（A）指令的一种可能交错方式；（B）指令的另一种可能交错方式。</figcaption></figure></div><p id="p0150" class="text">histo[x] 的最终值随所涉操作的相对时序而变化，这一事实说明存在竞态条件。我们可以通过消除线程 1 与线程 2 操作序列之间可能的交错来消除这种变化。也就是说，我们希望保留<a href="#f0025">图 9.4A</a> 和<a href="#f0030">图 9.5A</a> 所示的时序，同时消除<a href="#f0025">图 9.4B</a> 和<a href="#f0030">图 9.5B</a> 所示的可能性。这可以通过使用<em>原子操作</em>来实现。</p>
+<p id="p0155" class="text"><span id="page_197" aria-label="Page 197" epub:type="pagebreak" role="doc-pagebreak"></span>对内存位置执行的原子操作，是指以这样一种方式对该位置执行读-改-写序列的操作：对同一位置的任何其他读-改-写序列都不能与之重叠。也就是说，该操作的读、改、写三个部分构成一个不可分割的整体，因此得名原子操作。在实践中，原子操作通过硬件支持实现，硬件会锁定对同一位置的其他操作，直到当前操作完成。在我们的例子中，这种支持消除了<a href="#f0025">图 9.4B</a> 和<a href="#f0030">图 9.5B</a> 所示的可能性，因为滞后的线程必须等领先的线程完成其更新序列后才能开始自己的更新序列。</p>
+<p id="p0160" class="text">需要记住的是，原子操作并不强制线程之间的任何特定执行顺序。在我们的例子中，<a href="#f0025">图 9.4A</a> 和<a href="#f0030">图 9.5A</a> 所示的两种顺序都是原子操作所允许的。线程 1 既可以在线程 2 之前运行，也可以在其之后运行。被强制执行的规则是：如果两个线程对同一内存位置执行原子操作，那么滞后线程执行的原子操作必须等领先线程的原子操作完成之后才能开始。这实际上使作用于同一内存位置的原子操作串行化了。</p>
+<p id="p0165" class="text">原子操作通常根据对内存位置执行的修改方式来命名。在我们的文本直方图例子中，我们要向内存位置加一个值，因此该原子操作被称为原子加。其他类型的原子操作包括减法、自增、自减、取最小值、取最大值、逻辑与和逻辑或。CUDA 核函数可以通过函数调用来对内存位置执行原子加操作：</p>
+<div class="pageavoid"><figure class="fig" id="f0085"><img src="../images/F00015Xu09-01-9780323912310.jpg" class="img" alt="image" width="1363" height="77"/></figure>
+</div>
+<p id="p0170" class="text">atomicAdd 函数是一种内建函数（见侧边栏“内建函数”），它会被编译成一条硬件原子操作指令。这条指令读取地址参数在全局内存或共享内存中所指向的 32 位字，将 val 加到旧内容上，再把结果存回同一地址的内存中。该函数返回该地址处的旧值。</p>
+<div class="boxg1" id="b0010">
+<p class="b1title"><a id="sp9095"></a>内建函数</p>
+<p id="p9145" class="b1textfl"><em>现代处理器常常提供一些特殊指令，它们要么执行关键功能（如原子操作），要么带来显著的性能提升（如向量指令）。这些指令通常以内建函数的形式提供给程序员，简称 intrinsics。从程序员的角度看，它们是库函数。然而，编译器会以特殊方式对待它们：每一次这类调用都会被翻译成对应的特殊指令。最终代码中通常没有函数调用，只有与用户代码内联在一起的特殊指令。所有主流现代编译器，例如 GNU 编译器套件（gcc）、Intel C 编译器以及 Clang/LLVM C 编译器，都支持内建函数</em>。</p>
+</div>
+<p id="p0175" class="text"><span id="page_198" aria-label="Page 198" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0035">图 9.6</a> 展示了一个执行并行直方图计算的 CUDA 核函数。该代码与<a href="#f0015">图 9.2</a> 中的串行代码类似，但有两点关键区别。第一点区别是，对输入元素的循环被替换为线程索引计算（第 02 行）和边界检查（第 03 行），从而为每个输入元素分配一个线程。第二点区别是，<a href="#f0015">图 9.2</a> 中的递增表达式：</p>
+<div class="pageavoid"><figure class="fig" id="f0095"><img src="../images/F00015Xu09-03-9780323912310.jpg" class="img" alt="image" width="1358" height="75"/></figure>
+</div>
+<p class="text">递增表达式变成 <span class="inlinecode">atomicAdd()</span>函数调用，如<a href="#f0035">图 9.6</a> 所示（第 06 行）。待更新位置的地址<span class="inlinecode">&amp;(histo[alphabet_position/4])</span>是第一个参数。要加到该位置的值 1 是第二个参数。这确保了不同线程对任何 <span class="inlinecode">histo</span> 数组元素的同时更新都会被正确地串行化。</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F00015Xf09-06-9780323912310.jpg" class="img" alt="image" width="1375" height="332"/><figcaption class="figleg"><a id="sp0035"></a><span class="fignum">图 9.6</span> 一个用于计算直方图的 CUDA 核函数。</figcaption></figure></div></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">9.3 原子操作的延迟与吞吐量</h2><p id="p0185" class="textfl"><a href="#f0035">图 9.6</a> 的核函数中所使用的原子操作，通过串行化对同一位置的任何同时更新来保证更新的正确性。我们知道，把大规模并行程序的任何一部分串行化都会大幅增加执行时间、降低程序的执行速度。因此，让这类被串行化的操作占用的执行时间尽可能少，是非常重要的。</p>
+<p id="p0190" class="text">正如我们在<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>“内存体系结构与数据局部性”中所学的，访问 DRAM 中数据的延迟可能长达数百个时钟周期。在<a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>“计算体系结构与调度”中，我们学习了 GPU 如何利用零周期上下文切换来容忍这种延迟。在<a href="Ch006_123-147_B9780323912310000161.html#Ch006_123-147_B9780323912310000161">第 6 章</a>“性能考量”中，我们学习了只要存在大量内存访问延迟可以相互重叠的线程，执行速度就会受限于内存系统的吞吐量。因此，GPU 充分利用 DRAM 突发传输、存储体和通道来实现高内存访问吞吐量，是非常重要的。</p>
+<p id="p0195" class="text"><span id="page_199" aria-label="Page 199" epub:type="pagebreak" role="doc-pagebreak"></span>读到此处，读者应当清楚，高内存访问吞吐量的关键在于同时有大量 DRAM 访问正在进行。遗憾的是，当许多原子操作更新同一个内存位置时，这一策略就会失效。在这种情况下，滞后线程的读-改-写序列必须等领先线程的读-改-写序列完成之后才能开始。如<a id="Bf0040" href="#f0040">图 9.7</a> 所示，对同一内存位置的原子操作的执行方式使得任何时刻只能有一个原子操作正在进行。每次原子操作的持续时间大约等于一次内存加载的延迟（原子操作时间的左段）加上一次内存存储的延迟（原子操作时间的右段）。每次读-改-写操作的这些时间段的长度，通常为数百个时钟周期，决定了服务每个原子操作必须花费的最短时间，并限制了吞吐量，也就是执行原子操作的速度。</p>
+<div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F00015Xf09-07-9780323912310.jpg" class="img" alt="image" width="1373" height="376"/><figcaption class="figleg"><a id="sp0040"></a><span class="fignum"><a href="#Bf0040">图 9.7</a></span> 原子操作的吞吐量由内存访问延迟决定。</figcaption></figure></div><p id="p0200" class="text">例如，假设一个内存系统的每个通道具有 64 位（8 字节）双倍数据速率（double data rate）DRAM 接口，共 8 个通道，时钟频率为 1 GHz，典型访问延迟为 200 个时钟周期。该内存系统的峰值访问吞吐量为 8（字节/传输）* 2（每时钟每通道传输次数）* 1 G（每秒时钟数）* 8（通道）= 128 GB/s。假设每次访问的数据为 4 字节，则系统的峰值访问吞吐量为每秒 32 G 个数据元素。</p>
+<p id="p0205" class="text">然而，对特定内存位置执行原子操作时，能达到的最高吞吐量是每 400 个时钟周期一次原子操作（读 200 个周期，写 200 个周期）。这换算成基于时间的吞吐量为 1/400 原子操作/时钟 * 1 G（每秒时钟数）= 2.5 M 原子操作/秒。这远低于大多数用户对 GPU 内存系统的预期。此外，原子操作序列的漫长延迟很可能会主导核函数的执行时间，并大幅降低核函数的执行速度。</p>
+<p id="p0210" class="text"><span id="page_200" aria-label="Page 200" epub:type="pagebreak" role="doc-pagebreak"></span>在实践中，并不是所有原子操作都会作用于同一个内存位置。在我们的文本直方图例子中，直方图有 7 个区间。如果输入字符在字母表中均匀分布，原子操作就会均匀分布在各个 histo 元素之间，从而把吞吐量提高到 7*2.5 M = 17.5 M 次原子操作/秒。实际上，提升倍数往往远低于直方图的区间数，因为字符在字母表中的分布往往有偏向。例如，在<a href="#f0010">图 9.1</a> 中可以看到，示例短语中的字符高度偏向 m-p 和 q-t 区间。更新这些区间的竞争流量很大，可能使可达吞吐量降到只有大约 (28/10)*2.5 M = 7 M。</p>
+<p id="p0215" class="text">提高原子操作吞吐量的一种方法是降低对竞争激烈位置的访问延迟。缓存是降低内存访问延迟的主要工具。出于这个原因，现代 GPU 允许在末级缓存中执行原子操作，该缓存由所有流式多处理器（SM）共享。执行原子操作时，如果要更新的变量在末级缓存中找到，就在缓存中更新它；如果在末级缓存中找不到，就会触发缓存未命中，将该变量取入缓存后再更新。由于原子操作更新的变量往往被许多线程频繁访问，这些变量一旦从 DRAM 取入缓存，往往会一直留在缓存中。由于访问末级缓存的耗时是几十个时钟周期而不是几百个，与早期几代 GPU 相比，原子操作的吞吐量至少提高了一个数量级。这就是大多数现代 GPU 在末级缓存中支持原子操作的重要原因。</p></section><section><a id="s0025"></a><h2 class="h1hd" id="st0040">9.4 私有化</h2><p id="p0220" class="textfl">提高原子操作吞吐量的另一种方法是把访问流量从竞争激烈的位置引开，以减轻竞争。这可以通过一种称为<em>私有化</em>的技术来实现，该技术常用于解决并行计算中严重的输出干扰问题。其思路是把竞争激烈的输出数据结构复制成多份私有副本，让每一组线程更新自己的私有副本。这样做的好处是访问私有副本时的竞争要小得多，延迟也往往低得多。这些私有副本可以大幅提高数据结构的更新吞吐量。缺点是在计算完成后，需要把私有副本归并回原始数据结构。人们必须仔细权衡竞争程度与归并成本。因此在大规模并行系统中，私有化通常针对线程子集而非单个线程进行。</p>
+<p id="p0225" class="text">在我们的文本直方图例子中，可以创建多个私有直方图，并指定一组线程来更新其中的每一份。例如，我们可以创建两份私有副本，让偶数索引的线程块更新其中一份，让奇数索引的线程块更新另一份。再如，我们可以创建四份私有副本，让索引形如 4<em>n</em>+<em>i</em> 的线程块更新第 i 份私有版本，其中 <em>I</em>=0, …, 3。一种常见做法是为每个线程块创建一份私有副本。这种方法有多个优点，我们稍后会看到。</p>
+<p id="p0230" class="text"><span id="page_201" aria-label="Page 201" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0045">图 9.8</a> 展示了如何将私有化应用到<a href="#f0020">图 9.3</a> 的文本直方图例子中。在这个例子中，线程被组织成线程块，每个线程块由 8 个线程组成（实际上，线程块要大得多）。每个线程块都获得一份自己更新的直方图私有副本。如<a href="#f0045">图 9.8</a> 所示，竞争不再发生在所有更新同一直方图分箱的线程之间，而只发生在同一线程块内的线程之间，以及最后归并私有副本的时候。</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F00015Xf09-08-9780323912310.jpg" class="img" alt="image" width="1373" height="577"/><figcaption class="figleg"><a id="sp0045"></a><span class="fignum">图 9.8</span> 直方图的私有副本减少了原子操作的竞争。</figcaption></figure></div><p id="p0235" class="text"><a href="#f0050">图 9.9</a> 展示了一个简单的核函数，它为每个线程块创建并关联一份直方图私有副本。在这种方案中，最多可有 1024 个线程处理同一份直方图副本。该核函数中的私有直方图位于全局内存中。这些私有副本很可能会被缓存在 L2 缓存中，从而降低延迟、提高吞吐量。</p>
+<div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F00015Xf09-09-9780323912310.jpg" class="img" alt="image" width="1375" height="632"/><figcaption class="figleg"><a id="sp0050"></a><span class="fignum">图 9.9</span> 为线程块在全局内存中存放私有版本的直方图核函数。</figcaption></figure></div><p id="p0240" class="text"><span id="page_202" aria-label="Page 202" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0050">图 9.9</a> 中核函数的第一部分（第 02–08 行）与<a href="#f0035">图 9.6</a> 中的核函数类似，只有一点关键区别。<a href="#f0050">图 9.9</a> 中的核函数假设主机代码会为 <span class="inlinecode">histo</span> 数组分配足够的设备内存，以容纳直方图的全部私有副本，其大小为 gridDim.x*NUM_BINS*4 字节。这一点体现在第 06 行：每个线程在对 <span class="inlinecode">histo</span> 元素（直方图的分箱）执行原子加时，会在索引上加上 blockIdx.x*NUM_BINS 的偏移量。该偏移量把位置移到该线程所属线程块的私有副本上。这样一来，竞争程度就会降低，降低的倍数大致等于所有 SM 上活动线程块的数量。竞争减少的效果可以使该核函数的更新吞吐量提升几个数量级。</p>
+<p id="p0245" class="text">在执行结束时，每个线程块会把私有副本中的值提交到线程块 0 产生的副本中（第 09–17 行）。也就是说，我们把线程块 0 的私有副本提升为一份公有副本，用它保存所有线程块的总结果。块内线程首先互相等待，直到各自完成对私有副本的更新（第 10 行）。接着，线程们遍历私有直方图的分箱（第 11 行），每个线程负责提交一个或多个私有分箱。循环用来容纳任意数量的分箱。每个线程读取自己负责的私有分箱的值（第 13 行），并检查该分箱是否为非零（第 13 行）。如果是非零，线程就通过原子加把该值提交到线程块 0 的副本中（第 14 行）。注意，这种加法必须以原子方式执行，因为来自多个线程块的线程可能同时在同一位置执行加法。因此，在核函数执行结束时，最终的直方图将位于 histo 数组的前 NUM_BINS 个元素中。由于在核函数执行的这一阶段，每个线程块只有一个线程会更新给定的 histo 数组元素，每个位置的竞争程度都非常低。</p>
+<p id="p0250" class="text">按线程块创建直方图私有副本的一个好处是，线程在提交前可以用<span class="inlinecode">__syncthreads()</span>互相等待。如果私有副本被多个线程块访问，我们就需要调用另一个核函数来归并私有副本，或者使用其他复杂的技术。按线程块创建直方图私有副本的另一个好处是，如果直方图的分箱数足够少，就可以把直方图的私有副本声明在共享内存中。如果私有副本被多个线程块访问，就无法使用共享内存，因为线程块之间彼此看不到对方的共享内存。</p>
+<p id="p0255" class="text">回顾一下：同一内存位置上任何延迟的下降都会直接转化为原子操作吞吐量的提升。把数据放到共享内存中，可以大幅降低访问内存的延迟。共享内存对每个 SM 是私有的，访问延迟非常短（只有几个时钟周期）。这种延迟的下降直接转化为原子操作吞吐量的提升。</p>
+<p id="p0260" class="text"><span id="page_203" aria-label="Page 203" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0055">图 9.10</a> 展示了一个私有化直方图核函数，它将私有副本存放在共享内存而非全局内存中。它与<a href="#f0050">图 9.9</a> 中核函数代码的关键区别在于：直方图的私有副本在共享内存的 <span class="inlinecode">histo_s</span> 数组中分配，并由线程块内的线程并行初始化为 0（第 02–06 行）。屏障同步（第 07 行）确保私有直方图的所有分箱都在任何线程开始更新它们之前被正确初始化。其余代码与<a href="#f0050">图 9.9</a> 中的完全相同，区别仅在于第一次原子操作是对共享内存数组 <span class="inlinecode">histo_s</span> 的元素执行的（第 13 行），私有分箱的值稍后也从那里读取（第 19 行）。</p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F00015Xf09-10-9780323912310.jpg" class="img" alt="image" width="1373" height="832"/><figcaption class="figleg"><a id="sp0055"></a><span class="fignum">图 9.10</span> 使用共享内存的私有化文本直方图核函数。</figcaption></figure></div></section><section><a id="s0030"></a><h2 class="h1hd" id="st0045">9.5 粗化</h2><p id="p0265" class="textfl">我们已经看到，私有化能有效减少原子操作的竞争，而把私有化直方图存放在共享内存中可以降低每次原子操作的延迟。然而，私有化的开销在于需要把私有副本提交到公有副本。这种提交操作每个线程块执行一次。因此，使用的线程块越多，开销就越大。当线程块并行执行时，这笔开销通常是值得的。但是，如果启动的线程块数量超过了硬件能同时执行的线程块数量，硬件调度就会把这些线程块串行化。在这种情况下，私有化的开销就是白白付出的。</p>
+<p id="p0270" class="text"><span id="page_204" aria-label="Page 204" epub:type="pagebreak" role="doc-pagebreak"></span>我们可以通过线程粗化来降低私有化的开销。换句话说，可以通过减少线程块数量、让每个线程处理多个输入元素，来减少需要提交到公有副本的私有副本数量。本节我们考察为线程分配多个输入元素的两种策略：连续划分和交错划分。</p>
+<p id="p0275" class="text"><span id="page_205" aria-label="Page 205" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0060">图 9.11</a> 展示了连续划分策略的一个示例。输入被划分为连续的段，每一段分配给一个线程。<a href="#f0065">图 9.12</a> 展示了采用连续划分策略应用粗化的直方图核函数。它与<a href="#f0055">图 9.10</a> 的区别在第 09–10 行。在<a href="#f0055">图 9.10</a> 中，输入元素的索引 <span class="inlinecode">i</span> 与全局线程索引对应，因此每个线程获得一个输入元素。在<a href="#f0060">图 9.11</a> 中，输入元素的索引 <span class="inlinecode">i</span> 是一个循环的索引，该循环从 <span class="inlinecode">tid*CFACTOR</span> 迭代到<span class="inlinecode">(tid + 1)*CFACTOR</span>，其中 <span class="inlinecode">CFACTOR</span> 是粗化因子。因此，每个线程取一段连续的 <span class="inlinecode">CFACTOR</span> 个元素。循环边界中的 <span class="inlinecode">min</span> 运算确保末尾的线程不会越界读取。</p>
+<div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F00015Xf09-11-9780323912310.jpg" class="img" alt="image" width="1373" height="502"/><figcaption class="figleg"><a id="sp0060"></a><span class="fignum">图 9.11</span> 输入元素的连续划分。</figcaption></figure></div><div class="pageavoid"><figure class="fig" id="f0065"><img src="../images/F00015Xf09-12-9780323912310.jpg" class="img" alt="image" width="1373" height="832"/><figcaption class="figleg"><a id="sp0065"></a><span class="fignum">图 9.12</span> 采用连续划分进行粗化的直方图核函数。</figcaption></figure></div><p id="p0280" class="text">把数据划分为连续段在概念上简单直观。在 CPU 上，并行执行通常只涉及少量线程，连续划分往往是最优性能策略，因为每个线程的顺序访问模式能很好地利用缓存行。由于每个 CPU 缓存通常只支持少量线程，不同线程在缓存使用上几乎没有干扰。缓存行中的数据一旦为某个线程取入，就可以预期它会一直保留到后续访问。</p>
+<p id="p0285" class="text">相比之下，GPU 上的连续划分会导致次优的内存访问模式。正如我们在<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>“内存体系结构与数据局部性”中所学的，SM 中同时活跃的线程数量很大，通常会在缓存中造成大量干扰，以至于不能指望数据在缓存中保留到单个线程的所有顺序访问完成。相反，我们需要确保线程束中的线程访问连续的位置，以便实现内存合并。这一观察启发了交错划分。</p>
+<p id="p0290" class="text"><span id="page_206" aria-label="Page 206" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0070" href="#f0070">图 9.13</a> 展示了交错划分策略的一个示例。在第一次迭代中，8 个线程访问第 0 至 7 个字符（“programm”）。借助内存合并，所有元素只需一次 DRAM 访问就能取回。在第二次迭代中，这 4 个线程通过一次合并的内存访问访问字符“ing mass”。交错划分这一名称的由来应当很清楚了：不同线程要处理的分块彼此交错。显然，这只是一个玩具示例，现实中线程要多得多。此外还有一些更微妙的性能考量。例如，每个线程在每次迭代中应处理 4 个字符（一个 32 位字），以充分利用缓存与 SM 之间的互连带宽。</p>
+<div class="pageavoid"><figure class="fig" id="f0070"><img src="../images/F00015Xf09-13-9780323912310.jpg" class="img" alt="image" width="1374" height="454"/><figcaption class="figleg"><a id="sp0070"></a><span class="fignum"><a href="#Bf0070">图 9.13</a></span> 输入元素的交错划分。</figcaption></figure></div><p id="p0295" class="text"><a href="#f0075">图 9.14</a> 展示了采用交错划分策略应用粗化的直方图核函数。它与<a href="#f0055">图 9.10</a> 和<a href="#f0065">图 9.12</a> 的区别同样在第 09–10 行。在循环的第一次迭代中，每个线程用它的全局线程索引访问 <span class="inlinecode">data</span> 数组：线程 0 访问元素 0，线程 1 访问元素 1，线程 2 访问元素 2，依此类推。这样所有线程就共同处理了输入的前 blockDim.x*gridDim.x 个元素。在第二次迭代中，所有线程在自己的索引上加 blockDim.x*gridDim.x，共同处理接下来的 blockDim.x*gridDim.x 个元素。</p>
+<div class="pageavoid"><figure class="fig" id="f0075"><img src="../images/F00015Xf09-14-9780323912310.jpg" class="img" alt="image" width="1374" height="831"/><figcaption class="figleg"><a id="sp0075"></a><span class="fignum">图 9.14</span> 采用交错划分进行粗化的直方图核函数。</figcaption></figure></div><p id="p0300" class="text">当线程的索引超出输入缓冲区的有效范围（即它的私有 <span class="inlinecode">i</span> 变量值大于或等于 <span class="inlinecode">length</span>）时，该线程就完成了自己分块的处理，将退出循环。由于缓冲区的大小可能不是线程总数的整数倍，部分线程可能不参与最后一个段的处理。因此，有些线程执行的循环迭代次数会比其他线程少一次。</p></section><section><a id="s0035"></a><h2 class="h1hd" id="st0050">9.6 聚合</h2><p id="p0305" class="textfl"><span id="page_207" aria-label="Page 207" epub:type="pagebreak" role="doc-pagebreak"></span>有些数据集的局部区域高度集中着相同的数据值。例如，在天空的照片中，可能存在大片取值相同的像素。这种高度集中的相同取值会造成严重的竞争，降低并行直方图计算的吞吐量。</p>
+<p id="p0310" class="text">对于这类数据集，一个简单而有效的优化是：如果线程连续更新的都是直方图的同一个元素，就让每个线程把这些连续更新聚合成一次更新（<a href="#bib1" role="doc-biblioref" epub:type="biblioref" id="BIB_1">Merrill, 2015</a>）。这种聚合减少了发往竞争激烈的直方图元素的原子操作数量，从而提高了计算的有效吞吐量。</p>
+<p id="p0315" class="text"><span id="page_208" aria-label="Page 208" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0080" href="#f0080">图 9.15</a> 展示了一个聚合式文本直方图核函数。与<a href="#f0075">图 9.14</a> 中的核函数相比，关键变化如下：每个线程额外声明一个 <span class="inlinecode">accumulator</span> 变量（第 09 行），用来记录到目前为止已聚合的更新次数；还声明一个 <span class="inlinecode">prevBinIdx</span> 变量（第 10 行），用来记录最近遇到并正在聚合的直方图分箱索引。每个线程把 <span class="inlinecode">accumulator</span> 变量初始化为 0，表示初始时尚未聚合任何更新；把 <span class="inlinecode">prevBinIdx</span> 初始化为 −1，使任何字母输入都不会与它匹配。</p>
+<div class="pageavoid"><figure class="fig" id="f0080"><img src="../images/F00015Xf09-15-9780323912310.jpg" class="img" alt="image" width="1375" height="1298"/><figcaption class="figleg"><a id="sp0080"></a><span class="fignum"><a href="#Bf0080">图 9.15</a></span> 一个聚合式文本直方图核函数。</figcaption></figure></div><p id="p0320" class="text">当遇到一个字母数据时，线程会比较待更新的直方图元素索引与正在聚合的索引（第 16 行）。如果索引相同，线程只需递增 accumulator（第 17 行），把这一连串聚合更新再延长一次。如果索引不同，对该直方图元素的一连串聚合更新就结束了。线程用原子操作把 <span class="inlinecode">accumulator</span> 的值加到索引由 <span class="inlinecode">prevBinIdx</span> 跟踪的直方图元素上（第 19–21 行）。这实际上把上一连串聚合更新的总贡献冲刷了出去。</p>
+<p id="p0325" class="text">在这种方案下，更新总是至少落后一个元素。在没有连串更新这一最极端的情况下，所有更新都总是落后一个元素。正因如此，在线程扫描完所有输入元素并退出循环之后，线程需要检查是否还有必要把 <span class="inlinecode">accumulator</span> 的值冲刷出来（第 27 行）。如果有必要，就把 accumulator 的值冲刷到正确的 <span class="inlinecode">histo_s</span> 元素中（第 28 行）。</p>
+<p id="p0330" class="text">一个重要观察是，聚合式核函数需要更多的语句和变量。因此，如果竞争率低，聚合式核函数的执行速度可能低于简单核函数。但是，如果数据分布导致原子操作执行时竞争激烈，聚合就可能带来显著更高的速度。新增的 if 语句可能会表现出控制发散。不过，如果要么没有竞争、要么竞争激烈，就几乎不会出现控制发散，因为线程要么全部在冲刷 accumulator 的值，要么全部处于连串更新中。在有些线程处于连串更新、有些线程在冲刷 accumulator 值的情况下，控制发散很可能会被减轻的竞争所抵消。</p></section><section><a id="s0040"></a><h2 class="h1hd" id="st0055">9.7 小结</h2><p id="p0335" class="textfl">计算直方图对分析大型数据集非常重要。它还代表了一类重要的并行计算模式：在这类模式中，每个线程的输出位置取决于数据，因此无法应用属主计算规则。因此，直方图自然成为引入读-改-写竞态条件概念以及原子操作实际应用的载体——原子操作保证了作用于同一内存位置的并发读-改-写操作的完整性。</p>
+<p id="p0340" class="text"><span id="page_209" aria-label="Page 209" epub:type="pagebreak" role="doc-pagebreak"></span>遗憾的是，正如我们在本章中说明的，原子操作的吞吐量远低于简单的内存读或写操作，因为其吞吐量大约等于两倍内存延迟的倒数。因此，在竞争激烈的情况下，直方图计算的计算吞吐量可能低得出乎意料。本章把私有化作为一种重要的优化技术加以介绍，它能系统地减少竞争，还能进一步支持共享内存的使用——共享内存延迟低，因而吞吐量高。事实上，支持线程块内线程之间的快速原子操作，是共享内存的一个重要用例。本章还应用了粗化来减少需要归并的私有副本数量，并比较了采用连续划分与交错划分的不同粗化策略。最后，对于会造成激烈竞争的数据集，聚合也能带来显著更高的执行速度。</p></section><section><a id="s0045"></a><h2 class="h1hd" id="st0060">习题</h2><a id="p0345"></a><a id="li0020"></a><div><ol>
+<li class="numlista" id="o0045"><a id="p0350"></a>1. 假设 DRAM 系统中每次原子操作的总延迟为 100 ns。对于同一全局内存变量上的原子操作，我们能获得的最大吞吐量是多少？</li>
+<li class="numlista" id="o0050"><a id="p0355"></a>2. 对于一个在 L2 缓存中支持原子操作的处理器，假设每次原子操作在 L2 缓存中完成需要 4 ns，在 DRAM 中完成需要 100 ns。再假设 90% 的原子操作在 L2 缓存中命中。对于同一全局内存变量上的原子操作，其近似吞吐量是多少？</li>
+<li class="numlista" id="o0055"><a id="p0360"></a>3. 在习题 1 中，假设核函数每次原子操作执行 5 次浮点运算。受原子操作吞吐量的限制，核函数执行的最大浮点吞吐量是多少？</li>
+<li class="numlista" id="o0060"><a id="p0365"></a>4. 在习题 1 中，假设我们在核函数中把全局内存变量私有化为共享内存变量，且共享内存访问延迟为 1 ns。所有原来的全局内存原子操作都被转换为共享内存原子操作。为简单起见，假设把私有化变量累加到全局变量所需的额外全局内存原子操作会使总执行时间增加 10%。再假设核函数每次原子操作执行 5 次浮点运算。受原子操作吞吐量的限制，核函数执行的最大浮点吞吐量是多少？</li>
+<li class="numlista" id="o0065"><a id="p0370"></a><a id="li0025"></a>5. 要把整型变量 Partial 的值加到全局内存整型变量 Total 上，应该使用下列哪个语句？<ol>
+<li class="numlist1a" id="o0070"><a id="p0375"></a>a. 使用 atomicAdd(Total, 1);</li>
+<li class="numlist1a" id="o0075"><a id="p0380"></a>b. 使用 atomicAdd(&amp;Total, &amp;Partial);</li>
+<li class="numlist1a" id="o0080"><a id="p0385"></a>c. 使用 atomicAdd(Total, &amp;Partial);</li>
+<li class="numlist1a" id="o0085"><a id="p0390"></a>d. 使用 atomicAdd(&amp;Total, Partial);</li>
+</ol></li>
+<li class="numlista" id="o0090"><a id="p0395"></a><a id="li0030"></a>6. 考虑一个直方图核函数：它处理含 524,288 个元素的输入，生成含 128 个分箱的直方图。该核函数配置为每线程块 1024 个线程。<ol>
+<li class="numlist1a" id="o0095"><a id="p0400"></a><span id="page_210" aria-label="Page 210" epub:type="pagebreak" role="doc-pagebreak"></span>a. 在不使用私有化、共享内存和线程粗化的情况下，<a href="#f0035">图 9.6</a> 中的核函数在全局内存上执行的原子操作总数是多少？</li>
+<li class="numlist1a" id="o0100"><a id="p0405"></a>b. 在使用私有化和共享内存但不使用线程粗化的情况下，<a href="#f0055">图 9.10</a> 中的核函数在全局内存上最多可能执行的原子操作数是多少？</li>
+<li class="numlist1a" id="o0105"><a id="p0410"></a>c. 在使用私有化、共享内存和线程粗化（粗化因子为 4）的情况下，<a href="#f0075">图 9.14</a> 中的核函数在全局内存上最多可能执行的原子操作数是多少？</li>
+</ol></li>
+</ol>
+</div>
+</section><footer><section aria-label="bibliography"><a id="bibliog0010"></a><h2 class="reftitle" id="st0065">参考文献</h2><section><p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib1"><a aria-label="noteref" href="#BIB_1">Merrill, 2015</a> Merrill, D., 2015. Using compression to improve the performance response of parallel histogram computation, NVIDIA Research Technical Report.</p></section></section><section epub:type="rearnotes">
+<div class="ftnote"><hr/>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn1"><a id="ntp0010"></a><a href="#Cfn1"><sup>1</sup></a> 请注意，这与<a href="Ch010_211-233_B9780323912310000239.html#Ch010_211-233_B9780323912310000239">第 10 章</a>“归约与最小化发散”中讨论的写后读竞态条件相似但不完全相同：在那里，我们讨论了在 Kogge-Stone 扫描核函数的每次迭代中，对 XY 数组的读与写之间需要进行屏障同步。</p>
+</div></section></footer></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>

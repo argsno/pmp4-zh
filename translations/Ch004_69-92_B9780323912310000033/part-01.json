@@ -1,0 +1,155 @@
+{
+  "page": "Ch004_69-92_B9780323912310000033",
+  "nodes": [
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "【1】Fig. 4.2【/1】 illustrates the assignment of blocks to SMs. Multiple blocks are likely to be simultaneously assigned to the same SM. For example, in 【2】Fig. 4.2【/2】, three blocks are assigned to each SM. However, blocks need to reserve hardware resources to execute, so only a limited number of blocks can be simultaneously assigned to a given SM. The limit on the number of blocks depends on a variety of factors that are discussed in 【3】Section 4.6【/3】.",
+      "zh": "【1】图 4.2【/1】说明了线程块到 SM 的分配方式。多个线程块很可能会同时分配到同一个 SM。例如在【2】图 4.2【/2】中，每个 SM 分配了三个线程块。然而，线程块需要预留硬件资源才能执行，因此同时分配给给定 SM 的线程块数量是有限的。线程块数量的上限取决于多种因素，这些因素将在【3】第 4.6 节【/3】中讨论。"
+    },
+    {
+      "id": "n0026",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 4.2【/1】 Thread block assignment to streaming multiprocessors (SMs).",
+      "zh": "【1】图 4.2【/1】 线程块到流式多处理器（SM）的分配。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "With a limited number of SMs and a limited number of blocks that can be simultaneously assigned to each SM, there is a limit on the total number of blocks that can be simultaneously executing in a CUDA device. Most grids contain many more blocks than this number. To ensure that all blocks in a grid get executed, the runtime system maintains a list of blocks that need to execute and assigns new blocks to SMs when previously assigned blocks complete execution.",
+      "zh": "由于 SM 数量有限，且每个 SM 能够同时分配的线程块数量也有限，因此在 CUDA 设备中能够同时执行的线程块总数存在上限。大多数网格包含的线程块远多于这一数目。为了确保网格中的所有线程块都能得到执行，运行时系统维护一个待执行线程块的列表，并在先前分配的线程块执行完毕后，向 SM 分配新的线程块。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "The assignment of threads to SMs on a block-by-block basis guarantees that threads in the same block are scheduled simultaneously on the same SM. This guarantee makes it possible for threads in the same block to interact with each other in ways that threads across different blocks cannot.【1】【2】1【/2】【/1】 This includes 【3】barrier synchronization【/3】, which is discussed in 【4】Section 4.3【/4】. It also includes accessing a low-latency 【5】shared memory【/5】 that resides on the SM, which is discussed in 【6】Chapter 5【/6】, Memory Architecture and Data Locality.",
+      "zh": "以线程块为单位把线程分配到 SM，保证了同一线程块内的线程被同时调度到同一个 SM 上。这一保证使得同一线程块内的线程能够以跨线程块的线程之间所不可能的方式进行交互。【1】【2】1【/2】【/1】这包括【3】屏障同步【/3】，相关内容将在【4】第 4.3 节【/4】讨论；也包括访问位于 SM 上的低延迟【5】共享内存【/5】，相关内容将在【6】第 5 章【/6】“内存体系结构与数据局部性”中讨论。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "4.3 Synchronization and transparent scalability",
+      "zh": "4.3 同步与透明可扩展性"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "CUDA allows threads in the same block to coordinate their activities using the barrier synchronization function 【1】__syncthreads()【/1】. Note that “__” consists of two “_” characters. When a thread calls 【2】__syncthreads()【/2】, it will be held at the program location of the call until every thread in the same block reaches that location. This ensures that all threads in a block have completed a phase of their execution before any of them can move on to the next phase.",
+      "zh": "CUDA 允许同一线程块内的线程使用屏障同步函数【1】__syncthreads()【/1】来协调各自的活动。注意，“__”由两个“_”字符组成。当一个线程调用【2】__syncthreads()【/2】时，它将被阻塞在该调用所在的程序位置，直到同一线程块中的每个线程都到达该位置。这保证了线程块中所有线程都完成执行的某个阶段后，才允许其中任何一个线程进入下一阶段。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "Barrier synchronization is a simple and popular method for coordinating parallel activities. In real life, we often use barrier synchronization to coordinate parallel activities of multiple people. For example, assume that four friends go to a shopping mall in a car. They can all go to different stores to shop for their own clothes. This is a parallel activity and is much more efficient than if they all remain as a group and sequentially visit all the stores of interest. However, barrier synchronization is needed before they leave the mall. They must wait until all four friends have returned to the car before they can leave. The ones who finish earlier than the others must wait for those who finish later. Without the barrier synchronization, one or more individuals can be left in the mall when the car leaves, which could seriously damage their friendship!",
+      "zh": "屏障同步是一种简单而常用的协调并行活动的方法。在现实生活中，我们经常用屏障同步来协调多人的并行活动。例如，假设四个朋友开一辆车去购物中心。他们可以各自去不同的商店购买自己的衣服。这是一种并行活动，比他们一直作为一个群体按顺序逛所有感兴趣的商店要高效得多。然而，在他们离开购物中心之前需要一次屏障同步。他们必须等到四个朋友全部回到车上才能离开。比其他人先完成的人必须等待那些完成较晚的人。如果没有屏障同步，当车离开时，可能有一个或多个人被留在购物中心，这会严重损害他们的友谊！"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "【1】Fig. 4.3【/1】 illustrates the execution of barrier synchronization. There are N threads in the block. Time goes from left to right. Some of the threads reach the barrier synchronization statement early, and some reach it much later. The ones that reach the barrier early will wait for those that arrive late. When the latest one arrives at the barrier, all threads can continue their execution. With barrier synchronization, “no one is left behind.”",
+      "zh": "【1】图 4.3【/1】说明了屏障同步的执行过程。线程块中共有 N 个线程，时间从左向右推进。有些线程很早就到达屏障同步语句，有些则晚得多。先到达屏障的线程将等待晚到的线程。当最后一个线程到达屏障时，所有线程都可以继续执行。有了屏障同步，“任何人都不会被落下”。"
+    },
+    {
+      "id": "n0033",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 4.3【/2】【/1】 An example execution of barrier synchronization. The arrows represent execution activities over time. The vertical curve marks the time when each thread executes the【3】__syncthreads【/3】 statement. The empty space to the right of the vertical curve depicts the time that each thread waits for all threads to complete. The vertical line marks the time when the last thread executes the 【4】__syncthreads【/4】 statement, after which all threads are allowed to proceed to execute the statements after the 【5】__syncthreads【/5】 statement.",
+      "zh": "【1】【2】图 4.3【/2】【/1】 屏障同步的一个执行示例。箭头表示随时间推进的执行活动。垂直曲线标出每个线程执行【3】__syncthreads【/3】语句的时刻。垂直曲线右侧的空白区域表示每个线程等待所有线程完成的时间。垂直线标出最后一个线程执行【4】__syncthreads【/4】语句的时刻，此后所有线程都被允许继续执行【5】__syncthreads【/5】语句之后的语句。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "In CUDA, if a 【1】__syncthreads()【/1】 statement is present, it must be executed by all threads in a block. When a 【2】__syncthreads()【/2】 statement is placed in an if statement, either all threads in a block execute the path that includes the 【3】__syncthreads()【/3】 or none of them does. For an if-then-else statement, if each path has a 【4】__syncthreads()【/4】 statement, either all threads in a block execute the then-path or all of them execute the else-path. The two 【5】__syncthreads()【/5】 are different barrier synchronization points. For example, in 【6】Fig. 4.4【/6】, two 【7】__syncthreads()【/7】 are used in the if statement starting in line 04. All threads with even 【8】threadIdx.x【/8】 values execute the then-path while the remaining threads execute the else-path. The 【9】__syncthreads()【/9】 calls at line 06 and line 10 define two different barriers. Since not all threads in a block are guaranteed to execute either of the barriers, the code violates the rules for using 【10】__syncthreads()【/10】 and will result in undefined execution behavior. In general, incorrect usage of barrier synchronization can result in incorrect result, or in threads waiting for each other forever, which is referred to as a 【11】deadlock【/11】. It is the responsibility of the programmer to avoid such inappropriate use of barrier synchronization.",
+      "zh": "在 CUDA 中，如果存在【1】__syncthreads()【/1】语句，则它必须被线程块中的所有线程执行。当【2】__syncthreads()【/2】语句放在 if 语句中时，要么线程块中的所有线程都执行包含该【3】__syncthreads()【/3】的分支，要么所有线程都不执行。对于 if-then-else 语句，如果每个分支都有一个【4】__syncthreads()【/4】语句，则要么线程块中的所有线程都执行 then 分支，要么所有线程都执行 else 分支。这两处【5】__syncthreads()【/5】是两个不同的屏障同步点。例如，在【6】图 4.4【/6】中，从第 04 行开始的 if 语句里使用了两处【7】__syncthreads()【/7】。所有【8】threadIdx.x【/8】值为偶数的线程执行 then 分支，其余线程执行 else 分支。第 06 行和第 10 行的【9】__syncthreads()【/9】调用定义了两个不同的屏障。由于不能保证线程块中的所有线程都会执行其中任意一个屏障，该代码违反了使用【10】__syncthreads()【/10】的规则，将导致未定义的执行行为。一般来说，不正确使用屏障同步可能导致结果错误，或导致线程彼此永远等待，这种情况称为【11】死锁【/11】。避免此类不当使用屏障同步的责任在程序员身上。"
+    },
+    {
+      "id": "n0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 4.4【/2】【/1】 An incorrect use of 【3】__syncthreads()【/3】",
+      "zh": "【1】【2】图 4.4【/2】【/1】 【3】__syncthreads()【/3】的不正确使用"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "Barrier synchronization imposes execution constraints on threads within a block. These threads should execute in close time proximity with each other to avoid excessively long waiting times. More important, the system needs to make sure that all threads involved in the barrier synchronization have access to the necessary resources to eventually arrive at the barrier. Otherwise, a thread that never arrives at the barrier synchronization point can cause a deadlock. The CUDA runtime system satisfies this constraint by assigning execution resources to all threads in a block as a unit, as we saw in 【1】Section 4.2【/1】. Not only do all threads in a block have to be assigned to the same SM, but also they need to be assigned to that SM simultaneously. That is, a block can begin execution only when the runtime system has secured all the resources needed by all threads in the block to complete execution. This ensures the time proximity of all threads in a block and prevents an excessive or even indefinite waiting time during barrier synchronization.",
+      "zh": "屏障同步对线程块内的线程施加了执行约束。这些线程应在时间上彼此接近地执行，以避免过长的等待时间。更重要的是，系统需要确保参与屏障同步的所有线程都能获得所需的资源，从而最终到达屏障。否则，一个永远到不了屏障同步点的线程可能导致死锁。CUDA 运行时系统通过把一个线程块中所有线程作为一个整体来分配执行资源，从而满足这一约束，正如我们在【1】第 4.2 节【/1】中看到的。线程块中的所有线程不仅必须被分配到同一个 SM，而且必须被同时分配到该 SM。也就是说，只有当运行时系统为线程块中所有线程完成执行所需的全部资源都准备就绪后，线程块才能开始执行。这保证了线程块中所有线程在时间上的接近性，并防止屏障同步期间出现过长甚至无限期的等待。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "This leads us to an important tradeoff in the design of CUDA barrier synchronization. By not allowing threads in different blocks to perform barrier synchronization with each other, the CUDA runtime system can execute blocks in any order relative to each other, since none of them need to wait for each other. This flexibility enables scalable implementations, as shown in 【1】Fig. 4.5【/1】. Time in the figure progresses from top to bottom. In a low-cost system with only a few execution resources, one can execute a small number of blocks at the same time, portrayed as executing two blocks a time on the left-hand side of 【2】Fig. 4.5【/2】. In a higher-end implementation with more execution resources, one can execute many blocks at the same time, portrayed as executing four blocks at a time on the right-hand side of 【3】Fig. 4.5【/3】. A high-end GPU today can execute hundreds of blocks simultaneously.",
+      "zh": "这引出了 CUDA 屏障同步设计中的一个重要权衡。通过不允许不同线程块中的线程彼此进行屏障同步，CUDA 运行时系统可以按任意相对顺序执行线程块，因为任何一个线程块都不需要等待其他线程块。这种灵活性使得实现具有可扩展性，如【1】图 4.5【/1】所示。图中时间自上而下推进。在只有少量执行资源的低成本系统中，可以同时执行的线程块数量较少，如【2】图 4.5【/2】左侧所示的一次执行两个线程块；在拥有更多执行资源的高端实现中，可以同时执行许多线程块，如【3】图 4.5【/3】右侧所示的一次执行四个线程块。如今高端 GPU 可以同时执行数百个线程块。"
+    },
+    {
+      "id": "n0038",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 4.5【/1】 Lack of synchronization constraints between blocks enables transparent scalability for CUDA programs.",
+      "zh": "【1】图 4.5【/1】 线程块之间没有同步约束，使得 CUDA 程序具有透明可扩展性。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "The ability to execute the same application code with a wide range of speeds allows the production of a wide range of implementations according to the cost, power, and performance requirements of different market segments. For example, a mobile processor may execute an application slowly but at extremely low power consumption, and a desktop processor may execute the same application at a higher speed while consuming more power. Both execute the same application program with no change to the code. The ability to execute the same application code on different hardware with different amounts of execution resources is referred to as 【1】transparent scalability【/1】, which reduces the burden on application developers and improves the usability of applications.",
+      "zh": "能够以多种不同的速度执行同一应用程序代码，使得可以根据不同市场细分对成本、功耗和性能的要求，制造出多种不同的实现。例如，移动处理器可以缓慢地执行应用程序，但功耗极低；台式机处理器则可以以更高的速度执行同一应用程序，同时消耗更多功耗。两者执行的是同一应用程序，代码无需任何改动。在不同的、执行资源数量各异的硬件上执行同一应用程序代码的能力称为【1】透明可扩展性【/1】，它减轻了应用程序开发者的负担，并提高了应用程序的可用性。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "4.4 Warps and SIMD hardware",
+      "zh": "4.4 线程束与 SIMD 硬件"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "We have seen that blocks can execute in any order relative to each other, which allows for transparent scalability across different devices. However, we did not say much about the execution timing of threads within each block. Conceptually, one should assume that threads in a block can execute in any order with respect to each other. In algorithms with phases, barrier synchronizations should be used whenever we want to ensure that all threads have completed a previous phase of their execution before any of them start the next phase. The correctness of executing a kernel should not depend on any assumption that certain threads will execute in synchrony with each other without the use of barrier synchronizations.",
+      "zh": "我们已经看到，线程块之间可以按任意顺序执行，这使程序在不同设备上具有透明可扩展性。不过，关于每个线程块内线程的执行时序，我们此前并未多谈。从概念上讲，应该假定线程块内的线程可以按任意顺序相互执行。对于分阶段的算法，只要我们希望确保所有线程都完成了前一个执行阶段后，才让其中任何一个线程开始下一阶段，就应该使用屏障同步。执行核函数的正确性不应依赖于“某些线程在未使用屏障同步的情况下会彼此同步执行”这样的假设。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "Thread scheduling in CUDA GPUs is a hardware implementation concept and therefore must be discussed in the context of specific hardware implementations. In most implementations to date, once a block has been assigned to an SM, it is further divided into 32-thread units called 【1】warps【/1】. The size of warps is implementation specific and can vary in future generations of GPUs. Knowledge of warps can be helpful in understanding and optimizing the performance of CUDA applications on particular generations of CUDA devices.",
+      "zh": "CUDA GPU 中的线程调度是一个硬件实现概念，因此必须在具体硬件实现的背景下讨论。迄今为止的大多数实现中，线程块一旦被分配到 SM，就会被进一步划分为由 32 个线程组成的单元，称为【1】线程束（warp）【/1】。线程束的大小由具体实现决定，在未来的 GPU 代次中可能发生变化。了解线程束有助于理解和优化 CUDA 应用在特定代次 CUDA 设备上的性能。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "A warp is the unit of thread scheduling in SMs. 【1】Fig. 4.6【/1】 shows the division of blocks into warps in an implementation. In this example there are three blocks—Block 1, Block 2, and Block 3—all assigned to an SM. Each of the three blocks is further divided into warps for scheduling purposes. Each warp consists of 32 threads of consecutive 【2】threadIdx【/2】 values: threads 0 through 31 form the first warp, threads 32 through 63 form the second warp, and so on. We can calculate the number of warps that reside in an SM for a given block size and a given number of blocks assigned to each SM. In this example, if each block has 256 threads, we can determine that each block has 256/32 or 8 warps. With three blocks in the SM, we have 8×3 = 24 warps in the SM.",
+      "zh": "线程束是 SM 中线程调度的单位。【1】图 4.6【/1】展示了某种实现中线程块划分成线程束的情况。在这个例子中有三个线程块——Block 1、Block 2 和 Block 3——它们都被分配到一个 SM。为了调度的目的，这三个线程块中的每一个又被进一步划分成线程束。每个线程束由 32 个【2】threadIdx【/2】值连续的线程组成：线程 0 至 31 构成第一个线程束，线程 32 至 63 构成第二个线程束，依此类推。对于给定的线程块大小和分配给每个 SM 的线程块数量，我们可以计算出驻留在 SM 中的线程束数量。在这个例子中，如果每个线程块有 256 个线程，我们可以确定每个线程块有 256/32 即 8 个线程束。SM 中有三个线程块，因此 SM 中共有 8×3 = 24 个线程束。"
+    },
+    {
+      "id": "n0044",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 4.6【/2】【/1】 Blocks are partitioned into warps for thread scheduling.",
+      "zh": "【1】【2】图 4.6【/2】【/1】 线程块被划分成线程束，以便进行线程调度。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "Blocks are partitioned into warps on the basis of thread indices. If a block is organized into a one-dimensional array, that is, only 【1】threadIdx.x【/1】 is used, the partition is straightforward. The 【2】threadIdx.x【/2】 values within a warp are consecutive and increasing. For a warp size of 32, warp 0 starts with thread 0 and ends with thread 31, warp 1 starts with thread 32 and ends with thread 63, and so on. In general, warp n starts with thread 32×n and ends with thread 32×(n+1)−1. For a block whose size is not a multiple of 32, the last warp will be padded with inactive threads to fill up the 32 thread positions. For example, if a block has 48 threads, it will be partitioned into two warps, and the second warp will be padded with 16 inactive threads.",
+      "zh": "线程块基于线程索引划分成线程束。如果线程块组织成一维数组，即只使用【1】threadIdx.x【/1】，则划分非常直接。线程束内的【2】threadIdx.x【/2】值是连续递增的。对于大小为 32 的线程束，线程束 0 从线程 0 开始到线程 31 结束，线程束 1 从线程 32 开始到线程 63 结束，依此类推。一般地，线程束 n 从线程 32×n 开始，到线程 32×(n+1)−1 结束。对于大小不是 32 的倍数的线程块，最后一个线程束将用非活动线程填充，以占满 32 个线程位置。例如，如果线程块有 48 个线程，它将被划分为两个线程束，第二个线程束将用 16 个非活动线程填充。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "For blocks that consist of multiple dimensions of threads, the dimensions will be projected into a linearized row-major layout before partitioning into warps. The linear layout is determined by placing the rows with larger 【1】y【/1】 and z coordinates after those with lower ones. That is, if a block consists of two dimensions of threads, one will form the linear layout by placing all threads whose 【2】threadIdx.y【/2】 is 1 after those whose 【3】threadIdx.y【/3】 is 0. Threads whose 【4】threadIdx.y【/4】 is 2 will be placed after those whose 【5】threadIdx.y【/5】 is 1, and so on. Threads with the same 【6】threadIdx.y【/6】 value are placed in consecutive positions in increasing 【7】threadIdx.x【/7】 order.",
+      "zh": "对于由多维线程组成的线程块，在划分成线程束之前，这些维度会被投影成线性化的行主序布局。该线性布局的确定方式是：把【1】y【/1】和 z 坐标较大的行放在坐标较小的行之后。也就是说，如果线程块由二维线程组成，那么就要把所有【2】threadIdx.y【/2】为 1 的线程放在【3】threadIdx.y【/3】为 0 的线程之后，【4】threadIdx.y【/4】为 2 的线程放在【5】threadIdx.y【/5】为 1 的线程之后，依此类推。【6】threadIdx.y【/6】值相同的线程按照【7】threadIdx.x【/7】递增的顺序放置在连续的位置上。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "【1】Fig. 4.7【/1】 shows an example of placing threads of a two-dimensional block into a linear layout. The upper part shows the two-dimensional view of the block. The reader should recognize the similarity to the row-major layout of two-dimensional arrays. Each thread is shown as T【2】y,x【/2】, x being 【3】threadIdx.x【/3】 and y being 【4】threadIdx.y【/4】. The lower part of 【5】Fig. 4.7【/5】 shows the linearized view of the block. The first four threads are the threads whose 【6】threadIdx.y【/6】 value is 0; they are ordered with increasing 【7】threadIdx.x【/7】 values. The next four threads are the threads whose 【8】threadIdx.y【/8】 value is 1. They are also placed with increasing 【9】threadIdx.x【/9】 values. In this example, all 16 threads form half a warp. The warp will be padded with another 16 threads to complete a 32-thread warp. Imagine a two-dimensional block with 8×8 threads. The 64 threads will form two warps. The first warp starts from T【10】0,0【/10】 and ends with T【11】3,7【/11】. The second warp starts with T【12】4,0【/12】 and ends with T【13】7,7【/13】. It would be useful for the reader to draw out the picture as an exercise.",
+      "zh": "【1】图 4.7【/1】展示了把二维线程块中的线程放入线性布局的示例。上半部分展示了线程块的二维视图。读者应当能看出它与二维数组行主序布局的相似性。每个线程表示为 T【2】y,x【/2】，其中 x 是【3】threadIdx.x【/3】，y 是【4】threadIdx.y【/4】。【5】图 4.7【/5】的下半部分展示了线程块的线性化视图。前四个线程是【6】threadIdx.y【/6】值为 0 的线程，它们按【7】threadIdx.x【/7】值递增的顺序排列。接下来四个线程是【8】threadIdx.y【/8】值为 1 的线程，同样按【9】threadIdx.x【/9】值递增的顺序排列。在这个例子中，全部 16 个线程组成半个线程束。该线程束将再填充 16 个线程，凑成一个 32 线程的线程束。设想一个 8×8 线程的二维线程块，这 64 个线程将组成两个线程束。第一个线程束从 T【10】0,0【/10】开始，到 T【11】3,7【/11】结束；第二个线程束从 T【12】4,0【/12】开始，到 T【13】7,7【/13】结束。读者不妨自己动手把这个图画出来，作为练习。"
+    },
+    {
+      "id": "n0048",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 4.7【/1】 Placing 2D threads into a linear layout.",
+      "zh": "【1】图 4.7【/1】 把 2D 线程放入线性布局。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "For a three-dimensional block, we first place all threads whose 【1】threadIdx.z【/1】 value is 0 into the linear order. These threads are treated as a two-dimensional block, as shown in 【2】Fig. 4.7【/2】. All threads whose 【3】threadIdx.z【/3】 value is 1 will then be placed into the linear order, and so on. For example, for a three-dimensional 2×8×4 block (four in the 【4】x【/4】 dimension, eight in the 【5】y【/5】 dimension, and two in the 【6】z【/6】 dimension), the 64 threads will be partitioned into two warps, with T【7】0,0,0【/7】 through T【8】0,7,3【/8】 in the first warp and T【9】1,0,0【/9】 through T【10】1,7,3【/10】 in the second warp.",
+      "zh": "对于三维线程块，我们首先把【1】threadIdx.z【/1】值为 0 的所有线程按线性顺序排列。这些线程被视为一个二维线程块，如【2】图 4.7【/2】所示。然后，把【3】threadIdx.z【/3】值为 1 的所有线程按线性顺序排列，依此类推。例如，对于一个三维的 2×8×4 线程块（【4】x【/4】维有 4 个、【5】y【/5】维有 8 个、【6】z【/6】维有 2 个），这 64 个线程将被划分为两个线程束，第一个线程束包含从 T【7】0,0,0【/7】到 T【8】0,7,3【/8】，第二个线程束包含从 T【9】1,0,0【/9】到 T【10】1,7,3【/10】。"
+    }
+  ]
+}

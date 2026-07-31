@@ -1,0 +1,107 @@
+[
+  {
+    "en": "electrostatic potential energy",
+    "zh": "静电势能",
+    "note": "摘要/18.6，区别于 electrostatic potential map（静电势图，已在 §5.8）"
+  },
+  {
+    "en": "energy grid",
+    "zh": "能量网格",
+    "note": "摘要/18.1，规则间距的能量网格；如 energy grid space、energy grid systems"
+  },
+  {
+    "en": "energy grid point",
+    "zh": "能量网格点",
+    "note": "18.2，能量网格上的网格点，含 grid point 之意"
+  },
+  {
+    "en": "lattice point",
+    "zh": "格点",
+    "note": "图 18.2 说明/18.1，与网格点（grid point）区分"
+  },
+  {
+    "en": "uniform grid",
+    "zh": "均匀网格",
+    "note": "18.2，三个维度均以相同间距排列的网格方法"
+  },
+  {
+    "en": "grid spacing",
+    "zh": "网格间距",
+    "note": "18.2/18.5，网格点之间的间距"
+  },
+  {
+    "en": "cutoff distance",
+    "zh": "截断距离",
+    "note": "18.5，截断求和中贡献判定的半径"
+  },
+  {
+    "en": "cutoff radius",
+    "zh": "截断半径",
+    "note": "18.5，网格点坐标周围接收贡献的固定半径"
+  },
+  {
+    "en": "neighborhood bin",
+    "zh": "邻域箱",
+    "note": "18.5，网格点邻域内可能贡献能量的箱"
+  },
+  {
+    "en": "neighborhood list",
+    "zh": "邻域列表",
+    "note": "18.5，以相对偏移量表示的邻域箱列表"
+  },
+  {
+    "en": "supercircle",
+    "zh": "超圆",
+    "note": "18.5，用于保守近似邻域箱的圆"
+  },
+  {
+    "en": "overflow list",
+    "zh": "溢出列表",
+    "note": "18.5，分箱满时存放溢出原子的列表"
+  },
+  {
+    "en": "dummy atom",
+    "zh": "虚拟原子",
+    "note": "18.5，电荷为 0、用于填充箱的原子"
+  },
+  {
+    "en": "implicit method",
+    "zh": "隐式方法",
+    "note": "18.5，处理远处粒子/样本集体贡献的方法"
+  },
+  {
+    "en": "atom-centric",
+    "zh": "以原子为中心的",
+    "note": "18.5，与以网格为中心的分解方式（grid-centric）对比"
+  },
+  {
+    "en": "grid-centric decomposition",
+    "zh": "以网格为中心的分解",
+    "note": "18.5，每个线程计算一个网格点的分解方式"
+  },
+  {
+    "en": "batch mode",
+    "zh": "批量模式",
+    "note": "18.1，VMD 非交互式的批量运行方式"
+  },
+  {
+    "en": "visual molecular dynamics (VMD)",
+    "zh": "可视化分子动力学（VMD）",
+    "note": "18.1，软件系统专名"
+  },
+  {
+    "en": "thread grid",
+    "zh": "线程网格",
+    "note": "18.2，与能量网格区分；含 §5.3 grid（网格）"
+  },
+  {
+    "en": "loop nest",
+    "zh": "循环嵌套",
+    "note": "章首引言，选择循环嵌套层次进行并行化"
+  },
+  {
+    "en": "reduction",
+    "zh": "减少",
+    "note": "glossary false positive：p0145 中 \"a total reduction from 16 … down to\" 与 \"a sizable reduction\" 为普通英语（减少），非 §5 归约模式；denylist 未覆盖 reduction from / a sizable reduction 语序，需团队负责人扩充 denylist"
+  }
+]

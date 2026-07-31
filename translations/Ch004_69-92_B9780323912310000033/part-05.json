@@ -1,0 +1,155 @@
+{
+  "page": "Ch004_69-92_B9780323912310000033",
+  "nodes": [
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[3]",
+      "en": "c. For the statement on line 04:【M1】",
+      "zh": "c. 对于第 04 行的语句：【M1】"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[1]",
+      "en": "i. How many warps in the grid are active?",
+      "zh": "i. 网格中有多少个线程束处于活动状态？"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[2]",
+      "en": "ii. How many warps in the grid are divergent?",
+      "zh": "ii. 网格中有多少个线程束出现发散？"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[3]",
+      "en": "iii. What is the SIMD efficiency (in %) of warp 0 of block 0?",
+      "zh": "iii. 线程块 0 中线程束 0 的 SIMD 效率（%）是多少？"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[4]",
+      "en": "iv. What is the SIMD efficiency (in %) of warp 1 of block 0?",
+      "zh": "iv. 线程块 0 中线程束 1 的 SIMD 效率（%）是多少？"
+    },
+    {
+      "id": "o0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[5]",
+      "en": "v. What is the SIMD efficiency (in %) of warp 3 of block 0?",
+      "zh": "v. 线程块 0 中线程束 3 的 SIMD 效率（%）是多少？"
+    },
+    {
+      "id": "o0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[4]",
+      "en": "d. For the statement on line 07:【M1】",
+      "zh": "d. 对于第 07 行的语句：【M1】"
+    },
+    {
+      "id": "o0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[4]/ol[1]/li[1]",
+      "en": "i. How many warps in the grid are active?",
+      "zh": "i. 网格中有多少个线程束处于活动状态？"
+    },
+    {
+      "id": "o0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[4]/ol[1]/li[2]",
+      "en": "ii. How many warps in the grid are divergent?",
+      "zh": "ii. 网格中有多少个线程束出现发散？"
+    },
+    {
+      "id": "o0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[4]/ol[1]/li[3]",
+      "en": "iii. What is the SIMD efficiency (in %) of warp 0 of block 0?",
+      "zh": "iii. 线程块 0 中线程束 0 的 SIMD 效率（%）是多少？"
+    },
+    {
+      "id": "o0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[5]",
+      "en": "e. For the loop on line 09:【M1】",
+      "zh": "e. 对于第 09 行的循环：【M1】"
+    },
+    {
+      "id": "o0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[5]/ol[1]/li[1]",
+      "en": "i. How many iterations have no divergence?",
+      "zh": "i. 有多少次迭代没有发散？"
+    },
+    {
+      "id": "o0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]/ol[1]/li[5]/ol[1]/li[2]",
+      "en": "ii. How many iterations have divergence?",
+      "zh": "ii. 有多少次迭代存在发散？"
+    },
+    {
+      "id": "o0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[2]",
+      "en": "2. For a vector addition, assume that the vector length is 2000, each thread calculates one output element, and the thread block size is 512 threads. How many threads will be in the grid?",
+      "zh": "2. 对于向量加法，假设向量长度为 2000，每个线程计算一个输出元素，线程块大小为 512 个线程。那么网格中将有多少个线程？"
+    },
+    {
+      "id": "o0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[3]",
+      "en": "3. For the previous question, how many warps do you expect to have divergence due to the boundary check on vector length?",
+      "zh": "3. 对于上一个问题，你预计有多少个线程束会因向量长度的边界检查而出现发散？"
+    },
+    {
+      "id": "o0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[4]",
+      "en": "4. Consider a hypothetical block with 8 threads executing a section of code before reaching a barrier. The threads require the following amount of time (in microseconds) to execute the sections: 2.0, 2.3, 3.0, 2.8, 2.4, 1.9, 2.6, and 2.9; they spend the rest of their time waiting for the barrier. What percentage of the threads’ total execution time is spent waiting for the barrier?",
+      "zh": "4. 考虑一个假设的线程块，其中有 8 个线程，在到达屏障之前执行一段代码。这些线程执行各段代码所需的时间（以微秒计）分别为：2.0、2.3、3.0、2.8、2.4、1.9、2.6 和 2.9；其余时间都在等待屏障。这些线程总执行时间中有多少百分比花在等待屏障上？"
+    },
+    {
+      "id": "o0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[5]",
+      "en": "5. A CUDA programmer says that if they launch a kernel with only 32 threads in each block, they can leave out the 【1】__syncthreads()【/1】 instruction wherever barrier synchronization is needed. Do you think this is a good idea? Explain.",
+      "zh": "5. 一位 CUDA 程序员说，如果启动一个每个线程块只有 32 个线程的核函数，那么在需要屏障同步的地方都可以省略【1】__syncthreads()【/1】指令。你认为这是个好主意吗？请说明理由。"
+    },
+    {
+      "id": "o0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[6]",
+      "en": "6. If a CUDA device’s SM can take up to 1536 threads and up to 4 thread blocks, which of the following block configurations would result in the most number of threads in the SM?【M1】",
+      "zh": "6. 如果某个 CUDA 设备的 SM 最多能容纳 1536 个线程和 4 个线程块，那么下列哪种线程块配置会使 SM 中的线程数最多？【M1】"
+    },
+    {
+      "id": "o0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[6]/ol[1]/li[1]",
+      "en": "a. 128 threads per block",
+      "zh": "a. 每个线程块 128 个线程"
+    },
+    {
+      "id": "o0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[6]/ol[1]/li[2]",
+      "en": "b. 256 threads per block",
+      "zh": "b. 每个线程块 256 个线程"
+    },
+    {
+      "id": "o0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[6]/ol[1]/li[3]",
+      "en": "c. 512 threads per block",
+      "zh": "c. 每个线程块 512 个线程"
+    },
+    {
+      "id": "o0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[6]/ol[1]/li[4]",
+      "en": "d. 1024 threads per block",
+      "zh": "d. 每个线程块 1024 个线程"
+    },
+    {
+      "id": "o0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[7]",
+      "en": "7. Assume a device that allows up to 64 blocks per SM and 2048 threads per SM. Indicate which of the following assignments per SM are possible. In the cases in which it is possible, indicate the occupancy level.【M1】",
+      "zh": "7. 假设某个设备允许每个 SM 最多 64 个线程块、每个 SM 最多 2048 个线程。指出下列每种每个 SM 的分配方案是否可行。在可行的方案中，指出占用率水平。【M1】"
+    },
+    {
+      "id": "o0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[7]/ol[1]/li[1]",
+      "en": "a. 8 blocks with 128 threads each",
+      "zh": "a. 8 个线程块，每块 128 个线程"
+    },
+    {
+      "id": "o0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[7]/ol[1]/li[2]",
+      "en": "b. 16 blocks with 64 threads each",
+      "zh": "b. 16 个线程块，每块 64 个线程"
+    }
+  ]
+}

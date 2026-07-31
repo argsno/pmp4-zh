@@ -1,0 +1,18 @@
+[
+  {"en": "scalar variable", "zh": "标量变量", "note": "§5.2，表 5.1 及 5.2 节正文（p0160）；与自动数组变量相对"},
+  {"en": "scope", "zh": "作用域", "note": "§5.2，变量声明属性，与 lifetime 并列（p0150、p0155）"},
+  {"en": "lifetime", "zh": "生命周期", "note": "§5.2，变量声明属性（p0150、p0155）"},
+  {"en": "private memory", "zh": "私有内存", "note": "本章关键词表（n0004），指线程私有的局部内存"},
+  {"en": "memory latency", "zh": "内存延迟", "note": "本章关键词表（n0004）及 5.1 节正文"},
+  {"en": "full occupancy", "zh": "满占用率", "note": "§5.6，p0375、p0465、o0160 等处"},
+  {"en": "compute-bound", "zh": "计算受限（的）", "note": "§5.1 Roofline 边栏（p9155、p9156）及习题 9；与访存受限相对"},
+  {"en": "true dependence", "zh": "真依赖", "note": "§5.4（p0280），与伪依赖（§5.4 false dependence）相对"},
+  {"en": "operational intensity", "zh": "运算强度", "note": "§5.1 Roofline 边栏（p9150），x 轴术语；本书另按 §5 使用算术强度"},
+  {"en": "spilled register", "zh": "溢出的寄存器", "note": "§5.2（p0085），局部内存中存放的内容之一"},
+  {"en": "call stack", "zh": "调用栈", "note": "§5.2（p0085），局部内存中存放的内容之一"},
+  {"en": "processing block", "zh": "处理块（block）", "note": "§5.2（p9185），GPU 处理部件（SM）的寄存器文件语境；因与 glossary 的 block=线程块冲突，保留英文词"},
+  {"en": "CUTLASS", "zh": "CUTLASS（保留英文）", "note": "§5.4（p0300），NVIDIA 高性能库名，同 cuBLAS（§5.8 保留英文（库名））"},
+  {"en": "memory fencing", "zh": "内存栅栏", "note": "脚注 2（fn2），CUDA 线程块间数据一致性术语"},
+  {"en": "reduction", "zh": "减少（量）", "note": "glossary false positive — “reduction of global memory accesses/traffic”“reduction in memory bandwidth”等处的普通名词用法，非归约模式；p0075、p0210、p0225、p0230、o0050、o0065，需团队负责人扩展 glossary.py 的 _ORDINARY_USAGE 名单"},
+  {"en": "host", "zh": "容纳", "note": "glossary false positive — “Each SM can host a maximum of only …”中 host 为动词（容纳），非主机；p0375，需扩展 _ORDINARY_USAGE 名单"}
+]

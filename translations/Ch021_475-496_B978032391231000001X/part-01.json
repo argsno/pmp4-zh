@@ -1,0 +1,155 @@
+{
+  "page": "Ch021_475-496_B978032391231000001X",
+  "nodes": [
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "【1】Fig. 21.2B【/1】 shows that with dynamic parallelism the threads that discover new work can just go ahead and launch grids to do the work. In our example, when a thread discovers that an area in the model needs to be refined, it can launch a new grid to perform the computation on the refined area without the overhead of terminating the grid, reporting back to the host, and having the host launch the new grid.",
+      "zh": "【1】图 21.2B【/1】 表明，有了动态并行，发现新工作的线程可以直接启动网格来完成这些工作。在我们的示例中，当某个线程发现模型中的某个区域需要细化时，它可以启动一个新网格来对细化后的区域执行计算，而无需承担终止网格、向主机汇报并让主机启动新网格的开销。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "21.2 Dynamic parallelism overview",
+      "zh": "21.2 动态并行概述"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "From the perspective of programmers, dynamic parallelism means that they can write a statement within a kernel that calls another kernel function. In 【1】Fig. 21.3【/1】 the main function (host code) launches three kernels: A, B, and C. These are kernel calls in the host code, as we have been assuming throughout this book. What is new in 【2】Fig. 21.3【/2】 is that one of the kernels, B, calls three kernels X, Y, and Z. This would have been illegal in early CUDA systems that do not support dynamic parallelism.",
+      "zh": "从程序员的角度来看，动态并行意味着他们可以在核函数内部编写一条调用另一个核函数的语句。在【1】图 21.3【/1】 中，主函数（主机代码）启动了三个核函数：A、B 和 C。这些都是主机代码中的核函数调用，正如我们在本书中一直假设的那样。【2】图 21.3【/2】 中的新内容是，其中一个核函数 B 调用了三个核函数 X、Y 和 Z。在不支持动态并行的早期 CUDA 系统中，这是非法的。"
+    },
+    {
+      "id": "n0028",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 21.3【/1】 A simple example of a kernel (B) launching three kernels (X, Y, and Z).",
+      "zh": "【1】图 21.3【/1】 一个核函数（B）启动三个核函数（X、Y 和 Z）的简单示例。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "The syntax for calling a kernel from inside of a kernel is the same as that for calling a kernel from the host code:",
+      "zh": "从核函数内部调用核函数的语法，与从主机代码调用核函数的语法相同："
+    },
+    {
+      "id": "u0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/ul[1]/li[1]",
+      "en": "• 【1】Dg【/1】 is of type 【2】dim3【/2】 and specifies the dimensions and size of the grid.",
+      "zh": "• 【1】Dg【/1】 的类型为 【2】dim3【/2】，指定网格的维度和大小。"
+    },
+    {
+      "id": "u0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/ul[1]/li[2]",
+      "en": "• 【1】Db【/1】 is of type 【2】dim3【/2】 and specifies the dimensions and size of each thread block.",
+      "zh": "• 【1】Db【/1】 的类型为 【2】dim3【/2】，指定每个线程块的维度和大小。"
+    },
+    {
+      "id": "u0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/ul[1]/li[3]",
+      "en": "• 【1】Ns【/1】 is of type 【2】size_t【/2】 and specifies the number of bytes of shared memory that are dynamically allocated per-thread block for this call, which is in addition to the statically allocated shared memory. 【3】Ns【/3】 is an optional argument that defaults to 0.",
+      "zh": "• 【1】Ns【/1】 的类型为 【2】size_t【/2】，指定本次调用中每个线程块动态分配的共享内存字节数，这部分内存是在静态分配的共享内存之外的。【3】Ns【/3】 是可选参数，默认值为 0。"
+    },
+    {
+      "id": "u0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/ul[1]/li[4]",
+      "en": "• 【1】S【/1】 is of type 【2】cudaStream_t【/2】 and specifies the stream associated with this call. The stream must have been allocated in the same thread block in which the call is being made. 【3】S【/3】 is an optional argument that defaults to 0. Streams were discussed in 【4】Chapter 20【/4】, Programming a Heterogeneous Computing Cluster.",
+      "zh": "• 【1】S【/1】 的类型为 【2】cudaStream_t【/2】，指定与此调用关联的流。该流必须是在发起调用的同一个线程块中分配的。【3】S【/3】 是可选参数，默认值为 0。流已在【4】第 20 章【/4】（编程异构计算集群）中讨论过。"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "To demonstrate how dynamic parallelism can be used, we provide simple examples of kernels without and with dynamic parallelism. The examples are based on a hypothetical parallel algorithm that does not compute useful results but provides a conceptually simple computational pattern that recurs in many applications. It serves to illustrate the difference between the two approaches and how one can use the dynamic parallelism to extract more parallelism while reducing control flow divergence when the amount of work done by each thread in an algorithm can vary dynamically.",
+      "zh": "为了演示如何使用动态并行，我们提供了不使用和使用动态并行的核函数简单示例。这些示例基于一个假设的并行算法，它并不计算有用的结果，但提供了一种在许多应用中反复出现的、概念上简单的计算模式。它有助于说明两种方法之间的差异，以及在算法中每个线程完成的工作量可以动态变化时，如何使用动态并行提取更多的并行性，同时减少控制流发散。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "【1】Fig. 21.4【/1】 shows a simple example kernel coded without dynamic parallelism. In this example, each thread of the kernel performs some computation (line 05), then loops over a list of data elements for which it is responsible (line 07), and performs another computation for each data element (line 08).",
+      "zh": "【1】图 21.4【/1】 展示了一个不使用动态并行编写的简单示例核函数。在这个示例中，核函数的每个线程执行一些计算（第 05 行），然后遍历它负责的数据元素列表（第 07 行），并为每个数据元素执行另一次计算（第 08 行）。"
+    },
+    {
+      "id": "n0036",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 21.4【/1】 A simple example of a hypothetical parallel algorithm coded in CUDA without dynamic parallelism.",
+      "zh": "【1】图 21.4【/1】 用 CUDA 实现且不使用动态并行的假设并行算法的一个简单示例。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "This computation pattern recurs frequently in many applications. For example, in graph search, each thread could visit a vertex and then loop over a list of neighboring vertices. The reader should find this kernel structure similar to that of the vertex-centric BFS kernel in 【1】Figure 15.14【/1】. For another example, in sparse matrix computations, each thread could first identify the starting location of a row of nonzero elements and loop over the nonzero values. In simulations such as the example at the beginning of this chapter, each thread could first process a coarse grid element and then loop over finer grid elements if there is a need for refining the grid.",
+      "zh": "这种计算模式在许多应用中频繁出现。例如，在图搜索中，每个线程可以访问一个顶点，然后遍历相邻顶点列表。读者会发现，这种核函数结构与【1】图 15.14【/1】 中面向顶点的 BFS 核函数相似。再举一个例子，在稀疏矩阵计算中，每个线程可以先确定一行非零元素的起始位置，然后遍历这些非零值。在诸如本章开头示例那样的模拟中，每个线程可以先处理一个粗网格单元，然后在需要细化网格时遍历更细的网格单元。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "There are two main problems with writing applications in the style shown in 【1】Fig. 21.4【/1】. First, if the work in the loop (lines 07–09) can be profitably performed in parallel, then we have missed out on an opportunity to extract more parallelism from the application. Second, if the number of iterations in the loop varies significantly between threads in the same warp, then the resulting control divergence can degrade the performance of the program.",
+      "zh": "以【1】图 21.4【/1】 所示风格编写应用存在两个主要问题。首先，如果循环中的工作（第 07–09 行）可以并行执行并获得收益，那么我们就错失了从应用中提取更多并行性的机会。其次，如果同一线程束内各线程的循环迭代次数差异很大，那么由此产生的控制发散会降低程序的性能。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "【1】Fig. 21.5【/1】 shows a version of the same program that uses dynamic parallelism. In this version the original kernel is separated into two: a parent kernel and a child kernel. The parent kernel starts off the same as the original kernel, executed by a grid of threads that are referred to as the parent grid. Instead of looping, the parent kernel calls a child kernel to continue the work (lines 07–08). The child kernel is executed by grids of threads called the child grids, which perform the work (line 18, 【2】Fig. 21.5【/2】) that was originally performed inside the loop body (lines 07–09, 【3】Fig. 21.4【/3】).",
+      "zh": "【1】图 21.5【/1】 展示了同一程序使用动态并行的版本。在这个版本中，原来的核函数被分成两个：父核函数和子核函数。父核函数的开头与原核函数相同，由被称为父网格的线程网格执行。父核函数不再循环，而是调用子核函数来继续工作（第 07–08 行）。子核函数由被称为子网格的线程网格执行，这些网格完成原先在循环体内完成的工作（第 18 行，【2】图 21.5【/2】；原循环体为第 07–09 行，【3】图 21.4【/3】）。"
+    },
+    {
+      "id": "n0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 21.5【/1】 A revised example using CUDA dynamic parallelism.",
+      "zh": "【1】图 21.5【/1】 使用 CUDA 动态并行修改后的示例。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "Writing the program in this way addresses both problems that were mentioned about the original code. First, the loop iterations are now executed in parallel by the child kernel threads instead of serially by the original kernel thread. Thus we have extracted more parallelism from the program. Second, each thread now executes a single loop iteration, which results in better load balance and eliminates control divergence. Although these two goals could have been achieved by the programmer rewriting the kernels differently, for example, by using an edge-centric breadth-first implementation, such transformations for some applications can be awkward, complicated, and error prone. Dynamic parallelism provides an easy way to express such computational patterns.",
+      "zh": "以这种方式编写程序可以解决前面提到的原代码的两个问题。首先，循环迭代现在由子核函数的线程并行执行，而不是由原核函数的线程串行执行。因此，我们从程序中提取了更多的并行性。其次，每个线程现在只执行一次循环迭代，这带来了更好的负载均衡，并消除了控制发散。虽然程序员也可以通过不同的方式重写核函数来实现这两个目标，例如使用面向边的广度优先实现，但对某些应用来说，这种变换可能笨拙、复杂且容易出错。动态并行提供了一种表达此类计算模式的简便方式。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "21.3 An example: Bezier curves",
+      "zh": "21.3 示例：贝塞尔曲线"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "We now show an example that is a more interesting and useful case: the adaptive subdivision of spline curves. This example illustrates the case of having a variable amount of child grid launches, according to the workload. The example is to calculate Bezier curves (【1】Bezier Curves【/1】), which are frequently used in computer graphics to draw smooth, intuitive curves that are defined by a set of 【2】control points【/2】, which are typically defined by a user.",
+      "zh": "我们现在展示一个更有趣、更有用的示例：样条曲线的自适应细分。这个示例说明的是子网格启动数量随工作负载而变化的情况。示例的内容是计算贝塞尔曲线（【1】Bezier Curves【/1】）。贝塞尔曲线在计算机图形学中经常用于绘制平滑、直观的曲线，这些曲线由一组【2】控制点【/2】定义，控制点通常由用户指定。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "Mathematically, a Bezier curve is defined by a set of control points 【1】P【/1】【2】0【/2】 through 【3】P【/3】【4】【5】n【/5】【/4】, where 【6】n【/6】 is called the control point’s 【7】order【/7】 (【8】n【/8】=1 for linear, 2 for quadratic, 3 for cubic, etc.). The first and last control points are always the end points of the curve; however, the intermediate control points (if any) generally do not lie on the curve.",
+      "zh": "从数学上讲，贝塞尔曲线由一组控制点 【1】P【/1】【2】0【/2】 至 【3】P【/3】【4】【5】n【/5】【/4】 定义，其中 【6】n【/6】 称为控制点的【7】阶【/7】（【8】n【/8】=1 对应线性，2 对应二次，3 对应三次，以此类推）。曲线的第一个和最后一个控制点始终是曲线的端点，但中间的控制点（如果有）通常不在曲线上。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/h3[1]",
+      "en": "Linear Bezier curves",
+      "zh": "线性贝塞尔曲线"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[1]",
+      "en": "Given two control points 【1】P【/1】【2】0【/2】 and 【3】P【/3】【4】1【/4】, a linear Bezier curve is simply a straight line connecting these two points. The coordinates of the points on the curve are given by the following linear interpolation formula:",
+      "zh": "给定两个控制点 【1】P【/1】【2】0【/2】 和 【3】P【/3】【4】1【/4】，线性贝塞尔曲线就是连接这两个点的直线。曲线上点的坐标由以下线性插值公式给出："
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/h3[1]",
+      "en": "Quadratic Bezier curves",
+      "zh": "二次贝塞尔曲线"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[1]",
+      "en": "A quadratic Bezier curve is defined by three control points 【1】P【/1】【2】0【/2】, 【3】P【/3】【4】1【/4】, and 【5】P【/5】【6】2【/6】. The points on a quadratic curve are defined as a linear interpolation of corresponding points on the linear Bezier curves from 【7】P【/7】【8】0【/8】 to 【9】P【/9】【10】1【/10】 and from 【11】P【/11】【12】1【/12】 to 【13】P【/13】【14】2【/14】. The calculation of the coordinates of points on the curve is expressed by the following formula:",
+      "zh": "二次贝塞尔曲线由三个控制点 【1】P【/1】【2】0【/2】、【3】P【/3】【4】1【/4】 和 【5】P【/5】【6】2【/6】 定义。二次曲线上的点定义为从 【7】P【/7】【8】0【/8】 到 【9】P【/9】【10】1【/10】 以及从 【11】P【/11】【12】1【/12】 到 【13】P【/13】【14】2【/14】 的线性贝塞尔曲线上对应点的线性插值。曲线上点坐标的计算用以下公式表示："
+    },
+    {
+      "id": "n0049",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[3]",
+      "en": "which can be simplified into the following formula:",
+      "zh": "它可以化简为以下公式："
+    }
+  ]
+}

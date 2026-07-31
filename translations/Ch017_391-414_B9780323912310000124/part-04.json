@@ -1,0 +1,101 @@
+{
+  "page": "Ch017_391-414_B9780323912310000124",
+  "nodes": [
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "Before parallelization and optimization, F【1】H【/1】D used to account for nearly 100% of the execution time. An interesting observation is that in the end, the CG solver (the “find ρ” step in 【2】Fig. 17.3【/2】) can actually take more time than F【3】H【/3】D. This is because we have accelerated F【4】H【/4】D dramatically. Any further acceleration will now require acceleration of the CG solver. After successful parallelization and optimization, F【5】H【/5】D accounts for only about 50%. The other 50% is largely spent in the CG solver. This is a well-known phenomenon in parallelizing real applications. Because some time-consuming phases of the execution are accelerated by successful parallelization efforts, the execution time becomes dominated by other phases that used to account for insignificant portions of the execution.",
+      "zh": "在并行化和优化之前，F【1】H【/1】D 曾经几乎占执行时间的 100%。一个有趣的观察是，到最后，CG 求解器（【2】图 17.3【/2】中的“求解 ρ”步骤）实际花费的时间可能比 F【3】H【/3】D 还多。这是因为我们已经大幅加速了 F【4】H【/4】D。任何进一步的加速现在都需要对 CG 求解器进行加速。在成功的并行化和优化之后，F【5】H【/5】D 只占大约 50%。其余 50% 大部分花在 CG 求解器上。这是并行化真实应用时一个众所周知的现象。由于执行中某些耗时的阶段被成功的并行化工作加速，执行时间便由其他曾经只占执行时间很小比例的阶段所主导。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/ol[1]/li[1]",
+      "en": "1. Loop fission splits a loop into two loops. Use the F【1】H【/1】D code in 【2】Fig. 17.4【/2】 and enumerate the execution order of the two parts of the outer loop body: (1) the statements before the inner loop and (2) the inner loop.",
+      "zh": "1. 循环分裂把一个循环拆成两个循环。使用【2】图 17.4【/2】中的 F【1】H【/1】D 代码，列举外层循环体两个部分的执行顺序：（1）内层循环之前的语句和（2）内层循环。"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/ol[1]/li[1]",
+      "en": "a. List the execution order of these parts from different iterations of the outer loop before fission.",
+      "zh": "a. 列出分裂前外层循环不同迭代中这些部分的执行顺序。"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/ol[1]/li[2]",
+      "en": "b. List the execution order of these parts from the two loops after fission.",
+      "zh": "b. 列出分裂后两个循环中这些部分的执行顺序。"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/ol[1]/li[3]",
+      "en": "c. Determine whether the execution results in parts (a) and (b) of this exercise will be identical. The execution results are identical if all data required by a part are properly generated and preserved for its consumption before that part executes and the execution result of the part is not overwritten by other parts that should come after the part in the original execution order.",
+      "zh": "c. 判断本题 (a) 和 (b) 部分的执行结果是否相同。如果某一部分所需的全部数据在该部分执行之前都已正确生成并保存供其使用，且该部分的执行结果没有被在原始执行顺序中应位于该部分之后的其他部分覆盖，那么执行结果相同。"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[3]/ol[1]/li[1]",
+      "en": "2. Loop interchange swaps the inner loop into the outer loop and vice versa. Use the loops from 【1】Fig. 17.9【/1】 and enumerate the execution order of the instances of loop body before and after the loop exchange.",
+      "zh": "2. 循环交换把内层循环与外层循环互换。使用【1】图 17.9【/1】中的循环，列举循环交换前后各次循环体执行的顺序。"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[4]/ol[1]/li[1]",
+      "en": "a. List the execution order of the loop body from different iterations before loop interchange. Identify these iterations with the values of m and n.",
+      "zh": "a. 列出循环交换前不同迭代中循环体的执行顺序。用 m 和 n 的值标识这些迭代。"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[4]/ol[1]/li[2]",
+      "en": "b. List the execution order of the loop body from different iterations after loop interchange. Identify these iterations with the values of m and n.",
+      "zh": "b. 列出循环交换后不同迭代中循环体的执行顺序。用 m 和 n 的值标识这些迭代。"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[4]/ol[1]/li[3]",
+      "en": "c. Determine whether the execution results in parts (a) and (b) of this exercise will be identical. The execution results are identical if all data required by a part are properly generated and preserved for its consumption before that part executes and the execution result of the part is not overwritten by other parts that should come after the part in the original execution order.",
+      "zh": "c. 判断本题 (a) 和 (b) 部分的执行结果是否相同。如果某一部分所需的全部数据在该部分执行之前都已正确生成并保存供其使用，且该部分的执行结果没有被在原始执行顺序中应位于该部分之后的其他部分覆盖，那么执行结果相同。"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[5]/ol[1]/li[1]",
+      "en": "3. In 【1】Fig. 17.11【/1】, identify the difference between the access to x[] and kx[] in the nature of indices used. Use the difference to explain why it does not make sense to try to load kx[n] into a register for the kernel shown in 【2】Fig. 17.11【/2】.",
+      "zh": "3. 在【1】图 17.11【/1】中，指出对 x[] 和 kx[] 的访问在使用下标性质上的差异。利用这一差异，解释为什么对于【2】图 17.11【/2】所示的核函数，试图把 kx[n] 加载到寄存器中是没有意义的。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    },
+    {
+      "id": "fn1",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[1]",
+      "en": "【1】【2】1【/2】【/1】Note that the F【3】H【/3】D computation can be approximated with gridding and can run in a few seconds with perhaps reduced quality of the final reconstructed image.",
+      "zh": "【1】【2】1【/2】【/1】请注意，F【3】H【/3】D 的计算可以用网格化来近似，几秒钟即可运行，不过最终重建图像的质量可能会有所下降。"
+    },
+    {
+      "id": "fn2",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[2]",
+      "en": "【1】【2】2【/2】【/1】The reason why a constant memory access is not exactly as efficient as a register access is that a memory load instruction is still needed for access to the constant memory.",
+      "zh": "【1】【2】2【/2】【/1】常量内存访问之所以不如寄存器访问高效，是因为访问常量内存仍然需要一条内存加载指令。"
+    },
+    {
+      "id": "fn3",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[3]",
+      "en": "【1】【2】3【/2】【/1】Note that not all accesses to read-only data are as favorable for constant memory as what we have here. In some applications, threads in different blocks access different input elements in the same iteration. Such more diverged access pattern makes it much harder to fit enough of the data into the constant memory for a kernel launch.",
+      "zh": "【1】【2】3【/2】【/1】请注意，并非所有对只读数据的访问都像这里这样适合常量内存。在一些应用中，不同线程块中的线程在同一迭代中访问不同的输入元素。这种更分散的访问模式使得在一次核函数启动时，很难把足够多的数据装入常量内存。"
+    },
+    {
+      "id": "fn4",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[4]",
+      "en": "【1】【2】4【/2】【/1】The reader might notice that the adjustment from multiple arrays to an array of structures is the opposite of what is often done to global memory data. When adjacent threads in a warp access consecutive elements of an array of structures in global memory, it is much better to store the fields of the structure into multiple arrays so that the global memory accesses are coalesced. The key difference here is that all threads in a warp are accessing the same elements, not consecutive ones.",
+      "zh": "【1】【2】4【/2】【/1】读者可能会注意到，从多个数组调整为结构体数组，与全局内存数据通常采取的做法正好相反。当一个线程束中相邻的线程访问全局内存中结构体数组的连续元素时，把结构体的字段存放到多个数组中要好得多，这样全局内存访问可以合并。这里的关键区别在于，一个线程束中的所有线程访问的是相同元素，而不是连续元素。"
+    }
+  ]
+}

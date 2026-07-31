@@ -1,0 +1,155 @@
+{
+  "page": "Ch002_23-46_B9780323912310000148",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/h1[1]",
+      "en": "Heterogeneous data parallel computing",
+      "zh": "异构数据并行计算"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/address[1]/p[1]",
+      "en": "With special contribution from David Luebke",
+      "zh": "特别贡献：David Luebke"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces the concept of data parallelism and the essential CUDA C features for writing a simple CUDA C program. It starts with the concept of threads, host, and device. It introduces CUDA device memory management and data transfer applications programming interface functions. It further introduces the basic structure of a CUDA C kernel function, built-in variables, function declaration keywords, and kernel launch syntax. It concludes with a brief overview of the compilation process for CUDA C programs.",
+      "zh": "本章介绍数据并行这一概念，以及编写一个简单 CUDA C 程序所需的基本 CUDA C 特性。本章首先介绍线程、主机和设备的概念；接着介绍 CUDA 设备内存管理与数据传输的应用程序编程接口函数；然后进一步介绍 CUDA C 核函数的基本结构、内置变量、函数声明关键字和核函数启动语法；最后简要概述 CUDA C 程序的编译过程。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Data parallelism; scalable parallel program; CUDA C; thread, kernel; applications programming interface (API); host code; device code; kernel call; grid launch; execution configuration parameters; memory allocation; data transfer; error handling; stub function; SPMD",
+      "zh": "数据并行；可扩展并行程序；CUDA C；线程、核函数；应用程序编程接口（API）；主机代码；设备代码；核函数调用；网格启动；执行配置参数；内存分配；数据传输；错误处理；桩函数；单程序多数据（SPMD）"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "概要"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】2.1 Data parallelism【/1】 23",
+      "zh": "【1】2.1 数据并行【/1】 23"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】2.2 CUDA C program structure【/1】 27",
+      "zh": "【1】2.2 CUDA C 程序结构【/1】 27"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】2.3 A vector addition kernel【/1】 28",
+      "zh": "【1】2.3 向量加法核函数【/1】 28"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】2.4 Device global memory and data transfer【/1】 31",
+      "zh": "【1】2.4 设备全局内存与数据传输【/1】 31"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】2.5 Kernel functions and threading【/1】 35",
+      "zh": "【1】2.5 核函数与线程【/1】 35"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】2.6 Calling kernel functions【/1】 40",
+      "zh": "【1】2.6 调用核函数【/1】 40"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】2.7 Compilation【/1】 42",
+      "zh": "【1】2.7 编译【/1】 42"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】2.8 Summary【/1】 43",
+      "zh": "【1】2.8 小结【/1】 43"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[9]",
+      "en": "【1】Exercises【/1】 44",
+      "zh": "【1】习题【/1】 44"
+    },
+    {
+      "id": "u0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[10]",
+      "en": "【1】References【/1】 46",
+      "zh": "【1】参考文献【/1】 46"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Data parallelism refers to the phenomenon in which the computation work to be performed on different parts of the dataset can be done independently of each other and thus can be done in parallel with each other. Many applications exhibit a rich amount of data parallelism that makes them amenable to scalable parallel execution. It is therefore important for parallel programmers to be familiar with the concept of data parallelism and the parallel programming language constructs for writing code that exploit data parallelism. In this chapter we will use the CUDA C language constructs to develop a simple data parallel program.",
+      "zh": "数据并行指的是这样一种现象：对数据集不同部分所要执行的计算工作可以彼此独立完成，因而可以相互并行执行。许多应用展现出丰富的数据并行性，使其适合可扩展的并行执行。因此，并行程序员熟悉数据并行这一概念，以及利用数据并行编写代码所需的并行编程语言构造，就显得十分重要。在本章中，我们将使用 CUDA C 语言构造来开发一个简单的数据并行程序。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "2.1 Data parallelism",
+      "zh": "2.1 数据并行"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "When modern software applications run slowly, the problem is usually data—too much data to process. Image-processing applications manipulate images or videos with millions to trillions of pixels. Scientific applications model fluid dynamics using billions of grid points. Molecular dynamics applications must simulate interactions between thousands to billions of atoms. Airline scheduling deals with thousands of flights, crews, and airport gates. Most of these pixels, particles, grid points, interactions, flights, and so on can usually be dealt with largely independently. For example, in image processing, converting a color pixel to grayscale requires only the data of that pixel. Blurring an image averages each pixel’s color with the colors of nearby pixels, requiring only the data of that small neighborhood of pixels. Even a seemingly global operation, such as finding the average brightness of all pixels in an image, can be broken down into many smaller computations that can be executed independently. Such independent evaluation of different pieces of data is the basis of 【1】data parallelism【/1】. Writing data parallel code entails (re)organizing the computation around the data such that we can execute the resulting independent computations in parallel to complete the overall job faster—often much faster.",
+      "zh": "当现代软件应用运行缓慢时，问题通常出在数据上——需要处理的数据太多了。图像处理应用要处理包含数百万到数万亿像素的图像或视频。科学应用使用数十亿个网格点对流体动力学进行建模。分子动力学应用必须模拟数千到数十亿个原子之间的相互作用。航班调度要处理数千个航班、机组人员和机场登机口。这些像素、粒子、网格点、相互作用、航班等大多都可以在很大程度上彼此独立地处理。例如，在图像处理中，把彩色像素转换为灰度只需要该像素本身的数据。图像模糊需要把每个像素的颜色与相邻像素的颜色进行平均，只需要这一小片相邻像素的数据。即使是看似全局的操作，例如求一幅图像中所有像素的平均亮度，也可以分解为许多可以独立执行的更小计算。这种对数据的不同部分进行独立求值，正是【1】数据并行【/1】的基础。编写数据并行代码需要围绕数据来（重新）组织计算，使我们可以并行执行这些独立的计算，从而更快地完成整体任务——通常要快得多。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "Let us illustrate the concept of data parallelism with a color-to-grayscale conversion example. 【1】Fig. 2.1【/1】 shows a color image (left side) consisting of many pixels, each containing a red, green, and blue fractional value (【2】r【/2】, 【3】g【/3】, 【4】b【/4】) varying from 0 (black) to 1 (full intensity).",
+      "zh": "下面我们用一个彩色到灰度转换的例子来说明数据并行这一概念。【1】图 2.1【/1】显示了一幅彩色图像（左侧），它由许多像素组成，每个像素都包含一个红色、绿色和蓝色的分数值（【2】r【/2】、【3】g【/3】、【4】b【/4】），取值从 0（黑色）到 1（全强度）。"
+    },
+    {
+      "id": "n0022",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 2.1【/1】 Conversion of a color image to a grayscale image.",
+      "zh": "【1】图 2.1【/1】 彩色图像到灰度图像的转换。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "To convert the color image (left side of 【1】Fig. 2.1【/1】) to a grayscale image (right side), we compute the luminance value 【2】L【/2】 for each pixel by applying the following weighted sum formula:",
+      "zh": "为了把彩色图像（【1】图 2.1【/1】的左侧）转换为灰度图像（右侧），我们对每个像素应用如下加权求和公式来计算其亮度值【2】L【/2】："
+    },
+    {
+      "id": "n0024",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[3]/p[1]",
+      "en": "RGB Color Image Representation",
+      "zh": "RGB 彩色图像表示"
+    }
+  ]
+}

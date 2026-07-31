@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="zh-CN" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="前言部分">
+      <option value="Cover.html">封面图</option>
+      <option value="Title_page.html">标题页</option>
+      <option value="Contents.html">目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">致谢</option>
+    </optgroup>
+    <optgroup label="序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">课程资源</option>
+    </optgroup>
+    <optgroup label="第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第一部分：基本概念">
+      <option value="Part1.html">第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html" selected>第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">参考文献</option>
+    </optgroup>
+    <optgroup label="第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html">第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html">第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html">第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">习题</option>
+    </optgroup>
+    <optgroup label="第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第二部分：并行模式">
+      <option value="Part2.html">第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html">第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html">第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">习题</option>
+    </optgroup>
+    <optgroup label="第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html">第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第三部分：高级模式与应用">
+      <option value="Part3.html">第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html">第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html">第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">参考文献</option>
+    </optgroup>
+    <optgroup label="第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">参考文献</option>
+    </optgroup>
+    <optgroup label="第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html">第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">参考文献</option>
+    </optgroup>
+    <optgroup label="第四部分：高级实践">
+      <option value="Part4.html">第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html">第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">参考文献</option>
+    </optgroup>
+    <optgroup label="第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">参考文献</option>
+    </optgroup>
+    <optgroup label="第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Part1.html">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch002_23-46_B9780323912310000148.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/Ch002_23-46_B9780323912310000148.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch002_23-46_B9780323912310000148.html">对照</a></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter" id="c0002">
+<a id="Ch002_23-46_B9780323912310000148"></a><div id="page_23" aria-label="Page 23" epub:type="pagebreak" role="doc-pagebreak"></div><header>
+<div id="CN"><a id="Ch002_23-46_B9780323912310000148titl"></a>Chapter 2</div><h1 class="chaptitle" epub:type="title" id="tit0010">异构数据并行计算</h1><address><p class="chapau">特别贡献：David Luebke</p></address>
+</header><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0080">本章介绍数据并行这一概念，以及编写一个简单 CUDA C 程序所需的基本 CUDA C 特性。本章首先介绍线程、主机和设备的概念；接着介绍 CUDA 设备内存管理与数据传输的应用程序编程接口函数；然后进一步介绍 CUDA C 核函数的基本结构、内置变量、函数声明关键字和核函数启动语法；最后简要概述 CUDA C 程序的编译过程。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">数据并行；可扩展并行程序；CUDA C；线程、核函数；应用程序编程接口（API）；主机代码；设备代码；核函数调用；网格启动；执行配置参数；内存分配；数据传输；错误处理；桩函数；单程序多数据（SPMD）</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">概要</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">2.1 数据并行</a> 23</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">2.2 CUDA C 程序结构</a> 27</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">2.3 向量加法核函数</a> 28</li>
+<li class="chapoutl1" id="o0025"><a id="p0025"></a><a href="#s0025">2.4 设备全局内存与数据传输</a> 31</li>
+<li class="chapoutl1" id="o0030"><a id="p0030"></a><a href="#s0030">2.5 核函数与线程</a> 35</li>
+<li class="chapoutl1" id="o0035"><a id="p0035"></a><a href="#s0035">2.6 调用核函数</a> 40</li>
+<li class="chapoutl1" id="o0040"><a id="p0040"></a><a href="#s0040">2.7 编译</a> 42</li>
+<li class="chapoutl1" id="o0045"><a id="p0045"></a><a href="#s0045">2.8 小结</a> 43</li>
+<li class="chapoutl1" id="u0010"><a id="p0070"></a><a href="#s0070">习题</a> 44</li>
+<li class="chapoutl1" id="u0015"><a id="p0075"></a><a href="#bibliog0010">参考文献</a> 46</li>
+</ul>
+</div></nav>
+<p id="p0085" class="textfl"><a id="P23"></a>数据并行指的是这样一种现象：对数据集不同部分所要执行的计算工作可以彼此独立完成，因而可以相互并行执行。许多应用展现出丰富的数据并行性，使其适合可扩展的并行执行。因此，并行程序员熟悉数据并行这一概念，以及利用数据并行编写代码所需的并行编程语言构造，就显得十分重要。在本章中，我们将使用 CUDA C 语言构造来开发一个简单的数据并行程序。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">2.1 数据并行</h2><p id="p0090" class="textfl"><span id="page_24" aria-label="Page 24" epub:type="pagebreak" role="doc-pagebreak"></span>当现代软件应用运行缓慢时，问题通常出在数据上——需要处理的数据太多了。图像处理应用要处理包含数百万到数万亿像素的图像或视频。科学应用使用数十亿个网格点对流体动力学进行建模。分子动力学应用必须模拟数千到数十亿个原子之间的相互作用。航班调度要处理数千个航班、机组人员和机场登机口。这些像素、粒子、网格点、相互作用、航班等大多都可以在很大程度上彼此独立地处理。例如，在图像处理中，把彩色像素转换为灰度只需要该像素本身的数据。图像模糊需要把每个像素的颜色与相邻像素的颜色进行平均，只需要这一小片相邻像素的数据。即使是看似全局的操作，例如求一幅图像中所有像素的平均亮度，也可以分解为许多可以独立执行的更小计算。这种对数据的不同部分进行独立求值，正是<em>数据并行</em>的基础。编写数据并行代码需要围绕数据来（重新）组织计算，使我们可以并行执行这些独立的计算，从而更快地完成整体任务——通常要快得多。</p>
+<p id="p0095" class="text">下面我们用一个彩色到灰度转换的例子来说明数据并行这一概念。<a href="#f0010">图 2.1</a> 显示了一幅彩色图像（左侧），它由许多像素组成，每个像素都包含一个红色、绿色和蓝色的分数值（<em>r</em>、<em>g</em>、<em>b</em>），取值从 0（黑色）到 1（全强度）。</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F000148f02-01-9780323912310.jpg" class="img" alt="image" width="1373" height="459"/><figcaption class="figleg"><a id="sp0010"></a><span class="fignum">图 2.1</span> 彩色图像到灰度图像的转换。</figcaption></figure></div><p id="p0100" class="text">为了把彩色图像（<a href="#f0010">图 2.1</a> 的左侧）转换为灰度图像（右侧），我们对每个像素应用如下加权求和公式来计算其亮度值 <em>L</em>：</p>
+<p class="hiddenClass"><math><mi>L</mi><mo>=</mo><mi>r</mi><mo>*</mo><mn>0.21</mn><mo>+</mo><mi>g</mi><mo>*</mo><mn>0.72</mn><mo>+</mo><mi>b</mi><mo>*</mo><mn>0.07</mn></math></p>
+<div class="showClass" id="eqn1"><img src="../images/F000148si1.png" class="img" alt="image" width="146" height="11"/>
+</div>
+<p class="text"><span id="page_25" aria-label="Page 25" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<div class="boxg1" id="b0010">
+<p class="b1title"><a id="sp0085"></a>RGB 彩色图像表示</p>
+<p id="p0680" class="b1textfl"><em>在 RGB 表示中，图像中的每个像素存储为 (r, g, b) 值的一个元组。图像一行的格式是 (r g b) (r g b) … (r g b)，如下面的示意图所示。每个元组指定红色（R）、绿色（G）和蓝色（B）的一种混合。也就是说，对每个像素而言，r、g、b 的值分别表示渲染该像素时红、绿、蓝三种光源的强度（0 表示暗，1 表示全强度）</em>。</p>
+<div class="pageavoid"><figure class="fig" id="f0080"><img src="../images/F000148u02-01-9780323912310.jpg" class="img" alt="image" width="1252" height="464"/></figure>
+</div>
+<p id="p0685" class="b1text"><em>这三种颜色的实际允许混合方式因行业规定的色彩空间而异。这里，AdbobeRGB™ 色彩空间中三种颜色的有效组合显示为三角形的内部区域。每种混合的纵坐标（y 值）和横坐标（x 值）表示像素强度中应分配给 G 和 R 的比例，像素强度的剩余比例 (1-y–x) 应分配给 B。要渲染一幅图像，需要使用每个像素的 r、g、b 值来计算该像素的总强度（亮度）以及混合系数 (x, y, 1-y-x)</em>。</p>
+</div>
+<p id="p0105" class="text"><span id="page_26" aria-label="Page 26" epub:type="pagebreak" role="doc-pagebreak"></span>如果我们将输入视为按 RGB 值数组 <em>I</em> 组织的一幅图像，将输出视为相应的亮度值数组 <em>O</em>，就得到<a id="Bf0015" href="#f0015">图 2.2</a> 所示的简单计算结构。例如，<em>O</em>[0] 是通过按上面的公式计算 <em>I</em>[0] 中 RGB 值的加权和得到的；<em>O</em>[1] 是通过计算 <em>I</em>[1] 中 RGB 值的加权和得到的；<em>O</em>[2] 是通过计算 <em>I</em>[2] 中 RGB 值的加权和得到的；依此类推。这些逐像素的计算互不依赖，全部可以独立执行。显然，彩色到灰度转换展现出丰富的数据并行性。当然，完整应用中的数据并行可能更为复杂，而本书有相当多的篇幅正是用于讲解发现和利用数据并行所必需的并行思维。</p>
+<div class="boxg1" id="b0015">
+<p class="b1title"><a id="sp0090"></a>任务并行与数据并行</p>
+<p id="p0690" class="b1textfl"><em>数据并行并不是并行编程中使用的唯一一种并行方式，任务并行也在并行编程中被广泛使用。任务并行通常通过应用的任务分解来体现。例如，一个简单的应用可能需要做一次向量加法和一次矩阵-向量乘法，其中的每一个都是一个任务。如果这两个任务可以独立完成，就存在任务并行。I/O 和数据传输也是常见的任务来源</em>。</p>
+<p id="p0695" class="b1text"><em>在大型应用中，通常会有更多的独立任务，因此也就有更大程度的任务并行。例如，在分子动力学模拟器中，自然任务清单包括振动作用力、转动作用力、非键合力的邻居识别、非键合力、速度与位置，以及基于速度与位置的其他物理属性</em>。</p>
+<p id="p0700" class="b1text"><em>一般来说，数据并行是并行程序可扩展性的主要来源。面对大规模数据集，人们通常能发现丰富的数据并行，从而充分利用大规模并行处理器，让应用性能随着每一代拥有更多执行资源的硬件而增长。尽管如此，任务并行在实现性能目标方面也能发挥重要作用。我们将在后文引入流（streams）时再讨论任务并行</em>。</p>
+</div>
+<p class="text"><span id="page_27" aria-label="Page 27" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F000148f02-02-9780323912310.jpg" class="img" alt="image" width="1374" height="464"/><figcaption class="figleg"><a id="sp0015"></a><span class="fignum"><a href="#Bf0015">图 2.2</a></span> 图像到灰度转换中的数据并行。各像素可以彼此独立地计算。</figcaption></figure></div></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">2.2 CUDA C 程序结构</h2><p id="p0110" class="textfl">我们现在就来学习如何编写一个利用数据并行实现更快执行的 CUDA C 程序。CUDA C<sup><a aria-label="noteref" href="#fn1" id="Cfn1">1</a></sup> 以最少的语法和库函数扩展了广受欢迎的 ANSI C 编程语言，让程序员能够面向同时包含 CPU 核心和大规模并行 GPU 的异构计算系统进行编程。顾名思义，CUDA C 建立在 NVIDIA 的 CUDA 平台之上。CUDA 目前是进行大规模并行计算最成熟的框架，在高性能计算行业中得到广泛应用，编译器、调试器和性能分析器等关键工具在主流操作系统上均可使用。</p>
+<p id="p0115" class="text">CUDA C 程序的结构反映了计算机中<em>主机</em>（CPU）与一个或多个<em>设备</em>（GPU）共存这一事实。每个 CUDA C 源文件都可以同时包含主机代码和设备代码。默认情况下，任何传统 C 程序都是一个只包含主机代码的 CUDA 程序。我们可以向任何源文件中添加设备代码，设备代码用特殊的 CUDA C 关键字明确标记。设备代码包含一些函数，即<em>核函数</em>，这些函数的代码以数据并行方式执行。</p>
+<p id="p0120" class="text"><span id="page_28" aria-label="Page 28" epub:type="pagebreak" role="doc-pagebreak"></span>CUDA 程序的执行过程如<a href="#f0020">图 2.3</a> 所示。执行从主机代码（CPU 串行代码）开始。当调用核函数时，会在设备上<em>启动</em>大量线程来执行该核函数。一次核函数调用所启动的所有线程合称为一个<em>网格</em>。这些线程是 CUDA 平台上并行执行的主要载体。<a href="#f0020">图 2.3</a> 显示了两个线程网格的执行过程。我们很快会讨论这些网格是如何组织的。当一个网格的所有线程都执行完毕时，该网格终止，执行回到主机上继续，直到启动另一个网格。请注意，<a href="#f0020">图 2.3</a> 显示的是一个简化模型，其中 CPU 执行与 GPU 执行并不重叠。许多异构计算应用会设法让 CPU 与 GPU 的执行相互重叠，以同时发挥 CPU 和 GPU 的优势。</p>
+<div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F000148f02-03-9780323912310.jpg" class="img" alt="image" width="999" height="446"/><figcaption class="figleg"><a id="sp0020"></a><span class="fignum">图 2.3</span> CUDA 程序的执行。</figcaption></figure></div><p id="p0125" class="text">启动一个网格通常会生成大量线程，以利用数据并行。在彩色到灰度转换的例子中，每个线程可用来计算输出数组 O 的一个像素。此时，网格启动应生成的线程数等于图像中的像素数。对于大图像，将生成大量的线程。得益于高效的硬件支持，CUDA 程序员可以假设这些线程的生成与调度只需要很少的时钟周期。这一假设与传统 CPU 线程形成鲜明对比——传统的 CPU 线程通常需要数千个时钟周期来生成和调度。在下一章中，我们将展示如何实现彩色到灰度转换和图像模糊的核函数。为了简单起见，本章其余部分将使用向量加法作为贯穿示例。</p><div class="boxg1" id="b0020"><p class="b1title"><a id="sp0095"></a>线程</p>
+<p id="p0705" class="b1textfl"><em>线程是现代计算机中处理器如何执行串行程序的一种简化视图。一个线程由程序的代码、代码中正在执行的执行点，以及其变量和数据结构的取值构成。就用户而言，线程的执行是串行的。我们可以使用源代码级调试器来监视线程的执行进度：一次执行一条语句，查看下一条将要执行的语句，并在执行过程中检查变量和数据结构的取值</em>。</p>
+<p id="p0710" class="b1text"><em>线程在编程中已经使用了很多年。如果程序员想在应用中启动并行执行，他/她会使用线程库或专用语言来创建并管理多个线程。在 CUDA 中，每个线程的执行同样也是串行的。CUDA 程序通过调用核函数来启动并行执行，这会促使底层的运行时机制启动一个线程网格，并行处理数据的不同部分</em>。</p></div></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">2.3 向量加法核函数</h2><p id="p0130" class="textfl"><span id="page_29" aria-label="Page 29" epub:type="pagebreak" role="doc-pagebreak"></span>我们使用向量加法来演示 CUDA C 程序的结构。向量加法可以说是最简单的一种数据并行计算——相当于串行编程中的“Hello World”。在展示向量加法的核函数代码之前，先回顾一下传统的向量加法（主机代码）函数是如何工作的，会很有帮助。<a href="#f0025">图 2.4</a> 显示了一个由 main 函数和一个向量加法函数组成的简单传统 C 程序。在本书的所有示例中，只要需要区分主机数据和设备数据，我们就会给主机使用的变量名加上“<span class="inlinecode">_h</span>”后缀，给设备使用的变量名加上“<span class="inlinecode">_d</span>”后缀，以提醒自己这些变量的用途。由于<a href="#f0025">图 2.4</a> 中只有主机代码，所以我们只看到以“<span class="inlinecode">_h</span>”为后缀的变量。</p>
+<div class="boxg1" id="b0025">
+<p class="b1title"><a id="sp0100"></a>C 语言中的指针</p>
+<p id="p0715" class="b1textfl"><em><a href="#f0025">图 2.4</a> 中的函数实参 A、B 和 C</em> <em>都是指针。在 C 语言中，指针可以用来访问变量和数据结构。例如，浮点变量 V 可以这样声明：</em></p>
+<p id="p0720" class="b1text">可以用 <em>float V;</em>来声明。</p>
+<p id="p0725" class="b1text"><em>指针变量 P 可以这样声明：</em></p>
+<p id="p0730" class="b1text">可以用 <em>float *P;</em>来声明。</p>
+<p id="p0735" class="b1text"><em>通过语句 P=&amp;V 把 V 的地址赋给 P，我们让 P“指向”V。此时 *P 成为 V 的同义词。例如，U=*P 会把 V 的值赋给 U；再如，*P=3 会把 V 的值改为 3</em>。</p>
+<p id="p0740" class="b1text"><em>在 C 程序中，数组可以通过一个指向其第 0</em><sup><em>th</em></sup> <em>个元素的指针来访问。例如，语句 P=&amp;(A[0]) 使 P 指向数组 A 的第 0</em><sup><em>th</em></sup> <em>个元素；P[i] 成为 A[i] 的同义词。事实上，数组名 A 本身就是指向其第 0</em><sup><em>th</em></sup> <em>个元素的指针</em>。</p>
+<p id="p0745" class="b1text"><em>在</em><a href="#f0025">图 2.4</a> <em>中，将数组名 A 作为第一个实参传给 vecAdd 函数的调用，会使该函数的第一个形参 A_h 指向 A 的第 0</em><sup><em>th</em></sup> <em>个元素。于是，函数体中的 A_h[i] 可以用来访问 main 函数中数组 A 的 A[i]</em>。</p>
+<p id="p0750" class="b1text"><em>关于 C 语言中指针的详细用法，可参阅 Patt &amp; Patel（</em><a href="#bib4" role="doc-biblioref" epub:type="biblioref" id="BIB_4">Patt &amp; Patel, 2020</a><em>）简明易懂的讲解</em>。</p>
+</div>
+<p class="textfl"><span id="page_30" aria-label="Page 30" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F000148f02-04-9780323912310.jpg" class="img" alt="image" width="1299" height="529"/><figcaption class="figleg"><a id="sp0025"></a><span class="fignum">图 2.4</span> 一个简单的传统向量加法 C 代码示例。</figcaption></figure></div><p id="p0135" class="text">假设要相加的向量存储在数组 <span class="inlinecode">A</span> 和 <span class="inlinecode">B</span> 中，这两个数组在 main 程序中分配并初始化。输出向量存放在数组 <span class="inlinecode">C</span> 中，它同样在 main 程序中分配。为简洁起见，我们不展示 <span class="inlinecode">A</span>、<span class="inlinecode">B</span> 和 <span class="inlinecode">C</span> 在 main 函数中是如何分配或初始化的。这些数组的指针与包含向量长度的变量 <em>N</em> 一起传给 vecAdd 函数。请注意，vecAdd 函数的形参都以“_h”为后缀，以强调它们供主机使用。这一命名约定在接下来引入设备代码时会很有帮助。</p>
+<p id="p0140" class="text"><a href="#f0025">图 2.4</a> 中的 <span class="inlinecode">vecAdd</span> 函数使用 <span class="inlinecode">for 循环</span>遍历向量元素。在第 i 次迭代中，输出元素 <span class="inlinecode">C_h[i]</span>接收 <span class="inlinecode">A_h[i]</span>与 <span class="inlinecode">B_h[i]</span>之和。向量长度参数 <em>n</em> 用于控制循环，使迭代次数与向量长度一致。该函数通过指针 <span class="inlinecode">A_h、B_h</span> 和 <span class="inlinecode">C_h</span> 分别读取 <span class="inlinecode">A</span> 与 <span class="inlinecode">B</span> 的元素，并写入 <span class="inlinecode">C</span> 的元素。当 vecAdd 函数返回后，main 函数中其后的语句就可以访问 <span class="inlinecode">C</span> 的新内容。</p>
+<p id="p0145" class="text"><span id="page_31" aria-label="Page 31" epub:type="pagebreak" role="doc-pagebreak"></span>并行执行向量加法的一种直接做法是修改 <span class="inlinecode">vecAdd</span> 函数，把它的计算搬到设备上。修改后的 vecAdd 函数的结构如<a href="#f0030">图 2.5</a> 所示。函数的第一部分在设备（GPU）内存中分配空间，以存放 <span class="inlinecode">A</span>、<span class="inlinecode">B</span> 和 <span class="inlinecode">C</span> 三个向量的副本，并把 <span class="inlinecode">A</span> 和 <span class="inlinecode">B</span> 向量从主机内存复制到设备内存。第二部分调用真正的向量加法核函数，在设备上启动一个线程网格。第三部分把求和向量 <span class="inlinecode">C</span> 从设备内存复制回主机内存，并从设备内存中释放这三个数组。</p>
+<div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F000148f02-05-9780323912310.jpg" class="img" alt="image" width="1299" height="958"/><figcaption class="figleg"><a id="sp0030"></a><span class="fignum">图 2.5</span> 把工作移到设备上的修订版 vecAdd 函数概要。</figcaption></figure></div><p id="p0150" class="text">请注意，修订后的 <span class="inlinecode">vecAdd</span> 函数本质上是一个外包代理：它把输入数据送到设备上，在设备上激活计算，再从设备取回结果。这个代理以这样的方式行事，使 main 程序甚至无需知道向量加法现在其实是在设备上完成的。在实践中，这种“透明”的外包模型可能非常低效，因为要来回复制大量数据。人们通常会把大型、重要的数据结构留在设备上，直接从主机代码调用作用在这些结构上的设备函数。不过，眼下我们仍将使用这种简化的透明模型来介绍 CUDA C 程序的基本结构。修订版函数的细节以及核函数的编写方法，将是本章剩余部分的主题。</p></section><section><a id="s0025"></a><h2 class="h1hd" id="st0040">2.4 设备全局内存与数据传输</h2><p id="p0155" class="textfl">在当前的 CUDA 系统中，设备通常是自带动态随机存取存储器的硬件卡，这种存储器称为设备<em>全局</em>内存，或简称为全局内存。例如，NVIDIA Volta V100 自带 16GB 或 32GB 的全局内存。把它称为“全局”内存，是为了与程序员同样可以访问的其他类型的设备内存相区别。CUDA 内存模型以及不同类型的设备内存的细节将在<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>（内存体系结构与数据局部性）中讨论。</p>
+<p id="p0160" class="text">对于向量加法核函数，在调用核函数之前，程序员需要在设备全局内存中分配空间，并把数据从主机内存传输到设备全局内存中分配好的空间。这对应<a href="#f0030">图 2.5</a> 中的第 1 部分。类似地，在设备执行完毕之后，程序员需要把结果数据从设备全局内存传回主机内存，并释放设备全局内存中不再需要的已分配空间。这对应<a href="#f0030">图 2.5</a> 中的第 3 部分。CUDA 运行时系统（通常在主机上运行）提供应用程序编程接口（API）函数，代表程序员执行这些操作。从现在起，为简洁起见，我们将把“数据从主机传输到设备”作为“数据从主机内存复制到设备全局内存”的简称。反方向同样如此。</p>
+<p id="p0165" class="text">在<a href="#f0030">图 2.5</a> 中，vecAdd 函数的第 1 部分和第 3 部分需要使用 CUDA API 函数：为 <span class="inlinecode">A</span>、<span class="inlinecode">B</span> 和 <span class="inlinecode">C</span> 分配设备全局内存；把 <span class="inlinecode">A</span> 和 <span class="inlinecode">B</span> 从主机传输到设备；在向量加法完成后把 <span class="inlinecode">C</span> 从设备传输到主机；并释放 <span class="inlinecode">A</span>、<span class="inlinecode">B</span> 和 <span class="inlinecode">C</span> 的设备全局内存。我们先讲解内存分配和释放函数。</p>
+<p id="p0170" class="text"><span id="page_32" aria-label="Page 32" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0035" href="#f0035">图 2.6</a> 显示了用于分配和释放设备全局内存的两个 API 函数。<span class="inlinecode">cudaMalloc</span> 函数可以从主机代码中调用，为一个对象分配一块设备全局内存。读者应当注意到 <span class="inlinecode">cudaMalloc</span> 与标准 <span class="inlinecode">C</span> 运行时库中的 malloc 函数惊人地相似。这是有意为之：CUDA C 就是只做了最小扩展的 C。CUDA C 使用标准 C 运行时库的 malloc 函数来管理主机内存 <sup><a aria-label="noteref" href="#fn2" id="Cfn2">2</a></sup>，并把 <span class="inlinecode">cudaMalloc</span> 作为 C 运行时库的扩展加入。通过让接口尽可能贴近原有的 C 运行时库，CUDA C 把 C 程序员重新学习这些扩展用法所需的时间降到了最低。</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F000148f02-06-9780323912310.jpg" class="img" alt="image" width="660" height="340"/><figcaption class="figleg"><a id="sp0035"></a><span class="fignum"><a href="#Bf0035">图 2.6</a></span> 用于管理设备全局内存的 CUDA API 函数。</figcaption></figure></div><p id="p0175" class="text"><span class="inlinecode">cudaMalloc</span> 函数的第一个参数是一个指针变量的<strong>地址</strong>，该指针变量将被设置指向所分配的对象。这个指针变量的地址应强制转换为 (void **)，因为该函数期望接收一个通用指针；内存分配函数是通用的，不限于任何特定类型的对象。<sup><a aria-label="noteref" href="#fn3" id="Cfn3">3</a></sup> 这一参数使 <span class="inlinecode"><span class="inlinecode">cudaMalloc</span></span> 函数能够把所分配内存的地址写入传入的指针变量，而无论其类型如何。<sup><a aria-label="noteref" href="#fn4" id="Cfn4">4</a></sup> 调用核函数的主机代码会把这个指针值传给需要访问该内存对象的核函数。<span class="inlinecode"><span class="inlinecode">cudaMalloc</span></span> 函数的第二个参数给出要分配的数据的大小，以字节为单位。第二个参数的用法与 C 的 malloc 函数的 size 参数一致。</p>
+<p id="p0180" class="text">我们现在用下面这个简单的代码示例来说明 <span class="inlinecode"><span class="inlinecode">cudaMalloc</span></span> 和 <span class="inlinecode">cudaFree</span> 的用法：</p><a id="p0185"></a><pre>float *A_d</pre><a id="p0190"></a><pre>int size<em>=</em>n*sizeof(float);</pre><a id="p0195"></a><pre><span class="inlinecode">cudaMalloc</span>((void**)&amp;A_d, size);</pre><a id="p0200"></a><pre>…</pre><p id="p0205" class="text"><span class="inlinecode">cudaFree(A_d);</span><span id="page_33" aria-label="Page 33" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<p id="p0210" class="text">这是<a href="#f0030">图 2.5</a> 中示例的延续。为了清晰起见，我们给指针变量加上“<span class="inlinecode">_d</span>”后缀，表示它指向设备全局内存中的对象。传给 <span class="inlinecode"><span class="inlinecode">cudaMalloc</span></span> 的第一个参数是指针 <span class="inlinecode">A_d</span> 的<strong>地址</strong>（即 &amp;<span class="inlinecode">A_d</span>），并转换为 void 指针。当 <span class="inlinecode"><span class="inlinecode">cudaMalloc</span></span> 返回时，<span class="inlinecode">A_d</span> 将指向为向量 A 分配的设备全局内存区域。传给 <span class="inlinecode">cudaMalloc</span> 的第二个参数是要分配的区域的大小。由于 size 以字节为单位，程序员在确定 size 的取值时，需要把数组的元素个数换算成字节数。例如，为一个包含 <em>n</em> 个单精度浮点元素的数组分配空间时，size 的值等于 <em>n</em> 乘以单精度浮点数的大小，在今天的计算机中也就是 4 字节。因此 size 的值将是 <em>n</em>*4。计算完成后，以指针 <span class="inlinecode">A_d</span> 为实参调用 cudaFree，从设备全局内存中释放向量 A 的存储空间。请注意，cudaFree 不需要改变 <span class="inlinecode">A_d</span> 的值；它只需要利用 <span class="inlinecode">A_d</span> 的值把所分配的内存归还给可用内存池。因此，作为实参传入的只是 <span class="inlinecode">A_d</span> 的值，而不是它的地址。</p>
+<p id="p0215" class="text"><span class="inlinecode">A_d</span>、<span class="inlinecode">B_d</span> 和 <span class="inlinecode">C_d</span> 中的地址指向设备全局内存中的位置。这些地址不应当在主机代码中解引用，而应当用于调用 API 函数和核函数。在主机代码中对设备全局内存指针进行解引用可能会引发异常或其他类型的运行时错误。</p>
+<p id="p0220" class="text">读者应当为<a href="#f0030">图 2.5</a> 中 <span class="inlinecode">vecAdd</span> 示例的第 1 部分补充类似的内容：声明 <span class="inlinecode">B_d</span> 和 <span class="inlinecode">C_d</span> 指针变量，以及与之对应的 <span class="inlinecode">cudaMalloc</span> 调用。此外，<a href="#f0030">图 2.5</a> 中的第 3 部分可以通过对 <span class="inlinecode">B_d</span> 和 <span class="inlinecode">C_d</span> 的 <span class="inlinecode">cudaFree</span> 调用来完成。</p>
+<p id="p0225" class="text"><span id="page_34" aria-label="Page 34" epub:type="pagebreak" role="doc-pagebreak"></span>一旦主机代码在设备全局内存中为数据对象分配好了空间，就可以请求把数据从主机传输到设备。这通过调用某个 CUDA API 函数来实现。<a id="Bf0040" href="#f0040">图 2.7</a> 显示了这样一个 API 函数：<span class="inlinecode">cudaMemcpy</span>。<span class="inlinecode">cudaMemcpy</span> 函数接受四个参数。第一个参数是指向复制目标位置的指针，第二个参数指向源位置，第三个参数指定要复制的字节数，第四个参数指明复制涉及的存储器类型：从主机到主机、从主机到设备、从设备到主机，以及从设备到设备。例如，这个内存复制函数可以用于把数据从设备全局内存中的一个位置复制到设备全局内存中的另一个位置。</p>
+<div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F000148f02-07-9780323912310.jpg" class="img" alt="image" width="466" height="261"/><figcaption class="figleg"><a id="sp0040"></a><span class="fignum"><a href="#Bf0040">图 2.7</a></span> 用于主机与设备之间数据传输的 CUDA API 函数。</figcaption></figure></div><p id="p0230" class="text"><span class="inlinecode">vecAdd</span> 函数调用 <span class="inlinecode">cudaMemcpy</span> 函数，在相加之前把 <span class="inlinecode">A_h</span> 和 <span class="inlinecode">B_h</span> 向量从主机内存复制到设备内存中的 <span class="inlinecode">A_d</span> 和 <span class="inlinecode">B_d</span>，并在相加完成之后把 <span class="inlinecode">C_d</span> 向量从设备内存复制回主机内存中的 C_h。假设 <span class="inlinecode">A_h</span>、<span class="inlinecode">B_h</span>、<span class="inlinecode">A_d</span>、<span class="inlinecode">B_d</span> 以及 size 的值已经按照前面讨论的方式设置好，下面展示三个 <span class="inlinecode">cudaMemcpy</span> 调用。两个符号常量 <span class="inlinecode">cudaMemcpy</span><span class="inlinecode">HostToDevice</span> 和 <span class="inlinecode">cudaMemcpyDeviceToHost</span> 是 CUDA 编程环境中已识别、预定义的常量。请注意，通过恰当地安排源指针和目标指针的顺序，并使用与传输类型对应的常量，同一个函数可以用于双向传输数据。</p><a id="p0235"></a><pre><span class="inlinecode">cudaMemcpy</span>(<span class="inlinecode">A_d</span>, <span class="inlinecode">A_h</span>, size, <span class="inlinecode">cudaMemcpy</span>HostToDevice);</pre><a id="p0240"></a><pre><span class="inlinecode">cudaMemcpy</span>(<span class="inlinecode">B_d</span>, <span class="inlinecode">B_h</span>, size, <span class="inlinecode">cudaMemcpy</span>HostToDevice);</pre><a id="p0245"></a><pre>…</pre><a id="p0250"></a><pre><span class="inlinecode">cudaMemcpy</span>(C_h, <span class="inlinecode">C_d</span>, size, <span class="inlinecode">cudaMemcpy</span>DeviceToHost);</pre><p id="p0255" class="text"><span id="page_35" aria-label="Page 35" epub:type="pagebreak" role="doc-pagebreak"></span>综上所述，<a href="#f0025">图 2.4</a> 中的 main 程序调用 <span class="inlinecode">vecAdd</span>，而 vecAdd 同样在主机上执行。如<a href="#f0030">图 2.5</a> 所示，<span class="inlinecode">vecAdd</span> 函数在设备全局内存中分配空间、请求数据传输，并调用真正执行向量加法的核函数。我们把这种用于调用核函数的主机代码称为<em>桩函数</em>。我们将在<a href="#f0045">图 2.8</a> 中展示一个更完整的 <span class="inlinecode">vecAdd</span> 函数版本。</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F000148f02-08-9780323912310.jpg" class="img" alt="image" width="1369" height="927"/><figcaption class="figleg"><a id="sp0045"></a><span class="fignum">图 2.8</span> vecAdd() 的一个更完整版本。</figcaption></figure></div><p id="p0260" class="text">与<a href="#f0030">图 2.5</a> 相比，<a href="#f0045">图 2.8</a> 中的 <span class="inlinecode">vecAdd</span> 函数在第 1 部分和第 3 部分上是完整的。第 1 部分为 <span class="inlinecode">A_d</span>、<span class="inlinecode">B_d</span> 和 <span class="inlinecode">C_d</span> 分配设备全局内存，并把 <span class="inlinecode">A_h</span> 传输到 <span class="inlinecode">A_d</span>、<span class="inlinecode">B_h</span> 传输到 <span class="inlinecode">B_d</span>。这通过调用 <span class="inlinecode">cudaMalloc</span> 和 <span class="inlinecode">cudaMemcpy</span> 函数完成。我们鼓励读者自行写出带适当参数值的函数调用，并与<a href="#f0045">图 2.8</a> 中所示的代码进行比较。第 2 部分调用核函数，将在下面的小节中介绍。第 3 部分把向量求和的数据从设备复制到主机，使这些值在 main 函数中可用。这通过调用 <span class="inlinecode">cudaMemcpy</span> 函数完成。随后，它通过调用 <span class="inlinecode">cudaFree</span> 函数（<a href="#f0050">图 2.9</a>），释放 <span class="inlinecode">A_d</span>、<span class="inlinecode">B_d</span> 和 <span class="inlinecode">C_d</span> 在设备全局内存中的内存。</p>
+<div class="boxg1" id="b0030">
+<p class="b1title"><a id="sp0105"></a>CUDA 中的错误检查与处理</p>
+<p id="p0755" class="b1textfl"><em>一般来说，程序对错误进行检查和处理是很重要的。CUDA API 函数在处理请求后会返回标志，指示是否发生了错误。大多数错误是由调用中使用了不当的实参值造成的</em>。</p>
+<p id="p0760" class="b1text"><em>为简洁起见，我们在示例中不展示错误检查代码。例如</em>，<a href="#f0050">图 2.9</a> <em>展示了对 cudaMalloc 的一次调用：</em></p>
+<p id="p0765" class="b1text">调用代码如下：<em>cudaMalloc((void**) &amp;A_d, size);</em>。</p>
+<p id="p0770" class="b1text"><em>在实践中，我们应该在调用前后加上检测错误条件并打印错误信息的代码，让用户能够知道发生了错误。这种检查代码的一个简单版本如下：</em></p><a id="p0775"></a><pre><em>cudaError_t  err=cudaMalloc((void**) &amp;A_d, size);</em></pre><a id="p0780"></a><pre><em>if (error!=cudaSuccess)  {</em></pre><a id="p0785"></a><pre><em>printf(“%s in %s at line %d\n”,   cudaGetErrorString(err), __FILE__, __LINE__);</em></pre><a id="p0790"></a><pre><em>exit(EXIT_FAILURE);</em></pre><a id="p0795"></a><pre><em>}</em></pre><p id="p0800" class="b1text"><em>这样，如果系统设备内存不足，用户就能得知这一情况。这可以节省大量调试时间</em>。</p>
+<p id="p0805" class="b1text"><em>可以定义一个 C 宏，让检查代码在源码中更加简洁</em>。</p></div><div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F000148f02-09-9780323912310.jpg" class="img" alt="image" width="1299" height="427"/><figcaption class="figleg"><a id="sp0050"></a><span class="fignum">图 2.9</span> 网格中的所有线程都执行相同的核函数代码。</figcaption></figure></div></section><section><a id="s0030"></a><h2 class="h1hd" id="st0045">2.5 核函数与线程</h2><p id="p0265" class="textfl"><span id="page_36" aria-label="Page 36" epub:type="pagebreak" role="doc-pagebreak"></span>我们现在可以更详细地讨论 CUDA C 核函数以及调用这些核函数的效果了。在 CUDA C 中，核函数规定了并行阶段所有线程要执行的代码。由于所有这些线程执行的是同一份代码，CUDA C 编程是众所周知的单程序多数据（SPMD）（<a href="#bib1" role="doc-biblioref" epub:type="biblioref" id="BIB_1">Atallah, 1998</a>）并行编程风格的一个实例——这是一种在并行计算系统中很流行的编程风格。<sup><a aria-label="noteref" href="#fn5" id="Cfn5">5</a></sup></p>
+<p id="p0270" class="text">当程序的主机代码调用核函数时，CUDA 运行时系统会启动一个线程网格，这些线程按两级层次组织。每个网格组织为<em>线程块</em>的数组，为简洁起见，我们以后把线程块简称为块。网格中所有线程块的大小相同；在当前的系统中，每个线程块最多可以包含 1024 个线程。<sup><a aria-label="noteref" href="#fn6" id="Cfn6">6</a></sup> <a href="#f0050">图 2.9</a> 显示了一个示例，其中每个线程块由 256 个线程组成。每个线程用从一个方框引出的曲线箭头表示，方框上标有该线程在块中的索引号。</p>
+<div class="boxg1" id="b0035">
+<p class="b1title"><a id="sp0110"></a>内置变量</p>
+<p id="p0810" class="b1textfl"><em>许多编程语言都有内置变量。这些变量具有特殊的意义和用途，其值通常由运行时系统预先初始化，在程序中一般是只读的。程序员不应出于任何其他目的重新定义这些变量</em>。</p>
+</div>
+<p id="p0275" class="text"><span id="page_37" aria-label="Page 37" epub:type="pagebreak" role="doc-pagebreak"></span>每个线程块中的线程总数由主机代码在调用核函数时指定。同一个核函数可以在主机代码的不同位置以不同的线程数来调用。对于给定的线程网格，块中的线程数可以从名为 <span class="inlinecode">blockDim</span> 的内置变量中获取。<span class="inlinecode">blockDim</span> 是一个结构体，包含三个无符号整数字段（<em>x</em>、<em>y</em> 和 <em>z</em>），帮助程序员把线程组织成一维、二维或三维数组。一维组织只使用 <em>x</em> 字段；二维组织使用 <em>x</em> 和 <em>y</em> 字段；三维结构则使用全部三个字段 <em>x</em>、<em>y</em> 和 <em>z</em>。组织线程时维度的选择通常反映数据的维度。这是合理的，因为创建线程正是为了并行处理数据，线程的组织反映数据的组织是再自然不过的事。在<a href="#f0050">图 2.9</a> 中，每个线程块都组织为一维线程数组，因为数据是一维向量。<span class="inlinecode">blockDim.x</span> 变量的值表示每个块中的线程总数，在<a href="#f0050">图 2.9</a> 中为 256。一般来说，出于硬件效率的考虑，建议线程块每一维上的线程数都是 32 的倍数。我们稍后会再讨论这一点。</p>
+<p id="p0280" class="text">CUDA 核函数还可以访问另外两个内置变量（<span class="inlinecode">threadIdx</span> 和 <span class="inlinecode">blockIdx</span>），它们让线程能够彼此区分，并确定每个线程要处理的数据区域。<span class="inlinecode">threadIdx</span> 变量给线程块中的每个线程一个唯一的坐标。在<a href="#f0050">图 2.9</a> 中，由于我们使用一维线程组织方式，只使用 <span class="inlinecode">threadIdx.x</span>。每个线程的 <span class="inlinecode">threadIdx.x</span> 值显示在<a href="#f0050">图 2.9</a> 中每个线程的小阴影方框里。每个线程块中的第一个线程其 <span class="inlinecode">threadIdx.x</span> 变量值为 0，第二个线程为 1，第三个线程为 2，依此类推。</p>
+<div class="boxg1" id="b0040">
+<p class="b1title"><a id="sp0115"></a>层次化组织</p>
+<p id="p0815" class="b1textfl"><em>与 CUDA 线程类似，现实世界中的许多系统也是按层次组织的，美国的电话系统就是一个很好的例子。在最高层，电话系统由若干“区域”组成，每个区域对应一个地理区域。同一区域内的所有电话线路共享同一个 3 位“区号”。一个电话区域有时比一个城市还要大。例如，伊利诺伊州中部的许多县市就属于同一个电话区域，共享区号 217。在区域内部，每条电话线路有一个 7 位本地电话号码，这使得每个区域最多可以容纳约一千万个号码</em>。</p>
+<p id="p0820" class="b1text"><em>我们可以把每条电话线路看作一个 CUDA 线程，把区号看作 blockIdx 的值，把 7 位本地号码看作 threadIdx 的值。这种层次化组织让系统能够容纳非常多的电话线路，同时保留拨打同一区域内电话的“局部性”：也就是说，拨打同一区域内的电话线路时，打电话的人只需要拨本地号码。只要大部分电话都是在本区域内拨打，我们几乎不需要拨区号。如果偶尔需要拨打另一区域的电话线路，我们需要先拨 1 和区号，然后再拨本地号码。（这正是任何区域的本地号码都不能以 1 开头的原因。）CUDA 线程的层次化组织同样提供了一种形式的局部性。我们很快就会研究这种局部性</em>。</p>
+</div>
+<p class="text"><span id="page_38" aria-label="Page 38" epub:type="pagebreak" role="doc-pagebreak"></span></p>
+<p id="p0285" class="text"><span class="inlinecode">blockIdx</span> 变量给一个块中的所有线程一个共同的块坐标。在<a href="#f0050">图 2.9</a> 中，第一个块中的所有线程其 <span class="inlinecode">blockIdx.x</span> 变量值都为 0，第二个线程块中的线程为 1，依此类推。借用电话系统的类比，我们可以把 <span class="inlinecode">threadIdx.x</span> 看作本地电话号码，把 <span class="inlinecode">blockIdx.x</span> 看作区号。两者结合起来，就给全国每条电话线路分配了一个唯一的电话号码。类似地，每个线程都可以把它的 <span class="inlinecode">threadIdx</span> 和 <span class="inlinecode">blockIdx</span> 值组合起来，在整个网格内为自己构造一个唯一的全局索引。</p>
+<p id="p0290" class="text">在<a href="#f0050">图 2.9</a> 中，唯一的全局索引 i 按 i<em>=</em><span class="inlinecode">blockIdx.x</span> * <span class="inlinecode">blockDim.x</span> + <span class="inlinecode">threadIdx.x</span> 计算。回顾一下，在我们的示例中 <span class="inlinecode">blockDim</span> 为 256。块 0 中线程的 <em>i</em> 值范围是 0 到 255，块 1 中线程的 <em>i</em> 值范围是 256 到 511，块 2 中线程的 <em>i</em> 值范围是 512 到 767。也就是说，这三个块中线程的 <em>i</em> 值连续覆盖了 0 到 767。由于每个线程用 <em>i</em> 访问 <span class="inlinecode">A</span>、<span class="inlinecode">B</span> 和 <span class="inlinecode">C</span>，这些线程就覆盖了原循环的前 768 次迭代。通过启动包含更多线程块的网格，可以处理更大的向量；通过启动包含 <em>n</em> 个或更多线程的网格，可以处理长度为 <em>n</em> 的向量。</p>
+<p id="p0295" class="text"><a href="#f0055">图 2.10</a> 展示了用于向量加法的核函数。请注意，在核函数中我们不使用“<span class="inlinecode">_h</span>”和“<span class="inlinecode">_d</span>”约定，因为这里不存在混淆的可能；在我们的示例中也访问不到主机内存。核函数的语法是 ANSI C，外加一些值得注意的扩展。首先，在 <span class="inlinecode">vecAddKernel</span> 函数的声明前面有一个 CUDA C 特有的关键字“<span class="inlinecode">__global__</span>”。这个关键字表示该函数是一个核函数，可以被调用来在设备上生成一个线程网格。</p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F000148f02-10-9780323912310.jpg" class="img" alt="image" width="1348" height="411"/><figcaption class="figleg"><a id="sp0055"></a><span class="fignum">图 2.10</span> 一个向量加法核函数。</figcaption></figure></div><p id="p0300" class="text"><span id="page_39" aria-label="Page 39" epub:type="pagebreak" role="doc-pagebreak"></span>总的来说，CUDA C 为 C 语言扩展了三个可用于函数声明的限定符关键字，这些关键字的含义总结在<a id="Bf0060" href="#f0060">图 2.11</a> 中。“<span class="inlinecode">__global__</span>”关键字表示所声明的函数是 CUDA C 核函数。请注意，“<span class="inlinecode">global</span>”这个词的两侧各有两个下划线字符。这种核函数在设备上执行，可以从主机调用。在支持<em>动态并行</em>的 CUDA 系统中，它也可以从设备调用，我们将在<a href="Ch021_475-496_B978032391231000001X.html#Ch021_475-496_B978032391231000001X">第 21 章</a>（CUDA 动态并行）中看到这一点。它的重要特征是：调用这样的核函数会在设备上启动一个新的线程网格。</p>
+<div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F000148f02-11-9780323912310.jpg" class="img" alt="image" width="748" height="315"/><figcaption class="figleg"><a id="sp0060"></a><span class="fignum"><a href="#Bf0060">图 2.11</a></span> 用于函数声明的 CUDA C 关键字。</figcaption></figure></div><p id="p0305" class="text">“_<span class="inlinecode">_device__</span>”关键字表示所声明的函数是一个 CUDA 设备函数。设备函数在 CUDA 设备上执行，只能从核函数或其他设备函数调用。设备函数由调用它的设备线程执行，不会导致任何新的设备线程被启动。<sup><a aria-label="noteref" href="#fn7" id="Cfn7">7</a></sup></p>
+<p id="p0310" class="text">“_<span class="inlinecode">_host__</span>”关键字表示所声明的函数是一个 CUDA 主机函数。主机函数就是传统 C 函数，在主机上执行，只能从其他主机函数调用。默认情况下，CUDA 程序中的所有函数只要声明中没有包含任何 CUDA 关键字，就都是主机函数。这很合理，因为许多 CUDA 应用是从仅使用 CPU 的执行环境移植过来的。在移植过程中，程序员会添加核函数和设备函数，原有的函数仍然是主机函数。让所有函数默认成为主机函数，免去了程序员修改所有原有函数声明的繁琐工作。</p>
+<p id="p0315" class="text">请注意，在函数声明中可以同时使用“_<span class="inlinecode">_host__</span>”和“_<span class="inlinecode">_device__</span>”。这种组合告诉编译系统为同一个函数生成两个版本的目标代码：一个在主机上执行，只能从主机函数调用；另一个在设备上执行，只能从设备函数或核函数调用。这支持了一种常见的使用场景——同一份函数源代码可以重新编译生成设备版本。许多用户库函数很可能属于这一类。</p>
+<p id="p0320" class="text"><span id="page_40" aria-label="Page 40" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0055">图 2.10</a> 中第二个值得注意的 C 扩展是内置变量“<span class="inlinecode">threadIdx</span>”、“<span class="inlinecode">blockIdx</span>”和“<span class="inlinecode">blockDim</span>”。回顾一下，所有线程都执行相同的核函数代码，因此需要有办法让它们彼此区分，并把每个线程引导到数据的特定部分。这些内置变量正是线程访问硬件寄存器的途径，这些寄存器向线程提供标识性的坐标。不同线程在其 <span class="inlinecode">threadIdx.x</span>、<span class="inlinecode">blockIdx.x</span> 和 <span class="inlinecode">blockDim.x</span> 变量中会看到不同的值。为了便于阅读，在后面的讨论中我们有时会把一个线程表示为 thread<sub><span class="inlinecode">blockIdx.x</span>,<span class="inlinecode">threadIdx.x</span></sub>。</p>
+<p id="p0325" class="text"><a href="#f0055">图 2.10</a> 中有一个自动（局部）变量 <em>i</em>。在 CUDA 核函数中，自动变量对每个线程是私有的。也就是说，每个线程都会生成一个 <em>i</em> 的副本。如果网格以 10,000 个线程启动，就会有 10,000 个 <em>i</em>，每个线程一个。线程赋给其 <em>i</em> 变量的值对其他线程不可见。我们将在<a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>（内存体系结构与数据局部性）中更详细地讨论这些自动变量。</p>
+<p id="p0330" class="text">把<a href="#f0025">图 2.4</a> 和<a href="#f0055">图 2.10</a> 稍作比较，就能对 CUDA 核函数得出一个重要的认识。<a href="#f0055">图 2.10</a> 中的核函数没有与<a href="#f0025">图 2.4</a> 中那个循环相对应的循环。读者应该会问：循环到哪里去了？答案是：循环现在被线程网格取代了，整个网格就相当于原来的循环。网格中的每个线程对应原循环的一次迭代。这种形式有时被称为<em>循环级并行</em>——原串行代码的各次迭代由线程并行执行。</p>
+<p id="p0335" class="text">请注意，<a href="#f0055">图 2.10</a> 中的 <span class="inlinecode">addVecKernel</span> 里有一条 if (<em>i</em>&lt;<em>n</em>) 语句。这是因为并非所有向量长度都能表示成线程块大小的整数倍。例如，假设向量长度为 100。最小的高效线程块维数为 32。假设我们把线程块大小选为 32，那么需要启动 4 个线程块才能处理全部 100 个向量元素。然而，4 个线程块会有 128 个线程。我们需要禁用线程块 3 中的最后 28 个线程，不让它们执行原程序预期之外的工作。由于所有线程都要执行同一份代码，所有线程都会把自己的 <em>i</em> 值与 <em>n</em>（即 100）比较。有了 if (<em>i</em>&lt;<em>n</em>) 语句，前 100 个线程将执行加法，而最后 28 个线程不会。这使核函数可以被调用来处理任意长度的向量。</p></section><section><a id="s0035"></a><h2 class="h1hd" id="st0050">2.6 调用核函数</h2><p id="p0340" class="textfl"><span id="page_41" aria-label="Page 41" epub:type="pagebreak" role="doc-pagebreak"></span>实现了核函数之后，剩下的步骤就是从主机代码调用该函数来启动网格，如<a href="#f0065">图 2.12</a> 所示。主机代码调用核函数时，通过<em>执行</em><em>配置参数</em>来设置网格和线程块的维度。配置参数放在传统 C 函数实参之前的一对“&lt;&lt;&lt;”与“&gt;&gt;&gt;”之间。第一个配置参数给出网格中的线程块数，第二个指定每个块中的线程数。在这个例子中，每个块有 256 个线程。为了确保网格中的线程数足以覆盖全部向量元素，我们需要把网格中的线程块数设置为所需线程数（本例中为 <em>n</em>）除以线程块大小（本例中为 256）后的向上取整除法结果（即把商向上舍入到紧邻的更高整数）。实现向上取整除法有很多方法。一种方法是对 <em>n</em>/256.0 应用 C 的向上取整函数。使用浮点值 256.0 可以保证除法产生浮点值，使向上取整函数能够正确地向上舍入。例如，如果我们想要 1000 个线程，就启动 ceil(1000/256.0)<em>=</em>4 个线程块。这样一来，该语句会启动 4×256=1024 个线程。借助核函数中如<a href="#f0055">图 2.10</a> 所示的 if (<em>i</em> &lt; <em>n</em>) 语句，前 1000 个线程将对 1000 个向量元素执行加法，其余 24 个线程不会执行。</p>
+<div class="pageavoid"><figure class="fig" id="f0065"><img src="../images/F000148f02-12-9780323912310.jpg" class="img" alt="image" width="997" height="216"/><figcaption class="figleg"><a id="sp0065"></a><span class="fignum">图 2.12</span> 一条向量加法核函数调用语句。</figcaption></figure></div><p id="p0345" class="text"><span id="page_42" aria-label="Page 42" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0070">图 2.13</a> 展示了 <span class="inlinecode">vecAdd</span> 函数中最终的主机代码。这段源代码补全了<a href="#f0030">图 2.5</a> 中的骨架。<a href="#f0065">图 2.12</a> 和图 <a href="#f0070">2.13</a> 合起来说明了一个由主机代码和设备核函数组成的简单 CUDA 程序。这段代码硬性规定使用每个 256 个线程的线程块。<sup><a aria-label="noteref" href="#fn8" id="Cfn8">8</a></sup> 不过，所用线程块的数目取决于向量的长度（<em>n</em>）。如果 <em>n</em> 为 750，将使用 3 个线程块；如果 <em>n</em> 为 4000，将使用 16 个线程块；如果 <em>n</em> 为 2,000,000，将使用 7813 个线程块。请注意，所有这些线程块处理的是向量的不同部分，它们可以以任意顺序执行，程序员不得对执行顺序做任何假设。执行资源较少的小型 GPU 可能只并行执行其中的一两个线程块，而较大的 GPU 可能并行执行 64 或 128 个线程块。这使 CUDA 核函数的执行速度随硬件而具有可扩展性：也就是说，同一份代码在小型 GPU 上运行较慢，在较大的 GPU 上运行较快。我们将在<a href="Ch004_69-92_B9780323912310000033.html#Ch004_69-92_B9780323912310000033">第 4 章</a>（计算体系结构与调度）中再讨论这一点。</p>
+<div class="pageavoid"><figure class="fig" id="f0070"><img src="../images/F000148f02-13-9780323912310.jpg" class="img" alt="image" width="1000" height="494"/><figcaption class="figleg"><a id="sp0070"></a><span class="fignum">图 2.13</span> vecAdd 函数中主机代码的完整版本。</figcaption></figure></div><p id="p0350" class="text">有必要再次指出，这里使用向量加法只是因为它简单。在实践中，分配设备内存、输入数据传输（从主机到设备）、输出数据传输（从设备到主机）以及释放设备内存所带来的开销，很可能使最终代码比<a href="#f0025">图 2.4</a> 中原来的串行代码更慢。这是因为核函数完成的计算量相对于处理或传输的数据量来说很小——两个浮点输入操作数和一个浮点输出操作数只做一次加法。真实应用中的核函数相对于处理的数据量通常需要多得多的计算，因此额外的开销是值得的。真实应用还倾向于在多次核函数调用之间把数据保留在设备内存中，从而分摊这些开销。我们后面会介绍几个这样的应用示例。</p></section><section><a id="s0040"></a><h2 class="h1hd" id="st0055">2.7 编译</h2><p id="p0355" class="textfl"><span id="page_43" aria-label="Page 43" epub:type="pagebreak" role="doc-pagebreak"></span>我们已经看到，实现 CUDA C 核函数需要使用各种不属于 C 的扩展。一旦代码中使用了这些扩展，传统的 C 编译器就不再接受它了。代码需要用能够识别并理解这些扩展的编译器来编译，例如 NVCC（NVIDIA C 编译器）。如<a id="Bf0075" href="#f0075">图 2.14</a> 顶部所示，NVCC 编译器处理 CUDA C 程序时，利用 CUDA 关键字把主机代码和设备代码分开。主机代码是纯粹的 ANSI C 代码，由主机上标准的 C/C++ 编译器编译，并作为传统的 CPU 进程运行。设备代码用指定 CUDA 核函数及其相关辅助函数和数据结构的 CUDA 关键字标记，由 NVCC 编译成称为 PTX 文件的虚拟二进制文件。这些 PTX 文件再由 NVCC 的运行时组件进一步编译为真正的目标文件，并在支持 CUDA 的 GPU 设备上执行。</p>
+<div class="pageavoid"><figure class="fig" id="f0075"><img src="../images/F000148f02-14-9780323912310.jpg" class="img" alt="image" width="1000" height="827"/><figcaption class="figleg"><a id="sp0075"></a><span class="fignum"><a href="#Bf0075">图 2.14</a></span> CUDA C 程序编译过程概述。</figcaption></figure></div></section><section><a id="s0045"></a><h2 class="h1hd" id="st0060">2.8 小结</h2><p id="p0360" class="textfl">本章快速而简化地概述了 CUDA C 编程模型。CUDA C 扩展了 C 语言以支持并行计算。本章我们讨论了这些扩展中必不可少的一个部分。为了方便读者，我们把本章讨论过的扩展总结如下：</p><section><a id="s0050"></a><h3 class="h2hd" id="st0065">2.8.1 函数声明</h3><p id="p0365" class="textfl">CUDA C 扩展了 C 的函数声明语法，以支持异构并行计算。这些扩展总结在<a href="#f0065">图 2.12</a> 中。使用“<span class="inlinecode">__<span class="inlinecode">global</span>__</span>”、“_<span class="inlinecode">_device__</span>”或“_<span class="inlinecode">_host__</span>”中的任何一个，CUDA C 程序员就可以指示编译器生成核函数、设备函数或主机函数。所有不包含这些关键字的函数声明都默认为主机函数。如果函数声明中同时使用了“_<span class="inlinecode">_host__</span>”和“<span class="inlinecode">_device__</span>”，编译器会生成该函数的两个版本，一个用于设备，一个用于主机。如果函数声明不包含任何 CUDA C 扩展关键字，该函数默认为主机函数。</p></section><section><a id="s0055"></a><h3 class="h2hd" id="st0070">2.8.2 核函数调用与网格启动</h3><p id="p0370" class="textfl">CUDA C 通过由 &lt;&lt;&lt; 和 &gt;&gt;&gt; 括起的核函数执行配置参数扩展了 C 的函数调用语法。这些执行配置参数只在调用核函数以启动网格时使用。我们讨论了用于定义网格维度和每个线程块维度的执行配置参数。关于核函数启动扩展以及其他类型的执行配置参数的更多细节，读者应参阅 CUDA 编程指南（<a href="#bib3" role="doc-biblioref" epub:type="biblioref" id="BIB_3">NVIDIA, 2021</a>）。</p></section><section><a id="s0060"></a><h3 class="h2hd" id="st0075">2.8.3 内置（预定义）变量</h3><p id="p0375" class="textfl"><span id="page_44" aria-label="Page 44" epub:type="pagebreak" role="doc-pagebreak"></span>CUDA 核函数可以访问一组内置的、预定义的只读变量，它们让每个线程能够与其他线程区分开来，并确定要处理的数据区域。本章我们讨论了 <span class="inlinecode">threadIdx</span>、<span class="inlinecode">blockDim</span> 和 <span class="inlinecode">blockIdx</span> 变量。在<a href="Ch003_47-68_B9780323912310000045.html#Ch003_47-68_B9780323912310000045">第 3 章</a>（多维网格与数据）中，我们将更详细地讨论这些变量的用法。</p></section><section><a id="s0065"></a><h3 class="h2hd" id="st0080">2.8.4 运行时应用程序编程接口</h3><p id="p0380" class="textfl">CUDA 支持一组为 CUDA C 程序提供服务的 API 函数。本章我们讨论的服务包括 <span class="inlinecode">cudaMalloc</span>、<span class="inlinecode">cudaFree</span> 和 <span class="inlinecode">cudaMemcpy</span> 函数。主机代码调用这些函数，分别代表调用程序分配设备全局内存、释放设备全局内存，以及在主机与设备之间传输数据。其他 CUDA API 函数请读者参阅 CUDA C 编程指南。</p>
+<p id="p0385" class="text">本章的目标是介绍 CUDA C 的核心概念，以及编写简单 CUDA C 程序所需的 CUDA 对 C 的基本扩展。本章绝不是对所有 CUDA 特性的全面介绍，其中一些特性会在本书其余部分介绍。不过，我们的重点是这些特性所支持的关键并行计算概念。我们只会引入代码示例中演示并行编程技术所需要的 CUDA C 特性。总的来说，我们鼓励读者随时查阅 CUDA C 编程指南，以了解 CUDA C 特性的更多细节。</p></section></section><section><a id="s0070"></a><h2 class="h1hd" id="st0085">习题</h2><a id="p0390"></a><a id="li9010"></a><div><ol>
+<li class="numlista" id="o0070"><a id="p0395"></a><a id="li0020"></a>1. 如果我们希望用网格中的每个线程计算向量加法的一个输出元素，那么把线程/线程块索引映射到数据索引 (i) 的表达式应该是什么？<ol>
+<li class="numlist1a" id="o0075"><a id="p0400"></a>（A）<pre>i=threadIdx.x + threadIdx.y;</pre></li>
+<li class="numlist1a" id="o0080"><a id="p0405"></a>（B）<pre>i=blockIdx.x + threadIdx.x;</pre></li>
+<li class="numlist1a" id="o0085"><a id="p0410"></a>（C）<span class="inlinecode">i=blockIdx.x</span>*<span class="inlinecode">blockDim.x + threadIdx.x</span>;</li>
+<li class="numlist1a" id="o0090"><a id="p0415"></a>（D）<span class="inlinecode">i=blockIdx.x</span> * <span class="inlinecode">threadIdx.x</span>;</li>
+</ol></li>
+<li class="numlista" id="o0095"><a id="p0420"></a><a id="li0025"></a>2. 假设我们希望用每个线程计算向量加法中两个相邻的元素。那么，把线程/线程块索引映射到某个线程要处理的第一个元素的数据索引 (i) 的表达式应该是什么？<ol>
+<li class="numlist1a" id="o0100"><a id="p0425"></a>（A）<span class="inlinecode">i=blockIdx.x</span>*<span class="inlinecode">blockDim.x + threadIdx.x +2;</span></li>
+<li class="numlist1a" id="o0105"><a id="p0430"></a>（B）<span class="inlinecode">i=blockIdx.x</span>*<span class="inlinecode">threadIdx.x*2;</span></li>
+<li class="numlist1a" id="o0110"><a id="p0435"></a>（C）<span class="inlinecode">i=(blockIdx.x</span>*<span class="inlinecode">blockDim.x + threadIdx.x)*2;</span></li>
+<li class="numlist1a" id="o0115"><a id="p0440"></a>（D）<span class="inlinecode">i=blockIdx.x</span>*<span class="inlinecode">blockDim.x*2 + threadIdx.x</span>;</li>
+</ol></li>
+<li class="numlista" id="o0120"><a id="p0445"></a><span id="page_45" aria-label="Page 45" epub:type="pagebreak" role="doc-pagebreak"></span><a id="li0030"></a>3. 我们希望用每个线程计算向量加法的两个元素。每个线程块处理 <span class="inlinecode">2*blockDim.x</span> 个连续元素，这些元素构成两个区段。块中的所有线程先处理第一个区段，每个线程处理一个元素；然后所有线程一起移到下一个区段，每个线程再处理一个元素。假设变量 i 应该是某个线程要处理的第一个元素的索引。那么，把线程/线程块索引映射到第一个元素的数据索引的表达式应该是什么？<ol>
+<li class="numlist1a" id="o0125"><a id="p0450"></a>（A）<span class="inlinecode">i=blockIdx.x</span>*<span class="inlinecode">blockDim.x + threadIdx.x +2;</span></li>
+<li class="numlist1a" id="o0130"><a id="p0455"></a>（B）<span class="inlinecode">i=blockIdx.x</span>*<span class="inlinecode">threadIdx.x*2;</span></li>
+<li class="numlist1a" id="o0135"><a id="p0460"></a>（C）<span class="inlinecode">i=(blockIdx.x</span>*<span class="inlinecode">blockDim.x + threadIdx.x)*2;</span></li>
+<li class="numlist1a" id="o0140"><a id="p0465"></a>（D）<span class="inlinecode">i=blockIdx.x</span>*<span class="inlinecode">blockDim.x*2</span> + <span class="inlinecode">threadIdx.x</span>;</li>
+</ol></li>
+<li class="numlista" id="o0145"><a id="p0470"></a><a id="li0035"></a>4. 对于向量加法，假设向量长度为 8000，每个线程计算一个输出元素，线程块大小为 1024 个线程。程序员把核函数调用配置为使用最少的线程块数以覆盖所有输出元素。那么网格中将有多少个线程？<ol>
+<li class="numlist1a" id="o0150"><a id="p0475"></a>（A）<pre>8000</pre></li>
+<li class="numlist1a" id="o0155"><a id="p0480"></a>（B）<pre>8196</pre></li>
+<li class="numlist1a" id="o0160"><a id="p0485"></a>（C）<pre>8192</pre></li>
+<li class="numlist1a" id="o0165"><a id="p0490"></a>（D）<pre>8200</pre></li>
+</ol></li>
+<li class="numlista" id="o0170"><a id="p0495"></a><a id="li0040"></a>5. 5. 如果我们要在 CUDA 设备的<span class="inlinecode">全局</span>内存中分配一个包含 v 个整数元素的数组，那么 <span class="inlinecode">cudaMalloc</span> 调用的第二个参数用什么表达式合适？<ol>
+<li class="numlist1a" id="o0175"><a id="p0500"></a>（A）<pre>n</pre></li>
+<li class="numlist1a" id="o0180"><a id="p0505"></a>（B）<pre>v</pre></li>
+<li class="numlist1a" id="o0185"><a id="p0510"></a>（C）<pre>n * sizeof(int)</pre></li>
+<li class="numlist1a" id="o0190"><a id="p0515"></a>（D）<pre>v * sizeof(int)</pre></li>
+</ol></li>
+<li class="numlista" id="o0195"><a id="p0520"></a><a id="li0045"></a>6. 如果我们希望分配一个包含 <span class="inlinecode">n</span> 个浮点元素的数组，并让浮点指针变量 <span class="inlinecode">A<span class="inlinecode">_d</span></span> 指向这块已分配的内存，那么 <span class="inlinecode">cudaMalloc</span>() 调用的第一个参数用什么表达式合适？<ol>
+<li class="numlist1a" id="o0200"><a id="p0525"></a>（A）<pre>n</pre></li>
+<li class="numlist1a" id="o0205"><a id="p0530"></a>（B）<pre>(void *) A<span class="inlinecode">_d</span></pre></li>
+<li class="numlist1a" id="o0210"><a id="p0535"></a>（C）*<span class="inlinecode">A<span class="inlinecode">_d</span></span></li>
+<li class="numlist1a" id="o0215"><a id="p0540"></a>（D）<pre>(void **) &amp;A<span class="inlinecode">_d</span></pre></li>
+</ol></li>
+<li class="numlista" id="o0220"><a id="p0545"></a><a id="li0050"></a>7. 如果我们希望把 3000 字节的数据从主机数组 <span class="inlinecode">A<span class="inlinecode">_h</span></span>（<span class="inlinecode">A<span class="inlinecode">_h</span></span> 是指向源数组第 0 个元素的指针）复制到设备数组 <span class="inlinecode">A<span class="inlinecode">_d</span></span>（<span class="inlinecode">A<span class="inlinecode">_d</span></span> 是指向目标数组第 0 个元素的指针），那么在 CUDA 中应该用什么 API 调用来完成这次数据复制？<ol>
+<li class="numlist1a" id="o0225"><a id="p0550"></a>（A）<span class="inlinecode">cudaMemcpy(3000, A<span class="inlinecode">_h</span></span>, <span class="inlinecode">A<span class="inlinecode">_d</span></span>, <span class="inlinecode">cudaMemcpyHostToDevice);</span></li>
+<li class="numlist1a" id="o0230"><a id="p0555"></a>（B）<span class="inlinecode">cudaMemcpy</span>(<span class="inlinecode">A<span class="inlinecode">_h</span></span>, <span class="inlinecode">A<span class="inlinecode">_d</span></span>, <span class="inlinecode">3000, cudaMemcpyDeviceTHost);</span></li>
+<li class="numlist1a" id="o0235"><a id="p0560"></a>（C）<span class="inlinecode">cudaMemcpy</span>(<span class="inlinecode">A<span class="inlinecode">_d</span></span>, <span class="inlinecode">A<span class="inlinecode">_h</span>, 3000, cudaMemcpyHostToDevice);</span></li>
+<li class="numlist1a" id="o0240"><a id="p0565"></a>（D）<span class="inlinecode">cudaMemcpy(3000, A<span class="inlinecode">_d</span></span>, <span class="inlinecode">A<span class="inlinecode">_h</span></span>, <span class="inlinecode">cudaMemcpyHostToDevice);</span></li>
+</ol></li>
+<li class="numlista" id="o0245"><a id="p0570"></a><a id="li0055"></a><span id="page_46" aria-label="Page 46" epub:type="pagebreak" role="doc-pagebreak"></span>8. 如何声明一个变量 err，使它能够合适地接收 CUDA API 调用返回的值？<ol>
+<li class="numlist1a" id="o0250"><a id="p0575"></a>（A）<pre>int err;</pre></li>
+<li class="numlist1a" id="o0255"><a id="p0580"></a>（B）<pre>cudaError err;</pre></li>
+<li class="numlist1a" id="o0260"><a id="p0585"></a>（C）<pre>cudaError_t err;</pre></li>
+<li class="numlist1a" id="o0265"><a id="p0590"></a>（D）<pre>cudaSuccess_t err;</pre></li>
+</ol></li>
+<li class="numlista" id="o0270"><a id="p0595"></a><a id="p0600"></a><a id="p0605"></a><a id="p0610"></a><a id="p0615"></a><a id="p0620"></a><a id="p0625"></a><a id="p0630"></a><a id="p0635"></a><a id="p0640"></a><a id="p0645"></a><a id="li0060"></a>9. 考虑下面这个 CUDA 核函数，以及调用它的相应主机函数：<br/><pre>01 <span class="inlinecode">__<span class="inlinecode">global</span>__</span> void foo_kernel(float* a, float* b, unsigned int N){</pre><br/><pre>02 unsigned int <span class="inlinecode">i=blockIdx.x</span>*<span class="inlinecode">blockDim.x</span> + <span class="inlinecode">threadIdx.x</span>;</pre><br/><pre>03 if(i &lt; N) {</pre><br/><pre>04 b[i]=2.7f*a[i] - 4.3f;</pre><br/><pre>05 }</pre><br/><pre>06 }</pre><br/><pre>07 void foo(float* a<span class="inlinecode">_d</span>, float* b<span class="inlinecode">_d</span>) {</pre><br/><pre>08 unsigned int N=200000;</pre><br/><pre>09 foo_kernel &lt;&lt;&lt; (N + 128–1)/128, 128 &gt;&gt;&gt;(a<span class="inlinecode">_d</span>, b<span class="inlinecode">_d</span>, N);</pre><br/><span class="inlinecode">10 }</span><ol>
+<li class="numlist1a" id="o0275"><a id="p0650"></a>a. 每个线程块中有多少个线程？</li>
+<li class="numlist1a" id="o0280"><a id="p0655"></a>b. 网格中有多少个线程？</li>
+<li class="numlist1a" id="o0285"><a id="p0660"></a>c. 网格中有多少个线程块？</li>
+<li class="numlist1a" id="o0290"><a id="p0665"></a>d. 有多少个线程执行第 02 行的代码？</li>
+<li class="numlist1a" id="o0295"><a id="p0670"></a>e. 有多少个线程执行第 04 行的代码？</li>
+</ol></li>
+<li class="numlista" id="o0300"><a id="p0675"></a>10. 一名新来的暑期实习生对 CUDA 感到非常沮丧。他一直抱怨 CUDA 十分繁琐：他不得不把许多打算同时在主机和设备上执行的函数声明两次，一次作为主机函数，一次作为设备函数。你会如何回应他？</li>
+</ol></div></section><footer><section aria-label="bibliography"><a id="bibliog0010"></a><h2 class="reftitle" id="st0090">参考文献</h2><section><p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib1"><a aria-label="noteref" href="#BIB_1">Atallah, 1998</a> Atallah MJ, ed. <cite><em>Algorithms and Theory of Computation Handbook</em></cite>. CRC Press 1998.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="fur1"><a aria-label="noteref" href="#BIB_2">Flynn, 1972</a> Flynn M. <cite>Some computer organizations and their effectiveness</cite>. <cite><em>IEEE Trans Comput <strong>C-</strong></em></cite>. 1972;21:948.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib3"><a aria-label="noteref" href="#BIB_3">NVIDIA, 2021</a> NVIDIA Corporation, March 2021. NVIDIA CUDA C Programming Guide.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib4"><a aria-label="noteref" href="#BIB_4">Patt and Patel, 2020</a> Patt YN, Patel SJ. ISBN-10: 1260565912, 2000, 2004 <cite><em>Introduction to Computing Systems: From Bits and Gates to C and Beyond</em></cite> McGraw Hill Publisher 2020.</p></section></section><section epub:type="rearnotes">
+<div class="ftnote"><hr/>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn1"><a id="ntp0015"></a><a href="#Cfn1"><sup>1</sup></a>CUDA C 一直在稳步引入 C++ 的特性。我们将在编程示例中使用其中的一些 C++ 特性。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn2"><a id="ntp0020"></a><a href="#Cfn2"><sup>2</sup></a>CUDA C 还提供了一些更高级的库函数，用于在主机内存中分配空间。我们将在<a href="Ch020_449-473_B9780323912310000070.html#Ch020_449-473_B9780323912310000070">第 20 章</a>（编写异构计算集群程序）中讨论这些函数。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn3"><a id="ntp0025"></a><a href="#Cfn3"><sup>3</sup></a> 由于 <span class="inlinecode">cudaMalloc</span> 返回的是一个通用对象，动态分配的多维数组的使用会变得更加复杂。我们将在<a href="Ch003_47-68_B9780323912310000045.html#s0015">第 3.2 节</a>中讨论这个问题。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn4"><a id="ntp0030"></a><a href="#Cfn4"><sup>4</sup></a> 请注意，<span class="inlinecode">cudaMalloc</span> 的格式与 C 的 malloc 函数不同。C 的 malloc 函数会返回指向所分配对象的指针，它只接受一个参数，即所分配对象的大小。而 <span class="inlinecode">cudaMalloc</span> 函数会把分配到的内存地址写入其地址由第一个参数给定的指针变量。因此，<span class="inlinecode">cudaMalloc</span> 函数接受两个参数。<span class="inlinecode">cudaMalloc</span> 采用两个参数的格式，使它能够像其他 CUDA API 函数一样，利用返回值来报告任何错误。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn5"><a id="ntp0035"></a><a href="#Cfn5"><sup>5</sup></a> 请注意，SPMD 不同于 SIMD（单指令多数据）[<a href="#fur1" role="doc-biblioref" epub:type="biblioref" id="BIB_2">Flynn 1972</a>]。在 SPMD 系统中，并行处理单元对数据的不同部分执行相同的程序。不过，这些处理单元并不需要在同一时刻执行同一条指令。而在 SIMD 系统中，所有处理单元在任何时刻都在执行同一条指令。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn6"><a id="ntp0040"></a><a href="#Cfn6"><sup>6</sup></a> 在 CUDA 3.0 及更高版本中，每个线程块最多可以有 1024 个线程。某些更早的 CUDA 版本中，一个线程块最多只允许有 512 个线程。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn7"><a id="ntp0045"></a><a href="#Cfn7"><sup>7</sup></a> 我们稍后会解释在不同代际的 CUDA 中使用间接函数调用和递归的规则。一般来说，应避免在设备函数和核函数中使用递归和间接函数调用，以获得最大的可移植性。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn8"><a id="ntp0050"></a><a href="#Cfn8"><sup>8</sup></a> 尽管在本示例中我们随意选用了 256 这一线程块大小，但线程块大小实际上应由若干因素决定，这些因素将在后文中介绍。</p>
+</div></section></footer></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>

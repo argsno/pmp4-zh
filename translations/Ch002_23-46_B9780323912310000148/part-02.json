@@ -1,0 +1,155 @@
+{
+  "page": "Ch002_23-46_B9780323912310000148",
+  "nodes": [
+    {
+      "id": "p0740",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/p[7]",
+      "en": "【1】An array in a C program can be accessed through a pointer that points to its 0【/1】【2】【3】th【/3】【/2】 【4】element. For example, the statement P=&amp;(A[0]) makes P point to the 0【/4】【5】【6】th【/6】【/5】 【7】element of array A. P[i] becomes a synonym for A[i]. In fact, the array name A is in itself a pointer to its 0【/7】【8】【9】th【/9】【/8】 【10】element【/10】.",
+      "zh": "【1】在 C 程序中，数组可以通过一个指向其第 0【/1】【2】【3】th【/3】【/2】 【4】个元素的指针来访问。例如，语句 P=&amp;(A[0]) 使 P 指向数组 A 的第 0【/4】【5】【6】th【/6】【/5】 【7】个元素；P[i] 成为 A[i] 的同义词。事实上，数组名 A 本身就是指向其第 0【/7】【8】【9】th【/9】【/8】 【10】个元素的指针【/10】。"
+    },
+    {
+      "id": "p0745",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/p[8]",
+      "en": "【1】In【/1】 【2】Fig. 2.4【/2】【3】, passing an array name A as the first argument to function call to vecAdd makes the function’s first parameter A_h point to the 0【/3】【4】【5】th【/5】【/4】 【6】element of A. As a result, A_h[i] in the function body can be used to access A[i]【/6】 for the array A in the main function.",
+      "zh": "【1】在【/1】【2】图 2.4【/2】【3】中，将数组名 A 作为第一个实参传给 vecAdd 函数的调用，会使该函数的第一个形参 A_h 指向 A 的第 0【/3】【4】【5】th【/5】【/4】【6】个元素。于是，函数体中的 A_h[i] 可以用来访问 main 函数中数组 A 的 A[i]【/6】。"
+    },
+    {
+      "id": "p0750",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/p[9]",
+      "en": "【1】See Patt &amp; Patel (【/1】【2】Patt &amp; Patel, 2020【/2】【3】) for an easy-to-follow explanation of the detailed usage of pointers in C【/3】.",
+      "zh": "【1】关于 C 语言中指针的详细用法，可参阅 Patt &amp; Patel（【/1】【2】Patt &amp; Patel, 2020【/2】【3】）简明易懂的讲解【/3】。"
+    },
+    {
+      "id": "n0053",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 2.4【/1】 A simple traditional vector addition C code example.",
+      "zh": "【1】图 2.4【/1】 一个简单的传统向量加法 C 代码示例。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "Assume that the vectors to be added are stored in arrays 【1】A【/1】 and 【2】B【/2】 that are allocated and initialized in the main program. The output vector is in array 【3】C【/3】, which is also allocated in the main program. For brevity we do not show the details of how 【4】A【/4】, 【5】B【/5】, and 【6】C【/6】 are allocated or initialized in the main function. The pointers to these arrays are passed to the vecAdd function, along with the variable 【7】N【/7】 that contains the length of the vectors. Note that the parameters of the vecAdd function are suffixed with “_h” to emphasize that they are used by the host. This naming convention will be helpful when we introduce device code in the next few steps.",
+      "zh": "假设要相加的向量存储在数组【1】A【/1】和【2】B【/2】中，这两个数组在 main 程序中分配并初始化。输出向量存放在数组【3】C【/3】中，它同样在 main 程序中分配。为简洁起见，我们不展示【4】A【/4】、【5】B【/5】和【6】C【/6】在 main 函数中是如何分配或初始化的。这些数组的指针与包含向量长度的变量【7】N【/7】一起传给 vecAdd 函数。请注意，vecAdd 函数的形参都以“_h”为后缀，以强调它们供主机使用。这一命名约定在接下来引入设备代码时会很有帮助。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "The 【1】vecAdd【/1】 function in 【2】Fig. 2.4【/2】 uses a 【3】for-loop【/3】 to iterate through the vector elements. In the ith iteration, output element 【4】C_h[i]【/4】 receives the sum of 【5】A_h[i]【/5】 and 【6】B_h[i]【/6】. The vector length parameter 【7】n【/7】 is used to control the loop so that the number of iterations matches the length of the vectors. The function reads the elements of 【8】A【/8】 and 【9】B【/9】 and writes the elements of 【10】C【/10】 through the pointers 【11】A_h, B_h【/11】, and 【12】C_h【/12】, respectively. When the vecAdd function returns, the subsequent statements in the main function can access the new contents of 【13】C【/13】.",
+      "zh": "【2】图 2.4【/2】中的【1】vecAdd【/1】函数使用【3】for 循环【/3】遍历向量元素。在第 i 次迭代中，输出元素【4】C_h[i]【/4】接收【5】A_h[i]【/5】与【6】B_h[i]【/6】之和。向量长度参数【7】n【/7】用于控制循环，使迭代次数与向量长度一致。该函数通过指针【11】A_h、B_h【/11】和【12】C_h【/12】分别读取【8】A【/8】与【9】B【/9】的元素，并写入【10】C【/10】的元素。当 vecAdd 函数返回后，main 函数中其后的语句就可以访问【13】C【/13】的新内容。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "A straightforward way to execute vector addition in parallel is to modify the 【1】vecAdd【/1】 function and move its calculations to a device. The structure of such a modified vecAdd function is shown in 【2】Fig. 2.5【/2】. Part 1 of the function allocates space in the device (GPU) memory to hold copies of the 【3】A【/3】, 【4】B【/4】, and 【5】C【/5】 vectors and copies the 【6】A【/6】 and 【7】B【/7】 vectors from the host memory to the device memory. Part 2 calls the actual vector addition kernel to launch a grid of threads on the device. Part 3 copies the sum vector 【8】C【/8】 from the device memory to the host memory and deallocates the three arrays from the device memory.",
+      "zh": "并行执行向量加法的一种直接做法是修改【1】vecAdd【/1】函数，把它的计算搬到设备上。修改后的 vecAdd 函数的结构如【2】图 2.5【/2】所示。函数的第一部分在设备（GPU）内存中分配空间，以存放【3】A【/3】、【4】B【/4】和【5】C【/5】三个向量的副本，并把【6】A【/6】和【7】B【/7】向量从主机内存复制到设备内存。第二部分调用真正的向量加法核函数，在设备上启动一个线程网格。第三部分把求和向量【8】C【/8】从设备内存复制回主机内存，并从设备内存中释放这三个数组。"
+    },
+    {
+      "id": "n0057",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 2.5【/1】 Outline of a revised vecAdd function that moves the work to a device.",
+      "zh": "【1】图 2.5【/1】 把工作移到设备上的修订版 vecAdd 函数概要。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "Note that the revised 【1】vecAdd【/1】 function is essentially an outsourcing agent that ships input data to a device, activates the calculation on the device, and collects the results from the device. The agent does so in such a way that the main program does not need to even be aware that the vector addition is now actually done on a device. In practice, such a “transparent” outsourcing model can be very inefficient because of all the copying of data back and forth. One would often keep large and important data structures on the device and simply invoke device functions on them from the host code. For now, however, we will use the simplified transparent model to introduce the basic CUDA C program structure. The details of the revised function, as well as the way to compose the kernel function, will be the topic of the rest of this chapter.",
+      "zh": "请注意，修订后的【1】vecAdd【/1】函数本质上是一个外包代理：它把输入数据送到设备上，在设备上激活计算，再从设备取回结果。这个代理以这样的方式行事，使 main 程序甚至无需知道向量加法现在其实是在设备上完成的。在实践中，这种“透明”的外包模型可能非常低效，因为要来回复制大量数据。人们通常会把大型、重要的数据结构留在设备上，直接从主机代码调用作用在这些结构上的设备函数。不过，眼下我们仍将使用这种简化的透明模型来介绍 CUDA C 程序的基本结构。修订版函数的细节以及核函数的编写方法，将是本章剩余部分的主题。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "2.4 Device global memory and data transfer",
+      "zh": "2.4 设备全局内存与数据传输"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "In current CUDA systems, devices are often hardware cards that come with their own dynamic random-access memory called device 【1】global【/1】 memory, or simply global memory. For example, the NVIDIA Volta V100 comes with 16GB or 32GB of global memory. Calling it “global” memory distinguishes it from other types of device memory that are also accessible to programmers. Details about the CUDA memory model and the different types of device memory are discussed in 【2】Chapter 5【/2】, Memory Architecture and Data Locality.",
+      "zh": "在当前的 CUDA 系统中，设备通常是自带动态随机存取存储器的硬件卡，这种存储器称为设备【1】全局【/1】内存，或简称为全局内存。例如，NVIDIA Volta V100 自带 16GB 或 32GB 的全局内存。把它称为“全局”内存，是为了与程序员同样可以访问的其他类型的设备内存相区别。CUDA 内存模型以及不同类型的设备内存的细节将在【2】第 5 章【/2】（内存体系结构与数据局部性）中讨论。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "For the vector addition kernel, before calling the kernel, the programmer needs to allocate space in the device global memory and transfer data from the host memory to the allocated space in the device global memory. This corresponds to Part 1 of 【1】Fig. 2.5【/1】. Similarly, after device execution the programmer needs to transfer result data from the device global memory back to the host memory and free up the allocated space in the device global memory that is no longer needed. This corresponds to Part 3 of 【2】Fig. 2.5【/2】. The CUDA runtime system (typically running on the host) provides applications programming interface (API) functions to perform these activities on behalf of the programmer. From this point on, we will simply say that data is transferred from host to device as shorthand for saying that the data is copied from the host memory to the device global memory. The same holds for the opposite direction.",
+      "zh": "对于向量加法核函数，在调用核函数之前，程序员需要在设备全局内存中分配空间，并把数据从主机内存传输到设备全局内存中分配好的空间。这对应【1】图 2.5【/1】中的第 1 部分。类似地，在设备执行完毕之后，程序员需要把结果数据从设备全局内存传回主机内存，并释放设备全局内存中不再需要的已分配空间。这对应【2】图 2.5【/2】中的第 3 部分。CUDA 运行时系统（通常在主机上运行）提供应用程序编程接口（API）函数，代表程序员执行这些操作。从现在起，为简洁起见，我们将把“数据从主机传输到设备”作为“数据从主机内存复制到设备全局内存”的简称。反方向同样如此。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "In 【1】Fig. 2.5【/1】, Part 1 and Part 3 of the vecAdd function need to use the CUDA API functions to allocate device global memory for 【2】A【/2】, 【3】B【/3】, and 【4】C【/4】; transfer 【5】A【/5】 and 【6】B【/6】 from host to device; transfer 【7】C【/7】 from device to host after the vector addition; and free the device global memory for 【8】A【/8】, 【9】B【/9】, and 【10】C【/10】. We will explain the memory allocation and free functions first.",
+      "zh": "在【1】图 2.5【/1】中，vecAdd 函数的第 1 部分和第 3 部分需要使用 CUDA API 函数：为【2】A【/2】、【3】B【/3】和【4】C【/4】分配设备全局内存；把【5】A【/5】和【6】B【/6】从主机传输到设备；在向量加法完成后把【7】C【/7】从设备传输到主机；并释放【8】A【/8】、【9】B【/9】和【10】C【/10】的设备全局内存。我们先讲解内存分配和释放函数。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "【1】Fig. 2.6【/1】 shows two API functions for allocating and freeing device global memory. The 【2】cudaMalloc【/2】 function can be called from the host code to allocate a piece of device global memory for an object. The reader should notice the striking similarity between 【3】cudaMalloc【/3】 and the standard 【4】C【/4】 runtime library malloc function. This is intentional; CUDA C is C with minimal extensions. CUDA C uses the standard C runtime library malloc function to manage the host memory【5】【6】2【/6】【/5】 and adds 【7】cudaMalloc【/7】 as an extension to the C runtime library. By keeping the interface as close to the original C runtime libraries as possible, CUDA C minimizes the time that a C programmer spends relearning the use of these extensions.",
+      "zh": "【1】图 2.6【/1】显示了用于分配和释放设备全局内存的两个 API 函数。【2】cudaMalloc【/2】函数可以从主机代码中调用，为一个对象分配一块设备全局内存。读者应当注意到【3】cudaMalloc【/3】与标准【4】C【/4】运行时库中的 malloc 函数惊人地相似。这是有意为之：CUDA C 就是只做了最小扩展的 C。CUDA C 使用标准 C 运行时库的 malloc 函数来管理主机内存【5】【6】2【/6】【/5】，并把【7】cudaMalloc【/7】作为 C 运行时库的扩展加入。通过让接口尽可能贴近原有的 C 运行时库，CUDA C 把 C 程序员重新学习这些扩展用法所需的时间降到了最低。"
+    },
+    {
+      "id": "n0064",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 2.6【/2】【/1】 CUDA API functions for managing device global memory.",
+      "zh": "【1】【2】图 2.6【/2】【/1】 用于管理设备全局内存的 CUDA API 函数。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "The first parameter to the 【1】cudaMalloc【/1】 function is the 【2】address【/2】 of a pointer variable that will be set to point to the allocated object. The address of the pointer variable should be cast to (void **) because the function expects a generic pointer; the memory allocation function is a generic function that is not restricted to any particular type of objects.【3】【4】3【/4】【/3】 This parameter allows the 【5】【6】cudaMalloc【/6】【/5】 function to write the address of the allocated memory into the provided pointer variable regardless of its type.【7】【8】4【/8】【/7】 The host code that calls kernels passes this pointer value to the kernels that need to access the allocated memory object. The second parameter to the 【9】【10】cudaMalloc【/10】【/9】 function gives the size of the data to be allocated, in number of bytes. The usage of this second parameter is consistent with the size parameter to the C malloc function.",
+      "zh": "【1】cudaMalloc【/1】函数的第一个参数是一个指针变量的【2】地址【/2】，该指针变量将被设置指向所分配的对象。这个指针变量的地址应强制转换为 (void **)，因为该函数期望接收一个通用指针；内存分配函数是通用的，不限于任何特定类型的对象。【3】【4】3【/4】【/3】这一参数使【5】【6】cudaMalloc【/6】【/5】函数能够把所分配内存的地址写入传入的指针变量，而无论其类型如何。【7】【8】4【/8】【/7】调用核函数的主机代码会把这个指针值传给需要访问该内存对象的核函数。【9】【10】cudaMalloc【/10】【/9】函数的第二个参数给出要分配的数据的大小，以字节为单位。第二个参数的用法与 C 的 malloc 函数的 size 参数一致。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "We now use the following simple code example to illustrate the use of 【1】【2】cudaMalloc【/2】【/1】 and 【3】cudaFree【/3】:",
+      "zh": "我们现在用下面这个简单的代码示例来说明【1】【2】cudaMalloc【/2】【/1】和【3】cudaFree【/3】的用法："
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "【1】cudaFree(A_d);【/1】",
+      "zh": "【1】cudaFree(A_d);【/1】"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "This is a continuation of the example in 【1】Fig. 2.5【/1】. For clarity we suffix a pointer variable with “【2】_d【/2】” to indicate that it points to an object in the device global memory. The first argument passed to 【3】【4】cudaMalloc【/4】【/3】 is the 【5】address【/5】 of pointer 【6】A_d【/6】 (i.e., &amp;【7】A_d【/7】) casted to a void pointer. When 【8】【9】cudaMalloc【/9】【/8】, returns, 【10】A_d【/10】 will point to the device global memory region allocated for the A vector. The second argument passed to 【11】cudaMalloc【/11】 is the size of the region to be allocated. Since size is in number of bytes, the programmer needs to translate from the number of elements in an array to the number of bytes when determining the value of size. For example, in allocating space for an array of 【12】n【/12】 single-precision floating-point elements, the value of size would be 【13】n【/13】 times the size of a single-precision floating number, which is 4 bytes in computers today. Therefore the value of size would be 【14】n【/14】*4. After the computation, cudaFree is called with pointer 【15】A_d【/15】 as an argument to free the storage space for the A vector from the device global memory. Note that cudaFree does not need to change the value of 【16】A_d【/16】; it only needs to use the value of 【17】A_d【/17】 to return the allocated memory back to the available pool. Thus only the value and not the address of 【18】A_d【/18】 is passed as an argument.",
+      "zh": "这是【1】图 2.5【/1】中示例的延续。为了清晰起见，我们给指针变量加上“【2】_d【/2】”后缀，表示它指向设备全局内存中的对象。传给【3】【4】cudaMalloc【/4】【/3】的第一个参数是指针【6】A_d【/6】的【5】地址【/5】（即 &amp;【7】A_d【/7】），并转换为 void 指针。当【8】【9】cudaMalloc【/9】【/8】返回时，【10】A_d【/10】将指向为向量 A 分配的设备全局内存区域。传给【11】cudaMalloc【/11】的第二个参数是要分配的区域的大小。由于 size 以字节为单位，程序员在确定 size 的取值时，需要把数组的元素个数换算成字节数。例如，为一个包含【12】n【/12】个单精度浮点元素的数组分配空间时，size 的值等于【13】n【/13】乘以单精度浮点数的大小，在今天的计算机中也就是 4 字节。因此 size 的值将是【14】n【/14】*4。计算完成后，以指针【15】A_d【/15】为实参调用 cudaFree，从设备全局内存中释放向量 A 的存储空间。请注意，cudaFree 不需要改变【16】A_d【/16】的值；它只需要利用【17】A_d【/17】的值把所分配的内存归还给可用内存池。因此，作为实参传入的只是【18】A_d【/18】的值，而不是它的地址。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "The addresses in 【1】A_d【/1】, 【2】B_d【/2】, and 【3】C_d【/3】 point to locations in the device global memory. These addresses should not be dereferenced in the host code. They should be used in calling API functions and kernel functions. Dereferencing a device global memory pointer in host code can cause exceptions or other types of runtime errors.",
+      "zh": "【1】A_d【/1】、【2】B_d【/2】和【3】C_d【/3】中的地址指向设备全局内存中的位置。这些地址不应当在主机代码中解引用，而应当用于调用 API 函数和核函数。在主机代码中对设备全局内存指针进行解引用可能会引发异常或其他类型的运行时错误。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
+      "en": "The reader should complete Part 1 of the 【1】vecAdd【/1】 example in 【2】Fig. 2.5【/2】 with similar declarations of 【3】B_d【/3】 and 【4】C_d【/4】 pointer variables as well as their corresponding 【5】cudaMalloc【/5】 calls. Furthermore, Part 3 in 【6】Fig. 2.5【/6】 can be completed with the 【7】cudaFree【/7】 calls for 【8】B_d【/8】 and 【9】C_d【/9】.",
+      "zh": "读者应当为【2】图 2.5【/2】中【1】vecAdd【/1】示例的第 1 部分补充类似的内容：声明【3】B_d【/3】和【4】C_d【/4】指针变量，以及与之对应的【5】cudaMalloc【/5】调用。此外，【6】图 2.5【/6】中的第 3 部分可以通过对【8】B_d【/8】和【9】C_d【/9】的【7】cudaFree【/7】调用来完成。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
+      "en": "Once the host code has allocated space in the device global memory for the data objects, it can request that data be transferred from host to device. This is accomplished by calling one of the CUDA API functions. 【1】Fig. 2.7【/1】 shows such an API function, 【2】cudaMemcpy【/2】. The 【3】cudaMemcpy【/3】 function takes four parameters. The first parameter is a pointer to the destination location for the data object to be copied. The second parameter points to the source location. The third parameter specifies the number of bytes to be copied. The fourth parameter indicates the types of memory involved in the copy: from host to host, from host to device, from device to host, and from device to device. For example, the memory copy function can be used to copy data from one location in the device global memory to another location in the device global memory.",
+      "zh": "一旦主机代码在设备全局内存中为数据对象分配好了空间，就可以请求把数据从主机传输到设备。这通过调用某个 CUDA API 函数来实现。【1】图 2.7【/1】显示了这样一个 API 函数：【2】cudaMemcpy【/2】。【3】cudaMemcpy【/3】函数接受四个参数。第一个参数是指向复制目标位置的指针，第二个参数指向源位置，第三个参数指定要复制的字节数，第四个参数指明复制涉及的存储器类型：从主机到主机、从主机到设备、从设备到主机，以及从设备到设备。例如，这个内存复制函数可以用于把数据从设备全局内存中的一个位置复制到设备全局内存中的另一个位置。"
+    },
+    {
+      "id": "n0072",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 2.7【/2】【/1】 CUDA API function for data transfer between host and device.",
+      "zh": "【1】【2】图 2.7【/2】【/1】 用于主机与设备之间数据传输的 CUDA API 函数。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[12]",
+      "en": "The 【1】vecAdd【/1】 function calls the 【2】cudaMemcpy【/2】 function to copy the 【3】A_h【/3】 and 【4】B_h【/4】 vectors from the host memory to 【5】A_d【/5】 and 【6】B_d【/6】 in the device memory before adding them and to copy the 【7】C_d【/7】 vector from the device memory to C_h in the host memory after the addition has been done. Assuming that the values of 【8】A_h【/8】, 【9】B_h【/9】, 【10】A_d【/10】, 【11】B_d【/11】, and size have already been set as we discussed before, the three 【12】cudaMemcpy【/12】 calls are shown below. The two symbolic constants, 【13】cudaMemcpy【/13】【14】HostToDevice【/14】 and 【15】cudaMemcpyDeviceToHost【/15】, are recognized, predefined constants of the CUDA programming environment. Note that the same function can be used to transfer data in both directions by properly ordering the source and destination pointers and using the appropriate constant for the transfer type.",
+      "zh": "【1】vecAdd【/1】函数调用【2】cudaMemcpy【/2】函数，在相加之前把【3】A_h【/3】和【4】B_h【/4】向量从主机内存复制到设备内存中的【5】A_d【/5】和【6】B_d【/6】，并在相加完成之后把【7】C_d【/7】向量从设备内存复制回主机内存中的 C_h。假设【8】A_h【/8】、【9】B_h【/9】、【10】A_d【/10】、【11】B_d【/11】以及 size 的值已经按照前面讨论的方式设置好，下面展示三个【12】cudaMemcpy【/12】调用。两个符号常量【13】cudaMemcpy【/13】【14】HostToDevice【/14】和【15】cudaMemcpyDeviceToHost【/15】是 CUDA 编程环境中已识别、预定义的常量。请注意，通过恰当地安排源指针和目标指针的顺序，并使用与传输类型对应的常量，同一个函数可以用于双向传输数据。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[13]",
+      "en": "To summarize, the main program in 【1】Fig. 2.4【/1】 calls 【2】vecAdd【/2】, which is also executed on the host. The 【3】vecAdd【/3】 function, outlined in 【4】Fig. 2.5【/4】, allocates space in device global memory, requests data transfers, and calls the kernel that performs the actual vector addition. We refer to this type of host code as a 【5】stub【/5】 for calling a kernel. We show a more complete version of the 【6】vecAdd【/6】 function in 【7】Fig. 2.8【/7】.",
+      "zh": "综上所述，【1】图 2.4【/1】中的 main 程序调用【2】vecAdd【/2】，而 vecAdd 同样在主机上执行。如【4】图 2.5【/4】所示，【3】vecAdd【/3】函数在设备全局内存中分配空间、请求数据传输，并调用真正执行向量加法的核函数。我们把这种用于调用核函数的主机代码称为【5】桩函数【/5】。我们将在【7】图 2.8【/7】中展示一个更完整的【6】vecAdd【/6】函数版本。"
+    }
+  ]
+}

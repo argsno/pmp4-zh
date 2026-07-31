@@ -1,0 +1,22 @@
+[
+  {
+    "en": "computing model",
+    "zh": "计算模式",
+    "note": "本页指 GPU 并行计算这一新的计算范式/生态（如 with a virtuous cycle of users, developers, vendors, and distributors），非数学意义上的计算模型。p0010、p0020 两处出现。"
+  },
+  {
+    "en": "GPU computing",
+    "zh": "GPU 计算",
+    "note": "GPU 按 §5.1 保留不译，后接“计算”；本页 p0010、p0015、p0025、p0030、p0040 多处出现。"
+  },
+  {
+    "en": "AI",
+    "zh": "AI",
+    "note": "人工智能的通用缩写，中文语境广泛使用，保留不译。p0030、p0035、p0040 出现。"
+  },
+  {
+    "en": "digital twin",
+    "zh": "数字孪生",
+    "note": "业界通用译法，指地球的 Earth-2 数字孪生。p0035 出现。"
+  }
+]

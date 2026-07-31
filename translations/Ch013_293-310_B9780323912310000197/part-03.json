@@ -1,0 +1,131 @@
+{
+  "page": "Ch013_293-310_B9780323912310000197",
+  "nodes": [
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[2]",
+      "en": "One comparison-based sort that is amenable to parallelization is merge sort. Merge sort works by dividing the input list into segments, sorting each segment (using merge sort or another sorting algorithm), and then performing an ordered merge of the sorted segments.",
+      "zh": "一种适合并行化的基于比较的排序是归并排序。归并排序的工作方式是：将输入列表划分为若干段，对每段进行排序（使用归并排序或其他排序算法），然后对各已排序的段执行有序归并。"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[3]",
+      "en": "【1】Fig. 13.11【/1】 shows an example of how merge sort can be parallelized. Initially, the input list is divided into many segments, each of which are sorted independently, using some efficient sorting algorithm. After that, every pair of segments is merged into a single segment. This process is repeated until all the keys become part of the same segment.",
+      "zh": "【1】图 13.11【/1】 展示了归并排序如何被并行化的示例。最初，输入列表被划分为许多段，每段使用某种高效的排序算法独立排序。之后，每一对段被归并为一个段。这一过程不断重复，直到所有键成为同一个段的组成部分。"
+    },
+    {
+      "id": "n0077",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 13.11【/1】 Parallelizing merge sort.",
+      "zh": "【1】图 13.11【/1】 并行化归并排序。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[4]",
+      "en": "At each stage, the computation can be parallelized by performing different merge operations in parallel as well as parallelizing within merge operations. In the earlier stages, there are more independent merge operations that can be performed in parallel. In the later stages, there are fewer independent merge operations, but each merge operation merges more keys, exposing more parallelism within the merge operation. For example, in 【1】Fig. 13.11【/1】 the first merge stage consists of four independent merge operations. Hence our grid of eight thread blocks may assign two thread blocks to process each merge operation in parallel. In the next stage, there are only two merge operations, but each operation merges twice the number of keys. Hence our grid of eight thread blocks may assign four thread blocks to process each merge operation in parallel. We saw how to parallelize a merge operation in 【2】Chapter 12【/2】, Merge. We leave the implementation of merge sort based on parallel merge as an exercise for the reader.",
+      "zh": "在每个阶段，计算都可以通过并行执行不同的归并操作，并在每次归并操作内部进行并行化来实现并行。在较早的阶段，有更多可以并行执行的相互独立的归并操作。在较后的阶段，相互独立的归并操作较少，但每次归并操作归并的键更多，从而在归并操作内部暴露出更多的并行性。例如，在【1】图 13.11【/1】 中，第一个归并阶段由四次相互独立的归并操作组成。因此，我们的八个线程块的网格可以让两个线程块并行处理每次归并操作。在下一个阶段，只有两次归并操作，但每次操作归并的键数是原来的两倍。因此，我们的八个线程块的网格可以让四个线程块并行处理每次归并操作。我们在【2】第 12 章《归并》【/2】中看到了如何并行化一次归并操作。我们将基于并行归并的归并排序的实现留作读者的练习。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/h2[1]",
+      "en": "13.8 Other parallel sort methods",
+      "zh": "13.8 其他并行排序方法"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[1]",
+      "en": "The algorithms outlined above are only two of the many possible ways to sort data in parallel. In this section, we briefly outline some of the other methods that may be of interest to readers.",
+      "zh": "上文概述的算法只是并行排序数据的众多可能方法中的两种。在本节中，我们简要介绍读者可能感兴趣的其他一些方法。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[2]",
+      "en": "Among the simplest of parallel sorting methods is the odd-even transposition sort. It begins by comparing, in parallel, every even/odd pair of keys, namely, those with indices k and k + 1 starting at the first 【1】even【/1】 index. The position of the keys is swapped if the key at position k + 1 is less than the key at position k. This step is then repeated for every odd/even pair of keys, namely, those with indices k and k + 1 starting at the first 【2】odd【/2】 index. These alternating phases are repeated until both are completed with no keys needing to be swapped. The odd-even transposition sort is quite similar to sequential bubble sort algorithms, and like bubble sort, it is inefficient on large sequences, since it may perform 【M3】【M4】 work of a sequence of 【M5】【M6】 elements.",
+      "zh": "最简单的并行排序方法之一是奇偶转置排序。它首先并行地比较每一个偶数/奇数键对，即从第一个【1】偶数【/1】下标开始的、下标为 k 和 k + 1 的键对。如果位置 k + 1 处的键小于位置 k 处的键，则交换两个键的位置。接着对每一个奇数/偶数键对重复这一步骤，即从第一个【2】奇数【/2】下标开始的、下标为 k 和 k + 1 的键对。这两个交替的阶段不断重复，直到两个阶段都在没有任何键需要交换的情况下完成。奇偶转置排序与串行冒泡排序算法十分相似，并且与冒泡排序一样，它在大型序列上效率不高，因为它可能需要对一个序列执行【M3】【M4】的工作量，而该序列包含【M5】【M6】个元素。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[3]",
+      "en": "Transposition sort uses a fixed pattern of comparisons and swaps elements when they are out of order. It is easily parallelized because each step compares pairs of keys that do not overlap. There is an entire category of sorting methods that use fixed patterns of comparison to sort sequences, often in parallel. These methods are usually referred to as 【1】sorting networks【/1】, and the best-known parallel sorting networks are Batcher's bitonic sort and odd-even merge sort (【2】Batcher, 1968【/2】). Batcher's algorithms operate on sequences of fixed length and are more efficient than odd-even transposition sort, requiring only 【M3】【M4】 comparisons for a sequence of N elements. Even though the cost of these algorithms is asymptotically worse than the 【M5】【M6】 cost of methods such as merge sort, in practice, they are often the most efficient methods on small sequences because of their simplicity.",
+      "zh": "转置排序使用固定的比较模式，并在元素乱序时交换它们。由于每一步都比较互不重叠的键对，它很容易并行化。有一整类排序方法使用固定的比较模式对序列进行排序，通常以并行方式执行。这些方法通常被称为【1】排序网络【/1】，最著名的并行排序网络是 Batcher 的双调排序和奇偶归并排序（【2】Batcher, 1968【/2】）。Batcher 的算法针对固定长度的序列操作，并且比奇偶转置排序更高效，对一个包含 N 个元素的序列只需【M3】【M4】次比较。尽管这些算法的代价渐近地劣于归并排序等方法的【M5】【M6】代价，但在实践中，由于它们简单，在小序列上往往是最有效的方法。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[4]",
+      "en": "Most comparison-based parallel sorts that do not use the fixed set of comparisons that are typical of sorting networks can be divided into two broad categories. The first partitions the unsorted input into tiles, sorts each tile, and then performs most of its work in combining these tiles to form the output. The merge sort that we described in this chapter is an example of such an algorithm; most of the work is performed in the merge tree that combines sorted tiles. The second category focuses most of its work on partitioning the unsorted sequence, such that combining partitions is relatively trivial. Sample sort algorithms (【1】Frazer and McKellar, 1970【/1】) are the typical example of this category. Sample sort begins by selecting p−1 keys from the input (e.g., at random), sorts them, and then uses them to partition the input into p buckets such that all keys in bucket k are greater than all keys in any bucket j &lt; k and less than all in any bucket j &gt; k. This step is analogous to a p-way generalization of the two-way partitioning that is performed by quicksort. Having partitioned the data in this way, each bucket can be sorted independently, and the sorted output is formed by merely concatenating the buckets in order. Sample sort algorithms are often the most efficient choice for extremely large sequences in which data must be distributed across multiple physical memories, including across the memories of multiple GPUs in a single node. In practice, oversampling the keys is common, since modest oversampling will result in balanced partitions with high probability (【2】Blelloch et al., 1991【/2】).",
+      "zh": "大多数不使用排序网络所特有的固定比较集的基于比较的并行排序可以分为两大类。第一类将未排序的输入划分成分块，对每个分块进行排序，然后在合并这些分块以形成输出的过程中完成大部分工作。本章介绍的归并排序就是这类算法的一个例子；大部分工作都在合并已排序分块的归并树中完成。第二类将大部分工作集中在划分未排序的序列上，使得合并各划分相对简单。样本排序算法（【1】Frazer and McKellar, 1970【/1】）是这一类算法的典型例子。样本排序首先从输入中选取 p−1 个键（例如随机选取），对它们排序，然后用它们把输入划分为 p 个桶，使得桶 k 中的所有键都大于任意桶 j &lt; k 中的所有键，而小于任意桶 j &gt; k 中的所有键。这一步类似于快速排序所执行的双路划分的 p 路推广。以这种方式划分数据后，每个桶都可以独立排序，排序后的输出只需按顺序拼接各个桶即可形成。样本排序算法通常是对极大型序列最有效的选择，因为此时数据必须分布在多个物理内存上，包括单个节点内多个 GPU 的内存。在实践中，对键进行过采样很常见，因为适度过采样将以很高的概率得到均衡的划分（【2】Blelloch et al., 1991【/2】）。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[5]",
+      "en": "Just as merge sort and sample sort typify bottom-up and top-down strategies for comparison-based sorting, radix sorting algorithms can be designed to follow a bottom-up or top-down strategy. The radix sort that we described in this chapter is more completely described as an LSB or, more generally, least significant digit (LSD), radix sort. The successive steps of the algorithm start with the LSD of the key and work toward the most significant digit (MSD). A MSD radix sort adopts the opposite strategy. It begins by using the MSD to partition the input into buckets that correspond to the possible values of that digit. This same partitioning is then applied independently in each bucket, using the next MSD. Upon reaching the LSD, the entire sequence will have been sorted. Like sample sort, MSD radix sort is often a better choice for very large sequences. Whereas the LSD radix sort requires global shuffling of data in each step, each step of MSD radix sort operates on progressively more localized regions of the data.",
+      "zh": "正如归并排序和样本排序分别是基于比较的排序中自底向上与自顶向下策略的典型代表，基数排序算法也可以按照自底向上或自顶向下的策略来设计。本章描述的基数排序更完整地说是一种 LSB，或更一般地，最低有效位（LSD）基数排序。算法的连续步骤从键的 LSD 开始，逐步推进到最高有效位（MSD）。MSD 基数排序则采取相反的策略。它首先用 MSD 把输入划分到与该位可能取值相对应的各个桶中。然后在每个桶中独立应用相同的划分过程，使用下一个 MSD。到达 LSD 时，整个序列就已排好序。与样本排序一样，MSD 基数排序通常也是超大型序列的更好选择。LSD 基数排序在每一步都需要对数据进行全局重排，而 MSD 基数排序的每一步都作用于数据中越来越局部的区域。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/h2[1]",
+      "en": "13.9 Summary",
+      "zh": "13.9 小结"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/p[1]",
+      "en": "In this chapter we have seen how to sort keys (and their associated values) on GPUs in parallel. In most of the chapter we focused on radix sort, which sorts keys by distributing them across buckets. The distribution process is repeated for each digit in the key while preserving the order from the previous digit's iteration to ensure that the keys are sorted according to all the digits at the end. Each iteration is parallelized by assigning a thread to each key in the input list and having that thread find the destination of the key in the output list, which involves collaborating with other threads to perform an exclusive scan operation.",
+      "zh": "在本章中，我们了解了如何在 GPU 上并行地对键（及其关联值）进行排序。本章大部分内容聚焦于基数排序，它通过把键分布到各个桶中来排序。分布过程对键中的每一位数字重复执行，同时保留前一位数字迭代产生的顺序，以确保最后键按所有数字排序。每次迭代的并行化方式是为输入列表中的每个键分配一个线程，由该线程求键在输出列表中的目标位置，这需要与其他线程协作执行排他式扫描操作。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/p[2]",
+      "en": "One of the key challenges in optimizing radix sort is achieving coalesced memory accesses in writing the keys to the output list. An important optimization to enhance coalescing is to have each thread block perform a local sort to local buckets in shared memory and then write each local bucket to global memory in a coalesced manner. Another optimization is to increase the size of the radix to reduce the number of iterations that are needed and thus the number of grids that are launched. However, the radix size should not be increased too much because it would result in poorer coalescing and more overhead from the global exclusive scan operation. Finally, applying thread coarsening is effective at improving memory coalescing as well as reducing the overhead of the global exclusive scan.",
+      "zh": "优化基数排序的关键挑战之一，是在将键写入输出列表时实现合并访问。增强合并效果的一个重要优化，是让每个线程块在共享内存中对局部桶执行局部排序，然后以合并的方式将每个局部桶写入全局内存。另一个优化是增大基数，以减少所需的迭代次数，从而减少启动的网格数。不过，基数不能增大得太多，因为这会带来更差的合并效果，并增加全局排他式扫描操作的开销。最后，应用线程粗化既能有效改善内存合并，也能降低全局排他式扫描的开销。"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/p[3]",
+      "en": "Radix sort has the advantage of having computation complexity that is lower than 【M1】【M2】. However, radix sort only works for limited types of keys such as integers. Therefore we also look at the parallelization of comparison-based sorting that is applicable to general types of keys. A class of comparison-based sorting algorithms that is amenable to parallelization is merge sort. Merge sort can be parallelized by performing independent merge operations of different input segments in parallel as well as parallelizing within each merge operation, as we saw in 【3】Chapter 12【/3】, Merge.",
+      "zh": "基数排序的优点是计算复杂度低于【M1】【M2】。然而，基数排序只适用于有限的键类型，如整数。因此，我们还考察了适用于一般键类型的基于比较的排序的并行化。一类适合并行化的基于比较的排序算法是归并排序。归并排序可以通过并行地对不同输入段执行相互独立的归并操作，并在每次归并操作内部进行并行化来实现并行化，正如我们在【3】第 12 章《归并》【/3】 中所见。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/p[4]",
+      "en": "The process of implementing and optimizing parallel sorting algorithms on GPUs is complex, and the average user is more likely to use a parallel sorting library for GPUs, such as Thrust (【1】Bell and Hoberock, 2012【/1】), than to implement one's own sorting kernels from scratch. Nevertheless, parallel sorting remains an interesting case study of the tradeoffs that go into optimizing parallel patterns.",
+      "zh": "在 GPU 上实现和优化并行排序算法的过程很复杂，普通用户更可能使用面向 GPU 的并行排序库（如 Thrust（【1】Bell and Hoberock, 2012【/1】）），而不是从头实现自己的排序核函数。尽管如此，并行排序仍然是研究并行模式优化中各种权衡取舍的一个有趣案例。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]",
+      "en": "1. Extend the kernel in 【1】Fig. 13.4【/1】 by using shared memory to improve memory coalescing.",
+      "zh": "1. 使用共享内存扩展【1】图 13.4【/1】 中的核函数，以改善内存合并。"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[2]",
+      "en": "2. Extend the kernel in 【1】Fig. 13.4【/1】 to work for a multibit radix.",
+      "zh": "2. 扩展【1】图 13.4【/1】 中的核函数，使其适用于多位基数。"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[3]",
+      "en": "3. Extend the kernel in 【1】Fig. 13.4【/1】 by applying thread coarsening to improve memory coalescing.",
+      "zh": "3. 通过应用线程粗化扩展【1】图 13.4【/1】 中的核函数，以改善内存合并。"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[4]",
+      "en": "4. Implement parallel merge sort using the parallel merge implementation from 【1】Chapter 12【/1】, Merge.",
+      "zh": "4. 使用【1】第 12 章《归并》【/1】中的并行归并实现，实现并行归并排序。"
+    },
+    {
+      "id": "st0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    }
+  ]
+}

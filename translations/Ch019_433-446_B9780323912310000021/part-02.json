@@ -1,0 +1,119 @@
+{
+  "page": "Ch019_433-446_B9780323912310000021",
+  "nodes": [
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[10]",
+      "en": "For graph traversal (【1】Chapter 15【/1】, Graph Traversal) the vertex-centric push implementation and the edge-centric implementation used input-centric decomposition. That is, threads were assigned to vertices or edges and updated the levels of neighboring vertices. In contrast, the vertex-centric pull implementation used output-centric decomposition in which each thread updated only the level of the vertex to which it was assigned. The tradeoff between scatter and gather access patterns is not a concern in selecting between different decompositions because the updates to the level values are idempotent and do not require atomics. However, the amount of parallelism that is extracted and the load balance that is achieved play an important role in deciding which decomposition is more favorable, and the best decomposition ultimately depends on the input dataset. The reader is encouraged to review 【2】Chapter 15【/2】, Graph Traversal, for a more detailed handling of this topic.",
+      "zh": "对于图遍历（【1】第 15 章【/1】图遍历），面向顶点的推送式实现和面向边的实现使用了面向输入的分解。也就是说，线程被分配给顶点或边，并更新相邻顶点的层级。相比之下，面向顶点的拉取式实现使用了面向输出的分解，其中每个线程只更新分配给它的那个顶点的层级。在选择不同的分解方式时，分散与汇聚访问模式之间的权衡并不是问题，因为对层级值的更新是幂等的，不需要原子操作。然而，提取到的并行性程度和实现的负载均衡在决定哪种分解更有利方面起着重要作用，最佳分解最终取决于输入数据集。建议读者复习【2】第 15 章【/2】图遍历，以更详细地了解这一主题的处理。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[11]",
+      "en": "The iterative MRI reconstruction problem (【1】Chapter 17【/1】, Iterative Magnetic Resonance Imaging Reconstruction) and the electrostatic potential calculation problem (【2】Chapter 18【/2】, Electrostatic Potential Map) both favor the output-centric decomposition because of the benefit over the gather pattern of the scatter pattern in avoiding atomic operations. These chapters already handle the distinction between the two decomposition strategies in depth. The iterative MRI reconstruction problem (【3】Chapter 17【/3】, Iterative Magnetic Resonance Imaging Reconstruction) processes a large amount of k-space sample data. Each k-space sample data is also used many times for calculating its contributions to the reconstructed voxel data. For high-resolution reconstruction, each sample data is used a large number of times. We showed that a good decomposition of the FhD problem in MRI reconstruction is an output-centric decomposition that forms subproblems, each of which calculates the value of an FhD element using the gather strategy.",
+      "zh": "迭代式 MRI 重建问题（【1】第 17 章【/1】迭代磁共振成像重建）和静电势计算问题（【2】第 18 章【/2】静电势图）都偏向于面向输出的分解，因为汇聚模式在避免原子操作方面比分散模式更具优势。这两章已经深入讨论了两种分解策略之间的区别。迭代式 MRI 重建问题（【3】第 17 章【/3】迭代磁共振成像重建）要处理大量的 k 空间采样数据。每个 k 空间采样数据也都要多次用于计算其对重建体素数据的贡献。对于高分辨率重建，每个采样数据被使用的次数非常多。我们表明，MRI 重建中 FhD 问题的一个良好分解是面向输出的分解，它形成若干子问题，每个子问题使用汇聚策略计算一个 FhD 元素的值。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[12]",
+      "en": "Similarly, the electrostatic potential calculation problem (【1】Chapter 18【/1】, Electrostatic Potential Map) involves the calculation of the contribution of many input atoms to the potential energy at a large number of output grid points. A realistic molecular system model typically involves at least hundreds of thousands of atoms and millions of energy grid points. The electrostatic charge information of each atom is used many times in calculating its contributions to the energy grid points. We showed that the decomposition of the electrostatic potential map calculation problem can be atom-centric (i.e., input-centric) or grid-centric (i.e., output-centric). In an atom-centric decomposition, each thread is responsible for calculating the effect of one atom on all grid points. In contrast, a grid-centric decomposition uses each thread to calculate the effect of all atoms on a grid point. The grid-centric (i.e., output-centric) decomposition proved to be better because it uses the more favorable gather access pattern. The amount of parallelism that is exposed by both decompositions is sufficient. For the cutoff summation algorithm the difficulty of mapping input data to output data in the grid-centric decomposition is overcome with the use of binning, and the load imbalance caused by binning is overcome with the SmallBin-Overlap implementation that was discussed in the previous section.",
+      "zh": "类似地，静电势计算问题（【1】第 18 章【/1】静电势图）涉及计算大量输入原子对众多输出网格点处电势能的贡献。一个真实的分子系统模型通常至少包含数十万个原子和数百万个能量网格点。每个原子的静电电荷信息在计算其对能量网格点的贡献时会被多次使用。我们表明，静电势图计算问题的分解可以是面向原子的（即面向输入的），也可以是面向网格的（即面向输出的）。在面向原子的分解中，每个线程负责计算一个原子对所有网格点的影响。相比之下，面向网格的分解让每个线程计算所有原子对一个网格点的影响。事实证明，面向网格的（即面向输出的）分解更好，因为它使用了更有利的汇聚访问模式。两种分解暴露出的并行性程度都足够。对于截断求和算法，面向网格的分解中把输入数据映射到输出数据的困难通过分箱得以克服，而分箱造成的负载不均衡则通过上一节讨论的 SmallBin-Overlap 实现得以克服。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "19.4 Computational thinking",
+      "zh": "19.4 计算思维"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "Computational thinking is arguably the most important aspect of parallel application development (【1】Wing, 2006【/1】). We define computational thinking as the thought processes of formulating domain problems in terms of computation steps and algorithms. Like any other thought processes and problem-solving skills, computational thinking is an art. As we mentioned in 【2】Chapter 1【/2】, Introduction, we believe that computational thinking is best taught with an iterative approach in which students bounce back and forth between practical experience and abstract concepts.",
+      "zh": "计算思维可以说是并行应用开发中最重要的方面（【1】Wing, 2006【/1】）。我们将计算思维定义为以计算步骤和算法来表述领域问题的思维过程。与任何其他思维过程和解决问题的技能一样，计算思维是一门艺术。正如我们在【2】第 1 章【/2】引言中提到的，我们认为计算思维最好采用迭代式方法教授，让学生在实践经验与抽象概念之间来回切换。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "There is a very large volume of literature on a wide range of algorithms, problem decompositions, and optimization strategies that can be hard to understand. It is beyond the scope of this book to provide comprehensive coverage of all the available techniques. We discuss a substantial set of techniques in each of the algorithm, problem decomposition, and optimization steps that have broad applicability. While these techniques are demonstrated using CUDA C implementations, they help the readers build up the foundation for computational thinking in general. We believe that humans understand best when we learn from the bottom up. That is, we first learn the concepts in the context of a particular programming model, which provides us with solid footing before we generalize our knowledge to other programming models. An in-depth experience with the CUDA C implementations also enables us to gain maturity, which will help us learn parallel programming and computational thinking concepts that may not even be pertinent to the GPUs.",
+      "zh": "关于各种各样的算法、问题分解和优化策略，有大量的文献，这些内容可能难以理解。对现有技术进行全面覆盖超出了本书的范围。我们在算法、问题分解和优化等步骤中的每一步都讨论了大量具有广泛适用性的技术。虽然这些技术是用 CUDA C 实现演示的，但它们有助于读者建立通用计算思维的基础。我们相信，自下而上的学习方式最符合人类的认知规律。也就是说，我们首先在特定编程模型的背景下学习这些概念，这为我们打下了坚实的基础，然后再将知识推广到其他编程模型。对 CUDA C 实现的深入体验还能让我们更加成熟，这将有助于我们学习并行编程和计算思维概念，即使这些概念可能甚至与 GPU 无关。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "There is a myriad of skills that are needed for a parallel programmer to be an effective computational thinker. We summarize these foundational skills as follows:",
+      "zh": "一个并行程序员要成为有效的计算思维者，需要具备大量的技能。我们将这些基础技能总结如下："
+    },
+    {
+      "id": "u0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/ul[1]/li[1]",
+      "en": "• Computer architecture: memory organization, caching and locality, memory bandwidth, SIMT versus SPMD versus SIMD execution, and floating-point precision versus accuracy. These concepts are critical in understanding the tradeoffs between algorithms, problem decompositions, and optimizations.",
+      "zh": "• 计算机体系结构：内存组织、缓存与局部性、内存带宽、SIMT、单程序多数据（SPMD）与 SIMD 执行，以及浮点精度与准确度。这些概念对于理解算法、问题分解和优化之间的权衡取舍至关重要。"
+    },
+    {
+      "id": "u0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/ul[1]/li[2]",
+      "en": "• Programming interfaces and compilers: parallel execution models, types of available memories, types of synchronization support, array data layout, and thread granularity transformation. These concepts are needed for thinking through the arrangements of data structures and loop structures to achieve better performance.",
+      "zh": "• 编程接口与编译器：并行执行模型、可用内存类型、同步支持类型、数组数据布局以及线程粒度变换。这些概念对于思考数据结构与循环结构的安排以实现更好的性能是必需的。"
+    },
+    {
+      "id": "u0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[1]/ul[1]/li[3]",
+      "en": "• Domain knowledge: problem formulation, hard versus soft constraints, numerical methods, precision, accuracy, and numerical stability. Understanding these ground rules allows a developer to be much more creative in applying algorithm techniques.",
+      "zh": "• 领域知识：问题表述、硬约束与软约束、数值方法、精度、准确度以及数值稳定性。理解这些基本规则可以让开发者在应用算法技术时更具创造力。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
+      "en": "Our goal for this book is to provide a solid foundation for all these areas. Readers should continue to broaden their knowledge in these areas after finishing this book. Most important, the best way of building up more computational thinking skills is to keep solving challenging problems with excellent computational solutions.",
+      "zh": "本书的目标是为所有这些领域提供坚实的基础。读者在读完本书后应继续拓宽这些领域的知识。最重要的是，培养更多计算思维技能的最佳方式是不断用出色的计算解决方案去解决有挑战性的问题。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "A good goal for effective use of computing is making science better, not just faster. This requires reexamining prior assumptions and really thinking about how to apply the big hammer of massively parallel processing. Put another way, there will probably be no Nobel Prizes or Turing Awards awarded for “just recompile” or using more threads with the same computational approach. Truly important scientific discoveries will more likely come from fresh computational thinking. Consider this an exhortation to use this bonanza of computing power to solve new problems in new ways.",
+      "zh": "有效利用计算的一个良好目标是让科学变得更好，而不仅仅是更快。这要求重新审视先前的假设，并真正思考如何运用大规模并行处理这把重锤。换句话说，仅靠“重新编译”或在使用相同计算方法的情况下增加更多线程，大概不会获得诺贝尔奖或图灵奖。真正重要的科学发现更可能来自全新的计算思维。把这看作一种劝勉：利用这丰富的计算能力，以新的方式解决新的问题。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "There are three approaches for attacking computation-hungry applications with increasing order of difficulty, complexity, and, not surprisingly, potential for payoff. Let us call these “good,” “better,” and “best.”",
+      "zh": "攻克计算密集型应用有三种方法，其难度、复杂程度以及——毫不意外——潜在收益依次递增。我们分别称之为“好”、“更好”和“最佳”。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
+      "en": "The “good” approach is simply to “accelerate” legacy program codes. The most basic effort is simply to recompile and run on a new platform or architecture without adding any domain insight or expertise in parallelism. This can be enhanced by using optimized libraries, tools, or directives, such as CuBLAS, CuFFT, Thrust, Matlab, or OpenACC. This approach does not require any algorithm selection, problem decomposition, or optimization and tuning efforts. It can be immediately rewarding for domain scientists, since minimal computer science knowledge or programming skills are required to obtain decent speedups. However, it does not realize the full potential of parallel computing.",
+      "zh": "“好”的方法只是“加速”遗留程序代码。最基本的做法只是重新编译并在新的平台或体系结构上运行，而不加入任何领域见解或并行性专业知识。这种方法可以通过使用优化的库、工具或编译指令（例如 CuBLAS、CuFFT、Thrust、Matlab 或 OpenACC）来增强。这种方法不需要任何算法选择、问题分解或优化与调优工作。对于领域科学家来说，它可以立竿见影，因为只需很少的计算机科学知识或编程技能就能获得可观的加速比。然而，它并未实现并行计算的全部潜力。"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "The “better” approach involves rewriting existing codes using parallel programming skills to take advantage of new architectures or creating new codes from scratch. This approach is an opportunity for clever thinking about problem decomposition and optimization selection and is good work for nondomain computer scientists, as minimal domain knowledge is required. However, it also does not realize the full potential of parallel computing because of the absence of domain-specific knowledge, which is needed for effective algorithm selection.",
+      "zh": "“更好”的方法涉及利用并行编程技能重写现有代码以利用新体系结构的优势，或从头创建新代码。这种方法为围绕问题分解和优化选择进行巧妙思考提供了机会，也适合非领域的计算机科学家，因为只需很少的领域知识。然而，由于缺乏领域特定知识——而领域特定知识正是有效算法选择所必需的——它同样无法实现并行计算的全部潜力。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "The “best” approach involves a holistic attempt at application parallelization involving all three key steps: algorithm selection, problem decomposition, and optimization and tuning. We wish not only to map a known algorithm to a parallel program and optimize it, but also to rethink the numerical methods and algorithms that are used in the solution. The cutoff binning approach in 【1】Chapter 18【/1】, Electrostatic Potential Map, is a good example. The approach requires domain expertise to trade accuracy for dramatically reduced algorithmic complexity and requires problem decomposition and optimization skills to use the grid-centric decomposition with the binning techniques designed by computer scientists. In this approach, there is the potential for the biggest performance advantage and fundamental new discoveries and capabilities. For example, one may be able to perform high-fidelity simulation of a biochemical system whose size is considered beyond reach with traditional methods. This approach is interdisciplinary and requires both computer science 【2】and【/2】 domain insight, but the payoff is worth the effort. It is truly an exciting time to be a computational scientist!",
+      "zh": "“最佳”的方法涉及对应用并行化的整体性尝试，涵盖全部三个关键步骤：算法选择、问题分解以及优化与调优。我们不仅希望将已知算法映射为并行程序并加以优化，还希望重新思考解决方案中所用的数值方法和算法。【1】第 18 章【/1】静电势图中的截断分箱方法就是一个很好的例子。这种方法需要领域专业知识，用准确度换取大幅降低的算法复杂度，还需要问题分解与优化技能，以结合计算机科学家设计的分箱技术使用面向网格的分解。在这种方法中，蕴藏着最大的性能优势潜力以及全新的基础性发现和能力的可能。例如，人们或许能够对规模被认为超出传统方法可达范围的生化系统进行高保真模拟。这种方法是跨学科的，既需要计算机科学【2】和【/2】领域洞察力，但回报值得付出努力。作为计算科学家，这确实是一个激动人心的时代！"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "19.5 Summary",
+      "zh": "19.5 小结"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "In summary, we have discussed the main steps of parallel programming and computational thinking, namely, algorithm selection, problem decomposition, and optimization and tuning. Given a computational problem, the programmer will typically have to select from a variety of algorithms. Some of these algorithms achieve different tradeoffs while maintaining the same numerical accuracy. Others involve sacrificing some level of accuracy to achieve much more scalable running times. For the selected algorithm, different choices of problem decomposition can result in different levels of interference between threads, parallelism exposed, load imbalance, and other performance considerations during parallel execution. Computational thinking skills allow an algorithm designer to work around the roadblocks and reach a good solution.",
+      "zh": "总而言之，我们讨论了并行编程与计算思维的主要步骤，即算法选择、问题分解以及优化与调优。对于给定的计算问题，程序员通常需要在多种算法中进行选择。其中一些算法在保持相同数值准确度的同时实现了不同的权衡取舍，另一些算法则通过牺牲一定程度的准确度来获得更具可扩展性的运行时间。对于所选的算法，问题分解的不同选择会导致并行执行期间线程间干扰、暴露的并行性、负载不均衡以及其他性能因素处于不同水平。计算思维技能使算法设计者能够绕开障碍并得出良好的解决方案。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "page": "Ch006_123-147_B9780323912310000161",
+  "nodes": [
+    {
+      "id": "n0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 6.7【/2】【/1】 Channels and banks in DRAM systems.",
+      "zh": "【1】【2】图 6.7【/2】【/1】 DRAM 系统中的通道与存储体。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "The data transfer bandwidth of a bus is defined by its width and clock frequency. Modern 【1】double data rate【/1】 (DDR) busses perform two data transfers per clock cycle: one at the rising edge and one at the falling edge of each clock cycle. For example, a 64-bit DDR bus with a clock frequency of 1 GHz has a bandwidth of 8B*2*1 GHz=16GB/s. This seems to be a large number but is often too small for modern CPUs and GPUs. A modern CPU might require a memory bandwidth of at least 32 GB/s, whereas a modern GPU might require 256 GB/s. For this example the CPU would require 2 channels, and the GPU would require 16 channels.",
+      "zh": "总线的数据传输带宽由其宽度和时钟频率决定。现代【1】双倍数据速率【/1】（DDR）总线在每个时钟周期内执行两次数据传输：一次在时钟周期的上升边沿，一次在下降边沿。例如，一条 64 位 DDR 总线在 1 GHz 时钟频率下的带宽为 8B*2*1 GHz=16GB/s。这个数字看起来很大，但对现代 CPU 和 GPU 来说往往太小了。现代 CPU 可能需要至少 32 GB/s 的内存带宽，而现代 GPU 可能需要 256 GB/s。就本例而言，CPU 需要 2 个通道，GPU 需要 16 个通道。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "For each channel, the number of banks that is connected to it is determined by the number of banks required to fully utilize the data transfer bandwidth of the bus. This is illustrated in 【1】Fig. 6.8【/1】. Each bank contains an array of DRAM cells, the sensing amplifiers for accessing these cells, and the interface for delivering bursts of data to the bus (【2】Section 6.1【/2】).",
+      "zh": "对于每个通道，连接到它的存储体数量取决于充分利用总线数据传输带宽所需的存储体数量。这如【1】图 6.8【/1】所示。每个存储体包含一个 DRAM 存储单元阵列、用于访问这些单元的读出放大器，以及将突发数据交付给总线的接口（见【2】第 6.1 节【/2】）。"
+    },
+    {
+      "id": "n0053",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 6.8【/1】 Banking improves the utilization of data transfer bandwidth of a channel.",
+      "zh": "【1】图 6.8【/1】 多存储体设计提高了通道数据传输带宽的利用率。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "【1】Fig. 6.8(A)【/1】 illustrates the data transfer timing when a single bank is connected to a channel. It shows the timing of two consecutive memory read accesses to the DRAM cells in the bank. Recall from 【2】Section 6.1【/2】 that each access involves long latency for the decoder to enable the cells and for the cells to share their stored charge with the sensing amplifier. This latency is shown as the gray section at the left end of the time frame. Once the sensing amplifier has completed its work, the burst data is delivered through the bus. The time for transferring the burst data through the bus is shown as the left dark section of the time frame in 【3】Fig. 6.8【/3】. The second memory read access will incur a similar long access latency (the gray section between the dark sections of the time frame) before its burst data can be transferred (the right dark section).",
+      "zh": "【1】图 6.8(A)【/1】展示了单存储体连接到通道时的数据传输时序。它展示了对该存储体中 DRAM 存储单元的两次连续内存读访问的时序。回顾【2】第 6.1 节【/2】可知，每次访问都涉及较长的延迟：译码器要使存储单元使能，存储单元还要与读出放大器共享其所存储的电荷。这个延迟显示为时间轴左端的灰色段。一旦读出放大器完成工作，突发数据就通过总线交付。通过总线传输突发数据的时间显示为【3】图 6.8【/3】时间轴左侧的深色段。第二次内存读访问在突发数据能够被传输（右侧深色段）之前，将经历类似的长访问延迟（时间轴上两个深色段之间的灰色段）。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "In reality, the access latency (the gray sections) is much longer than the data transfer time (the dark section). It should be apparent that the access transfer timing of a one-bank organization would grossly underutilize the data transfer bandwidth of the channel bus. For example, if the ratio of DRAM cell array access latency to the data transfer time is 20:1, the maximal utilization of the channel bus would be 1/21=4.8%; that is a 16 GB/s channel would deliver data to the processor at a rate no more than 0.76 GB/s. This would be totally unacceptable. This problem is solved by connecting multiple banks to a channel bus.",
+      "zh": "实际上，访问延迟（灰色段）比数据传输时间（深色段）长得多。显然，单存储体组织方式的访问传输时序会严重浪费通道总线的数据传输带宽。例如，如果 DRAM 存储单元阵列的访问延迟与数据传输时间之比为 20:1，那么通道总线的最大利用率将是 1/21=4.8%；也就是说，一条 16 GB/s 的通道向处理器交付数据的速率不会超过 0.76 GB/s。这完全不可接受。通过在通道总线上连接多个存储体可以解决这个问题。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[6]",
+      "en": "When two banks are connected to a channel bus, an access can be initiated in the second bank while the first bank is serving another access. Therefore one can overlap the latency for accessing the DRAM cell arrays. 【1】Fig. 6.8(B)【/1】 shows the timing of a two-bank organization. We assume that bank 0 started at a time earlier than the window shown in 【2】Fig. 6.8【/2】. Shortly after the first bank starts accessing its cell array, the second bank also starts to access its cell array. When the access in bank 0 is complete, it transfers the burst data (the leftmost dark section of the time frame). Once bank 0 completes its data transfer, bank 1 can transfer its burst data (the second dark section). This pattern repeats for the next accesses.",
+      "zh": "当两个存储体连接到通道总线时，可以在第一个存储体为另一次访问服务期间，在第二个存储体中发起一次访问。因此，访问 DRAM 存储单元阵列的延迟可以被重叠。【1】图 6.8(B)【/1】展示了双存储体组织方式的时序。我们假设存储体 0 在【2】图 6.8【/2】所示时间窗口之前就已开始。第一个存储体开始访问其单元阵列后不久，第二个存储体也开始访问其单元阵列。当存储体 0 的访问完成后，它传输突发数据（时间轴最左侧的深色段）。存储体 0 完成数据传输后，存储体 1 就可以传输其突发数据（第二个深色段）。这种模式对后续访问重复进行。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[7]",
+      "en": "From 【1】Fig. 6.8(B)【/1】, we can see that by having two banks, we can potentially double the utilization of the data transfer bandwidth of the channel bus. In general, if the ratio of the cell array access latency and data transfer time is 【2】R【/2】, we need to have at least 【3】R【/3】 + 1 banks if we hope to fully utilize the data transfer bandwidth of the channel bus. For example, if the ratio is 20, we will need at least 21 banks connected to each channel bus. In general, the number of banks connected to each channel bus needs to be larger than 【4】R【/4】 for two reasons. One is that having more banks reduces the probability of multiple simultaneous accesses targeting the same bank, a phenomenon called 【5】bank conflict【/5】. Since each bank can serve only one access at a time, the cell array access latency can no longer be overlapped for these conflicting accesses. Having a larger number of banks increases the probability that these accesses will be spread out among multiple banks. The second reason is that the size of each cell array is set to achieve reasonable latency and manufacturability. This limits the number of cells that each bank can provide. One may need many banks just to be able to support the memory size that is required.",
+      "zh": "从【1】图 6.8(B)【/1】可以看出，通过使用两个存储体，我们可以将通道总线的数据传输带宽利用率提高一倍。一般来说，如果单元阵列访问延迟与数据传输时间之比为【2】R【/2】，那么要想充分利用通道总线的数据传输带宽，至少需要【3】R【/3】+1 个存储体。例如，如果该比值为 20，我们就需要至少 21 个存储体连接到每条通道总线。一般来说，连接到每条通道总线的存储体数量需要大于【4】R【/4】，原因有二。其一，更多的存储体会降低多个同时进行的访问指向同一存储体的概率，这种现象称为【5】存储体冲突【/5】。由于每个存储体一次只能服务一次访问，对于这些冲突的访问，单元阵列访问延迟就无法再被重叠。拥有更多的存储体可以增加这些访问分散到多个存储体的概率。其二，每个单元阵列的大小要设置得能够实现合理的延迟和可制造性。这限制了每个存储体所能提供的单元数量。有时，仅为了支持所需的内存容量，就需要很多存储体。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
+      "en": "There is an important connection between the parallel execution of threads and the parallel organization of the DRAM system. To achieve the memory access bandwidth specified for device, there must be a sufficient number of threads making simultaneous memory accesses. This observation reflects another benefit of maximizing occupancy. Recall that in 【1】Chapter 4【/1】, Compute Architecture and Scheduling, we saw that maximizing occupancy ensures that there are enough threads resident on the streaming multiprocessors (SMs) to hide core pipeline latency, thereby utilizing the instruction throughput efficiently. As we see now, maximizing occupancy also has the additional benefit of ensuring that enough memory access requests are made to hide DRAM access latency, thereby utilizing the memory bandwidth efficiently. Of course, to achieve the best bandwidth utilization, these memory accesses must be evenly distributed across channels and banks, and each access to a bank must also be a coalesced access.",
+      "zh": "线程的并行执行与 DRAM 系统的并行组织之间存在重要的联系。要实现设备规定的内存访问带宽，必须有足够多的线程同时进行内存访问。这一观察反映了最大化占用率的另一个好处。回顾【1】第 4 章【/1】《计算体系结构与调度》可知，最大化占用率可以确保流式多处理器（SM）上驻留有足够多的线程来隐藏核心流水线延迟，从而高效地利用指令吞吐量。正如我们现在看到的，最大化占用率还有一个额外的好处，即确保产生足够多的内存访问请求来隐藏 DRAM 访问延迟，从而高效地利用内存带宽。当然，要实现最佳的带宽利用率，这些内存访问必须均匀地分布在各个通道和存储体之间，而且对每个存储体的访问也必须是合并访问。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[9]",
+      "en": "【1】Fig. 6.9【/1】 shows a toy example of distributing the elements of an array M to channels and banks. We assume a small burst size of two elements (8 bytes). The distribution is done by hardware design. The addressing of the channels and backs are such that the first 8 bytes of the array (M[0] and M[1]) are stored in bank 0 of channel 0, the next 8 bytes (M[2] and M[3]) in bank 0 of channel 1, the next 8 bytes (M[4] and M[5]) in bank 0 of channel 2, and the next 8 bytes (M[6] and M[7]) in bank 0 of channel 3.",
+      "zh": "【1】图 6.9【/1】展示了将数组 M 的元素分布到通道和存储体的一个小例子。我们假设突发大小很小，为两个元素（8 字节）。这种分布由硬件设计决定。通道和存储体的寻址方式使得数组的前 8 个字节（M[0] 和 M[1]）存放在通道 0 的存储体 0 中，接下来 8 个字节（M[2] 和 M[3]）存放在通道 1 的存储体 0 中，再接下来 8 个字节（M[4] 和 M[5]）存放在通道 2 的存储体 0 中，再接下来 8 个字节（M[6] 和 M[7]）存放在通道 3 的存储体 0 中。"
+    },
+    {
+      "id": "n0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 6.9【/1】 Distributing array elements into channels and banks.",
+      "zh": "【1】图 6.9【/1】 将数组元素分布到通道和存储体中。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[10]",
+      "en": "At this point, the distribution wraps back to channel 0 but will use bank 1 for the next 8 bytes (M[8] and M[9]). Thus elements M[10] and M[11] will be in bank 1 of channel 1, M[12] and M[13] will be in bank 1 of channel 2, and M[14] and M[15] will be in bank 1 of channel 3. Although not shown in the figure, any additional elements will be wrapped around and start with bank 0 of channel 0. For example, if there are more elements, M[16] and M[17] will be stored in bank 0 of channel 0, M[18] and M[19] will be stored in bank 0 of channel 1, and so on.",
+      "zh": "此时，分布回绕到通道 0，但接下来的 8 个字节（M[8] 和 M[9]）将使用存储体 1。因此元素 M[10] 和 M[11] 将在通道 1 的存储体 1 中，M[12] 和 M[13] 在通道 2 的存储体 1 中，M[14] 和 M[15] 在通道 3 的存储体 1 中。图中虽未显示，但任何多余的元素都将回绕，并从通道 0 的存储体 0 开始。例如，如果有更多元素，M[16] 和 M[17] 将存放在通道 0 的存储体 0 中，M[18] 和 M[19] 将存放在通道 1 的存储体 0 中，依此类推。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[11]",
+      "en": "The distribution scheme illustrated in 【1】Fig. 6.9【/1】, often referred to as 【2】interleaved data distribution【/2】, spreads the elements across the banks and channels in the system. This scheme ensures that even relatively small arrays are spread out nicely. Thus we assign only enough elements to fully utilize the DRAM burst of bank 0 of channel 0 before moving on to bank 0 of channel 1. In our toy example, as long as we have at least 16 elements, the distribution will involve all the channels and banks for storing the elements.",
+      "zh": "【1】图 6.9【/1】所示、通常被称为【2】交错数据分布【/2】的分布方案，把元素分散到系统中的各个存储体和通道。这种方案确保即使相对较小的数组也能得到很好的分散。因此，我们只向通道 0 的存储体 0 分配刚好填满一次 DRAM 突发传输的元素，然后才转向通道 1 的存储体 0。在我们的例子中，只要元素不少于 16 个，分布就会涉及所有通道和存储体来存放这些元素。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[12]",
+      "en": "We now illustrate the interaction between parallel thread execution and the parallel memory organization. We will use the example in 【1】Fig. 5.5【/1】, replicated as 【2】Fig. 6.10【/2】. We assume that the multiplication will be performed with 2×2 thread blocks and 2×2 tiles.",
+      "zh": "现在我们来说明并行线程执行与并行内存组织之间的相互作用。我们将使用【1】图 5.5【/1】中的示例，该图作为【2】图 6.10【/2】复现。我们假设乘法将使用 2×2 的线程块和 2×2 的分块进行。"
+    },
+    {
+      "id": "n0064",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 6.10【/2】【/1】 A small example of matrix multiplication (replicated from 【3】Fig. 5.5【/3】).",
+      "zh": "【1】【2】图 6.10【/2】【/1】 矩阵乘法的一个小例子（复制自【3】图 5.5【/3】）。"
+    },
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[13]",
+      "en": "During phase 0 of the kernel’s execution, all four thread blocks will be loading their first tile. The M elements that are involved in each tile are shown in 【1】Fig. 6.11【/1】. Row 2 shows the M elements accessed in phase 0, with their 2D indices. Row 3 shows the same M elements with their linearized indices. Assume that all thread blocks are executed in parallel. We see that each block will make two coalesced accesses.",
+      "zh": "在核函数执行的第 0 阶段，所有四个线程块都将加载它们的第一个分块。每个分块涉及的 M 元素如【1】图 6.11【/1】所示。第 2 行展示了第 0 阶段访问的 M 元素及其二维索引。第 3 行展示了相同的 M 元素及其线性化索引。假设所有线程块并行执行。我们看到每个线程块将进行两次合并访问。"
+    },
+    {
+      "id": "n0066",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 6.11【/2】【/1】 M elements loaded by thread blocks in each phase.",
+      "zh": "【1】【2】图 6.11【/2】【/1】 各阶段由线程块加载的 M 元素。"
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[14]",
+      "en": "According to the distribution in 【1】Fig. 6.9【/1】, these coalesced accesses will be made to the two banks in channel 0 as well as the two banks in channel 2. These four accesses will be done in parallel to take advantage of two channels as well as improving the utilization of the data transfer bandwidth of each channel.",
+      "zh": "根据【1】图 6.9【/1】中的分布，这些合并访问将指向通道 0 中的两个存储体以及通道 2 中的两个存储体。这四次访问将并行进行，以利用两个通道，同时提高每个通道数据传输带宽的利用率。"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[15]",
+      "en": "We also see that Block【1】0,0【/1】 and Block【2】0,1【/2】 will load the same M elements. Most modern devices are equipped with caches that will combine these accesses into one as long as the execution timing of these blocks are sufficiently close to each other. In fact, the cache memories in GPU devices are mainly designed to combine such accesses and reduce the number of accesses to the DRAM system.",
+      "zh": "我们还看到，线程块【1】0,0【/1】和线程块【2】0,1【/2】将加载相同的 M 元素。大多数现代设备都配备了缓存，只要这些线程块的执行时间足够接近，缓存就会将这些访问合并为一次。事实上，GPU 设备中的缓存内存主要就是为合并此类访问、减少对 DRAM 系统的访问次数而设计的。"
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[16]",
+      "en": "Rows 4 and 5 show the M elements loaded during phase 1 of the kernel execution. We see that the accesses are now done to the banks in channel 1 and channel 3. Once again, these accesses will be done in parallel. It should be clear to the reader that there is a symbiotic relationship between the parallel execution of the threads and the parallel structure of the DRAM system. On one hand, good utilization of the potential access bandwidth of the DRAM system requires that many threads simultaneously access data in the DRAM. On the other hand, the execution throughput of the device relies on good utilization of the parallel structure of the DRAM system, that is, banks and channels. For example, if the simultaneously executing threads all access data in the same channel, the memory access throughput and the overall device execution speed will be greatly reduced.",
+      "zh": "第 4 行和第 5 行展示了核函数执行第 1 阶段期间加载的 M 元素。我们看到，此时的访问指向通道 1 和通道 3 中的存储体。这些访问同样将并行进行。读者应当清楚，线程的并行执行与 DRAM 系统的并行结构之间存在共生关系。一方面，要充分利用 DRAM 系统的潜在访问带宽，就需要许多线程同时访问 DRAM 中的数据。另一方面，设备的执行吞吐量有赖于对 DRAM 系统并行结构（即存储体和通道）的良好利用。例如，如果同时执行的线程都访问同一通道中的数据，内存访问吞吐量和设备的整体执行速度将大大降低。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[17]",
+      "en": "The reader is invited to verify that multiplying two larger matrices, such as 8×8 with the same 2×2 thread block configuration, will make use of all the four channels in 【1】Fig. 6.9【/1】. On the other hand, an increased DRAM burst size would require multiplication of even larger matrices to fully utilize the data transfer bandwidth of all the channels.",
+      "zh": "请读者自行验证，使用相同的 2×2 线程块配置相乘两个更大的矩阵（如 8×8）时，将用到【1】图 6.9【/1】中全部四个通道。另一方面，若 DRAM 突发传输的大小增大，就需要相乘更大的矩阵，才能充分利用所有通道的数据传输带宽。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "6.3 Thread coarsening",
+      "zh": "6.3 线程粗化"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "So far, in all the kernels that we have seen, work has been parallelized across threads at the finest granularity. That is, each thread was assigned the smallest possible unit of work. For example, in the vector addition kernel, each thread was assigned one output element. In the RGB-to-grayscale conversion and the image blur kernels, each thread was assigned one pixel in the output image. In the matrix multiplication kernels, each thread was assigned one element in the output matrix.",
+      "zh": "到目前为止，在我们见过的所有核函数中，工作都是以最细粒度在线程之间并行的。也就是说，每个线程被分配到尽可能小的工作单元。例如，在向量加法核函数中，每个线程被分配一个输出元素。在 RGB 转灰度转换和图像模糊核函数中，每个线程被分配输出图像中的一个像素。在矩阵乘法核函数中，每个线程被分配输出矩阵中的一个元素。"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "The advantage of parallelizing work across threads at the finest granularity is that it enhances transparent scalability, as discussed in 【1】Chapter 4【/1】, Compute Architecture and Scheduling. If the hardware has enough resources to perform all the work in parallel, then the application has exposed enough parallelism to fully utilize the hardware. Otherwise, if the hardware does not have enough resources to perform all the work in parallel, the hardware can simply serialize the work by executing the thread blocks one after the other.",
+      "zh": "以最细粒度在线程之间并行工作的优势在于，它能增强透明可扩展性，正如【1】第 4 章【/1】《计算体系结构与调度》中所讨论的那样。如果硬件有足够的资源并行执行所有工作，那么应用就已暴露出足够的并行性来充分利用硬件。否则，如果硬件没有足够的资源并行执行所有工作，硬件可以简单地通过依次执行各线程块来串行化这些工作。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "The disadvantage of parallelizing work at the finest granularity comes when there is a “price” to be paid for parallelizing that work. This price of parallelism can take many forms, such as redundant loading of data by different thread blocks, redundant work, synchronization overhead, and others. When the threads are executed in parallel by the hardware, this price of parallelism is often worth paying. However, if the hardware ends up serializing the work as a result of insufficient resources, then this price has been paid unnecessarily. In this case, it is better for the programmer to partially serialize the work and reduce the price that is paid for parallelism. This can be done by assigning each thread multiple units of work, which is often referred to as 【1】thread coarsening【/1】.",
+      "zh": "以最细粒度并行工作的劣势在于，并行这些工作要付出一定的“代价”。这种并行性代价的形式多种多样，例如不同线程块重复加载数据、冗余工作、同步开销等等。当硬件并行执行这些线程时，这种并行性代价通常是值得付出的。然而，如果硬件由于资源不足而最终串行化这些工作，那么这份代价就白付了。在这种情况下，程序员最好部分地串行化工作，减少为并行付出的代价。这可以通过给每个线程分配多个工作单元来实现，这种方法通常被称为【1】线程粗化【/1】。"
+    }
+  ]
+}

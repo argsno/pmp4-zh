@@ -1,0 +1,113 @@
+{
+  "page": "Ch010_211-233_B9780323912310000239",
+  "nodes": [
+    {
+      "id": "p0350",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[4]",
+      "en": "【1】Fig. 10.15【/1】 shows the kernel code for implementing reduction with thread coarsening for the multiblock segmented kernel. Compared to 【2】Fig. 10.13【/2】, the kernel has two main differences. The first difference is that when the beginning of the block’s segment is identified, we multiply by 【3】COARSE_FACTOR【/3】 to reflect the fact that the size of the block’s segment is 【4】COARSE_FACTOR【/4】 times larger (line 03). The second difference is that when adding the elements for which the thread is responsible, rather than just adding two elements (line 06 in 【5】Fig. 10.13【/5】), we use a coarsening loop to iterate over the elements and add them based on 【6】COARSE_FACTOR【/6】 (lines 06–09 in 【7】Fig. 10.15【/7】). Note that all threads are active throughout this coarsening loop, the partial sum is accumulated to the local variable 【8】sum【/8】, and no calls to 【9】__syncthreads()【/9】 are made in the loop because the threads act independently.",
+      "zh": "【1】图 10.15【/1】展示了在多块分段核函数中实现带线程粗化的归约的核函数代码。与【2】图 10.13【/2】相比，该核函数有两个主要区别。第一个区别是，在确定线程块段的起始位置时，我们乘以【3】COARSE_FACTOR【/3】，以反映线程块的段大小放大了【4】COARSE_FACTOR【/4】倍这一事实（第 03 行）。第二个区别是，在相加线程负责的元素时，我们不再只加两个元素（【5】图 10.13【/5】中的第 06 行），而是使用一个粗化循环，根据【6】COARSE_FACTOR【/6】遍历并相加这些元素（【7】图 10.15【/7】中的第 06–09 行）。请注意，整个粗化循环中所有线程都是活跃的，部分和累加到局部变量【8】sum【/8】中，循环中没有调用【9】__syncthreads()【/9】，因为线程是独立工作的。"
+    },
+    {
+      "id": "n0101",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.15【/1】 Sum reduction kernel with thread coarsening.",
+      "zh": "【1】图 10.15【/1】 带线程粗化的求和归约核函数。"
+    },
+    {
+      "id": "p0355",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[5]",
+      "en": "【1】Fig. 10.16【/1】 compares the execution of two original thread blocks without coarsening serialized by the hardware, shown in 【2】Fig. 10.16A【/2】 with one coarsened thread block performing the work of two thread blocks, shown in 【3】Fig. 10.16B【/3】. In 【4】Fig. 10.16A【/4】 the first thread block performs one step in which each thread adds the two elements for which it is responsible. All threads are active during this step, so the hardware is fully utilized. The remaining three steps execute the reduction tree in which half the threads drop out each step, underutilizing the hardware. Moreover, each step requires a barrier synchronization as well as accesses to shared memory. When the first thread block is done, the hardware then schedules the second thread block, which follows the same steps but on a different segment of the data. Overall, the two blocks collectively take a total of eight steps, of which two steps fully utilize the hardware and six steps underutilize the hardware and require barrier synchronization and shared memory access.",
+      "zh": "【1】图 10.16【/1】比较了两种情形：两个未经粗化、由硬件串行化执行的原始线程块（见【2】图 10.16A【/2】），以及一个完成两个线程块工作的粗化线程块（见【3】图 10.16B【/3】）。在【4】图 10.16A【/4】中，第一个线程块执行一步，每个线程把负责的两个元素相加。这一步中所有线程都是活跃的，因此硬件被充分利用。其余三步执行归约树，每一步有一半线程退出，硬件未被充分利用。此外，每一步都需要屏障同步以及对共享内存的访问。第一个线程块完成后，硬件接着调度第二个线程块，后者执行相同的步骤，但处理的是数据的不同段。总体而言，两个线程块合计需要八步，其中两步充分利用硬件，六步未充分利用硬件，并且需要屏障同步和共享内存访问。"
+    },
+    {
+      "id": "n0103",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.16【/1】 Comparing parallel reduction with and without thread coarsening.",
+      "zh": "【1】图 10.16【/1】 使用与不使用线程粗化的并行归约对比。"
+    },
+    {
+      "id": "p0360",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[6]",
+      "en": "By contrast, in 【1】Fig. 10.16B【/1】 the same amount of data is processed by only a single thread block that is coarsened by a factor of 2. This thread block initially takes three steps in which each thread adds the four elements for which it is responsible. All threads are active during all three steps, so the hardware is fully utilized, and no barrier synchronizations or accesses to shared memory are performed. The remaining three steps execute the reduction tree in which half the threads drop out each step, underutilizing the hardware, and barrier synchronization and accesses to shared memory are needed. Overall, only six steps are needed (instead of eight), of which three steps (instead of two) fully utilize the hardware and three steps (instead of six) underutilize the hardware and require barrier synchronization and shared memory access. Therefore thread coarsening effectively reduces the overhead from hardware underutilization, synchronization, and access to shared memory.",
+      "zh": "相比之下，在【1】图 10.16B【/1】中，相同的数据量只由一个粗化 2 倍的线程块处理。这个线程块最初需要三步，每个线程把负责的四个元素相加。三步中所有线程都是活跃的，因此硬件被充分利用，并且不需要屏障同步或共享内存访问。其余三步执行归约树，每一步有一半线程退出，硬件未被充分利用，并且需要屏障同步和共享内存访问。总体而言，只需六步（而不是八步），其中三步（而不是两步）充分利用硬件，三步（而不是六步）未充分利用硬件并需要屏障同步和共享内存访问。因此，线程粗化有效地减少了硬件未被充分利用、同步以及共享内存访问带来的开销。"
+    },
+    {
+      "id": "p0365",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[7]",
+      "en": "Theoretically, we can increase the coarsening factor well beyond two. However, one must keep in mind that as we coarsen threads, less work will be done in parallel. Therefore increasing the coarsening factor will reduce the amount of data parallelism that is being exploited by the hardware. If we increase the coarsening factor too much, such that we launch fewer thread blocks than the hardware is capable of executing, we will no longer be able to take full advantage of the parallel hardware execution resources. The best coarsening factor ensures that there are enough thread blocks to fully utilize the hardware, which usually depends on the total size of the input as well as the characteristics of the specific device.",
+      "zh": "理论上，我们可以把粗化因子提高到远超 2 的值。但必须牢记，随着线程被粗化，并行完成的工作会减少。因此，增大粗化因子会减少硬件所利用的数据并行量。如果粗化因子增得过大，导致启动的线程块数量少于硬件能够执行的线程块数量，我们将无法充分利用并行硬件的执行资源。最佳的粗化因子应确保有足够多的线程块来充分利用硬件，这通常取决于输入的总体大小以及具体设备的特性。"
+    },
+    {
+      "id": "st0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/h2[1]",
+      "en": "10.9 Summary",
+      "zh": "10.9 小结"
+    },
+    {
+      "id": "p0370",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/p[1]",
+      "en": "The parallel reduction pattern is important, as it plays a key row in many data-processing applications. Although the sequential code is simple, it should be clear to the reader that several techniques, such as thread index assignment for reduced divergence, using shared memory for reduced global memory accesses, segmented reduction with atomic operations, and thread coarsening, are needed to achieve high performance for large inputs. The reduction computation is also an important foundation for the prefix-sum pattern that is an important algorithm component for parallelizing many applications and will be the topic of 【1】Chapter 11【/1】, Prefix Sum (Scan).",
+      "zh": "并行归约模式很重要，因为它在许多数据处理应用中发挥着关键作用。虽然串行代码很简单，但读者应当清楚，要想在大规模输入上取得高性能，需要多种技术，例如为减少发散而进行的线程索引分配、利用共享内存减少全局内存访问、使用原子操作的分段归约，以及线程粗化。归约计算也是前缀和模式的重要基础，前缀和是并行化许多应用时的重要算法组件，它将是【1】第 11 章【/1】《前缀和（扫描）》的主题。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/h2[1]",
+      "en": "Exercises",
+      "zh": "习题"
+    },
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[1]",
+      "en": "1. For the simple reduction kernel in 【1】Fig. 10.6【/1】, if the number of elements is 1024 and the warp size is 32, how many warps in the block will have divergence during the fifth iteration?",
+      "zh": "1. 对于【1】图 10.6【/1】中的简单归约核函数，如果元素个数为 1024，线程束大小为 32，那么在第五次迭代中，线程块内有多少个线程束会出现发散？"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[2]",
+      "en": "2. For the improved reduction kernel in 【1】Fig. 10.9【/1】, if the number of elements is 1024 and the warp size is 32, how many warps will have divergence during the fifth iteration?",
+      "zh": "2. 对于【1】图 10.9【/1】中改进后的归约核函数，如果元素个数为 1024，线程束大小为 32，那么在第五次迭代中，有多少个线程束会出现发散？"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[3]",
+      "en": "3. Modify the kernel in 【1】Fig. 10.9【/1】 to use the access pattern illustrated below.\n【M2】",
+      "zh": "3. 修改【1】图 10.9【/1】中的核函数，使其使用下面所示的访问模式。\n【M2】"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[4]",
+      "en": "4. Modify the kernel in 【1】Fig. 10.15【/1】 to perform a max reduction instead of a sum reduction.",
+      "zh": "4. 修改【1】图 10.15【/1】中的核函数，使其执行最大值归约而不是求和归约。"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[5]",
+      "en": "5. Modify the kernel in 【1】Fig. 10.15【/1】 to work for an arbitrary length input that is not necessarily a multiple of 【2】COARSE_FACTOR*2*blockDim.x【/2】. Add an extra parameter 【3】N【/3】 to the kernel that represents the length of the input.",
+      "zh": "5. 修改【1】图 10.15【/1】中的核函数，使其能够处理任意长度的输入，而不必是【2】COARSE_FACTOR*2*blockDim.x【/2】的倍数。给核函数增加一个表示输入长度的额外参数【3】N【/3】。"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[1]/ol[1]/li[6]",
+      "en": "6. Assume that parallel reduction is to be applied on the following input array:",
+      "zh": "6. 假设要对下面的输入数组应用并行归约："
+    },
+    {
+      "id": "p0410",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/p[2]",
+      "en": "Show how the contents of the array change after each iteration if:",
+      "zh": "请说明在下列情况下，每次迭代之后数组的内容如何变化："
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[3]/ol[1]/li[1]",
+      "en": "a. The unoptimized kernel in 【1】Fig. 10.6【/1】 is used.\n【M2】",
+      "zh": "a. 使用【1】图 10.6【/1】中未优化的核函数。\n【M2】"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[12]/div[3]/ol[1]/li[2]",
+      "en": "b. The kernel optimized for coalescing and divergence in 【1】Fig. 10.9【/1】 is used.",
+      "zh": "b. 使用【1】图 10.9【/1】中针对合并访问和发散优化的核函数。"
+    }
+  ]
+}

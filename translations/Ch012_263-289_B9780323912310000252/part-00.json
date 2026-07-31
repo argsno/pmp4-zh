@@ -1,0 +1,155 @@
+{
+  "page": "Ch012_263-289_B9780323912310000252",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/hgroup[1]/h1[1]",
+      "en": "Merge",
+      "zh": "归并"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/hgroup[1]/h2[1]",
+      "en": "An introduction to dynamic input data identification",
+      "zh": "动态输入数据识别入门"
+    },
+    {
+      "id": "n0002",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/address[1]/p[1]",
+      "en": "With special contributions from Li-Wen Chang and Jie Lv",
+      "zh": "特别贡献：Li-Wen Chang 和 Jie Lv"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces the ordered merge pattern whose parallelization requires each thread to dynamically identify its input position ranges. Because the input ranges are data dependent, we resort to a fast search implementation of the co-rank function to identify the input range for each thread. The fact that the input ranges are data dependent also creates extra challenges when we use tiling technique to conserve memory bandwidth and enable memory coalescing. As a result, we introduce the use of circular buffers to allow us to make full use of the data loaded from global memory. We have shown that introducing a more complex data structure such as a circular buffer can significantly increase the complexity of the code that uses the data structure. Thus we introduce a simplified buffer access model for the code that manipulates and uses the indices to remain largely unchanged. The actual circular nature of the buffers is exposed only when these indices are used to access the elements in the buffer.",
+      "zh": "本章介绍有序归并模式，该模式的并行化要求每个线程动态地确定其输入位置范围。由于输入范围取决于数据，我们借助协秩函数的快速搜索实现来确定每个线程的输入范围。输入范围取决于数据这一事实，也给我们使用分块技术以节省内存带宽、实现内存合并带来了额外的挑战。因此，我们引入环形缓冲区的使用，使我们能够充分利用从全局内存加载的数据。我们已经表明，引入更复杂的数据结构（如环形缓冲区）会显著增加使用该数据结构的代码的复杂度。因此，我们引入一种简化的缓冲区访问模型，使操作和使用索引的代码大体保持不变。缓冲区的实际环形特性只在用这些索引访问缓冲区中的元素时才显现出来。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Ordered list; map-reduce; merge; dynamic input data identification; rank; co-rank; tiling; buffering; coalescing; circular buffer; binary search",
+      "zh": "有序列表；MapReduce；归并；动态输入数据识别；秩；协秩；分块；缓冲；内存合并；环形缓冲区；二分查找"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0008",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】12.1 Background【/1】 263",
+      "zh": "【1】12.1 背景【/1】 263"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】12.2 A sequential merge algorithm【/1】 265",
+      "zh": "【1】12.2 串行归并算法【/1】 265"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】12.3 A parallelization approach【/1】 266",
+      "zh": "【1】12.3 一种并行化方法【/1】 266"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】12.4 Co-rank function implementation【/1】 268",
+      "zh": "【1】12.4 协秩函数实现【/1】 268"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】12.5 A basic parallel merge kernel【/1】 273",
+      "zh": "【1】12.5 基础并行归并核函数【/1】 273"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】12.6 A tiled merge kernel to improve coalescing【/1】 275",
+      "zh": "【1】12.6 改善合并访问的分块归并核函数【/1】 275"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】12.7 A circular buffer merge kernel【/1】 282",
+      "zh": "【1】12.7 环形缓冲区归并核函数【/1】 282"
+    },
+    {
+      "id": "o0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】12.8 Thread coarsening for merge【/1】 288",
+      "zh": "【1】12.8 面向归并的线程粗化【/1】 288"
+    },
+    {
+      "id": "o0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[9]",
+      "en": "【1】12.9 Summary【/1】 288",
+      "zh": "【1】12.9 小结【/1】 288"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[10]",
+      "en": "【1】Exercises【/1】 289",
+      "zh": "【1】习题【/1】 289"
+    },
+    {
+      "id": "u0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[11]",
+      "en": "【1】References【/1】 289",
+      "zh": "【1】参考文献【/1】 289"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Our next parallel pattern is an ordered merge operation, which takes two sorted lists and generates a combined sorted list. Ordered merge operations can be used as a building block of sorting algorithms, as we will see in 【1】Chapter 13【/1】, Sorting. Ordered merge operations also form the basis of modern map-reduce frameworks. This chapter presents a parallel ordered merge algorithm in which the input data for each thread is dynamically determined. The dynamic nature of the data access makes it challenging to exploit locality and tiling techniques for improved memory access efficiency and performance. The principles behind dynamic input data identification are also relevant to many other important computations, such as set intersection and set union. We present increasingly sophisticated buffer management schemes for achieving increasing levels of memory access efficiency for order merged and other operations that determine their input data dynamically.",
+      "zh": "我们的下一个并行模式是有序归并操作，它接收两个有序列表并生成一个合并后的有序列表。有序归并操作可以用作排序算法的构建模块，正如我们将在【1】第 13 章【/1】（排序）中看到的那样。有序归并操作还构成了现代 MapReduce 框架的基础。本章介绍一种并行有序归并算法，其中每个线程的输入数据都是动态确定的。数据访问的这种动态性，使利用局部性和分块技术来改善内存访问效率和性能变得富有挑战性。动态输入数据识别背后的原理也适用于许多其他重要的计算，如集合交集和集合并集。我们将介绍日益复杂的缓冲区管理方案，以便为有序归并以及其他动态确定输入数据的操作实现更高水平的内存访问效率。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "12.1 Background",
+      "zh": "12.1 背景"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "An ordered merge function takes two sorted lists A and B and merges them into a single sorted list C. For this chapter we assume that the sorted lists are stored in arrays. We further assume that each element in such an array has a key. An order relation denoted by ≤ is defined on the keys. For example, the keys may be simply integer values, and ≤ may be defined as the conventional 【1】less than or equal to【/1】 relation between these integer values. In the simplest case, the elements consist of just keys.",
+      "zh": "有序归并函数接收两个有序列表 A 和 B，并把它们归并成一个有序列表 C。在本章中，我们假设有序列表存储在数组中。我们进一步假设，数组中的每个元素都有一个键。在键上定义了一个记为 ≤ 的序关系。例如，键可以就是整数值，而 ≤ 可以定义为这些整数值之间常规的【1】小于等于【/1】关系。在最简单的情况下，元素仅由键构成。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "Suppose that we have two elements 【1】e【/1】【2】1【/2】 and 【3】e【/3】【4】2【/4】 whose keys are 【5】k【/5】【6】1【/6】 and 【7】k【/7】【8】2【/8】, respectively. In a sorted list based on the relation ≤, if 【9】e【/9】【10】1【/10】 appears before 【11】e【/11】【12】2【/12】, then 【13】k【/13】【14】1【/14】 ≤ 【15】k【/15】【16】2【/16】. A merge function based on an ordering relation 【17】R【/17】 takes two sorted input arrays A and B having m and n elements, respectively, where m and n do not have be to equal. Both array A and array B are sorted on the basis of the ordering relation R. The function produces an output sorted array C having m + n elements. Array C consists of all the input elements from arrays A and B and is sorted by the ordering relation R.",
+      "zh": "假设我们有两个元素 【1】e【/1】【2】1【/2】 和 【3】e【/3】【4】2【/4】，其键分别为 【5】k【/5】【6】1【/6】 和 【7】k【/7】【8】2【/8】。在基于关系 ≤ 的有序列表中，如果 【9】e【/9】【10】1【/10】 出现在 【11】e【/11】【12】2【/12】 之前，则 【13】k【/13】【14】1【/14】 ≤ 【15】k【/15】【16】2【/16】。基于序关系 【17】R【/17】 的归并函数接收两个已排序的输入数组 A 和 B，分别有 m 和 n 个元素，其中 m 和 n 不必相等。数组 A 和数组 B 都基于序关系 R 排序。该函数生成一个包含 m + n 个元素的已排序输出数组 C。数组 C 由数组 A 和 B 中的所有输入元素构成，并按序关系 R 排序。"
+    },
+    {
+      "id": "p0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "【1】Fig. 12.1【/1】 shows the operation of a simple merge function based on the conventional numerical ordering relation. Array A has five elements (m=5), and array B has four elements (n=4). The merge function generates array C with all its 9 elements (m + n) from A and B. These elements must be sorted. The arrows in 【2】Fig. 12.1【/2】 show how elements of A and B should be placed into C to complete the merge operation. Whenever the numerical values are equal between an element of A and an element of B, the element of A should appear first in the output list C. This requirement ensures the stability of the ordered merge operation.",
+      "zh": "【1】图 12.1【/1】展示了基于常规数值序关系的简单归并函数的操作过程。数组 A 有五个元素（m=5），数组 B 有四个元素（n=4）。归并函数利用 A 和 B 生成包含全部 9 个元素（m + n）的数组 C。这些元素必须有序。【2】图 12.1【/2】中的箭头展示了 A 和 B 的元素应如何放入 C 以完成归并操作。每当 A 的一个元素与 B 的一个元素数值相等时，A 的元素应首先出现在输出列表 C 中。这一要求确保了有序归并操作的稳定性。"
+    }
+  ]
+}

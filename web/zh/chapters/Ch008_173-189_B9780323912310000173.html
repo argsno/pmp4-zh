@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="zh-CN" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="前言部分">
+      <option value="Cover.html">封面图</option>
+      <option value="Title_page.html">标题页</option>
+      <option value="Contents.html">目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">致谢</option>
+    </optgroup>
+    <optgroup label="序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">课程资源</option>
+    </optgroup>
+    <optgroup label="第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第一部分：基本概念">
+      <option value="Part1.html">第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html">第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">参考文献</option>
+    </optgroup>
+    <optgroup label="第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html">第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html">第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html">第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">习题</option>
+    </optgroup>
+    <optgroup label="第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第二部分：并行模式">
+      <option value="Part2.html">第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html" selected>第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html">第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">习题</option>
+    </optgroup>
+    <optgroup label="第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html">第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第三部分：高级模式与应用">
+      <option value="Part3.html">第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html">第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html">第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">参考文献</option>
+    </optgroup>
+    <optgroup label="第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">参考文献</option>
+    </optgroup>
+    <optgroup label="第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html">第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">参考文献</option>
+    </optgroup>
+    <optgroup label="第四部分：高级实践">
+      <option value="Part4.html">第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html">第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">参考文献</option>
+    </optgroup>
+    <optgroup label="第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">参考文献</option>
+    </optgroup>
+    <optgroup label="第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Ch007_151-171_B9780323912310000082.html#st0050">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch008_173-189_B9780323912310000173.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/Ch008_173-189_B9780323912310000173.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch008_173-189_B9780323912310000173.html">对照</a></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter" id="c0008">
+<a id="Ch008_173-189_B9780323912310000173"></a><div id="page_173" aria-label="Page 173" epub:type="pagebreak" role="doc-pagebreak"></div><div id="CN"><a id="Ch008_173-189_B9780323912310000173titl"></a>Chapter 8</div><h1 class="chaptitle" epub:type="title" id="tit0010">模板</h1><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0070">本章深入探讨模板扫掠计算，它看起来只是带有特殊滤波器模式的卷积。然而，由于模板源自求解微分方程时对导数的离散化和数值近似，因此它们具有两个催生并支撑新优化的特点。本章聚焦于这些新的优化机会与挑战。首先，模板扫掠通常在三维（3D）网格上进行，而卷积通常在二维（2D）图像或少量二维图像时间切片上进行。这使得两者的分块考量有所不同，并促使人们对三维模板采用线程粗化，以支持更大的输入分块和更多的数据重用。其次，模板模式有时还能对输入数据采用寄存器分块，从而进一步提升数据访问吞吐量并缓解共享内存压力。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">模板；模板扫掠；数值方法；离散化；微分方程；边界条件问题；有限差分法；区域分解；分块；幽灵单元；光环单元；数据重用；分块效率；线程粗化；共享内存分块；寄存器分块</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">大纲</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">8.1 背景</a> 174</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">8.2 并行模板：基础算法</a> 178</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">8.3 面向模板扫掠的共享内存分块</a> 179</li>
+<li class="chapoutl1" id="o0025"><a id="p0025"></a><a href="#s0025">8.4 线程粗化</a> 183</li>
+<li class="chapoutl1" id="o0030"><a id="p0030"></a><a href="#s0030">8.5 寄存器分块</a> 186</li>
+<li class="chapoutl1" id="o0035"><a id="p0035"></a><a href="#s0035">8.6 小结</a> 188</li>
+<li class="chapoutl1" id="o0040"><a id="p0040"></a><a href="#s0040">习题</a> 188</li>
+</ul>
+</div></nav>
+<p id="p0045" class="textfl"><a id="P173"></a><span id="page_174" aria-label="Page 174" epub:type="pagebreak" role="doc-pagebreak"></span>模板是求解偏微分方程的数值方法的基础，这些方法应用于流体动力学、热传导、燃烧、天气预报、气候模拟和电磁学等领域。基于模板的算法所处理的数据，是质量、速度、力、加速度、温度、电场和能量等具有物理意义的离散量，它们彼此之间的关系由微分方程支配。模板的一个常见用途是：根据一定取值范围内的输入变量上的函数值，来近似函数的导数值。模板与卷积有很强的相似性：二者都是根据多维数组中同一位置元素的当前值及其邻域内其他元素的当前值，来计算该元素的新值。因此模板同样需要处理光环单元和幽灵单元。与卷积不同，模板计算用于在感兴趣的域内迭代地求解连续可微函数的值。模板邻域中各元素所对应的数据元素和权重系数，由正在求解的微分方程决定。某些模板模式适合采用卷积所无法适用的优化。在初始条件在域内迭代传播的求解器中，输出值的计算可能存在依赖关系，需要按照一定的顺序约束来执行。此外，由于求解微分方程时对数值精度的要求，模板处理的数据往往是高精度浮点数据，这会使分块技术消耗更多的片上内存。正是由于这些差异，模板往往催生出与卷积不同的优化。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">8.1 背景</h2><p id="p0050" class="textfl">使用计算机对函数、模型、变量和方程进行数值求值与求解的第一步，是把它们转换成离散表示。例如，<a href="#f0010">图 8.1A</a> 给出了 <span class="hiddenClass"><math><mi>y</mi><mo>=</mo><mi mathvariant="normal">sin</mi><mrow><mfenced open="(" close=")"><mrow><mi>x</mi></mrow></mfenced></mrow></math></span><span><img src="../images/F000173si4.png" class="img" alt="image" width="54" height="12"/></span> 在 <span class="hiddenClass"><math><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mi>π</mi></math></span><span><img src="../images/F000173si5.png" class="img" alt="image" width="50" height="9"/></span> 范围内的正弦函数。<a href="#f0010">图 8.1B</a> 给出了一个一维（1D）规则（结构化）网格的设计，其七个网格点对应间距恒定的 <em>x</em> 值（相邻网格点间距为 <span class="hiddenClass"><math><mfrac><mrow><mi>π</mi></mrow><mrow><mn>6</mn></mrow></mfrac><mo>)</mo></math></span><span><img src="../images/F000173si6.png" class="img" alt="image" width="9" height="14"/></span>）。一般而言，结构化网格以相同的平行多面体覆盖 n 维欧几里得空间（例如一维中的线段、二维中的矩形、三维中的长方体）。稍后我们将看到，借助结构化网格，变量的导数可以方便地用有限差分来表示。因此，结构化网格主要用于有限差分法。非结构化网格更为复杂，用于有限元和有限体积方法。为简单起见，本书只使用规则网格，因而只使用有限差分法。</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F000173f08-01-9780323912310.jpg" class="img" alt="image" width="1372" height="457"/><figcaption class="figleg"><a id="sp0010"></a><span class="fignum">图 8.1</span> （A）正弦函数在 <span class="hiddenClass"><math><mn>0</mn><mspace width=".25em"></mspace><mo>≤</mo><mi>x</mi><mspace width=".25em"></mspace><mo>≤</mo><mi>π</mi></math></span><span><img src="../images/F000173si1.png" class="img" alt="image" width="57" height="9"/></span> 上作为连续可微函数。（B）用于离散化的规则网格设计，网格点间距恒定（为 <span class="hiddenClass"><math><mfrac><mrow><mi>π</mi></mrow><mrow><mn>6</mn></mrow></mfrac><mo>)</mo></math></span><span><img src="../images/F000173si2.png" class="img" alt="image" width="9" height="14"/></span>）。（C）正弦函数在 <span class="hiddenClass"><math><mn>0</mn><mspace width=".25em"></mspace><mo>≤</mo><mi>x</mi><mspace width=".25em"></mspace><mo>≤</mo><mi>π</mi></math></span><span><img src="../images/F000173si3.png" class="img" alt="image" width="57" height="9"/></span> 上的离散表示结果。</figcaption></figure></div><p id="p0055" class="text"><a href="#f0010">图 8.1C</a> 给出了得到的离散表示：正弦函数用其七个网格点上的取值来表示。在此情形下，该表示存储在一维数组 F 中。注意，<em>x</em> 的取值被隐式假定为 <span class="hiddenClass"><math><mi>i</mi><mfrac><mrow><mi>π</mi></mrow><mrow><mn>6</mn></mrow></mfrac></math></span><span><img src="../images/F000173si7.png" class="img" alt="image" width="11" height="13"/></span>，其中 <em>i</em> 是数组元素的索引。例如，与元素 F[2] 对应的 <em>x</em> 值为 0.87，它是 <span class="hiddenClass"><math><mn>2</mn><mfrac><mrow><mi>π</mi></mrow><mrow><mn>6</mn></mrow></mfrac></math></span><span><img src="../images/F000173si8.png" class="img" alt="image" width="14" height="14"/></span> 的正弦值。</p>
+<p id="p0060" class="text"><span id="page_175" aria-label="Page 175" epub:type="pagebreak" role="doc-pagebreak"></span>在离散表示中，对于不与任何网格点对应的 <em>x</em> 值，需要用线性或样条等插值技术来推导函数的近似值。表示的保真度——即这些近似插值技术所得函数值的准确程度——取决于网格点之间的间距：间距越小，近似越准确。减小间距可以提高表示的精度，但代价是需要更多存储，而且，稍后我们将看到，在求解偏微分方程时还会带来更多计算。</p>
+<p id="p0065" class="text">离散表示的保真度还取决于所用数值的精度。由于我们近似的是连续函数，网格点值通常使用浮点数。当今主流的 CPU 和 GPU 支持双精度（64 位）、单精度（32 位）和半精度（16 位）表示。三者之中，双精度数在离散表示中提供最佳的精度和最高的保真度。然而，现代 CPU 和 GPU 对单精度和半精度运算通常具有高得多的算术计算吞吐量。此外，由于双精度数包含更多位，读写双精度数会消耗更多的内存带宽。存储这些双精度数也需要内存容量。这对分块技术构成了不小的挑战，因为分块技术要求把大量网格点值存储在片上内存和寄存器中。</p>
+<p id="p0070" class="text">让我们以稍微更正式的方式来讨论模板的定义。在数学中，模板是施加于结构化网格每个点上的权重几何模式。该模式规定了如何借助数值近似方法，从相邻点的取值推导出所关注网格点的取值。例如，模板可以规定如何利用函数在关注点及其邻点取值之间的有限差分，来近似函数在该点的导数值。由于偏微分方程刻画了函数、变量及其导数之间的关系，模板为规定有限差分法如何数值地计算偏微分方程的解提供了便捷的基础。</p>
+<p id="p0075" class="text">例如，假设我们有函数 <span class="hiddenClass"><math><mi>f</mi><mrow><mfenced open="(" close=")"><mrow><mi>x</mi></mrow></mfenced></mrow></math></span><span><img src="../images/F000173si9.png" class="img" alt="image" width="22" height="12"/></span>，将其离散化为一维网格数组 F，并且我们希望计算 <span class="hiddenClass"><math><mi>f</mi><mrow><mfenced open="(" close=")"><mrow><mi>x</mi></mrow></mfenced></mrow></math></span><span><img src="../images/F000173si10.png" class="img" alt="image" width="22" height="12"/></span> 的离散导数，即 <span class="hiddenClass"><math><msup><mrow><mi>f</mi></mrow><mrow><mo>′</mo></mrow></msup><mrow><mfenced open="(" close=")"><mrow><mi>x</mi></mrow></mfenced></mrow></math></span><span><img src="../images/F000173si11.png" class="img" alt="image" width="25" height="14"/></span>。我们可以使用经典的一阶导数有限差分近似：</p>
+<p class="hiddenClass"><math><msup><mrow><mi>f</mi></mrow><mrow><mo>′</mo></mrow></msup><mrow><mfenced open="(" close=")"><mrow><mi>x</mi></mrow></mfenced></mrow><mo>=</mo><mfrac><mrow><mi>f</mi><mrow><mfenced open="(" close=")"><mrow><mi>x</mi><mo>+</mo><mi>h</mi></mrow></mfenced></mrow><mo>−</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>−</mo><mi>h</mi><mo>)</mo></mrow><mrow><mn>2</mn><mi>h</mi></mrow></mfrac><mo>+</mo><mi>O</mi><mo>(</mo><msup><mrow><mi>h</mi></mrow><mrow><mn>2</mn></mrow></msup><mo>)</mo></math></p>
+<div class="showClass" id="eqn1"><img src="../images/F000173si12.png" class="img" alt="image" width="172" height="25"/>
+</div>
+<p id="p0080" class="text">也就是说，函数在点 <em>x</em> 处的导数可以近似为：两个相邻点上的函数值之差除以这两个相邻点的 <em>x</em> 值之差。值 <em>h</em> 是网格中相邻点之间的间距。误差由项 <span class="hiddenClass"><math><mi>O</mi><mrow><mfenced open="(" close=")"><mrow><msup><mrow><mi>h</mi></mrow><mrow><mn>2</mn></mrow></msup></mrow></mfenced></mrow><mo>,</mo></math></span><span><img src="../images/F000173si13.png" class="img" alt="image" width="35" height="16"/></span> 表示，它说明误差与 <em>h</em> 的平方成正比。显然，<em>h</em> 的值越小，近似越好。在 <a href="#f0010">图 8.1</a> 的例子中，<em>h</em> 的值为 <span class="hiddenClass"><math><mfrac><mrow><mi>π</mi></mrow><mrow><mn>6</mn></mrow></mfrac></math></span><span><img src="../images/F000173si14.png" class="img" alt="image" width="5" height="13"/></span>，即 0.52。该值还不足以让近似误差小到可以忽略，但应当能够得到相当接近的近似。</p>
+<p id="p0085" class="text">由于网格间距为 <em>h</em>，当前估计值 <em>f</em>(<em>x</em>−<em>h</em>)、<em>f</em>(<em>x</em>) 和 <em>f</em>(<em>x</em>+<em>h</em>) 分别存放在 F[i−1]、F[i] 和 F[i+1] 中，其中 <em>x</em>=<em>i*h</em>。因此，我们可以把 <em>f</em>(<em>x</em>) 在每个网格点处的导数值计算到输出数组 FD 中：</p>
+<p class="hiddenClass"><math><mi mathvariant="italic">FD</mi><mrow><mfenced open="[" close="]"><mrow><mi>i</mi></mrow></mfenced></mrow><mo>=</mo><mfrac><mrow><mi>F</mi><mrow><mfenced open="[" close="]"><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></mfenced></mrow><mo>−</mo><mi>F</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo></mrow><mrow><mn>2</mn><mo>*</mo><mi>h</mi></mrow></mfrac></math></p>
+<div class="showClass" id="eqn2"><img src="../images/F000173si15.png" class="img" alt="image" width="131" height="25"/>
+</div>
+<p class="text"><span id="page_176" aria-label="Page 176" epub:type="pagebreak" role="doc-pagebreak"></span>适用于所有网格点。该表达式可以改写为</p>
+<p class="hiddenClass"><math><mi mathvariant="italic">FD</mi><mrow><mfenced open="[" close="]"><mrow><mi>i</mi></mrow></mfenced></mrow><mo>=</mo><mfrac><mrow><mo>−</mo><mn>1</mn></mrow><mrow><mn>2</mn><mo>*</mo><mi>h</mi></mrow></mfrac><mo>*</mo><mi>F</mi><mrow><mfenced open="[" close="]"><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></mfenced></mrow><mo>+</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn><mo>*</mo><mi>h</mi></mrow></mfrac><mo>*</mo><mi>F</mi><mrow><mfenced open="[" close="]"><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></mfenced></mrow></math></p>
+<div class="showClass" id="eqn3"><img src="../images/F000173si16.png" class="img" alt="image" width="192" height="24"/>
+</div>
+<p id="p0090" class="text"><span id="page_177" aria-label="Page 177" epub:type="pagebreak" role="doc-pagebreak"></span>也就是说，网格点处估计函数导数值的计算，涉及网格点 [i−1, i, i+1] 处当前估计的函数值，其系数分别为 <span class="hiddenClass"><math><mo>[</mo><mfrac><mrow><mo>−</mo><mn>1</mn></mrow><mrow><mn>2</mn><mi>h</mi></mrow></mfrac></math></span><span><img src="../images/F000173si17.png" class="img" alt="image" width="19" height="16"/></span>、0、<span class="hiddenClass"><math><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn><mi>h</mi></mrow></mfrac><mo>]</mo></math></span><span><img src="../images/F000173si18.png" class="img" alt="image" width="14" height="16"/></span>，这定义了一个一维三点模板，如 <a href="#f0015">图 8.2A</a> 所示。如果我们要近似网格点处更高阶的导数值，就需要使用高阶有限差分。例如，如果微分方程包含 <em>f</em>(<em>x</em>) 最高到二阶的导数，我们将使用涉及 [i−2, i−1, i, i+1, i+2] 的模板，即一维五点模板，如 <a href="#f0015">图 8.2B</a> 所示。一般而言，如果方程涉及最高 n 阶导数，模板将涉及中心网格点两侧各 n 个网格点。<a href="#f0015">图 8.2C</a> 给出了一维七点模板。中心点每侧网格点的个数称为模板的<em>阶数</em>，因为它反映了所近似的导数的阶数。按照这一定义，<a href="#f0020">图 8.3</a> 中的模板阶数分别为 1、2 和 3。</p>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F000173f08-02-9780323912310.jpg" class="img" alt="image" width="553" height="394"/><figcaption class="figleg"><a id="sp0015"></a><span class="fignum">图 8.2</span> 一维模板示例。（A）三点模板（1 阶）。（B）五点模板（2 阶）。（C）七点模板（3 阶）。</figcaption></figure></div><div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F000173f08-03-9780323912310.jpg" class="img" alt="image" width="1372" height="396"/><figcaption class="figleg"><a id="sp0020"></a><span class="fignum">图 8.3</span> （A）二维五点模板（1 阶）。（B）二维九点模板（2 阶）。（C）三维七点模板（1 阶）。（D）三维 13 点模板（2 阶）。</figcaption></figure></div><p id="p0095" class="text">显然，求解含两个变量的偏微分方程需要把函数值离散化为二维（2D）网格，我们将使用二维模板来计算近似的偏导数。如果偏微分方程只涉及仅关于其中一个变量的偏导数，例如 <span class="hiddenClass"><math><mfrac><mrow><mo>∂</mo><mi>f</mi><mrow><mfenced open="(" close=")"><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow></mfenced></mrow></mrow><mrow><mo>∂</mo><mi>x</mi></mrow></mfrac><mo>,</mo><mfrac><mrow><mo>∂</mo><mi>f</mi><mrow><mfenced open="(" close=")"><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow></mfenced></mrow></mrow><mrow><mo>∂</mo><mi>y</mi></mrow></mfrac></math></span><span><img src="../images/F000173si19.png" class="img" alt="image" width="58" height="19"/></span> 而不涉及 <span class="hiddenClass"><math><mfrac><mrow><mo>∂</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo></mrow><mrow><mo>∂</mo><mi>x</mi><mo>∂</mo><mi>y</mi></mrow></mfrac></math></span><span><img src="../images/F000173si20.png" class="img" alt="image" width="25" height="19"/></span>，我们可以使用所选网格点都位于 <em>x</em> 轴和 <em>y</em> 轴上的二维模板。例如，对于只涉及关于 <em>x</em> 的一阶导数和关于 <em>y</em> 的一阶导数的偏微分方程，我们可以使用沿 <em>x</em> 轴和 <em>y</em> 轴在中心点每侧各包含两个网格点的二维模板，从而得到 <a href="#f0020">图 8.3A</a> 中的二维五点模板。如果方程只包含关于 <em>x</em> 或 <em>y</em> 的最高二阶导数，我们将使用二维九点模板，如 <a href="#f0020">图 8.3B</a> 所示。</p>
+<p id="p0100" class="text"><span id="page_178" aria-label="Page 178" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0025">图 8.4</a> 概括了离散化、数值网格以及在网格点上应用模板这些概念。函数被离散化为网格点值，并存储在多维数组中。在 <a href="#f0025">图 8.4</a> 中，一个二元函数被离散化为二维网格，并以二维数组存储。在 <a href="#f0025">图 8.4</a> 中使用的模板是二维的，用于根据相邻网格点和该网格点本身的函数值，计算每个网格点处的近似导数值（输出）。本章将聚焦于这样一种计算模式：把模板应用到所有相关的输入网格点上，以生成所有网格点的输出值；这种模式被称为<em>模板扫掠</em>。</p>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F000173f08-04-9780323912310.jpg" class="img" alt="image" width="1298" height="787"/><figcaption class="figleg"><a id="sp0025"></a><span class="fignum">图 8.4</span> 一个二维网格示例，以及用于计算网格点近似导数值的五点（1 阶）模板。</figcaption></figure></div></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">8.2 并行模板：基础算法</h2><p id="p0105" class="textfl">我们首先给出一个用于模板扫掠的基础核函数。为简单起见，我们假设在一次模板扫掠中生成输出网格点值时，各输出网格点之间不存在依赖关系。我们还假设边界上的网格点值存放的是边界条件，从输入到输出保持不变，如 <a href="#f0030">图 8.5</a> 所示。也就是说，输出网格中带阴影的内部区域将被计算，而未带阴影的边界单元将保持与输入值相同。这是一个合理的假设，因为模板主要用于求解带边界条件的微分方程。</p>
+<div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F000173f08-05-9780323912310.jpg" class="img" alt="image" width="1000" height="515"/><figcaption class="figleg"><a id="sp0030"></a><span class="fignum">图 8.5</span> 简化的边界条件。边界单元包含的边界条件在一次迭代到下一次迭代之间不会更新。因此，每次模板扫掠期间只需计算内部的输出网格点。</figcaption></figure></div><p id="p0110" class="text"><span id="page_179" aria-label="Page 179" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0035">图 8.6</a> 给出了执行一次模板扫掠的基础核函数。该核函数假设每个线程块负责计算一块输出网格值，并且每个线程被分配到其中一个输出网格点。输出网格的二维分块示例如 <a href="#f0030">图 8.5</a> 所示，其中每个线程块负责一个 4×4 的输出分块。然而，由于大多数实际应用求解的是三维（3D）微分方程，<a href="#f0035">图 8.6</a> 中的核函数假设三维网格和三维七点模板，正如 <a href="#f0020">图 8.3C</a> 中的模板。线程到网格点的分配通过惯用的线性表达式完成，这些表达式涉及 <span class="inlinecode">blockIdx</span>、<span class="inlinecode">blockDim</span> 和 <span class="inlinecode">threadIdx</span> 的 x、y、z 字段（第 02–04 行）。一旦每个线程被分配到三维网格点，该网格点及其所有相邻网格点处的输入值就被乘以不同的系数（第 06–12 行的 c0 至 c6）并相加。这些系数的取值取决于正在求解的微分方程，正如我们在背景一节中所解释的。</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F000173f08-06-9780323912310.jpg" class="img" alt="image" width="1373" height="443"/><figcaption class="figleg"><a id="sp0035"></a><span class="fignum">图 8.6</span> 一个基础模板扫掠核函数。</figcaption></figure></div><p id="p0115" class="text">现在来计算 <a href="#f0035">图 8.6</a> 中核函数的浮点运算与全局内存访问比。每个线程执行 13 次浮点运算（7 次乘法和 6 次加法），并加载 7 个输入值，每个输入值 4 字节。因此，该核函数的浮点运算与全局内存访问比为 13/(7*4)=0.46 OP/B（每字节操作数）。正如我们在 <a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>“内存体系结构与数据局部性”中所讨论的，这个比值需要大得多，核函数的性能才能合理地接近算术计算资源所支持的水平。我们需要使用分块技术来提升浮点运算与全局内存访问比，比如 <a href="Ch007_151-171_B9780323912310000082.html#Ch007_151-171_B9780323912310000082">第 7 章</a>“卷积”中所讨论的那种分块技术。</p></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">8.3 面向模板扫掠的共享内存分块</h2><p id="p0120" class="textfl">正如我们在 <a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>“内存体系结构与数据局部性”中所见，通过共享内存分块可以显著提高浮点运算与全局内存访问操作之比。读者或许已经猜到，为模板设计的共享内存分块与卷积的几乎完全相同。然而，两者存在一些细微但重要的差异。</p>
+<p id="p0125" class="text"><a id="Bf0040" href="#f0040">图 8.7</a> 给出了应用于一个小型网格示例的二维五点模板的输入分块和输出分块。与 <a href="Ch007_151-171_B9780323912310000082.html#f0060">图 7.11</a> 的快速比较显示出卷积与模板扫掠之间的一个小差异：五点模板的输入分块不包含角上的网格点。这一特性在我们稍后探讨寄存器分块时将变得重要。就共享内存分块而言，可以预期二维五点模板中的输入数据重用明显低于 3×3 卷积中的重用。正如我们在 <a href="Ch007_151-171_B9780323912310000082.html#Ch007_151-171_B9780323912310000082">第 7 章</a>“卷积”中所讨论的，二维 3×3 卷积的算术运算与全局内存访问比上限为 4.5 OP/B。然而，对于二维五点模板，该比值的上限只有 2.5 OP/B。这是因为每个输出网格点值只使用 5 个输入网格值，而 3×3 卷积则使用 9 个输入像素值。</p>
+<div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F000173f08-07-9780323912310.jpg" class="img" alt="image" width="1305" height="690"/><figcaption class="figleg"><a id="sp0040"></a><span class="fignum"><a href="#Bf0040">图 8.7</a></span> 二维五点模板的输入分块和输出分块。</figcaption></figure></div><p id="p0130" class="text"><span id="page_180" aria-label="Page 180" epub:type="pagebreak" role="doc-pagebreak"></span>当维度数和模板阶数增加时，这种差异会更加明显。例如，如果我们将二维模板的阶数从 1（每侧一个网格点，五点模板）提高到 2（每侧两个网格点，九点模板），该比值的上限为 4.5 OP/B，而对应的二维 5×5 卷积为 12.5 OP/B。当二维模板的阶数提高到 3（每侧三个网格点，13 点模板）时，这一差距进一步拉大：该比值的上限为 6.5 OP/B，而对应的二维 7×7 卷积为 24.5 OP/B。</p>
+<p id="p0135" class="text">当进入三维时，模板扫掠与卷积在算术运算与全局内存访问比上限上的差距更加明显。例如，三维三阶模板（每侧 3 个点，19 点模板）的上限为 9.5 OP/B，而对应的三维 7×7×7 卷积为 171.5 OP/B。也就是说，对模板扫掠而言，把一个输入网格点值加载到共享内存中的收益可能明显低于卷积，尤其是在三维情形下，而三维正是模板的主要应用场景。稍后在本章中我们将看到，这一微小但重要的差异促使人们在第三个维度上采用线程粗化和寄存器分块。</p>
+<p id="p0140" class="text"><span id="page_181" aria-label="Page 181" epub:type="pagebreak" role="doc-pagebreak"></span>由于为卷积加载输入分块的所有策略都直接适用于模板扫掠，我们在 <a href="#f0045">图 8.8</a> 中给出一个类似 <a href="Ch007_151-171_B9780323912310000082.html#f0065">图 7.12</a> 中卷积核函数的核函数：其中线程块与输入分块大小相同，并且计算输出网格点值时关闭部分线程。该核函数改编自 <a href="#f0035">图 8.6</a> 中的基础模板扫掠核函数，因此我们将只关注改编过程中所做的修改。与分块卷积核函数一样，分块模板扫掠核函数首先计算每个线程所用输入块的起始 x、y、z 坐标。每个表达式中所减去的值 1，是因为该核函数假设三维七点模板每侧只有一个网格点（第 02–04 行）。一般而言，所减去的值应当是模板的阶数。</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F000173f08-08-9780323912310.jpg" class="img" alt="image" width="1373" height="619"/><figcaption class="figleg"><a id="sp0045"></a><span class="fignum">图 8.8</span> 带共享内存分块的三维七点模板扫掠核函数。</figcaption></figure></div><p id="p0145" class="text">该核函数在共享内存中分配一个 <span class="inlinecode">in_s</span> 数组，用来存放每个线程块的输入分块（第 05 行）。每个线程加载一个输入元素。与分块卷积核函数一样，每个线程加载包含模板网格点模式的立方体输入块的起始元素。由于第 02–04 行的减法，部分线程可能试图加载网格的幽灵单元。条件 <span class="inlinecode">i &gt;=0</span>、<span class="inlinecode">j &gt;=0</span> 和 <span class="inlinecode">k &gt;=0</span> （第 06 行）防止这些越界访问。由于线程块大于输出分块，线程块 x、y、z 维度末尾的部分线程也可能试图访问网格数组各维度上界之外的幽灵单元。条件 <span class="inlinecode">I &lt; N</span>、<span class="inlinecode">j &lt; N</span> 和 <span class="inlinecode">k &lt; N</span> （第 6 行）防止这些越界访问。线程块中的所有线程协同把输入分块加载到共享内存中（第 07 行），并使用屏障同步等待，直到所有输入分块网格点都进入共享内存（第 09 行）。</p>
+<p id="p0150" class="text">每个线程块在第 10–21 行计算自己的输出分块。第 10 行的条件反映了这样的简化假设：输入网格和输出网格的边界点都存放初始条件值，不需要核函数在一次又一次的迭代中反复计算。因此，输出网格点落在这些边界位置上的线程被关闭。注意，边界网格点在网格表面形成一层。</p>
+<p id="p0155" class="text"><span id="page_182" aria-label="Page 182" epub:type="pagebreak" role="doc-pagebreak"></span>第 12–13 行的条件关闭那些仅为加载输入分块网格点而启动的额外线程。这些条件允许 i、j、k 索引值落在输出分块内的线程计算这些索引所选择的输出网格点。最后，每个活动线程使用七点模板所指定的输入网格点计算其输出网格点值。</p>
+<p id="p0160" class="text">我们可以通过计算该核函数达到的算术运算与全局内存访问比，来评估共享内存分块的成效。回想一下，原始的模板扫掠核函数达到的比值为 0.46 OP/B。对于共享内存分块核函数，假设每个输入分块是一个立方体，每个维度有 T 个网格点，每个输出分块每个维度有 T−2 个网格点。因此，每个线程块有 (T−2)<sup>3</sup> 个活动线程来计算输出网格点值，每个活动线程执行 13 次浮点乘法或加法运算，总共是 13*(T−2)<sup>3</sup> 次浮点算术运算。此外，每个线程块通过执行 T<sup>3</sup> 次加载（每次 4 字节）来加载一个输入分块。因此，分块核函数的浮点运算与全局内存访问比可以计算如下：</p>
+<p class="hiddenClass"><math><mfrac><mrow><mn>13</mn><mo>*</mo><msup><mrow><mfenced open="(" close=")"><mrow><mi>T</mi><mo>−</mo><mn>2</mn></mrow></mfenced></mrow><mrow><mn>3</mn></mrow></msup></mrow><mrow><mn>4</mn><mo>*</mo><msup><mrow><mi>T</mi></mrow><mrow><mn>3</mn></mrow></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>13</mn></mrow><mrow><mn>4</mn></mrow></mfrac><mo>*</mo><msup><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mfrac><mrow><mn>2</mn></mrow><mrow><mi>T</mi></mrow></mfrac></mrow></mfenced></mrow><mrow><mn>3</mn></mrow></msup><mspace width="1em"></mspace><mi mathvariant="italic">OP</mi><mo>/</mo><mi>B</mi></math></p><div class="showClass" id="eqn4"><img src="../images/F000173si21.png" class="img" alt="image" width="186" height="31"/></div><p id="p0165" class="text">也就是说，T 值越大，输入网格点值的重用就越多。随着 T 增大，该比值的上限渐近为 13/4=3.25 OP/B。</p>
+<p id="p0170" class="text">遗憾的是，当前硬件对线程块大小的 1024 上限使得 T 值难以取大。T 的实际可行上限是 8，因为一个 8×8×8 的线程块总共有 512 个线程。此外，用于输入分块的共享内存量正比于 T<sup>3</sup>。因此，T 越大，共享内存消耗就增加得越剧烈。这些硬件限制迫使我们为分块模板核函数使用较小的分块尺寸。相比之下，卷积常用于处理二维图像，可以采用 32×32 这样更大的分块尺寸（T 值）。</p>
+<p id="p0175" class="text">硬件对 T 值的小上限有两个主要不利之处。第一个不利之处是它限制了重用率，进而限制了计算访存比。对于 T=8，七点模板的比值仅为 1.37 OP/B，远低于 3.25 OP/B 的上限。由于光环开销，重用率随着 T 值的减小而下降。正如我们在 <a href="Ch007_151-171_B9780323912310000082.html#Ch007_151-171_B9780323912310000082">第 7 章</a>“卷积”中所讨论的，光环元素的被重用程度低于非光环元素。随着输入分块中光环元素占比的增加，数据重用率和浮点运算与全局内存访问比都会下降。例如，对于半径为 1 的卷积滤波器，32×32 的二维输入分块有 1024 个输入元素，对应的输出分块有 30×30=900 个元素，这意味着 1024−900=124 个输入元素是光环元素，光环元素在输入分块中约占 12%。相比之下，对于 1 阶三维模板，8×8×8 的三维输入分块有 512 个元素，对应的输出分块有 6×6×6=216 个元素，这意味着 512−216=296 个输入元素是光环元素，光环元素在输入分块中约占 58%！</p>
+<p id="p0180" class="text"><span id="page_183" aria-label="Page 183" epub:type="pagebreak" role="doc-pagebreak"></span>小分块尺寸的第二个不利之处是它对内存合并有不利影响。对于一个 8×8×8 的分块，每个由 32 个线程组成的线程束（warp）将负责加载分块的四个不同行，每行有 8 个输入值。因此，在同一条加载指令上，线程束中的线程将访问全局内存中至少四个相距较远的位置。这些访问无法合并，会浪费 DRAM 带宽。因此，T 需要大得多，重用水平才能更接近 3.25 OP/B，并得以充分利用 DRAM 带宽。对更大 T 值的需求催生了下一节将要介绍的方法。</p></section><section><a id="s0025"></a><h2 class="h1hd" id="st0040">8.4 线程粗化</h2><p id="p0185" class="textfl">正如我们在上一节提到的，模板通常应用于三维网格这一事实，加上模板模式的稀疏性，可能使模板扫掠成为不如卷积有吸引力的共享内存分块对象。本节介绍如何使用线程粗化来克服线程块大小限制：把每个线程完成的工作从计算一个网格点值粗化为计算一列网格点值，如 <a href="#f0050">图 8.9</a> 所示。回顾 <a href="Ch007_151-171_B9780323912310000082.html#s0020">第 6.3 节</a>，通过线程粗化，程序员把并行的工作单元部分地串行化到每个线程中，从而降低为并行付出的代价。在本例中，为并行付出的代价是每个线程块加载光环元素所导致的低数据重用。</p>
+<div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F000173f08-09-9780323912310.jpg" class="img" alt="image" width="1348" height="700"/><figcaption class="figleg"><a id="sp0050"></a><span class="fignum">图 8.9</span> 三维七点模板扫掠在 z 方向上的线程粗化。</figcaption></figure></div><p id="p0190" class="text"><span id="page_184" aria-label="Page 184" epub:type="pagebreak" role="doc-pagebreak"></span>在 <a href="#f0050">图 8.9</a> 中，我们假设每个输入分块由 <span class="hiddenClass"><math><msup><mrow><mi>T</mi></mrow><mrow><mn>3</mn></mrow></msup><mo>=</mo><msup><mrow><mn>6</mn></mrow><mrow><mn>3</mn></mrow></msup><mo>=</mo><mn>216</mn></math></span><span><img src="../images/F000173si22.png" class="img" alt="image" width="75" height="12"/></span> 个网格点组成。注意，为了让输入分块的内部可见，我们剥离了分块的前、左、顶三层。我们还假设每个输出分块由 <span class="hiddenClass"><math><msup><mrow><mo>(</mo><mi>T</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mrow><mn>3</mn></mrow></msup><mo>=</mo><msup><mrow><mn>4</mn></mrow><mrow><mn>3</mn></mrow></msup><mo>=</mo><mn>64</mn></math></span><span><img src="../images/F000173si23.png" class="img" alt="image" width="96" height="15"/></span> 个网格点组成。图中的 x、y、z 方向与输入和输出的坐标系一致。输入分块的每个 x-y 平面由 <span class="hiddenClass"><math><msup><mrow><mn>6</mn></mrow><mrow><mn>2</mn></mrow></msup><mo>=</mo><mn>36</mn></math></span><span><img src="../images/F000173si24.png" class="img" alt="image" width="40" height="12"/></span> 个网格点组成，输出分块的每个 x-y 平面由 <span class="hiddenClass"><math><msup><mrow><mn>4</mn></mrow><mrow><mn>2</mn></mrow></msup><mo>=</mo><mn>16</mn></math></span><span><img src="../images/F000173si25.png" class="img" alt="image" width="40" height="12"/></span> 个网格点组成。负责处理该分块的线程块，其线程数与输入分块一个 x-y 平面的网格点数相同（即 6×6）。在图中我们只画出了线程块内参与计算输出分块值的内部线程（即 4×4）。</p>
+<p id="p0195" class="text"><span id="page_185" aria-label="Page 185" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0055">图 8.10</a> 给出了一个在 z 方向上进行线程粗化的三维七点模板扫掠核函数。其思想是让线程块沿 z 方向（深入图面方向）迭代，在每次迭代中计算输出分块一个 x-y 平面中各网格点的值。核函数首先把每个线程分配到输出网格一个 x-y 平面中的某个网格点（第 03–04 行）。注意，<em>i</em> 是每个线程计算的输出分块网格点的 z 索引。在每次迭代中，线程块中的所有线程将处理输出分块的一个 x-y 平面，因此它们计算的输出网格点 z 索引都相同。</p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F000173f08-10-9780323912310.jpg" class="img" alt="image" width="1374" height="1276"/><figcaption class="figleg"><a id="sp0055"></a><span class="fignum">图 8.10</span> 在 z 方向上进行线程粗化的三维七点模板扫掠核函数。</figcaption></figure></div><p id="p0200" class="text">最初，每个线程块需要把三个输入分块平面加载到共享内存中，这三个平面包含计算 <a href="#f0050">图 8.9</a> 中最靠近读者（以线程标出）的输出分块平面各点取值所需的全部点。具体做法是让线程块中的所有线程把第一层（第 08–10 行）加载到共享内存数组 <span class="inlinecode">inPrev_s</span> 中，把第二层（第 11–13 行）加载到共享内存数组 <span class="inlinecode">inCurr_s</span> 中。对于第一层，<span class="inlinecode">inPrev_s</span> 的数据来自输入分块的前层——即为了显示内部各层面而被剥离的那一层。</p>
+<p id="p0205" class="text">在第一次迭代中，线程块中的所有线程协同把当前输出分块层所需的第三层加载到共享内存数组 <span class="inlinecode">inNext_s</span> 中（第 15–17 行）。随后所有线程在屏障处等待（第 18 行），直到所有线程都完成输入分块各层的加载。第 19–21 行的条件与 <a href="#f0045">图 8.8</a> 中共享内存核函数的对应条件作用相同。</p>
+<p id="p0210" class="text"><span id="page_186" aria-label="Page 186" epub:type="pagebreak" role="doc-pagebreak"></span>随后，每个线程使用存储在 <span class="inlinecode">inCurr_s</span> 中的四个 x-y 邻点、存储在 <span class="inlinecode">inPrev_s</span> 中的 z 邻点以及存储在 <span class="inlinecode">inNext_s</span> 中的 z 邻点，计算其在当前输出分块平面中的输出网格点值。然后线程块中的所有线程在屏障处等待，确保每个线程都完成计算后再进入下一个输出分块平面。离开屏障后，所有线程协同把 <span class="inlinecode">inCurr_s</span> 的内容移到 <span class="inlinecode">inPrev_s</span>，把 <span class="inlinecode">inNext_s</span> 的内容移到 <span class="inlinecode">inCurr_s</span>。这是因为当线程在 z 方向上推进一个输出平面时，各输入分块平面所扮演的角色发生了变化。因此到每次迭代结束时，线程块已经拥有计算下一次迭代输出分块平面所需三个输入分块平面中的两个。随后所有线程进入下一次迭代，加载该迭代输出平面所需的输入分块第三平面。为计算第二个输出分块平面做准备时，<span class="inlinecode">inPrev_s</span>、<span class="inlinecode">inCurr_s</span> 和 <span class="inlinecode">inNext_s</span> 更新后的映射关系如 <a id="Bf0060" href="#f0060">图 8.11</a> 所示。</p>
+<div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F000173f08-11-9780323912310.jpg" class="img" alt="image" width="1374" height="619"/><figcaption class="figleg"><a id="sp0060"></a><span class="fignum"><a href="#Bf0060">图 8.11</a></span> 第一次迭代后共享内存数组与输入分块之间的映射关系。</figcaption></figure></div><p id="p0215" class="text">线程粗化核函数的优点在于：它不增加线程数就能增大分块尺寸，而且不需要输入分块的所有平面都驻留在共享内存中。线程块大小现在只有 T<sup>2</sup> 而不是 T<sup>3</sup>，因此我们可以使用大得多的 T 值，比如 32，这样线程块大小为 1024 个线程。使用这个 T 值，我们可以预期浮点算术运算与全局内存访问比将达到 <span class="hiddenClass"><math><mfrac><mrow><mn>13</mn></mrow><mrow><mn>4</mn></mrow></mfrac><mo>*</mo><msup><mrow><mfenced open="(" close=")"><mrow><mn>1</mn><mo>−</mo><mfrac><mrow><mn>2</mn></mrow><mrow><mn>32</mn></mrow></mfrac></mrow></mfenced></mrow><mrow><mn>3</mn></mrow></msup><mo>=</mo><mn>2.68</mn><mi mathvariant="normal">OP</mi><mo>/</mo><mi mathvariant="normal">B</mi></math></span><span><img src="../images/F000173si26.png" class="img" alt="image" width="138" height="18"/></span>，这相对于原始共享内存分块核函数的 1.37 OP/B 是一个显著改进，也更接近 3.25 OP/B 的上限。此外，在任何时刻，输入分块只需要有三个平面位于共享内存中。共享内存容量需求现在是 3T<sup>2</sup> 个元素，而不是 T<sup>3</sup> 个元素。对于 T=32，共享内存消耗现在处于合理水平：每个线程块 3*32<sup>2</sup>*4B=12KB。</p></section><section><a id="s0030"></a><h2 class="h1hd" id="st0045">8.5 寄存器分块</h2><p id="p0220" class="textfl">某些模板模式的特殊特性可以带来新的优化机会。这里，我们介绍一种对只涉及中心点 x、y、z 方向邻点的模板模式特别有效的优化。<a href="#f0020">图 8.3</a> 中的所有模板都属于这种类型。<a href="#f0055">图 8.10</a> 中的三维七点模板扫掠核函数就体现了这一特性。每个 <span class="inlinecode">inPrev_s</span> 和 <span class="inlinecode">inNext_s</span> 元素在计算 x-y 索引相同的输出分块网格点时只被一个线程使用。只有 <span class="inlinecode">inCurr_s</span> 的元素被多个线程访问，才真正需要放在共享内存中。<span class="inlinecode">inPrev_s</span> 和 <span class="inlinecode">inNext_s</span> 中的 z 邻点则可以让它们留在唯一使用它们的那个线程的寄存器中。</p>
+<p id="p0225" class="text">我们在 <a href="#f0065">图 8.12</a> 的寄存器分块核函数中利用了这一特性。该核函数建立在 <a href="#f0055">图 8.10</a> 的线程粗化核函数之上，做了一些简单但重要的修改。我们将重点放在这些修改上。首先，我们创建三个寄存器变量 <span class="inlinecode">inPrev</span>、<span class="inlinecode">inCurr</span> 和 <span class="inlinecode">inNext</span> （第 05、07、08 行）。寄存器变量 <span class="inlinecode">inPrev</span> 和 <span class="inlinecode">inNext</span> 分别取代共享内存数组 <span class="inlinecode">inPrev_s</span> 和 <span class="inlinecode">inNext</span>。相比之下，我们保留 <span class="inlinecode">inCurr_s</span>，以便让 x-y 邻点网格点值可以在线程之间共享。因此，该核函数使用的共享内存量减少为 <a href="#f0065">图 8.12</a> 中核函数的三分之一。</p>
+<div class="pageavoid"><figure class="fig" id="f0065"><img src="../images/F000173f08-12-9780323912310.jpg" class="img" alt="image" width="1374" height="1385"/><figcaption class="figleg"><a id="sp0065"></a><span class="fignum">图 8.12</span> 在 z 方向上进行线程粗化和寄存器分块的三维七点模板扫掠核函数。</figcaption></figure></div><p id="p0230" class="text"><span id="page_187" aria-label="Page 187" epub:type="pagebreak" role="doc-pagebreak"></span>对前一个和当前输入分块平面的初始加载（第 09–15 行），以及每次新迭代前对输入分块下一平面的加载（第 17–19 行），都以寄存器变量作为目标。因此，输入分块“活动部分”的三个平面由同一线程块内的各线程存放在寄存器中。此外，该核函数始终在共享内存中保留输入分块当前平面的一份副本（第 14 行和第 34 行）。也就是说，活动输入分块平面的 x-y 邻点始终可供所有需要访问这些邻点的线程使用。</p>
+<p id="p0235" class="text"><span id="page_188" aria-label="Page 188" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0055">图 8.10</a> 和 <a href="#f0065">8.12</a> 中的核函数都只在片上内存中保留输入分块的活动部分。活动部分中的平面数取决于模板的阶数，对于三维七点模板为 3。<a href="#f0065">图 8.12</a> 中的粗化与寄存器分块核函数相对于 <a href="#f0055">图 8.10</a> 中的粗化核函数有两个优势。第一，许多对共享内存的读和写现在转移到了寄存器中。由于寄存器的延迟明显低于共享内存、带宽明显高于共享内存，我们预期代码运行会更快。第二，每个线程块只消耗三分之一的共享内存。当然，这是以每个线程多用三个寄存器为代价实现的，假设 32×32 的线程块，每个线程块要多用 3072 个寄存器。读者应记住，对于更高阶的模板，寄存器使用量还会更高。如果寄存器使用成为问题，可以改回把部分平面存储在共享内存中。这种情形代表了常见的取舍：通常需要在共享内存和寄存器使用之间作出权衡。</p>
+<p id="p0240" class="text">总体而言，数据重用现在分布在寄存器和共享内存之间。全局内存访问次数没有改变。如果同时考虑寄存器和共享内存，总体数据重用与仅使用共享内存存放输入分块的线程粗化核函数保持相同。因此，在线程粗化基础上加入寄存器分块，对全局内存带宽的消耗没有影响。</p>
+<p id="p0245" class="text">请注意，把一块数据整体存储在某个线程块各线程寄存器中的想法，我们之前已经见过。在 <a href="Ch003_47-68_B9780323912310000045.html#Ch003_47-68_B9780323912310000045">第 3 章</a>“多维网格与数据”和 <a href="Ch005_93-121_B9780323912310000185.html#Ch005_93-121_B9780323912310000185">第 5 章</a>“内存体系结构与数据局部性”的矩阵乘法核函数中，以及在 <a href="Ch007_151-171_B9780323912310000082.html#Ch007_151-171_B9780323912310000082">第 7 章</a>“卷积”的卷积核函数中，我们都把每个线程计算出的输出值存放在该线程的寄存器中。因此，线程块计算出的输出分块整体存储在该线程块各线程的寄存器中。所以寄存器分块并不是一项新的优化，而是我们之前已经应用过的优化。它在本章中只是变得更加显眼，因为我们现在用寄存器来存放输入分块的一部分：同一分块在计算过程中有时存放在寄存器中，有时存放在共享内存中。</p></section><section><a id="s0035"></a><h2 class="h1hd" id="st0050">8.6 小结</h2><p id="p0250" class="textfl">本章深入探讨了模板扫掠计算。它看起来只是带有特殊滤波器模式的卷积，但由于模板源自求解微分方程时对导数的离散化和数值近似，因此它们具有两个催生并支撑新优化的特点。首先，模板扫掠通常在三维（3D）网格上进行，而卷积通常在二维（2D）图像或少量二维图像时间切片上进行。这使得两者的分块考量有所不同，并促使人们对三维模板采用线程粗化，以支持更大的输入分块和更多的数据重用。其次，模板模式有时还能对输入数据采用寄存器分块，从而进一步提升数据访问吞吐量并缓解共享内存压力。</p></section><section><a id="s0040"></a><h2 class="h1hd" id="st0055">习题</h2><a id="p0255"></a><a id="li0015"></a><div><ol>
+<li class="numlista" id="o0045"><a id="p0260"></a><a id="li0020"></a>1. 考虑一个在大小为 120×120×120、包含边界单元的网格上进行的三维模板计算。<ol>
+<li class="numlist1a" id="o0050"><a id="p0265"></a>a. 每次模板扫掠期间计算出的输出网格点数量是多少？</li>
+<li class="numlist1a" id="o0055"><a id="p0270"></a><span id="page_189" aria-label="Page 189" epub:type="pagebreak" role="doc-pagebreak"></span>b. 对于 <a href="#f0035">图 8.6</a> 中的基础核函数，假设线程块大小为 8×8×8，需要多少个线程块？</li>
+<li class="numlist1a" id="o0060"><a id="p0275"></a>c. 对于 <a href="#f0045">图 8.8</a> 中带共享内存分块的核函数，假设线程块大小为 8×8×8，需要多少个线程块？</li>
+<li class="numlist1a" id="o0065"><a id="p0280"></a>d. 对于 <a href="#f0055">图 8.10</a> 中带共享内存分块和线程粗化的核函数，假设线程块大小为 32×32，需要多少个线程块？</li>
+</ol></li>
+<li class="numlista" id="o0070"><a id="p0285"></a><a id="li0025"></a>2. 考虑一个应用了共享内存分块和线程粗化的七点（3D）模板实现。该实现与 <a href="#f0055">图 8.10</a> 和 <a href="#f0065">8.12</a> 中的实现类似，区别在于分块不是正立方体。取而代之，使用 32×32 的线程块大小以及 16 的粗化因子（即每个线程块在 z 维度上处理 16 个连续的输出平面）。
+<ol>
+<li class="numlist1a" id="o0075"><a id="p0290"></a>a. 该线程块在其整个生命周期中加载的输入分块大小（以元素个数计）是多少？</li>
+<li class="numlist1a" id="o0080"><a id="p0295"></a>b. 该线程块在其整个生命周期中处理的输出分块大小（以元素个数计）是多少？</li>
+<li class="numlist1a" id="o0085"><a id="p0300"></a>c. 该核函数的浮点运算与全局内存访问比（以 OP/B 计）是多少？</li>
+<li class="numlist1a" id="o0090"><a id="p0305"></a>d. 如果不使用寄存器分块，如 <a href="#f0055">图 8.10</a> 所示，每个线程块需要多少共享内存（以字节计）？</li>
+<li class="numlist1a" id="o0095"><a id="p0310"></a>e. 如果使用寄存器分块，如 <a href="#f0065">图 8.12</a> 所示，每个线程块需要多少共享内存（以字节计）？</li>
+</ol></li>
+</ol>
+</div>
+</section></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>

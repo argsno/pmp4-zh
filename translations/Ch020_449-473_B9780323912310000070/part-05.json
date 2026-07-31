@@ -1,0 +1,155 @@
+{
+  "page": "Ch020_449-473_B9780323912310000070",
+  "nodes": [
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[2]",
+      "en": "b. How many halo grid points are needed:【M1】",
+      "zh": "b. 需要多少光环网格点：【M1】"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[2]/ol[1]/li[1]",
+      "en": "i. By each internal compute process?",
+      "zh": "i. 每个内部计算进程需要多少？"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[2]/ol[1]/li[2]",
+      "en": "ii. By each edge compute process?",
+      "zh": "ii. 每个边界计算进程需要多少？"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]",
+      "en": "c. How many boundary grid points are computed in stage 1 of 【1】Fig. 20.12【/1】:\n【M2】",
+      "zh": "c. 在【1】图 20.12【/1】的阶段 1 中计算多少边界网格点：\n【M2】"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[1]",
+      "en": "i. By each internal compute process?",
+      "zh": "i. 每个内部计算进程计算多少个？"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[3]/ol[1]/li[2]",
+      "en": "ii. By each edge compute process?",
+      "zh": "ii. 每个边界计算进程计算多少个？"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[4]",
+      "en": "d. How many internal grid points are computed in stage 2 of 【1】Fig. 20.12【/1】:\n【M2】",
+      "zh": "d. 在【1】图 20.12【/1】的阶段 2 中计算多少内部网格点：\n【M2】"
+    },
+    {
+      "id": "o0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[4]/ol[1]/li[1]",
+      "en": "i. By each internal compute process?",
+      "zh": "i. 每个内部计算进程计算多少个？"
+    },
+    {
+      "id": "o0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[4]/ol[1]/li[2]",
+      "en": "ii. By each edge compute process?",
+      "zh": "ii. 每个边界计算进程计算多少个？"
+    },
+    {
+      "id": "o0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[5]",
+      "en": "e. How many bytes are sent in stage 2 of 【1】Fig. 20.12【/1】:\n【M2】",
+      "zh": "e. 在【1】图 20.12【/1】的阶段 2 中发送多少字节：\n【M2】"
+    },
+    {
+      "id": "o0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[5]/ol[1]/li[1]",
+      "en": "i. By each internal compute process?",
+      "zh": "i. 每个内部计算进程发送多少？"
+    },
+    {
+      "id": "o0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[1]/ol[1]/li[5]/ol[1]/li[2]",
+      "en": "ii. By each edge compute process?",
+      "zh": "ii. 每个边界计算进程发送多少？"
+    },
+    {
+      "id": "o0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[2]",
+      "en": "2. If the MPI call 【1】MPI_Send【/1】(ptr_a, 1000, 【2】MPI_FLOAT【/2】, 2000, 4, 【3】MPI_COMM_WORLD【/3】) results in a data transfer of 4000 bytes, what is the size of each data element being sent?【M4】",
+      "zh": "2. 如果 MPI 调用【1】MPI_Send【/1】(ptr_a, 1000, 【2】MPI_FLOAT【/2】, 2000, 4, 【3】MPI_COMM_WORLD【/3】) 产生 4000 字节的数据传输，那么所发送的每个数据元素的大小是多少？【M4】"
+    },
+    {
+      "id": "o0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[2]/ol[1]/li[1]",
+      "en": "a. 1 byte",
+      "zh": "a. 1 字节"
+    },
+    {
+      "id": "o0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[2]/ol[1]/li[2]",
+      "en": "b. 2 bytes",
+      "zh": "b. 2 字节"
+    },
+    {
+      "id": "o0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[2]/ol[1]/li[3]",
+      "en": "c. 4 bytes",
+      "zh": "c. 4 字节"
+    },
+    {
+      "id": "o0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[2]/ol[1]/li[4]",
+      "en": "d. 8 bytes",
+      "zh": "d. 8 字节"
+    },
+    {
+      "id": "o0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[3]",
+      "en": "3. Which of the following statements is true?【M1】",
+      "zh": "3. 下列说法中哪一个是正确的？【M1】"
+    },
+    {
+      "id": "o0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[3]/ol[1]/li[1]",
+      "en": "a. 【1】MPI_Send()【/1】 is blocking by default.",
+      "zh": "a. 【1】MPI_Send()【/1】 默认是阻塞的。"
+    },
+    {
+      "id": "o0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[3]/ol[1]/li[2]",
+      "en": "b. 【1】MPI_Recv()【/1】 is blocking by default.",
+      "zh": "b. 【1】MPI_Recv()【/1】 默认是阻塞的。"
+    },
+    {
+      "id": "o0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[3]/ol[1]/li[3]",
+      "en": "c. MPI messages must be at least 128 bytes.",
+      "zh": "c. MPI 消息必须至少为 128 字节。"
+    },
+    {
+      "id": "o0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[3]/ol[1]/li[4]",
+      "en": "d. MPI processes can access the same variable through shared memory.",
+      "zh": "d. MPI 进程可以通过共享内存访问同一个变量。"
+    },
+    {
+      "id": "o0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[11]/div[1]/ol[1]/li[4]",
+      "en": "4. Modify the example code to remove the calls to 【1】cudaMemcpyAsync()【/1】 from the compute processes’ code by using GPU memory addresses on 【2】MPI_Send【/2】 and 【3】MPI_Recv【/3】.",
+      "zh": "4. 修改示例代码，通过在【2】MPI_Send【/2】和【3】MPI_Recv【/3】上使用 GPU 内存地址，从计算进程的代码中移除对【1】cudaMemcpyAsync()【/1】的调用。"
+    },
+    {
+      "id": "st0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/h2[1]",
+      "en": "References",
+      "zh": "参考文献"
+    },
+    {
+      "id": "fn1",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[2]/div[1]/p[1]",
+      "en": "【1】【2】1【/2】【/1】Interested readers should refer to the MPI reference manual (【3】Gropp et al., 1999【/3】) for details on creating and using multiple communicators in an application, in particular the definition and use intracommunicators and intercommunicators.",
+      "zh": "【1】【2】1【/2】【/1】感兴趣的读者可参阅 MPI 参考手册（【3】Gropp et al., 1999【/3】），了解在应用程序中创建和使用多个通信域的细节，特别是组内通信域（intracommunicators）和组间通信域（intercommunicators）的定义与使用。"
+    }
+  ]
+}

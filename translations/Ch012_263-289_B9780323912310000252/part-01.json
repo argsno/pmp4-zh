@@ -1,0 +1,155 @@
+{
+  "page": "Ch012_263-289_B9780323912310000252",
+  "nodes": [
+    {
+      "id": "n0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 12.1【/1】 Example of a merge operation.",
+      "zh": "【1】图 12.1【/1】 归并操作示例。"
+    },
+    {
+      "id": "p0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "In general, an ordering operation is stable if elements with equal key values are placed in the same order in the output as the order in which they appear in the input. The example in 【1】Fig. 12.1【/1】 demonstrates stability both with and across the input lists of the merge operation. For example, the two elements whose values are 10 are copied from B into C while maintaining their original order. This illustrates stability within an input list of the merge operation. For another example the A element whose value is 7 goes into C before the B element of the same value. This illustrates stability across input lists of the merge operation. The stability property allows the ordering operation to preserve previous orderings that are not captured by the key that is used in the current ordering operation. For example, the lists A and B might have been previously sorted according to a different key before being sorted by the current key to be used for merging. Maintaining stability in the merge operation allows the merge operation to preserve the work that was done in the previous steps.",
+      "zh": "一般来说，如果键值相等的元素在输出中的顺序与它们在输入中出现的顺序相同，则该排序操作是稳定的。【1】图 12.1【/1】中的示例在归并操作各输入列表内部以及跨越各输入列表两个方面都展示了稳定性。例如，值均为 10 的两个元素从 B 复制到 C 时保持了它们原有的顺序。这说明了归并操作在单个输入列表内部的稳定性。再如，值为 7 的 A 元素先于同值的 B 元素进入 C。这说明了归并操作跨越输入列表的稳定性。稳定性这一性质使排序操作能够保留当前排序操作所用键未能体现的先前顺序。例如，列表 A 和 B 可能先按某个不同的键排序，然后再按当前用于归并的键排序。在归并操作中保持稳定性，使归并操作能够保留前面步骤所做的工作。"
+    },
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "The merge operation is the core of merge sort, an important parallelizable sort algorithm. As we will see in 【1】Chapter 13【/1】, Sorting, a parallel merge sort function divides the input list into multiple sections and distributes them to parallel threads. The threads sort the individual section(s) and then cooperatively merge the sorted sections. Such a divide-and-concur approach allows efficient parallelization of sorting.",
+      "zh": "归并操作是归并排序的核心，归并排序是一种重要的可并行化排序算法。正如我们将在【1】第 13 章【/1】（排序）中看到的，并行归并排序函数把输入列表划分为多个区段，并把它们分发给并行线程。线程对各个区段进行排序，然后协作归并这些已排序的区段。这种分治方法使排序能够被高效地并行化。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "In modern map-reduce distributed computing frameworks, such as Hadoop, the computation is distributed to a massive number of compute nodes. The reduce process assembles the result of these compute nodes into the final result. Many applications require that the results be sorted according to an ordering relation. These results are typically assembled by using the merge operation in a reduction tree pattern. As a result, efficient merge operations are critical to the efficiency of these frameworks.",
+      "zh": "在现代 MapReduce 分布式计算框架（如 Hadoop）中，计算被分发到大量的计算节点上。reduce 过程把这些计算节点的结果组装成最终结果。许多应用都要求结果按照某种序关系排序。这些结果通常以归约树模式利用归并操作进行组装。因此，高效的归并操作对这些框架的效率至关重要。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "12.2 A sequential merge algorithm",
+      "zh": "12.2 串行归并算法"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "The merge operation can be implemented with a straightforward sequential algorithm. 【1】Fig. 12.2【/1】 shows a sequential merge function.",
+      "zh": "归并操作可以用一个简单直接的串行算法实现。【1】图 12.2【/1】展示了一个串行归并函数。"
+    },
+    {
+      "id": "n0031",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 12.2【/1】 A sequential merge function.",
+      "zh": "【1】图 12.2【/1】 一个串行归并函数。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "The sequential function in 【1】Fig. 12.2【/1】 consists of two main parts. The first part consists of a while-loop (line 05) that visits the A and B list elements in order. The loop starts with the first elements: A[0] and B[0]. Every iteration fills one position in the output array C; either one element of A or one element of B will be selected for the position (lines 06–10). The loop uses i and j to identify the A and B elements that are currently under consideration; i and j are both 0 when the execution first enters the loop. The loop further uses k to identify the current position to be filled in the output list array C. In each iteration, if element A[i] is less than or equal to B[j], the value of A[i] is assigned to C[k]. In this case, the execution increments both i and k before going to the next iteration. Otherwise, the value of B[j] is assigned to C[k]. In this case, the execution increments both j and k before going to the next iteration.",
+      "zh": "【1】图 12.2【/1】中的串行函数由两个主要部分组成。第一部分是一个按顺序访问 A 和 B 列表元素的 while 循环（第 05 行）。循环从第一个元素开始：A[0] 和 B[0]。每次迭代填充输出数组 C 中的一个位置；该位置要么选择 A 的一个元素，要么选择 B 的一个元素（第 06–10 行）。循环使用 i 和 j 标识当前正在考虑的 A 和 B 元素；执行过程首次进入循环时，i 和 j 都为 0。循环还使用 k 标识输出列表数组 C 中当前要填充的位置。在每次迭代中，如果元素 A[i] 小于等于 B[j]，就把 A[i] 的值赋给 C[k]。在这种情况下，执行过程在进入下一次迭代前将 i 和 k 都加 1。否则，把 B[j] 的值赋给 C[k]。在这种情况下，执行过程在进入下一次迭代前将 j 和 k 都加 1。"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "The execution exits the while-loop when it reaches either the end of array A or the end of array B. The execution moves on to the second part, which is on the right 【1】Fig. 12.2【/1】. If array A is the one that has been completely visited, as indicated by the fact that i is equal to m, then the code copies the remaining elements of array B to the remaining positions of array C (lines 13–15). Otherwise, array B is the one that was completely visited, so the code copies the remaining elements of A to the remaining positions of C (lines 17–19). Note that the if-else construct is unnecessary for correctness. We can simply have the two while-loops (lines 13–15 and 17–19) follow the first while-loop. Only one of the two while-loops will be entered, depending on whether A or B was exhausted by the first while-loop. However, we include the if-else construct to make the code more intuitive for the reader.",
+      "zh": "当执行到达数组 A 的末尾或数组 B 的末尾时，while 循环退出。执行转入第二部分，即【1】图 12.2【/1】右侧的部分。如果被完全遍历的是数组 A（由 i 等于 m 可知），那么代码把数组 B 的剩余元素复制到数组 C 的剩余位置（第 13–15 行）。否则，被完全遍历的就是数组 B，代码把 A 的剩余元素复制到 C 的剩余位置（第 17–19 行）。注意，从正确性角度看，这个 if-else 结构并非必需。我们完全可以让两个 while 循环（第 13–15 行和第 17–19 行）直接跟在第一个 while 循环后面。这两个 while 循环只有一个会被进入，具体取决于第一个 while 循环耗尽的是 A 还是 B。不过，我们加入这个 if-else 结构是为了让代码对读者更直观。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "We can illustrate the operation of the sequential merge function using the simple example from 【1】Fig. 12.1【/1】. During the first three (0–2) iterations of the while-loop, A[0], A[1], and B[0] are assigned to C[0], C[1], and C[2], respectively. The execution continues until the end of iteration 5. At this point, list A is completely visited, and the execution exits the while loop. A total of six C positions have been filled by A[0] through A[4] and B[0]. The loop in the true branch of the if-construct is used to copy the remaining B elements, that is, B[1] through B[3], into the remaining C positions.",
+      "zh": "我们可以用【1】图 12.1【/1】中的简单示例来说明串行归并函数的操作过程。在 while 循环的前三次（0–2）迭代中，A[0]、A[1] 和 B[0] 分别被赋给 C[0]、C[1] 和 C[2]。执行一直持续到第 5 次迭代结束。此时，列表 A 已被完全遍历，执行退出 while 循环。C 中共有六个位置由 A[0] 至 A[4] 以及 B[0] 填充。if 结构真分支中的循环用于把剩余的 B 元素，即 B[1] 至 B[3]，复制到剩余的 C 位置中。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[5]",
+      "en": "The sequential merge function visits every input element from both A and B once and writes into each C position once. Its algorithm complexity is O(m + n), and its execution time is linearly proportional to the total number of elements to be merged.",
+      "zh": "串行归并函数对 A 和 B 中的每个输入元素各访问一次，并对每个 C 位置各写入一次。其算法复杂度为 O(m + n)，执行时间与待归并的元素总数呈线性比例关系。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "12.3 A parallelization approach",
+      "zh": "12.3 一种并行化方法"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "【1】Siebert and Traff (2012)【/1】 proposed an approach to parallelizing the merge operation. In their approach, each thread first determines the range of output positions (output range) that it is going to produce and uses that output range as the input to a 【2】co-rank function【/2】 to identify the corresponding input ranges that will be merged to produce the output range. Once the input and output ranges have been determined, each thread can independently access its two input subarrays and one output subarray. Such independence allows each thread to perform the sequential merge function on their subarrays to do the merge in parallel. It should be clear that the key to the proposed parallelization approach is the co-rank function. We will now formulate the co-rank function.",
+      "zh": "【1】Siebert and Traff (2012)【/1】提出了一种并行化归并操作的方法。在他们的方法中，每个线程首先确定自己要生成的输出位置范围（输出范围），并把该输出范围作为【2】协秩函数【/2】的输入，以确定将被归并来生成该输出范围的相应输入范围。一旦输入和输出范围确定下来，每个线程就可以独立地访问它的两个输入子数组和一个输出子数组。这种独立性使每个线程能够在其子数组上执行串行归并函数，从而并行地完成归并。显然，所提出的并行化方法的关键在于协秩函数。下面我们就来构造协秩函数。"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "Let A and B be two input arrays with m and n elements, respectively. We assume that both input arrays are sorted according to an ordering relation. The index of each array starts from 0. Let C be the sorted output array that is generated by merging A and B. Obviously, C has m + n elements. We can make the following observation:",
+      "zh": "设 A 和 B 是两个输入数组，元素个数分别为 m 和 n。我们假设两个输入数组都按某种序关系排序。每个数组的索引从 0 开始。设 C 是由 A 和 B 归并生成的已排序输出数组。显然，C 有 m + n 个元素。我们可以得出如下观察结论："
+    },
+    {
+      "id": "n0039",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/p[1]",
+      "en": "Observation 1",
+      "zh": "观察 1"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/p[2]",
+      "en": "For any k such that 0≤k&lt;m + n, there is either (case 1) an i such that 0≤i&lt;m and C[k] receives its value from A[i] or (case 2) a j such that 0≤j&lt;n and C[k] receives its value from B[j] in the merge process.",
+      "zh": "对于任意满足 0≤k<m + n 的 k，要么（情形 1）存在 i 使得 0≤i<m 且 C[k] 在归并过程中从 A[i] 取值，要么（情形 2）存在 j 使得 0≤j<n 且 C[k] 在归并过程中从 B[j] 取值。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "【1】Fig. 12.3【/1】 shows the two cases of observation 1. In the first case, the C element in question comes from array A. For example, in 【2】Fig. 12.3A【/2】, C[4] (value 9) receives its values from A[3]. In this case, k=4 and i=3. We can see that the prefix subarray C[0]–C[3] of C[4] (the subarray of four elements that precedes C[4]) is the result of merging the prefix subarray A[0]–A[2] of A[3] (the subarray of three elements that precedes A[3]) and the prefix subarray B[0] of B[1] (the subarray of 4 − 3=1 element that precedes B[1]). The general formula is that subarray C[0]–C[k − 1] (k elements) is the result of merging A[0]–A[i − 1] (i elements) and B[0]–B[k − i − 1] (k − i elements).",
+      "zh": "【1】图 12.3【/1】展示了观察 1 的两种情形。在第一种情形中，所讨论的 C 元素来自数组 A。例如，在【2】图 12.3A【/2】中，C[4]（值 9）从 A[3] 取值。在这种情况下，k=4、i=3。我们可以看到，C[4] 的前缀子数组 C[0]–C[3]（位于 C[4] 之前的四个元素组成的子数组）是 A[3] 的前缀子数组 A[0]–A[2]（位于 A[3] 之前的三个元素组成的子数组）与 B[1] 的前缀子数组 B[0]（位于 B[1] 之前的 4 − 3=1 个元素组成的子数组）归并的结果。通用公式是：子数组 C[0]–C[k − 1]（k 个元素）是 A[0]–A[i − 1]（i 个元素）与 B[0]–B[k − i − 1]（k − i 个元素）归并的结果。"
+    },
+    {
+      "id": "n0042",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 12.3【/1】 Examples of observation 1.",
+      "zh": "【1】图 12.3【/1】 观察 1 的示例。"
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "In the second case, the C element in question comes from array B. For example, in 【1】Fig. 12.3B【/1】, C[6] receives its value from B[1]. In this case, k=6 and j=1. The prefix subarray C[0]–C[5] of C[6] (the subarray of six elements that precedes C[6]) is the result of merging the prefix subarray A[0]–A[4] (the subarray of five elements that precedes A[5]) and B[0] (the subarray of 1 element that precedes B[1]). The general formula for this case is that subarray C[0]–C[k − 1] (k elements) is the result of merging A[0]–A[k − j − 1] (k − j elements) and B[0]–B[j − 1] (j elements).",
+      "zh": "在第二种情形中，所讨论的 C 元素来自数组 B。例如，在【1】图 12.3B【/1】中，C[6] 从 B[1] 取值。在这种情况下，k=6、j=1。C[6] 的前缀子数组 C[0]–C[5]（位于 C[6] 之前的六个元素组成的子数组）是前缀子数组 A[0]–A[4]（位于 A[5] 之前的五个元素组成的子数组）与 B[0]（位于 B[1] 之前的 1 个元素组成的子数组）归并的结果。此情形的通用公式是：子数组 C[0]–C[k − 1]（k 个元素）是 A[0]–A[k − j − 1]（k − j 个元素）与 B[0]–B[j − 1]（j 个元素）归并的结果。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "In the first case, we find i and derive j as k − i. In the second case, we find j and derive i as k - j. We can take advantage of the symmetry and summarize the two cases into one observation:",
+      "zh": "在第一种情形中，我们求出 i，并推导出 j 为 k − i。在第二种情形中，我们求出 j，并推导出 i 为 k - j。我们可以利用这种对称性，把两种情形归纳为一个观察结论："
+    },
+    {
+      "id": "n0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[3]/p[1]",
+      "en": "Observation 2",
+      "zh": "观察 2"
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[3]/p[2]",
+      "en": "For any k such that 0≤k&lt;m + n, we can find i and j such that k=i + j, 0≤i&lt;m and 0≤j&lt;n and the subarray C[0]–C[k − 1] is the result of merging subarray A[0]–A[i − 1] and subarray B[0]–B[j − 1].",
+      "zh": "对于任意满足 0≤k<m + n 的 k，我们都能找到 i 和 j，使得 k=i + j、0≤i<m 且 0≤j<n，并且子数组 C[0]–C[k − 1] 是子数组 A[0]–A[i − 1] 与子数组 B[0]–B[j − 1] 归并的结果。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "【1】Siebert and Traff (2012)【/1】 also proved that i and j, which define the prefix subarrays of A and B that are needed to produce the prefix subarray of C of length k, are unique. For an element C[k] the index k is referred to as its rank. The unique indices i and j are referred to as its co-ranks. For example, in 【2】Fig. 12.3A【/2】, the rank and co-rank of C[4] are 4, 3, and 1. For another example the rank and co-rank of C[6] are 6, 5, and 1.",
+      "zh": "除此之外，【1】Siebert and Traff (2012)【/1】还证明了 i 和 j 是唯一的；这两个值定义了为生成长度为 k 的 C 前缀子数组所需的 A 和 B 前缀子数组。对于元素 C[k]，索引 k 被称为它的秩（rank）。唯一确定的索引 i 和 j 被称为它的协秩。例如，在【2】图 12.3A【/2】中，C[4] 的秩和协秩分别为 4、3 和 1。再如，C[6] 的秩和协秩分别为 6、5 和 1。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "The concept of co-rank gives us a path to parallelizing the merge function. We can divide the work among threads by dividing the output array into subarrays and assigning the generation of one subarray to each thread. Once the assignment has been done, the rank of output elements to be generated by each thread is known. Each thread then uses the co-rank function to determine the two input subarrays that it needs to merge into its output subarray.",
+      "zh": "协秩的概念为我们提供了将归并函数并行化的途径。我们可以把输出数组划分为若干子数组，并把一个子数组的生成任务分配给每个线程，从而在线程之间划分工作。分配完成后，每个线程要生成的输出元素的秩就已知了。然后，每个线程使用协秩函数确定它需要归并到其输出子数组中的两个输入子数组。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "Note that the main difference between the parallelization of the merge function and the parallelization of all our previous patterns is that the range of input data to be used by each thread cannot be determined with a simple index calculation. The range of input elements to be used by each thread depends on the actual input values. This makes the parallelized merge operation an interesting and challenging parallel computation pattern.",
+      "zh": "注意，归并函数的并行化与我们之前所有模式的并行化之间的主要区别在于：每个线程要使用的输入数据范围无法通过简单的索引计算来确定。每个线程要使用的输入元素范围取决于实际的输入值。这使得并行化的归并操作成为一个有趣且富有挑战性的并行计算模式。"
+    }
+  ]
+}

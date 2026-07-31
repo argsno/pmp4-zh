@@ -1,0 +1,41 @@
+{
+  "page": "Part4",
+  "nodes": [
+    {
+      "id": "tit9025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Advanced Practices",
+      "zh": "高级实践"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "n0002",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[1]",
+      "en": "【1】Chapter 20 Programming a heterogeneous computing cluster【/1】",
+      "zh": "【1】第 20 章 编写异构计算集群程序【/1】"
+    },
+    {
+      "id": "n0003",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[2]",
+      "en": "【1】Chapter 21 CUDA dynamic parallelism【/1】",
+      "zh": "【1】第 21 章 CUDA 动态并行【/1】"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[3]",
+      "en": "【1】Chapter 22 Advanced practices and future evolution【/1】",
+      "zh": "【1】第 22 章 高级实践与未来演进【/1】"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[4]",
+      "en": "【1】Chapter 23 Conclusion and outlook【/1】",
+      "zh": "【1】第 23 章 结论与展望【/1】"
+    }
+  ]
+}

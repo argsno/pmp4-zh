@@ -1,0 +1,155 @@
+{
+  "page": "Ch010_211-233_B9780323912310000239",
+  "nodes": [
+    {
+      "id": "p0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "For example, as shown in 【1】Fig. 10.7【/1】, when all threads in a warp perform their first read during the first iteration, the locations are two elements away from each other. As a result, two global memory requests are triggered, and half the data returned will not be used by the threads. The same behavior occurs for the second read and the write. During the second iteration, every other thread drops out, and the locations that are collectively accessed by the warp are four elements away from each other. Two global memory requests are again performed, and only one-fourth of the data returned will be used by the threads. This will continue until there is only one active thread for each warp that remains active. Only when there is one active thread in the warp will the warp perform one global memory request. Thus the total number of global memory requests is as follows:",
+      "zh": "例如，如【1】图 10.7【/1】所示，在第一次迭代中，当线程束中的所有线程执行第一次读时，各位置彼此相隔两个元素。结果是触发了两次全局内存请求，而返回的数据中有一半不会被线程使用。第二次读和写也存在同样的行为。在第二次迭代中，每隔一个线程退出，线程束集体访问的位置彼此相隔四个元素。同样会执行两次全局内存请求，而返回的数据中只有四分之一会被线程使用。这种情况一直持续到每个线程束中只剩下一个活跃线程。只有当线程束中只有一个活跃线程时，线程束才会执行一次全局内存请求。因此，全局内存请求的总数如下："
+    },
+    {
+      "id": "p0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "The first term (N/64*5*2) corresponds to the first five iterations, in which all N/64 warps have two or more active threads, so each warp performs two global memory requests. The remaining terms account for the final iterations, in which each warp has only one active thread and performs one global memory request and half of the warps drop out in each subsequent iteration. The multiplication by 3 accounts for the two reads and one write by each active thread during each iteration. In the 256-element example the total number of global memory requests performed by the kernel is (4*5*2+4+2+1)*3=141.",
+      "zh": "第一项 (N/64*5*2) 对应前五次迭代，此时全部 N/64 个线程束都有两个或更多活跃线程，因此每个线程束执行两次全局内存请求。其余各项对应最后几次迭代，此时每个线程束只有一个活跃线程，执行一次全局内存请求，并且在随后的每次迭代中有一半线程束退出。乘以 3 是因为每次迭代中每个活跃线程执行两次读和一次写。在 256 元素示例中，该核函数执行的全局内存请求总数为 (4*5*2+4+2+1)*3=141。"
+    },
+    {
+      "id": "p0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "For the kernel in 【1】Fig. 10.9【/1】 the adjacent threads in each warp always access adjacent locations in the global memory, so the accesses are always coalesced. As a result, each warp triggers only one global memory request on any read or write. As the iterations progress, entire warps drop out, so no global memory access will be performed by any thread in these inactive warps. Half of the warps drop out in each iteration until there is only one warp for the final five iterations. Therefore the total number of global memory requests performed by the kernel is as follows:",
+      "zh": "对于【1】图 10.9【/1】中的核函数，每个线程束中的相邻线程总是访问全局内存中的相邻位置，因此这些访问总是合并的。结果是，每个线程束在任何读或写时只触发一次全局内存请求。随着迭代的推进，整个线程束退出，因此这些非活跃线程束中的任何线程都不会执行全局内存访问。每次迭代有一半线程束退出，直到最后五次迭代只剩下一个线程束。因此，该核函数执行的全局内存请求总数如下："
+    },
+    {
+      "id": "p0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[7]",
+      "en": "For the 256-element example the total number of global memory requests performed is ((4+2+1)+5)*3=36. The improved kernel results in 141/36=3.9× fewer global memory requests. Since DRAM bandwidth is a limited resource, the execution time is likely to be significantly longer for the simple kernel in 【1】Fig. 10.6【/1】.",
+      "zh": "对于 256 元素示例，执行的全局内存请求总数为 ((4+2+1)+5)*3=36。改进后的核函数使全局内存请求数减少了 141/36=3.9 倍。由于 DRAM 带宽是有限的资源，【1】图 10.6【/1】中简单核函数的执行时间很可能要长得多。"
+    },
+    {
+      "id": "p0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[8]",
+      "en": "For a 2048-element example the total number of global memory requests that are performed by the kernel in 【1】Fig. 10.6【/1】 is (32*5*2+32+16+8+4+2+1)*3=1149, whereas the number of global memory requests that are performed by the kernel in 【2】Fig. 10.9【/2】 is (32+16+8+4+2+1+5)*3=204. The ratio is 5.6, even more than in the 256-element example. This is because of the inefficient execution pattern of the kernel in 【3】Fig. 10.6【/3】, in which there are more active warps during the initial five iterations of the execution and each active warp triggers twice the number of global memory requests as the convergent kernel in 【4】Fig. 10.9【/4】.",
+      "zh": "对于 2048 元素示例，【1】图 10.6【/1】中核函数执行的全局内存请求总数为 (32*5*2+32+16+8+4+2+1)*3=1149，而【2】图 10.9【/2】中核函数执行的全局内存请求数为 (32+16+8+4+2+1+5)*3=204。比值为 5.6，比 256 元素示例还要大。这是因为【3】图 10.6【/3】中核函数的执行模式效率低下：在执行的前五次迭代中有更多的活跃线程束，且每个活跃线程束触发的全局内存请求数是【4】图 10.9【/4】中收敛核函数的两倍。"
+    },
+    {
+      "id": "p0290",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[9]",
+      "en": "In conclusion, the convergent kernel offers more efficiency in using both execution resources and DRAM bandwidth. The advantage comes from both reduced control divergence and improved memory coalescing.",
+      "zh": "总之，收敛核函数在执行资源和 DRAM 带宽的利用上都更为高效。这一优势既来自控制发散的减少，也来自内存合并的改善。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "10.6 Minimizing global memory accesses",
+      "zh": "10.6 最小化全局内存访问"
+    },
+    {
+      "id": "p0295",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "The convergent kernel in 【1】Fig. 10.9【/1】 can be further improved by using shared memory. Note that in each iteration, threads write their partial sum result values out to the global memory, and these values are reread by the same threads and other threads in the next iteration. Since the shared memory has much shorter latency and higher bandwidth than the global memory, we can further improve the execution speed by keeping the partial sum results in the shared memory. This idea is illustrated in 【2】Fig. 10.10【/2】.",
+      "zh": "【1】图 10.9【/1】中的收敛核函数可以通过使用共享内存得到进一步改进。请注意，在每次迭代中，线程都会把它们的部分和结果值写入全局内存，这些值在下次迭代中又被同样的线程和其他线程重新读取。由于共享内存比全局内存的延迟短得多、带宽高得多，因此我们可以把部分和结果保存在共享内存中，从而进一步提高执行速度。这一思路如【2】图 10.10【/2】所示。"
+    },
+    {
+      "id": "n0083",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.10【/1】 Using shared memory to reduce accesses to the global memory.",
+      "zh": "【1】图 10.10【/1】 使用共享内存减少对全局内存的访问。"
+    },
+    {
+      "id": "p0300",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "The strategy for using the shared memory is implemented in the kernel shown in 【1】Fig. 10.11【/1】. The idea is to use each thread to load and add two of the original elements before writing the partial sum into the shared memory (line 04). Since the first iteration is already done when accessing the global memory locations outside the loop, the for-loop starts with 【2】blockDim.x/2【/2】 (line 04) instead of 【3】blockDim.x【/3】. The 【4】__syncthreads()【/4】 is moved to the beginning of the loop to ensure that we synchronize between the shared memory accesses and the first iteration of the loop. The threads proceed with the remaining iterations by reading and writing the shared memory (line 08). Finally, at the end of the kernel, thread 0 writes the sum into output, maintaining the same behavior as in the previous kernels (lines 11–13).",
+      "zh": "使用共享内存的策略在【1】图 10.11【/1】所示的核函数中实现。思路是让每个线程先把两个原始元素加载并相加，再将部分和写入共享内存（第 04 行）。由于在循环外访问全局内存位置时已经完成了第一次迭代，因此 for 循环从【2】blockDim.x/2【/2】开始（第 04 行），而不是【3】blockDim.x【/3】。【4】__syncthreads()【/4】被移到循环开头，以确保我们在共享内存访问与循环的第一次迭代之间进行同步。随后，线程通过读写共享内存来执行其余迭代（第 08 行）。最后，在核函数末尾，线程 0 将和写入 output，与之前核函数的行为保持一致（第 11–13 行）。"
+    },
+    {
+      "id": "n0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.11【/1】 A kernel that uses shared memory to reduce global memory accesses.",
+      "zh": "【1】图 10.11【/1】 一个使用共享内存减少全局内存访问的核函数。"
+    },
+    {
+      "id": "p0305",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "Using the kernel in 【1】Fig. 10.11【/1】, the number of global memory accesses are reduced to the initial loading of the original contents of the input array and the final write to input[0]. Thus for an N-element reduction the number of global memory accesses is just N+1. Note also that both global memory reads in 【2】Fig. 10.11【/2】 (line 04) are coalesced. So with coalescing, there will be only (N/32)+1 global memory requests. For the 256-element example the total number of global memory requests that are triggered will be reduced from 36 for the kernel in 【3】Fig. 10.9【/3】 to 8+1=9 for the shared memory kernel in 【4】Fig. 10.10【/4】, a 4× improvement. Another benefit of using shared memory, besides reducing the number of global memory accesses, is that the input array is not modified. This property is useful if the original values of the array are needed for some other computation in another part of the program.",
+      "zh": "使用【1】图 10.11【/1】中的核函数后，全局内存访问的次数减少为：初始加载输入数组的原始内容，以及最后写入 input[0]。因此，对于 N 个元素的归约，全局内存访问次数仅为 N+1。还要注意，【2】图 10.11【/2】中的两次全局内存读（第 04 行）都是合并的。因此，在合并访问的情况下，只会产生 (N/32)+1 次全局内存请求。对于 256 元素示例，触发的全局内存请求总数将从【3】图 10.9【/3】中核函数的 36 次减少到【4】图 10.10【/4】中共享内存核函数的 8+1=9 次，即 4 倍的改进。除了减少全局内存访问次数之外，使用共享内存的另一个好处是输入数组不会被修改。如果程序的其他部分需要用到数组的原始值进行其他计算，这一性质就很有用。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "10.7 Hierarchical reduction for arbitrary input length",
+      "zh": "10.7 面向任意输入长度的分层归约"
+    },
+    {
+      "id": "p0310",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[1]",
+      "en": "All the kernels that we have studied so far assume that they will be launched with one thread block. The main reason for this assumption is that 【1】__syncthreads()【/1】 is used as a barrier synchronization among all the active threads. Recall that 【2】__syncthreads()【/2】 can be used only among threads in the same block. This limits the level of parallelism to 1024 threads on current hardware. For large input arrays that contain millions or even billions of elements, we can benefit from launching more threads to further accelerate the reduction process. Since we do not have a good way to perform barrier synchronization among threads in different blocks, we will need to allow threads in different blocks to execute independently.",
+      "zh": "到目前为止我们研究的所有核函数都假定它们将以一个线程块的形式启动。这一假定的主要原因是【1】__syncthreads()【/1】被用作所有活跃线程之间的屏障同步。回忆一下，【2】__syncthreads()【/2】只能在同一个线程块内的线程之间使用。在当前硬件上，这把并行度限制在 1024 个线程以内。对于包含数百万甚至数十亿个元素的大型输入数组，启动更多线程以进一步加速归约过程是很有益处的。由于我们没有在属于不同线程块的线程之间执行屏障同步的好办法，因此需要允许不同线程块中的线程独立执行。"
+    },
+    {
+      "id": "p0315",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[2]",
+      "en": "【1】Fig. 10.12【/1】 illustrates the concept of hierarchical, segmented multiblock reduction using atomic operations, and 【2】Fig. 10.13【/2】 shows the corresponding kernel implementation. The idea is to partition the input array into segments so that each segment is of appropriate size for a block. All blocks then independently execute a reduction tree and accumulate their results to the final output using an atomic add operation.",
+      "zh": "【1】图 10.12【/1】说明了使用原子操作的分层分段多块归约的概念，【2】图 10.13【/2】展示了相应的核函数实现。思路是将输入数组划分为若干段，使每一段的大小都适合一个线程块。然后，所有线程块独立执行归约树，并使用原子加操作将各自的结果累加到最终输出。"
+    },
+    {
+      "id": "n0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.12【/1】 Segmented multiblock reduction using atomic operations.",
+      "zh": "【1】图 10.12【/1】 使用原子操作的分段多块归约。"
+    },
+    {
+      "id": "n0091",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.13【/1】 A segmented multiblock sum reduction kernel using atomic operations.",
+      "zh": "【1】图 10.13【/1】 一个使用原子操作的分段多块求和归约核函数。"
+    },
+    {
+      "id": "p0320",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[3]",
+      "en": "The partitioning is done by assigning a different value to the 【1】segment【/1】 variable according to the thread’s block index (line 03). The size of each segment is 【2】2*blockDim.x【/2】. That is, each block processes 【3】2*blockDim.x【/3】 elements. Thus when we multiply the size of each segment by 【4】blockIdx.x【/4】 of a block, we have the starting location of the segment to be processed by the block. For example, if we have 1024 threads in a block, the segment size would be 2*1024=2048. The starting locations of segments would be 0 for block 0, 2048 (2048*1) for block 1, 4096 (2048*2) for block 2, and so on.",
+      "zh": "划分是通过根据线程所属线程块的块索引为【1】segment【/1】变量赋不同的值来完成的（第 03 行）。每个段的大小为【2】2*blockDim.x【/2】。也就是说，每个线程块处理【3】2*blockDim.x【/3】个元素。因此，当我们将每个段的大小乘以线程块的【4】blockIdx.x【/4】时，就得到该线程块要处理的段的起始位置。例如，如果一个线程块中有 1024 个线程，段大小就是 2*1024=2048。各段的起始位置为：线程块 0 从 0 开始，线程块 1 从 2048（2048*1）开始，线程块 2 从 4096（2048*2）开始，依此类推。"
+    },
+    {
+      "id": "p0325",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[4]",
+      "en": "Once we know the starting location for each block, all threads in a block can simply work on the assigned segment as if it is the entire input data. Within a block, we assign the owned location to each thread by adding the 【1】threadIdx.x【/1】 to the segment starting location for the block to which the thread belongs (line 04). The local variable 【2】i【/2】 holds the owned location of the thread in the global 【3】input【/3】 array, whereas 【4】t【/4】 holds the owned location of the thread in the shared 【5】input_s【/5】 array. Line 06 is adapted to use 【6】i【/6】 instead of 【7】t【/7】 when accessing the global input array. The for-loop from 【8】Fig. 10.11【/8】 is used without change. This is because each block has its own private 【9】input_s【/9】 in the shared memory, so it can be accessed with 【10】t=threadIdx.x【/10】 as if the segment is the entire input.",
+      "zh": "一旦知道了每个线程块的起始位置，线程块中的所有线程就可以像处理完整输入数据一样，直接在分配的段上工作。在线程块内部，我们通过把【1】threadIdx.x【/1】加到线程所属线程块的段起始位置上，为每个线程分配属主位置（第 04 行）。局部变量【2】i【/2】保存线程在全局【3】input【/3】数组中的属主位置，而【4】t【/4】保存线程在共享【5】input_s【/5】数组中的属主位置。第 06 行改为在访问全局输入数组时使用【6】i【/6】而不是【7】t【/7】。【8】图 10.11【/8】中的 for 循环保持不变。这是因为每个线程块在共享内存中都有自己的私有【9】input_s【/9】，因此可以用【10】t=threadIdx.x【/10】访问它，就好像该段就是完整的输入一样。"
+    },
+    {
+      "id": "p0330",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[5]",
+      "en": "Once the reduction tree for-loop is complete, the partial sum for the segment is in 【1】input_s[0]【/1】. The if-statement in line 16 of 【2】Fig. 10.13【/2】 selects thread 0 to contribute the value in 【3】input_s[0]【/3】 to 【4】output【/4】, as illustrated in the bottom part of 【5】Fig. 10.12【/5】. This is done with an atomic add, as shown in line 14 of 【6】Fig. 10.13【/6】. Once all blocks of the grid have completed execution, the kernel will return, and the total sum is in the memory location pointed to by 【7】output【/7】.",
+      "zh": "归约树的 for 循环完成后，该段的部分和就存放在【1】input_s[0]【/1】中。【2】图 10.13【/2】第 16 行的 if 语句选出线程 0，将【3】input_s[0]【/3】中的值贡献给【4】output【/4】，如【5】图 10.12【/5】底部所示。这一步通过原子加完成，如【6】图 10.13【/6】第 14 行所示。网格中的所有线程块都执行完毕后，核函数返回，总和就存放在【7】output【/7】所指向的内存位置中。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/h2[1]",
+      "en": "10.8 Thread coarsening for reduced overhead",
+      "zh": "10.8 降低开销的线程粗化"
+    },
+    {
+      "id": "p0335",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[1]",
+      "en": "The reduction kernels that we have worked with so far all try to maximize parallelism by using as many threads as possible. That is, for a reduction of N elements, N/2 threads are launched. With a thread block size of 1024 threads, the resulting number of thread blocks is N/2048. However, in processors with limited execution resources the hardware may have only enough resources to execute a portion of the thread blocks in parallel. In this case, the hardware will serialize the surplus thread blocks, executing a new thread block whenever an old one has completed.",
+      "zh": "到目前为止我们处理的归约核函数都试图通过使用尽可能多的线程来最大化并行度。也就是说，对于 N 个元素的归约，会启动 N/2 个线程。当线程块大小为 1024 个线程时，得到的线程块数量为 N/2048。然而，在执行资源有限的处理器中，硬件可能只有足够的资源来并行执行一部分线程块。在这种情况下，硬件会将多余的线程块串行化，每当一个旧线程块完成时就执行一个新的线程块。"
+    },
+    {
+      "id": "p0340",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[2]",
+      "en": "To parallelize reduction, we have actually paid a heavy price to distribute the work across multiple thread blocks. As we saw in earlier sections, hardware underutilization increases with each successive stage of the reduction tree because of more warps becoming idle and the final warp experiencing more control divergence. The phase in which the hardware is underutilized occurs for every thread block that we launch. It is an inevitable price to pay if the thread blocks are to actually run in parallel. However, if the hardware is to serialize these thread blocks, we are better off serializing them ourselves in a more efficient manner. As we discussed in 【1】Chapter 6【/1】, Performance Considerations, thread granularity coarsening, or 【2】thread coarsening【/2】 for brevity, is a category of optimizations that serialize some of the work into fewer threads to reduce parallelization overhead. We start by showing an implementation of parallel reduction with thread coarsening applied by assigning more elements to each thread block. We then further elaborate on how this implementation reduces hardware underutilization.",
+      "zh": "为了并行化归约，我们实际上为把工作分配到多个线程块付出了沉重的代价。正如我们在前面几节看到的，由于越来越多的线程束变为空闲，且最后一个线程束会经历更多的控制发散，硬件未被充分利用的程度随归约树的每一级而加剧。硬件未被充分利用的阶段在每个启动的线程块中都会出现。如果线程块确实要并行运行，这是不可避免的代价。然而，如果硬件将要串行化这些线程块，我们最好自己以更高效的方式将它们串行化。正如我们在【1】第 6 章【/1】《性能考量》中讨论的，线程粒度粗化，简称为【2】线程粗化【/2】，是一类把部分工作串行化到更少线程中以减少并行化开销的优化。我们首先展示一种应用了线程粗化的并行归约实现，其做法是给每个线程块分配更多元素。然后我们将进一步阐述这种实现如何减少硬件未被充分利用的情况。"
+    },
+    {
+      "id": "p0345",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/p[3]",
+      "en": "【1】Fig. 10.14【/1】 illustrates how thread coarsening can be applied to the example in 【2】Fig. 10.10【/2】. In 【3】Fig. 10.10【/3】, each thread block received 16 elements, which is two elements per thread. Each thread independently adds the two elements for which it is responsible; then the threads collaborate to execute a reduction tree. In 【4】Fig. 10.14【/4】 we coarsen the thread block by a factor of 2. Hence each thread block receives twice the number of elements, that is, 32 elements, which is four elements per thread. In this case, each thread independently adds four elements before the threads collaborate to execute a reduction tree. The three steps to add the four elements are illustrated by the first three rows of arrows in 【5】Fig. 10.14【/5】. Note that all threads are active during these three steps. Moreover, since the threads independently add the four elements for which they are responsible, they do not need to synchronize, and they do not need to store their partial sums to shared memory until after all four elements have been added. The remaining steps in performing the reduction tree are the same as those in 【6】Fig. 10.10【/6】.",
+      "zh": "【1】图 10.14【/1】说明了如何将线程粗化应用于【2】图 10.10【/2】中的示例。在【3】图 10.10【/3】中，每个线程块接收 16 个元素，即每个线程两个元素。每个线程独立地把负责的两个元素相加；然后线程们协作执行归约树。在【4】图 10.14【/4】中，我们将线程块粗化 2 倍。因此每个线程块接收的元素数量翻倍，即 32 个元素，也就是每个线程四个元素。在这种情况下，每个线程先独立地把四个元素相加，然后线程们再协作执行归约树。相加这四个元素的三步由【5】图 10.14【/5】中前三行箭头表示。请注意，在这三步中所有线程都是活跃的。此外，由于线程是独立相加各自负责的四个元素，它们不需要同步，也不需要在这四个元素全部相加完成之前把部分和存入共享内存。执行归约树的其余步骤与【6】图 10.10【/6】中的相同。"
+    },
+    {
+      "id": "n0099",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.14【/1】 Thread coarsening in reduction.",
+      "zh": "【1】图 10.14【/1】 归约中的线程粗化。"
+    }
+  ]
+}

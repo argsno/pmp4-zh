@@ -1,0 +1,155 @@
+{
+  "page": "Ch004_69-92_B9780323912310000033",
+  "nodes": [
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "An SM is designed to execute all threads in a warp following the single-instruction, multiple-data (SIMD) model. That is, at any instant in time, one instruction is fetched and executed for all threads in the warp (see the “Warps and SIMD Hardware” sidebar). 【1】Fig. 4.8【/1】 shows how the cores in an SM are grouped into 【2】processing blocks【/2】 in which every 8 cores form a processing block and share an instruction fetch/dispatch unit. As a real example, the Ampere A100 SM, which has 64 cores, is organized into four processing blocks with 16 cores each. Threads in the same warp are assigned to the same processing block, which fetches the instruction for the warp and executes it for all threads in the warp at the same time. These threads apply the same instruction to different portions of the data. Because the SIMD hardware effectively restricts all threads in a warp to execute the same instruction at any point in time, the execution behavior of a warp is often referred to as single instruction, multiple-thread.",
+      "zh": "SM 的设计目标是按照单指令多数据（SIMD）模型执行线程束中的所有线程。也就是说，在任何时刻，处理器为线程束中的所有线程取出并执行一条指令（参见“线程束与 SIMD 硬件”补充栏）。【1】图 4.8【/1】展示了 SM 中的核心如何分组为【2】处理块【/2】：每 8 个核心组成一个处理块，共享一个取指/分发单元。举一个真实的例子，Ampere A100 的 SM 有 64 个核心，被组织成 4 个处理块，每个处理块 16 个核心。同一线程束中的线程被分配到同一个处理块，该处理块为线程束取出指令，并同时为线程束中的所有线程执行该指令。这些线程把同一条指令应用于数据的不同部分。由于 SIMD 硬件实际上限制了线程束中的所有线程在任何时刻都执行同一条指令，因此线程束的执行行为常被称为“单指令多线程”。"
+    },
+    {
+      "id": "n0051",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 4.8【/1】 Streaming multiprocessors are organized into processing blocks for SIMD execution.",
+      "zh": "【1】图 4.8【/1】 流式多处理器按处理块组织，以进行 SIMD 执行。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "The advantage of SIMD is that the cost of the control hardware, such as the instruction fetch/dispatch unit, is shared across many execution units. This design choice allows for a smaller percentage of the hardware to be dedicated to control and a larger percentage to be dedicated to increasing arithmetic throughput. we expect that in the foreseeable future, warp partitioning will remain a popular implementation technique. However, the size of warp can vary from implementation to implementation. Up to this point in time, all CUDA devices have used similar warp configurations in which each warp consists of 32 threads.",
+      "zh": "SIMD 的优势在于，控制硬件的成本（例如取指/分发单元）可以在许多执行单元之间分摊。这种设计选择使得可以用较小比例的硬件来承担控制功能，而用较大比例的硬件来提高算术吞吐量。我们预计在可预见的将来，线程束划分仍将是一种流行的实现技术。不过，线程束的大小可能因实现而异。到目前为止，所有 CUDA 设备都使用了类似的线程束配置，即每个线程束由 32 个线程组成。"
+    },
+    {
+      "id": "n0053",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[1]",
+      "en": "Warps and SIMD Hardware",
+      "zh": "线程束与 SIMD 硬件"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[2]",
+      "en": "【1】In his seminal 1945 report, John von Neumann described a model for building electronic computers, which is based on the design of the pioneering EDVAC computer. This model, now commonly referred to as the “von Neumann Model,” has been the foundational blueprint for virtually all modern computers【/1】.",
+      "zh": "【1】在他 1945 年的开创性报告中，约翰·冯·诺依曼描述了一种构建电子计算机的模型，该模型基于先驱 EDVAC 计算机的设计。这一模型如今通常被称为“冯·诺依曼模型”，它一直是几乎所有现代计算机的基础蓝图【/1】。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[3]",
+      "en": "【1】The von Neumann Model is illustrated in the following figure. The computer has an I/O (input/output) that allows both programs and data to be provided to and generated from the system. To execute a program, the computer first inputs the program and its data into the Memory【/1】.",
+      "zh": "【1】下面的图展示了冯·诺依曼模型。计算机具有 I/O（输入/输出），既可以向系统提供程序和数据，也可以从系统产生程序和数据的输出。要执行程序，计算机首先把程序和它的数据输入到内存（Memory）【/1】。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[4]",
+      "en": "【1】The program consists of a collection of instructions. The Control Unit maintains a Program Counter (PC), which contains the memory address of the next instruction to be executed. In each “instruction cycle,” the Control Unit uses the PC to fetch an instruction into the Instruction Register (IR). The instruction bits are then examined to determine the action to be taken by all components of the computer. This is the reason why the model is also called the “stored program” model, which means that a user can change the behavior of a computer by storing a different program into its memory【/1】.",
+      "zh": "【1】程序由一组指令组成。控制单元维护着一个程序计数器（PC），其中保存着下一条待执行指令的内存地址。在每个“指令周期”中，控制单元使用 PC 把一条指令取入指令寄存器（IR）。随后对指令的各个位进行检查，以确定计算机各个组件要采取的动作。这就是该模型也被称为“存储程序”模型的原因，这意味着用户可以通过把不同的程序存入计算机的内存来改变计算机的行为【/1】。"
+    },
+    {
+      "id": "p9190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[5]",
+      "en": "【1】The motivation for executing threads as warps is illustrated in the following modified von Neumann model that is adapted to reflect a GPU【/1】 【2】design. The processor, which corresponds to a processing block in【/2】 【3】【4】Figure 4.8【/4】【/3】【5】, has only one control unit that fetches and dispatches instructions. The same control signals (arrows that go from the Control Unit to the Processing Units in【/5】 【6】【7】Figure 4.8【/7】【/6】【8】) go to multiple processing units that each correspond to a core in the SM, each of which executes one of the threads in a warp【/8】.",
+      "zh": "【1】以线程束为单位执行线程的动机，可以用下面这个为反映 GPU 设计而改造的冯·诺依曼模型来说明【/1】【2】。该处理器与【/2】【3】【4】图 4.8【/4】【/3】【5】中的处理块相对应，只有一个负责取指和分发指令的控制单元。相同的控制信号（即从控制单元指向【/5】【6】【7】图 4.8【/7】【/6】【8】中各处理单元的箭头）作用于多个处理单元，每个处理单元对应 SM 中的一个核心，并执行线程束中的一个线程【/8】。"
+    },
+    {
+      "id": "p9200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[6]",
+      "en": "【1】Since all processing units are controlled by the same instruction in the Instruction Register (IR) of the Control Unit, their execution differences are due to the different data operand values in the register files. This is called Single-Instruction-Multiple-Data (SIMD) in processor design. For example, although all processing units (cores) are controlled by an instruction, such as add r1, r2, r3, the contents of r2 and r3 are different in different processing units【/1】.",
+      "zh": "【1】由于所有处理单元都由控制单元指令寄存器（IR）中的同一条指令控制，它们之间的执行差异源于寄存器文件中数据操作数值的不同。这在处理器设计中被称为单指令多数据（SIMD）。例如，虽然所有处理单元（核心）都由同一条指令（如 add r1, r2, r3）控制，但在不同的处理单元中 r2 和 r3 的内容是不同的【/1】。"
+    },
+    {
+      "id": "p9210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/p[7]",
+      "en": "【1】Control units in modern processors are quite complex, including sophisticated logic for fetching instructions and access ports to the instruction cache. Having multiple processing units to share a control unit can result in significant reduction in hardware manufacturing cost and power consumption【/1】.",
+      "zh": "【1】现代处理器中的控制单元相当复杂，包括用于取指令的精密逻辑和访问指令缓存的端口。让多个处理单元共享一个控制单元，可以显著降低硬件制造成本和功耗【/1】。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "4.5 Control divergence",
+      "zh": "4.5 控制发散"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "SIMD execution works well when all threads within a warp follow the same execution path, more formally referred to as control flow, when working on their data. For example, for an if-else construct, the execution works well when either all threads in a warp execute the if-path or all execute the else-path. However, when threads within a warp take different control flow paths, the SIMD hardware will take multiple passes through these paths, one pass for each path. For example, for an if-else construct, if some threads in a warp follow the if-path while others follow the else path, the hardware will take two passes. One pass executes the threads that follow the if-path, and the other executes the threads that follow the else-path. During each pass, the threads that follow the other path are not allowed to take effect.",
+      "zh": "当线程束内的所有线程在处理各自的数据时遵循同一条执行路径（更正式的说法是控制流）时，SIMD 执行效果良好。例如，对于 if-else 结构，当线程束中的所有线程要么都执行 if 路径、要么都执行 else 路径时，执行效果良好。然而，当线程束内的线程走不同的控制流路径时，SIMD 硬件将对这些路径进行多趟执行，每条路径一趟。例如，对于 if-else 结构，如果线程束中一些线程走 if 路径，而另一些线程走 else 路径，硬件将执行两趟：一趟执行走 if 路径的线程，另一趟执行走 else 路径的线程。在每一趟中，走另一条路径的线程不被允许生效。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[2]",
+      "en": "When threads in the same warp follow different execution paths, we say that these threads exhibit 【1】control divergence【/1】, that is, they diverge in their execution. The multipass approach to divergent warp execution extends the SIMD hardware’s ability to implement the full semantics of CUDA threads. While the hardware executes the same instruction for all threads in a warp, it selectively lets these threads take effect in only the pass that corresponds to the path that they took, allowing every thread to appear to take its own control flow path. This preserves the independence of threads while taking advantage of the reduced cost of SIMD hardware. The cost of divergence, however, is the extra passes the hardware needs to take to allow different threads in a warp to make their own decisions as well as the execution resources that are consumed by the inactive threads in each pass.",
+      "zh": "当同一线程束中的线程走不同的执行路径时，我们说这些线程表现出【1】控制发散【/1】，即它们的执行发生了发散。针对发散线程束执行的多趟方案，扩展了 SIMD 硬件实现 CUDA 线程完整语义的能力。硬件虽然为线程束中的所有线程执行同一条指令，但它有选择地让这些线程只在与其所走路径对应的那一趟中生效，从而使每个线程看起来都走了自己的控制流路径。这在利用 SIMD 硬件低成本优势的同时，保留了线程的独立性。不过，发散的成本在于：硬件需要执行额外的趟数，以便让线程束中的不同线程做出各自的决策，此外每一趟中非活动线程还会消耗执行资源。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
+      "en": "【1】Fig. 4.9【/1】 shows an example of how a warp would execute a divergent if-else statement. In this example, when the warp consisting of threads 0–31 arrives at the if-else statement, threads 0–23 take the then-path, while threads 24–31 take the else-path. In this case, the warp will do a pass through the code in which threads 0–23 execute A while threads 24–31 are inactive. The warp will also do another pass through the code in which threads 24–31 execute B while threads 0–23 are inactive. The threads in the warp then reconverge and execute C. In the Pascal architecture and prior architectures, these passes are executed sequentially, meaning that one pass is executed to completion followed by the other pass. From the Volta architecture onwards, the passes may be executed concurrently, meaning that the execution of one pass may be interleaved with the execution of another pass. This feature is referred to as 【2】independent thread scheduling【/2】. Interested readers are referred to the whitepaper on the Volta V100 architecture (【3】NVIDIA, 2017【/3】) for details.",
+      "zh": "【1】图 4.9【/1】展示了线程束如何执行一个发散 if-else 语句的示例。在这个例子中，当由线程 0–31 组成的线程束到达 if-else 语句时，线程 0–23 走 then 路径，而线程 24–31 走 else 路径。在这种情况下，线程束将对代码执行一趟：线程 0–23 执行 A，线程 24–31 处于非活动状态。线程束还将对代码执行另一趟：线程 24–31 执行 B，线程 0–23 处于非活动状态。随后线程束中的线程重新汇聚，执行 C。在 Pascal 架构及更早的架构中，这些趟是顺序执行的，即一趟执行完毕后，再执行另一趟。从 Volta 架构开始，各趟可以并发执行，即一趟的执行可以与另一趟的执行交错进行。这一特性称为【2】独立线程调度【/2】。感兴趣的读者可参阅关于 Volta V100 架构的白皮书（【3】NVIDIA，2017【/3】）了解详情。"
+    },
+    {
+      "id": "n0064",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 4.9【/2】【/1】 Example of a warp diverging at an if-else statement.",
+      "zh": "【1】【2】图 4.9【/2】【/1】 线程束在 if-else 语句处发散的示例。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[4]",
+      "en": "Divergence also can arise in other control flow constructs. 【1】Fig. 4.10【/1】 shows an example of how a warp would execute a divergent for-loop. In this example, each thread executes a different number of loop iterations, which vary between four and eight. For the first four iterations, all threads are active and execute A. For the remaining iterations, some threads execute A, while others are inactive because they have completed their iterations.",
+      "zh": "发散也可能出现在其他控制流结构中。【1】图 4.10【/1】展示了线程束如何执行一个发散 for 循环的示例。在这个例子中，每个线程执行的循环迭代次数不同，介于四次到八次之间。在前四次迭代中，所有线程都处于活动状态并执行 A。在其余的迭代中，一些线程执行 A，而另一些线程由于已完成各自的迭代而处于非活动状态。"
+    },
+    {
+      "id": "n0066",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 4.10【/2】【/1】 Example of a warp diverging at a for-loop.",
+      "zh": "【1】【2】图 4.10【/2】【/1】 线程束在 for 循环处发散的示例。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
+      "en": "One can determine whether a control construct can result in thread divergence by inspecting its decision condition. If the decision condition is based on 【1】threadIdx【/1】 values, the control statement can potentially cause thread divergence. For example, the statement 【2】if(threadIdx.x &gt; 2【/2】) 【3】{…}【/3】 causes the threads in the first warp of a block to follow two divergent control flow paths. Threads 0, 1, and 2 follow a different path than that of threads 3, 4, 5, and so on. Similarly, a loop can cause thread divergence if its loop condition is based on thread index values.",
+      "zh": "通过检查控制结构的判断条件，可以确定它是否会导致线程发散。如果判断条件基于【1】threadIdx【/1】值，则该控制语句可能导致线程发散。例如，语句【2】if(threadIdx.x &gt; 2【/2】) 【3】{…}【/3】会使线程块第一个线程束中的线程走两条发散的执行路径。线程 0、1 和 2 走的路径与线程 3、4、5 等不同。类似地，如果循环的条件基于线程索引值，循环也可能导致线程发散。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
+      "en": "A prevalent reason for using a control construct with thread control divergence is handling boundary conditions when mapping threads to data. This is usually because the total number of threads needs to be a multiple of the thread block size, whereas the size of the data can be an arbitrary number. Starting with our vector addition kernel in 【1】Chapter 2【/1】, Heterogeneous Data Parallel Computing, we had an 【2】if(i&lt;n)【/2】 statement in 【3】addVecKernel【/3】. This is because not all vector lengths can be expressed as multiples of the block size. For example, let’s assume that the vector length is 1003 and we picked 64 as the block size. One would need to launch 16 thread blocks to process all the 1003 vector elements. However, the 16 thread blocks would have 1024 threads. We need to disable the last 21 threads in thread block 15 from doing work that is not expected or not allowed by the original program. Keep in mind that these 16 blocks are partitioned into 32 warps. Only the last warp (i.e., the second warp in the last block) will have control divergence.",
+      "zh": "使用带线程控制发散的控制结构的一个常见原因，是在把线程映射到数据时处理边界条件。这通常是因为线程总数需要是线程块大小的整数倍，而数据的大小可以是任意数。从【1】第 2 章【/1】“异构数据并行计算”中的向量加法核函数开始，我们就在【3】addVecKernel【/3】里使用了【2】if(i&lt;n)【/2】语句。这是因为并非所有向量长度都能表示成线程块大小的整数倍。例如，假设向量长度为 1003，我们选取 64 作为线程块大小。那么需要启动 16 个线程块来处理全部 1003 个向量元素。然而，16 个线程块共有 1024 个线程。我们需要禁用线程块 15 中最后 21 个线程，让它们不执行原程序所不期望或不允许的工作。请记住，这 16 个线程块被划分为 32 个线程束。只有最后一个线程束（即最后一个线程块中的第二个线程束）会出现控制发散。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[7]",
+      "en": "Note that the performance impact of control divergence decreases as the size of the vectors being processed increases. For a vector length of 100, one of the four warps will have control divergence, which can have significant impact on performance. For a vector size of 1000, only one of the 32 warps will have control divergence. That is, control divergence will affect only about 3% of the execution time. Even if it doubles the execution time of the warp, the net impact on the total execution time will be about 3%. Obviously, if the vector length is 10,000 or more, only one of the 313 warps will have control divergence. The impact of control divergence will be much less than 1%!",
+      "zh": "请注意，控制发散对性能的影响会随着所处理向量规模的增大而减小。对于长度为 100 的向量，四个线程束中会有一个出现控制发散，这可能对性能产生显著影响。对于长度为 1000 的向量，32 个线程束中只有一个会出现控制发散。也就是说，控制发散只会影响大约 3% 的执行时间。即使它使该线程束的执行时间翻倍，对总执行时间的净影响也只有大约 3%。显然，如果向量长度为 10,000 或更长，313 个线程束中只有一个会出现控制发散，控制发散的影响将远小于 1%！"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[8]",
+      "en": "For two-dimensional data, such as the color-to-grayscale conversion example in 【1】Chapter 3【/1】, Multidimensional Grids and Data, if statements are also used to handle the boundary conditions for threads that operate at the edge of the data. In 【2】Fig. 3.2【/2】, to process the 62×76 image, we used 20 = 4×5 two-dimensional blocks that consist of 16×16 threads each. Each block will be partitioned into 8 warps; each one consists of two rows of a block. A total 160 warps (8 warps per block) are involved. To analyze the impact of control divergence, refer to 【3】Fig. 3.5【/3】. None of the warps in the 12 blocks in region 1 will have control divergence. There are 12×8 = 96 warps in region 1. For region 2, all the 24 warps will have control divergence. For region 3, all the bottom warps are mapped to data that are completely outside the image. As result, none of them will pass the if condition. The reader should verify that these warps would have had control divergence if the picture had an odd number of pixels in the vertical dimension. In region 4, the first 7 warps will have control divergence, but the last warp will not. All in all, 31 out of the 160 warps will have control divergence.",
+      "zh": "对于二维数据，例如【1】第 3 章【/1】“多维网格与数据”中的彩色转灰度示例，也会使用 if 语句来处理在数据边缘工作的线程的边界条件。在【2】图 3.2【/2】中，为了处理 62×76 的图像，我们使用了 20 = 4×5 个二维线程块，每个线程块由 16×16 个线程组成。每个线程块将被划分为 8 个线程束，每个线程束由线程块的两行组成。总共涉及 160 个线程束（每个线程块 8 个线程束）。要分析控制发散的影响，请参阅【3】图 3.5【/3】。区域 1 中 12 个线程块里的线程束都不会出现控制发散。区域 1 有 12×8 = 96 个线程束。对于区域 2，全部 24 个线程束都会出现控制发散。对于区域 3，所有底部线程束都映射到完全位于图像之外的数据，因此它们都不会通过 if 条件。读者可以自行验证：如果图片在垂直方向上有奇数个像素，这些线程束就会出现控制发散。在区域 4，前 7 个线程束会出现控制发散，但最后一个线程束不会。总而言之，160 个线程束中有 31 个会出现控制发散。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[9]",
+      "en": "Once again, the performance impact of control divergence decreases as the number of pixels in the horizontal dimension increases. For example, if we process a 200×150 picture with 16×16 blocks, there will be a total of 130 = 13×10 thread blocks or 1040 warps. The number of warps in regions 1 through 4 will be 864 (12×9×8), 72 (9×8), 96 (12×8), and 8 (1×8). Only 80 of these warps will have control divergence. Thus the performance impact of control divergence will be less than 8%. Obviously, if we process a realistic picture with more than 1000 pixels in the horizontal dimension, the performance impact of control divergence will be less than 2%.",
+      "zh": "同样地，控制发散对性能的影响会随着水平方向像素数量的增加而减小。例如，如果用 16×16 的线程块处理 200×150 的图片，线程块总数为 130 = 13×10，即 1040 个线程束。区域 1 至 4 中的线程束数量分别为 864（12×9×8）、72（9×8）、96（12×8）和 8（1×8）。其中只有 80 个线程束会出现控制发散。因此，控制发散对性能的影响将小于 8%。显然，如果处理一幅水平方向超过 1000 像素的真实图片，控制发散对性能的影响将小于 2%。"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[10]",
+      "en": "An important implication of control divergence is that one cannot assume that all threads in a warp have the same execution timing. Therefore if all threads in a warp must complete a phase of their execution before any of them can move on, one must use a barrier synchronization mechanism such as 【1】__syncwarp()【/1】 to ensure correctness.",
+      "zh": "控制发散的一个重要含义是：不能假定线程束中的所有线程具有相同的执行时序。因此，如果必须等线程束中所有线程都完成执行的某个阶段后，才能让其中任何一个线程继续推进，就必须使用诸如【1】__syncwarp()【/1】之类的屏障同步机制来保证正确性。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "4.6 Warp scheduling and latency tolerance",
+      "zh": "4.6 线程束调度与延迟容忍"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "When threads are assigned to SMs, there are usually more threads assigned to an SM than there are cores in the SM. That is, each SM has only enough execution units to execute a subset of all the threads assigned to it at any point in time. In earlier GPU designs, each SM can execute only one instruction for a single warp at any given instant. In more recent designs, each SM can execute instructions for a small number of warps at any given point in time. In either case, the hardware can execute instructions only for a subset of all warps in the SM. A legitimate question is why we need to have so many warps assigned to an SM if it can execute only a subset of them at any instant? The answer is that this is how GPUs tolerate long-latency operations such as global memory accesses.",
+      "zh": "当线程被分配到 SM 时，分配给一个 SM 的线程数量通常多于该 SM 的核心数。也就是说，每个 SM 只拥有足够的执行单元，在任何时刻只能执行分配给它的全部线程中的一部分。在早期的 GPU 设计中，每个 SM 在任一时刻只能为单个线程束执行一条指令。在较新的设计中，每个 SM 在任一时刻可以为少数几个线程束执行指令。无论哪种情况，硬件都只能为 SM 中全部线程束中的一部分执行指令。一个合理的问题是：既然 SM 在任何时刻只能执行其中一部分线程束，为什么还要分配这么多线程束给它？答案是：这正是 GPU 容忍诸如全局内存访问之类的长延迟操作的方式。"
+    }
+  ]
+}

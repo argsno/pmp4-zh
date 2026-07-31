@@ -1,0 +1,155 @@
+{
+  "page": "Ch018_415-431_B9780323912310000094",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/h1[1]",
+      "en": "Electrostatic potential map",
+      "zh": "静电势图"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/header[1]/address[1]/p[1]",
+      "en": "With special contributions from John Stone",
+      "zh": "特别致谢 John Stone 的贡献"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter presents a series of decisions and tradeoffs in parallelizing the calculation of electrostatic potential energy in a regularly spaced energy grid. We show that parallelizing a highly optimized sequential C implementation of the direct Coulomb summation method leads to a slow scatter kernel that requires heavy use of atomic operations. We then show that one can parallelize a less optimized sequential C code into a gather kernel that has much higher parallel execution speed. We also show that through thread coarsening, we can reclaim much of the efficiency of the optimized sequential execution. We further demonstrate that by carefully choosing the grid points to fold into each thread, the kernel can have completely coalesced memory write patterns. The chapter concludes by introducing the cutoff summation method and the binning technique to tackle the data size scalability challenges in large simulations.",
+      "zh": "本章介绍在规则间距的能量网格上并行化静电势能计算时的一系列决策与权衡。我们说明，对高度优化的直接库仑求和（DCS）方法的串行 C 实现进行并行化，会得到一个速度缓慢的分散核函数，且需要大量使用原子操作。随后我们说明，可以将一个优化程度较低的串行 C 代码并行化为汇聚核函数，其并行执行速度快得多。我们还说明，通过线程粗化，可以恢复优化后串行执行的大部分效率。我们进一步证明，通过仔细选择折入每个线程的网格点，核函数可以具有完全合并的内存写入模式。本章最后介绍截断求和方法与分箱技术，以应对大规模模拟中的数据规模可扩展性挑战。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Electrostatic potential energy; molecular dynamics; atomic operation; thread coarsening; memory coalescing; cutoff; binning; data size scaling",
+      "zh": "静电势能；分子动力学；原子操作；线程粗化；内存合并；截断；分箱；数据规模扩展"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】18.1 Background【/1】 415",
+      "zh": "【1】18.1 背景【/1】 415"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】18.2 Scatter versus gather in kernel design【/1】 417",
+      "zh": "【1】18.2 核函数设计中的分散与汇聚【/1】 417"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】18.3 Thread coarsening【/1】 422",
+      "zh": "【1】18.3 线程粗化【/1】 422"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】18.4 Memory coalescing【/1】 424",
+      "zh": "【1】18.4 内存合并【/1】 424"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】18.5 Cutoff binning for data size scalability【/1】 425",
+      "zh": "【1】18.5 面向数据规模可扩展性的截断分箱【/1】 425"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】18.6 Summary【/1】 430",
+      "zh": "【1】18.6 小结【/1】 430"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】Exercises【/1】 431",
+      "zh": "【1】习题【/1】 431"
+    },
+    {
+      "id": "u0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】References【/1】 431",
+      "zh": "【1】参考文献【/1】 431"
+    },
+    {
+      "id": "p0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "The previous case study used a statistical estimation application to illustrate the process of selecting an appropriate level of a loop nest for parallel execution, transforming the loops for reduced memory access interference, using constant memory for magnifying the memory bandwidth for read-only data, using registers to reduce the consumption of memory bandwidth, and using special hardware functional units to accelerate trigonometry functions. In this case study, we use a molecular dynamics application based on regular grid data structures to illustrate the use of optimization techniques that achieve global memory access, coalescing and improved computation throughput. As we did in the previous case study, we present a series of implementations of an electrostatic potential map calculation kernel in which each version improves on the previous one. Each version adopts one or more practical techniques from 【1】Chapter 6【/1】, Performance Considerations. Some of the techniques were used in the previous case study, but some are different: systematic reuse of computational results, thread granularity coarsening, and fast boundary condition checking. This application case study shows that the effective use of these practical techniques can significantly improve the execution throughput of the application.",
+      "zh": "前一案例研究通过一个统计估计应用，展示了为并行执行选择合适的循环嵌套层次、变换循环以减少内存访问干扰、利用常量内存放大只读数据的内存带宽、使用寄存器以减少内存带宽的消耗，以及使用专用硬件功能单元加速三角函数等过程。在本案例研究中，我们使用一个基于规则网格数据结构的分子动力学应用，来说明那些能够实现全局内存访问、合并访问并提高计算吞吐量的优化技术的运用。与前一案例研究一样，我们展示了一系列静电势图计算核函数的实现，其中每个版本都在前一版本的基础上有所改进。每个版本都采用了【1】第 6 章【/1】《性能考量》中的一项或多项实用技术。其中一些技术在前一案例研究中已经用过，但也有一些是不同的：系统性复用计算结果、线程粒度粗化，以及快速的边界条件检查。本应用案例研究表明，有效运用这些实用技术可以显著提高应用的执行吞吐量。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "18.1 Background",
+      "zh": "18.1 背景"
+    },
+    {
+      "id": "p0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "This case study is based on visual molecular dynamics (VMD) (【1】Humphrey et al., 1996【/1】), a popular software system that was designed for displaying, animating, and analyzing biomolecular systems. VMD has more than 200,000 registered users. It is an important foundation for a modern “computational microscope” with which biologists can observe tiny life forms, such as viruses, that are too small for traditional microscopy techniques. While it has strong built-in support for analyzing biomolecular systems, such as calculating electrostatic potential values at spatial grid points of a molecular system (the focus of this chapter), it has also been a popular tool for displaying other large datasets, such as sequencing data, quantum chemistry simulation data, and volumetric data, owing to its versatility and user extensibility.",
+      "zh": "本案例研究基于可视化分子动力学（VMD）（【1】Humphrey 等，1996【/1】），这是一个为显示、动画演示和分析生物分子系统而设计的流行软件系统，拥有超过 20 万注册用户。它是现代“计算显微镜”的重要基础，借助它，生物学家可以观察病毒等对于传统显微技术而言过于微小的生命形态。VMD 虽然在分析生物分子系统方面有强大的内置支持，例如计算分子系统空间网格点上的静电势值（这是本章的重点），但由于其通用性和用户可扩展性，它也是显示测序数据、量子化学模拟数据、体数据等其他大型数据集的常用工具。"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "While VMD is designed to run on a diverse range of hardware, including laptops, desktops, clusters, and supercomputers, most users use VMD as a desktop science application for interactive three-dimensional (3D) visualization and analysis. For computation that runs too long for interactive use, VMD can also be used in a batch mode to render movies for later use. A motivation for accelerating VMD is to make batch mode jobs fast enough for interactive use. This can drastically improve the productivity of scientific investigations. With CUDA devices widely available in desktop PCs, such acceleration can have broad impact on the VMD user community. To date, multiple aspects of VMD have been accelerated with CUDA, including electrostatic potential map calculation, ion placement, molecular orbital calculation and display, and imaging of gas migration pathways in proteins.",
+      "zh": "虽然 VMD 被设计为可在包括笔记本电脑、台式机、集群和超级计算机在内的多种硬件上运行，但大多数用户将 VMD 用作交互式三维（3D）可视化和分析的桌面科学应用。对于运行时间过长、不适合交互使用的计算，VMD 也可以批量模式运行，渲染供日后使用的影片。加速 VMD 的一个动机是让批量模式作业足够快，从而可以交互使用。这可以极大地提高科学研究的效率。由于 CUDA 设备在台式 PC 中广泛可用，这种加速可以对 VMD 用户群体产生广泛影响。迄今为止，VMD 的多个方面已通过 CUDA 加速，包括静电势图计算、离子放置、分子轨道计算与显示，以及蛋白质中气体迁移路径的成像。"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "The computation covered in this case study is the calculation of electrostatic potential maps in a grid space. This calculation is often used in the placement of ions into a molecular structure for molecular dynamics simulation. 【1】Fig. 18.1【/1】 shows the placement of ions into a protein structure in preparation for a molecular dynamics simulation. In this application the electrostatic potential map is used to identify spatial locations where ions (red dots) can fit in according to physical laws. The function can also be used to calculate time-averaged electrical field potential maps during molecular dynamics simulation, which is useful for the simulation process as well as the visualization and analysis of simulation results.",
+      "zh": "本案例研究涉及的计算是在网格空间中计算静电势图。该计算常用于将离子放置到分子结构中，以进行分子动力学模拟。【1】图 18.1【/1】展示了在准备分子动力学模拟时，将离子放置到蛋白质结构中的情形。在该应用中，静电势图用于识别符合物理定律、可以容纳离子（红点）的空间位置。该函数还可用于在分子动力学模拟期间计算时间平均的电场势图，这对模拟过程以及模拟结果的可视化和分析都很有用。"
+    },
+    {
+      "id": "n0021",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 18.1【/2】【/1】 Electrostatic potential map used in building stable structures for molecular dynamics simulation.",
+      "zh": "【1】【2】图 18.1【/2】【/1】 用于为分子动力学模拟构建稳定结构的静电势图。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "There are several methods for calculating electrostatic potential maps. Among them, direct Coulomb summation (DCS) is a highly accurate method that is particularly suitable for GPUs (【1】Stone et al., 2007【/1】). The DCS method calculates the electrostatic potential value of each grid point as the sum of contributions from all atoms in the system. This is illustrated in 【2】Fig. 18.2【/2】. The contribution of atom i to a lattice point j is the charge of atom i divided by the distance from lattice point j to atom i. Since this needs to be done for all grid points and all atoms, the number of calculations is proportional to the product of the total number of atoms in the system and the total number of grid points. For a realistic molecular system this product can be very large. Therefore the calculation of the electrostatic potential map has been traditionally done as a batch job in VMD.",
+      "zh": "计算静电势图的方法有若干种。其中，直接库仑求和（DCS）是一种高度精确的方法，特别适合 GPU（【1】Stone 等，2007【/1】）。DCS 方法将每个网格点的静电势值计算为系统中所有原子贡献之和，如【2】图 18.2【/2】所示。原子 i 对格点 j 的贡献等于原子 i 的电荷除以格点 j 到原子 i 的距离。由于需要对所有网格点和所有原子都进行此计算，计算次数与系统中原子总数和网格点总数的乘积成正比。对于真实的分子系统，这个乘积可能非常大。因此，静电势图的计算在 VMD 中历来以批量作业方式完成。"
+    },
+    {
+      "id": "n0023",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 18.2【/2】【/1】 The contribution of atom[i] to the electrostatic potential at lattice point j (potential[j]) is atom[i]. charge/r【3】ij【/3】. In the direct coulomb summation method, the total potential at lattice point j is the sum of contributions from all atoms in the system.",
+      "zh": "【1】【2】图 18.2【/2】【/1】 原子 atom[i] 对格点 j 处静电势（potential[j]）的贡献为 atom[i].charge/r【3】ij【/3】。在直接库仑求和方法中，格点 j 处的总电势为系统中所有原子贡献之和。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "18.2 Scatter versus gather in kernel design",
+      "zh": "18.2 核函数设计中的分散与汇聚"
+    }
+  ]
+}

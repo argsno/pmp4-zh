@@ -1,0 +1,77 @@
+[
+  {
+    "en": "binary search",
+    "zh": "二分查找",
+    "note": "§12.4–12.8 协秩函数的搜索实现；全节多次使用"
+  },
+  {
+    "en": "rank",
+    "zh": "秩",
+    "note": "§12.3–12.4 输出元素 C[k] 的索引 k 称为秩；与 co-rank（协秩）对应"
+  },
+  {
+    "en": "prefix subarray",
+    "zh": "前缀子数组",
+    "note": "§12.3–12.4 观察 1/2 中位于某元素之前的子数组"
+  },
+  {
+    "en": "subarray",
+    "zh": "子数组",
+    "note": "§12.3 起全节使用；输入/输出子数组"
+  },
+  {
+    "en": "ordering relation",
+    "zh": "序关系",
+    "note": "§12.1–12.2 键上定义的排序关系（order relation 同译）"
+  },
+  {
+    "en": "order relation",
+    "zh": "序关系",
+    "note": "§12.1 键上定义的 ≤ 关系；与 ordering relation 同译"
+  },
+  {
+    "en": "map-reduce",
+    "zh": "MapReduce",
+    "note": "§12.1 摘要与正文中的分布式计算框架范式（如 Hadoop）"
+  },
+  {
+    "en": "key",
+    "zh": "键",
+    "note": "§12.1 列表元素排序所依据的字段"
+  },
+  {
+    "en": "observation",
+    "zh": "观察",
+    "note": "§12.3 正文中的观察 1、观察 2 标注框"
+  },
+  {
+    "en": "marker variable",
+    "zh": "标记变量",
+    "note": "§12.4 协秩函数中界定搜索范围的 i_low/j_low 等变量"
+  },
+  {
+    "en": "input range",
+    "zh": "输入范围",
+    "note": "§12 摘要及 12.3 每个线程要使用的输入位置范围；与 output range 相对"
+  },
+  {
+    "en": "output range",
+    "zh": "输出范围",
+    "note": "§12.3 每个线程负责生成的输出位置范围"
+  },
+  {
+    "en": "compute node",
+    "zh": "计算节点",
+    "note": "§12.1 MapReduce 分布式计算框架中的节点"
+  },
+  {
+    "en": "building block",
+    "zh": "构建模块",
+    "note": "glossary false positive：p0065 \"a building block of sorting algorithms\" 为普通英语，非 §5 术语；denylist 已覆盖 building blocks"
+  },
+  {
+    "en": "reduction in global memory accesses",
+    "zh": "对全局内存的访问大幅减少",
+    "note": "glossary false positive：p0380 \"substantial reduction in global memory accesses\" 为普通短语（减少），非归约模式；denylist 已覆盖 reductions in (global) memory accesses"
+  }
+]

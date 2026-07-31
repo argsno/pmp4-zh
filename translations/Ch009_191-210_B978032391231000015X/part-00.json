@@ -1,0 +1,155 @@
+{
+  "page": "Ch009_191-210_B978032391231000015X",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/hgroup[1]/h1[1]",
+      "en": "Parallel histogram",
+      "zh": "并行直方图"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/hgroup[1]/h2[1]",
+      "en": "An introduction to atomic operations and privatization",
+      "zh": "原子操作与私有化入门"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces the parallel histogram computation pattern and the concept of atomic operations. It shows that atomic operations to the same location are serialized and that their throughput is determined by their latency. It further introduces four important optimization techniques: thread coarsening–based interleaved data partitioning for improved memory coalescing, caching for reduced latency and improved throughput of atomic operations, privatization for reduced contention, and aggregation for reduced contention.",
+      "zh": "本章介绍并行直方图计算模式以及原子操作的概念。本章说明对同一位置的原子操作会被串行化，其吞吐量由其延迟决定。本章还介绍四种重要的优化技术：基于线程粗化的交错数据划分以改善内存合并，利用缓存降低原子操作的延迟并提高其吞吐量，通过私有化减少竞争，以及通过聚合减少竞争。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Histogram; feature extraction; output interference; race condition; atomic operation; read-modify-write; memory bound; memory latency; memory throughput; memory coalescing; contiguous partitioning; interleaved partitioning",
+      "zh": "直方图；特征提取；输出干扰；竞态条件；原子操作；读-改-写；访存受限；内存延迟；内存吞吐量；内存合并；连续划分；交错划分"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】9.1 Background【/1】 192",
+      "zh": "【1】9.1 背景【/1】 192"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】9.2 Atomic operations and a basic histogram kernel【/1】 194",
+      "zh": "【1】9.2 原子操作与基础直方图核函数【/1】 194"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】9.3 Latency and throughput of atomic operations【/1】 198",
+      "zh": "【1】9.3 原子操作的延迟与吞吐量【/1】 198"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】9.4 Privatization【/1】 200",
+      "zh": "【1】9.4 私有化【/1】 200"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】9.5 Coarsening【/1】 203",
+      "zh": "【1】9.5 粗化【/1】 203"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】9.6 Aggregation【/1】 206",
+      "zh": "【1】9.6 聚合【/1】 206"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】9.7 Summary【/1】 208",
+      "zh": "【1】9.7 小结【/1】 208"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】Exercises【/1】 209",
+      "zh": "【1】习题【/1】 209"
+    },
+    {
+      "id": "u0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[9]",
+      "en": "【1】References【/1】 210",
+      "zh": "【1】参考文献【/1】 210"
+    },
+    {
+      "id": "p0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "The parallel computation patterns that we have presented so far all allow the task of computing each output element to be exclusively assigned to, or owned by, a thread. Therefore these patterns are amenable to the owner-computes rule, in which every thread can write into its designated output element(s) without any concern about interference from other threads. This chapter introduces the parallel histogram computation pattern, in which each output element can potentially be updated by any thread. Therefore one must take care to coordinate among threads as they update output elements and avoid any interference that could corrupt the final result. In practice, there are many other important parallel computation patterns in which output interference cannot be easily avoided. Therefore parallel histogram algorithms provide an example of output interference that occurs in these patterns. We will first examine a baseline approach that uses 【1】atomic operations【/1】 to serialize the updates to each element. This baseline approach is simple but inefficient, often resulting in disappointing execution speed. We will then present some widely used optimization techniques, most notably privatization, to significantly enhance execution speed while preserving correctness. The cost and benefit of these techniques depend on the underlying hardware as well as the characteristics of the input data. It is therefore important for a developer to understand the key ideas of these techniques and to be able to reason about their applicability in different circumstances.",
+      "zh": "到目前为止，我们介绍过的并行计算模式都允许将计算每个输出元素的任务独占式地分配给（或者说归属于）一个线程。因此这些模式适用于属主计算规则，即每个线程都可以写入其指定的一个或多个输出元素，而无需担心其他线程的干扰。本章介绍并行直方图计算模式，在这种模式中，每个输出元素都可能被任意线程更新。因此，线程在更新输出元素时必须相互协调，避免任何可能破坏最终结果的干扰。实际上，还有许多其他重要的并行计算模式难以轻易避免输出干扰。因此，并行直方图算法为这些模式中出现的输出干扰提供了一个例子。我们首先考察一种基线方法，它使用【1】原子操作【/1】将每个元素的更新串行化。这种基线方法简单但效率低下，执行速度常常不尽如人意。然后，我们将介绍一些广泛使用的优化技术，尤其是私有化，以便在保持正确性的同时显著提升执行速度。这些技术的成本与收益取决于底层硬件以及输入数据的特征。因此，开发人员理解这些技术的关键思想、并能在不同情形下推演其适用性，是非常重要的。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "9.1 Background",
+      "zh": "9.1 背景"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "A histogram is a display of the number count or percentage of occurrences of data values in a dataset. In the most common form of histogram, the value intervals are plotted along the horizontal axis, and the count of data values in each interval is represented as the height of a rectangle, or bar, rising from the horizontal axis. For example, a histogram can be used to show the frequency of letters of the alphabet in the phrase “programming massively parallel processors.” For simplicity we assume that the input phrase is in all lowercase. By inspection we see that there are four instances of the letter “a,” zero of the letter “b,” one of the letter “c,” and so on. We define each value interval as a continuous range of four letters of the alphabet. Thus the first value interval is “a” through “d,” the second value interval is “e” through “h,” and so on. 【1】Fig. 9.1【/1】 shows a histogram that displays the frequency of letters in the phrase “programming massively parallel processors” according to our definition of value intervals.",
+      "zh": "直方图展示的是数据集中各数据值的出现次数或百分比。最常见的直方图形式是：值区间沿横轴绘制，每个区间内数据值的个数用从横轴升起的矩形（即条形）的高度表示。例如，可以用直方图来展示短语“programming massively parallel processors”中各个字母出现的频率。为简单起见，我们假设输入短语全部由小写字母组成。通过观察可以看到，字母“a”出现 4 次，“b”出现 0 次，“c”出现 1 次，依此类推。我们把每个值区间定义为字母表中连续 4 个字母的范围。于是第一个值区间是“a”到“d”，第二个值区间是“e”到“h”，依此类推。【1】图 9.1【/1】根据我们对值区间的定义，展示了短语“programming massively parallel processors”中字母出现的频率。"
+    },
+    {
+      "id": "n0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.1【/1】 A histogram representation of the phrase “programming massively parallel processors.”",
+      "zh": "【1】图 9.1【/1】 短语“programming massively parallel processors”的直方图表示。"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "Histograms provide useful summaries of datasets. In our example we can see that the phrase being represented consists of letters that are heavily concentrated in the middle intervals of the alphabet and is noticeably sparse in the later intervals. The shape of the histogram is sometimes referred to as a 【1】feature【/1】 of the dataset and provides a quick way to determine whether there are significant phenomena in the dataset. For example, the shape of a histogram of the purchase categories and locations of a credit card account can be used to detect fraudulent usage. When the shape of the histogram deviates significantly from the norm, the system raises a flag of potential concern.",
+      "zh": "直方图提供了数据集的实用摘要。在我们的例子中可以看到，所表示的短语由集中于字母表中段区间的字母构成，而在靠后的区间则明显稀疏。直方图的形状有时被称为数据集的一个【1】特征【/1】，它提供了一种快速判断数据集中是否存在显著现象的方法。例如，信用卡账户的购买类别与购买地点直方图的形状可用于检测欺诈使用。当直方图的形状明显偏离常态时，系统会发出潜在风险的警报。"
+    },
+    {
+      "id": "p0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "Many application domains rely on histograms to summarize datasets for data analysis. One such area is computer vision. Histograms of different types of object images, such as faces versus cars, tend to exhibit different shapes. For example, one can plot the histogram of pixel luminous values in an image or an area of an image. Such a histogram of the sky on a sunny day might have only a small number of very tall bars in the high-value intervals of the luminous spectrum. By dividing an image into subareas and analyzing the histograms for these subareas, one can quickly identify the interesting subareas of an image that potentially contain the objects of interest. The process of computing histograms of image subareas is an important approach to 【1】feature extraction【/1】 in computer vision, in which the features refer to patterns of interest in images. In practice, whenever there is a large volume of data that needs to be analyzed to distill interesting events, histograms are likely used as a foundational computation. Credit card fraudulence detection and computer vision obviously meet this description. Other application domains with such needs include speech recognition, website purchase recommendations, and scientific data analysis, such as correlating heavenly object movements in astrophysics.",
+      "zh": "许多应用领域都依赖直方图来汇总数据集以进行数据分析，计算机视觉便是其中之一。不同类型物体图像（例如人脸与汽车）的直方图往往呈现不同的形状。例如，人们可以绘制图像或图像某个区域的像素亮度值直方图。晴朗天空的这种直方图可能只在亮度谱的高值区间内有少量很高的条形。通过将图像划分为子区域并分析这些子区域的直方图，可以快速识别图像中可能包含目标物体的感兴趣子区域。计算图像子区域直方图的过程是计算机视觉中【1】特征提取【/1】的重要途径，这里的特征指图像中感兴趣的模式。实际上，每当有大量数据需要分析以提炼出有意义的事件时，直方图往往都会作为基础计算被使用。信用卡欺诈检测和计算机视觉显然符合这一描述。其他有此需求的应用领域包括语音识别、网站购买推荐，以及科学数据分析，例如天体物理学中天体运动的关联分析。"
+    },
+    {
+      "id": "p0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "Histograms can be easily computed in a sequential manner. 【1】Fig. 9.2【/1】 shows a sequential function that calculates the histogram defined in 【2】Fig. 9.1【/2】. For simplicity the histogram function is required to recognize only lowercase letters. The C code assumes that the input dataset comes in a 【3】char【/3】 array 【4】data【/4】 and the histogram will be generated into the 【5】int【/5】 array 【6】histo【/6】 (line 01). The number of input data items is specified in function parameter 【7】length【/7】. The for-loop (lines 02–07) sequentially traverses the array, identifies the alphabet index of the character in the visited position 【8】data[i]【/8】, saves the alphabet index into the alphabet_position variable, and increments the 【9】histo[alphabet_position/4]【/9】 element associated with that interval. The calculation of the alphabet index relies on the fact that the input string is based on the standard ASCII code representation in which the alphabet letters “a” through “z” are encoded into consecutive values according to their order in the alphabet.",
+      "zh": "直方图很容易以串行方式计算。【1】图 9.2【/1】展示了一个计算【2】图 9.1【/2】所定义直方图的串行函数。为简单起见，该直方图函数被要求只识别小写字母。C 代码假设输入数据集以【3】char【/3】数组【4】data【/4】的形式传入，直方图将生成到【5】int【/5】数组【6】histo【/6】中（第 01 行）。输入数据项的个数由函数参数【7】length【/7】指定。for 循环（第 02–07 行）依次遍历数组，识别所访问位置【8】data[i]【/8】处字符的字母表索引，将该索引存入 alphabet_position 变量，并递增与该区间对应的【9】histo[alphabet_position/4]【/9】元素。字母表索引的计算依赖于如下事实：输入字符串基于标准 ASCII 码表示，字母表字母“a”到“z”按照其在字母表中的顺序被编码为连续的值。"
+    },
+    {
+      "id": "n0024",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 9.2【/1】 A simple C function for calculating histogram for an input text string.",
+      "zh": "【1】图 9.2【/1】 一个为输入文本字符串计算直方图的简单 C 函数。"
+    }
+  ]
+}

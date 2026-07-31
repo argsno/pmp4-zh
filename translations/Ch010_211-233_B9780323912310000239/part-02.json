@@ -1,0 +1,155 @@
+{
+  "page": "Ch010_211-233_B9780323912310000239",
+  "nodes": [
+    {
+      "id": "n0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.7【/1】 The assignment of threads (“owners”) to the 【2】input【/2】 array locations and progress of execution over time for the 【3】SimpleSumReudctionKernel【/3】 in 【4】Fig. 10.6【/4】. The time progresses from top to bottom, and each level corresponds to one iteration of the for-loop.",
+      "zh": "【1】图 10.7【/1】 将线程（“属主”）分配到【2】input【/2】数组位置，以及【3】SimpleSumReudctionKernel【/3】（见【4】图 10.6【/4】）的执行随时间推进的过程。时间自上而下推进，每一层对应 for 循环的一次迭代。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "The top row of 【1】Fig. 10.7【/1】 shows the assignment of threads to the locations of the input array, and each of the subsequent rows shows the writes to the input array locations at each time step, that is, iteration of the for-loop in 【2】Fig. 10.6【/2】 (line 03). The locations that the kernel overwrites in each iteration of the for-loop are marked as filled positions of the input array in 【3】Fig. 10.7【/3】. For example, at the end of the first iteration, locations with even indices are overwritten with the partial sums of pairs of the original elements (0–1, 2–3, 4–5, etc.) in the input array. At the end of the second iteration, the locations whose indices are multiples of 4 are overwritten with the partial sum of four adjacent original elements (0–3, 4–7, etc.) in the input array.",
+      "zh": "【1】图 10.7【/1】最上面一行展示了线程到输入数组位置的分配，其后每一行展示了每个时间步对输入数组位置的写入，也就是【2】图 10.6【/2】中 for 循环的一次迭代（第 03 行）。核函数在 for 循环的每次迭代中覆盖的位置，在【3】图 10.7【/3】中以输入数组中的填充位置标出。例如，第一次迭代结束时，索引为偶数的位置被覆盖为输入数组中原始元素两两配对的部分和（0–1、2–3、4–5 等）。第二次迭代结束时，索引为 4 的倍数的位置被覆盖为输入数组中四个相邻原始元素的部分和（0–3、4–7 等）。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "In 【1】Fig. 10.6【/1】 a stride variable is used for the threads to reach for the appropriate partial sums for accumulation into their owner locations. The stride variable is initialized to 1 (line 03). The value of the stride variable is doubled in each iteration so the stride variable value will be 1, 2, 4, 8, etc., until it becomes greater than 【2】blockIdx.x【/2】, the total number of threads in the block. As shown in 【3】Fig. 10.7【/3】, each active thread in an iteration uses the stride variable to add into its owned location the input array element that is of distance stride away. For example, in iteration 1, Thread 0 uses stride value 1 to add input[1] into its owned position input[0]. This updates input[0] to the partial sum of the first pair of original values of input[0] and input[1]. In the second iteration, Thread 0 uses stride value 2 to add input[2] to input[0]. At this time, input[2] contains the sum of the original values of input[2] and input[3] and input[0] contains the sum of the original values of input[0] and input[1]. So, after the second iteration, input[0] contains the sum of the original values of the first four elements of the input array. After the last iteration, input[0] contains the sum of all original elements of the input array and thus the result of the sum reduction. This value is written by Thread 0 as the final output (line 10).",
+      "zh": "在【1】图 10.6【/1】中，使用了步长（stride）变量，使线程能够取得合适的部分和，累加到各自的属主位置。步长变量初始化为 1（第 03 行），并在每次迭代中加倍，因此步长变量的值依次为 1、2、4、8 等，直到它超过【2】blockIdx.x【/2】（即线程块中的线程总数）。如【3】图 10.7【/3】所示，每次迭代中每个活跃线程都使用步长变量，将距离其属主位置 stride 个元素的输入数组元素加到该位置。例如，在迭代 1 中，线程 0 使用步长值 1，将 input[1] 加到其属主位置 input[0] 上。这使 input[0] 更新为原始值 input[0] 与 input[1] 这对元素的部分和。在第二次迭代中，线程 0 使用步长值 2，将 input[2] 加到 input[0] 上。此时，input[2] 中存放的是原始值 input[2] 与 input[3] 的和，input[0] 中存放的是原始值 input[0] 与 input[1] 的和。因此，第二次迭代之后，input[0] 中存放的是输入数组前四个原始元素之和。最后一次迭代之后，input[0] 中存放的是输入数组全部原始元素之和，即求和归约的结果。该值由线程 0 作为最终输出写入（第 10 行）。"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "We now turn to the if-statement in 【1】Fig. 10.6【/1】 (line 04). The condition of the if-statement is set up to select the active threads in each iteration. As shown in 【2】Fig. 10.7【/2】, during iteration 【3】n【/3】, the threads whose thread index (【4】threadIdx.x【/4】) values are multiples of 2【5】n【/5】 are to perform addition. The condition is 【6】threadIdx.x % stride == 0【/6】, which tests whether the thread index value is a multiple of the value of the stride variable. Recall that the value of stride is 1, 2, 4, 8, … through the iterations, or 2【7】n【/7】 for iteration n. Thus the condition indeed tests whether the thread index values are multiples of 2【8】n【/8】. Recall that all threads execute the same kernel code. The threads whose thread index value satisfies the if-condition are the active threads that perform the addition statement (line 05). The threads whose thread index values fail to satisfy the condition are the inactive threads that skip the addition statement. As the iterations progress, fewer and fewer threads remain active. At the last iteration, only thread 0 remains active and produces the sum reduction result.",
+      "zh": "接下来我们来看【1】图 10.6【/1】中的 if 语句（第 04 行）。该 if 语句的条件用来在每次迭代中选出活跃线程。如【2】图 10.7【/2】所示，在迭代【3】n【/3】中，线程索引（【4】threadIdx.x【/4】）值为 2【5】n【/5】的倍数的那些线程需要执行加法。条件是【6】threadIdx.x % stride == 0【/6】，它测试线程索引值是否为步长变量值的倍数。回忆一下，在迭代过程中 stride 的值依次为 1、2、4、8、…，即第 n 次迭代时为 2【7】n【/7】。因此，该条件确实是在测试线程索引值是否为 2【8】n【/8】的倍数。回忆一下，所有线程都执行相同的核函数代码。线程索引值满足 if 条件的线程是执行加法语句（第 05 行）的活跃线程；线程索引值不满足条件的线程是不执行加法语句的非活跃线程。随着迭代的推进，保持活跃的线程越来越少。在最后一次迭代中，只有线程 0 保持活跃，并产生求和归约结果。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "The 【1】__syncthreads()【/1】 statement (line 07 of 【2】Fig. 10.6【/2】) in the for-loop ensures that all partial sums that were calculated by the iteration have been written into their destination locations in the input array before any one of threads is allowed to begin the next iteration. This way, all threads that enter an iteration will be able to correctly use the partial sums that were produced in the previous iteration. For example, after the first iteration the even elements will be replaced by the pairwise partial sums. The 【3】__syncthreads()【/3】 statement ensures that all these partial sums from the first iteration have indeed been written to the even locations of the input array and are ready to be used by the active threads in the second iteration.",
+      "zh": "for 循环中的【1】__syncthreads()【/1】语句（见【2】图 10.6【/2】第 07 行）确保：在任一线程被允许开始下一次迭代之前，本次迭代计算出的所有部分和都已写入输入数组中的目标位置。这样，进入某次迭代的所有线程都能正确使用上一次迭代产生的部分和。例如，第一次迭代之后，偶数位置将被两两配对的部分和替换。【3】__syncthreads()【/3】语句确保第一次迭代产生的所有这些部分和确实已写入输入数组的偶数位置，可供第二次迭代中的活跃线程使用。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "10.4 Minimizing control divergence",
+      "zh": "10.4 最小化控制发散"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[1]",
+      "en": "The kernel code in 【1】Fig. 10.6【/1】 implements the parallel reduction tree in 【2】Fig. 10.7【/2】 and produces the expected sum reduction result. Unfortunately, its management of active and inactive threads in each iteration results in a high degree of control divergence. For example, as shown in 【3】Fig. 10.7【/3】, only those threads whose 【4】threadIdx.x【/4】 values are even will execute the addition statement during the second iteration. As we explained in 【5】Chapter 4【/5】, Compute Architecture and Scheduling, control divergence can significantly reduce the execution resource utilization efficiency, or the percentage of resources that are used in generating useful results. In this example, all 32 threads in a warp consume execution resources, but only half of them are active, wasting half of the execution resources. The waste of execution resources due to divergence increases over time. During the third iteration, only one-fourth of the threads in a warp are active, wasting three-quarters of the execution resources. During iteration 5, only one out of the 32 threads in a warp are active, wasting 【6】31【/6】/【7】32【/7】 of the execution resources.",
+      "zh": "【1】图 10.6【/1】中的核函数代码实现了【2】图 10.7【/2】中的并行归约树，并产生预期的求和归约结果。遗憾的是，它在每次迭代中对活跃线程和非活跃线程的处理导致了高度的控制发散。例如，如【3】图 10.7【/3】所示，第二次迭代中只有【4】threadIdx.x【/4】值为偶数的线程才会执行加法语句。正如我们在【5】第 4 章【/5】《计算体系结构与调度》中所解释的，控制发散会显著降低执行资源利用率，即用于产生有用结果的资源所占的百分比。在本例中，一个线程束中的所有 32 个线程都消耗执行资源，但其中只有一半是活跃的，浪费了一半执行资源。由发散造成的执行资源浪费随时间的推进而增加。在第三次迭代中，一个线程束中只有四分之一的线程活跃，浪费了四分之三的执行资源。在第 5 次迭代中，一个线程束的 32 个线程中只有一个活跃，浪费了【6】31【/6】/【7】32【/7】的执行资源。"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[2]",
+      "en": "If the size of the input array is greater than 32, entire warps will become inactive after the fifth iteration. For example, for an input size of 256, 128 threads or four warps would be launched. All four warps would have the same divergence pattern, as we explained in the previous paragraph for iterations 1 through 5. During the sixth iteration, warp 1 and warp 3 would become completely inactive and thus exhibit no control divergence. On the other hand, warp 0 and warp 2 would have only one active thread, exhibiting control divergence and wasting 【1】31【/1】/【2】32【/2】 of the execution resource. During the seventh iteration, only warp 0 would be active, exhibiting control divergence and wasting 【3】31【/3】/【4】32【/4】 of the execution resource.",
+      "zh": "如果输入数组的大小大于 32，那么第五次迭代之后，整个线程束都会变为非活跃。例如，对于大小为 256 的输入，将启动 128 个线程，即四个线程束。正如我们在上一段中对第 1 至第 5 次迭代的解释，这四个线程束都会呈现相同的发散模式。在第六次迭代中，线程束 1 和线程束 3 将完全变为非活跃，因而不会表现出控制发散。另一方面，线程束 0 和线程束 2 只有一个活跃线程，表现出控制发散，并浪费了【1】31【/1】/【2】32【/2】的执行资源。在第七次迭代中，只有线程束 0 活跃，表现出控制发散，并浪费了【3】31【/3】/【4】32【/4】的执行资源。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
+      "en": "In general, the execution resource utilization efficiency for an input array of size N can be calculated as the ratio between the total number of active threads to the total number of execution resources that are consumed. The total number of execution resources that are consumed is proportional to the total number of active warps across all iterations, since every active warp, no matter how few of its threads are active, consumes full execution resources. This number can be calculated as follows:",
+      "zh": "一般而言，大小为 N 的输入数组的执行资源利用率可以计算为活跃线程总数与所消耗执行资源总数之比。所消耗执行资源的总数与所有迭代中活跃线程束的总数成正比，因为每个活跃线程束，无论其内部有多少线程活跃，都会消耗完整的执行资源。这个数值的计算方式如下："
+    },
+    {
+      "id": "n0059",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[5]",
+      "en": "Here, N/64 is the total number of warps that are launched, since N/2 threads will be launched and every 32 threads form a warp. The N/64 term is multiplied by 5 because all launched warps are active for five iterations. After the fifth iteration the number of warps is reduced by half in each successive iteration. The expression in parentheses gives the total number of active warps across all the iterations. The second term reflects that each active warp consumes full execution resources for all 32 threads regardless of the number of active threads in these warps. For an input array size of 256, the consumed execution resource is (4*5+2+1)*32=736.",
+      "zh": "这里，N/64 是启动的线程束总数，因为将启动 N/2 个线程，而每 32 个线程构成一个线程束。N/64 这一项乘以 5，是因为所有已启动的线程束在前五次迭代中都是活跃的。第五次迭代之后，每经过一次迭代，线程束的数量就减少一半。括号中的表达式给出所有迭代中活跃线程束的总数。第二项反映：每个活跃线程束无论其内部活跃线程数有多少，其全部 32 个线程都消耗完整的执行资源。对于大小为 256 的输入数组，消耗的执行资源为 (4*5+2+1)*32=736。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[6]",
+      "en": "The number of execution results committed by the active threads is the total number of active threads across all iterations:",
+      "zh": "活跃线程提交的执行结果数量等于所有迭代中活跃线程的总数："
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
+      "en": "The terms in the parenthesis give the active threads in the first five iterations for all N/64 warps. Starting at the sixth iteration, the number of active warps is reduced by half in each iteration, and there is only one active thread in each active warp. For an input array size of 256, the total number of committed results is 4*(32+16+8+4+2+1)+2+1=255. This result should be intuitive because the total number of operations that are needed to reduce 256 values is 255.",
+      "zh": "括号中的各项给出前五次迭代中全部 N/64 个线程束的活跃线程数。从第六次迭代开始，每次迭代活跃线程束的数量减少一半，且每个活跃线程束中只有一个活跃线程。对于大小为 256 的输入数组，提交的结果总数为 4*(32+16+8+4+2+1)+2+1=255。这一结果应当不难理解，因为归约 256 个值所需的总运算次数就是 255。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[9]",
+      "en": "Putting the previous two results together, we find that the execution resource utilization efficiency for an input array size of 256 is 255/736=0.35. This ratio states that the parallel execution resources did not achieve their full potential in speeding up this computation. On average, only about 35% of the resources consumed contributed to the sum reduction result. That is, we used only about 35% of the hardware’s potential to speed up the computation.",
+      "zh": "综合前面两个结果，我们发现，对于大小为 256 的输入数组，执行资源利用率为 255/736=0.35。这个比率说明并行执行资源在加速该计算时并未充分发挥其潜力。平均而言，所消耗的资源中只有约 35% 对求和归约结果有贡献。也就是说，我们只用了硬件潜力的大约 35% 来加速计算。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
+      "en": "Based on this analysis, we see that there is widespread control divergence across warps and over time. As the reader might have wondered, there may be a better way to assign threads to the input array locations to reduce control divergence and improve resource utilization efficiency. The problem with the assignment illustrated in 【1】Fig. 10.7【/1】 is that the partial sum locations become increasingly distant from each other, and thus the active threads that own these locations are also increasingly distant from each other as time progresses. This increasing distance between active threads contributes to the increasing level of control divergence.",
+      "zh": "基于这一分析，我们看到，跨线程束以及随时间推进都普遍存在控制发散。读者或许会想，是否有一种更好的方式，将线程分配到输入数组位置，以减少控制发散并提高资源利用率。【1】图 10.7【/1】所示分配的弊端在于，部分和的位置彼此越来越远，因此拥有这些位置的活跃线程也随着时间推进而彼此越来越远。活跃线程之间这种不断增大的距离，导致了控制发散程度的不断加剧。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
+      "en": "There is indeed a better assignment strategy that significantly reduces control divergence. The idea is that we should arrange the threads and their owned positions so that they can remain close to each other as time progresses. That is, we would like to have the stride value decrease, rather than increase, over time. The revised assignment strategy is shown in 【1】Fig. 10.8【/1】 for an input array of 16 elements. Here, we assign the threads to the first half of the locations. During the first iteration, each thread reaches halfway across the input array and adds an input element to its owner location. In our example, thread 0 adds input[8] to its owned position input[0], thread 1 adds input[9] to its owned position input[1], and so on. During each subsequent iteration, half of the active threads drop off, and all remaining active threads add an input element whose position is the number of active threads away from its owner position. In our example, during the third iteration there are two remaining active threads: Thread 0 adds input[2] into its owned position input[0], and thread 1 adds input[3] into its owned position input[1]. Note that if we compare the operation and operand orders of 【2】Fig. 10.8【/2】 to 【3】Fig. 10.7【/3】, there is effectively a reordering of the operands in the list rather than just inserting parentheses in different ways. For the result to always remain the same with such reordering, the operation must be commutative as well as being associative.",
+      "zh": "确实存在一种能显著减少控制发散的更好分配策略。其思路是：安排线程及其属主位置，使它们随时间推进而彼此保持靠近。也就是说，我们希望步长值随时间递减而不是递增。修订后的分配策略如【1】图 10.8【/1】所示，针对的是包含 16 个元素的输入数组。这里，我们将线程分配到前一半位置。在第一次迭代中，每个线程跨过半个输入数组，将一个输入元素加到其属主位置。在我们的示例中，线程 0 将 input[8] 加到其属主位置 input[0]，线程 1 将 input[9] 加到其属主位置 input[1]，依此类推。在随后的每次迭代中，一半活跃线程退出，其余所有活跃线程都加上一个输入元素，该元素的位置距其属主位置相隔当前活跃线程数。在我们的示例中，第三次迭代时只剩下两个活跃线程：线程 0 将 input[2] 加到其属主位置 input[0]，线程 1 将 input[3] 加到其属主位置 input[1]。请注意，如果把【2】图 10.8【/2】与【3】图 10.7【/3】的运算和操作数顺序加以比较，会发现这实际上是列表中操作数的重排，而不只是以不同方式插入括号。要使重排后的结果始终保持一致，运算必须既满足交换性又满足结合性。"
+    },
+    {
+      "id": "n0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[3]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.8【/1】 A better assignment of threads to input array locations for reduced control divergence.",
+      "zh": "【1】图 10.8【/1】 为减少控制发散而改进的线程到输入数组位置的分配。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[12]",
+      "en": "【1】Fig. 10.9【/1】 shows a kernel with some subtle but critical changes to the simple kernel in 【2】Fig. 10.6【/2】. The owner position variable i is set to 【3】threadIdx.x【/3】 rather than 【4】2*threadIdx.x【/4】 (line 02). Thus the owner positions of all threads are now adjacent to each other, as illustrated in 【5】Fig. 10.8【/5】. The stride value is initialized as 【6】blockDim.x【/6】 and is reduced by half until it reaches 1 (line 03). In each iteration, only the threads whose indices are smaller than the stride value remain active (line 04). Thus all active threads are of consecutive thread indices, as shown in 【7】Fig. 10.8【/7】. Instead of adding neighbor elements in the first round, it adds elements that are half a section away from each other, and the section size is always twice the number of remaining active threads. All pairs that are added during the first round are 【8】blockDim.x【/8】 away from each other. After the first iteration, all the pairwise sums are stored in the first half of the input array, as shown in 【9】Fig. 10.8【/9】. The loop divides the stride by 2 before entering the next iteration. Thus for the second iteration the stride variable value is half of the 【10】blockDim.x【/10】 value. That is, the remaining active threads add elements that are a quarter of a section away from each other during the second iteration.",
+      "zh": "【1】图 10.9【/1】展示了一个核函数，它与【2】图 10.6【/2】中的简单核函数相比有一些细微但关键的改动。属主位置变量 i 被设为【3】threadIdx.x【/3】而不是【4】2*threadIdx.x【/4】（第 02 行）。因此，所有线程的属主位置现在彼此相邻，如【5】图 10.8【/5】所示。步长值被初始化为【6】blockDim.x【/6】，并每次减半，直到达到 1（第 03 行）。在每次迭代中，只有索引小于步长值的线程保持活跃（第 04 行）。因此，所有活跃线程的索引都是连续的，如【7】图 10.8【/7】所示。与第一轮中相加相邻元素不同，它相加彼此相隔半个区段的元素，且区段大小始终是剩余活跃线程数的两倍。第一轮中相加的所有配对彼此相隔【8】blockDim.x【/8】。第一次迭代之后，所有两两配对的和都存储在输入数组的前一半中，如【9】图 10.8【/9】所示。循环在进入下一次迭代之前将步长除以 2。因此，对于第二次迭代，步长变量的值是【10】blockDim.x【/10】值的一半。也就是说，在第二次迭代中，剩余活跃线程相加的是彼此相隔四分之一个区段的元素。"
+    },
+    {
+      "id": "n0067",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 10.9【/1】 A kernel with less control divergence and improved execution resource utilization efficiency.",
+      "zh": "【1】图 10.9【/1】 一个控制发散更少、执行资源利用率更高的核函数。"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[13]",
+      "en": "The kernel in 【1】Fig. 10.9【/1】 still has an if-statement (line 04) in the loop. The number of threads that execute an addition operation (line 06) in each iteration is the same as in 【2】Fig. 10.6【/2】. Then why should there be a difference in control divergence between the two kernels? The answer lies in the positions of threads that perform the addition operation relative to those that do not. Let us consider the example of an input array of 256 elements. During the first iteration, all threads are active, so there is no control divergence. During the second iteration, threads 0 through 63 execute the add statement (active), while threads 64 through 127 do not (inactive). The pairwise sums are stored in elements 0 through 63 during the second iteration. Since the warps consist of 32 threads with consecutive threadIdx.x values, all threads in warp 0 through warp 1 execute the add statement, whereas all threads in warp 2 through warp 3 become inactive. Since all threads in each warp take the same path of execution, there is no control divergence!",
+      "zh": "【1】图 10.9【/1】中的核函数在循环中仍然有一个 if 语句（第 04 行）。每次迭代中执行加法运算（第 06 行）的线程数与【2】图 10.6【/2】中相同。那么，为什么两个核函数在控制发散上会存在差异呢？答案在于执行加法运算的线程相对于不执行加法运算的线程所处的位置。让我们考虑一个包含 256 个元素的输入数组示例。在第一次迭代中，所有线程都是活跃的，因此不存在控制发散。在第二次迭代中，线程 0 至 63 执行加法语句（活跃），而线程 64 至 127 不执行（非活跃）。两两配对的和在第二次迭代中存储在元素 0 至 63 中。由于线程束由 32 个线程索引值连续的线程组成，因此线程束 0 至线程束 1 中的所有线程都执行加法语句，而线程束 2 至线程束 3 中的所有线程都变为非活跃。由于每个线程束中的所有线程都走相同的执行路径，因此不存在控制发散！"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[14]",
+      "en": "However, the kernel in 【1】Fig. 10.9【/1】 does not completely eliminate the divergence caused by the if-statement. The reader should verify that for the 256-element example, starting with the fourth iteration, the number of threads that execute the addition operation will fall below 32. That is, the final five iterations will have only 16, 8, 4, 2, and 1 thread(s) performing the addition. This means that the kernel execution will still have divergence in these iterations. However, the number of iterations of the loop that has divergence is reduced from ten to five. We can calculate the total number of execution resources consumed as follows:",
+      "zh": "然而，【1】图 10.9【/1】中的核函数并不能完全消除由 if 语句引起的发散。读者可以自行验证：在 256 个元素的示例中，从第四次迭代开始，执行加法运算的线程数将降到 32 以下。也就是说，最后五次迭代分别只有 16、8、4、2 和 1 个线程执行加法。这意味着核函数执行在这些迭代中仍会出现发散。不过，循环中存在发散的迭代次数从十次减少到了五次。我们可以如下计算消耗的执行资源总数："
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[16]",
+      "en": "The part in parentheses reflects the fact that in each subsequent iteration, half of the warps become entirely inactive and no longer consume execution resources. This series continues until there is only one full warp of active threads. The last term (5*1) reflects the fact that for the final five iterations, there is only one active warp, and all its 32 threads consume execution resources even though only a fraction of the threads are active. Thus the sum in the parentheses gives the total number of warp executions through all iterations, which, when multiplied by 32, gives the total amount of execution resources that are consumed.",
+      "zh": "括号中的部分反映了这样一个事实：在随后的每次迭代中，一半的线程束完全变为非活跃，不再消耗执行资源。该级数一直持续到只剩下一个满员的活跃线程束。最后一项 (5*1) 反映：在最后五次迭代中只有一个活跃线程束，尽管其中只有一部分线程活跃，但它的全部 32 个线程都消耗执行资源。因此，括号中的和给出所有迭代中线程束执行的总次数，乘以 32 即得到消耗的执行资源总量。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[17]",
+      "en": "For our 256-element example the execution resources that are consumed are (4+2+1+5*1)*32=384, which is almost half of 736, the resources that were consumed by the kernel in 【1】Fig. 10.6【/1】. Since the number of active threads in each iteration did not change from 【2】Fig. 10.7【/2】 to 【3】Fig. 10.8【/3】, the efficiency of the new kernel in 【4】Fig. 10.9【/4】 is 255/384=66%, which is almost double the efficiency of the kernel in 【5】Fig. 10.6【/5】. Note also that since the warps are scheduled to take turns executing in a streaming multiprocessor of limited execution resources, the total execution time will also improve with the reduced resource consumption.",
+      "zh": "在我们的 256 元素示例中，消耗的执行资源为 (4+2+1+5*1)*32=384，几乎是【1】图 10.6【/1】中核函数所消耗资源 736 的一半。由于从【2】图 10.7【/2】到【3】图 10.8【/3】，每次迭代中的活跃线程数并未改变，因此【4】图 10.9【/4】中新核函数的效率为 255/384=66%，几乎是【5】图 10.6【/5】中核函数效率的两倍。还需注意，由于线程束是在执行资源有限的流式多处理器中轮流调度执行的，因此总执行时间也会随着资源消耗的减少而改善。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[18]",
+      "en": "The difference between the kernels in 【1】Fig. 10.6【/1】 and 【2】Fig. 10.9【/2】 is small but can have a significant performance impact. It requires someone with clear understanding of the execution of threads on the single-instruction, multiple-data hardware of the device to be able to confidently make such adjustments.",
+      "zh": "【1】图 10.6【/1】与【2】图 10.9【/2】中两个核函数之间的差异很小，但可能对性能产生显著影响。只有对设备上单指令多数据（SIMD）硬件中线程的执行有清晰理解的人，才能自信地做出这样的调整。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/h2[1]",
+      "en": "10.5 Minimizing memory divergence",
+      "zh": "10.5 最小化内存发散"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[1]",
+      "en": "The simple kernel in 【1】Fig. 10.6【/1】 has another performance issue: memory divergence. As we explained in 【2】Chapter 5【/2】, Memory Architecture and Data Locality, it is important to achieve memory coalescing within each warp. That is, adjacent threads in a warp should access adjacent locations when they access global memory. Unfortunately, in 【3】Fig. 10.7【/3】, adjacent threads do not access adjacent locations. In each iteration, each thread performs two global memory reads and one global memory write. The first read is from its owned location, the second read is from the location that is of stride distance away from its owned location, and the write is to its owned location. Since the locations owned by adjacent thread are not adjacent locations, the accesses that are made by adjacent threads will not be fully coalesced. During each iteration the memory locations that are collectively accessed by a warp are of stride distance away from each other.",
+      "zh": "【1】图 10.6【/1】中的简单核函数还有另一个性能问题：内存发散。正如我们在【2】第 5 章【/2】《内存体系结构与数据局部性》中解释的，在每个线程束内实现内存合并（访问）非常重要。也就是说，线程束中相邻的线程在访问全局内存时，应当访问相邻的位置。遗憾的是，在【3】图 10.7【/3】中，相邻线程并未访问相邻的位置。在每次迭代中，每个线程执行两次全局内存读和一次全局内存写。第一次读来自其属主位置，第二次读来自距其属主位置 stride 距离的位置，写则写入其属主位置。由于相邻线程所拥有的位置并不是相邻的，因此相邻线程发起的访问将无法被完全合并。在每次迭代中，一个线程束集体访问的内存位置彼此相隔 stride 距离。"
+    }
+  ]
+}

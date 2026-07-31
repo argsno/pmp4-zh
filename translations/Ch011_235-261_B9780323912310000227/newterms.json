@@ -1,0 +1,162 @@
+[
+  {
+    "en": "partial sum",
+    "zh": "部分和",
+    "note": "§11.2–11.7：扫描/归约树的中间累加结果，例如各线程存入临时变量的部分和"
+  },
+  {
+    "en": "stride",
+    "zh": "步长",
+    "note": "§11.2–11.5：Kogge-Stone/Brent-Kung 扫描中线程索引与其取数位置的距离；也指 stride 变量"
+  },
+  {
+    "en": "execution resource",
+    "zh": "执行资源",
+    "note": "§11.2–11.8：核函数执行所消耗的硬件资源"
+  },
+  {
+    "en": "execution unit",
+    "zh": "执行单元",
+    "note": "§11.3/11.5：并行算法中可供使用的计算单元（如 32 个执行单元）"
+  },
+  {
+    "en": "active thread",
+    "zh": "活跃线程",
+    "note": "§11.2–11.4：某次迭代中执行运算的线程"
+  },
+  {
+    "en": "inactive thread",
+    "zh": "非活跃线程",
+    "note": "§11.2–11.3：某次迭代中不执行运算的线程"
+  },
+  {
+    "en": "geometric series",
+    "zh": "几何级数",
+    "note": "§11.3：N/2+N/4+…+1=N−1"
+  },
+  {
+    "en": "hardware underutilization",
+    "zh": "硬件未被充分利用",
+    "note": "§11.5/11.8：并行化开销之一，硬件资源空闲的情形"
+  },
+  {
+    "en": "reverse tree",
+    "zh": "反向树",
+    "note": "§11.4/11.8：Brent-Kung 算法中分发部分和的第二阶段"
+  },
+  {
+    "en": "scan block",
+    "zh": "扫描块",
+    "note": "§11.6–11.7：分层扫描中由单个线程块处理的输入段及其局部扫描结果"
+  },
+  {
+    "en": "block-wide scan",
+    "zh": "块内扫描",
+    "note": "§11.6/11.8：线程块范围内的局部扫描"
+  },
+  {
+    "en": "grid-wide synchronization",
+    "zh": "网格级同步",
+    "note": "§11.7：整个网格范围的同步，多米诺式扫描试图避免它"
+  },
+  {
+    "en": "cumulative sum",
+    "zh": "累加和",
+    "note": "§11.6–11.7：从起始位置累加到某位置的元素之和"
+  },
+  {
+    "en": "in-place",
+    "zh": "原地",
+    "note": "§11.2：in-place scan algorithm 即对原数组就地演化的扫描算法"
+  },
+  {
+    "en": "domino-style scan algorithm",
+    "zh": "多米诺式扫描算法",
+    "note": "§11.7/11.8：通过相邻线程块逐块传递部分和实现单遍扫描的算法"
+  },
+  {
+    "en": "dynamic block index assignment",
+    "zh": "动态线程块索引分配",
+    "note": "§11.7：用全局计数器动态分配 bid、与 blockIdx.x 解耦的机制"
+  },
+  {
+    "en": "leader thread",
+    "zh": "领头线程",
+    "note": "§11.7：每块中执行相邻同步代码的单个线程（如索引 0）"
+  },
+  {
+    "en": "memory fence",
+    "zh": "内存栅栏",
+    "note": "§11.7：__threadfence() 等内存栅栏函数"
+  },
+  {
+    "en": "producer-consumer chain",
+    "zh": "生产者-消费者链",
+    "note": "§11.7：扫描块之间单向传递部分和的协作模式"
+  },
+  {
+    "en": "shuffle instruction",
+    "zh": "shuffle 指令",
+    "note": "§11.3/11.8：线程束内交换数据的 shuffle 指令，保留英文"
+  },
+  {
+    "en": "carry look-ahead",
+    "zh": "先行进位",
+    "note": "§11.6：硬件加法器中的先行进位，与分段扫描原理类似"
+  },
+  {
+    "en": "data-scalable algorithm",
+    "zh": "数据可扩展算法",
+    "note": "§11.8：运算次数随输入规模线性增长的算法"
+  },
+  {
+    "en": "linear recursion",
+    "zh": "线性递归",
+    "note": "§11 关键词：每一项由前一项定义的数学递归形式"
+  },
+  {
+    "en": "resource allocation",
+    "zh": "资源分配",
+    "note": "§11 引言/关键词：扫描的典型应用之一"
+  },
+  {
+    "en": "work assignment",
+    "zh": "工作分配",
+    "note": "§11 引言/关键词：扫描的典型应用之一"
+  },
+  {
+    "en": "polynomial evaluation",
+    "zh": "多项式求值",
+    "note": "§11 引言/关键词：扫描的典型应用之一"
+  },
+  {
+    "en": "stream compaction",
+    "zh": "流式紧凑化",
+    "note": "§11 引言：扫描的典型应用之一；compaction 按 §5.5 译紧凑化"
+  },
+  {
+    "en": "recurrence",
+    "zh": "递推",
+    "note": "§11 引言/11.8：数学递推（solving recurrences、mathematical recurrence）"
+  },
+  {
+    "en": "two-phase hybrid",
+    "zh": "两阶段混合式",
+    "note": "§11 摘要：三种核函数风格之一（Kogge-Stone、Brent-Kung、两阶段混合式）"
+  },
+  {
+    "en": "sectional scan",
+    "zh": "分段扫描",
+    "note": "§11.2：把各段的局部扫描结果合并（consolidate sectional scan results）"
+  },
+  {
+    "en": "scan section",
+    "zh": "扫描段",
+    "note": "§11.4–11.5：单个线程块负责处理的输入段"
+  },
+  {
+    "en": "work-efficient",
+    "zh": "工作高效（的）",
+    "note": "§11.3/11.8：工作效率高的（算法/扫描），与名词 work efficiency（§5.4 工作效率）对应"
+  }
+]

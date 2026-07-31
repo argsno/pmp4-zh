@@ -1,0 +1,155 @@
+{
+  "page": "Ch005_93-121_B9780323912310000185",
+  "nodes": [
+    {
+      "id": "o0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[3]",
+      "en": "3. What type of incorrect execution behavior can happen if one forgot to use one or both __syncthreads() in the kernel of 【1】Fig. 5.9【/1】?",
+      "zh": "3. 如果忘记在【1】图 5.9【/1】的核函数中使用一个或两个 __syncthreads()，会发生哪种类型的错误执行行为？"
+    },
+    {
+      "id": "o0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[4]",
+      "en": "4. Assuming that capacity is not an issue for registers or shared memory, give one important reason why it would be valuable to use shared memory instead of registers to hold values fetched from global memory? Explain your answer.",
+      "zh": "4. 假设寄存器和共享内存的容量都不是问题，给出一个重要理由，说明为什么使用共享内存而不是寄存器来保存从全局内存取回的值是有价值的？请解释你的答案。"
+    },
+    {
+      "id": "o0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[5]",
+      "en": "5. For our tiled matrix-matrix multiplication kernel, if we use a 32×32 tile, what is the reduction of memory bandwidth usage for input matrices M and N?",
+      "zh": "5. 对于我们的分块矩阵-矩阵乘法核函数，如果使用 32×32 的分块，输入矩阵 M 和 N 的内存带宽使用量会减少多少？"
+    },
+    {
+      "id": "o0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[6]",
+      "en": "6. Assume that a CUDA kernel is launched with 1000 thread blocks, each of which has 512 threads. If a variable is declared as a local variable in the kernel, how many versions of the variable will be created through the lifetime of the execution of the kernel?",
+      "zh": "6. 假设一个 CUDA 核函数以 1000 个线程块启动，每个线程块有 512 个线程。如果一个变量被声明为核函数中的局部变量，在核函数执行的整个生命周期中会创建该变量的多少个版本？"
+    },
+    {
+      "id": "o0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[7]",
+      "en": "7. In the previous question, if a variable is declared as a shared memory variable, how many versions of the variable will be created through the lifetime of the execution of the kernel?",
+      "zh": "7. 在上一题中，如果一个变量被声明为共享内存变量，在核函数执行的整个生命周期中会创建该变量的多少个版本？"
+    },
+    {
+      "id": "o0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[8]",
+      "en": "8. Consider performing a matrix multiplication of two input matrices with dimensions N×N. How many times is each element in the input matrices requested from global memory when:【M1】",
+      "zh": "8. 考虑执行两个 N×N 维输入矩阵的矩阵乘法。当以下情况时，输入矩阵中的每个元素会从全局内存请求多少次：【M1】"
+    },
+    {
+      "id": "o0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[8]/ol[1]/li[1]",
+      "en": "a. There is no tiling?",
+      "zh": "a. 不使用分块时？"
+    },
+    {
+      "id": "o0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[8]/ol[1]/li[2]",
+      "en": "b. Tiles of size T×T are used?",
+      "zh": "b. 使用大小为 T×T 的分块时？"
+    },
+    {
+      "id": "o0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[9]",
+      "en": "9. A kernel performs 36 floating-point operations and seven 32-bit global memory accesses per thread. For each of the following device properties, indicate whether this kernel is compute-bound or memory-bound.【M1】",
+      "zh": "9. 一个核函数每个线程执行 36 次浮点运算和 7 次 32 位全局内存访问。对于以下每种设备属性，请指出该核函数是计算受限还是访存受限。【M1】"
+    },
+    {
+      "id": "o0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[9]/ol[1]/li[1]",
+      "en": "a. Peak FLOPS=200 GFLOPS, peak memory bandwidth=100 GB/second",
+      "zh": "a. 峰值 FLOPS=200 GFLOPS，峰值内存带宽=100 GB/秒"
+    },
+    {
+      "id": "o0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[9]/ol[1]/li[2]",
+      "en": "b. Peak FLOPS=300 GFLOPS, peak memory bandwidth=250 GB/second",
+      "zh": "b. 峰值 FLOPS=300 GFLOPS，峰值内存带宽=250 GB/秒"
+    },
+    {
+      "id": "o0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[10]",
+      "en": "10. To manipulate tiles, a new CUDA programmer has written a device kernel that will transpose each tile in a matrix. The tiles are of size BLOCK_WIDTH by BLOCK_WIDTH, and each of the dimensions of matrix A is known to be a multiple of BLOCK_WIDTH. The kernel invocation and code are shown below. BLOCK_WIDTH is known at compile time and could be set anywhere from 1 to 20.【M1】【M2】",
+      "zh": "10. 为了操作分块，一位新的 CUDA 程序员编写了一个设备核函数，用于转置矩阵中的每个分块。分块的大小为 BLOCK_WIDTH×BLOCK_WIDTH，并且已知矩阵 A 的每个维度都是 BLOCK_WIDTH 的倍数。核函数调用和代码如下所示。BLOCK_WIDTH 在编译时已知，可以在 1 到 20 之间任意设置。【M1】【M2】"
+    },
+    {
+      "id": "o0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[10]/ol[1]/li[1]",
+      "en": "a. Out of the possible range of values for BLOCK_SIZE, for what values of BLOCK_SIZE will this kernel function execute correctly on the device?",
+      "zh": "a. 在 BLOCK_SIZE 可能的取值范围中，对于哪些 BLOCK_SIZE 值，这个核函数能在设备上正确执行？"
+    },
+    {
+      "id": "o0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[10]/ol[1]/li[2]",
+      "en": "b. If the code does not execute correctly for all BLOCK_SIZE values, what is the root cause of this incorrect execution behavior? Suggest a fix to the code to make it work for all BLOCK_SIZE values.",
+      "zh": "b. 如果代码不能对所有 BLOCK_SIZE 值都正确执行，这种错误执行行为的根本原因是什么？请建议对代码的修复，使其适用于所有 BLOCK_SIZE 值。"
+    },
+    {
+      "id": "o0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[11]",
+      "en": "11. Consider the following CUDA kernel and the corresponding host function that calls it:",
+      "zh": "11. 考虑下面的 CUDA 核函数以及调用它的相应主机函数："
+    },
+    {
+      "id": "o0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[3]/ol[1]/li[1]",
+      "en": "a. How many versions of the variable 【1】i【/1】 are there?",
+      "zh": "a. 变量【1】i【/1】有多少个版本？"
+    },
+    {
+      "id": "o0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[3]/ol[1]/li[2]",
+      "en": "b. How many versions of the array 【1】x[]【/1】 are there?",
+      "zh": "b. 数组【1】x[]【/1】有多少个版本？"
+    },
+    {
+      "id": "o0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[3]/ol[1]/li[3]",
+      "en": "c. How many versions of the variable 【1】y_s【/1】 are there?",
+      "zh": "c. 变量【1】y_s【/1】有多少个版本？"
+    },
+    {
+      "id": "o0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[3]/ol[1]/li[4]",
+      "en": "d. How many versions of the array 【1】b_s[]【/1】 are there?",
+      "zh": "d. 数组【1】b_s[]【/1】有多少个版本？"
+    },
+    {
+      "id": "o0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[3]/ol[1]/li[5]",
+      "en": "e. What is the amount of shared memory used per block (in bytes)?",
+      "zh": "e. 每个线程块使用的共享内存量是多少（以字节为单位）？"
+    },
+    {
+      "id": "o0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[3]/ol[1]/li[6]",
+      "en": "f. What is the floating-point to global memory access ratio of the kernel (in OP/B)?",
+      "zh": "f. 该核函数的浮点运算与全局内存访问之比是多少（以 OP/B 为单位）？"
+    },
+    {
+      "id": "o0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[4]/ol[1]/li[1]",
+      "en": "12. Consider a GPU with the following hardware limits: 2048 threads/SM, 32 blocks/SM, 64K (65,536) registers/SM, and 96 KB of shared memory/SM. For each of the following kernel characteristics, specify whether the kernel can achieve full occupancy. If not, specify the limiting factor.【M1】",
+      "zh": "12. 考虑一个具有以下硬件限制的 GPU：每 SM 2048 个线程、每 SM 32 个线程块、每 SM 64K（65,536）个寄存器、每 SM 96 KB 共享内存。对于以下每种核函数特征，请指出该核函数能否达到满占用率。如果不能，请指出限制因素。【M1】"
+    },
+    {
+      "id": "o0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[4]/ol[1]/li[1]/ol[1]/li[1]",
+      "en": "a. The kernel uses 64 threads/block, 27 registers/thread, and 4 KB of shared memory/SM.",
+      "zh": "a. 该核函数使用每线程块 64 个线程、每线程 27 个寄存器，以及每 SM 4 KB 共享内存。"
+    },
+    {
+      "id": "o0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[4]/ol[1]/li[1]/ol[1]/li[2]",
+      "en": "b. The kernel uses 256 threads/block, 31 registers/thread, and 8 KB of shared memory/SM.",
+      "zh": "b. 该核函数使用每线程块 256 个线程、每线程 31 个寄存器，以及每 SM 8 KB 共享内存。"
+    },
+    {
+      "id": "fn1",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/footer[1]/section[1]/div[1]/p[1]",
+      "en": "【1】【2】1【/2】【/1】There are some exceptions to this rule. The compiler may decide to store an automatic array into registers if all accesses are done with constant index values.",
+      "zh": "【1】【2】1【/2】【/1】这一规则也有一些例外。如果所有访问都使用常量索引值进行，编译器可能会决定把自动数组存入寄存器。"
+    }
+  ]
+}

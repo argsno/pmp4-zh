@@ -1,0 +1,155 @@
+{
+  "page": "Ch013_293-310_B9780323912310000197",
+  "nodes": [
+    {
+      "id": "p0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "A more complex and common use case is that each element consists of a key field and a value field and the list should be sorted on the basis of the key field. For example, assume that each element is a tuple (age, income in thousands of dollars). The list [(30,150), (32,80), (22,45), (29,80)] can be sorted by using the income as the key field into a nonincreasing order [(30,150), (32,80), (29,80), (22,45)].",
+      "zh": "一个更复杂也更常见的用例是，每个元素由一个键字段和一个值字段组成，列表应根据键字段排序。例如，假设每个元素是一个元组（年龄，收入，单位千美元）。列表 [(30,150), (32,80), (22,45), (29,80)] 可以以收入作为键字段，排序为非递增顺序 [(30,150), (32,80), (29,80), (22,45)]。"
+    },
+    {
+      "id": "p0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
+      "en": "Sorting algorithms can be classified into stable and unstable algorithms. A stable sort algorithm preserves the original order of appearance when two elements have equal key value. For example, when sorting the list [(30,150), (32,80), (22,45), (29,80)] into a nonincreasing order using income as the key field, a stable sorting algorithm must guarantee that (32, 80) appears before (29,80) because the former appear before the latter in the original input. An unstable sorting algorithm does not offer such a guarantee. Stable algorithms are required if one wishes to use multiple keys to sort a list in a cascaded manner. For example, if each element has a primary key and a secondary key, with stable sorting algorithms, one can first sort the list according to the secondary key and then sort one more time with the primary key. The second sort will preserve the order produced by the first sort.",
+      "zh": "排序算法可分为稳定排序和不稳定排序。稳定排序算法在两个元素的键值相等时，保留它们原本的出现顺序。例如，将列表 [(30,150), (32,80), (22,45), (29,80)] 以收入作为键字段按非递增顺序排序时，稳定排序算法必须保证 (32, 80) 出现在 (29,80) 之前，因为前者在原始输入中位于后者之前。不稳定排序算法则不提供这样的保证。如果希望使用多个键以级联方式对列表进行排序，就需要稳定算法。例如，如果每个元素都有主键和次键，借助稳定排序算法，可以先按次键对列表排序，然后再按主键排序一次。第二次排序将保留第一次排序产生的顺序。"
+    },
+    {
+      "id": "p0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[5]",
+      "en": "Sorting algorithms can also be classified into comparison-based and noncomparison-based algorithms. Comparison-based sorting algorithms cannot achieve better than 【M1】【M2】 complexity when sorting a list of 【M3】【M4】 elements because they must perform a minimal number of comparisons among the elements. In contrast, some of the noncomparison-based algorithms can achieve better than 【M5】【M6】 complexity, but they may not generalize to arbitrary types of keys. Both comparison-based and noncomparison-based sorting algorithms can be parallelized. In this chapter we present a parallel noncomparison-based sorting algorithm (radix sort) as well as a parallel comparison-based sorting algorithm (merge sort).",
+      "zh": "排序算法还可以分为基于比较的算法和基于非比较的算法。基于比较的排序算法无法达到优于【M1】【M2】的复杂度：在对包含【M3】【M4】个元素的列表进行排序时，它们必须对元素执行最少数量的比较。相比之下，一些基于非比较的算法可以达到优于【M5】【M6】的复杂度，但它们可能无法推广到任意类型的键。基于比较的和基于非比较的排序算法都可以并行化。本章将介绍一种并行的基于非比较的排序算法（基数排序），以及一种并行的基于比较的排序算法（归并排序）。"
+    },
+    {
+      "id": "p0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[6]",
+      "en": "Because of the importance of sorting, the computer science research community has produced a great spectrum of sorting algorithms based on a rich variety of data structures and algorithmic strategies. As a result, introductory computer science classes often use sorting algorithms to illustrate a variety of core algorithm concepts, such as big O notation; divide-and-conquer algorithms; data structures such as heaps and binary trees; randomized algorithms; best-, worst-, and average-case analysis; time-space tradeoffs; and upper and lower bounds. In this chapter we continue this tradition and use two sorting algorithms to illustrate several important parallelization and performance optimization techniques (【1】Satish et al., 2009【/1】).",
+      "zh": "由于排序的重要性，计算机科学研究界基于丰富多样的数据结构和算法策略，产生了种类繁多的排序算法。因此，入门级计算机科学课程常常用排序算法来演示各种核心算法概念，例如大 O 记号；分治算法；堆和二叉树等数据结构；随机化算法；最好、最坏和平均情况分析；时间空间权衡；以及上界与下界。本章延续这一传统，用两种排序算法来演示若干重要的并行化与性能优化技术（【1】Satish et al., 2009【/1】）。"
+    },
+    {
+      "id": "st0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "13.2 Radix sort",
+      "zh": "13.2 基数排序"
+    },
+    {
+      "id": "p0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[1]",
+      "en": "One of the sorting algorithms that is highly amenable to parallelization is radix sort. Radix sort is a noncomparison-based sorting algorithm that works by distributing the keys that are being sorted into buckets on the basis of a radix value (or base in a positional numeral system). If the keys consist of multiple digits, the distribution of the keys is repeated for each digit until all digits are covered. Each iteration is stable, preserving the order of the keys within each bucket from the previous iteration. In processing keys that are represented as binary numbers, choosing a radix value that is a power of 2 is convenient because it makes iterating over the digits and extracting them easy. Each iteration essentially handles a fixed-size slice of the bits from the key. We will start by using a radix of 2 (i.e., a 1-bit radix) and then extend to larger radix values later in the chapter.",
+      "zh": "非常适于并行化的排序算法之一是基数排序。基数排序是一种基于非比较的排序算法，其工作方式是根据一个基数值（即位置计数法中的基）将待排序的键分布到各个桶中。如果键由多位数字组成，则对每一位数字重复键的分布过程，直到所有位都被处理。每次迭代都是稳定的，保留上一次迭代中每个桶内键的顺序。在处理用二进制数表示的键时，选择 2 的幂作为基数很方便，因为这使得对各个位进行迭代和提取变得容易。每次迭代本质上处理键的位中的一个固定大小的切片。我们将从使用基数 2（即 1 位基数）开始，稍后在本章中再扩展到更大的基数值。"
+    },
+    {
+      "id": "p0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[2]",
+      "en": "【1】Fig. 13.1【/1】 shows an example of how a list of 4-bit integers can be sorted with radix sort using a 1-bit radix. Since the keys are 4 bits long and each iteration processes 1 bit, four iterations are required in total. In the first iteration the least significant bit (LSB) is considered. All the keys in the iteration's input list whose LSB is 0 are placed on the left side of the iteration's output list, forming a bucket for the 0 bits. Similarly, all the keys in the iteration's input list whose LSB is 1 are placed on the right side of the iteration's output list forming a bucket for the 1 bits. Note that within each bucket in the output list, the order of the keys is preserved from that in the input list. In other words, keys that are placed in the same bucket (i.e., that have the same LSB) must appear in the same order in the output list as they did in the input list. We will see why this stability requirement is important when we discuss the next iteration.",
+      "zh": "【1】图 13.1【/1】 展示了如何使用 1 位基数通过基数排序对一个 4 位整数列表进行排序的示例。由于键的长度为 4 位，且每次迭代处理 1 位，因此总共需要四次迭代。在第一次迭代中，考虑最低有效位（LSB）。迭代输入列表中 LSB 为 0 的所有键被置于迭代输出列表的左侧，构成 0 位的桶。类似地，迭代输入列表中 LSB 为 1 的所有键被置于迭代输出列表的右侧，构成 1 位的桶。请注意，在输出列表的每个桶内部，键的顺序与输入列表中的顺序保持一致。换句话说，被放入同一桶（即 LSB 相同）的键在输出列表中的出现顺序，必须与它们在输入列表中的顺序相同。我们将在讨论下一次迭代时看到这一稳定性要求为何重要。"
+    },
+    {
+      "id": "n0032",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 13.1【/1】 A radix sort example.",
+      "zh": "【1】图 13.1【/1】 基数排序示例。"
+    },
+    {
+      "id": "p0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
+      "en": "In the second iteration in 【1】Fig. 13.1【/1】, the output list from the first iteration becomes the new input list, and the second LSB of each key is considered. As in the first iteration, the keys are separated into two buckets: a bucket for the keys whose second LSB is 0 and another bucket for the keys whose second LSB is 1. Since the order from the previous iterations is preserved, we observe that the keys in the second iteration's output list are now sorted by the lower two bits. In other words, all the keys whose lower two bits are 00 come first, followed by those whose lower two bits are 01, followed by those whose lower two bits are 10, followed by those whose lower two bits are 11.",
+      "zh": "在【1】图 13.1【/1】 的第二次迭代中，第一次迭代的输出列表成为新的输入列表，并考虑每个键的第二个 LSB。与第一次迭代一样，键被分入两个桶：一个用于第二个 LSB 为 0 的键，另一个用于第二个 LSB 为 1 的键。由于前几次迭代的顺序得以保留，我们观察到第二次迭代输出列表中的键现在按低两位排序。换句话说，低两位为 00 的所有键排在最前面，随后是低两位为 01 的键，再随后是低两位为 10 的键，最后是低两位为 11 的键。"
+    },
+    {
+      "id": "p0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
+      "en": "In the third iteration in 【1】Fig. 13.1【/1】 the same process is repeated while considering the third bit in the keys. Again, since the order from previous iterations is preserved, the keys in the output list of the third iteration are sorted by the lower three bits. Finally, in the fourth and last iteration the same process is repeated while considering the fourth or most significant bit. At the end of this iteration the keys in the final output list are sorted by all four bits.",
+      "zh": "在【1】图 13.1【/1】 的第三次迭代中，重复同样的过程，此时考虑键的第三位。同样，由于前几次迭代的顺序得以保留，第三次迭代输出列表中的键按低三位排序。最后，在第四次也是最后一次迭代中，重复同样的过程，此时考虑第四位即最高有效位。在该迭代结束时，最终输出列表中的键按全部四位排序。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/h2[1]",
+      "en": "13.3 Parallel radix sort",
+      "zh": "13.3 并行基数排序"
+    },
+    {
+      "id": "p0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[1]",
+      "en": "Each iteration in radix sort depends on the entire result of the previous iteration. Hence the iterations are performed sequentially with respect to each other. The opportunity for parallelizing radix sort arises within each iteration. For the rest of this chapter we will focus on the parallelization of a single radix sort iteration, with the understanding that the iterations will be executed one after the other. In other words, we will focus on the implementation of a kernel that performs a single radix sort iteration and will assume that the host code calls this kernel once for each iteration.",
+      "zh": "基数排序的每次迭代都依赖于上一次迭代的完整结果。因此，各次迭代之间是顺序执行的。基数排序的并行化机会出现在每次迭代内部。在本章其余部分，我们将专注于单次基数排序迭代的并行化，并理解各次迭代将依次执行。换句话说，我们将专注于实现一个执行单次基数排序迭代的核函数，并假设主机代码为每次迭代调用该核函数一次。"
+    },
+    {
+      "id": "p0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
+      "en": "One straightforward approach to parallelize a radix sort iteration on GPUs is to make each thread responsible for one key in the input list. The thread must identify the position of the key in the output list and then store the key to that position. 【1】Fig. 13.2【/1】 illustrates this parallelization approach that is applied to the first iteration from 【2】Fig. 13.1【/2】. Threads in 【3】Fig. 13.2【/3】 are illustrated as curvy arrows, and thread blocks are illustrated as boxes around the arrows. Each thread is responsible for the key below it in the input list. In this example the 16 keys are processed by a grid with four thread blocks having four threads each. In practice, each thread block may have up to 1024 threads, and the input is much larger, resulting in many more thread blocks. However, we have used a small number of threads per block to simplify the illustration.",
+      "zh": "在 GPU 上并行化一次基数排序迭代的一种直接方法，是让每个线程负责输入列表中的一个键。该线程必须确定该键在输出列表中的位置，然后将键存储到该位置。【1】图 13.2【/1】 展示了这一并行化方法应用于【2】图 13.1【/2】 中第一次迭代的情形。【3】图 13.2【/3】 中的线程用曲线箭头表示，线程块用箭头外围的方框表示。每个线程负责输入列表中其下方的键。在该示例中，16 个键由一个包含四个线程块（每个线程块四个线程）的网格处理。在实际中，每个线程块最多可有 1024 个线程，输入也大得多，从而产生多得多的线程块。不过，我们使用每块较少的线程数，是为了简化图示。"
+    },
+    {
+      "id": "n0038",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 13.2【/1】 Parallelizing a radix sort iteration by assigning one input key to each thread.",
+      "zh": "【1】图 13.2【/1】 通过为每个线程分配一个输入键来并行化一次基数排序迭代。"
+    },
+    {
+      "id": "p0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[3]",
+      "en": "With every thread assigned to a key in the input list, the challenge remains for each thread to identify the destination index of its key in the output list. Identifying the destination index of the key depends on whether the key maps to the 0 bucket or the 1 bucket. For keys mapping to the 0 bucket, the destination index can be found as follows:",
+      "zh": "当每个线程都分配到输入列表中的一个键后，剩下的挑战是让每个线程确定其键在输出列表中的目标索引。确定键的目标索引取决于该键映射到 0 桶还是 1 桶。对于映射到 0 桶的键，其目标索引可按如下方式求得："
+    },
+    {
+      "id": "p0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[4]",
+      "en": "The destination index of a key that maps to the 0 bucket (i.e., destination of a 0) is equivalent to the number of keys before the key that also map to the 0 bucket (i.e., # zeros before). Since all keys map to either the 0 bucket or the 1 bucket, the number of keys before the key mapping to the 0 bucket is equivalent to the total number of keys before the key (i.e., # keys before) minus the number of keys before the key mapping to the 1 bucket (i.e., # ones before). The total number of keys before the key is just the index of the key in the input list (i.e., the key index), which is trivially available. Hence the only nontrivial part of finding the destination index of a key that maps to the 0 bucket is counting the number of keys before it that map to the 1 bucket. This operation can be done by using an exclusive scan, as we will see shortly.",
+      "zh": "映射到 0 桶的键（即 0 的目标位置）的目标索引，等于该键之前同样映射到 0 桶的键的个数（即前面的 0 的个数）。由于所有键要么映射到 0 桶，要么映射到 1 桶，该键之前映射到 0 桶的键的个数，等于该键之前键的总数（即前面的键数）减去该键之前映射到 1 桶的键的个数（即前面的 1 的个数）。该键之前键的总数就是该键在输入列表中的索引（即键索引），这是现成可得的。因此，求映射到 0 桶的键的目标索引时，唯一不平凡的部分是统计它前面映射到 1 桶的键的个数。这一操作可以用排他式扫描完成，我们稍后将看到。"
+    },
+    {
+      "id": "p0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[5]",
+      "en": "For keys mapping to the 0 bucket, the destination index can be found as follows:",
+      "zh": "对于映射到 0 桶的键，其目标索引可按如下方式求得："
+    },
+    {
+      "id": "p0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[6]",
+      "en": "All keys mapping to the 0 bucket must come before the keys mapping to the 1 bucket in the output array. For this reason, the destination index of a key that maps to the 1 bucket (i.e., destination of a 1) is equivalent to the total number of keys mapping to the 0 bucket (i.e., # zeros in total) plus the number of keys before the key that map to the 1 bucket (i.e., # ones before). Since all keys map to either the 0 bucket or the 1 bucket, the total number of keys mapping to the 0 bucket is equivalent to the total number of keys in the input list (i.e., # keys in total) minus the total number of keys mapping to the 1 bucket (i.e., # ones in total). The total number of keys in the input list is just the input size, which is trivially available. Hence the nontrivial part of finding the destination index of a key that maps to the 1 bucket is counting the number of keys before it that map to the 1 bucket, which is the same information that is needed for the 0 bucket case. Again, this operation can be done by using an exclusive scan, as we will see shortly. The total number of keys mapping to the 1 bucket can be found as a byproduct of the exclusive scan.",
+      "zh": "所有映射到 0 桶的键在输出数组中必须排在映射到 1 桶的键之前。因此，映射到 1 桶的键（即 1 的目标位置）的目标索引，等于映射到 0 桶的键的总数（即 0 的总数）加上该键之前映射到 1 桶的键的个数（即前面的 1 的个数）。由于所有键要么映射到 0 桶，要么映射到 1 桶，映射到 0 桶的键的总数等于输入列表中键的总数（即键的总数）减去映射到 1 桶的键的总数（即 1 的总数）。输入列表中键的总数就是输入大小，这是现成可得的。因此，求映射到 1 桶的键的目标索引时，唯一不平凡的部分是统计它前面映射到 1 桶的键的个数，这与 0 桶情形所需的信息相同。同样，这一操作可以用排他式扫描完成，我们稍后将看到。映射到 1 桶的键的总数可以作为排他式扫描的副产品求得。"
+    },
+    {
+      "id": "p0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[7]",
+      "en": "【1】Fig. 13.3【/1】 shows the operations that each thread performs to find its key's destination index in the example in 【2】Fig. 13.2【/2】. The corresponding kernel code to perform these operations is shown in 【3】Fig. 13.4【/3】. First, each thread identifies the index of the key for which it is responsible (line 03), performs a boundary check (line 04), and loads the key from the input list (line 06). Next, each thread extracts from the key the bit for the current iteration to identify whether it is a 0 or a 1 (line 07).",
+      "zh": "【1】图 13.3【/1】 展示了在【2】图 13.2【/2】 的示例中每个线程为求其键的目标索引所执行的操作。执行这些操作所对应的核函数代码见【3】图 13.4【/3】。首先，每个线程确定其负责的键的索引（第 03 行），执行边界检查（第 04 行），并从输入列表中加载该键（第 06 行）。接下来，每个线程从键中提取当前迭代所对应的位，以确定它是 0 还是 1（第 07 行）。"
+    },
+    {
+      "id": "n0044",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[4]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 13.3【/1】 Finding the destination of each input key.",
+      "zh": "【1】图 13.3【/1】 求每个输入键的目标位置。"
+    },
+    {
+      "id": "n0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/div[5]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 13.4【/1】 Radix sort iteration kernel code.",
+      "zh": "【1】图 13.4【/1】 基数排序迭代的核函数代码。"
+    },
+    {
+      "id": "p0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
+      "en": "Here, the iteration number 【1】iter【/1】 tells us the position of the bit in which we are interested. By shifting the key to the right by this amount, we move the bit to the rightmost position. By applying a bitwise-and operation (【2】&amp;【/2】) between the shifted key and a 【3】1【/3】, we zero out all the bits in the shifted key except the rightmost bit. Hence the value of 【4】bit【/4】 will be the value of the bit in which we are interested. In the example in 【5】Fig. 13.3【/5】, since the example is for iteration 0, the LSB is extracted, as shown in the row labeled bits.",
+      "zh": "这里，迭代编号【1】iter【/1】 告诉我们所关注的位的位置。通过将键右移该数量，我们就把该位移到最右端位置。通过在移位后的键与【3】1【/3】 之间执行按位与运算（【2】&amp;【/2】），我们将移位后的键中除最右位以外的所有位清零。因此，【4】bit【/4】 的值将是我们所关注的位的值。在【5】图 13.3【/5】 的示例中，由于该示例针对迭代 0，提取的是 LSB，如标有 bits 的行所示。"
+    },
+    {
+      "id": "p0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
+      "en": "Once each thread has extracted the bit in which it is interested from the key, it stores the bit to memory (line 08), and the threads collaborate to perform an exclusive scan on the bits (line 10). We discussed how to perform an exclusive scan in 【1】Chapter 11【/1】, Prefix Sum (Scan). The call to exclusive scan is performed outside the boundary check because threads may need to perform a barrier synchronization in the process, so we need to ensure that all threads are active. To synchronize across all threads in the grid, we assume that we can use sophisticated techniques similar to those used in the single-pass scan discussed in 【2】Chapter 11【/2】, Prefix Sum (Scan). Alternatively, we could terminate the kernel, call another kernel from the host to perform the scan, and then call a third kernel to perform the operations after the scan. In this case, each iteration would require three grid launches instead of one.",
+      "zh": "一旦每个线程都从键中提取出它所关注的位，就将该位存储到内存中（第 08 行），然后线程们协作对这些位执行排他式扫描（第 10 行）。我们在【1】第 11 章《前缀和（扫描）》【/1】中讨论过如何执行排他式扫描。排他式扫描的调用在边界检查之外执行，因为线程在扫描过程中可能需要执行屏障同步，所以我们需要确保所有线程都处于活跃状态。为了在网格中的所有线程之间进行同步，我们假设可以使用类似于【2】第 11 章《前缀和（扫描）》【/2】中讨论的单遍扫描所用的精巧技术。或者，我们可以终止核函数，从主机调用另一个核函数来执行扫描，然后再调用第三个核函数来执行扫描之后的操作。在这种情况下，每次迭代需要三次网格启动，而不是一次。"
+    },
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[10]",
+      "en": "The array resulting from the exclusive scan operation contains, at each position, the sum of the bits before that position. Since these bits are either 0 or 1, the sum of the bits before the position is equivalent to the number of the 1's before the position (i.e., the number of keys that map to the 1 bucket). In the example in 【1】Fig. 13.3【/1】 the result of the exclusive scan is shown in the row labeled # ones before. Each thread accesses this array to obtain the number of 1's before its position (line 12) and the total number of 1's in the input list (line 13). Each thread can then identify the destination of its key, using the expressions that we derived previously (lines 14–15). Having identified its destination index, the thread can proceed to store the key for which it is responsible at the corresponding location in the output list (line 16). In the example in 【2】Fig. 13.3【/2】 the destination indices are shown in the row labeled destination. The reader can refer to 【3】Fig. 13.2【/3】 to verify that the values that are obtained are indeed the right destination indices of each element.",
+      "zh": "排他式扫描产生的数组中，每个位置保存的是该位置之前各位的和。由于这些位要么是 0 要么是 1，某位置之前各位的和就等于该位置之前 1 的个数（即映射到 1 桶的键的个数）。在【1】图 13.3【/1】 的示例中，排他式扫描的结果显示在标有 # ones before 的行中。每个线程访问该数组，以获得其位置之前 1 的个数（第 12 行）以及输入列表中 1 的总数（第 13 行）。然后，每个线程可以利用我们先前推导的表达式确定其键的目标位置（第 14–15 行）。确定目标索引后，线程就可以继续将其负责的键存储到输出列表中对应的位置（第 16 行）。在【2】图 13.3【/2】 的示例中，目标索引显示在标有 destination 的行中。读者可以参考【3】图 13.2【/3】 验证所得到的值确实是每个元素的正确目标索引。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/h2[1]",
+      "en": "13.4 Optimizing for memory coalescing",
+      "zh": "13.4 针对内存合并的优化"
+    }
+  ]
+}

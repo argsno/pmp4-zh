@@ -1,0 +1,155 @@
+{
+  "page": "Ch022_499-513_B9780323912310000136",
+  "nodes": [
+    {
+      "id": "p0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[1]/p[5]",
+      "en": "The limitations in both the types of data structures that can be supported and the bandwidth of data accesses of zero-copy memory motivate further improvements in the memory model of GPU architectures beyond UVAS.",
+      "zh": "零拷贝内存在所能支持的数据结构类型和数据访问带宽两方面都存在局限，这促使 GPU 体系结构在 UVAS 之外进一步改进其内存模型。"
+    },
+    {
+      "id": "st0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/h3[1]",
+      "en": "Large virtual and physical address spaces",
+      "zh": "大型虚拟地址空间与物理地址空间"
+    },
+    {
+      "id": "p0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/p[1]",
+      "en": "One fundamental limitation of early CUDA-enabled GPUs is the size of their virtual and physical addresses. These early devices support 32-bit virtual addresses and up to 32-bit physical addresses. For these devices the size of the device memory is limited to 4 gigabytes, the maximum amount of memory that can be addressed with 32 physical address bits. Furthermore, CUDA kernels can operate only on datasets whose sizes are less than 4 gigabytes, the maximum number of virtual memory locations that can be accessed through 32-bit pointers, regardless of whether the dataset resides in the host memory or the device memory. Furthermore, modern CPUs are based on 64-bit virtual addresses with 48 bits actually utilized. These host virtual addresses cannot be accommodated by the 32-bit virtual addresses that are used by GPUs, which contributed to the limitation of the types of data structures supported by zero-copy memory.",
+      "zh": "早期支持 CUDA 的 GPU 的一个根本局限在于其虚拟地址和物理地址的宽度。这些早期设备支持 32 位虚拟地址和最高 32 位物理地址。对这些设备而言，设备内存的大小被限制为 4 GB，这是 32 位物理地址所能寻址的最大内存量。此外，CUDA 核函数只能处理大小小于 4 GB 的数据集——即 32 位指针所能访问的最大虚拟内存位置数，无论该数据集驻留在主机内存还是设备内存中。另外，现代 CPU 基于 64 位虚拟地址，其中实际使用了 48 位。这些主机虚拟地址无法容纳于 GPU 所用的 32 位虚拟地址，这也就限制了零拷贝内存所能支持的数据结构类型。"
+    },
+    {
+      "id": "p0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/p[2]",
+      "en": "To remove this limitation, GPU generations starting with the Kepler GPU architecture introduced in 2013 have adopted modern virtual memory architecture with 64-bit virtual addresses and physical addresses of at least 40 bits. The obvious benefits are that these GPUs can incorporate more than 4 gigabytes of DRAM and that CUDA kernels can now operate on large datasets. While the enlarged virtual and physical address spaces obviously enable the use of large device memories, they also open the door for much better host/device interaction models. For example, the host and the device can now use exactly the same pointer value to access a piece of data, regardless of whether it is in the host memory or the device memory.",
+      "zh": "为了消除这一局限，从 2013 年推出的 Kepler GPU 架构开始，各代 GPU 都采用了现代虚拟内存体系结构，具备 64 位虚拟地址和至少 40 位的物理地址。显而易见的好处是，这些 GPU 可以配备超过 4 GB 的 DRAM，CUDA 核函数现在也能处理大型数据集。扩大的虚拟和物理地址空间显然使大容量设备内存的使用成为可能，同时也为更好的主机/设备交互模型打开了大门。例如，现在主机和设备可以使用完全相同的指针值访问同一份数据，无论它位于主机内存还是设备内存中。"
+    },
+    {
+      "id": "p0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[2]/p[3]",
+      "en": "The large GPU physical address space also allows the CUDA system software to place device memory of different GPUs in the system into a unified physical address space. The benefit is that one GPU can directly access the memory of any other GPU that is attached to the same PCIe bus by simply dereferencing a data pointer that is mapped to the physical address of such a GPU. Prior to the Kepler GPU architecture, communication among different GPUs (e.g., halo exchange in the stencil example in 【1】Chapter 20【/1】, Programming a Heterogeneous Computing Cluster) was possible only through device-to-device memory copies triggered by the host code. This resulted in extra memory consumed to store the data being copied from other GPUs and extra performance overheads due to the memory copy operations. Direct access to other device memory in the system enables just passing the device pointer to the other GPU in the kernel call and using it to load and/or store the data that need to be communicated.",
+      "zh": "巨大的 GPU 物理地址空间还允许 CUDA 系统软件把系统中不同 GPU 的设备内存纳入一个统一的物理地址空间。好处是，一个 GPU 只需解引用一个映射到其他 GPU 物理地址的数据指针，就能直接访问连接到同一 PCIe 总线的任何其他 GPU 的内存。在 Kepler GPU 架构之前，不同 GPU 之间的通信（例如【1】第 20 章【/1】《编写异构计算集群程序》模板示例中的光环交换）只能通过主机代码触发的设备到设备内存拷贝来进行。这导致额外的内存消耗（用于存放从其他 GPU 拷贝来的数据），以及由内存拷贝操作带来的额外性能开销。直接访问系统中的其他设备内存，使得只需在核函数调用中把设备指针传给另一个 GPU，并用它来加载和/或存储需要通信的数据。"
+    },
+    {
+      "id": "st0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[3]/h3[1]",
+      "en": "Unified memory",
+      "zh": "统一内存"
+    },
+    {
+      "id": "p0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[3]/p[1]",
+      "en": "In 2013, CUDA 6 introduced unified memory, which creates a pool of managed memory that is shared between the CPU and GPU, bridging the CPU-GPU divide. Managed memory is accessible to both the CPU and GPU using a single pointer. Variables in the managed memory can reside in the CPU physical memory, the GPU physical memory, or even both. The CUDA runtime software and hardware implement data migration and coherence support, such as the GMAC system (【1】Gelado et al., 2010【/1】). The net effect is that the managed memory looks like CPU memory to code running on the CPU and like GPU memory to code running on the GPU. Of course, the application must perform appropriate synchronization operations such as barriers or atomic operations to coordinate any concurrent accesses to the managed memory locations. A shared global virtual address space allows all variables in an application to have unique addresses. Such memory architecture, when exposed by programming tools and runtime systems to applications, can result in several major benefits.",
+      "zh": "2013 年，CUDA 6 引入了统一内存，它创建了一个由 CPU 和 GPU 共享的托管内存池，弥合了 CPU 与 GPU 之间的鸿沟。托管内存可通过单个指针供 CPU 和 GPU 双方访问。托管内存中的变量可以驻留在 CPU 物理内存、GPU 物理内存，甚至同时驻留在两者中。CUDA 运行时软件和硬件实现了数据迁移与一致性支持，例如 GMAC 系统（【1】Gelado et al., 2010【/1】）。总体效果是：对在 CPU 上运行的代码而言，托管内存看起来就像 CPU 内存；对在 GPU 上运行的代码而言，它又像 GPU 内存。当然，应用必须执行适当的同步操作，如屏障或原子操作，来协调对托管内存位置的并发访问。共享的全局虚拟地址空间使应用中的所有变量都具有唯一的地址。当编程工具和运行时系统把这种内存体系结构暴露给应用时，可以带来几项重大好处。"
+    },
+    {
+      "id": "p0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[3]/p[2]",
+      "en": "One such benefit is the reduced amount of effort that is required for porting CPU code to CUDA. In 【1】Fig. 22.1【/1】 we show a simple CPU code example on the left side. With unified memory, the code can be ported to CUDA with two simple changes. The first change is to use 【2】cudaMallocManaged()【/2】 and 【3】cudaFree()【/3】 in place of 【4】malloc()【/4】 and 【5】free()【/5】. The second change is to launch a kernel and perform device synchronization rather than calling the 【6】qsort()【/6】 function. Obviously, one still needs to write or have access to a parallel 【7】qsort【/7】 kernel. What we are showing is that the change to the host code is straightforward and easy to maintain.",
+      "zh": "好处之一是，将 CPU 代码移植到 CUDA 所需的工作量大大减少。在【1】图 22.1【/1】中，我们在左侧展示了一个简单的 CPU 代码示例。借助统一内存，只需两处简单改动即可把该代码移植到 CUDA。第一处改动是用【2】cudaMallocManaged()【/2】和【3】cudaFree()【/3】替代【4】malloc()【/4】和【5】free()【/5】。第二处改动是启动一个核函数并执行设备同步，而不是调用【6】qsort()【/6】函数。显然，仍然需要编写或拥有一个并行【7】qsort【/7】核函数。我们想说明的是，对主机代码的改动是直接了当且易于维护的。"
+    },
+    {
+      "id": "n0033",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】【2】Figure 22.1【/2】【/1】 Unified memory simplifies porting of CPU code (left) to CUDA code (right).",
+      "zh": "【1】【2】图 22.1【/2】【/1】统一内存简化了将 CPU 代码（左侧）移植为 CUDA 代码（右侧）的过程。"
+    },
+    {
+      "id": "p0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[3]/p[3]",
+      "en": "The performance of the CUDA 6 unified memory was limited by the hardware capabilities of the Kepler and Maxwell GPU architectures. The contents of all managed memory locations that had been modified by the CPU had to be flushed out to the GPU device memory before any grid launch. The CPU and GPU could not simultaneously access a managed memory allocation, and the unified memory address space was limited to the size of the GPU physical memory. These limitations are due to the fact that these GPU architectures lacked the ability to support coherence between the host and device memories and that the data migration was mostly performed by software.",
+      "zh": "CUDA 6 统一内存的性能受限于 Kepler 和 Maxwell GPU 架构的硬件能力。所有被 CPU 修改过的托管内存位置的内容，都必须在任何网格启动前刷新到 GPU 设备内存。CPU 和 GPU 不能同时访问同一托管内存分配，而且统一内存地址空间的大小受限于 GPU 物理内存的大小。这些局限源于这些 GPU 架构缺乏在主机内存与设备内存之间支持一致性的能力，而且数据迁移大多由软件完成。"
+    },
+    {
+      "id": "p0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[3]/p[4]",
+      "en": "In 2016 the Pascal GPU architecture added features to further simplify programming and sharing of memory between CPU and GPU, and further reduce the effort required to use GPUs for significant speedups. Two main hardware features enable these improvements: support for large address spaces and page fault handling capability.",
+      "zh": "2016 年，Pascal GPU 架构新增了一些特性，进一步简化 CPU 与 GPU 之间的内存编程和共享，并进一步降低借助 GPU 获得显著加速比所需付出的努力。两项主要的硬件特性促成了这些改进：对大型地址空间的支持和页错误处理能力。"
+    },
+    {
+      "id": "p0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[3]/p[5]",
+      "en": "The Pascal GPU architecture extends GPU addressing capabilities to 49-bit virtual addressing. This extension is large enough to cover the 48-bit virtual address spaces of modern CPUs as well as the GPU’s own memory. This allows unified memory programs to access the full address spaces of all CPUs and GPUs in the system as a single virtual address space rather than being limited by the amount of data that can be copied to the device memory. As a result, the CPUs and GPUs can truly share the pointer values, enabling the GPUs to traverse pointer-based data structures in the host memory.",
+      "zh": "Pascal GPU 架构把 GPU 的寻址能力扩展到 49 位虚拟寻址。这一扩展足以覆盖现代 CPU 的 48 位虚拟地址空间以及 GPU 自身的内存。这使统一内存程序能够把系统中所有 CPU 和 GPU 的完整地址空间当作单一虚拟地址空间来访问，而不是受限于能拷贝到设备内存的数据量。这样一来，CPU 和 GPU 可以真正共享指针值，使 GPU 能够遍历主机内存中基于指针的数据结构。"
+    },
+    {
+      "id": "p0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[3]/p[6]",
+      "en": "Memory page fault handling support in the Pascal GPU architecture is a crucial new feature that provides more seamless unified memory functionality. Combined with the system-wide virtual address space, the ability to handle page faults eliminates the need for the CUDA system software to synchronize (flush) all managed memory contents to the GPU before each grid launch. The CUDA runtime can implement a coherence mechanism by allowing the host and the device to invalidate each other’s copy when they modify a variable in the managed memory. The invalidation can be done by using the page mapping and protection mechanisms. When launching a grid, the CUDA system software no longer has to bring all GPU copies of the managed memory data up to date. If the grid accesses a piece of data whose copy in the device memory has been invalidated by the host, the GPU will handle a page fault to bring the data up to date and resume execution.",
+      "zh": "Pascal GPU 架构中的内存页错误处理支持是一项关键的新特性，它提供了更无缝的统一内存功能。结合全系统范围的虚拟地址空间，处理页错误的能力消除了 CUDA 系统软件在每次网格启动前将所有托管内存内容同步（刷新）到 GPU 的需要。CUDA 运行时可以通过如下方式实现一致性机制：当主机或设备修改托管内存中的变量时，允许另一方使其副本失效。这种失效可以通过页映射和保护机制来实现。启动网格时，CUDA 系统软件不再需要把托管内存数据的 GPU 副本全部更新到最新。如果网格访问的数据在设备内存中的副本已被主机置为失效，GPU 将处理一个页错误，把数据更新到最新后恢复执行。"
+    },
+    {
+      "id": "p0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[3]/p[7]",
+      "en": "If a grid running on the GPU accesses a page that is not resident in its device memory, it also will take a page fault, allowing the page to be automatically migrated to the GPU memory on demand. Alternatively, the page may be mapped into the GPU address space for access over the system interconnects (mapping on access can sometimes be faster than migration) if the data is expected to be accessed only occasionally. Note that unified memory is system-wide: GPUs (and CPUs) can fault and migrate memory pages either from CPU memory or from the memory of other GPUs in the system. If a CPU function dereferences a pointer and accesses a variable that is mapped to the GPU physical memory, the data access would still be serviced but perhaps at a longer latency. Such capability allows the CUDA programs to more easily call legacy libraries that have not been ported to GPUs. In the prior CUDA memory architecture the developer must manually transfer data from the device memory to the host memory in order to use legacy library functions to process them on the CPU.",
+      "zh": "如果 GPU 上运行的网格访问一个不在其设备内存中的页，它同样会产生页错误，使该页按需自动迁移到 GPU 内存。另一种做法是，如果预期数据只是偶尔被访问，则可以把该页映射进 GPU 地址空间，通过系统互连访问（按需映射有时比迁移更快）。请注意，统一内存是系统级的：GPU（和 CPU）既可以从 CPU 内存，也可以从系统中其他 GPU 的内存触发页错误并迁移内存页。如果某个 CPU 函数解引用指针并访问一个映射到 GPU 物理内存的变量，该数据访问仍然会被满足，只是延迟可能更长。这种能力使 CUDA 程序更容易调用尚未移植到 GPU 的遗留库。在之前的 CUDA 内存体系结构中，开发者必须手动把数据从设备内存传输到主机内存，才能在 CPU 上使用遗留库函数处理这些数据。"
+    },
+    {
+      "id": "p0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[3]/p[8]",
+      "en": "The unified memory with page fault handling capability enables a much more general CPU/GPU interaction mechanism than zero-copy memory. It allows the GPU to traverse large data structures in the host memory. Starting with the Pascal architecture, a GPU device can traverse a linked data structure even if the data structure does not reside in zero-copy memory. This is because the same pointer value is used in the host code and the device code to refer to the same variable. Thus the embedded pointer values of a linked data structure built by the host can be traversed by the device and vice versa. In some application areas, such as CAD, the host physical memory system may have hundreds of gigabytes of capacity. These physical memory systems are needed because the applications require the entire dataset to be “in core.” With the ability to directly access very large CPU physical memories, it becomes feasible for GPUs to accelerate these applications.",
+      "zh": "具备页错误处理能力的统一内存，使 CPU/GPU 交互机制比零拷贝内存通用得多。它允许 GPU 遍历主机内存中的大型数据结构。从 Pascal 架构开始，即使数据结构不驻留在零拷贝内存中，GPU 设备也能遍历链表数据结构。这是因为主机代码和设备代码使用相同的指针值来引用同一个变量。因此，主机构建的链表数据结构中嵌入的指针值，设备也可以遍历，反之亦然。在某些应用领域，如 CAD，主机物理内存系统可能拥有数百 GB 的容量。之所以需要这么大的物理内存系统，是因为这些应用要求整个数据集“常驻内存”。凭借直接访问超大型 CPU 物理内存的能力，GPU 加速这些应用变得切实可行。"
+    },
+    {
+      "id": "st0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[4]/h3[1]",
+      "en": "Virtual address space control",
+      "zh": "虚拟地址空间控制"
+    },
+    {
+      "id": "p0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/section[4]/p[1]",
+      "en": "CUDA 11 introduced a set of low-level APIs to give programmers more flexibility regarding memory allocation. The new API allows reserving a range of the virtual address space using 【1】cuMemAddressReserve()【/1】. Later on, the programmer can allocate physical memory on any device using 【2】cuMemCreate()【/2】 and map it to any position in the reserved range using 【3】cuMemMap()【/3】. These APIs enable building custom layouts of data structures across multiple devices. For instance, it would be possible to allocate a 3D volume across multiple devices while using a single pointer to reference it.",
+      "zh": "CUDA 11 引入了一组底层 API，让程序员在内存分配方面拥有更大的灵活性。新 API 可以使用【1】cuMemAddressReserve()【/1】预留一段虚拟地址空间。随后，程序员可以使用【2】cuMemCreate()【/2】在任何设备上分配物理内存，并使用【3】cuMemMap()【/3】把它映射到预留范围内的任意位置。这些 API 支持在多个设备之间构建自定义的数据结构布局。例如，可以用单个指针引用跨多个设备分配的 3D 体数据。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/h2[1]",
+      "en": "22.2 Kernel execution control",
+      "zh": "22.2 核函数执行控制"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/h3[1]",
+      "en": "Function calls within kernel functions",
+      "zh": "核函数中的函数调用"
+    },
+    {
+      "id": "p0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[1]",
+      "en": "Early CUDA versions did not allow function calls during kernel execution. Although the source code of kernel functions can appear to have function calls, the compiler must be able to inline all function bodies into the kernel object so that there are no function calls in the kernel function at runtime. Although this model works reasonably well for performance-critical portions of many applications, it does not support the common software engineering practices in more sophisticated applications. In particular, it does not support system calls, dynamically linked library calls, recursive function calls, and virtual functions in object-oriented languages such as C++.",
+      "zh": "早期的 CUDA 版本不允许在核函数执行期间进行函数调用。尽管核函数的源代码看起来包含函数调用，但编译器必须能够把所有函数体内联进核函数对象，使核函数在运行时不存在任何函数调用。虽然对许多应用中性能关键的部分来说，这个模型运行得相当好，但它不支持更复杂应用中常见的软件工程实践。特别是，它不支持系统调用、动态链接库调用、递归函数调用，以及 C++ 等面向对象语言中的虚函数。"
+    },
+    {
+      "id": "p0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[2]",
+      "en": "Later device architectures, such as Kepler, supported function calls in kernel functions at runtime. This feature is supported in CUDA 5 and beyond. The compiler is no longer required to inline the function bodies. It can still do so as a performance optimization. This capability is partly enabled by a cached and fast implementation of massively parallel call frame stacks for CUDA threads. It makes CUDA device code much more “composable” by allowing different authors to write different CUDA kernel components and assemble them all together without heavy redesign costs. It also allows software vendors to release device libraries without source code for intellectual property protection. However, some limitations still exist. For example, support for virtual functions is limited to objects constructed by device code, and dynamic libraries for device code are not supported.",
+      "zh": "Kepler 等后来的设备架构支持在运行时于核函数中进行函数调用。CUDA 5 及以后版本都支持这一特性。编译器不再必须内联函数体，但仍可以把它作为性能优化手段。这一能力部分得益于为 CUDA 线程实现的大规模并行调用帧栈，其实现利用了缓存且速度很快。它使 CUDA 设备代码更具“可组合性”：不同的作者可以编写不同的 CUDA 核函数组件并把它们组装在一起，而无需付出高昂的重新设计成本。它还允许软件供应商在不提供源代码的情况下发布设备库，以保护知识产权。不过，仍然存在一些局限。例如，对虚函数的支持仅限于由设备代码构造的对象，而且设备代码的动态库不受支持。"
+    },
+    {
+      "id": "p0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[3]",
+      "en": "Support for function calls at runtime also enables recursion and significantly eases the burden on programmers as they transition from legacy CPU-oriented algorithms toward GPU-tuned code. In some cases, developers will be able to “cut and paste” CPU code into a CUDA kernel and obtain a reasonably performing kernel, although continued performance tuning would still add benefit.",
+      "zh": "运行时函数调用的支持还使递归成为可能，并大大减轻了程序员从传统面向 CPU 的算法转向 GPU 调优代码的负担。在某些情况下，开发者可以把 CPU 代码“剪切粘贴”进 CUDA 核函数，得到一个性能尚可的核函数，尽管持续的调优仍然会带来好处。"
+    },
+    {
+      "id": "p0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[4]",
+      "en": "With the function call support, kernels can now call standard library functions such as 【1】printf()【/1】 and 【2】malloc()【/2】. In our experience, the ability to call 【3】printf()【/3】 in a kernel provides a subtle but important aid in debugging and supporting kernels in production software. Many end users are nontechnical and cannot be easily trained to run debuggers that will provide developers with more details on what happened before a crash. The ability to call 【4】printf()【/4】 in the kernel allows developers to add a mode to the application to dump internal state so that the end users can submit meaningful bug reports.",
+      "zh": "借助函数调用支持，核函数现在可以调用标准库函数，如【1】printf()【/1】和【2】malloc()【/2】。根据我们的经验，在核函数中调用【3】printf()【/3】的能力，为调试和支持生产软件中的核函数提供了一种微妙但重要的帮助。许多最终用户是非技术人员，很难教会他们运行调试器来向开发者提供崩溃前发生什么的更多细节。在核函数中调用【4】printf()【/4】的能力，使开发者可以在应用中增加一个转储内部状态的模式，这样最终用户就能提交有意义的错误报告。"
+    },
+    {
+      "id": "p0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[1]/p[5]",
+      "en": "CUDA 8 added support for C++11 and, with it, another form of function calls: lambdas. When coupled with metaprogramming techniques, device lambdas enable the development of high-performance reusable code. CUDA also supports passing lambda functions as parameters to CUDA kernels. This feature can be used to write generic kernels (e.g., a sorting kernel), in which the comparison function is just an input parameter to the kernel. CUDA also added experimental support for “extended lambdas,” which are enabled with the 【1】–extended-lambda【/1】 compiler flag. This feature allows programmers to annotate C++ lambdas with the 【2】__host__ __device__【/2】 modifiers, further simplifying the task of writing reusable code.",
+      "zh": "CUDA 8 增加了对 C++11 的支持，并随之引入了另一种形式的函数调用：lambda 表达式。与元编程技术结合时，设备端 lambda 使高性能可复用代码的开发成为可能。CUDA 还支持把 lambda 函数作为参数传给 CUDA 核函数。这一特性可用于编写通用核函数（例如排序核函数），其中比较函数只是核函数的一个输入参数。CUDA 还增加了对“扩展 lambda”的实验性支持，通过【1】–extended-lambda【/1】编译器标志启用。该特性允许程序员用【2】__host__ __device__【/2】修饰符标注 C++ lambda，进一步简化了可复用代码的编写。"
+    },
+    {
+      "id": "st0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/section[2]/h3[1]",
+      "en": "Exception handling in kernel functions",
+      "zh": "核函数中的异常处理"
+    }
+  ]
+}

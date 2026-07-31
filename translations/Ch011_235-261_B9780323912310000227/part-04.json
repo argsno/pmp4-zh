@@ -1,0 +1,155 @@
+{
+  "page": "Ch011_235-261_B9780323912310000227",
+  "nodes": [
+    {
+      "id": "p0400",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[7]",
+      "en": "In the third phase, each thread adds the new value of the last element of its predecessor’s section to its elements. The last elements of each subsection do not need to be updated during this phase. For example, in 【1】Fig. 11.8【/1】, thread 1 adds the value 7 to elements (0, 4, 5) in its section to produce (7, 11, 12). The last element of the section is already the correct value 14 and does not need to be updated.",
+      "zh": "在第三阶段，每个线程把它前一个子段的新末元素值加到自己的各元素上。本阶段无需更新各子段的末元素。例如，在【1】图 11.8【/1】中，线程 1 把值 7 加到其子段的元素 (0, 4, 5) 上，得到 (7, 11, 12)。该子段的末元素已经是正确的值 14，不需要更新。"
+    },
+    {
+      "id": "p0405",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[8]",
+      "en": "With this three-phase approach, we can use a much smaller number of threads than the number of elements in a section. The maximal size of the section is no longer limited by the number of threads one can have in a block but rather by the size of the shared memory; all elements of the section need to fit into the shared memory.",
+      "zh": "借助这种三阶段方法，我们可以使用比段内元素数量少得多的线程。段的最大规模不再受线程块内线程数的限制，而是受共享内存大小的限制：段的所有元素都必须能放进共享内存。"
+    },
+    {
+      "id": "p0410",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[9]",
+      "en": "The major advantage of thread coarsening for scan is its efficient use of execution resources. Assume that we use Kogge-Stone for phase 2. For an input list of 【1】N【/1】 elements, if we use 【2】T【/2】 threads, the amount of work done by each phase is 【3】N【/3】−【4】T【/4】 for phase 1, 【5】T【/5】*log【6】2【/6】【7】T【/7】 for phase 2, and 【8】N【/8】−【9】T【/9】 for phase 3. If we use 【10】P【/10】 execution units, we can expect that the execution will take (【11】N【/11】−【12】T【/12】+【13】T【/13】*log【14】2【/14】【15】T【/15】+【16】N【/16】−【17】T【/17】)/【18】P【/18】 steps. For example, if we use 64 threads and 32 execution units to process 1024 elements, the algorithm should take approximately (1024−64+64*6+1024−64)/32=72 steps. We leave the implementation of the coarsened scan kernel as an exercise for the reader.",
+      "zh": "扫描的线程粗化的主要优势在于执行资源的高效利用。假设我们在阶段 2 使用 Kogge-Stone。对于包含【1】N【/1】个元素的输入列表，如果我们使用【2】T【/2】个线程，各阶段的工作量为：阶段 1 是【3】N【/3】−【4】T【/4】，阶段 2 是【5】T【/5】*log【6】2【/6】【7】T【/7】，阶段 3 是【8】N【/8】−【9】T【/9】。如果我们使用【10】P【/10】个执行单元，可以预期执行需要 (【11】N【/11】−【12】T【/12】+【13】T【/13】*log【14】2【/14】【15】T【/15】+【16】N【/16】−【17】T【/17】)/【18】P【/18】 步。例如，如果用 64 个线程和 32 个执行单元处理 1024 个元素，算法大约需要 (1024−64+64*6+1024−64)/32=72 步。我们把粗化扫描核函数的实现留作读者的练习。"
+    },
+    {
+      "id": "st0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/h2[1]",
+      "en": "11.6 Segmented parallel scan for arbitrary-length inputs",
+      "zh": "11.6 面向任意长度输入的分段并行扫描"
+    },
+    {
+      "id": "p0415",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
+      "en": "For many applications the number of elements to be processed by a scan operation can be in the millions or even billions. The kernels that we have presented so far perform local block-wide scans on sections of the input, but we still need a way to consolidate the results from different sections. To do so, we can use a hierarchical scan approach, as illustrated in 【1】Fig. 11.9【/1】.",
+      "zh": "在许多应用中，扫描运算要处理的元素数量可能达到数百万甚至数十亿。到目前为止我们介绍的核函数对输入的各个段执行线程块范围内的局部扫描，但我们仍然需要一种方法来合并不同段的结果。为此，我们可以采用分层扫描方法，如【1】图 11.9【/1】所示。"
+    },
+    {
+      "id": "n0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 11.9【/1】 A hierarchical scan for arbitrary length inputs.",
+      "zh": "【1】图 11.9【/1】 面向任意长度输入的分层扫描。"
+    },
+    {
+      "id": "p0420",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[2]",
+      "en": "For a large dataset we first partition the input into sections so that each of them can fit into the shared memory of a streaming multiprocessor and be processed by a single block. Assume that we call one of the kernels in 【1】Figs. 11.3【/1】 and 【2】11.7【/2】 on a large input dataset. At the end of the grid execution, the Y array will contain the scan results for individual sections, called 【3】scan blocks【/3】 in 【4】Fig. 11.9【/4】. Each element in a scan block only contains the accumulated values of all preceding elements in the same scan block. These scan blocks need to be combined into the final result; that is, we need to call another kernel that adds the sum of all elements in preceding scan blocks to each element of a scan block.",
+      "zh": "对于大型数据集，我们首先把输入划分为若干段，使每段都能放进一个流式多处理器的共享内存，并由单个线程块处理。假设我们对大型输入数据集调用【1】图 11.3【/1】和图【2】11.7【/2】中的某个核函数。网格执行结束时，Y 数组将包含各段的扫描结果，在【4】图 11.9【/4】中称为【3】扫描块【/3】。扫描块中的每个元素只包含同一扫描块内所有前面元素的累加值。这些扫描块需要合并成最终结果；也就是说，我们需要再调用一个核函数，把前面所有扫描块中所有元素的总和加到某个扫描块的每个元素上。"
+    },
+    {
+      "id": "p0425",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[3]",
+      "en": "【1】Fig. 11.10【/1】 shows a small example of the hierarchical scan approach of 【2】Fig. 11.9【/2】. In this example there are 16 input elements that are divided into four scan blocks. We can use the Kogge-Stone kernel, the Brent-Kung kernel, or a coarsened kernel to process the individual scan blocks. The kernel treats the four scan blocks as independent input datasets. After the scan kernel terminates, each Y element contains the scan result within its scan block. For example, scan block 1 has inputs 0, 4, 1, 2. The scan kernel produces the scan result for this section, which is 0, 4, 5, 7. Note that these results do not contain the contributions from any of the elements in scan block 0. To produce the final result for this scan block, the sum of all elements in scan block 0, that is, 2+1+3+1=7, should be added to every result element of scan block 1. For another example the inputs in scan block 2 are 0, 3, 1, 2. The kernel produces the scan result for this scan block, which is 0, 3, 4, 6. To produce the final results for this scan block, the sum of all elements in both scan block 0 and scan block 1, that is, 2+1+3+1+0+4+1+2=14, should be added to every result element of scan block 2.",
+      "zh": "【1】图 11.10【/1】展示了【2】图 11.9【/2】分层扫描方法的一个小例子。在这个例子中，16 个输入元素被划分为四个扫描块（scan block）。我们可以使用 Kogge-Stone 核函数、Brent-Kung 核函数或粗化核函数来处理各个扫描块。该核函数把四个扫描块视为独立的数据集。扫描核函数结束后，每个 Y 元素包含其所在扫描块内的扫描结果。例如，扫描块 1 的输入是 0、4、1、2。扫描核函数为该段生成扫描结果 0、4、5、7。请注意，这些结果不包含扫描块 0 中任何元素的贡献。要为该扫描块生成最终结果，需要把扫描块 0 中所有元素的总和，即 2+1+3+1=7，加到扫描块 1 的每个结果元素上。再举一个例子，扫描块 2 的输入是 0、3、1、2。核函数为该扫描块生成扫描结果 0、3、4、6。要为该扫描块生成最终结果，需要把扫描块 0 和扫描块 1 中所有元素的总和，即 2+1+3+1+0+4+1+2=14，加到扫描块 2 的每个结果元素上。"
+    },
+    {
+      "id": "n0108",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/div[2]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 11.10【/1】 An example of hierarchical scan.",
+      "zh": "【1】图 11.10【/1】 分层扫描的示例。"
+    },
+    {
+      "id": "p0430",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[4]",
+      "en": "It is important to note that the last output element of each scan block gives the sum of all input elements of the scan block. These values are 7, 7, 6, and 11 in 【1】Fig. 11.10【/1】. This brings us to the second step of the segmented scan algorithm in 【2】Fig. 11.9【/2】, which gathers the last result elements from each scan block into an array and performs a scan on these output elements. This step is also illustrated in 【3】Fig. 11.10【/3】, where the last scan output elements of all scan blocks are collected into a new array S. While the second step of 【4】Fig. 11.10【/4】 is logically the same as the second step of 【5】Fig. 11.8【/5】, the main difference is that 【6】Fig. 11.10【/6】 involves threads from different thread blocks. As a result, the last element of each section needs to be collected (written) into a global memory array so that they can be visible across thread blocks.",
+      "zh": "需要特别指出的是，每个扫描块的最后一个输出元素给出该扫描块所有输入元素的总和。在【1】图 11.10【/1】中，这些值是 7、7、6 和 11。这把我们带到【2】图 11.9【/2】中分段扫描算法的第二步：把每个扫描块的最后一个结果元素汇聚到一个数组，并对这些输出元素执行扫描。这一步骤也在【3】图 11.10【/3】中展示，其中所有扫描块的最后一个扫描输出元素被收集到一个新数组 S 中。虽然【4】图 11.10【/4】的第二步与【5】图 11.8【/5】的第二步在逻辑上相同，但主要区别在于【6】图 11.10【/6】涉及来自不同线程块的线程。因此，每个段的末元素需要被收集（写入）到一个全局内存数组中，以便跨线程块可见。"
+    },
+    {
+      "id": "p0435",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[5]",
+      "en": "Gathering the last result of each scan block can be done by changing the code at the end of the scan kernel so that the last thread of each block writes its result into an S array using its blockIdx.x as the array index. A scan operation is then performed on S to produce output values 7, 14, 20, 31. Note that each of these second-level scan output values are the accumulated sum from the beginning location X[0] to the end location of each scan block. That is, the value in S[0]=7 is the accumulated sum from X[0] to the end of scan block 0, which is X[3]. The value in S[1]=14 is the accumulated sum from X[0] to the end of scan block 1, which is X[7]. Therefore the output values in the S array give the scan results at “strategic” locations of the original scan problem. In other words, in 【1】Fig. 11.10【/1】 the output values in S[0], S[1], S[2], and S[3] give the final scan results for the original problem at positions X[3], X[7], X[11], and X[15], respectively. These results can be used to bring the partial results in each scan block to their final values.",
+      "zh": "收集每个扫描块的最后结果可以通过修改扫描核函数末尾的代码来实现：让每个线程块的最后一个线程把它的结果写入 S 数组，以它的 blockIdx.x 作为数组索引。然后对 S 执行一次扫描运算，生成输出值 7、14、20、31。请注意，这些二级扫描输出值中的每一个都是从起始位置 X[0] 到各扫描块结束位置的累加和。也就是说，S[0]=7 是从 X[0] 到扫描块 0 结束位置（即 X[3]）的累加和。S[1]=14 是从 X[0] 到扫描块 1 结束位置（即 X[7]）的累加和。因此，S 数组中的输出值给出了原始扫描问题中“关键”位置的扫描结果。换句话说，在【1】图 11.10【/1】中，S[0]、S[1]、S[2] 和 S[3] 中的输出值分别给出了原始问题在位置 X[3]、X[7]、X[11] 和 X[15] 的最终扫描结果。这些结果可以用来把各扫描块中的部分结果修正为最终值。"
+    },
+    {
+      "id": "p0440",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[6]",
+      "en": "This brings us to the last step of the segmented scan algorithm in 【1】Fig. 11.10【/1】. The second-level scan output values are added to the values of their corresponding scan blocks. For example, in 【2】Fig. 11.10【/2】, the value of S[0] (value 7) will be added to Y[0], Y[1], Y[2], Y[3] of thread block 1, which completes the results in these positions. The final results in these positions are 7, 11, 12, 14. This is because S[0] contains the sum of the values of the original input X[0] through X[3]. These final results are 14, 17, 18, and 20. The value of S[1] (14) will be added to Y[8], Y[9], Y[10], Y[11], which completes the results in these positions. The value of S[2] (20) will be added to Y[12], Y[13], Y[14], Y[15]. Finally, the value of S[3] is the sum of all elements of the original input, which is also the final result in Y[15].",
+      "zh": "这把我们带到【1】图 11.10【/1】中分段扫描算法的最后一步。二级扫描输出值被加到它们对应扫描块的值上。例如，在【2】图 11.10【/2】中，S[0] 的值（7）将加到线程块 1 的 Y[0]、Y[1]、Y[2]、Y[3] 上，从而完成这些位置的结果。这些位置的最终结果为 7、11、12、14。这是因为 S[0] 包含原始输入 X[0] 至 X[3] 各值之和。这些最终结果为 14、17、18 和 20。S[1] 的值（14）将加到 Y[8]、Y[9]、Y[10]、Y[11] 上，从而完成这些位置的结果。S[2] 的值（20）将加到 Y[12]、Y[13]、Y[14]、Y[15] 上。最后，S[3] 的值是原始输入所有元素的总和，也就是 Y[15] 中的最终结果。"
+    },
+    {
+      "id": "p0445",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[7]",
+      "en": "Readers who are familiar with computer arithmetic algorithms should recognize that the principle behind the segmented scan algorithm is quite similar to the principle behind carry look-ahead in hardware adders of modern processors. This should be no surprise, considering that the two parallel scan algorithms that we have studied so far are also based on innovative hardware adder designs.",
+      "zh": "熟悉计算机算术算法的读者应该能看出，分段扫描算法背后的原理与现代处理器硬件加法器中先行进位（carry look-ahead）的原理颇为相似。这不足为奇，因为到目前为止我们研究的两种并行扫描算法也都是基于创新的硬件加法器设计。"
+    },
+    {
+      "id": "p0450",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[8]",
+      "en": "We can implement the segmented scan with three kernels. The first kernel is largely the same as the three-phase kernel. (We could just as easily use the Kogge-Stone kernel or the Brent-Kung kernel.) We need to add one more parameter S, which has the dimension of N/【1】SECTION_SIZE【/1】. At the end of the kernel, we add a conditional statement for the last thread in the block to write the output value of the last XY element in the scan block to the blockIdx.x position of S:",
+      "zh": "我们可以用三个核函数实现分段扫描。第一个核函数与三阶段核函数大体相同。（我们也可以同样容易地使用 Kogge-Stone 核函数或 Brent-Kung 核函数。）我们需要增加一个参数 S，其维度为 N/【1】SECTION_SIZE【/1】。在核函数末尾，我们为线程块中的最后一个线程添加一条条件语句，让它把扫描块中最后一个 XY 元素的输出值写入 S 的 blockIdx.x 位置："
+    },
+    {
+      "id": "p0455",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[9]",
+      "en": "The second kernel is simply one of the three parallel scan kernels configured with a single thread block, which takes S as input and writes S as output without producing any partial sums.",
+      "zh": "第二个核函数只是三个并行扫描核函数之一，配置为单线程块，它以 S 为输入并把结果写回 S，不产生任何部分和。"
+    },
+    {
+      "id": "p0460",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[10]",
+      "en": "The third kernel takes the S array and Y array as inputs and writes its output back into Y. Assuming that we launch the kernel with 【1】SECTION_SIZE【/1】 threads in each block, each thread adds one of the S elements (selected by the 【2】blockIdx.x-1【/2】) to one Y element:",
+      "zh": "第三个核函数以 S 数组和 Y 数组为输入，把输出写回 Y。假设我们用【1】SECTION_SIZE【/1】个线程启动每个线程块，每个线程把 S 中的一个元素（由【2】blockIdx.x-1【/2】选择）加到 Y 的一个元素上："
+    },
+    {
+      "id": "p0465",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[11]",
+      "en": "In other words, the threads in a block add the sum of all previous scan blocks to the elements of their scan block. We leave it as an exercise for the reader to complete the details of each kernel and complete the host code.",
+      "zh": "换句话说，线程块中的线程把前面所有扫描块的总和加到它们扫描块的元素上。我们把它留作读者的练习，以完成各核函数的细节和主机代码。"
+    },
+    {
+      "id": "st0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/h2[1]",
+      "en": "11.7 Single-pass scan for memory access efficiency",
+      "zh": "11.7 面向内存访问效率的单遍扫描"
+    },
+    {
+      "id": "p0470",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[1]",
+      "en": "In the segmented scan mentioned in 【1】Section 11.6【/1】, the partially scanned results (scan blocks) are stored into global memory before launching the global scan kernel, and then reloaded back from the global memory by the third kernel. The time for performing these extra memory stores and loads is not overlapped with the computation in the subsequent kernels and can significantly affect the speed of the segmented scan algorithms. To avoid such a negative impact, multiple techniques have been proposed (【2】Dotsenko et al., 2008【/2】; 【3】Merrill &amp; Garland, 2016【/3】; 【4】Yan et al., 2013【/4】). In this chapter a stream-based scan algorithm is discussed. The reader is encouraged to read the references to understand the other techniques.",
+      "zh": "在【1】第 11.6 节【/1】提到的分段扫描中，部分扫描结果（scan block）在启动全局扫描核函数之前被存入全局内存，然后由第三个核函数从全局内存重新加载。执行这些额外内存存储和加载的时间不会与后续核函数中的计算重叠，并可能显著影响分段扫描算法的速度。为了避免这种负面影响，人们提出了多种技术（【2】Dotsenko et al., 2008【/2】；【3】Merrill &amp; Garland, 2016【/3】；【4】Yan et al., 2013【/4】）。本章讨论一种基于流的扫描算法。建议读者阅读相关参考文献以了解其他技术。"
+    },
+    {
+      "id": "p0475",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[2]",
+      "en": "In the context of CUDA C programming, a stream-based scan algorithm (not to be confused with CUDA streams to be introduced in 【1】Chapter 20【/1】, Programming a Heterogeneous Computing Cluster), or domino-style scan algorithm, refers to a segmented scan algorithm in which partial sum data is passed in one direction through the global memory between adjacent thread blocks in the same grid. Stream-based scan builds on a key observation that the global scan step (the middle part of 【2】Fig. 11.9【/2】) can be performed in a domino fashion and does not truly require a grid-wide synchronization. For example, in 【3】Fig. 11.10【/3】, scan block 0 can pass its partial sum value 7 to scan block 1 and complete its job. scan block 1 receives the partial sum value 7 from scan block 0, sums up with its local partial sum value 7 to get 14, passes its partial sum value 14 to scan block 2, and then completes its final step by adding 7 to all partial scan values in its scan block. This process continues for all thread blocks.",
+      "zh": "在 CUDA C 编程语境下，基于流的扫描算法（不要与将在【1】第 20 章【/1】编写异构计算集群程序中介绍的 CUDA 流混淆），又称多米诺式扫描算法，指的是一种分段扫描算法：在同一网格内，部分和数据在相邻线程块之间经全局内存单向传递。基于流的扫描建立在一个关键观察之上：全局扫描步骤（【2】图 11.9【/2】的中间部分）可以以多米诺方式执行，并不真正需要网格级同步。例如，在【3】图 11.10【/3】中，扫描块 0 可以把它的部分和值 7 传给扫描块 1 并完成自己的工作。扫描块 1 从扫描块 0 收到部分和值 7，与自己的局部部分和值 7 相加得到 14，把部分和值 14 传给扫描块 2，然后通过把 7 加到其扫描块内所有部分扫描值上完成最后一步。这个过程在所有线程块中继续下去。"
+    },
+    {
+      "id": "p0480",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[3]",
+      "en": "To implement a domino-style scan algorithm, one can write a single kernel to perform all three steps of the segmented scan algorithm in 【1】Fig. 11.9【/1】. Thread block 【2】i【/2】 first performs a scan on its scan block, using one of the three parallel algorithms we presented in 【3】Sections 11.2【/3】 through 【4】11.5【/4】. It then waits for its left neighbor block, 【5】i【/5】−1, to pass the sum value. Once it receives the sum from block 【6】i【/6】−1, it adds the value to its local sum and passes the cumulative sum value to its right neighbor block, 【7】i【/7】+1. It then moves on to add the sum value received from block 【8】i【/8】−1 to all partial scan values to produce all the output values of the scan block.",
+      "zh": "要实现多米诺式扫描算法，可以编写单个核函数来执行【1】图 11.9【/1】中分段扫描算法的全部三个步骤。线程块【2】i【/2】首先用我们在【3】第 11.2 节【/3】至【4】11.5【/4】中介绍的三种并行算法之一对其扫描块执行扫描。然后它等待左邻线程块【5】i【/5】−1 传递和值。一旦收到来自线程块【6】i【/6】−1 的和值，它就把该值加到自己的局部和上，并把累加和值传给右邻线程块【7】i【/7】+1。随后它继续把从线程块【8】i【/8】−1 收到的和值加到所有部分扫描值上，生成该扫描块的所有输出值。"
+    },
+    {
+      "id": "p0485",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[4]",
+      "en": "During the first phase of the kernel, all blocks can execute in parallel. They will be serialized during the data-passing phase. However, as soon as each block receives the sum value from its predecessor, it can perform its final phase in parallel with all other blocks that have received the sum values from their predecessors. As long as the sum values can be passed through the blocks quickly, there can be ample parallelism among blocks during the third phase.",
+      "zh": "在核函数的第一阶段，所有线程块都可以并行执行。在数据传递阶段，它们将被串行化。然而，一旦每个线程块从其前驱收到和值，它就可以与所有其他已从前驱收到和值的线程块并行执行最后阶段。只要和值能够在线程块之间快速传递，第三阶段中线程块之间就会有充足的并行度。"
+    },
+    {
+      "id": "p0490",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[5]",
+      "en": "To make this domino-style scan work, adjacent (block) synchronization is needed (【1】Yan et al., 2013【/1】). Adjacent synchronization is a customized synchronization to allow the adjacent thread blocks to synchronize and/or exchange data. Particularly, in scan, the data are passed from scan block 【2】i【/2】−1 to scan block 【3】i【/3】, as in a producer-consumer chain. On the producer side (scan block 【4】i【/4】−1), a flag is set to a particular value after the partial sum has been stored to memory, while on the consumer side (scan block 【5】i【/5】), the flag is checked to see whether it is that particular value before the passed partial sum is loaded. As has been mentioned, the loaded value is further added with the local sum and then is passed to the next block (scan block 【6】i【/6】+1). Adjacent synchronization can be implemented by using atomic operations. The following code segment illustrates the use of atomic operations to implement adjacent synchronization:",
+      "zh": "要使这种多米诺式扫描正常工作，需要相邻（线程块）同步（【1】Yan et al., 2013【/1】）。相邻同步是一种定制的同步机制，允许相邻线程块进行同步和/或交换数据。具体到扫描中，数据从扫描块【2】i【/2】−1 传递给扫描块【3】i【/3】，如同生产者-消费者链。在生产侧（扫描块【4】i【/4】−1），部分和存入内存后，把标志（flag）设置为某个特定值；在消费侧（扫描块【5】i【/5】），在加载传递来的部分和之前，检查标志是否为那个特定值。如前所述，加载的值进一步与局部和相加，然后传给下一个线程块（扫描块【6】i【/6】+1）。相邻同步可以用原子操作实现。下面的代码片段展示了用原子操作实现相邻同步的用法："
+    },
+    {
+      "id": "p0495",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[6]",
+      "en": "This code section is executed by only one leader thread in each block (e.g., thread with index 0). The rest of threads will wait at 【1】__syncthreads()【/1】 in the last line. In block bid, the leader thread checks flags[bid], a global memory array, repeatedly until it is set. Then it loads the partial sum from its predecessor by accessing the global memory array 【2】scan_value[bid]【/2】 and stores the value into its local shared memory variable 【3】previous_sum【/3】. It adds the 【4】previous_sum【/4】 with its local partial sum 【5】local_sum【/5】 and stores the result into the global memory array 【6】scan_value[bid+1]【/6】. The memory fence function 【7】__threadfence()【/7】 is required to ensure that the 【8】scan_value[bid+1]【/8】 value arrives to the global memory before the flag is set with 【9】atomicAdd()【/9】.",
+      "zh": "这段代码只由每个线程块中的一个领头线程（例如索引为 0 的线程）执行。其余线程将在最后一行的【1】__syncthreads()【/1】处等待。在线程块 bid 中，领头线程反复检查全局内存数组 flags[bid]，直到它被置位。然后它通过访问全局内存数组【2】scan_value[bid]【/2】从前驱加载部分和，并把该值存入其局部共享内存变量【3】previous_sum【/3】。它把【4】previous_sum【/4】与自己的局部部分和【5】local_sum【/5】相加，并把结果存入全局内存数组【6】scan_value[bid+1]【/6】。需要内存栅栏函数【7】__threadfence()【/7】来确保【8】scan_value[bid+1]【/8】的值在标志用【9】atomicAdd()【/9】置位之前到达全局内存。"
+    },
+    {
+      "id": "p0500",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[7]",
+      "en": "Although it may appear that the atomic operations on the flags array and the accesses to the 【1】scan_value【/1】 array incur global memory traffic, these operations are mostly performed in the second-level caches of recent GPU architectures (【2】Chapter 9【/2】, Parallel Histogram). Any such stores and loads to the global memory will likely be overlapped with the phase 1 and phase 3 computational activities of other blocks. On the other hand, when executing the three-kernel segmented scan algorithm in 【3】Section 11.5【/3】, the stores to and loads from the S array in the global memory are in a separate kernel and cannot be overlapped with phase 1 or phase 3.",
+      "zh": "虽然对 flags 数组的原子操作和对【1】scan_value【/1】数组的访问看似会产生全局内存流量，但这些操作大多在近年 GPU 架构的二级缓存中完成（【2】第 9 章【/2】并行直方图）。任何此类对全局内存的存储和加载都可能与其他线程块在第一阶段和第三阶段的计算活动重叠。另一方面，当执行【3】第 11.5 节【/3】中的三核函数分段扫描算法时，对全局内存中 S 数组的存储和加载发生在单独的核函数中，无法与第一阶段或第三阶段重叠。"
+    }
+  ]
+}

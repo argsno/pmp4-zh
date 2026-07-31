@@ -1,0 +1,155 @@
+{
+  "page": "Ch005_93-121_B9780323912310000185",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Memory architecture and data locality",
+      "zh": "内存体系结构与数据局部性"
+    },
+    {
+      "id": "st0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/h2[1]",
+      "en": "Abstract",
+      "zh": "摘要"
+    },
+    {
+      "id": "sp0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
+      "en": "This chapter introduces the on-chip memory architecture of GPUs, the concept of memory-bound applications, and techniques for improving the performance of memory-bound applications. The chapter uses matrix multiplication to illustrate opportunities for reducing the number of global memory accesses. It then introduces the tiling technique by which barrier synchronization is used to coordinate the timing of executing threads for improved locality and reduced global memory accesses. However, the tiling techniques involve additional complexities in boundary checks. The chapter uses matrix multiplication to illustrate the additional boundary checks that are needed for a tiled kernel to be applicable to arbitrary matrix sizes. The chapter concludes with an overview of how usage of shared memory and registers can affect the number of thread blocks that can be accommodated in each streaming multiprocessor.",
+      "zh": "本章介绍 GPU 的片上内存体系结构、访存受限应用的概念，以及改善访存受限应用性能的技术。本章以矩阵乘法为例，说明减少全局内存访问次数的机会；接着介绍分块技术，该技术利用屏障同步协调各线程的执行时机，从而改善数据局部性并减少全局内存访问。不过，分块技术会在边界检查方面引入额外的复杂性。本章继续以矩阵乘法为例，说明一个分块核函数要适用于任意规模的矩阵，需要额外进行哪些边界检查。本章最后概述共享内存和寄存器的使用会如何影响每个流式多处理器（SM）所能容纳的线程块数量。"
+    },
+    {
+      "id": "st0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/h3[1]",
+      "en": "Keywords",
+      "zh": "关键词"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[2]/p[1]",
+      "en": "Memory bandwidth; memory latency; compute to global memory access ratio; memory-bound; throughput; on-chip memory; cache; tiling; locality; strip-mining; shared memory; private memory; scope; lifetime; occupancy",
+      "zh": "内存带宽；内存延迟；计算访存比；访存受限；吞吐量；片上内存；缓存；分块；数据局部性；条带挖掘；共享内存；私有内存；作用域；生命周期；占用率"
+    },
+    {
+      "id": "st0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/h2[1]",
+      "en": "Chapter Outline",
+      "zh": "本章概要"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/p[1]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "o0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[1]",
+      "en": "【1】5.1 Importance of memory access efficiency【/1】 94",
+      "zh": "【1】5.1 内存访问效率的重要性【/1】 94"
+    },
+    {
+      "id": "o0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[2]",
+      "en": "【1】5.2 CUDA memory types【/1】 96",
+      "zh": "【1】5.2 CUDA 内存类型【/1】 96"
+    },
+    {
+      "id": "o0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[3]",
+      "en": "【1】5.3 Tiling for reduced memory traffic【/1】 103",
+      "zh": "【1】5.3 减少内存流量的分块【/1】 103"
+    },
+    {
+      "id": "o0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[4]",
+      "en": "【1】5.4 A tiled matrix multiplication kernel【/1】 107",
+      "zh": "【1】5.4 分块矩阵乘法核函数【/1】 107"
+    },
+    {
+      "id": "o0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[5]",
+      "en": "【1】5.5 Boundary checks【/1】 112",
+      "zh": "【1】5.5 边界检查【/1】 112"
+    },
+    {
+      "id": "o0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[6]",
+      "en": "【1】5.6 Impact of memory usage on occupancy【/1】 115",
+      "zh": "【1】5.6 内存使用对占用率的影响【/1】 115"
+    },
+    {
+      "id": "o0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[7]",
+      "en": "【1】5.7 Summary【/1】 118",
+      "zh": "【1】5.7 小结【/1】 118"
+    },
+    {
+      "id": "u0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/div[1]/ul[1]/li[8]",
+      "en": "【1】Exercises【/1】 119",
+      "zh": "【1】习题【/1】 119"
+    },
+    {
+      "id": "p0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "So far, we have learned how to write a CUDA kernel function and how to configure and coordinate its execution by a massive number of threads. We have also looked at the compute architecture of current GPU hardware and how threads are scheduled to execute on this hardware. In this chapter we will focus on the on-chip memory architecture of the GPU and begin to study how one can organize and position data for efficient access by a massive number of threads. The CUDA kernels that we have studied so far will likely achieve only a tiny fraction of the potential speed of the underlying hardware. This poor performance is because global memory, which is typically implemented with off-chip DRAM, tends to have long access latency (hundreds of clock cycles) and finite access bandwidth. While having many threads available for execution can theoretically tolerate long memory access latencies, one can easily run into a situation in which traffic congestion in the global memory access paths prevents all but a very few threads from making progress, thus rendering some of the cores in the streaming multiprocessors (SMs) idle. To circumvent such congestion, GPUs provide a number of additional on-chip memory resources for accessing data that can remove the majority of traffic to and from the global memory. In this chapter we will study the use of different memory types to boost the execution performance of CUDA kernels.",
+      "zh": "到目前为止，我们已经学会了如何编写 CUDA 核函数，以及如何配置和协调由大量线程执行的核函数。我们也已经了解了当前 GPU 硬件的计算体系结构，以及线程如何被调度到这些硬件上执行。本章将聚焦于 GPU 的片上内存体系结构，开始研究如何组织和放置数据，以便大量线程能够高效地访问。我们迄今研究过的 CUDA 核函数，很可能只能发挥底层硬件潜在速度的一小部分。性能之所以如此低下，是因为全局内存通常由片外 DRAM 实现，往往具有较长的访问延迟（数百个时钟周期）和有限的访问带宽。虽然执行时有大量线程可用，理论上可以容忍较长的内存访问延迟，但很容易出现这样的情形：全局内存访问路径上的流量拥塞使得除极少数线程以外的所有线程都无法取得进展，从而让流式多处理器（SM）中的部分核心处于空闲状态。为了规避这种拥塞，GPU 提供了一系列额外的片上内存资源来访问数据，可以消除与全局内存之间的大部分往来流量。本章将研究如何使用不同类型的内存来提升 CUDA 核函数的执行性能。"
+    },
+    {
+      "id": "st0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/h2[1]",
+      "en": "5.1 Importance of memory access efficiency",
+      "zh": "5.1 内存访问效率的重要性"
+    },
+    {
+      "id": "p0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
+      "en": "We can illustrate the effect of memory access efficiency by calculating the expected performance level of the most executed portion of the matrix multiplication kernel code in 【1】Fig. 3.11【/1】, which is partially replicated in 【2】Fig. 5.1【/2】. The most important part of the kernel in terms of execution time is the for-loop that performs the dot product of a row of M with a column of N.",
+      "zh": "我们可以通过计算【1】图 3.11【/1】中矩阵乘法核函数代码中执行次数最多的部分（该部分在【2】图 5.1【/2】中有所复现）的预期性能水平，来说明内存访问效率的影响。就执行时间而言，核函数最重要的部分，是计算 M 的一行与 N 的一列的点积的 for 循环。"
+    },
+    {
+      "id": "n0018",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[1]/figure[1]/figcaption[1]",
+      "en": "【1】Figure 5.1【/1】 The most executed part of the matrix multiplication kernel in 【2】Fig. 3.11【/2】.",
+      "zh": "【1】图 5.1【/1】 【2】图 3.11【/2】中矩阵乘法核函数执行次数最多的部分。"
+    },
+    {
+      "id": "p0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[2]",
+      "en": "In every iteration of the loop, two global memory accesses are performed for one floating-point multiplication and one floating-point addition. The global memory accesses fetch elements from the M and N arrays. The floating-point multiplication operation multiplies these two elements together, and the floating-point add operation accumulates the product into 【1】Pvalue【/1】. Thus the ratio of floating-point operations (FLOP) to bytes (B) accessed from global memory is 2 FLOP to 8 B, or 0.25 FLOP/B. We will refer to this ratio as the 【2】compute to global memory access ratio【/2】, defined as the number of FLOPs performed for each byte access from the global memory within a region of a program. This ratio is sometimes also referred to as 【3】arithmetic intensity【/3】 or 【4】computational intensity【/4】 in the literature.",
+      "zh": "在循环的每次迭代中，都要执行两次全局内存访问，对应一次浮点乘法和一次浮点加法。这两次全局内存访问分别从 M 数组和 N 数组中取出元素。浮点乘法运算把这两个元素相乘，浮点加法运算则把乘积累加到【1】Pvalue【/1】中。因此，浮点运算次数（FLOP）与从全局内存访问的字节数（B）之比为 2 FLOP 对 8 B，即 0.25 FLOP/B。我们把这一比值称为【2】计算访存比【/2】，其定义为：程序某一区域内每从全局内存访问一个字节所执行的 FLOP 数。在文献中，这一比值有时也被称为【3】算术强度【/3】或【4】计算强度【/4】。"
+    },
+    {
+      "id": "p0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
+      "en": "The compute to global memory access ratio has major implications for the performance of a CUDA kernel. For example, the Ampere A100 GPU has a peak global memory bandwidth of 1555 GB/second. Since the matrix multiplication kernel performs 0.25 OP/B, the global memory bandwidth limits the throughput of single-precision FLOPs that can be performed by the kernel to 389 giga FLOPs per second (GFLOPS), obtained by multiplying 1555 GB/second with 0.25 FLOP/B. However, 389 GFLOPS is only 2% of the peak single-precision operation throughput of the A100 GPU, which is 19,500 GFLOPS. The A100 also comes with special purpose units called 【1】tensor cores【/1】 that are useful for accelerating matrix multiplication operations. If one considers the A100’s tensor-core peak single-precision floating-point throughput of 156,000 GFLOPS, 389 GFLOPS is only 0.25% of the peak. Thus the execution of the matrix multiplication kernel is severely limited by the rate at which the data can be delivered from memory to the GPU cores. We refer to programs whose execution speed is limited by memory bandwidth as 【2】memory-bound【/2】 programs.",
+      "zh": "计算访存比对 CUDA 核函数的性能具有重大影响。例如，Ampere A100 GPU 的峰值全局内存带宽为 1555 GB/秒。由于矩阵乘法核函数每字节执行 0.25 OP，全局内存带宽把核函数所能执行的单精度浮点运算吞吐量限制为每秒 389 十亿次浮点运算（GFLOPS），即 1555 GB/秒乘以 0.25 FLOP/B。然而，389 GFLOPS 仅占 A100 GPU 峰值单精度运算吞吐量（19500 GFLOPS）的 2%。A100 还配有称为【1】张量核心【/1】的专用单元，可用于加速矩阵乘法运算。如果考虑 A100 张量核心 156000 GFLOPS 的峰值单精度浮点吞吐量，389 GFLOPS 仅占其峰值的 0.25%。因此，矩阵乘法核函数的执行严重受限于数据从内存传送到 GPU 核心的速率。我们把执行速度受内存带宽限制的程序称为【2】访存受限【/2】程序。"
+    },
+    {
+      "id": "n0021",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/p[1]",
+      "en": "The Roofline Model",
+      "zh": "Roofline 模型"
+    },
+    {
+      "id": "p9145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/p[2]",
+      "en": "【1】The Roofline Model is a visual model for assessing the performance achieved by an application relative to the limits of the hardware it is running on. A basic example of the Roofline model is shown below【/1】.",
+      "zh": "【1】Roofline 模型是一种可视化模型，用于评估应用相对于其所运行硬件的极限所达到的性能。下面给出了 Roofline 模型的一个基本示例【/1】。"
+    },
+    {
+      "id": "p9150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/p[3]",
+      "en": "【1】On the x-axis, we have arithmetic or computational intensity measured in FLOP/B. It reflects the amount of work done by an application for every byte of data loaded. On the y-axis, we have computational throughput measured in GFLOPS. The two lines inside of the plot reflect the hardware limits. The horizontal line is determined by the peak computational throughput (GFLOPS) that the hardware can sustain. The line with a positive slope starting from the origin is determined by the peak memory bandwidth that the hardware can sustain. A point in the plot represents an application with its operational intensity on the x-axis and the computational throughput it achieves on the y-axis. Of course, the points will be under the two lines because they cannot achieve higher throughput than the hardware peak【/1】.",
+      "zh": "【1】x 轴上是以 FLOP/B 为单位的算术强度（计算强度）。它反映应用每加载一个字节的数据所完成的工作量。y 轴上是以 GFLOPS 为单位的计算吞吐量。图中两条线反映硬件极限：水平线由硬件所能维持的峰值计算吞吐量（GFLOPS）决定；从原点出发、斜率为正的那条线由硬件所能维持的峰值内存带宽决定。图中的点代表一个应用，其运算强度对应 x 轴，所达到的计算吞吐量对应 y 轴。当然，这些点会位于两条线之下，因为它们能达到的吞吐量不可能超过硬件峰值【/1】。"
+    },
+    {
+      "id": "p9155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/div[2]/p[4]",
+      "en": "【1】The position of a point relative to the two lines tells us about an application's efficiency. Points close to the two lines indicate that an application is using memory bandwidth or compute units efficiently, whereas applications far below the lines indicate inefficient use of resources. The point of intersection between these two lines represents the computational intensity value at which applications transition from being memory bound to being compute bound. Applications with lower computational intensity are memory-bound and cannot achieve peak throughput because they are limited by memory bandwidth. Applications with higher computational intensity are compute-bound and are not limited by memory bandwidth【/1】.",
+      "zh": "【1】一个点相对这两条线的位置，说明了应用的效率。接近两条线的点表示应用在高效地利用内存带宽或计算单元，而远低于这两条线的应用则表明对资源的利用效率不高。这两条线的交点所对应的算术强度值，是应用从访存受限过渡到计算受限的分界点。算术强度较低的应用属于访存受限，受内存带宽限制，无法达到峰值吞吐量；算术强度较高的应用属于计算受限，不受内存带宽限制【/1】。"
+    }
+  ]
+}

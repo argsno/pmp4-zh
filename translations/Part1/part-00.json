@@ -1,0 +1,47 @@
+{
+  "page": "Part1",
+  "nodes": [
+    {
+      "id": "tit9010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Fundamental Concepts",
+      "zh": "基本概念"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "Outline",
+      "zh": "大纲"
+    },
+    {
+      "id": "n0002",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[1]",
+      "en": "【1】Chapter 2 Heterogeneous data parallel computing【/1】",
+      "zh": "【1】第 2 章 异构数据并行计算【/1】"
+    },
+    {
+      "id": "n0003",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[2]",
+      "en": "【1】Chapter 3 Multidimensional grids and data【/1】",
+      "zh": "【1】第 3 章 多维网格与数据【/1】"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[3]",
+      "en": "【1】Chapter 4 Compute architecture and scheduling【/1】",
+      "zh": "【1】第 4 章 计算体系结构与调度【/1】"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[4]",
+      "en": "【1】Chapter 5 Memory architecture and data locality【/1】",
+      "zh": "【1】第 5 章 内存体系结构与数据局部性【/1】"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/nav[1]/ul[1]/li[5]",
+      "en": "【1】Chapter 6 Performance considerations【/1】",
+      "zh": "【1】第 6 章 性能考量【/1】"
+    }
+  ]
+}

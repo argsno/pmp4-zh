@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><html xml:lang="zh-CN" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops"><head><title>Programming Massively Parallel Processors, 4th Edition</title><link rel="stylesheet" type="text/css" href="../override_v1.css"/><link rel="stylesheet" type="text/css" href="../styles/Elsevier_eBook.css"/><link rel="stylesheet" type="text/css" href="../styles/media.css"/><link rel="stylesheet" href="../topnav.css"/>
+<link rel="stylesheet" href="../styles/math.css"/>
+</head><body>
+<header class="topnav">
+  <div class="topnav-inner">
+    <span class="book-title">大规模并行处理器编程（第 4 版）</span>
+    <select id="nav-select" class="nav-select" title="Choose a chapter">
+    <optgroup label="前言部分">
+      <option value="Cover.html">封面图</option>
+      <option value="Title_page.html">标题页</option>
+      <option value="Contents.html">目录</option>
+      <option value="Copyright_iv_B978032391231000029X.html">版权</option>
+      <option value="Dedication_v_B9780323912310000264.html#Dedication_v_B9780323912310000264titl">献词</option>
+      <option value="Foreword_xv-xvi_B9780323912310000318.html#Foreword_xv-xvi_B9780323912310000318titl">前言</option>
+      <option value="Acknowledgments_xxvii-xxviii_B9780323912310000276.html#Acknowledgments_xxvii-xxviii_B9780323912310000276titl">致谢</option>
+    </optgroup>
+    <optgroup label="序言">
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html">序言</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0010">如何使用本书</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0015">两阶段方法</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0020">融会贯通：期末项目</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0025">设计文档</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0030">项目报告与研讨会</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0035">课堂竞赛</option>
+      <option value="FigureP.1_xvii-xxv_B9780323912310000057.html#st0040">课程资源</option>
+    </optgroup>
+    <optgroup label="第 1 章 引言">
+      <option value="Ch001_1-19_B9780323912310000069.html">第 1 章 引言</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0010">摘要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0020">本章概要</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0025">1.1 异构并行计算</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0030">1.2 为何需要更高速度或并行性</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0035">1.3 加速真实应用</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0040">1.4 并行编程的挑战</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0045">1.5 相关并行编程接口</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0050">1.6 总体目标</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0055">1.7 本书结构</option>
+      <option value="Ch001_1-19_B9780323912310000069.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第一部分：基本概念">
+      <option value="Part1.html">第一部分：基本概念</option>
+    </optgroup>
+    <optgroup label="第 2 章 异构数据并行计算">
+      <option value="Ch002_23-46_B9780323912310000148.html">第 2 章 异构数据并行计算</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0010">摘要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0020">本章概要</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0025">2.1 数据并行</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0030">2.2 CUDA C 程序结构</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0035">2.3 向量加法核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0040">2.4 设备全局内存与数据传输</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0045">2.5 核函数与线程</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0050">2.6 调用核函数</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0055">2.7 编译</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0060">2.8 小结</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0085">习题</option>
+      <option value="Ch002_23-46_B9780323912310000148.html#st0090">参考文献</option>
+    </optgroup>
+    <optgroup label="第 3 章 多维网格与数据">
+      <option value="Ch003_47-68_B9780323912310000045.html">第 3 章 多维网格与数据</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0010">摘要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0020">本章概要</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0025">3.1 多维网格组织</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0030">3.2 线程到多维数据的映射</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0035">3.3 图像模糊：一个更复杂的核函数</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0040">3.4 矩阵乘法</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0045">3.5 小结</option>
+      <option value="Ch003_47-68_B9780323912310000045.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 4 章 计算体系结构与调度">
+      <option value="Ch004_69-92_B9780323912310000033.html">第 4 章 计算体系结构与调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0010">摘要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0020">本章概要</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0025">4.1 现代 GPU 的体系结构</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0030">4.2 线程块调度</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0035">4.3 同步与透明可扩展性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0040">4.4 线程束与 SIMD 硬件</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0045">4.5 控制发散</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0050">4.6 线程束调度与延迟容忍</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0055">4.7 资源划分与占用率</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0060">4.8 查询设备属性</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0065">4.9 小结</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0070">习题</option>
+      <option value="Ch004_69-92_B9780323912310000033.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 5 章 内存体系结构与数据局部性">
+      <option value="Ch005_93-121_B9780323912310000185.html">第 5 章 内存体系结构与数据局部性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0010">摘要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0020">本章概要</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0025">5.1 内存访问效率的重要性</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0030">5.2 CUDA 内存类型</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0035">5.3 减少内存流量的分块</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0040">5.4 分块矩阵乘法核函数</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0045">5.5 边界检查</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0050">5.6 内存使用对占用率的影响</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0055">5.7 小结</option>
+      <option value="Ch005_93-121_B9780323912310000185.html#st0060">习题</option>
+    </optgroup>
+    <optgroup label="第 6 章 性能考量">
+      <option value="Ch006_123-147_B9780323912310000161.html">第 6 章 性能考量</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0010">摘要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0020">本章概要</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0025">6.1 内存合并</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0030">6.2 隐藏内存延迟</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0035">6.3 线程粗化</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0040">6.4 优化清单</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0045">6.5 认清计算瓶颈</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0050">6.6 小结</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0055">习题</option>
+      <option value="Ch006_123-147_B9780323912310000161.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第二部分：并行模式">
+      <option value="Part2.html">第二部分：并行模式</option>
+    </optgroup>
+    <optgroup label="第 7 章 卷积：常量内存与缓存入门">
+      <option value="Ch007_151-171_B9780323912310000082.html">第 7 章 卷积：常量内存与缓存入门</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0010">摘要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st9020">本章概要</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0020">7.1 背景</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0025">7.2 并行卷积：基础算法</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0030">7.3 常量内存与缓存</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0035">7.4 带光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0040">7.5 利用缓存处理光环单元的分块卷积</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0045">7.6 小结</option>
+      <option value="Ch007_151-171_B9780323912310000082.html#st0050">习题</option>
+    </optgroup>
+    <optgroup label="第 8 章 模板">
+      <option value="Ch008_173-189_B9780323912310000173.html">第 8 章 模板</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0010">摘要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0020">本章概要</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0025">8.1 背景</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0030">8.2 并行模板：基础算法</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0035">8.3 面向模板扫掠的共享内存分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0040">8.4 线程粗化</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0045">8.5 寄存器分块</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0050">8.6 小结</option>
+      <option value="Ch008_173-189_B9780323912310000173.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="第 9 章 并行直方图：原子操作与私有化入门">
+      <option value="Ch009_191-210_B978032391231000015X.html">第 9 章 并行直方图：原子操作与私有化入门</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0010">摘要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0020">本章概要</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0025">9.1 背景</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0030">9.2 原子操作与基础直方图核函数</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0035">9.3 原子操作的延迟与吞吐量</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0040">9.4 私有化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0045">9.5 粗化</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0050">9.6 聚合</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0055">9.7 小结</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0060">习题</option>
+      <option value="Ch009_191-210_B978032391231000015X.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 10 章 归约：最小化发散">
+      <option value="Ch010_211-233_B9780323912310000239.html">第 10 章 归约：最小化发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0010">摘要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0020">本章概要</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0025">10.1 背景</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0030">10.2 归约树</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0035">10.3 简单归约核函数</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0040">10.4 最小化控制发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0045">10.5 最小化内存发散</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0050">10.6 最小化全局内存访问</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0055">10.7 面向任意输入长度的分层归约</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0060">10.8 降低开销的线程粗化</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0065">10.9 小结</option>
+      <option value="Ch010_211-233_B9780323912310000239.html#st0070">习题</option>
+    </optgroup>
+    <optgroup label="第 11 章 前缀和（扫描）：并行算法中的工作效率入门">
+      <option value="Ch011_235-261_B9780323912310000227.html">第 11 章 前缀和（扫描）：并行算法中的工作效率入门</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0010">摘要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0020">本章概要</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0025">11.1 背景</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0030">11.2 基于 Kogge-Stone 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0035">11.3 速度与工作效率考量</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0040">11.4 基于 Brent-Kung 算法的并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0045">11.5 进一步提升工作效率的粗化</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0050">11.6 面向任意长度输入的分段并行扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0055">11.7 面向内存访问效率的单遍扫描</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0060">11.8 小结</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0065">习题</option>
+      <option value="Ch011_235-261_B9780323912310000227.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 12 章 归并：动态输入数据识别入门">
+      <option value="Ch012_263-289_B9780323912310000252.html">第 12 章 归并：动态输入数据识别入门</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0010">摘要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0020">本章概要</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0025">12.1 背景</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0030">12.2 串行归并算法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0035">12.3 一种并行化方法</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0040">12.4 协秩函数实现</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0045">12.5 基础并行归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0050">12.6 改善合并访问的分块归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0055">12.7 环形缓冲区归并核函数</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0060">12.8 面向归并的线程粗化</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0065">12.9 小结</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0070">习题</option>
+      <option value="Ch012_263-289_B9780323912310000252.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第三部分：高级模式与应用">
+      <option value="Part3.html">第三部分：高级模式与应用</option>
+    </optgroup>
+    <optgroup label="第 13 章 排序">
+      <option value="Ch013_293-310_B9780323912310000197.html">第 13 章 排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0010">摘要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0020">本章概要</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0025">13.1 背景</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0030">13.2 基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0035">13.3 并行基数排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0040">13.4 针对内存合并的优化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0045">13.5 基数值的选择</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0050">13.6 改善合并访问的线程粗化</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0055">13.7 并行归并排序</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0060">13.8 其他并行排序方法</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0065">13.9 小结</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0070">习题</option>
+      <option value="Ch013_293-310_B9780323912310000197.html#st0075">参考文献</option>
+    </optgroup>
+    <optgroup label="第 14 章 稀疏矩阵计算">
+      <option value="Ch014_311-329_B9780323912310000100.html">第 14 章 稀疏矩阵计算</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0010">摘要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0020">本章概要</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0025">14.1 背景</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0030">14.2 基于 COO 格式的简单 SpMV 核函数</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0035">14.3 使用 CSR 格式对行非零元素分组</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0040">14.4 使用 ELL 格式改善内存合并</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0045">14.5 使用 ELL-COO 混合格式调节填充</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0050">14.6 使用 JDS 格式减少控制发散</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0055">14.7 小结</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0060">习题</option>
+      <option value="Ch014_311-329_B9780323912310000100.html#st0065">参考文献</option>
+    </optgroup>
+    <optgroup label="第 15 章 图遍历">
+      <option value="Ch015_331-354_B9780323912310000112.html" selected>第 15 章 图遍历</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0010">摘要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0020">本章概要</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0025">15.1 背景</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0030">15.2 广度优先搜索</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0035">15.3 面向顶点的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0040">15.4 面向边的广度优先搜索并行化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0045">15.5 利用前沿提升效率</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0050">15.6 利用私有化减少竞争</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0055">15.7 其他优化</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0075">15.8 小结</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0080">习题</option>
+      <option value="Ch015_331-354_B9780323912310000112.html#st0085">参考文献</option>
+    </optgroup>
+    <optgroup label="第 16 章 深度学习">
+      <option value="Ch016_355-388_B9780323912310000240.html">第 16 章 深度学习</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0010">摘要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0020">本章概要</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0025">16.1 背景</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0085">16.2 卷积神经网络</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0100">16.3 卷积层：一个 CUDA 推理核函数</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0105">16.4 将卷积层表示为 GEMM</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0110">16.5 cuDNN 库</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0115">16.6 小结</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0120">习题</option>
+      <option value="Ch016_355-388_B9780323912310000240.html#st0125">参考文献</option>
+    </optgroup>
+    <optgroup label="第 17 章 迭代式磁共振成像重建">
+      <option value="Ch017_391-414_B9780323912310000124.html">第 17 章 迭代式磁共振成像重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0010">摘要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0020">本章概要</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0025">17.1 背景</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0030">17.2 迭代重建</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0035">17.3 计算 FHD</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0060">17.4 小结</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0065">习题</option>
+      <option value="Ch017_391-414_B9780323912310000124.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 18 章 静电势图">
+      <option value="Ch018_415-431_B9780323912310000094.html">第 18 章 静电势图</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0010">摘要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0020">本章概要</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0025">18.1 背景</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0030">18.2 核函数设计中的分散与汇聚</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0035">18.3 线程粗化</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0040">18.4 内存合并</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0045">18.5 面向数据规模可扩展性的截断分箱</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0050">18.6 小结</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0055">习题</option>
+      <option value="Ch018_415-431_B9780323912310000094.html#st0060">参考文献</option>
+    </optgroup>
+    <optgroup label="第 19 章 并行编程与计算思维">
+      <option value="Ch019_433-446_B9780323912310000021.html">第 19 章 并行编程与计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0010">摘要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0020">本章概要</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0025">19.1 并行计算的目标</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0030">19.2 算法选择</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0035">19.3 问题分解</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0040">19.4 计算思维</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0045">19.5 小结</option>
+      <option value="Ch019_433-446_B9780323912310000021.html#st0050">参考文献</option>
+    </optgroup>
+    <optgroup label="第四部分：高级实践">
+      <option value="Part4.html">第四部分：高级实践</option>
+    </optgroup>
+    <optgroup label="第 20 章 编写异构计算集群程序：CUDA 流入门">
+      <option value="Ch020_449-473_B9780323912310000070.html">第 20 章 编写异构计算集群程序：CUDA 流入门</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0010">摘要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0020">本章概要</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0025">20.1 背景</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0030">20.2 一个运行示例</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0035">20.3 消息传递接口基础</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0040">20.4 消息传递接口点对点通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0045">20.5 计算与通信重叠</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0050">20.6 消息传递接口集合通信</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0055">20.7 CUDA 感知的 MPI</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0060">20.8 小结</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0065">习题</option>
+      <option value="Ch020_449-473_B9780323912310000070.html#st0070">参考文献</option>
+    </optgroup>
+    <optgroup label="第 21 章 CUDA 动态并行">
+      <option value="Ch021_475-496_B978032391231000001X.html">第 21 章 CUDA 动态并行</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0010">摘要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0020">本章概要</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0025">21.1 背景</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0030">21.2 动态并行概述</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0035">21.3 示例：贝塞尔曲线</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0060">21.4 递归示例：四叉树</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0065">21.5 重要考量</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0090">21.6 小结</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0095">习题</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0105">A21.1 四叉树示例的支持代码</option>
+      <option value="Ch021_475-496_B978032391231000001X.html#st0100">参考文献</option>
+    </optgroup>
+    <optgroup label="第 22 章 高级实践与未来演进">
+      <option value="Ch022_499-513_B9780323912310000136.html">第 22 章 高级实践与未来演进</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0010">摘要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0020">本章概要</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0025">22.1 主机/设备交互模型</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0050">22.2 核函数执行控制</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0085">22.3 内存带宽与计算吞吐量</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0115">22.4 编程环境</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0130">22.5 未来展望</option>
+      <option value="Ch022_499-513_B9780323912310000136.html#st0135">参考文献</option>
+    </optgroup>
+    <optgroup label="第 23 章 结论与展望">
+      <option value="Ch023_515-518_B9780323912310000203.html">第 23 章 结论与展望</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0010">摘要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st9020">本章概要</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0020">23.1 目标回顾</option>
+      <option value="Ch023_515-518_B9780323912310000203.html#st0025">23.2 未来展望</option>
+    </optgroup>
+    <optgroup label="附录 A 数值考量">
+      <option value="FigureA.1_519-536_B9780323912310000215.html">附录 A 数值考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0010">A.1 浮点数据表示</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0025">A.2 可表示数</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0030">A.3 IEEE 格式中的特殊位模式与精度</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0035">A.4 算术精度与舍入</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0040">A.5 算法考量</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0045">A.6 线性方程组求解器与数值稳定性</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0050">A.7 小结</option>
+      <option value="FigureA.1_519-536_B9780323912310000215.html#st0055">习题</option>
+    </optgroup>
+    <optgroup label="后记部分">
+      <option value="Index_537-551_B978032391231000032X.html">索引</option>
+    </optgroup>
+    </select>
+    <div class="nav-buttons">
+      <a class="navbtn" href="../index.html">首页</a>
+      <a class="navbtn" href="Ch014_311-329_B9780323912310000100.html#st0065">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch015_331-354_B9780323912310000112.html#st0010">下一页 &#8250;</a>
+
+    </div>
+    <div class="langswitch"><a class="langbtn" href="../../chapters/Ch015_331-354_B9780323912310000112.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch015_331-354_B9780323912310000112.html">对照</a></div>
+  </div>
+</header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter" id="c0015">
+<a id="Ch015_331-354_B9780323912310000112"></a><div id="page_331" aria-label="Page 331" epub:type="pagebreak" role="doc-pagebreak"></div><header>
+<div id="CN"><a id="Ch015_331-354_B9780323912310000112titl"></a>Chapter 15</div><h1 class="chaptitle" epub:type="title" id="tit0010">图遍历</h1><address><p class="chapau">特别感谢 John Owens 和 Juan Gómez-Luna 的贡献</p></address>
+</header><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0090">本章介绍并行图遍历模式。由于图搜索计算的核心是检查顶点的值，一旦这些值从内存中载入，对其进行的计算就很少。因此，图搜索的速度通常受限于内存带宽。本章介绍一种与稀疏矩阵的压缩稀疏行格式类似的图数据格式，它有助于最大程度地减少内存带宽的消耗。本章还介绍图计算并行化的多种策略，包括面向顶点的 push 与 pull 并行化，以及面向边的并行化。此外，本章引入前沿（frontier）的使用，以支持需要动态发现并收集待处理数据的工作高效迭代算法。私有化技术以线程块级队列的形式应用，以最大限度地减少将数据收集到前沿过程中的串行化。本章最后讨论了核函数启动开销和负载均衡方面可能的进一步优化。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">图；图算法；图遍历；广度优先搜索；社交网络；驾车路线地图服务；迷宫布线；工作效率；顶点；边；面向顶点的并行化；面向边的并行化；幂等性；负载均衡；方向优化的并行化；线性代数表述；冗余工作；前沿；原子操作；比较并交换；竞争；私有化</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">概要</p><div class="outlchap"><ul>
+<li class="chapoutl1" id="o0010"><a id="p0010"></a><a href="#s0010">15.1 背景</a> 332</li>
+<li class="chapoutl1" id="o0015"><a id="p0015"></a><a href="#s0015">15.2 广度优先搜索</a> 335</li>
+<li class="chapoutl1" id="o0020"><a id="p0020"></a><a href="#s0020">15.3 面向顶点的广度优先搜索并行化</a> 338</li>
+<li class="chapoutl1" id="o0025"><a id="p0025"></a><a href="#s0025">15.4 面向边的广度优先搜索并行化</a> 343</li>
+<li class="chapoutl1" id="o0030"><a id="p0030"></a><a href="#s0030">15.5 利用前沿提升效率</a> 345</li>
+<li class="chapoutl1" id="o0035"><a id="p0035"></a><a href="#s0035">15.6 利用私有化减少竞争</a> 348</li>
+<li class="chapoutl1" id="o0040"><a id="p0040"></a><a href="#s0040">15.7 其他优化</a> 350</li>
+<li class="chapoutl1" id="o0045"><a id="p0060"></a><a href="#s0060">15.8 小结</a> 352</li>
+<li class="chapoutl1" id="u0025"><a id="p0065"></a><a href="#s0065">习题</a> 353</li>
+<li class="chapoutl1" id="u0030"><a id="p0070"></a><a href="#bibliog0010">参考文献</a> 354</li>
+</ul>
+</div></nav>
+<p id="p0080" class="textfl"><a id="P331"></a><span id="page_332" aria-label="Page 332" epub:type="pagebreak" role="doc-pagebreak"></span>图是一种表示实体之间关系的数据结构。所涉及的实体用顶点表示，关系用边表示。许多重要的现实世界问题天然地可以表述为大规模图问题，并且可以从大规模并行计算中受益。典型的例子包括社交网络和驾车路线地图服务。图计算的并行化有多种策略，其中一些以并行处理顶点为中心，另一些则以并行处理边为中心。图与稀疏矩阵有着内在的联系。因此，图计算也可以用稀疏矩阵运算来表述。然而，人们通常可以利用所执行的图计算类型所特有的性质来提高图计算的效率。本章将重点介绍图搜索——一种支撑许多现实世界应用的图计算。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0025">15.1 背景</h2><p id="p0085" class="textfl">图数据结构表示实体之间的关系。例如，在社交媒体中，实体是用户，关系是用户之间的连接。再如，在驾车路线地图服务中，实体是地点，关系是地点之间的道路。有些关系是双向的，例如社交网络中的好友连接。另一些关系是有方向的，例如道路网络中的单行道。本章将重点讨论有方向的关系。双向关系可以用两个有方向的关系来表示，一个方向一个。</p>
+<p id="p0090" class="text"><a href="#f0010">图 15.1</a> 展示了一个带有有向边的简单图的示例。有方向的关系用一条从源顶点指向目标顶点的带箭头边来表示。我们为每个顶点分配一个唯一的编号，也称为顶点 <em>id</em>。存在一条从顶点 0 指向顶点 1 的边，一条从顶点 0 指向顶点 2 的边，依此类推。</p>
+<div class="pageavoid"><figure class="fig" id="f0010"><img src="../images/F000112f15-01-9780323912310.jpg" class="img" alt="image" width="399" height="382"/><figcaption class="figleg"><a id="sp0010"></a><span class="fignum">图 15.1</span> 一个包含 9 个顶点和 15 条有向边的简单图示例。</figcaption></figure></div><p id="p0095" class="text">图的一种直观表示是<em>邻接矩阵</em>。如果存在一条从源顶点 <em>i</em> 到目标顶点 <em>j</em> 的边，则邻接矩阵中元素 A[<em>i</em>][<em>j</em>] 的值为 1，否则为 0。<a id="Bf0015" href="#f0015">图 15.2</a> 展示了<a href="#f0010">图 15.1</a> 中简单图的邻接矩阵。我们看到 A[1][3] 和 A[4][5] 的值为 1，因为存在从顶点 1 到顶点 3 的边。为了清晰起见，我们把邻接矩阵中的 0 值省略。也就是说，如果某个元素为空，其值默认为 0。</p>
+<div class="pageavoid"><figure class="fig" id="f0015"><img src="../images/F000112f15-02-9780323912310.jpg" class="img" alt="image" width="1298" height="601"/><figcaption class="figleg"><a id="sp0015"></a><span class="fignum"><a href="#Bf0015">图 15.2</a></span> 简单图示例的邻接矩阵表示。</figcaption></figure></div><p id="p0100" class="text"><span id="page_333" aria-label="Page 333" epub:type="pagebreak" role="doc-pagebreak"></span>如果一个包含 N 个顶点的图是<em>全连接</em>的，也就是说，每个顶点都与所有其他顶点相连，那么每个顶点应有 (N−1) 条出边。由于不存在从顶点指向自身的边，图中共应有 N(N−1) 条边。例如，如果我们的九顶点图是全连接的，那么每个顶点应有 8 条出边，图中共应有 72 条边。显然，我们的图连接程度低得多；每个顶点只有 3 条或更少的出边。这样的图被称为<em>稀疏连接</em>的。也就是说，每个顶点的平均出边数远小于 N−1。</p>
+<p id="p0105" class="text">至此，读者很可能已经正确地观察到，稀疏连接的图可能受益于稀疏矩阵表示。正如我们在<a href="Ch014_311-329_B9780323912310000100.html#Ch014_311-329_B9780323912310000100">第 14 章</a>“稀疏矩阵计算”中所见，使用矩阵的压缩表示可以大幅减少所需的存储空间，以及浪费在零元素上的运算次数。事实上，许多现实世界的图都是稀疏连接的。例如，在 Facebook、Twitter 或 LinkedIn 等社交网络中，每个用户的平均连接数远小于用户总数。这使得邻接矩阵中的非零元素数远小于元素总数。</p>
+<p id="p0110" class="text"><span id="page_334" aria-label="Page 334" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0020" href="#f0020">图 15.3</a> 展示了使用三种不同存储格式表示的简单图示例：压缩稀疏行格式（CSR）、压缩稀疏列格式（CSC）和坐标格式（COO）。我们将行索引数组和行指针数组分别称为 <span class="inlinecode">src</span> 数组和 <span class="inlinecode">srcPtrs</span> 数组，将列索引数组和列指针数组分别称为 <span class="inlinecode">dst</span> 数组和 <span class="inlinecode">dstPtrs</span> 数组。以 CSR 为例，回想一下，在稀疏矩阵的 CSR 表示中，每个行指针给出某一行中非零元素的起始位置。类似地，在图的 CSR 表示中，每个源顶点指针（<span class="inlinecode">srcPtrs</span>）给出该顶点出边的起始位置。例如，<span class="inlinecode">srcPtrs[3]=7</span> 给出原始邻接矩阵第 3 行中非零元素的起始位置。<span class="inlinecode">srcPtrs[4]=9</span> 给出原始矩阵第 4 行中非零元素的起始位置。因此，我们预期第 3 行的非零数据位于 <span class="inlinecode">data[7]</span>和 <span class="inlinecode">data[8]</span>中，这些元素的列索引（目标顶点）位于 <span class="inlinecode">dst[7]</span>和 <span class="inlinecode">dst[8]</span>中。它们就是离开顶点 3 的两条边的数据和列索引。我们把列索引数组称为 <span class="inlinecode">dst</span> 的原因是，邻接矩阵中某个元素的列索引给出了其所表示边的目标顶点。在我们的示例中，可以看到源顶点 3 的两条边的目标分别为 <span class="inlinecode">dst[7]=4</span> 和 <span class="inlinecode">dst[8]=8</span>。我们将类似的类比推导留给读者作为练习，以理解 CSC 和 COO 表示。</p>
+<div class="pageavoid"><figure class="fig" id="f0020"><img src="../images/F000112f15-03-9780323912310.jpg" class="img" alt="image" width="1374" height="1161"/><figcaption class="figleg"><a id="sp0020"></a><span class="fignum"><a href="#Bf0020">图 15.3</a></span> 邻接矩阵的三种稀疏矩阵表示：(A) CSR，(B) CSC，(C) COO。<em>COO</em>，即坐标列表格式（coordinate）；<em>CSC</em>，即压缩稀疏列格式（compressed sparse column）；<em>CSR</em>，即压缩稀疏行格式（compressed sparse row）。</figcaption></figure></div><p id="p0115" class="text">请注意，本例中的 <span class="inlinecode">data</span> 数组是不必要的。由于它的所有元素值都为 1，我们不需要存储它。我们可以让数据隐式存在，也就是说，只要存在某个非零元素，我们就可以直接假定其值为 1。例如，在 CSR 表示的目标数组中，每个列索引的存在都意味着存在一条边。然而，在某些应用中，邻接矩阵可能存储有关关系的额外信息，例如两个地点之间的距离，或两个社交网络用户成为好友的日期。在这些应用中，就需要显式地存储 data 数组。</p>
+<p id="p0120" class="text"><span id="page_335" aria-label="Page 335" epub:type="pagebreak" role="doc-pagebreak"></span>稀疏表示可以显著节省邻接矩阵的存储。以我们的示例为例，假设 <span class="inlinecode">data</span> 数组可以省去，那么 CSR 表示需要存储 25 个位置，而如果存储整个邻接矩阵则需要 9<sup>2</sup>=81 个位置。对于邻接矩阵元素中只有极小一部分为非零的真实问题，节省的存储空间可能相当可观。</p>
+<p id="p0125" class="text">不同的图可能有截然不同的结构。刻画这些结构的一种方法是考察与每个顶点相连的边数的分布（即<em>顶点度数</em>）。以道路网络为例，将其表示为图后，其度数分布相对均匀，每个顶点的平均度数较低，因为每个道路交叉口（顶点）通常只连接少量道路。另一方面，以 Twitter 粉丝图为例，其中每条入边代表一次“关注”，其顶点度数分布要宽得多，度数很大的顶点代表人气很高的 Twitter 用户。图的结构可能会影响特定图应用所采用的算法选择。</p>
+<p id="p0130" class="text">回想一下<a href="Ch014_311-329_B9780323912310000100.html#Ch014_311-329_B9780323912310000100">第 14 章</a>“稀疏矩阵计算”中的内容：每种稀疏矩阵表示对所表示数据的可访问性各不相同。因此，为图选择使用哪种表示，会影响到图遍历算法能够轻松访问图的哪些信息。CSR 表示使得访问给定顶点的出边变得容易。CSC 表示使得访问给定顶点的入边变得容易。COO 表示使得访问给定边的源顶点和目标顶点变得容易。因此，图表示的选择与图遍历算法的选择是相辅相成的。本章将通过考察广度优先搜索（一种被广泛使用的图搜索计算）的不同并行实现来演示这一概念。</p></section><section><a id="s0015"></a><h2 class="h1hd" id="st0030">15.2 广度优先搜索</h2><p id="p0135" class="textfl">一种重要的图计算是广度优先搜索（BFS）。BFS 通常用于发现从图中的一个顶点到达另一个顶点所需经过的最少边数。在<a href="#f0010">图 15.1</a> 的图示例中，我们可能需要找出从顶点 0 所代表的地点到达顶点 5 所代表的地点的所有备选路线。通过目视检查，我们可以看到有三条可能的路径：0→1→3→4→5、0→1→4→5 和 0→2→5，其中 0→2→5 最短。概括 BFS 遍历结果的方式有多种。一种方式是：给定一个被称为根的顶点，将每个顶点标记为从根到达该顶点所需经过的最少边数。</p>
+<p id="p0140" class="text"><span id="page_336" aria-label="Page 336" epub:type="pagebreak" role="doc-pagebreak"></span><a href="#f0025">图 15.4(A)</a>展示了以顶点 0 为根的期望 BFS 结果。经过一条边，我们可以到达顶点 1 和 2。因此我们将这些顶点标记为属于第 1 层。再经过一条边，我们可以到达顶点 3（经顶点 1）、4（经顶点 1）、5（经顶点 2）、6（经顶点 2）和 7（经顶点 2）。因此我们将这些顶点标记为属于第 2 层。最后，再经过一条边，我们可以到达顶点 8（经顶点 3、4 或 6 中的任意一个）。</p>
+<div class="pageavoid"><figure class="fig" id="f0025"><img src="../images/F000112f15-04-9780323912310.jpg" class="img" alt="image" width="1375" height="704"/><figcaption class="figleg"><a id="sp0025"></a><span class="fignum">图 15.4</span> (A 和 B) 两个不同根顶点的广度优先搜索结果的示例。每个顶点旁边的标签表示从根顶点出发的跳数（深度）。</figcaption></figure></div><p id="p0145" class="text">如果换一个顶点作为根，BFS 的结果会大不相同。<a href="#f0025">图 15.4(B)</a>展示了以顶点 2 为根的期望 BFS 结果。第 1 层的顶点是 5、6 和 7。第 2 层的顶点是 8（经顶点 6）和 0（经顶点 7）。只有顶点 1 位于第 3 层（经顶点 0）。最后，第 4 层的顶点是 3 和 4（都经顶点 1）。有趣的是，即使我们把根移动到了一个距原根仅一条边的顶点上，每个顶点的结果也大不相同。</p>
+<p id="p0150" class="text">我们可以把 BFS 的标记过程看作构建一棵以搜索根节点为根的 BFS 树。该树由所有已标记的顶点以及搜索过程中被遍历的那些边组成，这些边连接某一层的顶点与下一层的顶点。</p>
+<p id="p0155" class="text"><span id="page_337" aria-label="Page 337" epub:type="pagebreak" role="doc-pagebreak"></span>一旦我们给所有顶点都标上了层号，就可以轻松找到从根顶点到任意顶点的路径，所经过的边数等于层号。例如，在<a href="#f0025">图 15.4(B)</a>中，我们看到顶点 1 被标记为第 3 层，因此我们知道根（顶点 2）与顶点 1 之间的最少边数为 3。如果需要找出这条路径，我们只需从目标顶点出发，回溯到根即可。每一步，我们都选择层号比当前顶点小 1 的前驱。如果有多个前驱的层号相同，我们可以任选一个。如此选出的任意顶点都会给出一个合理的解。存在多个可选前驱这一事实，意味着该问题存在多个同样好的解。在我们的示例中，我们可以从顶点 1 出发，选择顶点 0，再选择顶点 7，然后选择顶点 2，从而找到从顶点 2 到顶点 1 的最短路径。因此，一条解路径为 2→7→0→1。当然，这假设每个顶点都有一份所有入边的源顶点列表，以便能够找到给定顶点的前驱。</p>
+<p id="p0160" class="text"><a href="#f0030">图 15.5</a> 展示了 BFS 在计算机辅助设计（CAD）中的一个重要应用。在设计集成电路芯片时，有许多电子元件需要连接起来才能完成设计。这些元件的连接点被称为网络端子。<a href="#f0030">图 15.5(A)</a>展示了两个这样的网络端子，用圆点表示；其中一个属于芯片左上部分的一个元件，另一个属于芯片右下部分的另一个元件。假设设计要求将这两个网络端子连接起来。这可以通过从第一个网络端子到第二个网络端子走线（布线）一根给定宽度的导线来完成。</p>
+<div class="pageavoid"><figure class="fig" id="f0030"><img src="../images/F000112f15-05-9780323912310.jpg" class="img" alt="image" width="1001" height="351"/><figcaption class="figleg"><a id="sp0030"></a><span class="fignum">图 15.5</span> 集成电路中的迷宫布线——广度优先搜索的一个应用：(A) 广度优先搜索，(B) 确定布线路径。</figcaption></figure></div><p id="p0165" class="text">布线软件将芯片表示为一个布线块网格，其中每个块都可能充当导线的一段。导线可以通过沿水平方向或垂直方向延伸来形成。例如，芯片下半部分的黑色 J 形由 21 个布线块组成，并连接三个网络端子。一旦某个布线块被用作导线的一部分，它就不能再被用作任何其他导线的一部分。此外，它还会对周围的布线块形成阻碍。不能有导线从已用块的下邻格延伸到它的上邻格，或从它的左邻格延伸到右邻格，等等。一旦一根导线成形，所有其他导线都必须绕开它布线。布线块也可能被电路元件占据，这些元件施加的阻碍约束与布线块被用作导线一部分时的约束相同。这就是该问题被称为迷宫布线问题的原因。先前形成的电路元件和导线为尚未形成的导线构成了一座迷宫。迷宫布线软件在考虑先前形成的元件和导线的所有约束的前提下，为每条新增的导线寻找一条路径。</p>
+<p id="p0170" class="text"><span id="page_338" aria-label="Page 338" epub:type="pagebreak" role="doc-pagebreak"></span>迷宫布线应用将芯片表示为一个图。布线块是顶点。从顶点 <em>i</em> 到顶点 <em>j</em> 的边表示可以将导线从块 <em>i</em> 延伸到块 <em>j</em>。一旦某个块被导线或元件占据，它要么被标记为阻塞顶点，要么从图中移除，具体取决于应用的设计。<a href="#f0030">图 15.5</a> 展示了该应用如何通过从根网络端子到目标网络端子的 BFS 来求解迷宫布线问题。具体做法是：从根顶点开始，把顶点按层标记。既非阻塞、又在垂直或水平方向上紧邻（共 4 个）的邻居被标记为第 1 层。我们看到，根顶点的全部 4 个邻居都是可达的，将被标记为第 1 层。第 1 层顶点的邻居中，既非阻塞又未被当前搜索访问过的，将被标记为第 2 层。读者应当验证，在<a href="#f0030">图 15.5(A)</a>中有 4 个第 1 层顶点、8 个第 2 层顶点、12 个第 3 层顶点，依此类推。可以看到，BFS 实质上为每一层形成了一个顶点的波前。这些波前在第 1 层时很小，但可能在几层之内迅速变得非常大。</p>
+<p id="p0175" class="text"><a href="#f0030">图 15.5(B)</a>展示了 BFS 完成后，我们可以通过找到一条从根到目标的最短路径来形成导线。如前所述，这可以通过从目标顶点出发，回溯到层号比当前顶点低 1 的前驱来实现。每当存在多个层号相同的前驱时，就会有长度相同的多条路径。我们可以设计启发式方法来选择前驱，以最大限度地降低尚未形成的导线所受约束的难度。</p></section><section><a id="s0020"></a><h2 class="h1hd" id="st0035">15.3 面向顶点的广度优先搜索并行化</h2><p id="p0180" class="textfl">并行化图算法的一种自然方式，是并行地对不同的顶点或边执行操作。事实上，图算法的许多并行实现都可以归类为面向顶点的或面向边的。面向顶点的并行实现将线程分配给顶点，每个线程对其顶点执行一个操作，这通常涉及遍历该顶点的邻居。根据算法的不同，所关心的邻居可能是通过出边、入边或两者可达的邻居。相比之下，面向边的并行实现将线程分配给边，每个线程对其边执行一个操作，这通常涉及查找该边的源顶点和目标顶点。本节将考察 BFS 的两种不同的面向顶点并行实现：一种遍历出边，另一种遍历入边。下一节将考察 BFS 的一种面向边的并行实现并进行比较。</p>
+<p id="p0185" class="text"><span id="page_339" aria-label="Page 339" epub:type="pagebreak" role="doc-pagebreak"></span>我们将考察的并行实现在逐层遍历上采用相同的策略。在所有实现中，我们首先将根顶点标记为属于第 0 层。然后调用一个核函数，将根顶点的所有邻居标记为属于第 1 层。之后，我们调用一个核函数，将第 1 层顶点的所有未访问邻居标记为属于第 2 层。接着我们调用一个核函数，将第 2 层顶点的所有未访问邻居标记为属于第 3 层。这个过程一直持续到没有新的顶点被访问并标记为止。</p>
+<p id="p0190" class="text">每一层都单独调用一个核函数的原因是，我们需要等待前一层中的所有顶点都被标记之后，才能继续标记下一层的顶点。否则，我们就有可能错误地标记某个顶点。本节其余部分将重点实现每一层所调用的核函数。也就是说，我们将实现一个 BFS 核函数：给定某一层，根据前几层顶点的标记，标记属于该层的所有顶点。</p>
+<p id="p0195" class="text">第一种面向顶点的并行实现将每个线程分配给一个顶点，以遍历该顶点的出边（<a href="#bib5" role="doc-biblioref" epub:type="biblioref" id="BIB_1">Harish and Narayanan, 2007</a>）。每个线程首先检查其顶点是否属于前一层。如果是，线程将遍历出边，把所有未访问的邻居标记为属于当前层。这种面向顶点的实现通常被称为<em>自顶向下</em>实现或<em>推送式实现</em>。<sup><a aria-label="noteref" href="#fn1" id="Cfn1">1</a></sup> 由于这种实现需要能够访问给定源顶点的出边（即邻接矩阵给定行中的非零元素），因此需要 CSR 表示。</p>
+<p id="p0200" class="text"><span id="page_340" aria-label="Page 340" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0035" href="#f0035">图 15.6</a> 展示了面向顶点的推送式实现的核函数代码，<a href="#f0040">图 15.7</a> 展示了该核函数如何从第 1 层（前一层）遍历到第 2 层（当前层）的示例。核函数首先为每个顶点分配一个线程（第 03 行），每个线程确保其顶点 id 在边界内（第 04 行）。接着，每个线程检查其顶点是否属于前一层（第 05 行）。在<a href="#f0040">图 15.7</a> 中，只有分配给顶点 1 和 2 的线程能通过这一检查。通过检查的线程随后将使用 CSR<span class="inlinecode">srcPtrs</span> 数组定位该顶点的出边并遍历它们（第 06–07 行）。对于每条出边，线程使用 CSR<span class="inlinecode">dst</span> 数组找到该边目标处的邻居（第 08 行）。然后线程通过检查该邻居是否已被分配层号来检查它是否未被访问（第 09 行）。</p>
+<div class="pageavoid"><figure class="fig" id="f0035"><img src="../images/F000112f15-06-9780323912310.jpg" class="img" alt="image" width="1366" height="503"/><figcaption class="figleg"><a id="sp0035"></a><span class="fignum"><a href="#Bf0035">图 15.6</a></span> 一个面向顶点的推送式（自顶向下）BFS 核函数。<em>BFS</em>，广度优先搜索。</figcaption></figure></div><div class="pageavoid"><figure class="fig" id="f0040"><img src="../images/F000112f15-07-9780323912310.jpg" class="img" alt="image" width="1298" height="736"/><figcaption class="figleg"><a id="sp0040"></a><span class="fignum">图 15.7</span> 一个从第 1 层到第 2 层的面向顶点的推送式 BFS 遍历示例。<em>BFS</em>，广度优先搜索。</figcaption></figure></div><p id="p0205" class="text">初始时，所有顶点的层号都设置为 <span class="inlinecode">UINT_MAX</span>，这表示该顶点不可达。因此，如果某个邻居的层号仍为 <span class="inlinecode">UINT_MAX</span>，则说明该邻居尚未被访问。如果邻居尚未被访问，线程将把该邻居标记为属于当前层（第 10 行）。最后，线程将设置一个标志，表示已访问了一个新顶点（第 11 行）。启动代码使用该标志来决定是否需要启动一个新网格来处理新的一层，还是已经到达了结束点。注意，多个线程可以同时把标志置为 1，代码仍然会正确执行。这一性质被称为<em>幂等性</em>。在这种幂等操作中，我们不需要原子操作，因为线程没有在执行读-改-写操作。所有线程写入相同的值，因此无论有多少线程执行写操作，结果都是相同的。</p>
+<p id="p0210" class="text"><span id="page_341" aria-label="Page 341" epub:type="pagebreak" role="doc-pagebreak"></span>第二种面向顶点的并行实现将每个线程分配给一个顶点，以遍历该顶点的入边。每个线程首先检查其顶点是否已被访问。如果没有，线程将遍历入边，以找出是否有任何邻居属于前一层。如果线程找到了属于前一层的邻居，它将把其顶点标记为属于当前层。这种面向顶点的实现通常被称为<em>自底向上</em>实现或<em>拉取式实现</em>。<sup><a aria-label="noteref" href="#fn2" id="Cfn2">2</a></sup> 由于这种实现需要能够访问给定目标顶点的入边（即邻接矩阵给定列中的非零元素），因此需要 CSC 表示。</p>
+<p id="p0215" class="text"><span id="page_342" aria-label="Page 342" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0045" href="#f0045">图 15.8</a> 展示了面向顶点的拉取式实现的核函数代码，<a href="#f0050">图 15.9</a> 展示了该核函数如何从第 1 层遍历到第 2 层的示例。核函数首先为每个顶点分配一个线程（第 03 行），每个线程确保其顶点 id 在边界内（第 04 行）。接着，每个线程检查其顶点是否尚未被访问（第 05 行）。在<a href="#f0050">图 15.9</a> 中，分配给顶点 3–8 的线程都通过了这一检查。通过检查的线程随后将使用 CSC<span class="inlinecode">dstPtrs</span> 数组定位该顶点的入边并遍历它们（第 06–07 行）。对于每条入边，线程使用 CSC<span class="inlinecode">src</span> 数组找到该边源处的邻居（第 08 行）。然后线程检查该邻居是否属于前一层（第 09 行）。如果是，线程将把其顶点标记为属于当前层（第 10 行），并设置一个标志，表示已访问了一个新顶点（第 11 行）。线程还将跳出循环（第 12 行）。</p>
+<div class="pageavoid"><figure class="fig" id="f0045"><img src="../images/F000112f15-08-9780323912310.jpg" class="img" alt="image" width="1365" height="551"/><figcaption class="figleg"><a id="sp0045"></a><span class="fignum"><a href="#Bf0045">图 15.8</a></span> 一个面向顶点的拉取式（自底向上）BFS 核函数。<em>BFS</em>，广度优先搜索。</figcaption></figure></div><div class="pageavoid"><figure class="fig" id="f0050"><img src="../images/F000112f15-09-9780323912310.jpg" class="img" alt="image" width="1299" height="737"/><figcaption class="figleg"><a id="sp0050"></a><span class="fignum">图 15.9</span> 一个从第 1 层到第 2 层的面向顶点的拉取式（自底向上）遍历示例。</figcaption></figure></div><p id="p0220" class="text">跳出循环的理由如下。要使一个线程确认其顶点位于当前层，只需该线程的顶点在前一层中有一个邻居即可。因此，该线程没有必要检查其余邻居。只有其顶点在前一层中没有任何邻居的线程，才会遍历完整的邻居列表。在<a href="#f0050">图 15.9</a> 中，只有分配给顶点 8 的线程会不跳出而遍历整个邻居列表。</p>
+<p id="p0225" class="text">在比较面向顶点的推送式并行实现与拉取式并行实现时，有两个对性能有重要影响的关键差异需要考虑。第一个差异是，在推送式实现中，线程会遍历其顶点的整个邻居列表；而在拉取式实现中，线程可能会提前跳出循环。对于度数低且方差小的图，如道路网络或 CAD 电路模型，这一差异可能并不重要，因为邻居列表很小且大小相近。然而，对于度数高且方差大的图，如社交网络，邻居列表很长且大小可能差异很大，从而导致线程间严重的负载不均衡和控制发散。因此，提前跳出循环可以通过减少负载不均衡和控制发散来带来显著的性能提升。</p>
+<p id="p0230" class="text">这两种实现之间的第二个重要差异是，在推送式实现中，只有分配给前一层的顶点的线程才会遍历其邻居列表；而在拉取式实现中，所有分配给任意未访问顶点的线程都会遍历其邻居列表。对于较早的层，我们预期每层只有相对较少的顶点，而图中未访问的顶点很多。因此，对于较早的层，推送式实现通常表现更好，因为它遍历的邻居列表更少。相比之下，对于较晚的层，我们预期每层有更多顶点，而图中未访问的顶点更少。此外，在拉取式方法中，找到已访问邻居并提前退出循环的几率更高。因此，对于较晚的层，拉取式实现通常表现更好。</p>
+<p id="p0235" class="text"><span id="page_343" aria-label="Page 343" epub:type="pagebreak" role="doc-pagebreak"></span>基于这一观察，一种常见的优化是：在较早的层使用推送式实现，然后在较晚的层切换到拉取式实现。这种方法通常被称为<em>方向优化的</em>实现。何时在实现之间切换通常取决于图的类型。低度数的图通常层数很多，需要一段时间才能到达各层拥有许多顶点、且相当数量的顶点已被访问的时刻。另一方面，高度数的图通常层数很少，而且各层增长非常快。只需很少的层数就能从任意顶点到达任意其他顶点的这种高度数图，通常被称为<em>小世界图</em>。由于这些性质，对于高度数的图，从推送式实现切换到拉取式实现通常比低度数的图早得多。</p>
+<p id="p0240" class="text">回想一下，推送式实现使用图的 CSR 表示，而拉取式实现使用图的 CSC 表示。因此，如果要使用方向优化的实现，就需要同时存储图的 CSR 和 CSC 表示。在许多应用中，如社交网络或迷宫布线，图是无向的，这意味着邻接矩阵是对称的。在这种情况下，CSR 和 CSC 表示是等价的，因此只需存储其中一种，两种实现都可以使用。</p></section><section><a id="s0025"></a><h2 class="h1hd" id="st0040">15.4 面向边的广度优先搜索并行化</h2><p id="p0245" class="textfl">本节将考察 BFS 的一种面向边的并行实现。在这种实现中，每个线程被分配给一条边。它检查该边的源顶点是否属于前一层，以及该边的目标顶点是否未被访问。如果是，它就把这个未访问的目标顶点标记为属于当前层。由于这种实现需要能够访问给定边的源顶点和目标顶点（即给定非零元素的行索引和列索引），因此需要 COO 数据结构。</p>
+<p id="p0250" class="text"><span id="page_344" aria-label="Page 344" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0055" href="#f0055">图 15.10</a> 展示了面向边的并行实现的核函数代码，<a href="#f0060">图 15.11</a> 展示了该核函数如何从第 1 层遍历到第 2 层的示例。核函数首先为每条边分配一个线程（第 03 行），每个线程确保其边 id 在边界内（第 04 行）。接着，每个线程使用 COO<span class="inlinecode">src</span> 数组找到其边的源顶点（第 05 行），并检查该顶点是否属于前一层（第 06 行）。在<a href="#f0060">图 15.11</a> 中，只有分配给顶点 1 和 2 的出边的线程能通过这一检查。通过检查的线程将使用 COO<span class="inlinecode">dst</span> 数组定位该边目标处的邻居（第 07 行），并检查该邻居是否未被访问（第 08 行）。如果未访问，线程将把该邻居标记为属于当前层（第 09 行）。最后，线程将设置一个标志，表示已访问了一个新顶点（第 10 行）。</p>
+<div class="pageavoid"><figure class="fig" id="f0055"><img src="../images/F000112f15-10-9780323912310.jpg" class="img" alt="image" width="1324" height="426"/><figcaption class="figleg"><a id="sp0055"></a><span class="fignum"><a href="#Bf0055">图 15.10</a></span> 一个面向边的 BFS 核函数。<em>BFS</em>，广度优先搜索。</figcaption></figure></div><div class="pageavoid"><figure class="fig" id="f0060"><img src="../images/F000112f15-11-9780323912310.jpg" class="img" alt="image" width="1298" height="715"/><figcaption class="figleg"><a id="sp0060"></a><span class="fignum">图 15.11</span> 一个从第 1 层到第 2 层的面向边的遍历示例。</figcaption></figure></div><p id="p0255" class="text">面向边的并行实现相对于面向顶点的并行实现有两个主要优势。第一个优势是，面向边的实现暴露了更多的并行性。在面向顶点的实现中，如果顶点数量很少，我们可能无法启动足够的线程来完全占满设备。由于图的边数通常远多于顶点数，面向边的实现可以启动更多的线程。因此，面向边的实现通常更适合小图。</p>
+<p id="p0260" class="text">面向边的实现相对于面向顶点的实现的第二个优势是，它表现出更少的负载不均衡和控制发散。在面向顶点的实现中，每个线程遍历不同数量的边，具体取决于其被分配到的顶点的度数。相比之下，在面向边的实现中，每个线程只遍历一条边。相对于面向顶点的实现，面向边的实现是重新排列线程到工作或数据的映射以减少控制发散的一个例子，正如<a href="Ch006_123-147_B9780323912310000161.html#Ch006_123-147_B9780323912310000161">第 6 章</a>“性能考量”中所讨论的那样。面向边的实现通常更适合顶点度数差异很大的高度数图。</p>
+<p id="p0265" class="text"><span id="page_345" aria-label="Page 345" epub:type="pagebreak" role="doc-pagebreak"></span>面向边的实现的缺点是它会检查图中的每一条边。相比之下，面向顶点的实现如果确定某个顶点与该层无关，就可以跳过整个边列表。例如，考虑这样一种情况：某个顶点 <em>v</em> 有 <em>n</em> 条边，并且与某一层无关。在面向边的实现中，我们的启动包含 <em>n</em> 个线程，每条边一个，每个这样的线程都独立地检查 <em>v</em>，并发现该边无关紧要。相比之下，在面向顶点的实现中，我们的启动只为 <em>v</em> 分配一个线程，该线程在检查 <em>v</em> 一次以确定其无关紧要后，会跳过所有 <em>n</em> 条边。面向边的实现的另一个缺点是它使用 COO，与面向顶点的实现所使用的 CSR 和 CSC 相比，COO 需要更多的存储空间来存储边。</p>
+<p id="p0270" class="text">读者可能已经注意到，上一节和本节中的代码示例与我们<a href="Ch014_311-329_B9780323912310000100.html#Ch014_311-329_B9780323912310000100">第 14 章</a>“稀疏矩阵计算”中的稀疏矩阵-向量乘法（SpMV）实现类似。事实上，通过稍作不同的表述，我们可以将一次 BFS 层级迭代完全表达为 SpMV 加上少量其他向量运算，其中 SpMV 是主要运算。除了 BFS，许多其他图计算也可以用邻接矩阵以稀疏矩阵运算的形式来表达（<a href="#bib2" role="doc-biblioref" epub:type="biblioref" id="BIB_2">Jeremy and Gilbert, 2011</a>）。这种表述通常被称为图问题的<em>线性代数表述</em>，是一个名为 GraphBLAS 的 API 规范的核心。线性代数表述的优势在于，它们可以利用成熟且高度优化的并行稀疏线性代数库来执行图计算。线性代数表述的缺点在于，它们可能会错失利用特定图算法性质的优化机会。</p></section><section><a id="s0030"></a><h2 class="h1hd" id="st0045">15.5 利用前沿提升效率</h2><p id="p0275" class="textfl">在前两节讨论的方法中，我们在每次迭代中都检查每个顶点或每条边与当前层是否相关。这种策略的优势在于核函数高度并行，不需要线程之间的任何同步。缺点在于启动了大量不必要的线程，并执行了大量浪费的工作。例如，在面向顶点的实现中，我们为图中的每个顶点启动一个线程，其中许多线程只是发现该顶点无关紧要，什么工作也不做。类似地，在面向边的实现中，我们为图中的每条边启动一个线程；许多线程只是发现该边无关紧要，没有执行任何有用的工作。</p>
+<p id="p0280" class="text"><span id="page_346" aria-label="Page 346" epub:type="pagebreak" role="doc-pagebreak"></span>本节的目标是避免启动不必要的线程，并消除它们在每次迭代中执行的冗余检查。我们将重点讨论<a href="#s0020">第 15.3 节</a>中介绍的面向顶点的推送式方法。回想一下，在面向顶点的推送式方法中，每一层都会为图中的每个顶点启动一个线程。该线程检查其顶点是否位于前一层，如果是，就把该顶点的所有未访问邻居标记为属于当前层。另一方面，其顶点不在当前层的线程什么也不做。理想情况下，这些线程甚至不应该被启动。为了避免启动这些线程，我们可以让处理前一层顶点的线程协作构建一个它们所访问顶点的<em>前沿</em>（<a href="#bib3" role="doc-biblioref" epub:type="biblioref" id="BIB_3">Luo et al., 2010</a>）。因此，对于当前层，只需要为前沿中的顶点启动线程。</p>
+<p id="p0285" class="text"><a href="#f0065">图 15.12</a> 展示了使用前沿的面向顶点的推送式实现的核函数代码，<a href="#f0070">图 15.13</a> 展示了该核函数如何从第 1 层遍历到第 2 层的示例。与前一种方法的一个关键区别是，核函数带有额外的参数来表示前沿。这些额外参数包括用于分别存储前一个和当前前沿中顶点的数组 <span class="inlinecode">prevFrontier</span> 和 <span class="inlinecode">currFrontier</span>，以及指向计数器 <span class="inlinecode">numPrevFrontier</span> 和 <span class="inlinecode">numCurrFrontier</span> 的指针，这两个计数器分别存储每个前沿中的顶点数。注意，表示已访问新顶点的标志不再需要了。相反，当当前前沿中的顶点数为 0 时，主机就可以判断已经到达结束点。</p>
+<div class="pageavoid"><figure class="fig" id="f0065"><img src="../images/F000112f15-12-9780323912310.jpg" class="img" alt="image" width="1364" height="535"/><figcaption class="figleg"><a id="sp0065"></a><span class="fignum">图 15.12</span> 一个带前沿的面向顶点的推送式（自顶向下）BFS 核函数。<em>BFS</em>，广度优先搜索。</figcaption></figure></div><div class="pageavoid"><figure class="fig" id="f0070"><img src="../images/F000112f15-13-9780323912310.jpg" class="img" alt="image" width="1199" height="914"/><figcaption class="figleg"><a id="sp0070"></a><span class="fignum">图 15.13</span> 一个带前沿的从第 1 层到第 2 层的面向顶点的推送式（自顶向下）BFS 遍历示例。<em>BFS</em>，广度优先搜索。</figcaption></figure></div><p id="p0290" class="text"><span id="page_347" aria-label="Page 347" epub:type="pagebreak" role="doc-pagebreak"></span>现在我们来看<a href="#f0065">图 15.12</a> 中核函数的函数体。核函数首先为前一个前沿的每个元素分配一个线程（第 05 行），每个线程确保其元素 id 在边界内（第 06 行）。在<a href="#f0070">图 15.13</a> 中，只有顶点 1 和 2 位于前一个前沿中，因此只启动了 2 个线程。每个线程从前一个前沿加载其元素，其中包含它所处理的顶点的索引（第 07 行）。线程使用 CSR<span class="inlinecode">srcPtrs</span> 数组定位该顶点的出边并遍历它们（第 08–09 行）。对于每条出边，线程使用 CSR<span class="inlinecode">dst</span> 数组找到该边目标处的邻居（第 10 行）。然后线程检查该邻居是否未被访问；如果未访问，它就把该邻居标记为属于当前层（第 11 行）。与前一种实现的一个重要区别是，这里使用原子操作来执行检查和标记操作。原因稍后解释。如果线程成功标记了该邻居，它必须将该邻居加入当前前沿。为此，线程递增当前前沿的大小（第 12 行），并将该邻居添加到相应的位置（第 13 行）。当前前沿的大小需要原子递增（第 12 行），因为可能有多个线程同时递增它，所以我们需要确保不发生竞态条件。</p>
+<p id="p0295" class="text"><span id="page_348" aria-label="Page 348" epub:type="pagebreak" role="doc-pagebreak"></span>现在我们来看第 11 行的原子操作。当一个线程遍历其顶点的邻居时，它会检查该邻居是否已被访问；如果未访问，就把该邻居标记为属于当前层。在<a href="#f0065">图 15.12</a> 中不带前沿的面向顶点的推送式核函数里，这种检查和标记操作无需原子操作即可执行（第 09–10 行）。在该实现中，如果多个线程在任何一个线程来得及标记某个未访问邻居之前检查了该邻居的旧标记，那么多个线程最终都可能标记该邻居。由于所有线程都用相同的标记来标记该邻居（该操作是幂等的），允许线程重复标记该邻居是可以的。相比之下，在<a href="#f0065">图 15.12</a> 的基于前沿的实现中，每个线程不仅要标记未访问的邻居，还要把它加入前沿。因此，如果多个线程都观察到该邻居未被访问，它们都会把该邻居加入前沿，导致该邻居被重复加入。如果该邻居被重复加入前沿，它在下一层会被处理多次，这是冗余且浪费的。</p>
+<p id="p0300" class="text">为了避免多个线程观察到该邻居未被访问，对邻居标记的检查和更新必须以原子方式执行。换句话说，我们必须在一个原子操作中完成：检查该邻居是否未被访问，如果未访问，就把它标记为当前层的一部分。<em>比较并交换</em>就是一种能够完成所有这些步骤的原子操作，它由 <span class="inlinecode">atomicCAS</span> 内建函数提供。该函数接受三个参数：内存中数据的地址、我们希望与数据进行比较的值，以及如果比较成功我们希望将数据设置成的值。在我们的例子中（第 11 行），我们希望将 <span class="inlinecode">level[neighbor]</span>与 <span class="inlinecode">UINT_MAX</span> 进行比较，以检查邻居是否未被访问，如果比较成功，则将 <span class="inlinecode">level[neighbor]</span>设置为 <span class="inlinecode">currLevel</span>。与其他原子操作一样，<span class="inlinecode">atomicCAS</span> 返回所存储数据的旧值。因此，我们可以通过将 <span class="inlinecode">atomicCAS</span> 的返回值与 <span class="inlinecode">atomicCAS</span> 所比较的值（本例中为 <span class="inlinecode">UINT_MAX</span>）进行比较，来检查比较并交换操作是否成功。</p>
+<p id="p0305" class="text">如前所述，这种基于前沿的方法相对于上一节所述方法的优势在于，它通过只启动线程来处理相关顶点来减少冗余工作。这种基于前沿的方法的缺点是长延迟原子操作的开销，尤其是当这些操作竞争同一数据时。对于 <span class="inlinecode">atomicCAS</span> 操作（第 11 行），我们预期竞争程度适中，因为只有部分线程（而非全部线程）会访问同一个未访问的邻居。然而，对于 <span class="inlinecode">atomicAdd</span> 操作（第 12 行），我们预期竞争会很激烈，因为所有线程都会递增同一个计数器，以把顶点加入同一个前沿。下一节我们将考察如何减少这种竞争。</p></section><section><a id="s0035"></a><h2 class="h1hd" id="st0050">15.6 利用私有化减少竞争</h2><p id="p0310" class="textfl">回想一下<a href="Ch006_123-147_B9780323912310000161.html#Ch006_123-147_B9780323912310000161">第 6 章</a>“性能考量”中所述，可以用于减少同一数据上的原子操作竞争的一种优化是私有化。私有化通过对数据的私有副本进行部分更新，然后在完成时更新公共副本，从而减少原子操作的竞争。我们在<a href="Ch009_191-210_B978032391231000015X.html#Ch009_191-210_B978032391231000015X">第 9 章</a>“并行直方图”的直方图模式中看到过私有化的一个例子：同一线程块中的线程更新该块私有的局部直方图，然后在结束时更新公共直方图。</p>
+<p id="p0315" class="text"><span id="page_349" aria-label="Page 349" epub:type="pagebreak" role="doc-pagebreak"></span>私有化也可以应用于并发前沿更新的场景（对 <span class="inlinecode">numCurrFrontier</span> 的递增），以减少插入前沿时的竞争。我们可以让每个线程块在整个计算过程中维护自己的局部前沿，并在完成时更新公共前沿。这样，线程只会与同一线程块中的其他线程竞争同一数据。此外，局部前沿及其计数器可以存储在共享内存中，从而可以在计数器上执行延迟更低的原子操作，并写入局部前沿。更进一步，当共享内存中的局部前沿被写入全局内存中的公共前沿时，这些访问可以是合并的。</p>
+<p id="p0320" class="text"><span id="page_350" aria-label="Page 350" epub:type="pagebreak" role="doc-pagebreak"></span><a id="Bf0075" href="#f0075">图 15.14</a> 展示了使用私有化前沿的面向顶点的推送式实现的核函数代码，<a id="Bf0080" href="#f0080">图 15.15</a> 展示了前沿的私有化。核函数首先在共享内存中为每个线程块声明一个私有前沿（第 07–08 行）。线程块中的一个线程将前沿的计数器初始化为 0（第 09–11 行），线程块中的所有线程在<span class="inlinecode">__syncthreads</span> 屏障处等待初始化完成，然后再开始使用该计数器（第 12 行）。代码的下一部分与前一版本类似：每个线程从前沿加载其顶点（第 17 行），遍历其出边（第 18–19 行），找到该边目标处的邻居（第 20 行），并原子地检查该邻居是否未被访问，如果未访问则访问它（第 21 行）。</p>
+<div class="pageavoid"><figure class="fig" id="f0075"><img src="../images/F000112f15-14-9780323912310.jpg" class="img" alt="image" width="1374" height="1371"/><figcaption class="figleg"><a id="sp0075"></a><span class="fignum"><a href="#Bf0075">图 15.14</a></span> 一个对前沿进行私有化的面向顶点的推送式（自顶向下）BFS 核函数。<em>BFS</em>，广度优先搜索。</figcaption></figure></div><div class="pageavoid"><figure class="fig" id="f0080"><img src="../images/F000112f15-15-9780323912310.jpg" class="img" alt="image" width="1375" height="659"/><figcaption class="figleg"><a id="sp0080"></a><span class="fignum"><a href="#Bf0080">图 15.15</a></span> 前沿私有化示例。</figcaption></figure></div><p id="p0325" class="text">如果线程成功访问了该邻居，即该邻居未被访问，它就把该邻居加入局部前沿。线程首先原子递增局部前沿计数器（第 22 行）。如果局部前沿未满（第 23 行），线程就把该邻居加入局部前沿（第 24 行）。否则，如果局部前沿已溢出，线程就恢复局部计数器的值（第 26 行），并通过原子递增全局计数器（第 27 行）和将邻居存储在相应位置（第 28 行）的方式，把该邻居加入全局前沿。</p>
+<p id="p0330" class="text">一个线程块中的所有线程遍历完其顶点的邻居后，需要把私有化的局部前沿存储到全局前沿。首先，线程相互等待彼此完成，以确保不再有邻居被加入局部前沿（第 33 行）。接着，线程块中的一个线程代表其他线程，为局部前沿中的所有元素在全局前沿中分配空间（第 36–39 行），而所有线程都在等待它（第 40 行）。最后，线程遍历局部前沿中的顶点（第 43–44 行），并将它们存储到公共前沿中（第 45–46 行）。注意，公共前沿的索引 <span class="inlinecode">currFrontierIdx</span> 用 <span class="inlinecode">currFrontierIdx_s</span> 表示，而后者用 <span class="inlinecode">threadIdx.x</span> 表示。因此，线程索引值连续的线程会存储到连续的全局内存位置，这意味着这些存储是合并的。</p></section><section><a id="s0040"></a><h2 class="h1hd" id="st0055">15.7 其他优化</h2><section><a id="s0045"></a>
+<h3 class="h2after1" id="st0060">减少启动开销</h3><p id="p0335" class="textfl"><span id="page_351" aria-label="Page 351" epub:type="pagebreak" role="doc-pagebreak"></span>在大多数图中，BFS 最初几次迭代的前沿可能相当小。第一次迭代的前沿只有源顶点的邻居。下一次迭代的前沿是当前前沿顶点的所有未访问邻居。在某些情况下，最后几次迭代的前沿也可能很小。对于这些迭代，终止一个网格并启动一个新网格的开销可能超过并行的收益。处理这些小前沿迭代的一种方法是准备另一个核函数，它只使用一个线程块，但可以连续执行多次迭代。该核函数只使用一个局部的线程块级前沿，并使用<span class="inlinecode">__syncthreads()</span>在层与层之间对所有线程进行同步。</p>
+<p id="p0340" class="text"><a id="Bf0085" href="#f0085">图 15.16</a> 展示了这一优化。在本例中，第 0 层和第 1 层都可以由单个线程块处理。我们不为第 0 层和第 1 层分别启动一个网格，而是启动一个单线程块网格，并使用<span class="inlinecode">__syncthreads()</span>在各层之间进行同步。一旦前沿的大小超过了线程块级前沿的容量，线程块中的线程就会把线程块级前沿的内容复制到全局前沿，然后返回到主机代码。随后，主机代码在后续各层的迭代中调用常规核函数，直到前沿再次变小。因此，单线程块核函数消除了小前沿迭代的启动开销。我们将它的实现留作读者的练习。</p>
+<div class="pageavoid"><figure class="fig" id="f0085"><img src="../images/F000112f15-16-9780323912310.jpg" class="img" alt="image" width="1374" height="887"/><figcaption class="figleg"><a id="sp0085"></a><span class="fignum"><a href="#Bf0085">图 15.16</a></span> 在单个网格中执行多个层以处理小前沿的层：(A) 为每一层启动一个新网格，(B) 在单个网格中执行连续的小层。</figcaption></figure></div></section><section><a id="s0050"></a><h3 class="h2hd" id="st0065">改善负载均衡</h3><p id="p0345" class="textfl"><span id="page_352" aria-label="Page 352" epub:type="pagebreak" role="doc-pagebreak"></span>回想一下，在面向顶点的实现中，每个线程要完成的工作量取决于分配给它的顶点的连通性。在某些图中，如社交网络图，一些顶点（名人）的度数可能比其他顶点高出几个数量级。发生这种情况时，一个或少数几个线程可能耗时过长，拖慢整个网格的执行。我们已经看到解决这个问题的一种方法，即改用面向边的并行实现。另一种可能解决这个问题的方法，是根据前沿中顶点的度数把它们排序到<em>桶</em>中，并在单独的核函数中，用规模合适的一组处理器处理每个桶。一个值得注意的实现（<a href="#bib4" role="doc-biblioref" epub:type="biblioref" id="BIB_4">Merrill and Garland, 2012</a>）为小、中、大度数的顶点使用了三个不同的桶。处理小桶的核函数把每个顶点分配给单个线程；处理中桶的核函数把每个顶点分配给单个线程束；处理大桶的核函数把每个顶点分配给整个线程块。这种技术对于顶点度数差异很大的图尤其有用。</p></section><section><a id="s0055"></a><h3 class="h2hd" id="st0070">进一步的挑战</h3><p id="p0350" class="textfl">虽然 BFS 是最简单的图应用之一，但它体现了更复杂应用所特有的挑战：为提取并行性而进行的问题分解、利用私有化、实现细粒度负载均衡，以及确保正确的同步。图计算适用于广泛的有趣问题，特别是在推荐、社区发现、在图内寻找模式以及识别异常等领域。一个重大挑战是处理规模超过 GPU 内存容量的图。另一个有趣的机会是在开始计算之前，把图预处理成其他格式，以便暴露更多的并行性或局部性，或为负载均衡提供便利。</p></section></section><section><a id="s0060"></a><h2 class="h1hd" id="st0075">15.8 小结</h2><p id="p0355" class="textfl"><span id="page_353" aria-label="Page 353" epub:type="pagebreak" role="doc-pagebreak"></span>在本章中，我们以广度优先搜索为例，看到了并行化图计算所面临的挑战。我们从图表示的简要介绍开始。我们讨论了面向顶点的并行实现与面向边的并行实现之间的差异，并观察了它们之间的权衡。我们还看到了如何使用前沿来消除冗余工作，以及如何通过私有化来优化前沿的使用。我们还简要讨论了减少同步开销和改善负载均衡的其他高级优化。</p></section><section><a id="s0065"></a><h2 class="h1hd" id="st0080">习题</h2><a id="p0360"></a><a id="li0020"></a><div><ol>
+<li class="numlista" id="o0050"><a id="p0365"></a><a id="li0025"></a>1. 考虑如下有向无权图：<div class="pageavoid"><figure class="fig" id="f0090"><img src="../images/F000112u15-01-9780323912310.jpg" class="img" alt="image" width="499" height="1384"/></figure></div><ol>
+<li class="numlist1a" id="o0055"><a id="p0370"></a>a. 用邻接矩阵表示该图。</li>
+<li class="numlist1a" id="o0060"><a id="p0375"></a>b. 用 CSR 格式表示该图。每个顶点的邻居列表必须有序。</li>
+<li class="numlist1a" id="o0065"><a id="p0380"></a><a id="li0030"></a>c. 在该图上从顶点 0 开始执行并行 BFS（即顶点 0 位于第 0 层）。对于 BFS 遍历的每次迭代：<ol>
+<li class="numlist2a" id="o0070"><a id="p0385"></a><a id="li0035"></a>i. 如果使用面向顶点的推送式实现：<ol>
+<li class="numlist3a" id="o0075"><a id="p0390"></a>1. 启动了多少个线程？</li>
+<li class="numlist3a" id="o0080"><a id="p0395"></a>2. 有多少个线程遍历其顶点的邻居？</li>
+</ol></li>
+<li class="numlist2a" id="o0085"><a id="p0400"></a><a id="li0040"></a>ii. 如果使用面向顶点的拉取式实现：<ol>
+<li class="numlist3a" id="o0090"><a id="p0405"></a><span id="page_354" aria-label="Page 354" epub:type="pagebreak" role="doc-pagebreak"></span>1. 启动了多少个线程？</li>
+<li class="numlist3a" id="o0095"><a id="p0410"></a>2. 有多少个线程遍历其顶点的邻居？</li>
+<li class="numlist3a" id="o0100"><a id="p0415"></a>3. 有多少个线程标记其顶点？</li>
+</ol></li>
+<li class="numlist2a" id="o0105"><a id="p0420"></a><a id="li0045"></a>iii. 如果使用面向边的实现：<ol>
+<li class="numlist3a" id="o0110"><a id="p0425"></a>1. 启动了多少个线程？</li>
+<li class="numlist3a" id="o0115"><a id="p0430"></a>2. 有多少个线程可能标记某个顶点？</li>
+</ol></li>
+<li class="numlist2a" id="o0120"><a id="p0435"></a><a id="li0050"></a>iv. 如果使用基于前沿的面向顶点的推送式实现：<ol>
+<li class="numlist3a" id="o0125"><a id="p0440"></a>1. 启动了多少个线程？</li>
+<li class="numlist3a" id="o0130"><a id="p0445"></a>2. 有多少个线程遍历其顶点的邻居？</li>
+</ol></li>
+</ol></li>
+</ol></li>
+<li class="numlista" id="o0135"><a id="p0450"></a>2. 为<a href="#s0020">第 15.3 节</a>所述的方向优化的 BFS 实现编写主机代码。</li>
+<li class="numlista" id="o0140"><a id="p0455"></a>3. 实现<a href="#s0040">第 15.7 节</a>所述的单线程块 BFS 核函数。</li>
+</ol>
+</div>
+</section><footer><section aria-label="bibliography"><a id="bibliog0010"></a><h2 class="reftitle" id="st0085">参考文献</h2><section><p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib5"><a aria-label="noteref" href="#BIB_1">Harish, and Narayanan, 2007</a> Harish, P., Narayanan, P.J., 2007. Accelerating large graph algorithms on the GPU using CUDA. In: International Conference on High-Performance Computing (HiPC), India.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib2"><a aria-label="noteref" href="#BIB_2">Jeremy, and Gilbert, 2011</a> Jeremy, K., Gilbert, J. (Eds.), 2011. Graph Algorithms in the Language of Linear Algebra. Society for Industrial and Applied Mathematics.</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib3"><a aria-label="noteref" href="#BIB_3">Luo, et al., 2010</a> Luo, L., Wong, M., Hwu, W., 2010. An effective GPU implementation of breadth-first search. In: ACM/IEEE Design Automation Conference (DAC).</p>
+<p class="reflist3" role="doc-biblioentry" epub:type="biblioentry footnote" id="bib4"><a aria-label="noteref" href="#BIB_4">Merrill, and Garland, 2012</a> Merrill, D., Garland, M., 2012. Scalable GPU graph traversal. In: Proceedings of the 17th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming (PPoPP).</p></section></section><section epub:type="rearnotes">
+<div class="ftnote"><hr/>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn1"><a id="ntp0015"></a><a href="#Cfn1"><sup>1</sup></a> 如果我们在构建一棵 BFS 树，这种实现可以看作是把线程分配给 BFS 树中的父顶点，让它们寻找自己的子顶点，因此得名<em>自顶向下</em>。这一术语假定树的根在顶部，树的叶子在底部。<em>推送（Push）</em>指的是每个活跃顶点通过其出边，把它的深度推送给所有邻居的动作。</p>
+<p class="ftnote1" role="doc-footnote" epub:type="footnote" id="fn2"><a id="ntp0020"></a><a href="#Cfn2"><sup>2</sup></a> 如果我们在构建一棵 BFS 树，这种实现可以看作是把线程分配给 BFS 树中潜在的子顶点，让它们寻找自己的父顶点，因此得名<em>自底向上</em>。<em>拉取（Pull）</em>指的是每个顶点回头够到其前驱、并从它们那里拉取活跃状态的动作。</p>
+</div></section></footer></section>
+</div></div><script src="../topnav.js"></script>
+</body></html>
