@@ -1,0 +1,15 @@
+# Test configuration for the web-i18n rendering engine.
+#
+# This is the project's testing precedent: every check of build_i18n runs
+# through a single interface, `pytest`, and every test drives the public
+# render(page_html, translations) seam rather than the extraction or injection
+# internals.  Run the suite from anywhere with:
+#
+#     pytest
+#
+# (pytest 7+ reads these options; `pythonpath` below keeps `build_i18n` and the
+# `support` helpers importable without any activation step.)
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"

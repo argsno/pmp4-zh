@@ -92,6 +92,8 @@ def test_nested_inline_markup_is_rebuilt():
     pytest.param(lambda en, o, c: f"{o}共享内存加速矩阵乘法。", id="unclosed"),
     pytest.param(lambda en, o, c: f"{c}共享内存{o}加速矩阵乘法。", id="inverted"),
     pytest.param(lambda en, o, c: f"{o}共享内存{c}加速【M7】矩阵乘法。", id="invented-atom"),
+    pytest.param(lambda en, o, c: f"{o}共享内存{c}加速【2】矩阵乘法【/2】"
+                 "和【3】并行【/3】。", id="inserted"),
 ])
 def test_broken_placeholders_are_a_violation_and_no_page_is_written(mangle):
     page = make_page(INLINE_BODY)
