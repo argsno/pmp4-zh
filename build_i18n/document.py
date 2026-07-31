@@ -79,13 +79,25 @@ class Document:
     def close_tag(self, el):
         return self.src[el.content_end:el.end]
 
-    def text(self, el):
-        """Every character of the element's rendered text, markup removed."""
+    def header(self):
+        """The navigation the site builder injects — never content."""
+        return self.find("header", "topnav")
+
+    def text(self, el, descend=None):
+        """The element's text with markup removed.
+
+        `descend` decides which children contribute their own text; a child it
+        rejects contributes nothing at all.  That single knob is the difference
+        between "all the text there is" and the narrower questions the engine
+        asks: text outside code and formulae, text that is this node's own
+        rather than a nested node's.
+        """
         out = []
         pos = el.content_start
         for child in el.children:
             out.append(self.src[pos:child.start])
-            out.append(self.text(child))
+            if descend is None or descend(child):
+                out.append(self.text(child, descend))
             pos = child.end
         out.append(self.src[pos:el.content_end])
         return "".join(out)

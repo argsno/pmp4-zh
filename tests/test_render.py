@@ -204,6 +204,21 @@ def test_bilingual_doubles_prose_but_not_code_or_references():
     assert count(bilingual, "<math>") == 1
 
 
+def test_a_formula_inside_a_sentence_is_doubled_with_that_sentence():
+    """A standalone listing or display formula is shown once; one sitting
+    inside a sentence belongs to the sentence, and a Chinese sentence with a
+    hole where its formula was is not a translation.
+    """
+    body = ('<p id="p1">The loss <math><mi>L</mi></math> is minimized.</p>'
+            '<pre id="pre1">float *A_d</pre>')
+    _, result = rendered(body,
+                         {"The loss 【M1】 is minimized.": "损失 【M1】 被最小化。"})
+
+    assert count(result.bilingual_html, "<math>") == 2
+    assert count(result.bilingual_html, r"float \*A_d") == 1
+    assert count(result.zh_html, "<math>") == 1
+
+
 def test_bilingual_headings_come_out_as_two_lines():
     _, result = rendered('<h1 id="t1">Introduction</h1>', {"Introduction": "引言"})
 
@@ -283,11 +298,21 @@ def test_missing_or_copied_translations_are_a_violation(zh):
 
 
 def test_short_labels_may_legitimately_stay_in_english():
-    body = '<table><tr><th id="h1">N</th><th id="h2">GB/s</th></tr></table>'
+    body = ('<table><tr><th id="h1">N</th><th id="h2">GB/s</th>'
+            '<th id="h3">threadIdx.x</th></tr></table>')
     _, result = rendered(body)
 
     assert result.violations == []
     assert '<th id="h1">N</th>' in result.zh_html
+
+
+def test_a_one_word_heading_left_in_english_is_still_untranslated():
+    """The short-label exemption covers symbols and identifiers, not words."""
+    _, result = rendered('<h2 id="s1">Introduction</h2>',
+                         {"Introduction": "Introduction"})
+
+    assert [v.rule for v in result.violations] == ["untranslated"]
+    assert result.zh_html is None
 
 
 def test_a_node_with_no_translation_at_all_is_reported():
@@ -304,7 +329,8 @@ def test_a_node_with_no_translation_at_all_is_reported():
 # ---------------------------------------------------------------------------
 # Glossary
 # ---------------------------------------------------------------------------
-GLOSSARY = {"shared memory": "共享内存", "warp": "线程束", "GPU": "GPU（保留不译）"}
+GLOSSARY = {"shared memory": "共享内存", "warp": "线程束",
+            "Fermi / Kepler": "保留英文（GPU 架构代号）"}
 
 
 def test_a_term_translated_against_the_glossary_is_a_violation():
@@ -328,8 +354,9 @@ def test_the_glossary_accepts_the_bilingual_first_use_form():
 
 
 def test_terms_the_glossary_keeps_in_english_are_not_enforced():
-    page = make_page('<p id="p1">The GPU runs the kernel.</p>')
-    data = translations_for(page, {"The GPU runs the kernel.": "GPU 运行该核函数。"})
+    page = make_page('<p id="p1">The Fermi architecture came first.</p>')
+    data = translations_for(page,
+                            {"The Fermi architecture came first.": "Fermi 架构最先出现。"})
 
     result = render(page, data, glossary=GLOSSARY)
 

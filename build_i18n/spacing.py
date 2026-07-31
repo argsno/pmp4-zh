@@ -19,7 +19,7 @@ _MARKER_RE = re.compile(r"(【/?[MZ]?\d+】)")
 _OPENER_RE = re.compile(r"^【[MZ]?\d+】$")
 
 
-def is_cjk(text):
+def has_cjk(text):
     return bool(_CJK_RE.search(text))
 
 

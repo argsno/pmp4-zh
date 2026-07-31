@@ -8,13 +8,15 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from lxml import html as lxml_html
+
 from .document import Document
 from .glossary import offending_terms
-from .markup import BLOCK_TAGS, PLACEHOLDER_RE
-from .spacing import is_cjk
+from .markup import BLOCK_TAGS, PLACEHOLDER_RE, strip_ids_from
+from .spacing import has_cjk
 
 VERBATIM_TAGS = ("pre", "math")
-_MIN_PROSE_WORDS = 2
+_WORD_RE = re.compile(r"[A-Za-z][A-Za-z'’-]{2,}")
 
 
 @dataclass(frozen=True)
@@ -48,7 +50,7 @@ def check_node(node_id, markup, chinese, glossary, require_translated, page):
     if not chinese.strip():
         return fail("untranslated", "translation is empty")
 
-    if require_translated and _is_prose(markup.text) and not is_cjk(chinese):
+    if require_translated and _is_prose(markup.text) and not has_cjk(chinese):
         return fail("untranslated", "no Chinese in the translation of prose: %r"
                     % _clip(markup.text))
 
@@ -61,20 +63,15 @@ def check_node(node_id, markup, chinese, glossary, require_translated, page):
 
 
 def check_page(english, chinese_html, page):
-    """Structural gates that can only be judged once the page exists."""
-    violations = []
+    """The Chinese page: the English page's structure, in Chinese.
+
+    Same blocks in the same order, and the code and formulae between them
+    untouched down to the byte.
+    """
     rendered = Document(chinese_html)
+    violations = _check_sound(english, rendered, chinese_html, page, "Chinese")
 
-    stray = len(rendered.stray_end_tags) - len(english.stray_end_tags)
-    unclosed = len(rendered.unclosed_tags) - len(english.unclosed_tags)
-    if stray > 0 or unclosed > 0:
-        violations.append(Violation(
-            rule="unparsable", page=page,
-            message="rendered page has %d stray and %d unclosed tags more than "
-                    "the source" % (max(stray, 0), max(unclosed, 0))))
-
-    expected = _block_count(english)
-    actual = _block_count(rendered)
+    expected, actual = _block_count(english), _block_count(rendered)
     if expected != actual:
         violations.append(Violation(
             rule="block-count", page=page,
@@ -88,8 +85,30 @@ def check_page(english, chinese_html, page):
     return violations
 
 
+def check_bilingual(english, bilingual_html, page):
+    """The bilingual page deliberately has twice the blocks, so it is not held
+    to the English block count.  What still holds is that every piece of code
+    or formula on it is one of the English page's, byte for byte — an inline
+    formula inside a doubled sentence appears twice, but never altered, and
+    nothing goes missing.
+    """
+    rendered = Document(bilingual_html)
+    violations = _check_sound(english, rendered, bilingual_html, page,
+                              "bilingual")
+
+    # A doubled block loses its ids so the page cannot carry an anchor twice;
+    # everything else about it must still be the English page's bytes.
+    ours = {strip_ids_from(source) for source in _verbatim(rendered)}
+    theirs = {strip_ids_from(source) for source in _verbatim(english)}
+    if ours != theirs:
+        violations.append(Violation(
+            rule="verbatim-drift", page=page,
+            message="%d code or formula block(s) missing and %d invented"
+                    % (len(theirs - ours), len(ours - theirs))))
+    return violations
+
+
 def check_parses(html, page, what):
-    from lxml import html as lxml_html
     try:
         lxml_html.fromstring(html.encode("utf-8"))
     except Exception as error:                      # pragma: no cover - lenient
@@ -100,11 +119,24 @@ def check_parses(html, page, what):
 
 def content_elements(doc):
     """Everything outside the renderer-generated navigation."""
-    header = doc.find("header", "topnav")
+    header = doc.header()
     for el in doc:
         if header is not None and (el is header or header in set(el.ancestors())):
             continue
         yield el
+
+
+def _check_sound(english, rendered, html, page, what):
+    """Both gates that ask "is this still a page": tag balance and a parser."""
+    violations = []
+    stray = len(rendered.stray_end_tags) - len(english.stray_end_tags)
+    unclosed = len(rendered.unclosed_tags) - len(english.unclosed_tags)
+    if stray > 0 or unclosed > 0:
+        violations.append(Violation(
+            rule="unparsable", page=page,
+            message="%s page has %d stray and %d unclosed tags more than the "
+                    "source" % (what, max(stray, 0), max(unclosed, 0))))
+    return violations + check_parses(html, page, what)
 
 
 def _block_count(doc):
@@ -117,8 +149,16 @@ def _verbatim(doc):
 
 
 def _is_prose(text):
-    words = re.findall(r"[A-Za-z]{3,}", PLACEHOLDER_RE.sub(" ", text))
-    return len(words) >= _MIN_PROSE_WORDS
+    """Text a reader reads, as opposed to a label or a symbol.
+
+    Identifiers and acronyms — `threadIdx.x`, `CUDA`, `GB/s` — stay in English
+    on a fully translated page, so they cannot be held to "must contain
+    Chinese".  A single ordinary word can: a heading reading `Introduction` is
+    an untranslated heading, not a label.
+    """
+    words = _WORD_RE.findall(PLACEHOLDER_RE.sub(" ", text))
+    return any(word == word.lower() or word == word.capitalize()
+               for word in words)
 
 
 def _clip(text, limit=60):

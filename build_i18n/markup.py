@@ -163,23 +163,12 @@ def classify(doc, el, is_node):
         return "atom"
     if any(is_node(descendant) for descendant in el.descendants()):
         return "atom"
-    if not _translatable_text(doc, el).strip():
+    if not doc.text(el, outside_atoms).strip():
         # A wrapper around nothing but a formula or an image is indivisible too.
         return "atom"
     return "pair"
 
 
-def _translatable_text(doc, el):
-    out = []
-
-    def walk(node):
-        position = node.content_start
-        for child in node.children:
-            out.append(doc.src[position:child.start])
-            if child.tag not in ATOMIC_TAGS:
-                walk(child)
-            position = child.end
-        out.append(doc.src[position:node.content_end])
-
-    walk(el)
-    return "".join(out)
+def outside_atoms(el):
+    """Descend into everything but code and formulae."""
+    return el.tag not in ATOMIC_TAGS

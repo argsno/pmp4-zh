@@ -13,12 +13,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from .document import Document, splice
+from .document import Document, Element, splice
 from .glossary import load_glossary
-from .markup import (ATOMIC_TAGS, CANDIDATE_TAGS, CELL_TAGS, add_class, build,
-                     extract_markup, set_attr, strip_ids_from)
+from .markup import (ATOMIC_TAGS, CANDIDATE_TAGS, CELL_TAGS, NodeMarkup,
+                     add_class, build, extract_markup, set_attr, strip_ids_from)
 from .nav import localize_header
-from .validate import Violation, check_node, check_page, check_parses
+from .validate import Violation, check_bilingual, check_node, check_page
 
 ZH_LANG = "zh-CN"
 ZH_CLASS = "zh-trans"
@@ -67,7 +67,7 @@ def render(page_html, translations, *, glossary=None, require_translated=True):
     bilingual_html = _render_bilingual(plan, chinese_by_id, nav, page_file)
 
     violations = check_page(plan.doc, zh_html, page)
-    violations += check_parses(bilingual_html, page, "bilingual")
+    violations += check_bilingual(plan.doc, bilingual_html, page)
     if violations:
         return RenderResult(None, None, violations)
     return RenderResult(zh_html, bilingual_html, [])
@@ -78,24 +78,24 @@ def render(page_html, translations, *, glossary=None, require_translated=True):
 # ---------------------------------------------------------------------------
 @dataclass(eq=False)
 class _Node:
-    el: object
+    el: Element
     id: str
     path: str
-    markup: object
-    owner: object = None
+    markup: NodeMarkup
+    owner: _Node | None = None      # the translatable node this one nests in
 
 
 @dataclass
 class _Plan:
-    doc: object
-    header: object
-    nodes: list
-    children_of: dict
+    doc: Document
+    header: Element | None
+    nodes: list[_Node]
+    children_of: dict[_Node | None, list[_Node]]
 
 
 def _plan(page_html):
     doc = Document(page_html)
-    header = doc.find("header", "topnav")
+    header = doc.header()
 
     def translatable(el):
         return _is_translatable(doc, el, header)
@@ -132,7 +132,7 @@ def _is_translatable(doc, el, header):
     for ancestor in el.ancestors():
         if ancestor.tag in ATOMIC_TAGS or _is_bibliography(ancestor):
             return False
-    return bool(_own_text(doc, el).strip())
+    return bool(doc.text(el, _own).strip())
 
 
 def _is_bibliography(el):
@@ -140,21 +140,9 @@ def _is_bibliography(el):
             or "biblioentry" in el.epub_type())
 
 
-def _own_text(doc, el):
-    """Text belonging to this node, ignoring nested blocks and code."""
-    out = []
-
-    def walk(node):
-        position = node.content_start
-        for child in node.children:
-            out.append(doc.src[position:child.start])
-            if child.tag not in ATOMIC_TAGS and child.tag not in CANDIDATE_TAGS:
-                walk(child)
-            position = child.end
-        out.append(doc.src[position:node.content_end])
-
-    walk(el)
-    return "".join(out)
+def _own(el):
+    """Text of a nested block belongs to that block, not to its container."""
+    return el.tag not in ATOMIC_TAGS and el.tag not in CANDIDATE_TAGS
 
 
 def _node_id(el, taken, index):

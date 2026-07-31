@@ -97,6 +97,45 @@ def test_forced_re_extraction_keeps_the_translations_it_can_still_place(site):
     assert nodes[0]["zh"] == "引言"
 
 
+def test_forced_re_extraction_drops_a_translation_whose_english_moved_on(site):
+    """Ids are positional for nodes the page does not name, so a translation is
+    only carried over when its English text still matches — otherwise an edit
+    to the page would re-attach a paragraph's Chinese to its neighbour."""
+    run("extract", site)
+    translate(site, "Ch001")
+    _, translations = site
+    part = translations / "Ch001" / "part-00.json"
+    data = json.loads(read(part))
+    data["nodes"][0]["en"] = "A different heading"
+    part.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+
+    assert run("extract", site, "--force") == 0
+
+    nodes = json.loads(read(part))["nodes"]
+    assert nodes[0]["en"] == "Introduction"
+    assert nodes[0]["zh"] == ""
+    assert nodes[1]["zh"] == "并行编程是一项技能。"
+
+
+def test_shards_hold_a_page_a_translator_can_answer_in_one_go(site):
+    _, translations = site
+
+    assert run("extract", site, "--only", "Ch001", "--shard-nodes", "1") == 0
+
+    assert sorted(p.name for p in (translations / "Ch001").glob("part-*.json")) \
+        == ["part-00.json", "part-01.json"]
+
+
+def test_a_broken_translation_file_says_which_file_is_broken(site, capsys):
+    _, translations = site
+    run("extract", site)
+    (translations / "Ch001" / "part-00.json").write_text("{oops",
+                                                         encoding="utf-8")
+
+    assert run("render", site) == 2
+    assert "part-00.json is not valid JSON" in capsys.readouterr().err
+
+
 def test_render_writes_both_sites(site):
     web, _ = site
     run("extract", site)
@@ -148,6 +187,14 @@ def test_a_failing_page_is_skipped_and_never_emitted(site):
     assert (web / "zh" / "chapters" / "Ch001.html").exists()
     assert not (web / "zh" / "chapters" / "Ch002.html").exists()
     assert not (web / "bilingual" / "chapters" / "Ch002.html").exists()
+
+
+def test_a_run_where_every_page_fails_leaves_no_empty_site_behind(site):
+    web, _ = site
+    run("extract", site)               # nothing translated yet
+
+    assert run("render", site) == 1
+    assert not (web / "zh").exists()
 
 
 def test_validate_reports_the_same_failure_without_writing_anything(site):

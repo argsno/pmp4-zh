@@ -28,13 +28,21 @@ NAV_FILE = "nav.json"
 SITES = ("zh", "bilingual")
 # The EPUB's own navigation document: a machine artefact, not a readable page.
 NOT_A_PAGE = frozenset({"nav.html"})
-SHARD_CHARS = 8000
+SHARD_NODES = 25
 MAX_REPORT = 5
+
+
+class Problem(Exception):
+    """A wrong file, reported to the maintainer rather than as a traceback."""
 
 
 def main(argv=None):
     args = _parser().parse_args(argv)
-    return args.run(args)
+    try:
+        return args.run(args)
+    except Problem as problem:
+        print(problem, file=sys.stderr)
+        return 2
 
 
 # ---------------------------------------------------------------------------
@@ -54,7 +62,7 @@ def _extract(args):
             continue
         stored = _stored_nodes(directory)
         fresh = extract(page_html, path.stem)["nodes"]
-        _write_skeleton(directory, path.stem, fresh, stored, args.shard_chars)
+        _write_skeleton(directory, path.stem, fresh, stored, args.shard_nodes)
         written += 1
         nodes += len(fresh)
     _write_nav_skeleton(root / NAV_FILE, labels)
@@ -63,43 +71,58 @@ def _extract(args):
     return 0
 
 
-def _write_skeleton(directory, page, nodes, stored, budget):
-    """Rewrite one page's shards, carrying over translations that still apply."""
-    done = {node.get("id"): node.get("zh", "") for node in stored}
-    nodes = [dict(node, zh=done.get(node["id"], "")) for node in nodes]
+def _write_skeleton(directory, page, nodes, stored, per_shard):
+    """Rewrite one page's shards, carrying over translations that still apply.
+
+    A translation is carried over only when its node still has both the same id
+    and the same English text.  Ids are positional for nodes the source page
+    does not name, so matching on the id alone would silently re-attach a
+    paragraph's translation to its neighbour when the English page changes.
+
+    The new shards are written before the leftovers are removed: a crash
+    half-way through leaves a mess, not an empty directory where a day of
+    translation used to be.
+    """
+    done = {(node.get("id"), node.get("en")): node.get("zh", "")
+            for node in stored}
+    nodes = [dict(node, zh=done.get((node["id"], node["en"]), ""))
+             for node in nodes]
     directory.mkdir(parents=True, exist_ok=True)
+
+    written = set()
+    for number, shard in enumerate(_shards(nodes, per_shard)):
+        path = directory / ("part-%02d.json" % number)
+        _write_json(path, {"page": page, "nodes": shard})
+        written.add(path)
     for stale in directory.glob("part-*.json"):
-        stale.unlink()
-    for number, shard in enumerate(_shards(nodes, budget)):
-        _write_json(directory / ("part-%02d.json" % number),
-                    {"page": page, "nodes": shard})
+        if stale not in written:
+            stale.unlink()
 
 
-def _shards(nodes, budget):
-    """Split on node boundaries only; an empty page still gets one shard."""
-    shard, size = [], 0
-    for node in nodes:
-        if shard and size + len(node["en"]) > budget:
-            yield shard
-            shard, size = [], 0
-        shard.append(node)
-        size += len(node["en"])
-    yield shard
+def _shards(nodes, per_shard):
+    """Roughly `per_shard` nodes each; an empty page still gets one shard."""
+    for start in range(0, max(len(nodes), 1), per_shard):
+        yield nodes[start:start + per_shard]
 
 
 def _nav_labels(page_html):
     doc = Document(page_html)
-    header = doc.find("header", "topnav")
+    header = doc.header()
     return [] if header is None else nav_labels(doc, header)
 
 
 def _write_nav_skeleton(path, labels):
-    """One shared file for the navigation, in book order."""
+    """The navigation's own translation file, in book order.
+
+    The navigation is one list shared by every page, so it is translated once,
+    by its own task — a per-page translation task must not touch it (that is
+    what makes the page tasks safe to run concurrently).  Entries already on
+    file are kept even when this run only looked at some of the pages.
+    """
     stored = _read_json(path) or {}
     merged = {label: stored.get(label, "") for label in labels}
-    for label, chinese in stored.items():       # translations for labels the
-        if chinese and label not in merged:     # navigation no longer shows
-            merged[label] = chinese
+    for label, chinese in stored.items():
+        merged.setdefault(label, chinese)
     if merged or path.exists():
         _write_json(path, merged)
 
@@ -119,9 +142,6 @@ def _build(args, write):
     web, root = pathlib.Path(args.web), pathlib.Path(args.translations)
     glossary = load_glossary()
     nav = _read_nav(root / NAV_FILE)
-    if write:
-        for site in SITES:
-            _provision(web, site)
 
     done, failed = 0, 0
     for path in _pages(web, args.only):
@@ -139,6 +159,8 @@ def _build(args, write):
         if write:
             for site, html in (("zh", result.zh_html),
                                ("bilingual", result.bilingual_html)):
+                if done == 1:       # nothing rendered, nothing to house it in
+                    _provision(web, site)
                 (web / site / "chapters" / path.name).write_text(
                     html, encoding="utf-8")
 
@@ -227,7 +249,12 @@ def _read(path):
 def _read_json(path):
     if not path.exists():
         return None
-    return json.loads(path.read_text(encoding="utf-8"))
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except ValueError as error:
+        # These files are hand-edited by translators, so a stray comma is a
+        # question of "which file, which line", not a stack trace.
+        raise Problem("%s is not valid JSON: %s" % (path, error)) from None
 
 
 def _write_json(path, data):
@@ -259,9 +286,10 @@ def _parser():
         "--force", action="store_true",
         help="re-extract pages that already have shards, keeping the "
              "translations of nodes that still exist")
-    extract_cmd.add_argument("--shard-chars", type=int, default=SHARD_CHARS,
-                             metavar="N", help="English characters per shard "
-                             "(default: %(default)s)")
+    extract_cmd.add_argument("--shard-nodes", type=int, default=SHARD_NODES,
+                             metavar="N", help="nodes per shard, so one "
+                             "translator's reply stays a reply (default: "
+                             "%(default)s)")
     extract_cmd.set_defaults(run=_extract)
 
     for name, run, help_text in (
