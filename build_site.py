@@ -4,17 +4,27 @@
 Each chapter becomes a standalone HTML page with a sticky top navigation bar
 that lets the reader jump to any chapter/section via a <select> dropdown,
 plus Prev / Next / Home buttons.
+
+Running this script rebuilds all three sites in one pass: the English site
+first, then the Chinese and bilingual sites, which the i18n renderer derives
+from the freshly built English pages and the `translations/` store.  The
+dependency runs one way only — this builder imports `build_i18n`, and
+`build_i18n` must never import this module.
 """
 import os
 import re
 import shutil
+import sys
 import html as ihtml
 from lxml import html
+
+import build_i18n.cli
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "epub_extract", "OEBPS")
 OUT = os.path.join(ROOT, "web")
 XHTML_DIR = os.path.join(SRC, "xhtml")
+TRANSLATIONS = os.path.join(ROOT, "translations")
 
 BOOK_TITLE = "Programming Massively Parallel Processors, 4th Edition"
 
@@ -345,7 +355,15 @@ def copy_assets():
 
 
 # ---------------------------------------------------------------------------
-if __name__ == "__main__":
+def main():
+    """Rebuild the English site, then the zh and bilingual sites from it.
+
+    Returns the i18n renderer's exit status: 0 when every page passed, 1 when
+    one or more pages were reported and skipped, 2 when the translation store
+    itself is broken.  A skipped page is a problem someone will fix; the build
+    command must not pretend the three sites are complete.
+    """
+    global groups, flat
     groups, flat = parse_nav()
     os.makedirs(OUT, exist_ok=True)
     copy_assets()
@@ -355,4 +373,19 @@ if __name__ == "__main__":
         f.write(TOPNAV_CSS)
     with open(os.path.join(OUT, "topnav.js"), "w", encoding="utf-8") as f:
         f.write(TOPNAV_JS)
-    print("DONE. Open web/index.html in a browser.")
+
+    status = build_i18n.cli.main(
+        ["render", "--web", OUT, "--translations", TRANSLATIONS])
+    if status == 0:
+        print("DONE. Open web/index.html in a browser.")
+    elif status == 2:
+        print("web/zh and web/bilingual: the translation store is unusable "
+              "(see above).", file=sys.stderr)
+    else:
+        print("web/zh and web/bilingual: some pages were skipped (see above).",
+              file=sys.stderr)
+    return status
+
+
+if __name__ == "__main__":
+    sys.exit(main())
