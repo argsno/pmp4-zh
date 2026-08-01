@@ -4,12 +4,12 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-agent
+**Status:** implemented (committed `fe0be7c`; runtime sweep on a real phone still to come)
 
-- [ ] On a ≤640px viewport, cumulative scroll-down of ≥20px hides the bar with a ~0.2s slide; any upward scroll reveals it immediately.
-- [ ] The bar always stays visible within ~100px of the page top and ~200px of the page bottom.
-- [ ] The bar stays visible while the reader interacts with it (chapter select open, buttons focused or pressed).
-- [ ] The behaviour activates only on mobile widths; desktop keeps the always-fixed bar with no regression.
-- [ ] With the OS "Reduce Motion" setting on, the bar toggles instantly without the slide animation.
-- [ ] The behaviour is identical across the English, Chinese, and bilingual sites and the landing page, via the single shared asset.
-- [ ] Rebuilding the site cleanly regenerates all pages (the language sites' asset symlinks stay intact) and the full test suite passes, including new assertions that the generated CSS/JS contain the hidden-state rules and scroll wiring.
+- [x] On a ≤640px viewport, cumulative scroll-down of ≥20px hides the bar with a ~0.2s slide; any upward scroll reveals it immediately.
+- [x] The bar always stays visible within ~100px of the page top and ~200px of the page bottom.
+- [x] The bar stays visible while the reader interacts with it (chapter select open, buttons focused or pressed).
+- [x] The behaviour activates only on mobile widths; desktop keeps the always-fixed bar with no regression.
+- [x] With the OS "Reduce Motion" setting on, the bar toggles instantly without the slide animation.
+- [x] The behaviour is identical across the English, Chinese, and bilingual sites and the landing page, via the single shared asset.
+- [x] Rebuilding the site cleanly regenerates all pages (the language sites' asset symlinks stay intact) and the full test suite passes, including new assertions that the generated CSS/JS contain the hidden-state rules and scroll wiring.
