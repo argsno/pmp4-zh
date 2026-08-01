@@ -217,7 +217,13 @@ def test_topnav_css_trims_the_content_column_on_mobile(fake_epub):
     assert "margin-right: 1em;" in m768
     assert "overflow-x: auto;" in m768     # tables + pre
     assert "max-width: 100%;" in m768
-    # long URLs / inline code wrap instead of pushing the page sideways
+    # Long URLs, long inline-code tokens, and bare runs of text all wrap
+    # instead of pushing the page sideways.  The rule sits on the content
+    # column itself because `overflow-wrap` is inherited: it must reach
+    # `a`, `code`, the EPUB's `span.inlinecode`, and plain text nodes alike
+    # (a bare `1/(5%+0.95%)=…` run in Ch019 overflowed the zh column until
+    # the wrap was granted at the container).
+    assert "#book-content #sbo-rt-content {" in m768
     assert "overflow-wrap: break-word;" in m768
 
     # ≤480px: the indent drops to ~0.6em, the content base font rises to 17px,
@@ -248,6 +254,29 @@ def test_topnav_css_trims_the_content_column_on_mobile(fake_epub):
     # sites' — it is not a Chinese-only rule.
     en = (web / "chapters" / "Ch001.html").read_text(encoding="utf-8")
     assert 'href="../topnav.css"' in en
+
+
+def test_topnav_css_keeps_the_part_title_div_in_the_column(fake_epub):
+    web, translations = fake_epub
+    assert build_site.main() == 1
+    css = (web / "topnav.css").read_text(encoding="utf-8")
+
+    # The part-title div `<div id="PN">` is `width: 100%` (content-box) in the
+    # EPUB stylesheet.  At ≤480px the content-column trim gives every block
+    # div 0.6em side margins; combined with that 100% width the box would
+    # shove its right edge past the phone screen (the Part divider pages
+    # scrolled sideways).  `width: auto` lets a block div fill its container
+    # after the margins are taken, instead of on top of them.
+    m480 = _media_body(css, 480)
+    assert "#book-content #sbo-rt-content #PN" in m480
+    assert "width: auto;" in m480
+
+    # The override lives only in the ≤480px block: at wider widths the EPUB's
+    # 100% width fits fine and the desktop layout must stay untouched.
+    m768 = _media_body(css, 768)
+    assert "#PN" not in m768
+    base = css.split("@media", 1)[0]
+    assert "#PN" not in base
 
 
 def test_build_i18n_never_imports_the_builder():

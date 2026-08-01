@@ -4,9 +4,9 @@
 
 **Blocked by:** 02 — Mobile navigation bar layout; 03 — Mobile content column.
 
-**Status:** ready-for-agent
+**Status:** in-progress (sweep + fixes done, pending review/commit/deploy)
 
-- [ ] Sweep at 375/480/768px over representative pages — a content-heavy chapter, a table-heavy chapter, a math/formula-heavy chapter, and a landing page — on all three sites (en/zh/bilingual).
-- [ ] Any elements that resist the margin trim or overflow at phone widths are individually fixed; the final state shows no horizontal page scroll and no cramped text.
-- [ ] A local HTTP server preview (device emulation) is what the sweep is run against, not guesses.
+- [x] Sweep at 375/480/768px over representative pages — a content-heavy chapter, a table-heavy chapter, a math/formula-heavy chapter, and a landing page — on all three sites (en/zh/bilingual).
+- [x] Any elements that resist the margin trim or overflow at phone widths are individually fixed; the final state shows no horizontal page scroll and no cramped text.
+- [x] A local HTTP server preview (device emulation) is what the sweep is run against, not guesses.
 - [ ] After the sweep passes, the changes are pushed to main and the live site is confirmed to render the mobile layout.

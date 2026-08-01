@@ -136,9 +136,13 @@ a.langbtn:hover { background: #4f63a0; color: #fff; }
   }
   /* Long URLs in the reference lists and long inline-code tokens can be
      wider than the phone column; let them wrap instead of pushing the whole
-     page sideways. */
-  #book-content #sbo-rt-content a,
-  #book-content #sbo-rt-content code {
+     page sideways.  `overflow-wrap` is inherited, so setting it on the
+     content column covers not just `a`, `code` and the EPUB's
+     `span.inlinecode` (which resolved to a wider monospace on the Chinese
+     site, overflowing its column with long CUDA identifiers) but also bare
+     runs of text in plain paragraphs — e.g. the `1/(5%+0.95%)=…` speed-up
+     arithmetic in Ch019 overflowed at 375px on the zh site. */
+  #book-content #sbo-rt-content {
     overflow-wrap: break-word;
   }
 }
@@ -173,6 +177,16 @@ a.langbtn:hover { background: #4f63a0; color: #fff; }
   #book-content #sbo-rt-content div {
     margin-left: 0.6em;
     margin-right: 0.6em;
+  }
+  /* The part-title div (`<div id="PN">`) is `width: 100%` in the EPUB
+     stylesheet, with default content-box sizing.  Once the block margins
+     above shrink the column at ≤480px, that 100% width plus the side
+     margins overflows the phone screen (the Part divider pages scrolled
+     sideways).  A block div fills its container on its own — `width: auto`
+     lets it do that *after* the margins are taken, instead of on top of
+     them. */
+  #book-content #sbo-rt-content #PN {
+    width: auto;
   }
   #book-content #sbo-rt-content {
     font-size: 17px;
