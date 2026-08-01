@@ -199,16 +199,21 @@ def test_every_chapter_page_carries_the_viewport_meta(fake_epub):
 
 def _media_body(css, width):
     """The full text of one top-level `@media (max-width: {width}px)` block."""
-    start = css.index("@media (max-width: %spx) {" % width)
+    return _media_block(css, "@media (max-width: %spx) {" % width)
+
+
+def _media_block(css, start):
+    """The text of the media block whose `@media` header starts at `start`."""
+    from_ = css.index(start)
     depth = 0
-    for i in range(start, len(css)):
+    for i in range(from_, len(css)):
         if css[i] == "{":
             depth += 1
         elif css[i] == "}":
             depth -= 1
             if depth == 0:
-                return css[start:i + 1]
-    raise AssertionError("unterminated %spx media block" % width)
+                return css[from_:i + 1]
+    raise AssertionError("unterminated block starting at %r" % start)
 
 
 def test_topnav_css_reorders_into_mobile_rows(fake_epub):
@@ -337,3 +342,83 @@ def test_build_i18n_never_imports_the_builder():
             source = fh.read()
         assert "import build_site" not in source, name
         assert "from build_site" not in source, name
+
+
+def test_topnav_css_carries_the_mobile_hidden_state(fake_epub):
+    web, translations = fake_epub
+    assert build_site.main() == 1
+    css = (web / "topnav.css").read_text(encoding="utf-8")
+
+    # The hide/show rules live in the ≤640px block alongside the row reorder:
+    # the slide, the hidden state, and the keep-visible override for a bar
+    # in use.
+    m640 = _media_body(css, 640)
+    assert "transition: transform 0.2s ease;" in m640
+    assert ".topnav.nav-hidden" in m640
+    assert "transform: translateY(-100%);" in m640
+    assert ".topnav:focus-within" in m640
+    assert "translateY(0);" in m640       # the keep-visible override
+
+    # Reduce Motion trades the slide for an instant toggle, in a block that
+    # comes after the ≤640px block so it wins the cascade.
+    reduced = _media_block(
+        css, "@media (max-width: 640px) and (prefers-reduced-motion: reduce)")
+    assert "transition: none;" in reduced
+    assert css.index("prefers-reduced-motion") \
+        > css.index("@media (max-width: 640px) {")
+
+    # Desktop base rules carry none of the mobile hidden-state behaviour: the
+    # always-fixed bar on desktop is untouched.
+    base = css.split("@media", 1)[0]
+    assert "nav-hidden" not in base
+    assert "translateY" not in base
+    assert "prefers-reduced-motion" not in base
+
+
+def test_topnav_js_wires_the_mobile_scroll_hide(fake_epub):
+    web, translations = fake_epub
+    assert build_site.main() == 1
+    js = (web / "topnav.js").read_text(encoding="utf-8")
+
+    # The behaviour is mobile-only: the script gates on the same ≤640px
+    # breakpoint the CSS uses, so the always-fixed desktop bar is never wired
+    # to hide.
+    assert "matchMedia" in js
+    assert "(max-width: 640px)" in js
+
+    # The scroll wiring: 20px of cumulative down-scroll hides the bar, any
+    # up-scroll reveals it, and the bar is pinned within ~100px of the page
+    # top and ~200px of the page bottom.
+    assert "HIDE_DOWN = 20" in js
+    assert "KEEP_TOP = 100" in js
+    assert "KEEP_BOTTOM = 200" in js
+    assert "nav-hidden" in js
+    assert "addEventListener('scroll'" in js
+    assert "requestAnimationFrame" in js
+
+    # A bar the reader is actually using — chapter select open, a button
+    # focused, a touch or cursor held down on it — stays put no matter the
+    # scroll position.
+    assert "focus-within" in js
+    assert "touchstart" in js
+    assert "touchend" in js
+
+
+def test_rebuild_keeps_the_language_sites_sharing_the_mobile_assets(fake_epub):
+    web, translations = fake_epub
+    build_site.main()                       # English site; nothing translated
+    translate(web, translations, ["Ch001", "Ch002"])
+    assert build_site.main() == 0           # clean rebuild of all three sites
+
+    # The shared assets are still linked, not copied, so one topnav.css and
+    # one topnav.js serve all three sites and the behaviour cannot drift.
+    for site in ("zh", "bilingual"):
+        for name in ("topnav.css", "topnav.js"):
+            link = web / site / name
+            assert link.is_symlink(), (site, name)
+            assert link.resolve() == (web / name).resolve(), (site, name)
+
+    # Every landing page — English, Chinese, bilingual — loads the shared
+    # script, so the scroll-hide behaviour reaches the TOC pages too.
+    for index in ("index.html", "zh/index.html", "bilingual/index.html"):
+        assert 'src="topnav.js"' in (web / index).read_text(encoding="utf-8")

@@ -2,8 +2,10 @@
 __pycache__/
 *.pyc
 
-# Derived EPUB extraction (regenerate by unzipping the .epub source)
-epub_extract/
+# Derived EPUB extraction (regenerate by unzipping the .epub source).  No
+# trailing slash: it may be a directory or, in a worktree, a symlink to the
+# main checkout's extraction.
+epub_extract
 
 # Translation skeletons for out-of-scope pages (spec §Out of Scope): never
 # translated, so the extract step's skeletons are working residue, not data.
