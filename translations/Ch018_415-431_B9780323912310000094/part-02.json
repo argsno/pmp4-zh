@@ -59,13 +59,13 @@
       "id": "p0185",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
       "en": "In sequential computing, a simple cutoff algorithm handles one atom at a time. For each atom the algorithm iterates through the grid points that fall within a radius of the atom’s coordinate. This is a straightforward procedure, since the grid points are in an array that can be easily indexed as a function of their coordinates. A C implementation of the cutoff algorithm can be derived with minor modifications to the C implementation of DCS in 【1】Fig. 18.4【/1】 by restricting the range of i and j of the inner loops to the energy grid points that fall into the radius. However, this simple procedure does not carry over easily to parallel execution. The reason is what we discussed in 【2】Section 18.2【/2】: The atom-centric parallelization does not work well, owing to its scatter memory update behavior.",
-      "zh": "在串行计算中，一个简单的截断算法一次处理一个原子。对于每个原子，算法遍历落在原子坐标半径范围内的网格点。这是一个直截了当的过程，因为网格点位于数组中，可以很容易地根据其坐标作为索引函数进行索引。只需对【1】图 18.4【/1】中 DCS 的 C 实现稍加修改，将内层循环 i 和 j 的范围限制在落入半径内的能量网格点，即可得到截断算法的 C 实现。然而，这种简单的过程不容易推广到并行执行。原因就是我们曾在【2】第 18.2 节【/2】讨论过的：以原子为中心的并行化由于其分散的内存更新行为而效果不佳。"
+      "zh": "在串行计算中，一个简单的截断算法一次处理一个原子。对于每个原子，算法遍历落在原子坐标半径范围内的网格点。这是一个直截了当的过程，因为网格点位于数组中，可以很容易地根据其坐标作为索引函数进行索引。只需对【1】图 18.4【/1】中 DCS 的 C 实现稍加修改，将内层循环 i 和 j 的范围限制在落入半径内的能量网格点，即可得到截断算法的 C 实现。然而，这种简单的过程不容易推广到并行执行。原因就是我们曾在【2】第 18.2 节【/2】讨论过的：面向原子的并行化由于其分散的内存更新行为而效果不佳。"
     },
     {
       "id": "p0190",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[6]",
       "en": "Therefore we need to find a cutoff binning algorithm based on the grid-centric decomposition: Each thread calculates the energy value at one grid point. Fortunately, there is a well-known approach to adapting a direct summation algorithm, such as the one in 【1】Fig. 18.10【/1】, into a cutoff binning algorithm. Rodrigues et al. presents such an algorithm for the electrostatic potential problem (【2】Rodrigues et al., 2008【/2】).",
-      "zh": "因此，我们需要找到一种基于以网格为中心分解的截断分箱算法：每个线程计算一个网格点处的能量值。幸运的是，有一种众所周知的将直接求和算法（如【1】图 18.10【/1】中的算法）改造为截断分箱算法的方法。Rodrigues 等人针对静电势问题提出了这样一种算法（【2】Rodrigues 等，2008【/2】）。"
+      "zh": "因此，我们需要找到一种基于面向网格的分解的截断分箱算法：每个线程计算一个网格点处的能量值。幸运的是，有一种众所周知的将直接求和算法（如【1】图 18.10【/1】中的算法）改造为截断分箱算法的方法。Rodrigues 等人针对静电势问题提出了这样一种算法（【2】Rodrigues 等，2008【/2】）。"
     },
     {
       "id": "p0195",
@@ -119,7 +119,7 @@
       "id": "p0220",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[12]",
       "en": "The improvement in computational complexity in a cutoff binning algorithm mainly comes from the fact that each thread now examines a much smaller subset of atoms, defined by the neighborhood bins, in a large grid system. However, this makes constant memory much less attractive for holding the atoms. Since thread blocks will be accessing different neighborhoods, the limited-sized constant memory will unlikely be able to hold all the atoms that are needed by all active thread blocks. This motivates the use of global memory to hold a much larger set of atoms. To mitigate the bandwidth consumption, threads in a block collaborate in loading the atom information in each common neighborhood bin into the shared memory. All threads then examine the atoms out of shared memory.",
-      "zh": "截断分箱算法计算复杂度的改善主要来自：在大网格系统中，每个线程现在只需检查由邻域箱定义的、小得多的原子子集。然而，这使常量内存在存放原子方面的吸引力大大降低。由于线程块将访问不同的邻域，容量有限的常量内存不太可能容纳所有活动线程块所需的全部原子。这就促使我们使用全局内存来保存大得多的原子集合。为缓解带宽消耗，线程块中的线程协作将每个公共邻域箱中的原子信息加载到共享内存，然后所有线程都从共享内存中检查原子。"
+      "zh": "截断分箱算法计算复杂度的改善主要来自：在大网格系统中，每个线程现在只需检查由邻域箱定义的、小得多的原子子集。然而，这使常量内存在存放原子方面的吸引力大大降低。由于线程块将访问不同的邻域，容量有限的常量内存不太可能容纳所有活跃线程块所需的全部原子。这就促使我们使用全局内存来保存大得多的原子集合。为缓解带宽消耗，线程块中的线程协作将每个公共邻域箱中的原子信息加载到共享内存，然后所有线程都从共享内存中检查原子。"
     },
     {
       "id": "p0225",

@@ -59,7 +59,7 @@
       "id": "p0240",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[3]",
       "en": "For example, many real-world problems are most naturally described with mathematical recurrences. Parallelizing these problems often requires nonintuitive ways of thinking about the problem and may require redundant work during execution. There are important algorithm primitives, such as prefix sum, that can facilitate the conversion of sequential, recursive formulation of the problems into more parallel forms. We will more formally introduce the concept of 【1】work efficiency【/1】 and will illustrate the methods and tradeoffs that are involved in designing parallel algorithms that achieve the same level of computational complexity as their sequential counterparts, using important parallel patterns such as prefix sum in 【2】Chapter 11【/2】, Prefix Sum (Scan).",
-      "zh": "例如，许多现实世界的问题最自然地是用数学递推来描述的。将这些问题并行化，往往需要以非直觉的方式来思考，并且在执行过程中可能需要冗余的工作。有一些重要的算法原语，例如前缀和（扫描），能够帮助把问题的顺序式、递归式的表述转化为更具并行性的形式。我们将更正式地引入【1】工作效率【/1】这一概念，并借助重要的并行模式——例如【2】第 11 章【/2】“前缀和（扫描）”中所介绍的前缀和——来说明，如何设计出在算法复杂度上与其顺序版本相当的并行算法，以及其中的方法与权衡。"
+      "zh": "例如，许多现实世界的问题最自然地是用数学递推来描述的。将这些问题并行化，往往需要以非直觉的方式来思考，并且在执行过程中可能需要冗余工作。有一些重要的算法原语，例如前缀和（扫描），能够帮助把问题的顺序式、递归式的表述转化为更具并行性的形式。我们将更正式地引入【1】工作效率【/1】这一概念，并借助重要的并行模式——例如【2】第 11 章【/2】“前缀和（扫描）”中所介绍的前缀和——来说明，如何设计出在算法复杂度上与其顺序版本相当的并行算法，以及其中的方法与权衡。"
     },
     {
       "id": "p0245",

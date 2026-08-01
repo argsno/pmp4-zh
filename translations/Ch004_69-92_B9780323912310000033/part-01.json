@@ -125,7 +125,7 @@
       "id": "p0150",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[4]",
       "en": "Blocks are partitioned into warps on the basis of thread indices. If a block is organized into a one-dimensional array, that is, only 【1】threadIdx.x【/1】 is used, the partition is straightforward. The 【2】threadIdx.x【/2】 values within a warp are consecutive and increasing. For a warp size of 32, warp 0 starts with thread 0 and ends with thread 31, warp 1 starts with thread 32 and ends with thread 63, and so on. In general, warp n starts with thread 32×n and ends with thread 32×(n+1)−1. For a block whose size is not a multiple of 32, the last warp will be padded with inactive threads to fill up the 32 thread positions. For example, if a block has 48 threads, it will be partitioned into two warps, and the second warp will be padded with 16 inactive threads.",
-      "zh": "线程块基于线程索引划分成线程束。如果线程块组织成一维数组，即只使用【1】threadIdx.x【/1】，则划分非常直接。线程束内的【2】threadIdx.x【/2】值是连续递增的。对于大小为 32 的线程束，线程束 0 从线程 0 开始到线程 31 结束，线程束 1 从线程 32 开始到线程 63 结束，依此类推。一般地，线程束 n 从线程 32×n 开始，到线程 32×(n+1)−1 结束。对于大小不是 32 的倍数的线程块，最后一个线程束将用非活动线程填充，以占满 32 个线程位置。例如，如果线程块有 48 个线程，它将被划分为两个线程束，第二个线程束将用 16 个非活动线程填充。"
+      "zh": "线程块基于线程索引划分成线程束。如果线程块组织成一维数组，即只使用【1】threadIdx.x【/1】，则划分非常直接。线程束内的【2】threadIdx.x【/2】值是连续递增的。对于大小为 32 的线程束，线程束 0 从线程 0 开始到线程 31 结束，线程束 1 从线程 32 开始到线程 63 结束，依此类推。一般地，线程束 n 从线程 32×n 开始，到线程 32×(n+1)−1 结束。对于大小不是 32 的倍数的线程块，最后一个线程束将用非活跃线程填充，以占满 32 个线程位置。例如，如果线程块有 48 个线程，它将被划分为两个线程束，第二个线程束将用 16 个非活跃线程填充。"
     },
     {
       "id": "p0155",

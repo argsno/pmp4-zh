@@ -65,8 +65,8 @@
 - 被动语态按中文习惯转主动（如 *It is assumed that…* → "我们假设……"）；
 - 指代（*this, these, it*）按中文习惯显化或省略，以通顺为准。
 
-### 4.6 导航栏与目录（例外）
-`web/index.html` 与各章 `<header class="topnav">` 中的 `<select>` 下拉项当前**保留英文**，以保证与既有锚点、文件名一致、避免破坏跳转。待全书译毕后，可统一将 `optgroup` 文案（如 `Chapter 1. Introduction`）及 `option` 显示文本中译，但 `value` 属性中的文件名不可改。
+### 4.6 导航栏与目录
+`web/index.html` 与各章 `<header class="topnav">` 中的 `<select>` 下拉项，其 `optgroup` 文案与 `option` 显示文本已按 `translations/nav.json` 中译（如 `Chapter 1. Introduction` → `第 1 章 引言`）。`value` 属性保存的是锚点与文件名，是导航真正生效的部分，**一律不可改动**；渲染器在本地化顶栏时只替换显示文本、原样保留 `value`，从而保证跳转与英文站一致。
 
 ### 4.7 Exercises（习题）
 `Exercises` 译为"习题"。题干、提示译为中文；其中的代码片段、变量名、输出示例保留原文格式。
@@ -82,12 +82,12 @@
 
 ### 5.0 本表的状态与读法
 
-**状态：已冻结（frozen）。**
+**状态：已冻结（frozen）；收尾合并已应用。**
 
-本表在全书翻译开工前一次性扩充完成并经维护者过目。翻译任务对本表**只读**：
+本表在全书翻译开工前一次性扩充完成，并于收尾时（任务 08）把各页 `translations/<page-stem>/newterms.json` 中的表外新词统一合并回本表。翻译任务对本表**只读**：
 
 - 翻译任务**不得**编辑本文件。多个翻译任务并发运行时，同时写同一个共享文件必然互相覆盖。
-- 遇到表外新词，写入本页自己的 `translations/<page-stem>/newterms.json`，格式为 `{"en": …, "zh": …, "note": …}`，收尾时由专门任务统一合并回本表。
+- 遇到表外新词，写入本页自己的 `translations/<page-stem>/newterms.json`，格式为 `{"en": …, "zh": …, "note": …}`，由后续收尾任务统一合并回本表。
 - 命中本表的英文词，其中文译法必须与本表一致；此项由渲染器机械校验，不一致的页面不予生成。
 
 **表格约定**（渲染器的术语校验依赖这些约定，改动表格时须遵守）：
@@ -140,6 +140,26 @@
 | direct memory access (DMA) | 直接内存访问（DMA） |
 | hardware queue | 硬件队列 |
 | Fermi / Kepler / Pascal | 保留英文（GPU 架构代号） |
+| A100 | A100（保留英文，GPU 架构代号） |
+| Ampere A100 | 保留英文 |
+| coprocessor | 协处理器 |
+| execution unit | 执行单元 |
+| field-programmable gate arrays | 现场可编程门阵列 |
+| G80 | G80（保留英文，GPU 架构代号） |
+| HBM2 | 保留英文 |
+| hyperthreading | 超线程 |
+| mainframe | 大型主机 |
+| microprocessor | 微处理器 |
+| minicomputer | 小型计算机 |
+| NVIDIA / Intel / AMD / ARM / Apple / ATI / GE / Siemens | 保留英文（公司名） |
+| NVIDIA Tesla A100 / G80 | 保留英文（产品名或芯片代号） |
+| out-of-order | 乱序 |
+| processing block | 处理块 |
+| supercomputer | 超级计算机 |
+| VLIW | VLIW（超长指令字） |
+| Volta | 保留英文 |
+| Volta / Turing / Ampere | 保留英文（GPU 架构代号） |
+| von Neumann | 冯·诺依曼 |
 
 ### 5.2 CUDA 编程模型
 | 英文 | 中文 |
@@ -184,6 +204,54 @@
 | child grid | 子网格 |
 | nesting depth | 嵌套深度 |
 | cooperative kernel | 协作核函数 |
+| active thread | 活跃线程 |
+| C++AMP | 保留英文（编程接口名） |
+| call frame stack | 调用帧栈 |
+| call stack | 调用栈 |
+| ceiling division | 向上取整除法 |
+| child kernel | 子核函数 |
+| color-to-grayscale conversion | 彩色到灰度转换 |
+| context switch | 上下文切换 |
+| context switching | 上下文切换 |
+| convergent kernel | 收敛核函数 |
+| cooperating kernels | 协作核函数 |
+| Cooperative Groups API | 保留英文 |
+| CUDA FORTRAN | 保留英文（编程接口名） |
+| data index | 数据索引 |
+| device property query | 设备属性查询 |
+| execution configuration parameter | 执行配置参数 |
+| fixed-size pool | 固定大小池 |
+| global index | 全局索引 |
+| grayscale image | 灰度图像 |
+| grid-wide synchronization | 网格级同步 |
+| hierarchical organization | 层次化组织 |
+| inactive thread | 非活跃线程 |
+| independent thread scheduling | 独立线程调度 |
+| internal block | 内部线程块 |
+| kernel invocation | 核函数调用 |
+| kernel queues | 核函数队列 |
+| lambda | lambda 表达式 |
+| loop parallelism | 循环级并行 |
+| luminance | 亮度 |
+| memory fence | 内存栅栏 |
+| memory fencing | 内存栅栏 |
+| metaprogramming | 元编程 |
+| multikernel execution | 多核函数执行 |
+| named stream | 命名流 |
+| nested parallelism | 嵌套并行 |
+| nesting level | 嵌套层级 |
+| OpenGL / Direct3D | 保留英文（图形 API 名） |
+| parent kernel | 父核函数 |
+| pending launch pool | 待启动池 |
+| resident warp | 驻留线程束 |
+| source-level debugger | 源代码级调试器 |
+| synchronization depth | 同步深度 |
+| task decomposition | 任务分解 |
+| thread grid | 线程网格 |
+| virtual function | 虚函数 |
+| virtualized pool | 虚拟化池 |
+| Visual Profiler | 保留英文（NVIDIA 工具名） |
+| weighted sum | 加权和 |
 
 ### 5.3 内存体系
 | 英文 | 中文 |
@@ -232,6 +300,43 @@
 | array of structures | 结构体数组 |
 | automatic (array) variable | 自动（数组）变量 |
 | data locality | 数据局部性 |
+| address space | 地址空间 |
+| bit line | 位线 |
+| cache line | 缓存行 |
+| coherence | 一致性 |
+| column-major order | 列主序 |
+| core array | 核心阵列 |
+| data caching | 数据缓存 |
+| data migration | 数据迁移 |
+| decoder (DRAM) | 译码器 |
+| double data rate (DDR) | 双倍数据速率（DDR） |
+| DRAM cell | DRAM 存储单元 |
+| global memory request | 全局内存请求 |
+| interleaved data distribution | 交错数据分布 |
+| linear layout | 线性布局 |
+| managed memory | 托管内存 |
+| memory access efficiency | 内存访问效率 |
+| memory alignment | 内存对齐 |
+| memory controller | 内存控制器 |
+| memory copy | 内存拷贝 |
+| noncoalesced memory access | 非合并内存访问 |
+| page fault | 页错误 |
+| paging | 换页 |
+| physical address space | 物理地址空间 |
+| private memory | 私有内存 |
+| read-only data cache | 只读数据缓存 |
+| row-major order | 行主序 |
+| sense amplifier / sensing amplifier | 读出放大器 |
+| system interconnect | 系统互连 |
+| system memory | 系统内存 |
+| Unified Virtual Addressing | 统一虚拟寻址 |
+| unified virtual memory | 统一虚拟内存 |
+| universal copy | 公共副本 |
+| virtual address | 虚拟地址 |
+| virtual address space | 虚拟地址空间 |
+| virtual memory | 虚拟内存 |
+| working set | 工作集 |
+| zero-copy system memory access | 零拷贝系统内存访问 |
 
 ### 5.4 性能与优化
 | 英文 | 中文 |
@@ -280,6 +385,42 @@
 | false dependence | 伪依赖 |
 | read-after-write dependence | 写后读依赖 |
 | write-after-read dependence | 读后写依赖 |
+| arithmetic-to-global memory access ratio | 算术运算与全局内存访问之比 |
+| atomic add | 原子加 |
+| coarsening loop | 粗化循环 |
+| compute-bound | 计算受限（的） |
+| control flow divergence | 控制流发散 |
+| cross-iteration dependence | 跨迭代依赖 |
+| CUDA Occupancy Calculator | 保留英文 |
+| data reuse | 数据重用 |
+| execution resource | 执行资源 |
+| execution resource utilization efficiency | 执行资源利用率 |
+| full occupancy | 满占用率 |
+| hardware underutilization | 硬件未被充分利用 |
+| heuristic tuning | 启发式调优 |
+| interference between threads | 线程间干扰 |
+| load imbalance | 负载不均衡 |
+| loop unrolling | 循环展开 |
+| memory latency | 内存延迟 |
+| operational intensity | 运算强度 |
+| operations per byte | 每字节操作数 |
+| oversubscription | 过度订阅 |
+| PC sampling | PC 采样 |
+| predication | 断言执行 |
+| private copy | 私有副本 |
+| public copy | 公有副本 |
+| redundant work | 冗余工作 |
+| register spilling | 寄存器溢出 |
+| resource allocation | 资源分配 |
+| reuse ratio | 重用率 |
+| SIMD efficiency | SIMD 效率 |
+| spilled register | 溢出的寄存器 |
+| strong scaling | 强扩展 |
+| thread block slot | 线程块槽位 |
+| thread slot | 线程槽位 |
+| tiling efficiency | 分块效率 |
+| true dependence | 真依赖 |
+| weak scaling | 弱扩展 |
 
 ### 5.5 并行模式（parallel patterns）
 | 英文 | 中文 |
@@ -343,6 +484,99 @@
 | divide-and-conquer | 分治 |
 | compaction | 紧凑化 |
 | regularization | 规整化 |
+| 13-point stencil | 13 点模板 |
+| 19-point stencil | 19 点模板 |
+| 1D convolution | 1D 卷积 |
+| 25-point stencil | 25 点模板 |
+| alphabet position | 字母表位置 |
+| atom-centric | 面向原子的 |
+| atom-centric decomposition | 面向原子的分解 |
+| block-level local sort | 块级局部排序 |
+| block-wide scan | 块内扫描 |
+| bottom-up sort methods | 自底向上排序方法 |
+| boundary check | 边界检查 |
+| bubble sort | 冒泡排序 |
+| bucket | 桶 |
+| bucketing | 分桶 |
+| carry look-ahead | 先行进位 |
+| commit | 提交 |
+| comparison sort | 比较排序 |
+| contiguous segment | 连续段 |
+| convolution kernel | 卷积核 |
+| counting sort | 计数排序 |
+| cumulative sum | 累加和 |
+| data-scalable algorithm | 数据可扩展算法 |
+| destination index | 目标索引 |
+| domain decomposition | 区域分解 |
+| domino-style scan algorithm | 多米诺式扫描算法 |
+| dynamic block index assignment | 动态线程块索引分配 |
+| filter | 滤波器 |
+| finite-volume method | 有限体积法 |
+| five-point stencil | 五点模板 |
+| grid-centric decomposition | 面向网格的分解 |
+| halo overhead | 光环开销 |
+| hierarchical reduction | 分层归约 |
+| higher-order stencil | 高阶模板 |
+| in-place | 原地 |
+| input list | 输入列表 |
+| input range | 输入范围 |
+| input tile plane | 输入分块平面 |
+| input tiling | 输入分块 |
+| interleaved data partitioning | 交错数据划分 |
+| key | 键 |
+| key field | 键字段 |
+| leader thread | 领头线程 |
+| least significant digit (LSD) | 最低有效位（LSD） |
+| lexicographical order | 字典序 |
+| linear recursion | 线性递归 |
+| local bucket | 局部桶 |
+| local sort | 局部排序 |
+| map-reduce | MapReduce |
+| marker variable | 标记变量 |
+| max reduction | 最大值归约 |
+| merge tree | 归并树 |
+| most significant bit | 最高有效位 |
+| most significant digit (MSD) | 最高有效位（MSD） |
+| multiblock | 多块 |
+| nine-point stencil | 九点模板 |
+| noncomparison sort | 非比较排序 |
+| nondecreasing order | 非递减顺序 |
+| nonincreasing order | 非递增顺序 |
+| odd-even transposition sort | 奇偶转置排序 |
+| output list | 输出列表 |
+| output pixel | 输出像素 |
+| output plane | 输出平面 |
+| output range | 输出范围 |
+| owner position / owner location | 属主位置 |
+| partial reduction result | 部分归约结果 |
+| partial sum | 部分和 |
+| predecessor | 前驱 |
+| prefix subarray | 前缀子数组 |
+| primary key | 主键 |
+| producer-consumer chain | 生产者-消费者链 |
+| quicksort | 快速排序 |
+| regular grid | 规则网格 |
+| reverse tree | 反向树 |
+| sampling sort | 样本排序 |
+| scan block | 扫描块 |
+| scan section | 扫描段 |
+| secondary key | 次键 |
+| sectional scan | 分段扫描 |
+| segmented multiblock reduction | 分段多块归约 |
+| seven-point stencil | 七点模板 |
+| shuffle instruction | shuffle 指令 |
+| stencil order | 模板阶数 |
+| stream compaction | 流式紧凑化 |
+| subarray | 子数组 |
+| sum reduction | 求和归约 |
+| three-point stencil | 三点模板 |
+| time slice | 时间切片 |
+| top-down sort methods | 自顶向下排序方法 |
+| transposition sort | 转置排序 |
+| two-phase hybrid | 两阶段混合式 |
+| value field | 值字段 |
+| work assignment | 工作分配 |
+| work-efficient | 工作高效（的） |
 
 ### 5.6 稀疏矩阵与图计算
 | 英文 | 中文 |
@@ -379,6 +613,19 @@
 | bottom-up strategy | 自底向上策略 |
 | direction-optimized | 方向优化的 |
 | idempotence | 幂等性 |
+| dense matrix | 稠密矩阵 |
+| dense vector | 稠密向量 |
+| graph search | 图搜索 |
+| hop | 跳 |
+| incoming edge | 入边 |
+| linear-algebraic formulation | 线性代数表述 |
+| outgoing edge | 出边 |
+| padding element | 填充元素 |
+| small world graph | 小世界图 |
+| social network | 社交网络 |
+| unweighted graph | 无权图 |
+| vertex degree | 顶点度数 |
+| wavefront | 波前 |
 
 ### 5.7 数值与浮点
 | 英文 | 中文 |
@@ -409,6 +656,45 @@
 | backward substitution | 回代 |
 | pivoting | 选主元 |
 | system of linear equations | 线性方程组 |
+| biased encoding | 移码（有偏）编码 |
+| bit pattern | 位模式 |
+| branch divergence | 分支发散 |
+| communication-avoiding algorithm | 避免通信的算法 |
+| comparator | 比较器 |
+| compensated summation algorithm | 补偿求和算法 |
+| denormalized number | 非规格化数 |
+| dynamic range | 动态范围 |
+| excess representation | 移码表示 |
+| excess-3 | 移码 3 |
+| floating-point arithmetic | 浮点算术 |
+| identity matrix | 单位矩阵 |
+| inverse matrix | 逆矩阵 |
+| inversion operation | 求倒数运算 |
+| iterative method | 迭代法 |
+| iterative solver | 迭代求解器 |
+| lead variable | 主变量 |
+| no-zero | no-zero（无零） |
+| normalized number | 规格化数 |
+| number line | 数轴 |
+| pairwise product | 两两乘积 |
+| pairwise sum | 成对和 |
+| partial pivoting | 部分选主元 |
+| place value | 位值 |
+| polynomial approximation | 多项式逼近 |
+| precision | 精度 |
+| presort | 预排序 |
+| quiet NaN | 静默 NaN |
+| reserved bit pattern | 保留位模式 |
+| right-hand-side value | 右端项 |
+| round to zero | 舍入到零 |
+| rounding error | 舍入误差 |
+| signaling NaN | 发信号 NaN |
+| special function unit | 特殊函数单元 |
+| special function unit (SFU) | 特殊函数单元（SFU） |
+| top equation | 顶部方程 |
+| transcendental function | 超越函数 |
+| triangular matrix | 三角矩阵 |
+| two's complement | 二进制补码 |
 
 ### 5.8 应用领域（深度学习、医学影像、分子动力学）
 | 英文 | 中文 |
@@ -450,6 +736,48 @@
 | cutoff summation | 截断求和 |
 | Bezier curve | 贝塞尔曲线 |
 | quadtree | 四叉树 |
+| anatomical constraint | 解剖约束 |
+| apodization | 变迹 |
+| artificial neural network | 人工神经网络 |
+| bilinear interpolation | 双线性插值 |
+| control point | 控制点 |
+| cost function | 代价函数 |
+| CUTLASS | CUTLASS（保留英文） |
+| cutoff distance | 截断距离 |
+| cutoff radius | 截断半径 |
+| dummy atom | 虚拟原子 |
+| electrostatic potential energy | 静电势能 |
+| energy grid | 能量网格 |
+| energy grid point | 能量网格点 |
+| fast Fourier transform (FFT) | 快速傅里叶变换（FFT） |
+| feature extractor | 特征提取器 |
+| feedforward network | 前馈网络 |
+| field inhomogeneity | 场不均匀性 |
+| Fourier transform domain | 傅里叶变换域 |
+| fully connected layer | 全连接层 |
+| gridding | 网格化 |
+| Hermitian transpose | 厄米转置 |
+| inverse fast Fourier transform (iFFT) | 逆快速傅里叶变换（iFFT） |
+| linear classifier | 线性分类器 |
+| neighborhood bin | 邻域箱 |
+| neighborhood list | 邻域列表 |
+| OCR | 光学字符识别（OCR） |
+| overflow list | 溢出列表 |
+| peak signal-to-noise ratio (PSNR) | 峰值信噪比（PSNR） |
+| phantom object | 体模 |
+| positron emission tomography (PET) | 正电子发射断层成像（PET） |
+| projection imaging | 投影成像 |
+| quasi-Bayesian | 准贝叶斯 |
+| radial line | 径向线 |
+| reference image | 参考图像 |
+| rosette | 玫瑰线 |
+| scan trajectory | 扫描轨迹 |
+| spatial frequency domain | 空间频率域 |
+| Toeplitz | Toeplitz |
+| view angle transformation | 视角变换 |
+| visual molecular dynamics (VMD) | 可视化分子动力学（VMD） |
+| voxel | 体素 |
+| weighting function | 加权函数 |
 
 ### 5.9 多 GPU 与集群
 | 英文 | 中文 |
@@ -470,6 +798,21 @@
 | Jacobi iterative method | 雅可比迭代法 |
 | CUDA-aware MPI | CUDA 感知的 MPI |
 | OpenMP / OpenCL / OpenACC | 保留英文（编程接口名） |
+| bounce buffer | 弹跳缓冲区 |
+| boundary slice | 边界切片 |
+| cluster | 集群 |
+| collective operations | 集合操作 |
+| compute cluster | 计算集群 |
+| compute node | 计算节点 |
+| CUDA aware message passing interface | CUDA 感知的 MPI |
+| data server | 数据服务器 |
+| distributed memory model | 分布式内存模型 |
+| halo exchange | 光环交换 |
+| halo slice | 光环切片 |
+| intercommunicator | 组间通信域 |
+| intracommunicator | 组内通信域 |
+| login node | 登录节点 |
+| tag | 标记 |
 
 ### 5.10 通用技术词
 | 英文 | 中文 |
@@ -491,6 +834,109 @@
 | overhead | 开销 |
 | throughput | 吞吐量 |
 | latency | 延迟 |
+| adaptive refinement | 自适应加密 |
+| adaptive subdivision | 自适应细分 |
+| AI | 保留英文（人工智能缩写） |
+| algorithmic complexity | 算法复杂度 |
+| application-level speedup | 应用级加速比 |
+| Basic Linear Algebra Subprograms (BLAS) | 基本线性代数子程序（BLAS） |
+| batch mode | 批量模式 |
+| bin | 箱 |
+| binary search | 二分查找 |
+| bitwise-and operation | 按位与运算 |
+| black art | 玄学 |
+| bounding box | 边界框 |
+| branch degree | 分支度数 |
+| carpooling | 拼车 |
+| clock cycle | 时钟周期 |
+| coauthor | 合著者 |
+| coefficient | 系数 |
+| compression | 压缩 |
+| computational scientist | 计算科学家 |
+| computational thinker | 计算思维者 |
+| computing model | 计算模式 |
+| concurrency | 并发 |
+| curvature | 曲率 |
+| data analytics | 数据分析 |
+| data element | 数据元素 |
+| debugger | 调试器 |
+| definiteness | 确定性 |
+| differential equation | 微分方程 |
+| digital twin | 数字孪生 |
+| driving direction map services | 驾车路线地图服务 |
+| dynamically linked library | 动态链接库 |
+| effective computability | 有效可计算性 |
+| eigenvalue analysis | 特征值分析 |
+| exascale | 百亿亿次级 |
+| exception handling | 异常处理 |
+| external reviewer | 外部审稿人 |
+| fabrication process | 制造工艺 |
+| father of CUDA | CUDA 之父 |
+| feature size | 特征尺寸 |
+| finiteness | 有限性 |
+| geometric series | 几何级数 |
+| golden age of computing | 计算的黄金时代 |
+| GPU computing | GPU 计算 |
+| grid spacing | 网格间距 |
+| HDTV / high-definition (HD) TV | 高清电视 |
+| high-fidelity simulation | 高保真模拟 |
+| implicit method | 隐式方法 |
+| individualized medicine | 个体化医疗 |
+| initial condition | 初始条件 |
+| inner product | 内积 |
+| installed base | 装机量 |
+| interpolation | 插值 |
+| kiosk | 自助终端 |
+| lattice point | 格点 |
+| lead architect | 首席架构师 |
+| legacy library | 遗留库 |
+| legacy program | 遗留程序 |
+| lithography mask | 光刻掩模版 |
+| loop nest | 循环嵌套 |
+| LU decomposition | LU 分解 |
+| mask | 掩码 |
+| maze routing | 迷宫布线 |
+| Monte Carlo methods | 蒙特卡洛方法 |
+| mutex | 互斥量 |
+| National Institutes of Health (NIH) | 美国国立卫生研究院（NIH） |
+| net terminal | 网络端子 |
+| NTSC | 保留英文（电视制式缩写，不译） |
+| numerical approximation | 数值近似 |
+| numerical method | 数值方法 |
+| order relation | 序关系 |
+| ordering relation | 序关系 |
+| outlet gate | 输出门 |
+| oversampling | 过采样 |
+| paradigm shift | 范式转变 |
+| parallelotope | 平行多面体 |
+| Pareto optimal curve | 帕累托最优曲线 |
+| polynomial evaluation | 多项式求值 |
+| quadrant | 象限 |
+| randomization | 随机化 |
+| ray tracing | 光线追踪 |
+| recurrence | 递推 |
+| scalar variable | 标量变量 |
+| self-driving cars | 自动驾驶汽车 |
+| space efficiency | 空间效率 |
+| spline | 样条 |
+| spline curve | 样条曲线 |
+| square matrix | 方阵 |
+| statistical estimation method | 统计估计方法 |
+| stride | 步长 |
+| submatrix | 子矩阵 |
+| superapplications | 超级应用 |
+| supercircle | 超圆 |
+| system call | 系统调用 |
+| task-level parallelization | 任务级并行化 |
+| Taylor series | 泰勒级数 |
+| terascale | 万亿次级 |
+| time step | 时间步 |
+| turbulence simulation | 湍流模拟 |
+| uniform grid | 均匀网格 |
+| value interval | 值区间 |
+| wiring block | 布线块 |
+| work queue | 工作队列 |
+| workload | 工作负载 |
 
 > 未在表中出现的术语，按"含义准确、业内通用"原则确定首译，并在译稿中保持前后一致。**不要直接编辑本表**——按 §5.0 写入本页的 `newterms.json`。
 
@@ -506,8 +952,9 @@
 
 ### 6.2 数字与单位
 - 阿拉伯数字、百分号、单位（`GB/s`、`ms`、`%`、`10⁹`）保留半角原样。
-- 数字与中文之间通常不加空格（如"约 100 万个线程"可写作"约100万个线程"，全书统一即可）；建议数字与单位间留半角空格（"100 GB/s"）。
-- 范围用"~"或"至"，全书统一（推荐"至"，如"第 1 至 19 页"）。
+- 中文与数字/英文之间的空格由渲染器**机械强制**：在 CJK 与拉丁字符（含数字）的交界处统一插入半角空格（如"约 100 万个线程""使用 CUDA"）。译者无需自行加空格，也不得依赖"全书统一即可"之类的松散约定——并发翻译下各页无法自行保持一致，这项排版由渲染器兜底。
+- 数字与单位之间建议留半角空格（"100 GB/s"），渲染器不作强制。
+- 范围一律用"至"（如"第 1 至 19 页"）。
 
 ### 6.3 代码与标识符
 - 代码块（`<pre>`）、内联代码片段、函数名、变量名、类型名、API（如 `cudaMalloc`、`__global__`、`float*`）一律保留英文半角。
@@ -551,10 +998,10 @@
 
 1. **逐章翻译**：按 `Ch001` → `Ch023` 顺序，或按 Part 分组推进。
 2. **先结构后润色**：第一遍保证准确与术语统一，第二遍通读润色流畅度。
-3. **术语集中管理**：§5 术语表已冻结，翻译中**不得**直接编辑。发现表外术语时写入本页的 `newterms.json`（见 §5.0），由收尾任务统一合并。
+3. **术语集中管理**：§5 术语表已冻结，翻译中**不得**直接编辑。发现表外术语时写入本页的 `newterms.json`（见 §5.0），由收尾任务统一合并（本书收尾合并已在任务 08 完成）。
 4. **对照复核**：译后对照英文原文逐段核对，重点关注被动语态、限定词、长难句。
 5. **构建验证**：翻译后重新运行 `build_site.py`（或直接在浏览器打开 `web/index.html`）确认无破坏。
 
 ---
 
-*本标准随翻译实践持续修订。但 §5 术语表在翻译期间冻结：新词写入本页的 `newterms.json`，由收尾任务统一合并（见 §5.0）。*
+*本标准随翻译实践持续修订。§5 术语表的收尾合并（各页 `newterms.json` 并入本表）已在任务 08 完成；此后新增的术语仍写入本页的 `newterms.json`，由后续收尾任务统一合并（见 §5.0）。*

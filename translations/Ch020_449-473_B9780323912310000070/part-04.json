@@ -119,7 +119,7 @@
       "id": "p0430",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[9]/p[5]",
       "en": "Besides removing the data transfers during the halo exchange using 【1】MPI_SendRecv()【/1】, it would also be possible to remove the initial and final memory copies by receiving/sending the input/output directly from the GPU memory.",
-      "zh": "除了在使用【1】MPI_SendRecv()【/1】交换光环时删除数据传输之外，还可以通过直接从 GPU 内存接收/发送输入/输出来删除最初和最终的内存复制。"
+      "zh": "除了在使用【1】MPI_SendRecv()【/1】进行光环交换时删除数据传输之外，还可以通过直接从 GPU 内存接收/发送输入/输出来删除最初和最终的内存复制。"
     },
     {
       "id": "st0060",

@@ -17,7 +17,7 @@
       "id": "sp0075",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[1]/p[1]",
       "en": "This chapter introduces key concepts of the thread organization and thread-to-data mapping in CUDA. It first gives an overview of the multidimensional organization of CUDA threads, blocks, and grids. It then elaborates on the use of thread indexes and block indexes to map threads to different parts of the data, which is illustrated with a two-dimensional (2D) image color-to-grayscale conversion example and a 2D image blur example. The chapter concludes with a matrix multiplication example that will be used extensively in later parts of the book.",
-      "zh": "本章介绍 CUDA 中线程组织方式以及线程到数据映射的关键概念。首先概述 CUDA 线程、线程块与网格的多维组织；随后详细说明如何利用线程索引和线程块索引把线程映射到数据的不同部分，并以一个二维（2D）图像彩色转灰度的例子和一个 2D 图像模糊的例子加以说明。本章最后给出一个矩阵乘法的例子，本书后续部分将大量使用该例子。"
+      "zh": "本章介绍 CUDA 中线程组织方式以及线程到数据映射的关键概念。首先概述 CUDA 线程、线程块与网格的多维组织；随后详细说明如何利用线程索引和线程块索引把线程映射到数据的不同部分，并以一个二维（2D）图像彩色到灰度转换的例子和一个 2D 图像模糊的例子加以说明。本章最后给出一个矩阵乘法的例子，本书后续部分将大量使用该例子。"
     },
     {
       "id": "st0015",

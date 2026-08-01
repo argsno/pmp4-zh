@@ -83,7 +83,7 @@
       "id": "p0300",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[1]",
       "en": "Early devices performed double-precision floating-point arithmetic with significant speed reduction (around eight times slower) compared to single-precision. The floating-point arithmetic units of Fermi and its successors were significantly strengthened to perform double-precision arithmetic at about half the speed of single-precision. Applications that are intensive in double-precision floating-point arithmetic benefited tremendously.",
-      "zh": "早期的设备执行双精度浮点运算时，与单精度相比速度大幅降低（大约慢 8 倍）。Fermi 及其后继架构的浮点运算单元得到了显著加强，双精度运算速度约为单精度的二分之一。大量进行双精度浮点运算的应用从中受益匪浅。"
+      "zh": "早期的设备执行双精度浮点算术时，与单精度相比速度大幅降低（大约慢 8 倍）。Fermi 及其后继架构的浮点运算单元得到了显著加强，双精度运算速度约为单精度的二分之一。大量进行双精度浮点运算的应用从中受益匪浅。"
     },
     {
       "id": "p0305",

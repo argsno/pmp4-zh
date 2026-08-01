@@ -113,7 +113,7 @@
       "id": "p0020",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[1]",
       "en": "Convolution is an array operation in which each output data element is a weighted sum of the corresponding input element and a collection of input elements that are centered on it. The weights that are used in the weighted sum calculation are defined by a filter array, commonly referred to as the 【1】convolution kernel【/1】. Since there is an unfortunate name conflict between the CUDA kernel functions and convolution kernels, we will refer to these filter arrays as 【2】convolution filters【/2】 to avoid confusion.",
-      "zh": "卷积是一种数组运算，其中每个输出数据元素是对应的输入元素与以它为中心的一组输入元素的加权和。加权求和计算中所用的权重由滤波器数组定义，该数组通常被称为【1】卷积核（convolution kernel）【/1】。由于 CUDA 核函数与卷积核（convolution kernel）之间存在令人遗憾的名称冲突，为了避免混淆，我们将这些滤波器数组称为【2】卷积滤波器【/2】。"
+      "zh": "卷积是一种数组运算，其中每个输出数据元素是对应的输入元素与以它为中心的一组输入元素的加权和。加权和计算中所用的权重由滤波器数组定义，该数组通常被称为【1】卷积核（convolution kernel）【/1】。由于 CUDA 核函数与卷积核（convolution kernel）之间存在令人遗憾的名称冲突，为了避免混淆，我们将这些滤波器数组称为【2】卷积滤波器【/2】。"
     },
     {
       "id": "p0025",
@@ -125,7 +125,7 @@
       "id": "p0030",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
       "en": "Since the size of the filter is an odd number (【M1】【M2】, the weighted sum calculation is symmetric around the element that is being calculated. That is, the weighted sum involves 【M3】【M4】 input elements on each side of the position that is being calculated, which is the reason why 【M5】【M6】 is referred to as the 【7】radius【/7】 of the filter.",
-      "zh": "由于滤波器的大小是奇数（【M1】【M2】，因此加权求和计算围绕被计算的元素对称。也就是说，加权求和涉及被计算位置每一侧的【M3】【M4】个输入元素，这正是【M5】【M6】被称为滤波器【7】半径【/7】的原因。"
+      "zh": "由于滤波器的大小是奇数（【M1】【M2】，因此加权和计算围绕被计算的元素对称。也就是说，加权和涉及被计算位置每一侧的【M3】【M4】个输入元素，这正是【M5】【M6】被称为滤波器【7】半径【/7】的原因。"
     },
     {
       "id": "p0035",

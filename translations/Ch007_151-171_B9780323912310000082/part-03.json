@@ -5,13 +5,13 @@
       "id": "p0225",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[7]",
       "en": "【1】Fig. 7.13【/1】 shows a small example of convolution using a 3 × 3 filter (【2】FILTER_RADIUS【/2】【3】=【/3】1), 8 × 8 input tiles, 8 × 8 blocks, and 6 × 6 output tiles. The left side of 【4】Fig. 7.13【/4】 shows the input tile and the thread block. Since they are of the same size, they are overlaid on top of each other. With our design, we deactivate 【5】FILTER_RADIUS【/5】=1 exterior layer of threads. The heavy-line box at the center of the left side of 【6】Fig. 7.13【/6】 encloses the active threads for calculating the output tile elements. In this example the 【7】threadIdx.x【/7】 and 【8】threadIdx.y【/8】 values of the active threads both range from 1 to 6.",
-      "zh": "【1】图 7.13【/1】展示了一个小型的卷积示例，使用 3 × 3 的滤波器（【2】FILTER_RADIUS【/2】【3】=【/3】1）、8 × 8 的输入分块、8 × 8 的线程块和 6 × 6 的输出分块。【4】图 7.13【/4】的左侧展示了输入分块和线程块。由于它们大小相同，二者重叠在一起。按照我们的设计，停用【5】FILTER_RADIUS【/5】=1 圈外层线程。【6】图 7.13【/6】左侧中央的粗线框圈出了用于计算输出分块元素的活动线程。在本例中，活动线程的【7】threadIdx.x【/7】和【8】threadIdx.y【/8】值都从 1 到 6。"
+      "zh": "【1】图 7.13【/1】展示了一个小型的卷积示例，使用 3 × 3 的滤波器（【2】FILTER_RADIUS【/2】【3】=【/3】1）、8 × 8 的输入分块、8 × 8 的线程块和 6 × 6 的输出分块。【4】图 7.13【/4】的左侧展示了输入分块和线程块。由于它们大小相同，二者重叠在一起。按照我们的设计，停用【5】FILTER_RADIUS【/5】=1 圈外层线程。【6】图 7.13【/6】左侧中央的粗线框圈出了用于计算输出分块元素的活跃线程。在本例中，活跃线程的【7】threadIdx.x【/7】和【8】threadIdx.y【/8】值都从 1 到 6。"
     },
     {
       "id": "p0230",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[8]",
       "en": "【1】Fig. 7.13【/1】 also shows the mapping of the active threads to the output tile elements: Active thread (tx, ty) will calculate output element (tx - 【2】FILTER_RADIUS【/2】, ty - 【3】FILTER_RADIUS【/3】) using a patch of input tile elements whose upper-left corner is element (tx - 【4】FILTER_RADIUS【/4】, ty - 【5】FILTER_RADIUS【/5】) of the input tile. This is reflected in lines 17–18 of 【6】Fig. 7.12【/6】, where the column index 【7】(tileCol)【/7】 and row index 【8】(tileRow)【/8】 are assigned 【9】threadIdx.x-FILTER_RADIUS【/9】 and 【10】threadId.y-FILTER_RADIUS【/10】, respectively.",
-      "zh": "【1】图 7.13【/1】还展示了活动线程到输出分块元素的映射：活动线程（tx, ty）将利用一块输入分块元素来计算输出元素（tx - 【2】FILTER_RADIUS【/2】, ty - 【3】FILTER_RADIUS【/3】），该输入分块元素块的左上角是输入分块的元素（tx - 【4】FILTER_RADIUS【/4】, ty - 【5】FILTER_RADIUS【/5】）。这体现在【6】图 7.12【/6】的第 17–18 行，其中列索引【7】(tileCol)【/7】和行索引【8】(tileRow)【/8】分别被赋值为【9】threadIdx.x-FILTER_RADIUS【/9】和【10】threadId.y-FILTER_RADIUS【/10】。"
+      "zh": "【1】图 7.13【/1】还展示了活跃线程到输出分块元素的映射：活跃线程（tx, ty）将利用一块输入分块元素来计算输出元素（tx - 【2】FILTER_RADIUS【/2】, ty - 【3】FILTER_RADIUS【/3】），该输入分块元素块的左上角是输入分块的元素（tx - 【4】FILTER_RADIUS【/4】, ty - 【5】FILTER_RADIUS【/5】）。这体现在【6】图 7.12【/6】的第 17–18 行，其中列索引【7】(tileCol)【/7】和行索引【8】(tileRow)【/8】分别被赋值为【9】threadIdx.x-FILTER_RADIUS【/9】和【10】threadId.y-FILTER_RADIUS【/10】。"
     },
     {
       "id": "p0235",
@@ -23,7 +23,7 @@
       "id": "p0240",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[10]",
       "en": "In lines 06–07, 【1】blockIdx.x*OUT_TILE_DIM【/1】 and 【2】blockIdx.y*OUT_TILE_DIM【/2】 are the horizontal and vertical P array indices, respectively, of the beginning of the output tile assigned to the block. As we discussed earlier, 【3】threadIdx.x-r【/3】 and 【4】threadIdx.y-r【/4】 give the offset into the tile. Thus the row and the col variables provide the index of the output element assigned to each active thread. Each thread uses these two indices to write the final value of the output element in line 29.",
-      "zh": "在第 06–07 行中，【1】blockIdx.x*OUT_TILE_DIM【/1】和【2】blockIdx.y*OUT_TILE_DIM【/2】分别是分配给该线程块的输出分块起点的水平与垂直 P 数组索引。正如我们之前讨论过的，【3】threadIdx.x-r【/3】和【4】threadIdx.y-r【/4】给出分块内的偏移量。这样，row 和 col 变量就提供了分配给每个活动线程的输出元素索引。每个线程在第 29 行用这两个索引写入输出元素的最终值。"
+      "zh": "在第 06–07 行中，【1】blockIdx.x*OUT_TILE_DIM【/1】和【2】blockIdx.y*OUT_TILE_DIM【/2】分别是分配给该线程块的输出分块起点的水平与垂直 P 数组索引。正如我们之前讨论过的，【3】threadIdx.x-r【/3】和【4】threadIdx.y-r【/4】给出分块内的偏移量。这样，row 和 col 变量就提供了分配给每个活跃线程的输出元素索引。每个线程在第 29 行用这两个索引写入输出元素的最终值。"
     },
     {
       "id": "p0245",

@@ -83,7 +83,7 @@
       "id": "p0295",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[25]",
       "en": "In general, the pivoting step should choose the equation with the largest absolute coefficient value among all the lead variables and swap its equation (row) with the current top equation as well as swap the variable (column) with the current variable. While pivoting is conceptually simple, it can incur significant implementation complexity and performance overhead. In the case of our simple CUDA kernel implementation, recall that each thread is assigned a row. Pivoting requires an inspection and perhaps swapping of coefficient data spread across these threads. This is not a big problem if all coefficients are in the shared memory. We can run a parallel max reduction using threads in the block as long as we control the level of control flow divergence within warps.",
-      "zh": "一般而言，选主元步骤应在所有主变量中选择绝对值系数最大的方程，将该方程（行）与当前的顶部方程交换，并将该变量（列）与当前变量交换。虽然选主元在概念上很简单，但它可能带来显著的实现复杂度和性能开销。就我们简单的 CUDA 核函数实现而言，回想一下，每个线程被分配一行。选主元需要检查分散在这些线程中的系数数据，并可能需要在它们之间交换。如果所有系数都在共享内存中，这就不是大问题。只要我们能控制线程束内控制发散的程度，就可以用线程块内的线程执行并行最大值归约。"
+      "zh": "一般而言，选主元步骤应在所有主变量中选择绝对值系数最大的方程，将该方程（行）与当前的顶部方程交换，并将该变量（列）与当前变量交换。虽然选主元在概念上很简单，但它可能带来显著的实现复杂度和性能开销。就我们简单的 CUDA 核函数实现而言，回想一下，每个线程被分配一行。选主元需要检查分散在这些线程中的系数数据，并可能需要在它们之间交换。如果所有系数都在共享内存中，这就不是大问题。只要我们能控制线程束内控制流发散的程度，就可以用线程块内的线程执行并行最大值归约。"
     },
     {
       "id": "p0300",

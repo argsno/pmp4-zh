@@ -143,7 +143,7 @@
       "id": "p0100",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[3]",
       "en": "To convert the color image (left side of 【1】Fig. 2.1【/1】) to a grayscale image (right side), we compute the luminance value 【2】L【/2】 for each pixel by applying the following weighted sum formula:",
-      "zh": "为了把彩色图像（【1】图 2.1【/1】的左侧）转换为灰度图像（右侧），我们对每个像素应用如下加权求和公式来计算其亮度值【2】L【/2】："
+      "zh": "为了把彩色图像（【1】图 2.1【/1】的左侧）转换为灰度图像（右侧），我们对每个像素应用如下加权和公式来计算其亮度值【2】L【/2】："
     },
     {
       "id": "n0024",

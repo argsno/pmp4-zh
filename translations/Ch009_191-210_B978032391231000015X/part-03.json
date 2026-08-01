@@ -23,7 +23,7 @@
       "id": "p0275",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[3]",
       "en": "【1】Fig. 9.11【/1】 shows an example of the contiguous partitioning strategy. The input is partitioned into contiguous segments, and each segment is assigned to a thread. 【2】Fig. 9.12【/2】 shows the histogram kernel with coarsening applied using the contiguous partitioning strategy. The difference from 【3】Fig. 9.10【/3】 is on lines 09–10. In 【4】Fig. 9.10【/4】 the input element index 【5】i【/5】 corresponded to the global thread index, so each thread received one input element. In 【6】Fig. 9.11【/6】 the input elements index 【7】i【/7】 is the index of a loop that iterates from 【8】tid*CFACTOR【/8】 to 【9】(tid + 1)*CFACTOR【/9】 where 【10】CFACTOR【/10】 is the coarsening factor. Therefore each thread takes a contiguous segment of 【11】CFACTOR【/11】 elements. The 【12】min【/12】 operation in the loop bound ensures that the threads at the end do not read out of bounds.",
-      "zh": "【1】图 9.11【/1】展示了连续划分策略的一个示例。输入被划分为连续的段，每一段分配给一个线程。【2】图 9.12【/2】展示了采用连续划分策略应用粗化的直方图核函数。它与【3】图 9.10【/3】的区别在第 09–10 行。在【4】图 9.10【/4】中，输入元素的索引【5】i【/5】与全局线程索引对应，因此每个线程获得一个输入元素。在【6】图 9.11【/6】中，输入元素的索引【7】i【/7】是一个循环的索引，该循环从【8】tid*CFACTOR【/8】迭代到【9】(tid + 1)*CFACTOR【/9】，其中【10】CFACTOR【/10】是粗化因子。因此，每个线程取一段连续的【11】CFACTOR【/11】个元素。循环边界中的【12】min【/12】运算确保末尾的线程不会越界读取。"
+      "zh": "【1】图 9.11【/1】展示了连续划分策略的一个示例。输入被划分为连续段，每一段分配给一个线程。【2】图 9.12【/2】展示了采用连续划分策略应用粗化的直方图核函数。它与【3】图 9.10【/3】的区别在第 09–10 行。在【4】图 9.10【/4】中，输入元素的索引【5】i【/5】与全局线程索引对应，因此每个线程获得一个输入元素。在【6】图 9.11【/6】中，输入元素的索引【7】i【/7】是一个循环的索引，该循环从【8】tid*CFACTOR【/8】迭代到【9】(tid + 1)*CFACTOR【/9】，其中【10】CFACTOR【/10】是粗化因子。因此，每个线程取一段连续的【11】CFACTOR【/11】个元素。循环边界中的【12】min【/12】运算确保末尾的线程不会越界读取。"
     },
     {
       "id": "n0079",
@@ -47,7 +47,7 @@
       "id": "p0285",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[5]",
       "en": "In contrast, contiguous partitioning on GPUs results in a suboptimal memory access pattern. As we learned in 【1】Chapter 5【/1】, Memory Architecture and Data Locality, the large number of simultaneously active threads in an SM typically causes so much interference in the cache that one cannot expect data to remain in the cache for all the sequential accesses by a single thread. Instead, we need to make sure that threads in a warp access consecutive locations to enable memory coalescing. This observation motivates interleaved partitioning.",
-      "zh": "相比之下，GPU 上的连续划分会导致次优的内存访问模式。正如我们在【1】第 5 章【/1】“内存体系结构与数据局部性”中所学的，SM 中同时活跃的线程数量很大，通常会在缓存中造成大量干扰，以至于不能指望数据在缓存中保留到单个线程的所有顺序访问完成。相反，我们需要确保线程束中的线程访问连续的位置，以便实现内存合并。这一观察启发了交错划分。"
+      "zh": "相比之下，GPU 上的连续划分会导致次优的内存访问模式。正如我们在【1】第 5 章【/1】“内存体系结构与数据局部性”中所学的，SM 中同时存在的活跃线程数量很大，通常会在缓存中造成大量干扰，以至于不能指望数据在缓存中保留到单个线程的所有顺序访问完成。相反，我们需要确保线程束中的线程访问连续的位置，以便实现内存合并。这一观察启发了交错划分。"
     },
     {
       "id": "p0290",

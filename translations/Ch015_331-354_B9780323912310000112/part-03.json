@@ -53,7 +53,7 @@
       "id": "p0310",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
       "en": "Recall from 【1】Chapter 6【/1】, Performance Considerations, that one optimization that can be applied to reduce the contention of atomic operations on the same data is privatization. Privatization reduces contention of atomics by applying partial updates to a private copy of the data, then updating the public copy when done. We saw an example of privatization in the histogram pattern in 【2】Chapter 9【/2】, Parallel Histogram, where threads in the same block updated a local histogram that was private to the block, then updated the public histogram at the end.",
-      "zh": "回想一下【1】第 6 章【/1】“性能考量”中所述，可以用于减少同一数据上的原子操作竞争的一种优化是私有化。私有化通过对数据的私有副本进行部分更新，然后在完成时更新公共副本，从而减少原子操作的竞争。我们在【2】第 9 章【/2】“并行直方图”的直方图模式中看到过私有化的一个例子：同一线程块中的线程更新该块私有的局部直方图，然后在结束时更新公共直方图。"
+      "zh": "回想一下【1】第 6 章【/1】“性能考量”中所述，可以用于减少同一数据上的原子操作竞争的一种优化是私有化。私有化通过对数据的私有副本进行部分更新，然后在完成时更新公有副本，从而减少原子操作的竞争。我们在【2】第 9 章【/2】“并行直方图”的直方图模式中看到过私有化的一个例子：同一线程块中的线程更新该块私有的局部直方图，然后在结束时更新公共直方图。"
     },
     {
       "id": "p0315",

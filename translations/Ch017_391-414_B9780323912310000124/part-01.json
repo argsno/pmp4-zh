@@ -5,7 +5,7 @@
       "id": "p0100",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[9]",
       "en": "Image reconstruction from non-Cartesian trajectory data presents both challenges and opportunities. The main challenge arises from the fact that the exponential terms are no longer uniformly spaced; the summation does not have the form of an FFT anymore. Therefore one can no longer perform reconstruction by directly applying an inverse FFT to the k-space samples. In a commonly used approach called gridding, the samples are first interpolated onto a uniform Cartesian grid and then reconstructed by using the FFT (see 【1】Fig. 17.1B【/1】). For example, a convolution approach to gridding takes a k-space data point, convolves it with a gridding convolution mask, and accumulates the results on a Cartesian grid. As we saw in 【2】Chapter 7【/2】, Convolution, is quite computationally intensive and is an important pattern for massively parallel computing. The reader already has the skills for accelerating convolution gridding computation with parallel computing and thus facilitating the application of the current FFT approach to non-Cartesian trajectory data.",
-      "zh": "从非笛卡儿轨迹数据进行图像重建，既是挑战也是机遇。主要挑战源于指数项不再均匀间隔，求和也不再具有 FFT 的形式。因此，无法再通过对 k 空间样本直接施加逆 FFT 来重建。在一种称为网格化的常用方法中，样本首先被插值到均匀的笛卡儿网格上，然后利用 FFT 进行重建（见【1】图 17.1B【/1】）。例如，卷积网格化方法取一个 k 空间数据点，将其与网格化卷积掩模进行卷积，并将结果累加到笛卡儿网格上。正如我们在【2】第 7 章【/2】《卷积》中所见，这种计算的计算量相当大，是大规模并行计算的一个重要模式。读者已具备用并行计算加速卷积网格化计算的技能，因而能够将现有的 FFT 方法应用于非笛卡儿轨迹数据。"
+      "zh": "从非笛卡儿轨迹数据进行图像重建，既是挑战也是机遇。主要挑战源于指数项不再均匀间隔，求和也不再具有 FFT 的形式。因此，无法再通过对 k 空间样本直接施加逆 FFT 来重建。在一种称为网格化的常用方法中，样本首先被插值到均匀的笛卡儿网格上，然后利用 FFT 进行重建（见【1】图 17.1B【/1】）。例如，卷积网格化方法取一个 k 空间数据点，将其与网格化卷积掩码进行卷积，并将结果累加到笛卡儿网格上。正如我们在【2】第 7 章【/2】《卷积》中所见，这种计算的计算量相当大，是大规模并行计算的一个重要模式。读者已具备用并行计算加速卷积网格化计算的技能，因而能够将现有的 FFT 方法应用于非笛卡儿轨迹数据。"
     },
     {
       "id": "p0105",
@@ -41,13 +41,13 @@
       "id": "p0120",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[3]",
       "en": "On the surface, the computational solution to the problem formulation in 【1】Fig. 17.3【/1】 should be very straightforward. It involves matrix multiplication and addition (F【2】H【/2】F+λW【3】H【/3】W), matrix-vector multiplication (F【4】H【/4】D), matrix inversion (F【5】H【/5】F+λW【6】H【/6】W)【7】−1【/7】, and finally matrix multiplication ((F【8】H【/8】F+λW【9】H【/9】W)【10】−1【/10】*F【11】H【/11】D). However, the sizes of the matrices make this straightforward approach extremely time-consuming. The dimensions of F【12】H【/12】 and F matrices are determined by the number of voxels in the 3D reconstructed image and the number of k-space samples used in the reconstruction. Even in a modest resolution 128【13】3【/13】-voxel reconstruction, there are 128【14】3【/14】=2 million columns in F with N elements in each column, where N is the number of k-space samples that are used (size of D). Obviously, F is extremely large. Such massive dimensions are commonly encountered in big data analytics when one tries to use iterative solver methods to estimate the major contributing factors of a massive amount of noisy observational data.",
-      "zh": "表面上看，对【1】图 17.3【/1】中问题公式的求解应该非常简单。它涉及矩阵乘法与加法（F【2】H【/2】F+λW【3】H【/3】W）、矩阵-向量乘法（F【4】H【/4】D）、矩阵求逆（F【5】H【/5】F+λW【6】H【/6】W）【7】−1【/7】，最后还有矩阵乘法（(F【8】H【/8】F+λW【9】H【/9】W)【10】−1【/10】*F【11】H【/11】D）。然而，矩阵的规模使得这种直接方法极其耗时。F【12】H【/12】与 F 矩阵的维数由三维重建图像中的体素数以及重建所用的 k 空间样本数决定。即便是在中等分辨率的 128【13】3【/13】体素重建中，F 也有 128【14】3【/14】=200 万列，每列有 N 个元素，其中 N 是所使用的 k 空间样本数（即 D 的大小）。显然，F 极其庞大。当人们试图用迭代求解方法从海量含噪观测数据中估计主要影响因素时，这种规模的维数在大数据分析中十分常见。"
+      "zh": "表面上看，对【1】图 17.3【/1】中问题公式的求解应该非常简单。它涉及矩阵乘法与加法（F【2】H【/2】F+λW【3】H【/3】W）、矩阵-向量乘法（F【4】H【/4】D）、矩阵求逆（F【5】H【/5】F+λW【6】H【/6】W）【7】−1【/7】，最后还有矩阵乘法（(F【8】H【/8】F+λW【9】H【/9】W)【10】−1【/10】*F【11】H【/11】D）。然而，矩阵的规模使得这种直接方法极其耗时。F【12】H【/12】与 F 矩阵的维数由三维重建图像中的体素数以及重建所用的 k 空间样本数决定。即便是在中等分辨率的 128【13】3【/13】体素重建中，F 也有 128【14】3【/14】=200 万列，每列有 N 个元素，其中 N 是所使用的 k 空间样本数（即 D 的大小）。显然，F 极其庞大。当人们试图用迭代求解器从海量含噪观测数据中估计主要影响因素时，这种规模的维数在大数据分析中十分常见。"
     },
     {
       "id": "p0125",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[4]",
       "en": "The sizes of the matrices that are involved are so large that the matrix operations that are involved in a direct solution of the equation in 【1】Fig. 17.3【/1】 using methods such as Gaussian elimination are practically intractable. An iterative method for matrix inversion, such as the conjugate gradient (CG) algorithm, is therefore preferred. The CG algorithm reconstructs the image by iteratively solving the equation in 【2】Fig. 17.3【/2】 for ρ. During each iteration the CG algorithm updates the current image estimate ρ to improve the value of the quasi-Bayesian cost function. The computational efficiency of the CG technique is determined largely by the efficiency of matrix-vector multiplication operations involving F【3】H【/3】F+λW【4】H【/4】W and ρ, as these operations are required during each iteration of the CG algorithm.",
-      "zh": "所涉及的矩阵规模如此之大，以至于用高斯消元等方法直接求解【1】图 17.3【/1】中的方程所需的矩阵运算实际上难以处理。因此，人们更倾向于采用共轭梯度（CG）算法等矩阵求逆的迭代方法。CG 算法通过迭代求解【2】图 17.3【/2】中的方程来重建图像 ρ。在每次迭代中，CG 算法都会更新当前的图像估计 ρ，以改进准贝叶斯代价函数的值。CG 技术的计算效率在很大程度上取决于涉及 F【3】H【/3】F+λW【4】H【/4】W 与 ρ 的矩阵-向量乘法运算的效率，因为 CG 算法的每次迭代都需要这些运算。"
+      "zh": "所涉及的矩阵规模如此之大，以至于用高斯消元等方法直接求解【1】图 17.3【/1】中的方程所需的矩阵运算实际上难以处理。因此，人们更倾向于采用共轭梯度（CG）算法等矩阵求逆的迭代法。CG 算法通过迭代求解【2】图 17.3【/2】中的方程来重建图像 ρ。在每次迭代中，CG 算法都会更新当前的图像估计 ρ，以改进准贝叶斯代价函数的值。CG 技术的计算效率在很大程度上取决于涉及 F【3】H【/3】F+λW【4】H【/4】W 与 ρ 的矩阵-向量乘法运算的效率，因为 CG 算法的每次迭代都需要这些运算。"
     },
     {
       "id": "p0130",
@@ -89,7 +89,7 @@
       "id": "p0150",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[2]",
       "en": "Despite the algorithm’s abundant inherent parallelism, potential performance bottlenecks are evident. First, in the loop that computes the elements of F【1】H【/1】D, the ratio of floating-point operations to memory accesses is at best 0.75 OP/B and at worst 0.25 OP/B. The best case assumes that the sin and cos trigonometry operations are computed by using five-element Taylor series that require 13 and 12 floating-point operations, respectively. The worst case assumes that each trigonometric operation is computed as a single operation in hardware. As we saw in 【2】Chapter 5【/2】, Memory Architecture and Data Locality, a substantially higher floating-point arithmetic to global memory access ratio is needed for the kernel not to be limited by memory bandwidth. Thus the memory accesses will clearly limit the performance of the kernel unless the ratio is drastically increased.",
-      "zh": "尽管该算法具有丰富的内在并行性，潜在的性能瓶颈也显而易见。首先，在计算 F【1】H【/1】D 元素的循环中，浮点运算与内存访问之比最高为 0.75 OP/B，最低为 0.25 OP/B。最优情况假设 sin 和 cos 三角函数运算使用五元泰勒级数来计算，分别需要 13 次和 12 次浮点运算。最差情况假设每个三角运算在硬件中作为单次运算执行。正如我们在【2】第 5 章【/2】《内存体系结构与数据局部性》中所见，核函数要不受内存带宽限制，就需要明显更高的浮点运算与全局内存访问之比。因此，除非大幅提高这一比值，否则内存访问显然会限制核函数的性能。"
+      "zh": "尽管该算法具有丰富的内在并行性，潜在的性能瓶颈也显而易见。首先，在计算 F【1】H【/1】D 元素的循环中，浮点算术与内存访问之比最高为 0.75 OP/B，最低为 0.25 OP/B。最优情况假设 sin 和 cos 三角函数运算使用五元泰勒级数来计算，分别需要 13 次和 12 次浮点运算。最差情况假设每个三角运算在硬件中作为单次运算执行。正如我们在【2】第 5 章【/2】《内存体系结构与数据局部性》中所见，核函数要不受内存带宽限制，就需要明显更高的浮点运算与全局内存访问之比。因此，除非大幅提高这一比值，否则内存访问显然会限制核函数的性能。"
     },
     {
       "id": "p0155",
@@ -143,7 +143,7 @@
       "id": "p0185",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[1]/p[5]",
       "en": "A potentially better alternative to the scatter approach is to use each thread to calculate one output element by collecting the contributions from all input elements, which is referred to as the 【1】gather approach【/1】. The gather approach ensures that the threads update only their designated output elements and never interfere with each other. In our application, parallelization based on the gather approach assigns each thread to calculate one pair of rFhD and iFhD elements from all k-space samples. As a result, there is no interference between threads and no need for atomic operations.",
-      "zh": "分散方法一个可能更好的替代方案是：让每个线程通过收集所有输入元素的贡献来计算一个输出元素，这称为【1】汇聚方法【/1】。汇聚方法确保线程只更新自己负责的输出元素，彼此之间互不干扰。在我们的应用中，基于汇聚方法的并行化让每个线程负责从所有 k 空间样本计算一对 rFhD 和 iFhD 元素。这样，线程之间没有干扰，也不需要原子操作。"
+      "zh": "分散方法一个可能更好的替代方案是：让每个线程通过收集所有输入元素的贡献来计算一个输出元素，这称为【1】汇聚方法【/1】。汇聚方法确保线程只更新自己负责的输出元素，彼此之间互不干扰。在我们的应用中，基于汇聚方法的并行化让每个线程负责从所有 k 空间样本计算一对 rFhD 和 iFhD 元素。这样，不存在线程间干扰，也不需要原子操作。"
     },
     {
       "id": "p0190",

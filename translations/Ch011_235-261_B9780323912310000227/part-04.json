@@ -5,7 +5,7 @@
       "id": "p0400",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[7]/p[7]",
       "en": "In the third phase, each thread adds the new value of the last element of its predecessor’s section to its elements. The last elements of each subsection do not need to be updated during this phase. For example, in 【1】Fig. 11.8【/1】, thread 1 adds the value 7 to elements (0, 4, 5) in its section to produce (7, 11, 12). The last element of the section is already the correct value 14 and does not need to be updated.",
-      "zh": "在第三阶段，每个线程把它前一个子段的新末元素值加到自己的各元素上。本阶段无需更新各子段的末元素。例如，在【1】图 11.8【/1】中，线程 1 把值 7 加到其子段的元素 (0, 4, 5) 上，得到 (7, 11, 12)。该子段的末元素已经是正确的值 14，不需要更新。"
+      "zh": "在第三阶段，每个线程把它前驱子段的新末元素值加到自己的各元素上。本阶段无需更新各子段的末元素。例如，在【1】图 11.8【/1】中，线程 1 把值 7 加到其子段的元素 (0, 4, 5) 上，得到 (7, 11, 12)。该子段的末元素已经是正确的值 14，不需要更新。"
     },
     {
       "id": "p0405",
@@ -29,7 +29,7 @@
       "id": "p0415",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
       "en": "For many applications the number of elements to be processed by a scan operation can be in the millions or even billions. The kernels that we have presented so far perform local block-wide scans on sections of the input, but we still need a way to consolidate the results from different sections. To do so, we can use a hierarchical scan approach, as illustrated in 【1】Fig. 11.9【/1】.",
-      "zh": "在许多应用中，扫描运算要处理的元素数量可能达到数百万甚至数十亿。到目前为止我们介绍的核函数对输入的各个段执行线程块范围内的局部扫描，但我们仍然需要一种方法来合并不同段的结果。为此，我们可以采用分层扫描方法，如【1】图 11.9【/1】所示。"
+      "zh": "在许多应用中，扫描运算要处理的元素数量可能达到数百万甚至数十亿。到目前为止我们介绍的核函数对输入的各个段执行块内扫描，但我们仍然需要一种方法来合并不同段的结果。为此，我们可以采用分层扫描方法，如【1】图 11.9【/1】所示。"
     },
     {
       "id": "n0105",

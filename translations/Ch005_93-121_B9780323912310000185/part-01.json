@@ -11,7 +11,7 @@
       "id": "p0070",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[4]",
       "en": "To achieve higher performance for this kernel, we need to increase the compute to global memory access ratio of the kernel by reducing the number of global memory accesses it performs. For example, to fully utilize the 19,500 GFLOPS that the A100 GPU provides, a ratio of at least (19,500 GOP/second)/(1555 GB/second)=12.5 OP/B is needed. This ratio means that for every 4-byte floating point value accessed, there must be about 50 floating-point operations performed! The extent to which such a ratio can be achieved depends on the intrinsic data reuse in the computation at hand. We refer the reader to the “The Roofline Model” sidebar for a useful model for analyzing a program’s potential performance with respect to its compute intensity.",
-      "zh": "为了进一步提高这个核函数的性能，我们需要通过减少它所执行的全局内存访问次数，来提高核函数的计算访存比。例如，要充分利用 A100 GPU 提供的 19500 GFLOPS，至少需要 (19500 GOP/秒)/(1555 GB/秒)=12.5 OP/B 的比值。这意味着每访问一个 4 字节的浮点数值，就必须执行大约 50 次浮点运算！这个比值能在多大程度上达到，取决于当前计算中数据的内在重用程度。我们请读者参阅“Roofline 模型”边栏，那里提供了一个有用的模型，可用于根据程序的算术强度分析其潜在性能。"
+      "zh": "为了进一步提高这个核函数的性能，我们需要通过减少它所执行的全局内存访问次数，来提高核函数的计算访存比。例如，要充分利用 A100 GPU 提供的 19500 GFLOPS，至少需要 (19500 GOP/秒)/(1555 GB/秒)=12.5 OP/B 的比值。这意味着每访问一个 4 字节的浮点数值，就必须执行大约 50 次浮点运算！这个比值能在多大程度上达到，取决于当前计算所固有的数据重用程度。我们请读者参阅“Roofline 模型”边栏，那里提供了一个有用的模型，可用于根据程序的算术强度分析其潜在性能。"
     },
     {
       "id": "p0075",

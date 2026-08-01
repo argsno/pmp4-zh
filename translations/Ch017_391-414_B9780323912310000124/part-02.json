@@ -149,7 +149,7 @@
       "id": "p0275",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/section[2]/p[7]",
       "en": "In 【1】Fig. 17.12【/1】 the 【2】cmpFhD【/2】 kernel is called from a loop. The code assumes that kx, ky, and kz arrays are in the host memory. The dimension of kx, ky, and kz is given by M. At each iteration the host code calls the 【3】cudaMemcpyToSymbol()【/3】 function to transfer a chunk of the k-space data into the device constant memory, as was discussed in 【4】Chapter 7【/4】 Convolution, The kernel is then invoked to process the chunk. Note that when M is not a perfect multiple of 【5】CHUNK_SIZE【/5】, the host code will need to have an additional round of 【6】cudaMemcpyToSymbol()【/6】 and one more kernel invocation to finish the remaining k-space data.",
-      "zh": "在【1】图 17.12【/1】中，【2】cmpFhD【/2】核函数在一个循环中被调用。代码假设 kx、ky 和 kz 数组位于主机内存中，其维数由 M 给出。每次迭代时，主机代码都会调用【3】cudaMemcpyToSymbol()【/3】函数，把一块 k 空间数据传送到设备常量内存，正如【4】第 7 章【/4】《卷积》中所讨论的那样；随后调用核函数处理这一块数据。请注意，当 M 不是【5】CHUNK_SIZE【/5】的整数倍时，主机代码还需要额外执行一轮【6】cudaMemcpyToSymbol()【/6】并再调用一次核函数，以处理剩余的 k 空间数据。"
+      "zh": "在【1】图 17.12【/1】中，【2】cmpFhD【/2】核函数在一个循环中被调用。代码假设 kx、ky 和 kz 数组位于主机内存中，其维数由 M 给出。每次迭代时，主机代码都会调用【3】cudaMemcpyToSymbol()【/3】函数，把一块 k 空间数据传送到设备常量内存，正如【4】第 7 章【/4】《卷积》中所讨论的那样；随后调用核函数处理这一块数据。请注意，当 M 不是【5】CHUNK_SIZE【/5】的整数倍时，主机代码还需要额外执行一轮【6】cudaMemcpyToSymbol()【/6】并再执行一次核函数调用，以处理剩余的 k 空间数据。"
     }
   ]
 }

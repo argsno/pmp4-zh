@@ -131,7 +131,7 @@
       "id": "p0225",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[11]",
       "en": "Once the host code has allocated space in the device global memory for the data objects, it can request that data be transferred from host to device. This is accomplished by calling one of the CUDA API functions. 【1】Fig. 2.7【/1】 shows such an API function, 【2】cudaMemcpy【/2】. The 【3】cudaMemcpy【/3】 function takes four parameters. The first parameter is a pointer to the destination location for the data object to be copied. The second parameter points to the source location. The third parameter specifies the number of bytes to be copied. The fourth parameter indicates the types of memory involved in the copy: from host to host, from host to device, from device to host, and from device to device. For example, the memory copy function can be used to copy data from one location in the device global memory to another location in the device global memory.",
-      "zh": "一旦主机代码在设备全局内存中为数据对象分配好了空间，就可以请求把数据从主机传输到设备。这通过调用某个 CUDA API 函数来实现。【1】图 2.7【/1】显示了这样一个 API 函数：【2】cudaMemcpy【/2】。【3】cudaMemcpy【/3】函数接受四个参数。第一个参数是指向复制目标位置的指针，第二个参数指向源位置，第三个参数指定要复制的字节数，第四个参数指明复制涉及的存储器类型：从主机到主机、从主机到设备、从设备到主机，以及从设备到设备。例如，这个内存复制函数可以用于把数据从设备全局内存中的一个位置复制到设备全局内存中的另一个位置。"
+      "zh": "一旦主机代码在设备全局内存中为数据对象分配好了空间，就可以请求把数据从主机传输到设备。这通过调用某个 CUDA API 函数来实现。【1】图 2.7【/1】显示了这样一个 API 函数：【2】cudaMemcpy【/2】。【3】cudaMemcpy【/3】函数接受四个参数。第一个参数是指向复制目标位置的指针，第二个参数指向源位置，第三个参数指定要复制的字节数，第四个参数指明复制涉及的存储器类型：从主机到主机、从主机到设备、从设备到主机，以及从设备到设备。例如，这个内存拷贝函数可以用于把数据从设备全局内存中的一个位置复制到设备全局内存中的另一个位置。"
     },
     {
       "id": "n0072",

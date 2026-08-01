@@ -29,7 +29,7 @@
       "id": "o0065",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[10]/div[1]/ol[1]/li[5]",
       "en": "5. To perform an atomic add operation to add the value of an integer variable Partial to a global memory integer variable Total, which one of the following statements should be used?【M1】",
-      "zh": "5. 要把整型变量 Partial 的值加到全局内存整型变量 Total 上，应该使用下列哪个语句？【M1】"
+      "zh": "5. 要对整型变量 Partial 的值执行原子加（atomic add）操作，把它加到全局内存整型变量 Total 上，应该使用下列哪个语句？【M1】"
     },
     {
       "id": "o0070",

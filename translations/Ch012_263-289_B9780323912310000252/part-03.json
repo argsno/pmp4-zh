@@ -41,7 +41,7 @@
       "id": "p0280",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[8]/p[1]",
       "en": "In 【1】Chapter 6【/1】, Performance Considerations, we mentioned three main strategies for improving memory coalescing in kernels: (1) rearranging the mapping of threads to data, (2) rearranging the data itself, and (3) transferring the data between the global memory and the shared memory in a coalesced manner and performing the irregular accesses in the shared memory. For the merge pattern we will use the third strategy, which leverages shared memory to improve coalescing. Using shared memory also has the advantage of capturing the small amount of data reuse across the co-rank functions and the sequential merge phase.",
-      "zh": "在【1】第 6 章【/1】（性能考量）中，我们提到了在核函数中改善内存合并的三种主要策略：（1）重新排列线程到数据的映射；（2）重新排列数据本身；（3）以合并的方式在全局内存与共享内存之间传输数据，并在共享内存中执行不规则的访问。对于归并模式，我们将采用第三种策略，即利用共享内存来改善合并访问。使用共享内存还有一个优点，即能够利用协秩函数与串行归并阶段之间的少量数据复用。"
+      "zh": "在【1】第 6 章【/1】（性能考量）中，我们提到了在核函数中改善内存合并的三种主要策略：（1）重新排列线程到数据的映射；（2）重新排列数据本身；（3）以合并的方式在全局内存与共享内存之间传输数据，并在共享内存中执行不规则的访问。对于归并模式，我们将采用第三种策略，即利用共享内存来改善合并访问。使用共享内存还有一个优点，即能够利用协秩函数与串行归并阶段之间的少量数据重用。"
     },
     {
       "id": "p0285",

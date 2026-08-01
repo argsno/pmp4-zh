@@ -143,13 +143,13 @@
       "id": "p0155",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[8]",
       "en": "The conditions in lines 12–13 turn off the extra threads that were launched just to load the input tile grid points. The conditions allow those threads whose i, j, and k index values fall within the output tile to calculate the output grid points selected by these indices. Finally, each active thread calculates its output grid point value using the input grid points specified by the seven-point stencil.",
-      "zh": "第 12–13 行的条件关闭那些仅为加载输入分块网格点而启动的额外线程。这些条件允许 i、j、k 索引值落在输出分块内的线程计算这些索引所选择的输出网格点。最后，每个活动线程使用七点模板所指定的输入网格点计算其输出网格点值。"
+      "zh": "第 12–13 行的条件关闭那些仅为加载输入分块网格点而启动的额外线程。这些条件允许 i、j、k 索引值落在输出分块内的线程计算这些索引所选择的输出网格点。最后，每个活跃线程使用七点模板所指定的输入网格点计算其输出网格点值。"
     },
     {
       "id": "p0160",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[5]/p[9]",
       "en": "We can evaluate the effectiveness of shared memory tiling by calculating the arithmetic to global memory access ratio that this kernel achieves. Recall that the original stencil sweep kernel achieved a ratio of 0.46 OP/B. With the shared memory tiling kernel, let us assume that each input tile is a cube with T grid points in each dimension and that each output tile has T−2 grid points in each dimension. Therefore each block has (T−2)【1】3【/1】 active threads calculating output grid point values, and each active thread performs 13 floating-point multiplication or addition operations, which is a total of 13*(T−2)【2】3【/2】 floating-point arithmetic operations. Moreover, each block loads an input tile by performing T【3】3【/3】 loads that are 4 bytes each. Therefore the floating point to global memory access ratio of the tiled kernel can be calculated as follows:",
-      "zh": "我们可以通过计算该核函数达到的算术运算与全局内存访问比，来评估共享内存分块的成效。回想一下，原始的模板扫掠核函数达到的比值为 0.46 OP/B。对于共享内存分块核函数，假设每个输入分块是一个立方体，每个维度有 T 个网格点，每个输出分块每个维度有 T−2 个网格点。因此，每个线程块有 (T−2)【1】3【/1】 个活动线程来计算输出网格点值，每个活动线程执行 13 次浮点乘法或加法运算，总共是 13*(T−2)【2】3【/2】 次浮点算术运算。此外，每个线程块通过执行 T【3】3【/3】 次加载（每次 4 字节）来加载一个输入分块。因此，分块核函数的浮点运算与全局内存访问比可以计算如下："
+      "zh": "我们可以通过计算该核函数达到的算术运算与全局内存访问比，来评估共享内存分块的成效。回想一下，原始的模板扫掠核函数达到的比值为 0.46 OP/B。对于共享内存分块核函数，假设每个输入分块是一个立方体，每个维度有 T 个网格点，每个输出分块每个维度有 T−2 个网格点。因此，每个线程块有 (T−2)【1】3【/1】 个活跃线程来计算输出网格点值，每个活跃线程执行 13 次浮点乘法或加法运算，总共是 13*(T−2)【2】3【/2】 次浮点算术运算。此外，每个线程块通过执行 T【3】3【/3】 次加载（每次 4 字节）来加载一个输入分块。因此，分块核函数的浮点运算与全局内存访问比可以计算如下："
     }
   ]
 }

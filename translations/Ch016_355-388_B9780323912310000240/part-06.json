@@ -119,7 +119,7 @@
       "id": "p0640",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[6]/p[26]",
       "en": "Implementing convolutions with matrix multiplication can be very efficient, since matrix multiplication is highly optimized on all hardware platforms. Matrix multiplication is especially fast on GPUs because it has a high ratio of floating-point operations per byte of global memory data access. This ratio increases as the matrices get larger, meaning that matrix multiplication is less efficient on small matrices. Accordingly, this approach to convolution is most effective when it creates large matrices for multiplication.",
-      "zh": "用矩阵乘法实现卷积可以非常高效，因为矩阵乘法在所有硬件平台上都经过了高度优化。矩阵乘法在 GPU 上尤其快，因为它在每次全局内存数据访问的字节数上具有很高的浮点运算比率。这个比率随着矩阵变大而增加，这意味着矩阵乘法在小矩阵上效率较低。因此，这种卷积方法在生成为乘法所用的大矩阵时最为有效。"
+      "zh": "用矩阵乘法实现卷积可以非常高效，因为矩阵乘法在所有硬件平台上都经过了高度优化。矩阵乘法在 GPU 上尤其快，因为它在每次全局内存数据访问的每个字节上执行很多浮点运算，即每字节操作数很高。这个比率随着矩阵变大而增加，这意味着矩阵乘法在小矩阵上效率较低。因此，这种卷积方法在生成为乘法所用的大矩阵时最为有效。"
     },
     {
       "id": "p0645",

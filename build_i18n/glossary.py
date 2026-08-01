@@ -63,6 +63,11 @@ _ORDINARY_USAGE = tuple(re.compile(pattern, re.IGNORECASE) for pattern in (
 ))
 
 _cache = {}
+# Compiled term regexes, keyed by term.  The gate runs once per node against
+# the whole glossary, and Python's re cache (512 entries) cannot hold ~1k term
+# patterns — recompiling every term for every node dominated the gate's runtime
+# once the glossary grew past a few hundred entries.
+_TERM_RE_CACHE = {}
 
 
 def load_glossary(path=STANDARDS_PATH):
@@ -138,8 +143,12 @@ def _terms(entry_english):
 
 def _term_re(term):
     """Match a glossary term as a whole word, singular or plural."""
-    return re.compile(r"(?<![A-Za-z])%ss?(?![A-Za-z])" % re.escape(term),
-                      re.IGNORECASE)
+    regex = _TERM_RE_CACHE.get(term)
+    if regex is None:
+        regex = re.compile(r"(?<![A-Za-z])%ss?(?![A-Za-z])" % re.escape(term),
+                           re.IGNORECASE)
+        _TERM_RE_CACHE[term] = regex
+    return regex
 
 
 def _renderings(entry_chinese):

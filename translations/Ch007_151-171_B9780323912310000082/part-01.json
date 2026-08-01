@@ -35,7 +35,7 @@
       "id": "p0065",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[3]/p[14]",
       "en": "For image processing and computer vision, input data is typically represented as 2D arrays, with pixels in an 【1】x【/1】–【2】y【/2】 space. Image convolutions are therefore 2D convolutions, as illustrated in 【3】Fig. 7.4【/3】. In a 2D convolution the filter f is also a 2D array. Its 【4】x【/4】 and 【5】y【/5】 dimensions determine the range of neighbors to be included in the weighted sum calculation. If we assume that the dimension of the filter is (2【6】r【/6】【7】【8】x【/8】【/7】 + 1) in the 【9】x【/9】 dimension and (2【10】r【/10】【11】【12】y【/12】【/11】 + 1) in the 【13】y【/13】 dimension, the calculation of each 【14】P【/14】 element can be expressed as follows:",
-      "zh": "对于图像处理和计算机视觉，输入数据通常表示为二维数组，像素位于【1】x【/1】–【2】y【/2】空间中。因此图像卷积是 2D 卷积，如【3】图 7.4【/3】所示。在 2D 卷积中，滤波器 f 也是一个 2D 数组。它的【4】x【/4】和【5】y【/5】维度决定了加权求和计算中要包含的邻居范围。如果我们假定滤波器在【9】x【/9】维度上的尺寸为（2【6】r【/6】【7】【8】x【/8】【/7】+ 1），在【13】y【/13】维度上的尺寸为（2【10】r【/10】【11】【12】y【/12】【/11】+ 1），那么每个【14】P【/14】元素的计算可以表示如下："
+      "zh": "对于图像处理和计算机视觉，输入数据通常表示为二维数组，像素位于【1】x【/1】–【2】y【/2】空间中。因此图像卷积是 2D 卷积，如【3】图 7.4【/3】所示。在 2D 卷积中，滤波器 f 也是一个 2D 数组。它的【4】x【/4】和【5】y【/5】维度决定了加权和计算中要包含的邻居范围。如果我们假定滤波器在【9】x【/9】维度上的尺寸为（2【6】r【/6】【7】【8】x【/8】【/7】+ 1），在【13】y【/13】维度上的尺寸为（2【10】r【/10】【11】【12】y【/12】【/11】+ 1），那么每个【14】P【/14】元素的计算可以表示如下："
     },
     {
       "id": "n0031",

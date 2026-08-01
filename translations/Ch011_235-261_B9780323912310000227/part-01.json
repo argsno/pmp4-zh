@@ -119,7 +119,7 @@
       "id": "p0165",
       "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/section[4]/p[8]",
       "en": "【1】Fig. 11.3【/1】 shows the parallel implementation of the algorithm illustrated in 【2】Fig. 11.2【/2】. We implement a kernel that performs local scans on different segments (sections) of the input that are each small enough for a single block to handle. Later, we will make final adjustments to consolidate these sectional scan results for large input arrays. The size of a section is defined as a compile-time constant 【3】SECTION_SIZE【/3】. We assume that the kernel function will be called using 【4】SECTION_SIZE【/4】 as the block size, so there will be the same number of threads and section elements. We assign each thread to evolve the contents of one XY element.",
-      "zh": "【1】图 11.3【/1】展示了【2】图 11.2【/2】所示算法的并行实现。我们实现的核函数对输入中不同的段（片段）执行局部扫描，每个段都足够小，可以交给单个线程块处理。稍后，我们将做最终调整，把各个分段的扫描结果合并起来，以处理大型输入数组。段的大小定义为编译期常量【3】SECTION_SIZE【/3】。我们假设调用核函数时以【4】SECTION_SIZE【/4】作为线程块大小，这样线程数与段内元素数相同。我们为每个线程分配一个 XY 元素，由它来演化该元素的内容。"
+      "zh": "【1】图 11.3【/1】展示了【2】图 11.2【/2】所示算法的并行实现。我们实现的核函数对输入中不同的段（片段）执行局部扫描，每个段都足够小，可以交给单个线程块处理。稍后，我们将做最终调整，把各个分段扫描的结果合并起来，以处理大型输入数组。段的大小定义为编译期常量【3】SECTION_SIZE【/3】。我们假设调用核函数时以【4】SECTION_SIZE【/4】作为线程块大小，这样线程数与段内元素数相同。我们为每个线程分配一个 XY 元素，由它来演化该元素的内容。"
     },
     {
       "id": "n0045",
