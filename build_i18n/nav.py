@@ -36,11 +36,22 @@ def localize_header(doc, header, nav, mode, page_file, prefix=None):
         elif "navbtn" in el.classes:
             replacements.append(_inner_swap(doc, el, _button(doc.inner(el))))
 
-    buttons = next((el for el in header.descendants()
-                    if "nav-buttons" in el.classes), None)
-    if buttons is not None and page_file:
-        replacements.append((buttons.end, buttons.end,
-                             language_switch(mode, page_file, prefix)))
+    # The English page now carries the switch itself, so the site it is being
+    # rendered for takes over that element rather than adding a second one.
+    # A page without a switch (an older build, a minimal fixture) still gets
+    # one appended after the nav buttons.  Either path needs a page file: a
+    # switch without one would emit bare directory hrefs.
+    switch = next((el for el in header.descendants()
+                   if "langswitch" in el.classes), None)
+    if switch is not None and page_file:
+        replacements.append((switch.start, switch.end,
+                             language_switch(mode, page_file, prefix).lstrip()))
+    elif switch is None:
+        buttons = next((el for el in header.descendants()
+                        if "nav-buttons" in el.classes), None)
+        if buttons is not None and page_file:
+            replacements.append((buttons.end, buttons.end,
+                                 language_switch(mode, page_file, prefix)))
 
     replacements = [r for r in replacements if r is not None]
     return splice(doc.src, header.start, header.end, replacements)

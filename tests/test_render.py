@@ -494,6 +494,27 @@ def test_every_page_carries_a_language_switch_to_the_same_chapter():
         in result.bilingual_html
 
 
+def test_a_page_that_already_has_a_switch_keeps_exactly_one():
+    """The English pages build_site.py emits now carry the switch themselves,
+    so rendering one for the zh/bilingual sites must localize that element in
+    place — not append a second switch beside it."""
+    page = make_page('<p id="p1">Some prose here.</p>')
+    data = translations_for(page, {"Some prose here.": "这里有一些正文。"},
+                            page="Ch001", nav=NAV)
+
+    result = render(page, data, glossary=NO_GLOSSARY)
+
+    assert result.zh_html.count('class="langswitch"') == 1
+    assert result.bilingual_html.count('class="langswitch"') == 1
+
+    # The surviving switch is the localized one: the site it is on is active.
+    assert '<span class="langbtn active">中</span>' in result.zh_html
+    assert '<span class="langbtn active">对照</span>' in result.bilingual_html
+    # … and it is not the English one carried over unchanged.
+    assert '<span class="langbtn active">EN</span>' not in result.zh_html
+    assert '<span class="langbtn active">EN</span>' not in result.bilingual_html
+
+
 def test_the_bilingual_nav_shows_both_languages():
     page = make_page('<p id="p1">Some prose here.</p>')
     data = translations_for(page, {"Some prose here.": "这里有一些正文。"}, nav=NAV)

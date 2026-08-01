@@ -89,13 +89,17 @@ a.langbtn:hover { background: #4f63a0; color: #fff; }
 
 /* ≤640px: the bar reorders into three deliberate rows — row 1 the book title
    beside the language switch, row 2 the full-width chapter selector, row 3
-   Home / Prev / Next.  English pages have no language switch, so row 1 holds
-   the title alone; the same order rules leave no gap or empty row.  The title
-   truncates with an ellipsis whenever its row runs out of room. */
+   Home / Prev / Next.  The title truncates with an ellipsis whenever its row
+   runs out of room.  `flex: 1 1 0` (basis 0) rather than `flex: 1 1 auto`:
+   with an auto basis the long English title is measured at its full width
+   when the flex lines are formed, so it claims row 1 by itself and the switch
+   wraps to a second row.  A zero basis puts both on row 1 first, then lets
+   the title grow to whatever the switch leaves it, truncating if that is not
+   enough. */
 @media (max-width: 640px) {
   .book-title {
     order: 1;
-    flex: 1 1 auto;
+    flex: 1 1 0;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;

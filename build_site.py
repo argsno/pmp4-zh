@@ -19,6 +19,7 @@ import html as ihtml
 from lxml import html
 
 import build_i18n.cli
+from build_i18n.nav import language_switch
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "epub_extract", "OEBPS")
@@ -132,11 +133,24 @@ def make_header(current, prefix, home_url):
             nav_btns = prev_html + "\n    " + next_html + "\n"
 
     home = '<a class="navbtn" href="%s">Home</a>' % home_url
+    # The language switch on the English site: EN is the current page, and 中 /
+    # 对照 reach the same page in the other two sites.  Chapter pages sit one
+    # level below the site root, the landing page at the root itself, so the
+    # two prefixes differ.  `current` is None exactly for the landing page.
+    if current is not None:
+        en_prefix = {"en": "", "zh": "../zh/chapters/",
+                     "bilingual": "../bilingual/chapters/"}
+        page_file = current
+    else:
+        en_prefix = {"en": "", "zh": "zh/", "bilingual": "bilingual/"}
+        page_file = "index.html"
+    langswitch = language_switch("en", page_file, en_prefix)
     return (
         '<header class="topnav">\n' + select +
         '    <div class="nav-buttons">\n      ' + home +
         (("\n      " + nav_btns) if nav_btns else "") +
-        '\n    </div>\n  </div>\n</header>'
+        '\n    </div>' + langswitch +
+        '\n  </div>\n</header>'
     )
 
 
@@ -235,13 +249,17 @@ a.langbtn:hover { background: #4f63a0; color: #fff; }
 
 /* ≤640px: the bar reorders into three deliberate rows — row 1 the book title
    beside the language switch, row 2 the full-width chapter selector, row 3
-   Home / Prev / Next.  English pages have no language switch, so row 1 holds
-   the title alone; the same order rules leave no gap or empty row.  The title
-   truncates with an ellipsis whenever its row runs out of room. */
+   Home / Prev / Next.  The title truncates with an ellipsis whenever its row
+   runs out of room.  `flex: 1 1 0` (basis 0) rather than `flex: 1 1 auto`:
+   with an auto basis the long English title is measured at its full width
+   when the flex lines are formed, so it claims row 1 by itself and the switch
+   wraps to a second row.  A zero basis puts both on row 1 first, then lets
+   the title grow to whatever the switch leaves it, truncating if that is not
+   enough. */
 @media (max-width: 640px) {
   .book-title {
     order: 1;
-    flex: 1 1 auto;
+    flex: 1 1 0;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -489,6 +507,12 @@ def main():
 
     status = build_i18n.cli.main(
         ["render", "--web", OUT, "--translations", TRANSLATIONS])
+    if status != 2:
+        # A chapter the renderer skipped has no zh/bilingual counterpart; the
+        # English switch would point at a page that does not exist, so take
+        # the switch off those pages.  (The renderer is the authority: it is
+        # the only place that knows which translations pass its gates.)
+        _drop_switch_from_unpaired_chapters()
     if status == 0:
         print("DONE. Open docs/index.html in a browser.")
     elif status == 2:
@@ -498,6 +522,33 @@ def main():
         print("docs/zh and docs/bilingual: some pages were skipped (see above).",
               file=sys.stderr)
     return status
+
+
+def _drop_switch_from_unpaired_chapters():
+    """Remove the language switch from English chapters with no zh version.
+
+    The switch's 中 / 对照 links are only as good as the pages they point at.
+    A chapter the i18n renderer skipped (its translation failed a gate) has no
+    zh or bilingual counterpart, so on that English page both links would 404.
+    This runs after the render so the set of *rendered* zh chapters — not the
+    set the build started with — decides.
+    """
+    chapters_dir = os.path.join(OUT, "chapters")
+    zh_dir = os.path.join(OUT, "zh", "chapters")
+    for name in sorted(os.listdir(chapters_dir)):
+        if not name.endswith(".html"):
+            continue
+        if os.path.exists(os.path.join(zh_dir, name)):
+            continue
+        path = os.path.join(chapters_dir, name)
+        with open(path, encoding="utf-8") as fh:
+            page = fh.read()
+        stripped = re.sub(r"\n\s*<div class=\"langswitch\">.*?</div>",
+                          "", page, flags=re.S)
+        if stripped != page:
+            with open(path, "w", encoding="utf-8") as fh:
+                fh.write(stripped)
+            print("dropped switch from %s (no zh counterpart)" % name)
 
 
 if __name__ == "__main__":

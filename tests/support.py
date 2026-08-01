@@ -28,6 +28,7 @@ HEADER = """\
       <a class="navbtn" href="Ch000.html">&#8249; Prev</a>
       <a class="navbtn" href="Ch002.html">Next &#8250;</a>
     </div>
+    <div class="langswitch"><span class="langbtn active">EN</span><a class="langbtn" href="../zh/chapters/Ch001.html">中</a><a class="langbtn" href="../bilingual/chapters/Ch001.html">对照</a></div>
   </div>
 </header>"""
 

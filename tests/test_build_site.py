@@ -123,11 +123,54 @@ def test_a_failing_page_is_reported_and_skipped(fake_epub, capsys):
     assert "Ch002" in capsys.readouterr().err
 
 
+def test_a_skipped_english_page_keeps_no_dead_switch(fake_epub):
+    """Ch002 has no zh/bilingual counterpart (the renderer skipped it), so its
+    English switch — whose 中 / 对照 links would 404 — is taken off the page.
+    Ch001, which did render, keeps its switch."""
+    web, translations = fake_epub
+    build_site.main()
+    translate(web, translations, ["Ch001"])
+
+    assert build_site.main() == 1
+
+    ch001 = (web / "chapters" / "Ch001.html").read_text(encoding="utf-8")
+    assert "langswitch" in ch001
+    assert '<span class="langbtn active">EN</span>' in ch001
+
+    ch002 = (web / "chapters" / "Ch002.html").read_text(encoding="utf-8")
+    assert "langswitch" not in ch002
+
+
 def test_the_builder_imports_build_i18n():
     # `import build_i18n.cli` binds the package on the module, so the render
     # pipeline is reachable from the builder exactly as `main()` uses it.
     assert hasattr(build_site, "build_i18n")
     assert hasattr(build_site.build_i18n, "cli")
+
+
+def test_english_pages_carry_the_language_switch(fake_epub):
+    web, translations = fake_epub
+    build_site.main()                       # build the English site first
+    translate(web, translations, ["Ch001", "Ch002"])
+    assert build_site.main() == 0           # both chapters render to zh/bilingual
+
+    # A chapter page links to the same chapter in the other two sites, one
+    # directory up and over; EN is the site the page is on, so it is a span.
+    # (Its zh/bilingual counterparts exist because Ch001 was translated.)
+    chapter = (web / "chapters" / "Ch001.html").read_text(encoding="utf-8")
+    assert '<span class="langbtn active">EN</span>' in chapter
+    assert ('<a class="langbtn" href="../zh/chapters/Ch001.html">中</a>'
+            in chapter)
+    assert ('<a class="langbtn" href="../bilingual/chapters/Ch001.html">对照</a>'
+            in chapter)
+
+    # The landing page sits at the site root, so its switch reaches the other
+    # sites as siblings.
+    landing = (web / "index.html").read_text(encoding="utf-8")
+    assert '<span class="langbtn active">EN</span>' in landing
+    assert '<a class="langbtn" href="zh/index.html">中</a>' in landing
+    assert ('<a class="langbtn" href="bilingual/index.html">对照</a>'
+            in landing)
 
 
 def test_every_chapter_page_carries_the_viewport_meta(fake_epub):
@@ -184,6 +227,12 @@ def test_topnav_css_reorders_into_mobile_rows(fake_epub):
     assert "flex: 1 1 100%;" in m640        # the selector spans its row
     assert "max-width: 100%;" in m640
     assert "text-overflow: ellipsis;" in m640
+    # The title's basis is 0, not auto: with an auto basis the long English
+    # title is measured at full width when flex lines form, takes row 1 by
+    # itself, and the switch wraps below it.  Basis 0 puts them on row 1
+    # together and the title truncates to fit.
+    assert "flex: 1 1 0;" in m640           # .book-title shares row 1
+    assert "flex: 1 1 auto;" not in m640
 
     # ≤480px: the title shrinks, and nav / language buttons plus the select
     # all reach a ~40px touch height.
