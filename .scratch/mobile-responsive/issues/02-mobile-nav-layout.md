@@ -4,10 +4,10 @@
 
 **Blocked by:** 01 — Viewport meta on every chapter page.
 
-**Status:** ready-for-agent
+**Status:** implemented
 
-- [ ] At ≤640px viewport width, the bar shows the three rows in the approved order (title+langswitch / select / buttons) on all three sites.
-- [ ] At ≤480px the title is truncated with an ellipsis and never overflows its row, on both the English and localized (Chinese) titles.
-- [ ] At ≤480px, nav and language buttons have a touch height of at least 40px, and the chapter select is at least 40px tall.
-- [ ] English pages (which have no language switch) still lay out cleanly — no orphaned gaps or broken rows.
-- [ ] The rebuilt bar is identical across desktop widths (no regression above 640px).
+- [x] At ≤640px viewport width, the bar shows the three rows in the approved order (title+langswitch / select / buttons) on all three sites.
+- [x] At ≤480px the title is truncated with an ellipsis and never overflows its row, on both the English and localized (Chinese) titles.
+- [x] At ≤480px, nav and language buttons have a touch height of at least 40px, and the chapter select is at least 40px tall.
+- [x] English pages (which have no language switch) still lay out cleanly — no orphaned gaps or broken rows.
+- [x] The rebuilt bar is identical across desktop widths (no regression above 640px).

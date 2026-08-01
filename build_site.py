@@ -233,6 +233,55 @@ a.langbtn:hover { background: #4f63a0; color: #fff; }
   cursor: default;
 }
 
+/* ≤640px: the bar reorders into three deliberate rows — row 1 the book title
+   beside the language switch, row 2 the full-width chapter selector, row 3
+   Home / Prev / Next.  English pages have no language switch, so row 1 holds
+   the title alone; the same order rules leave no gap or empty row.  The title
+   truncates with an ellipsis whenever its row runs out of room. */
+@media (max-width: 640px) {
+  .book-title {
+    order: 1;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .langswitch {
+    order: 1;
+    flex: 0 0 auto;
+    padding-left: 0;
+    border-left: none;
+  }
+  .nav-select {
+    order: 2;
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .nav-buttons {
+    order: 3;
+  }
+}
+
+/* ≤480px: the title shrinks to 12px type, and every tappable control grows
+   to a ~40px touch target.  The chapter select stays a native element; its
+   16px type also stops iOS from zooming the page when the picker is
+   focused. */
+@media (max-width: 480px) {
+  .book-title {
+    font-size: 12px;
+  }
+  .navbtn,
+  .langbtn {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .nav-select {
+    padding: 10px 12px;
+    font-size: 16px;
+    min-height: 40px;
+  }
+}
+
 /* Landing page */
 .landing { max-width: 900px; margin: 32px auto; padding: 0 20px;
   font-family: var(--zh-font);

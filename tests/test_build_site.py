@@ -154,6 +154,54 @@ def test_every_chapter_page_carries_the_viewport_meta(fake_epub):
             assert meta in page, (site, name)
 
 
+def _media_body(css, width):
+    """The full text of one top-level `@media (max-width: {width}px)` block."""
+    start = css.index("@media (max-width: %spx) {" % width)
+    depth = 0
+    for i in range(start, len(css)):
+        if css[i] == "{":
+            depth += 1
+        elif css[i] == "}":
+            depth -= 1
+            if depth == 0:
+                return css[start:i + 1]
+    raise AssertionError("unterminated %spx media block" % width)
+
+
+def test_topnav_css_reorders_into_mobile_rows(fake_epub):
+    web, translations = fake_epub
+    assert build_site.main() == 1
+    css = (web / "topnav.css").read_text(encoding="utf-8")
+
+    # ≤640px: three deliberate rows.  The book title and the language switch
+    # share row 1 (order 1), the chapter selector takes row 2 full-width, and
+    # the Home / Prev / Next buttons sit on row 3.  The title truncates with
+    # an ellipsis whenever its row runs out of room.
+    m640 = _media_body(css, 640)
+    assert m640.count("order: 1;") == 2     # .book-title + .langswitch
+    assert "order: 2;" in m640              # .nav-select
+    assert "order: 3;" in m640              # .nav-buttons
+    assert "flex: 1 1 100%;" in m640        # the selector spans its row
+    assert "max-width: 100%;" in m640
+    assert "text-overflow: ellipsis;" in m640
+
+    # ≤480px: the title shrinks, and nav / language buttons plus the select
+    # all reach a ~40px touch height.
+    m480 = _media_body(css, 480)
+    assert "font-size: 12px;" in m480       # title shrinks
+    assert "padding: 12px 14px;" in m480    # nav + language buttons
+    assert "min-height: 40px;" in m480      # the chapter select
+
+    # Desktop widths (above 640px) are untouched: no mobile override may leak
+    # into the base rules outside the media blocks.  `border:` shares the
+    # substring, so match the indented property token.
+    base = css.split("@media", 1)[0]
+    assert "  order:" not in base
+    assert "text-overflow:" not in base
+    assert "min-height: 40px" not in base
+    assert "flex: 1 1 100%;" not in base
+
+
 def test_build_i18n_never_imports_the_builder():
     package = os.path.join(ROOT, "build_i18n")
     for name in sorted(os.listdir(package)):
