@@ -11,7 +11,7 @@ from build_i18n import extract
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHAPTER_PATH = os.path.join(
-    ROOT, "web", "chapters", "Ch001_1-19_B9780323912310000069.html")
+    ROOT, "docs", "chapters", "Ch001_1-19_B9780323912310000069.html")
 
 HEADER = """\
 <header class="topnav">

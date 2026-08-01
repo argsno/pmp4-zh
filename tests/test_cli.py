@@ -35,10 +35,10 @@ def site(tmp_path):
     (web / "chapters").mkdir(parents=True)
     (web / "styles").mkdir()
     for name in STYLESHEETS:
-        shutil.copy(os.path.join(ROOT, "web", name), web / name)
+        shutil.copy(os.path.join(ROOT, "docs", name), web / name)
     # The real landing page, so the CLI's render_landing path is exercised
     # rather than a stand-in that localizes to nothing.
-    shutil.copy(os.path.join(ROOT, "web", "index.html"), web / "index.html")
+    shutil.copy(os.path.join(ROOT, "docs", "index.html"), web / "index.html")
     for name, body in PAGES.items():
         (web / "chapters" / name).write_text(make_page(body), encoding="utf-8")
     return web, tmp_path / "translations"

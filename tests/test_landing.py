@@ -192,7 +192,7 @@ def test_the_bilingual_landing_leaves_the_document_language_alone():
 @pytest.mark.parametrize("mode", ["zh", "bilingual"])
 def test_the_real_landing_page_renders_with_its_links_intact(mode):
     """The fixture above is a miniature; this is the 288-entry page we ship."""
-    with open(os.path.join(ROOT, "web", "index.html"), encoding="utf-8") as fh:
+    with open(os.path.join(ROOT, "docs", "index.html"), encoding="utf-8") as fh:
         english = fh.read()
 
     html = render_landing(english, NAV, mode)

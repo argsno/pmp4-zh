@@ -1,7 +1,7 @@
 """Command line entry points.
 
     python -m build_i18n extract     # write empty translation skeletons
-    python -m build_i18n render      # build web/zh and web/bilingual
+    python -m build_i18n render      # build docs/zh and docs/bilingual
     python -m build_i18n validate    # run the same gates, write nothing
 
 A page whose translation trips a gate is reported and skipped.  Half-rendered
@@ -23,7 +23,7 @@ from .landing import LANDING_FILE, render_landing
 from .nav import nav_labels
 from .render import extract, render
 
-WEB = "web"
+WEB = "docs"
 TRANSLATIONS = "translations"
 NAV_FILE = "nav.json"
 SITES = ("zh", "bilingual")
@@ -208,7 +208,7 @@ def _page_translations(page_html, stem, nav, stored, fill_english):
 def _provision(web, site):
     """Give a site root the assets its pages ask for, without copying them.
 
-    The renderer never touches `<head>`, so a page under `web/<site>/chapters/`
+    The renderer never touches `<head>`, so a page under `docs/<site>/chapters/`
     still asks for `../styles` and `../images`.  Those become symlinks back to
     the English originals: one copy of 35MB of images and fonts, not three.  A
     real file already sitting in the site root — a Chinese stylesheet, a

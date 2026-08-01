@@ -22,7 +22,7 @@ import build_i18n.cli
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "epub_extract", "OEBPS")
-OUT = os.path.join(ROOT, "web")
+OUT = os.path.join(ROOT, "docs")
 XHTML_DIR = os.path.join(SRC, "xhtml")
 TRANSLATIONS = os.path.join(ROOT, "translations")
 
@@ -377,12 +377,12 @@ def main():
     status = build_i18n.cli.main(
         ["render", "--web", OUT, "--translations", TRANSLATIONS])
     if status == 0:
-        print("DONE. Open web/index.html in a browser.")
+        print("DONE. Open docs/index.html in a browser.")
     elif status == 2:
-        print("web/zh and web/bilingual: the translation store is unusable "
+        print("docs/zh and docs/bilingual: the translation store is unusable "
               "(see above).", file=sys.stderr)
     else:
-        print("web/zh and web/bilingual: some pages were skipped (see above).",
+        print("docs/zh and docs/bilingual: some pages were skipped (see above).",
               file=sys.stderr)
     return status
 
