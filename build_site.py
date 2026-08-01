@@ -262,11 +262,47 @@ a.langbtn:hover { background: #4f63a0; color: #fff; }
   }
 }
 
+/* Content column — the EPUB stylesheet indents every block `div` 2em a side
+   (`#sbo-rt-content div`), which compounds across nesting and leaves a 375px
+   phone very little reading width.  These media queries halve that indent as
+   the viewport narrows.  topnav.css is linked by every page of all three
+   sites, so the trim reaches the English pages too, not just the Chinese
+   ones. */
+@media (max-width: 768px) {
+  #book-content #sbo-rt-content div {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+  /* Code blocks scroll inside their own box instead of shoving the whole
+     page sideways.  (Tables need no help here: override_v1.css already makes
+     them `display: block; overflow: auto`.) */
+  #book-content #sbo-rt-content pre {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  /* Long URLs in the reference lists and long inline-code tokens can be
+     wider than the phone column; let them wrap instead of pushing the whole
+     page sideways. */
+  #book-content #sbo-rt-content a,
+  #book-content #sbo-rt-content code {
+    overflow-wrap: break-word;
+  }
+}
+
 /* ≤480px: the title shrinks to 12px type, and every tappable control grows
    to a ~40px touch target.  The chapter select stays a native element; its
    16px type also stops iOS from zooming the page when the picker is
-   focused. */
+   focused.  The content column narrows with the viewport: block margins drop
+   to ~0.6em a side, the base font rises to 17px so Chinese text reads
+   comfortably (the book's em/% type sizes scale with it), and the reading
+   column widens to ~96% of the viewport, centered.  The body's default 8px
+   margin is dropped here so the 96% really is 96% of the phone screen, not
+   of the smaller box the margin leaves.  This block must come after the
+   ≤768px one so its tighter rules win the cascade at phone widths. */
 @media (max-width: 480px) {
+  body {
+    margin: 0;
+  }
   .book-title {
     font-size: 12px;
   }
@@ -279,6 +315,19 @@ a.langbtn:hover { background: #4f63a0; color: #fff; }
     padding: 10px 12px;
     font-size: 16px;
     min-height: 40px;
+  }
+  #book-content #sbo-rt-content div {
+    margin-left: 0.6em;
+    margin-right: 0.6em;
+  }
+  #book-content #sbo-rt-content {
+    font-size: 17px;
+    /* The reading column widens to ~96% of the viewport, centered.  The
+       same two selectors beat override_v1.css's own ≤768px `width: 90%`
+       because topnav.css loads after it. */
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

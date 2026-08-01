@@ -202,6 +202,54 @@ def test_topnav_css_reorders_into_mobile_rows(fake_epub):
     assert "flex: 1 1 100%;" not in base
 
 
+def test_topnav_css_trims_the_content_column_on_mobile(fake_epub):
+    web, translations = fake_epub
+    assert build_site.main() == 1
+    css = (web / "topnav.css").read_text(encoding="utf-8")
+
+    # ≤768px: the EPUB's 2em block indent is halved to 1em a side, so nested
+    # content blocks stop eating the reading width on a phone.  Wide tables
+    # and code blocks scroll inside their own box instead of forcing the page
+    # to scroll.
+    m768 = _media_body(css, 768)
+    assert "#book-content #sbo-rt-content div" in m768
+    assert "margin-left: 1em;" in m768
+    assert "margin-right: 1em;" in m768
+    assert "overflow-x: auto;" in m768     # tables + pre
+    assert "max-width: 100%;" in m768
+    # long URLs / inline code wrap instead of pushing the page sideways
+    assert "overflow-wrap: break-word;" in m768
+
+    # ≤480px: the indent drops to ~0.6em, the content base font rises to 17px,
+    # and the reading column widens to ~96% of the viewport, centered.  The
+    # body's default 8px margin is dropped so 96% is 96% of the phone screen.
+    m480 = _media_body(css, 480)
+    assert "margin-left: 0.6em;" in m480
+    assert "margin-right: 0.6em;" in m480
+    assert "font-size: 17px;" in m480
+    assert "#book-content #sbo-rt-content {" in m480
+    assert "width: 96%;" in m480
+    assert "margin-left: auto;" in m480
+    assert "margin-right: auto;" in m480
+    assert "body {" in m480
+    assert "margin: 0;" in m480
+
+    # Desktop widths (≥769px) are untouched: no content-column override may
+    # leak into the base rules outside the media blocks.
+    base = css.split("@media", 1)[0]
+    assert "font-size: 17px" not in base
+    assert "width: 96%" not in base
+    assert "margin-left: 1em" not in base
+    assert "margin-left: 0.6em" not in base
+    assert "overflow-x: auto" not in base
+
+    # The trim lives in the one shared stylesheet that every English chapter
+    # page links, so the English site's mobile experience matches the Chinese
+    # sites' — it is not a Chinese-only rule.
+    en = (web / "chapters" / "Ch001.html").read_text(encoding="utf-8")
+    assert 'href="../topnav.css"' in en
+
+
 def test_build_i18n_never_imports_the_builder():
     package = os.path.join(ROOT, "build_i18n")
     for name in sorted(os.listdir(package)):

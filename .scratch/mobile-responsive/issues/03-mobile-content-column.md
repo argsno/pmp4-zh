@@ -4,10 +4,10 @@
 
 **Blocked by:** 01 — Viewport meta on every chapter page.
 
-**Status:** ready-for-agent
+**Status:** implemented
 
-- [ ] At ≤768px, side margins of the nested content blocks are ~1em (halved from 2em) on all three sites.
-- [ ] At ≤480px, side margins are ~0.6em, body text renders at ~17px, and the content column occupies ~96% of the viewport.
-- [ ] At 375px, the page has no horizontal scroll; only tables and code blocks scroll within their own containers.
-- [ ] The same rules affect the English site, not just Chinese — the English mobile experience matches.
-- [ ] Desktop rendering (≥769px) is unchanged.
+- [x] At ≤768px, side margins of the nested content blocks are ~1em (halved from 2em) on all three sites.
+- [x] At ≤480px, side margins are ~0.6em, body text renders at ~17px, and the content column occupies ~96% of the viewport.
+- [x] At 375px, the page has no horizontal scroll; only tables and code blocks scroll within their own containers.
+- [x] The same rules affect the English site, not just Chinese — the English mobile experience matches.
+- [x] Desktop rendering (≥769px) is unchanged.
