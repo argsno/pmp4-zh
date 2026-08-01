@@ -280,8 +280,9 @@ def convert_chapters():
         base = fn[:-6] + ".html"
         header = make_header(base, prefix="", home_url="../index.html")
 
-        # inject nav css + math css into head
+        # inject viewport meta + nav css + math css into head
         head_inject = (
+            '<meta name="viewport" content="width=device-width, initial-scale=1"/>\n'
             '<link rel="stylesheet" href="../topnav.css"/>\n'
             '<link rel="stylesheet" href="../styles/math.css"/>\n'
         )

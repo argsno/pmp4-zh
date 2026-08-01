@@ -130,6 +130,30 @@ def test_the_builder_imports_build_i18n():
     assert hasattr(build_site.build_i18n, "cli")
 
 
+def test_every_chapter_page_carries_the_viewport_meta(fake_epub):
+    web, translations = fake_epub
+    meta = '<meta name="viewport" content="width=device-width, initial-scale=1"/>'
+
+    # The tag must come from the build step, never from the EPUB source.
+    for name in CHAPTERS:
+        src = (web.parent / "epub_extract" / "OEBPS" / "xhtml" / name)
+        assert meta not in src.read_text(encoding="utf-8")
+
+    assert build_site.main() == 1   # English site only; nothing translated yet
+    for name in CHAPTERS:
+        page = (web / "chapters" / (name[:-6] + ".html")).read_text(
+            encoding="utf-8")
+        assert meta in page
+
+    translate(web, translations, ["Ch001", "Ch002"])
+    assert build_site.main() == 0
+    for site in ("zh", "bilingual"):
+        for name in CHAPTERS:
+            page = (web / site / "chapters" / (name[:-6] + ".html")).read_text(
+                encoding="utf-8")
+            assert meta in page, (site, name)
+
+
 def test_build_i18n_never_imports_the_builder():
     package = os.path.join(ROOT, "build_i18n")
     for name in sorted(os.listdir(package)):
