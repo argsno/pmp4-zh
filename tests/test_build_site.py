@@ -199,11 +199,7 @@ def test_every_chapter_page_carries_the_viewport_meta(fake_epub):
 
 def _media_body(css, width):
     """The full text of one top-level `@media (max-width: {width}px)` block."""
-    return _media_block(css, "@media (max-width: %spx) {" % width)
-
-
-def _media_block(css, start):
-    """The text of the media block whose `@media` header starts at `start`."""
+    start = "@media (max-width: %spx) {" % width
     from_ = css.index(start)
     depth = 0
     for i in range(from_, len(css)):
@@ -344,64 +340,48 @@ def test_build_i18n_never_imports_the_builder():
         assert "from build_site" not in source, name
 
 
-def test_topnav_css_carries_the_mobile_hidden_state(fake_epub):
+def test_topnav_css_keeps_the_bar_in_place_at_every_width(fake_epub):
     web, translations = fake_epub
     assert build_site.main() == 1
     css = (web / "topnav.css").read_text(encoding="utf-8")
 
-    # The hide/show rules live in the ≤640px block alongside the row reorder:
-    # the slide, the hidden state, and the keep-visible override for a bar
-    # in use.
-    m640 = _media_body(css, 640)
-    assert "transition: transform 0.2s ease;" in m640
-    assert ".topnav.nav-hidden" in m640
-    assert "transform: translateY(-100%);" in m640
-    assert ".topnav:focus-within" in m640
-    assert "translateY(0);" in m640       # the keep-visible override
-
-    # Reduce Motion trades the slide for an instant toggle, in a block that
-    # comes after the ≤640px block so it wins the cascade.
-    reduced = _media_block(
-        css, "@media (max-width: 640px) and (prefers-reduced-motion: reduce)")
-    assert "transition: none;" in reduced
-    assert css.index("prefers-reduced-motion") \
-        > css.index("@media (max-width: 640px) {")
-
-    # Desktop base rules carry none of the mobile hidden-state behaviour: the
-    # always-fixed bar on desktop is untouched.
+    # One sticky bar for every viewport: nothing shifts it out of the way
+    # while the reader scrolls a chapter.
     base = css.split("@media", 1)[0]
-    assert "nav-hidden" not in base
-    assert "translateY" not in base
-    assert "prefers-reduced-motion" not in base
+    assert "position: sticky;" in base
+
+    # No trace of the scroll-away behaviour anywhere in the sheet — no hidden
+    # state to toggle, no transform to slide it with, and so no Reduce Motion
+    # opt-out to write.
+    assert "nav-hidden" not in css
+    assert "translateY" not in css
+    assert "prefers-reduced-motion" not in css
+
+    # The ≤640px block reorders the bar's contents into rows and nothing
+    # more: the bar itself is given no rules at any breakpoint, so there is
+    # nowhere for a mobile-only position or animation to creep back in.
+    m640 = _media_body(css, 640)
+    assert ".topnav" not in m640
 
 
-def test_topnav_js_wires_the_mobile_scroll_hide(fake_epub):
+def test_topnav_js_only_wires_the_chapter_dropdown(fake_epub):
     web, translations = fake_epub
     assert build_site.main() == 1
     js = (web / "topnav.js").read_text(encoding="utf-8")
 
-    # The behaviour is mobile-only: the script gates on the same ≤640px
-    # breakpoint the CSS uses, so the always-fixed desktop bar is never wired
-    # to hide.
-    assert "matchMedia" in js
-    assert "(max-width: 640px)" in js
+    # The one thing the script does: picking a chapter in the dropdown goes
+    # to that chapter.
+    assert "getElementById('nav-select')" in js
+    assert "addEventListener('change'" in js
+    assert "window.location.href" in js
 
-    # The scroll wiring: 20px of cumulative down-scroll hides the bar, any
-    # up-scroll reveals it, and the bar is pinned within ~100px of the page
-    # top and ~200px of the page bottom.
-    assert "HIDE_DOWN = 20" in js
-    assert "KEEP_TOP = 100" in js
-    assert "KEEP_BOTTOM = 200" in js
-    assert "nav-hidden" in js
-    assert "addEventListener('scroll'" in js
-    assert "requestAnimationFrame" in js
-
-    # A bar the reader is actually using — chapter select open, a button
-    # focused, a touch or cursor held down on it — stays put no matter the
-    # scroll position.
-    assert "focus-within" in js
-    assert "touchstart" in js
-    assert "touchend" in js
+    # ...and nothing else.  The bar no longer answers to scrolling, so none
+    # of the scroll / touch / breakpoint machinery is left behind to drift
+    # out of step with the CSS.
+    for gone in ("matchMedia", "addEventListener('scroll'",
+                 "requestAnimationFrame", "pageYOffset", "nav-hidden",
+                 "touchstart", "focus-within"):
+        assert gone not in js, gone
 
 
 def test_rebuild_keeps_the_language_sites_sharing_the_mobile_assets(fake_epub):
@@ -419,6 +399,6 @@ def test_rebuild_keeps_the_language_sites_sharing_the_mobile_assets(fake_epub):
             assert link.resolve() == (web / name).resolve(), (site, name)
 
     # Every landing page — English, Chinese, bilingual — loads the shared
-    # script, so the scroll-hide behaviour reaches the TOC pages too.
+    # script, so the chapter dropdown works on the TOC pages too.
     for index in ("index.html", "zh/index.html", "bilingual/index.html"):
         assert 'src="topnav.js"' in (web / index).read_text(encoding="utf-8")

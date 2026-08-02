@@ -118,35 +118,6 @@ a.langbtn:hover { background: #4f63a0; color: #fff; }
   .nav-buttons {
     order: 3;
   }
-
-  /* ≤640px also: the bar tucks away while the reader scrolls down a chapter
-     and slides back the moment they scroll up, reclaiming reading space.
-     The slide is a 0.2s transform on the bar itself; the `nav-hidden` class
-     that triggers it is only ever added at these widths, by topnav.js, so
-     the always-fixed desktop bar is untouched. */
-  .topnav {
-    transition: transform 0.2s ease;
-    transform: translateY(0);
-  }
-  .topnav.nav-hidden {
-    transform: translateY(-100%);
-  }
-  /* A bar the reader is using — the chapter select open, a button focused
-     or pressed — stays put no matter the scroll position.  (`:active`
-     matches an ancestor of the element being pressed; topnav.js's press
-     tracking holds the bar through a drag, while a touch is down on it.) */
-  .topnav:focus-within,
-  .topnav:active {
-    transform: translateY(0);
-  }
-}
-/* Reduce Motion trades the slide for an instant toggle.  Written after the
-   ≤640px block above so its equal-specificity `transition: none` wins the
-   cascade when both apply. */
-@media (max-width: 640px) and (prefers-reduced-motion: reduce) {
-  .topnav {
-    transition: none;
-  }
 }
 
 /* Content column — the EPUB stylesheet indents every block `div` 2em a side
