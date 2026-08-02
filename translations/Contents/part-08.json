@@ -1,0 +1,155 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0200",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[43]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0201",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[44]",
+      "en": "【1】16.1 Background【/1】",
+      "zh": "【1】16.1 背景【/1】"
+    },
+    {
+      "id": "n0202",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[45]",
+      "en": "【1】16.2 Convolutional neural networks【/1】",
+      "zh": "【1】16.2 卷积神经网络【/1】"
+    },
+    {
+      "id": "n0203",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[46]",
+      "en": "【1】16.3 Convolutional layer: a CUDA inference kernel【/1】",
+      "zh": "【1】16.3 卷积层：一个 CUDA 推理核函数【/1】"
+    },
+    {
+      "id": "n0204",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[47]",
+      "en": "【1】16.4 Formulating a convolutional layer as GEMM【/1】",
+      "zh": "【1】16.4 将卷积层表示为 GEMM【/1】"
+    },
+    {
+      "id": "n0205",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[48]",
+      "en": "【1】16.5 CUDNN library【/1】",
+      "zh": "【1】16.5 cuDNN 库【/1】"
+    },
+    {
+      "id": "n0206",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[49]",
+      "en": "【1】16.6 Summary【/1】",
+      "zh": "【1】16.6 小结【/1】"
+    },
+    {
+      "id": "n0207",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[50]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0208",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[51]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0209",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[52]",
+      "en": "【1】Chapter 17. Iterative magnetic resonance imaging reconstruction【/1】",
+      "zh": "【1】第 17 章 迭代式磁共振成像重建【/1】"
+    },
+    {
+      "id": "n0210",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[53]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0211",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[54]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0212",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[55]",
+      "en": "【1】17.1 Background【/1】",
+      "zh": "【1】17.1 背景【/1】"
+    },
+    {
+      "id": "n0213",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[56]",
+      "en": "【1】17.2 Iterative reconstruction【/1】",
+      "zh": "【1】17.2 迭代重建【/1】"
+    },
+    {
+      "id": "n0214",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[57]",
+      "en": "【1】17.3 Computing F【2】H【/2】D【/1】",
+      "zh": "【1】17.3 计算 F【2】H【/2】D【/1】"
+    },
+    {
+      "id": "n0215",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[58]",
+      "en": "【1】17.4 Summary【/1】",
+      "zh": "【1】17.4 小结【/1】"
+    },
+    {
+      "id": "n0216",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[59]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0217",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[60]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0218",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[61]",
+      "en": "【1】Chapter 18. Electrostatic potential map【/1】",
+      "zh": "【1】第 18 章 静电势图【/1】"
+    },
+    {
+      "id": "n0219",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[62]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0220",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[63]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0221",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[64]",
+      "en": "【1】18.1 Background【/1】",
+      "zh": "【1】18.1 背景【/1】"
+    },
+    {
+      "id": "n0222",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[65]",
+      "en": "【1】18.2 Scatter versus gather in kernel design【/1】",
+      "zh": "【1】18.2 核函数设计中的分散与汇聚【/1】"
+    },
+    {
+      "id": "n0223",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[66]",
+      "en": "【1】18.3 Thread coarsening【/1】",
+      "zh": "【1】18.3 线程粗化【/1】"
+    },
+    {
+      "id": "n0224",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[67]",
+      "en": "【1】18.4 Memory coalescing【/1】",
+      "zh": "【1】18.4 内存合并【/1】"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0025",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/p[11]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0026",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[1]",
+      "en": "【1】Part I: Fundamental Concepts【/1】",
+      "zh": "【1】第一部分：基本概念【/1】"
+    },
+    {
+      "id": "n0027",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[2]",
+      "en": "【1】Chapter 2. Heterogeneous data parallel computing【/1】",
+      "zh": "【1】第 2 章 异构数据并行计算【/1】"
+    },
+    {
+      "id": "n0028",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[3]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0029",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[4]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0030",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[5]",
+      "en": "【1】2.1 Data parallelism【/1】",
+      "zh": "【1】2.1 数据并行【/1】"
+    },
+    {
+      "id": "n0031",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[6]",
+      "en": "【1】2.2 CUDA C program structure【/1】",
+      "zh": "【1】2.2 CUDA C 程序结构【/1】"
+    },
+    {
+      "id": "n0032",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[7]",
+      "en": "【1】2.3 A vector addition kernel【/1】",
+      "zh": "【1】2.3 向量加法核函数【/1】"
+    },
+    {
+      "id": "n0033",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[8]",
+      "en": "【1】2.4 Device global memory and data transfer【/1】",
+      "zh": "【1】2.4 设备全局内存与数据传输【/1】"
+    },
+    {
+      "id": "n0034",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[9]",
+      "en": "【1】2.5 Kernel functions and threading【/1】",
+      "zh": "【1】2.5 核函数与线程【/1】"
+    },
+    {
+      "id": "n0035",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[10]",
+      "en": "【1】2.6 Calling kernel functions【/1】",
+      "zh": "【1】2.6 调用核函数【/1】"
+    },
+    {
+      "id": "n0036",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[11]",
+      "en": "【1】2.7 Compilation【/1】",
+      "zh": "【1】2.7 编译【/1】"
+    },
+    {
+      "id": "n0037",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[12]",
+      "en": "【1】2.8 Summary【/1】",
+      "zh": "【1】2.8 小结【/1】"
+    },
+    {
+      "id": "n0038",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[13]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0039",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[14]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0040",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[15]",
+      "en": "【1】Chapter 3. Multidimensional grids and data【/1】",
+      "zh": "【1】第 3 章 多维网格与数据【/1】"
+    },
+    {
+      "id": "n0041",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[16]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0042",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[17]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0043",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[18]",
+      "en": "【1】3.1 Multidimensional grid organization【/1】",
+      "zh": "【1】3.1 多维网格组织【/1】"
+    },
+    {
+      "id": "n0044",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[19]",
+      "en": "【1】3.2 Mapping threads to multidimensional data【/1】",
+      "zh": "【1】3.2 线程到多维数据的映射【/1】"
+    },
+    {
+      "id": "n0045",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[20]",
+      "en": "【1】3.3 Image blur: a more complex kernel【/1】",
+      "zh": "【1】3.3 图像模糊：一个更复杂的核函数【/1】"
+    },
+    {
+      "id": "n0046",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[21]",
+      "en": "【1】3.4 Matrix multiplication【/1】",
+      "zh": "【1】3.4 矩阵乘法【/1】"
+    },
+    {
+      "id": "n0047",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[22]",
+      "en": "【1】3.5 Summary【/1】",
+      "zh": "【1】3.5 小结【/1】"
+    },
+    {
+      "id": "n0048",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[23]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0049",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[24]",
+      "en": "【1】Chapter 4. Compute architecture and scheduling【/1】",
+      "zh": "【1】第 4 章 计算体系结构与调度【/1】"
+    }
+  ]
+}

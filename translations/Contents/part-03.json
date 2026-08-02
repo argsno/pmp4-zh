@@ -1,0 +1,155 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0075",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[50]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0076",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[51]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0077",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[52]",
+      "en": "【1】6.1 Memory coalescing【/1】",
+      "zh": "【1】6.1 内存合并【/1】"
+    },
+    {
+      "id": "n0078",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[53]",
+      "en": "【1】6.2 Hiding memory latency【/1】",
+      "zh": "【1】6.2 隐藏内存延迟【/1】"
+    },
+    {
+      "id": "n0079",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[54]",
+      "en": "【1】6.3 Thread coarsening【/1】",
+      "zh": "【1】6.3 线程粗化【/1】"
+    },
+    {
+      "id": "n0080",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[55]",
+      "en": "【1】6.4 A checklist of optimizations【/1】",
+      "zh": "【1】6.4 优化清单【/1】"
+    },
+    {
+      "id": "n0081",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[56]",
+      "en": "【1】6.5 Knowing your computation’s bottleneck【/1】",
+      "zh": "【1】6.5 认清计算瓶颈【/1】"
+    },
+    {
+      "id": "n0082",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[57]",
+      "en": "【1】6.6 Summary【/1】",
+      "zh": "【1】6.6 小结【/1】"
+    },
+    {
+      "id": "n0083",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[58]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0084",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[59]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0085",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[1]",
+      "en": "【1】Part II: Parallel Patterns【/1】",
+      "zh": "【1】第二部分：并行模式【/1】"
+    },
+    {
+      "id": "n0086",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[2]",
+      "en": "【1】Chapter 7. Convolution: An introduction to constant memory and caching【/1】",
+      "zh": "【1】第 7 章 卷积：常量内存与缓存入门【/1】"
+    },
+    {
+      "id": "n0087",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[3]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0088",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[4]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0089",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[5]",
+      "en": "【1】7.1 Background【/1】",
+      "zh": "【1】7.1 背景【/1】"
+    },
+    {
+      "id": "n0090",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[6]",
+      "en": "【1】7.2 Parallel convolution: a basic algorithm【/1】",
+      "zh": "【1】7.2 并行卷积：基础算法【/1】"
+    },
+    {
+      "id": "n0091",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[7]",
+      "en": "【1】7.3 Constant memory and caching【/1】",
+      "zh": "【1】7.3 常量内存与缓存【/1】"
+    },
+    {
+      "id": "n0092",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[8]",
+      "en": "【1】7.4 Tiled convolution with halo cells【/1】",
+      "zh": "【1】7.4 带光环单元的分块卷积【/1】"
+    },
+    {
+      "id": "n0093",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[9]",
+      "en": "【1】7.5 Tiled convolution using caches for halo cells【/1】",
+      "zh": "【1】7.5 利用缓存处理光环单元的分块卷积【/1】"
+    },
+    {
+      "id": "n0094",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[10]",
+      "en": "【1】7.6 Summary【/1】",
+      "zh": "【1】7.6 小结【/1】"
+    },
+    {
+      "id": "n0095",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[11]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0096",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[12]",
+      "en": "【1】Chapter 8. Stencil【/1】",
+      "zh": "【1】第 8 章 模板【/1】"
+    },
+    {
+      "id": "n0097",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[13]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0098",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[14]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0099",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[15]",
+      "en": "【1】8.1 Background【/1】",
+      "zh": "【1】8.1 背景【/1】"
+    }
+  ]
+}

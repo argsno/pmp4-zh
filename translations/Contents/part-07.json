@@ -1,0 +1,155 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0175",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[18]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0176",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[19]",
+      "en": "【1】14.1 Background【/1】",
+      "zh": "【1】14.1 背景【/1】"
+    },
+    {
+      "id": "n0177",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[20]",
+      "en": "【1】14.2 A simple SpMV kernel with the COO format【/1】",
+      "zh": "【1】14.2 基于 COO 格式的简单 SpMV 核函数【/1】"
+    },
+    {
+      "id": "n0178",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[21]",
+      "en": "【1】14.3 Grouping row nonzeros with the CSR format【/1】",
+      "zh": "【1】14.3 使用 CSR 格式对行非零元素分组【/1】"
+    },
+    {
+      "id": "n0179",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[22]",
+      "en": "【1】14.4 Improving memory coalescing with the ELL format【/1】",
+      "zh": "【1】14.4 使用 ELL 格式改善内存合并【/1】"
+    },
+    {
+      "id": "n0180",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[23]",
+      "en": "【1】14.5 Regulating padding with the hybrid ELL-COO format【/1】",
+      "zh": "【1】14.5 使用 ELL-COO 混合格式调节填充【/1】"
+    },
+    {
+      "id": "n0181",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[24]",
+      "en": "【1】14.6 Reducing control divergence with the JDS format【/1】",
+      "zh": "【1】14.6 使用 JDS 格式减少控制发散【/1】"
+    },
+    {
+      "id": "n0182",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[25]",
+      "en": "【1】14.7 Summary【/1】",
+      "zh": "【1】14.7 小结【/1】"
+    },
+    {
+      "id": "n0183",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[26]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0184",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[27]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0185",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[28]",
+      "en": "【1】Chapter 15. Graph traversal【/1】",
+      "zh": "【1】第 15 章 图遍历【/1】"
+    },
+    {
+      "id": "n0186",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[29]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0187",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[30]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0188",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[31]",
+      "en": "【1】15.1 Background【/1】",
+      "zh": "【1】15.1 背景【/1】"
+    },
+    {
+      "id": "n0189",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[32]",
+      "en": "【1】15.2 Breadth-first search【/1】",
+      "zh": "【1】15.2 广度优先搜索【/1】"
+    },
+    {
+      "id": "n0190",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[33]",
+      "en": "【1】15.3 Vertex-centric parallelization of breadth-first search【/1】",
+      "zh": "【1】15.3 面向顶点的广度优先搜索并行化【/1】"
+    },
+    {
+      "id": "n0191",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[34]",
+      "en": "【1】15.4 Edge-centric parallelization of breadth-first search【/1】",
+      "zh": "【1】15.4 面向边的广度优先搜索并行化【/1】"
+    },
+    {
+      "id": "n0192",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[35]",
+      "en": "【1】15.5 Improving efficiency with frontiers【/1】",
+      "zh": "【1】15.5 利用前沿提升效率【/1】"
+    },
+    {
+      "id": "n0193",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[36]",
+      "en": "【1】15.6 Reducing contention with privatization【/1】",
+      "zh": "【1】15.6 利用私有化减少竞争【/1】"
+    },
+    {
+      "id": "n0194",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[37]",
+      "en": "【1】15.7 Other optimizations【/1】",
+      "zh": "【1】15.7 其他优化【/1】"
+    },
+    {
+      "id": "n0195",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[38]",
+      "en": "【1】15.8 Summary【/1】",
+      "zh": "【1】15.8 小结【/1】"
+    },
+    {
+      "id": "n0196",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[39]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0197",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[40]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0198",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[41]",
+      "en": "【1】Chapter 16. Deep learning【/1】",
+      "zh": "【1】第 16 章 深度学习【/1】"
+    },
+    {
+      "id": "n0199",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[42]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    }
+  ]
+}

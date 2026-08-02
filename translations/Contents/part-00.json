@@ -1,0 +1,155 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0000",
+      "path": "/html[1]/body[1]/div[1]/div[1]/h1[1]",
+      "en": "Table of Contents",
+      "zh": "目录"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "【1】Cover image【/1】",
+      "zh": "【1】封面图【/1】"
+    },
+    {
+      "id": "n0002",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "【1】Title page【/1】",
+      "zh": "【1】标题页【/1】"
+    },
+    {
+      "id": "n0003",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[3]",
+      "en": "【1】Copyright【/1】",
+      "zh": "【1】版权【/1】"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[4]",
+      "en": "【1】Dedication【/1】",
+      "zh": "【1】献词【/1】"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[5]",
+      "en": "【1】Foreword【/1】",
+      "zh": "【1】前言【/1】"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[6]",
+      "en": "【1】Preface【/1】",
+      "zh": "【1】序言【/1】"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[7]",
+      "en": "【1】How to use the book【/1】",
+      "zh": "【1】如何使用本书【/1】"
+    },
+    {
+      "id": "n0008",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[8]",
+      "en": "【1】A two-phased approach【/1】",
+      "zh": "【1】两阶段方法【/1】"
+    },
+    {
+      "id": "n0009",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[9]",
+      "en": "【1】Tying it all together: the final project【/1】",
+      "zh": "【1】融会贯通：期末项目【/1】"
+    },
+    {
+      "id": "n0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[10]",
+      "en": "【1】The design document【/1】",
+      "zh": "【1】设计文档【/1】"
+    },
+    {
+      "id": "n0011",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[11]",
+      "en": "【1】The project report and symposium【/1】",
+      "zh": "【1】项目报告与研讨会【/1】"
+    },
+    {
+      "id": "n0012",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[12]",
+      "en": "【1】Class competition【/1】",
+      "zh": "【1】课堂竞赛【/1】"
+    },
+    {
+      "id": "n0013",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[13]",
+      "en": "【1】Course resources【/1】",
+      "zh": "【1】课程资源【/1】"
+    },
+    {
+      "id": "n0014",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[14]",
+      "en": "【1】Acknowledgments【/1】",
+      "zh": "【1】致谢【/1】"
+    },
+    {
+      "id": "n0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/p[1]",
+      "en": "【1】Chapter 1. Introduction【/1】",
+      "zh": "【1】第 1 章 引言【/1】"
+    },
+    {
+      "id": "n0016",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/p[2]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0017",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/p[3]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0018",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/p[4]",
+      "en": "【1】1.1 Heterogeneous parallel computing【/1】",
+      "zh": "【1】1.1 异构并行计算【/1】"
+    },
+    {
+      "id": "n0019",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/p[5]",
+      "en": "【1】1.2 Why more speed or parallelism?【/1】",
+      "zh": "【1】1.2 为何需要更高速度或并行性【/1】"
+    },
+    {
+      "id": "n0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/p[6]",
+      "en": "【1】1.3 Speeding up real applications【/1】",
+      "zh": "【1】1.3 加速真实应用【/1】"
+    },
+    {
+      "id": "n0021",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/p[7]",
+      "en": "【1】1.4 Challenges in parallel programming【/1】",
+      "zh": "【1】1.4 并行编程的挑战【/1】"
+    },
+    {
+      "id": "n0022",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/p[8]",
+      "en": "【1】1.5 Related parallel programming interfaces【/1】",
+      "zh": "【1】1.5 相关并行编程接口【/1】"
+    },
+    {
+      "id": "n0023",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/p[9]",
+      "en": "【1】1.6 Overarching goals【/1】",
+      "zh": "【1】1.6 总体目标【/1】"
+    },
+    {
+      "id": "n0024",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/p[10]",
+      "en": "【1】1.7 Organization of the book【/1】",
+      "zh": "【1】1.7 本书结构【/1】"
+    }
+  ]
+}

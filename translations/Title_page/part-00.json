@@ -1,0 +1,59 @@
+{
+  "page": "Title_page",
+  "nodes": [
+    {
+      "id": "n0000",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Programming Massively Parallel Processors",
+      "zh": "大规模并行处理器编程"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h2[1]",
+      "en": "A Hands-on Approach",
+      "zh": "实践方法"
+    },
+    {
+      "id": "n0002",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Fourth Edition",
+      "zh": "第 4 版"
+    },
+    {
+      "id": "au0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "Wen-mei W. Hwu",
+      "zh": "胡文美（Wen-mei W. Hwu）"
+    },
+    {
+      "id": "aff1",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[3]",
+      "en": "University of Illinois at Urbana-Champaign and NVIDIA, Champaign, IL, United States",
+      "zh": "伊利诺伊大学厄巴纳-香槟分校与 NVIDIA，美国伊利诺伊州香槟市"
+    },
+    {
+      "id": "au0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[4]",
+      "en": "David B. Kirk",
+      "zh": "大卫·B·柯克（David B. Kirk）"
+    },
+    {
+      "id": "aff2",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[5]",
+      "en": "Formerly NVIDIA, United States",
+      "zh": "曾任职于 NVIDIA，美国"
+    },
+    {
+      "id": "au0020",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[6]",
+      "en": "Izzat El Hajj",
+      "zh": "伊扎特·埃尔·哈吉（Izzat El Hajj）"
+    },
+    {
+      "id": "aff3",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[7]",
+      "en": "American University of Beirut, Beirut, Lebanon",
+      "zh": "贝鲁特美国大学，黎巴嫩贝鲁特"
+    }
+  ]
+}

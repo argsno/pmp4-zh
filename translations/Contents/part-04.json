@@ -1,0 +1,155 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0100",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[16]",
+      "en": "【1】8.2 Parallel stencil: a basic algorithm【/1】",
+      "zh": "【1】8.2 并行模板：基础算法【/1】"
+    },
+    {
+      "id": "n0101",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[17]",
+      "en": "【1】8.3 Shared memory tiling for stencil sweep【/1】",
+      "zh": "【1】8.3 面向模板扫掠的共享内存分块【/1】"
+    },
+    {
+      "id": "n0102",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[18]",
+      "en": "【1】8.4 Thread coarsening【/1】",
+      "zh": "【1】8.4 线程粗化【/1】"
+    },
+    {
+      "id": "n0103",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[19]",
+      "en": "【1】8.5 Register tiling【/1】",
+      "zh": "【1】8.5 寄存器分块【/1】"
+    },
+    {
+      "id": "n0104",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[20]",
+      "en": "【1】8.6 Summary【/1】",
+      "zh": "【1】8.6 小结【/1】"
+    },
+    {
+      "id": "n0105",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[21]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0106",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[22]",
+      "en": "【1】Chapter 9. Parallel histogram: An introduction to atomic operations and privatization【/1】",
+      "zh": "【1】第 9 章 并行直方图：原子操作与私有化入门【/1】"
+    },
+    {
+      "id": "n0107",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[23]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0108",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[24]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0109",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[25]",
+      "en": "【1】9.1 Background【/1】",
+      "zh": "【1】9.1 背景【/1】"
+    },
+    {
+      "id": "n0110",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[26]",
+      "en": "【1】9.2 Atomic operations and a basic histogram kernel【/1】",
+      "zh": "【1】9.2 原子操作与基础直方图核函数【/1】"
+    },
+    {
+      "id": "n0111",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[27]",
+      "en": "【1】9.3 Latency and throughput of atomic operations【/1】",
+      "zh": "【1】9.3 原子操作的延迟与吞吐量【/1】"
+    },
+    {
+      "id": "n0112",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[28]",
+      "en": "【1】9.4 Privatization【/1】",
+      "zh": "【1】9.4 私有化【/1】"
+    },
+    {
+      "id": "n0113",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[29]",
+      "en": "【1】9.5 Coarsening【/1】",
+      "zh": "【1】9.5 粗化【/1】"
+    },
+    {
+      "id": "n0114",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[30]",
+      "en": "【1】9.6 Aggregation【/1】",
+      "zh": "【1】9.6 聚合【/1】"
+    },
+    {
+      "id": "n0115",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[31]",
+      "en": "【1】9.7 Summary【/1】",
+      "zh": "【1】9.7 小结【/1】"
+    },
+    {
+      "id": "n0116",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[32]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0117",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[33]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0118",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[34]",
+      "en": "【1】Chapter 10. Reduction: And minimizing divergence【/1】",
+      "zh": "【1】第 10 章 归约：最小化发散【/1】"
+    },
+    {
+      "id": "n0119",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[35]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0120",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[36]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0121",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[37]",
+      "en": "【1】10.1 Background【/1】",
+      "zh": "【1】10.1 背景【/1】"
+    },
+    {
+      "id": "n0122",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[38]",
+      "en": "【1】10.2 Reduction trees【/1】",
+      "zh": "【1】10.2 归约树【/1】"
+    },
+    {
+      "id": "n0123",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[39]",
+      "en": "【1】10.3 A simple reduction kernel【/1】",
+      "zh": "【1】10.3 简单归约核函数【/1】"
+    },
+    {
+      "id": "n0124",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[40]",
+      "en": "【1】10.4 Minimizing control divergence【/1】",
+      "zh": "【1】10.4 最小化控制发散【/1】"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "page": "Copyright_iv_B978032391231000029X",
+  "nodes": [
+    {
+      "id": "tit0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/h1[1]",
+      "en": "Copyright",
+      "zh": "版权"
+    },
+    {
+      "id": "n0001",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[1]",
+      "en": "Morgan Kaufmann is an imprint of Elsevier",
+      "zh": "Morgan Kaufmann 是 Elsevier 旗下的出版品牌"
+    },
+    {
+      "id": "n0002",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[2]",
+      "en": "50 Hampshire Street, 5th Floor, Cambridge, MA 02139, United States",
+      "zh": "美国马萨诸塞州剑桥市汉普郡街 50 号 5 层，邮编 02139"
+    },
+    {
+      "id": "n0003",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[3]",
+      "en": "Copyright © 2023 Elsevier Inc. All rights reserved.",
+      "zh": "版权所有 © 2023 Elsevier Inc.，保留一切权利。"
+    },
+    {
+      "id": "n0004",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[4]",
+      "en": "No part of this publication may be reproduced or transmitted in any form or by any means, electronic or mechanical, including photocopying, recording, or any information storage and retrieval system, without permission in writing from the publisher. Details on how to seek permission, further information about the Publisher’s permissions policies and our arrangements with organizations such as the Copyright Clearance Center and the Copyright Licensing Agency, can be found at our website: 【1】www.elsevier.com/permissions【/1】.",
+      "zh": "未经出版者书面许可，不得以任何形式或任何手段——电子的或机械的，包括影印、录音录像，或任何信息存储与检索系统——复制或传播本出版物的任何部分。关于如何申请许可的细则、出版者许可政策的更多信息，以及本社与版权结算中心（Copyright Clearance Center）、版权许可代理机构（Copyright Licensing Agency）等组织的合作安排，均可在本社网站查阅：【1】www.elsevier.com/permissions【/1】。"
+    },
+    {
+      "id": "n0005",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[5]",
+      "en": "This book and the individual contributions contained in it are protected under copyright by the Publisher (other than as may be noted herein).",
+      "zh": "本书及其中所收录的各篇独立稿件均受出版者的版权保护（本书另有说明者除外）。"
+    },
+    {
+      "id": "n0006",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[3]/p[1]",
+      "en": "【1】Notices【/1】",
+      "zh": "【1】声明【/1】"
+    },
+    {
+      "id": "n0007",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[3]/p[2]",
+      "en": "Knowledge and best practice in this field are constantly changing. As new research and experience broaden our understanding, changes in research methods, professional practices, or medical treatment may become necessary.",
+      "zh": "本领域的知识与最佳实践在不断变化。随着新的研究与经验拓展我们的认识，研究方法、专业实践或医疗方案可能需要随之调整。"
+    },
+    {
+      "id": "n0008",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[3]/p[3]",
+      "en": "Practitioners and researchers must always rely on their own experience and knowledge in evaluating and using any information, methods, compounds, or experiments described herein. In using such information or methods they should be mindful of their own safety and the safety of others, including parties for whom they have a professional responsibility.",
+      "zh": "从业者与研究人员在评估和使用本书所述的任何信息、方法、化合物或实验时，必须始终依靠自身的经验与知识。在使用这些信息或方法时，他们应注意自身的安全以及他人的安全，包括其负有专业责任的各方。"
+    },
+    {
+      "id": "n0009",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[3]/p[4]",
+      "en": "To the fullest extent of the law, neither the Publisher nor the authors, contributors, or editors, assume any liability for any injury and/or damage to persons or property as a matter of products liability, negligence or otherwise, or from any use or operation of any methods, products, instructions, or ideas contained in the material herein.",
+      "zh": "在法律允许的最大范围内，对于因产品责任、疏忽或其他原因，或因使用、操作本书材料中所载的任何方法、产品、说明或观点，而对人身或财产造成的任何伤害及／或损害，出版者、作者、供稿人与编辑均不承担任何责任。"
+    },
+    {
+      "id": "n0010",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[6]",
+      "en": "ISBN: 978-0-323-91231-0",
+      "zh": "ISBN：978-0-323-91231-0"
+    },
+    {
+      "id": "n0011",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[4]/p[1]",
+      "en": "For Information on all Morgan Kaufmann publications visit our website at 【1】https://www.elsevier.com/books-and-journals【/1】",
+      "zh": "如需了解 Morgan Kaufmann 全部出版物的信息，请访问本社网站：【1】https://www.elsevier.com/books-and-journals【/1】"
+    },
+    {
+      "id": "n0012",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[7]",
+      "en": "【1】Publisher:【/1】 Katey Birtcher",
+      "zh": "【1】出版人：【/1】 Katey Birtcher"
+    },
+    {
+      "id": "n0013",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[8]",
+      "en": "【1】Acquisitions Editor:【/1】 Stephen R. Merken",
+      "zh": "【1】组稿编辑：【/1】 Stephen R. Merken"
+    },
+    {
+      "id": "n0014",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[9]",
+      "en": "【1】Editorial Project Manager:【/1】 Naomi Robertson",
+      "zh": "【1】编辑项目经理：【/1】 Naomi Robertson"
+    },
+    {
+      "id": "n0015",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[10]",
+      "en": "【1】Production Project Manager:【/1】 Kiruthika Govindaraju",
+      "zh": "【1】制作项目经理：【/1】 Kiruthika Govindaraju"
+    },
+    {
+      "id": "n0016",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[11]",
+      "en": "【1】Cover Designer:【/1】 Bridget Hoette",
+      "zh": "【1】封面设计：【/1】 Bridget Hoette"
+    },
+    {
+      "id": "n0017",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[1]/p[12]",
+      "en": "Typeset by MPS Limited, Chennai, India",
+      "zh": "排版：MPS Limited，印度金奈"
+    }
+  ]
+}

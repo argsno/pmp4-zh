@@ -1,0 +1,155 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0250",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[13]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0251",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[14]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0252",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[15]",
+      "en": "【1】Chapter 21. CUDA dynamic parallelism【/1】",
+      "zh": "【1】第 21 章 CUDA 动态并行【/1】"
+    },
+    {
+      "id": "n0253",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[16]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0254",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[17]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0255",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[18]",
+      "en": "【1】21.1 Background【/1】",
+      "zh": "【1】21.1 背景【/1】"
+    },
+    {
+      "id": "n0256",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[19]",
+      "en": "【1】21.2 Dynamic parallelism overview【/1】",
+      "zh": "【1】21.2 动态并行概述【/1】"
+    },
+    {
+      "id": "n0257",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[20]",
+      "en": "【1】21.3 An example: Bezier curves【/1】",
+      "zh": "【1】21.3 示例：贝塞尔曲线【/1】"
+    },
+    {
+      "id": "n0258",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[21]",
+      "en": "【1】21.4 A recursive example: quadtrees【/1】",
+      "zh": "【1】21.4 递归示例：四叉树【/1】"
+    },
+    {
+      "id": "n0259",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[22]",
+      "en": "【1】21.5 Important considerations【/1】",
+      "zh": "【1】21.5 重要考量【/1】"
+    },
+    {
+      "id": "n0260",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[23]",
+      "en": "【1】21.6 Summary【/1】",
+      "zh": "【1】21.6 小结【/1】"
+    },
+    {
+      "id": "n0261",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[24]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0262",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[25]",
+      "en": "【1】A21.1 Support code for quadtree example【/1】",
+      "zh": "【1】A21.1 四叉树示例的支持代码【/1】"
+    },
+    {
+      "id": "n0263",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[26]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0264",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[27]",
+      "en": "【1】Chapter 22. Advanced practices and future evolution【/1】",
+      "zh": "【1】第 22 章 高级实践与未来演进【/1】"
+    },
+    {
+      "id": "n0265",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[28]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0266",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[29]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0267",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[30]",
+      "en": "【1】22.1 Model of host/device interaction【/1】",
+      "zh": "【1】22.1 主机/设备交互模型【/1】"
+    },
+    {
+      "id": "n0268",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[31]",
+      "en": "【1】22.2 Kernel execution control【/1】",
+      "zh": "【1】22.2 核函数执行控制【/1】"
+    },
+    {
+      "id": "n0269",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[32]",
+      "en": "【1】22.3 Memory bandwidth and compute throughput【/1】",
+      "zh": "【1】22.3 内存带宽与计算吞吐量【/1】"
+    },
+    {
+      "id": "n0270",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[33]",
+      "en": "【1】22.4 Programming environment【/1】",
+      "zh": "【1】22.4 编程环境【/1】"
+    },
+    {
+      "id": "n0271",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[34]",
+      "en": "【1】22.5 Future outlook【/1】",
+      "zh": "【1】22.5 未来展望【/1】"
+    },
+    {
+      "id": "n0272",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[35]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0273",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[36]",
+      "en": "【1】Chapter 23. Conclusion and outlook【/1】",
+      "zh": "【1】第 23 章 结论与展望【/1】"
+    },
+    {
+      "id": "n0274",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[37]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    }
+  ]
+}

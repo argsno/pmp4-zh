@@ -1,0 +1,83 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0275",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[38]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0276",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[39]",
+      "en": "【1】23.1 Goals revisited【/1】",
+      "zh": "【1】23.1 目标回顾【/1】"
+    },
+    {
+      "id": "n0277",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[40]",
+      "en": "【1】23.2 Future outlook【/1】",
+      "zh": "【1】23.2 未来展望【/1】"
+    },
+    {
+      "id": "n0278",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[3]/p[1]",
+      "en": "【1】Appendix A. Numerical considerations【/1】",
+      "zh": "【1】附录 A 数值考量【/1】"
+    },
+    {
+      "id": "n0279",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[3]/p[2]",
+      "en": "【1】A.1 Floating-point data representation【/1】",
+      "zh": "【1】A.1 浮点数据表示【/1】"
+    },
+    {
+      "id": "n0280",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[3]/p[3]",
+      "en": "【1】A.2 Representable numbers【/1】",
+      "zh": "【1】A.2 可表示数【/1】"
+    },
+    {
+      "id": "n0281",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[3]/p[4]",
+      "en": "【1】A.3 Special bit patterns and precision in IEEE format【/1】",
+      "zh": "【1】A.3 IEEE 格式中的特殊位模式与精度【/1】"
+    },
+    {
+      "id": "n0282",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[3]/p[5]",
+      "en": "【1】A.4 Arithmetic accuracy and rounding【/1】",
+      "zh": "【1】A.4 算术精度与舍入【/1】"
+    },
+    {
+      "id": "n0283",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[3]/p[6]",
+      "en": "【1】A.5 Algorithm considerations【/1】",
+      "zh": "【1】A.5 算法考量【/1】"
+    },
+    {
+      "id": "n0284",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[3]/p[7]",
+      "en": "【1】A.6 Linear solvers and numerical stability【/1】",
+      "zh": "【1】A.6 线性方程组求解器与数值稳定性【/1】"
+    },
+    {
+      "id": "n0285",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[3]/p[8]",
+      "en": "【1】A.7 Summary【/1】",
+      "zh": "【1】A.7 小结【/1】"
+    },
+    {
+      "id": "n0286",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[3]/p[9]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0287",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[3]/p[10]",
+      "en": "【1】Index【/1】",
+      "zh": "【1】索引【/1】"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0050",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[25]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0051",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[26]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0052",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[27]",
+      "en": "【1】4.1 Architecture of a modern GPU【/1】",
+      "zh": "【1】4.1 现代 GPU 的体系结构【/1】"
+    },
+    {
+      "id": "n0053",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[28]",
+      "en": "【1】4.2 Block scheduling【/1】",
+      "zh": "【1】4.2 线程块调度【/1】"
+    },
+    {
+      "id": "n0054",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[29]",
+      "en": "【1】4.3 Synchronization and transparent scalability【/1】",
+      "zh": "【1】4.3 同步与透明可扩展性【/1】"
+    },
+    {
+      "id": "n0055",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[30]",
+      "en": "【1】4.4 Warps and SIMD hardware【/1】",
+      "zh": "【1】4.4 线程束与 SIMD 硬件【/1】"
+    },
+    {
+      "id": "n0056",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[31]",
+      "en": "【1】4.5 Control divergence【/1】",
+      "zh": "【1】4.5 控制发散【/1】"
+    },
+    {
+      "id": "n0057",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[32]",
+      "en": "【1】4.6 Warp scheduling and latency tolerance【/1】",
+      "zh": "【1】4.6 线程束调度与延迟容忍【/1】"
+    },
+    {
+      "id": "n0058",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[33]",
+      "en": "【1】4.7 Resource partitioning and occupancy【/1】",
+      "zh": "【1】4.7 资源划分与占用率【/1】"
+    },
+    {
+      "id": "n0059",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[34]",
+      "en": "【1】4.8 Querying device properties【/1】",
+      "zh": "【1】4.8 查询设备属性【/1】"
+    },
+    {
+      "id": "n0060",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[35]",
+      "en": "【1】4.9 Summary【/1】",
+      "zh": "【1】4.9 小结【/1】"
+    },
+    {
+      "id": "n0061",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[36]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0062",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[37]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0063",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[38]",
+      "en": "【1】Chapter 5. Memory architecture and data locality【/1】",
+      "zh": "【1】第 5 章 内存体系结构与数据局部性【/1】"
+    },
+    {
+      "id": "n0064",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[39]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0065",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[40]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0066",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[41]",
+      "en": "【1】5.1 Importance of memory access efficiency【/1】",
+      "zh": "【1】5.1 内存访问效率的重要性【/1】"
+    },
+    {
+      "id": "n0067",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[42]",
+      "en": "【1】5.2 CUDA memory types【/1】",
+      "zh": "【1】5.2 CUDA 内存类型【/1】"
+    },
+    {
+      "id": "n0068",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[43]",
+      "en": "【1】5.3 Tiling for reduced memory traffic【/1】",
+      "zh": "【1】5.3 减少内存流量的分块【/1】"
+    },
+    {
+      "id": "n0069",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[44]",
+      "en": "【1】5.4 A tiled matrix multiplication kernel【/1】",
+      "zh": "【1】5.4 分块矩阵乘法核函数【/1】"
+    },
+    {
+      "id": "n0070",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[45]",
+      "en": "【1】5.5 Boundary checks【/1】",
+      "zh": "【1】5.5 边界检查【/1】"
+    },
+    {
+      "id": "n0071",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[46]",
+      "en": "【1】5.6 Impact of memory usage on occupancy【/1】",
+      "zh": "【1】5.6 内存使用对占用率的影响【/1】"
+    },
+    {
+      "id": "n0072",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[47]",
+      "en": "【1】5.7 Summary【/1】",
+      "zh": "【1】5.7 小结【/1】"
+    },
+    {
+      "id": "n0073",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[48]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0074",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[1]/p[49]",
+      "en": "【1】Chapter 6. Performance considerations【/1】",
+      "zh": "【1】第 6 章 性能考量【/1】"
+    }
+  ]
+}

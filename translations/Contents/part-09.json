@@ -1,0 +1,155 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0225",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[68]",
+      "en": "【1】18.5 Cutoff binning for data size scalability【/1】",
+      "zh": "【1】18.5 面向数据规模可扩展性的截断分箱【/1】"
+    },
+    {
+      "id": "n0226",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[69]",
+      "en": "【1】18.6 Summary【/1】",
+      "zh": "【1】18.6 小结【/1】"
+    },
+    {
+      "id": "n0227",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[70]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0228",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[71]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0229",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[72]",
+      "en": "【1】Chapter 19. Parallel programming and computational thinking【/1】",
+      "zh": "【1】第 19 章 并行编程与计算思维【/1】"
+    },
+    {
+      "id": "n0230",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[73]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0231",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[74]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0232",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[75]",
+      "en": "【1】19.1 Goals of parallel computing【/1】",
+      "zh": "【1】19.1 并行计算的目标【/1】"
+    },
+    {
+      "id": "n0233",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[76]",
+      "en": "【1】19.2 Algorithm selection【/1】",
+      "zh": "【1】19.2 算法选择【/1】"
+    },
+    {
+      "id": "n0234",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[77]",
+      "en": "【1】19.3 Problem decomposition【/1】",
+      "zh": "【1】19.3 问题分解【/1】"
+    },
+    {
+      "id": "n0235",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[78]",
+      "en": "【1】19.4 Computational thinking【/1】",
+      "zh": "【1】19.4 计算思维【/1】"
+    },
+    {
+      "id": "n0236",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[79]",
+      "en": "【1】19.5 Summary【/1】",
+      "zh": "【1】19.5 小结【/1】"
+    },
+    {
+      "id": "n0237",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[80]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0238",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[1]",
+      "en": "【1】Part IV: Advanced Practices【/1】",
+      "zh": "【1】第四部分：高级实践【/1】"
+    },
+    {
+      "id": "n0239",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[2]",
+      "en": "【1】Chapter 20. Programming a heterogeneous computing cluster: An introduction to CUDA streams【/1】",
+      "zh": "【1】第 20 章 编写异构计算集群程序：CUDA 流入门【/1】"
+    },
+    {
+      "id": "n0240",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[3]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0241",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[4]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0242",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[5]",
+      "en": "【1】20.1 Background【/1】",
+      "zh": "【1】20.1 背景【/1】"
+    },
+    {
+      "id": "n0243",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[6]",
+      "en": "【1】20.2 A running example【/1】",
+      "zh": "【1】20.2 一个运行示例【/1】"
+    },
+    {
+      "id": "n0244",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[7]",
+      "en": "【1】20.3 Message passing interface basics【/1】",
+      "zh": "【1】20.3 消息传递接口基础【/1】"
+    },
+    {
+      "id": "n0245",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[8]",
+      "en": "【1】20.4 Message passing interface point-to-point communication【/1】",
+      "zh": "【1】20.4 消息传递接口点对点通信【/1】"
+    },
+    {
+      "id": "n0246",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[9]",
+      "en": "【1】20.5 Overlapping computation and communication【/1】",
+      "zh": "【1】20.5 计算与通信重叠【/1】"
+    },
+    {
+      "id": "n0247",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[10]",
+      "en": "【1】20.6 Message passing interface collective communication【/1】",
+      "zh": "【1】20.6 消息传递接口集合通信【/1】"
+    },
+    {
+      "id": "n0248",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[11]",
+      "en": "【1】20.7 CUDA aware message passing interface【/1】",
+      "zh": "【1】20.7 CUDA 感知的 MPI【/1】"
+    },
+    {
+      "id": "n0249",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[4]/p[12]",
+      "en": "【1】20.8 Summary【/1】",
+      "zh": "【1】20.8 小结【/1】"
+    }
+  ]
+}

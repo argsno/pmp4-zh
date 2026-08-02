@@ -1,0 +1,155 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0150",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[66]",
+      "en": "【1】12.4 Co-rank function implementation【/1】",
+      "zh": "【1】12.4 协秩函数实现【/1】"
+    },
+    {
+      "id": "n0151",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[67]",
+      "en": "【1】12.5 A basic parallel merge kernel【/1】",
+      "zh": "【1】12.5 基础并行归并核函数【/1】"
+    },
+    {
+      "id": "n0152",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[68]",
+      "en": "【1】12.6 A tiled merge kernel to improve coalescing【/1】",
+      "zh": "【1】12.6 改善合并访问的分块归并核函数【/1】"
+    },
+    {
+      "id": "n0153",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[69]",
+      "en": "【1】12.7 A circular buffer merge kernel【/1】",
+      "zh": "【1】12.7 环形缓冲区归并核函数【/1】"
+    },
+    {
+      "id": "n0154",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[70]",
+      "en": "【1】12.8 Thread coarsening for merge【/1】",
+      "zh": "【1】12.8 面向归并的线程粗化【/1】"
+    },
+    {
+      "id": "n0155",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[71]",
+      "en": "【1】12.9 Summary【/1】",
+      "zh": "【1】12.9 小结【/1】"
+    },
+    {
+      "id": "n0156",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[72]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0157",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[73]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0158",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[1]",
+      "en": "【1】Part III: Advanced Patterns and Applications【/1】",
+      "zh": "【1】第三部分：高级模式与应用【/1】"
+    },
+    {
+      "id": "n0159",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[2]",
+      "en": "【1】Chapter 13. Sorting【/1】",
+      "zh": "【1】第 13 章 排序【/1】"
+    },
+    {
+      "id": "n0160",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[3]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0161",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[4]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0162",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[5]",
+      "en": "【1】13.1 Background【/1】",
+      "zh": "【1】13.1 背景【/1】"
+    },
+    {
+      "id": "n0163",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[6]",
+      "en": "【1】13.2 Radix sort【/1】",
+      "zh": "【1】13.2 基数排序【/1】"
+    },
+    {
+      "id": "n0164",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[7]",
+      "en": "【1】13.3 Parallel radix sort【/1】",
+      "zh": "【1】13.3 并行基数排序【/1】"
+    },
+    {
+      "id": "n0165",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[8]",
+      "en": "【1】13.4 Optimizing for memory coalescing【/1】",
+      "zh": "【1】13.4 针对内存合并的优化【/1】"
+    },
+    {
+      "id": "n0166",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[9]",
+      "en": "【1】13.5 Choice of radix value【/1】",
+      "zh": "【1】13.5 基数值的选择【/1】"
+    },
+    {
+      "id": "n0167",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[10]",
+      "en": "【1】13.6 Thread coarsening to improve coalescing【/1】",
+      "zh": "【1】13.6 改善合并访问的线程粗化【/1】"
+    },
+    {
+      "id": "n0168",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[11]",
+      "en": "【1】13.7 Parallel merge sort【/1】",
+      "zh": "【1】13.7 并行归并排序【/1】"
+    },
+    {
+      "id": "n0169",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[12]",
+      "en": "【1】13.8 Other parallel sort methods【/1】",
+      "zh": "【1】13.8 其他并行排序方法【/1】"
+    },
+    {
+      "id": "n0170",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[13]",
+      "en": "【1】13.9 Summary【/1】",
+      "zh": "【1】13.9 小结【/1】"
+    },
+    {
+      "id": "n0171",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[14]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0172",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[15]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0173",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[16]",
+      "en": "【1】Chapter 14. Sparse matrix computation【/1】",
+      "zh": "【1】第 14 章 稀疏矩阵计算【/1】"
+    },
+    {
+      "id": "n0174",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[3]/p[17]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    }
+  ]
+}

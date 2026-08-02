@@ -1,0 +1,155 @@
+{
+  "page": "Contents",
+  "nodes": [
+    {
+      "id": "n0125",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[41]",
+      "en": "【1】10.5 Minimizing memory divergence【/1】",
+      "zh": "【1】10.5 最小化内存发散【/1】"
+    },
+    {
+      "id": "n0126",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[42]",
+      "en": "【1】10.6 Minimizing global memory accesses【/1】",
+      "zh": "【1】10.6 最小化全局内存访问【/1】"
+    },
+    {
+      "id": "n0127",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[43]",
+      "en": "【1】10.7 Hierarchical reduction for arbitrary input length【/1】",
+      "zh": "【1】10.7 面向任意输入长度的分层归约【/1】"
+    },
+    {
+      "id": "n0128",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[44]",
+      "en": "【1】10.8 Thread coarsening for reduced overhead【/1】",
+      "zh": "【1】10.8 降低开销的线程粗化【/1】"
+    },
+    {
+      "id": "n0129",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[45]",
+      "en": "【1】10.9 Summary【/1】",
+      "zh": "【1】10.9 小结【/1】"
+    },
+    {
+      "id": "n0130",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[46]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0131",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[47]",
+      "en": "【1】Chapter 11. Prefix sum (scan): An introduction to work efficiency in parallel algorithms【/1】",
+      "zh": "【1】第 11 章 前缀和（扫描）：并行算法中的工作效率入门【/1】"
+    },
+    {
+      "id": "n0132",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[48]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0133",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[49]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0134",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[50]",
+      "en": "【1】11.1 Background【/1】",
+      "zh": "【1】11.1 背景【/1】"
+    },
+    {
+      "id": "n0135",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[51]",
+      "en": "【1】11.2 Parallel scan with the Kogge-Stone algorithm【/1】",
+      "zh": "【1】11.2 基于 Kogge-Stone 算法的并行扫描【/1】"
+    },
+    {
+      "id": "n0136",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[52]",
+      "en": "【1】11.3 Speed and work efficiency consideration【/1】",
+      "zh": "【1】11.3 速度与工作效率考量【/1】"
+    },
+    {
+      "id": "n0137",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[53]",
+      "en": "【1】11.4 Parallel scan with the Brent-Kung algorithm【/1】",
+      "zh": "【1】11.4 基于 Brent-Kung 算法的并行扫描【/1】"
+    },
+    {
+      "id": "n0138",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[54]",
+      "en": "【1】11.5 Coarsening for even more work efficiency【/1】",
+      "zh": "【1】11.5 进一步提升工作效率的粗化【/1】"
+    },
+    {
+      "id": "n0139",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[55]",
+      "en": "【1】11.6 Segmented parallel scan for arbitrary-length inputs【/1】",
+      "zh": "【1】11.6 面向任意长度输入的分段并行扫描【/1】"
+    },
+    {
+      "id": "n0140",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[56]",
+      "en": "【1】11.7 Single-pass scan for memory access efficiency【/1】",
+      "zh": "【1】11.7 面向内存访问效率的单遍扫描【/1】"
+    },
+    {
+      "id": "n0141",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[57]",
+      "en": "【1】11.8 Summary【/1】",
+      "zh": "【1】11.8 小结【/1】"
+    },
+    {
+      "id": "n0142",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[58]",
+      "en": "【1】Exercises【/1】",
+      "zh": "【1】习题【/1】"
+    },
+    {
+      "id": "n0143",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[59]",
+      "en": "【1】References【/1】",
+      "zh": "【1】参考文献【/1】"
+    },
+    {
+      "id": "n0144",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[60]",
+      "en": "【1】Chapter 12. Merge: An introduction to dynamic input data identification【/1】",
+      "zh": "【1】第 12 章 归并：动态输入数据识别入门【/1】"
+    },
+    {
+      "id": "n0145",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[61]",
+      "en": "【1】Abstract【/1】",
+      "zh": "【1】摘要【/1】"
+    },
+    {
+      "id": "n0146",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[62]",
+      "en": "【1】Chapter Outline【/1】",
+      "zh": "【1】本章概要【/1】"
+    },
+    {
+      "id": "n0147",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[63]",
+      "en": "【1】12.1 Background【/1】",
+      "zh": "【1】12.1 背景【/1】"
+    },
+    {
+      "id": "n0148",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[64]",
+      "en": "【1】12.2 A sequential merge algorithm【/1】",
+      "zh": "【1】12.2 串行归并算法【/1】"
+    },
+    {
+      "id": "n0149",
+      "path": "/html[1]/body[1]/div[1]/div[1]/section[2]/section[2]/p[65]",
+      "en": "【1】12.3 A parallelization approach【/1】",
+      "zh": "【1】12.3 一种并行化方法【/1】"
+    }
+  ]
+}
