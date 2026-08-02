@@ -6,8 +6,8 @@
 
 **Status:** ready-for-agent
 
-- [ ] ≤640px 时顶栏为 `position: static`，向下滚动时整条顶栏随页面滚出视口。
-- [ ] 章节页底部出现固定翻页条，含 Prev / Next；首页的 Prev、末页的 Next 为禁用态；落地页无翻页条。
-- [ ] `≤640px` 给正文容器补 `padding-bottom` 腾出底条空间，翻页条含 `env(safe-area-inset-bottom)` 适配，末行不被遮挡。
-- [ ] 在 375px（用 `.scratch/mobile-responsive/sweep.py`）验证：顶栏滚走 + 底条固定 + 下拉仍能跳章。
-- [ ] Chinese / bilingual 站点的底条与相对链接行为与 English 站一致（翻页条随头部整段被渲染器带过去）。
+- [x] ≤640px 时顶栏为 `position: static`，向下滚动时整条顶栏随页面滚出视口。
+- [x] 章节页底部出现固定翻页条，含 Prev / Next；首页的 Prev、末页的 Next 为禁用态；落地页无翻页条。
+- [x] `≤640px` 给正文容器补 `padding-bottom` 腾出底条空间，翻页条含 `env(safe-area-inset-bottom)` 适配，末行不被遮挡。
+- [x] 在 375px（用 `.scratch/mobile-responsive/sweep.py`）验证：顶栏滚走 + 底条固定 + 下拉仍能跳章。
+- [x] Chinese / bilingual 站点的底条与相对链接行为与 English 站一致（翻页条随头部整段被渲染器带过去）。

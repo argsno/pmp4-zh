@@ -364,6 +364,10 @@
 
     </div>
     <div class="langswitch"><a class="langbtn" href="../../chapters/FigureA.1_519-536_B9780323912310000215.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/FigureA.1_519-536_B9780323912310000215.html">对照</a></div>
+  <nav class="bottom-pager" aria-label="Chapter navigation">
+    <a class="navbtn" href="Ch023_515-518_B9780323912310000203.html#st0025">&#8249; 上一页</a>
+    <a class="navbtn" href="FigureA.1_519-536_B9780323912310000215.html#st0010">下一页 &#8250;</a>
+  </nav>
   </div>
 </header><div id="book-content"><div id="sbo-rt-content"><section role="doc-appendix" epub:type="appendix" id="APP1">
 <a id="FigureA.1_519-536_B9780323912310000215"></a><div id="page_519" aria-label="Page 519" epub:type="pagebreak" role="doc-pagebreak"></div><div id="CN"><a id="FigureA.1_519-536_B9780323912310000215titl"></a>Appendix A</div><h1 class="chaptitle" epub:type="title" id="tit0010">数值考量</h1><p id="p0010" class="textfl"><a id="P519"></a>在计算机发展初期，浮点算术能力只存在于大型主机（mainframe）和超级计算机中。尽管 20 世纪 80 年代设计的许多微处理器开始配备浮点协处理器，但其浮点算术速度极慢，比大型主机和超级计算机大约慢三个数量级。随着微处理器技术的进步，20 世纪 90 年代设计的许多微处理器，如 Intel Pentium III 和 AMD Athlon，开始具备可与超级计算机媲美的高性能浮点能力。如今，高速浮点算术已是微处理器和 GPU 的标准功能。浮点表示允许可表示的数据值具有更大的动态范围，并能更精确地表示微小的数据值。这些优良特性使浮点算术成为对燃烧、空气动力学、光照和金融风险等物理与人工现象进行建模时首选的数据表示方式。对这些模型的大规模评估一直在推动对并行计算的需求。因此，应用程序开发人员在开发并行应用时理解浮点算术的特性十分重要。具体而言，我们将重点讨论浮点算术运算的准确性、浮点数表示的精度、数值算法的稳定性，以及它们在并行编程中应如何加以考虑。</p><section><a id="s0010"></a><h2 class="h1hd" id="st0010">A.1 浮点数据表示</h2><p id="p0015" class="textfl">IEEE-754 浮点标准旨在确保计算机制造商遵循统一的浮点数据表示与运算行为（<a href="#bib1" role="doc-biblioref" epub:type="biblioref" id="BIB_1">IEEE Microprocessor Standards Committee, 2008</a>）。世界上绝大多数（如果不是全部）计算机制造商都已接受这一标准。尤其是，未来设计的几乎所有微处理器都将完全符合或几乎完全符合 IEEE-754 浮点标准及其更新的 IEEE-754 2008 修订版。因此，应用程序开发人员理解该标准的概念和实际考量十分重要。</p>

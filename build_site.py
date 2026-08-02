@@ -113,8 +113,13 @@ def make_header(current, prefix, home_url):
         '    </select>\n'
     )
 
-    # Prev / Next (chapter pages only)
+    # Prev / Next (chapter pages only).  The same two buttons appear twice on
+    # the page: once in the top bar (with Home, in `nav_btns`) and once in the
+    # fixed bottom pager that phones get — the bottom copy lets a linear reader
+    # flip chapters without scrolling back to the top.  The first page has no
+    # Prev, the last has no Next; both render as disabled (non-link) buttons.
     nav_btns = ""
+    bottom_pager = ""
     if current is not None:
         idx = None
         for i, (_, f) in enumerate(flat):
@@ -131,6 +136,13 @@ def make_header(current, prefix, home_url):
                          % (prefix, nxt[1])) if nxt else \
                         '<span class="navbtn disabled">Next &#8250;</span>'
             nav_btns = prev_html + "\n    " + next_html + "\n"
+            # The bottom pager lives inside the header so the i18n renderer
+            # carries it to the zh/bilingual sites verbatim — only the .navbtn
+            # labels are localized, exactly as for the top bar.  It is hidden on
+            # desktop and revealed fixed at the viewport bottom only at <=640px.
+            bottom_pager = (
+                '  <nav class="bottom-pager" aria-label="Chapter navigation">\n'
+                '    ' + prev_html + "\n    " + next_html + '\n  </nav>\n')
 
     home = '<a class="navbtn" href="%s">Home</a>' % home_url
     # The language switch on the English site: EN is the current page, and 中 /
@@ -149,8 +161,8 @@ def make_header(current, prefix, home_url):
         '<header class="topnav">\n' + select +
         '    <div class="nav-buttons">\n      ' + home +
         (("\n      " + nav_btns) if nav_btns else "") +
-        '\n    </div>' + langswitch +
-        '\n  </div>\n</header>'
+        '\n    </div>' + langswitch + "\n" + bottom_pager +
+        '  </div>\n</header>'
     )
 
 
@@ -219,6 +231,11 @@ TOPNAV_CSS = """\
 .navbtn:hover { background: #4f63a0; }
 .navbtn.disabled { background: #2a3350; color: #6b7591; cursor: default; }
 
+/* The fixed bottom pager is a phone affordance only: hidden on desktop, where
+   the sticky top bar already carries Prev / Next.  The <=640px media block
+   below reveals it and pins it to the viewport bottom. */
+.bottom-pager { display: none; }
+
 /* EN / 中 / 对照 — the same chapter in the other two sites.  The current one
    is a span rather than a link, so it reads as a position, not an offer. */
 .langswitch {
@@ -277,6 +294,43 @@ a.langbtn:hover { background: #4f63a0; color: #fff; }
   }
   .nav-buttons {
     order: 3;
+  }
+  /* The bar stops being pinned to the top: with position: static it scrolls
+     away with the content, so the whole phone screen is free for reading and
+     a linear reader navigates from the fixed bottom bar instead. */
+  .topnav {
+    position: static;
+  }
+  /* The fixed Prev / Next bar for phones.  Hidden on desktop and revealed here,
+     pinned to the viewport bottom independent of scroll.  env(safe-area-inset-
+     bottom) keeps it clear of the iPhone home indicator so Next stays tappable. */
+  .bottom-pager {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    padding: 6px 8px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom));
+    background: #1f2a44;
+    border-top: 2px solid #0d1530;
+    box-shadow: 0 -2px 6px rgba(0,0,0,.25);
+  }
+  .bottom-pager .navbtn {
+    flex: 1 1 0;
+    margin: 0 4px;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  /* Keep the last line of the chapter above the fixed bottom bar: pad the
+     content column by the bar's height (incl. the safe-area inset) so nothing
+     is hidden behind it. */
+  #book-content #sbo-rt-content {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom));
   }
 }
 

@@ -59,6 +59,11 @@
 .navbtn:hover { background: #4f63a0; }
 .navbtn.disabled { background: #2a3350; color: #6b7591; cursor: default; }
 
+/* The fixed bottom pager is a phone affordance only: hidden on desktop, where
+   the sticky top bar already carries Prev / Next.  The <=640px media block
+   below reveals it and pins it to the viewport bottom. */
+.bottom-pager { display: none; }
+
 /* EN / 中 / 对照 — the same chapter in the other two sites.  The current one
    is a span rather than a link, so it reads as a position, not an offer. */
 .langswitch {
@@ -117,6 +122,43 @@ a.langbtn:hover { background: #4f63a0; color: #fff; }
   }
   .nav-buttons {
     order: 3;
+  }
+  /* The bar stops being pinned to the top: with position: static it scrolls
+     away with the content, so the whole phone screen is free for reading and
+     a linear reader navigates from the fixed bottom bar instead. */
+  .topnav {
+    position: static;
+  }
+  /* The fixed Prev / Next bar for phones.  Hidden on desktop and revealed here,
+     pinned to the viewport bottom independent of scroll.  env(safe-area-inset-
+     bottom) keeps it clear of the iPhone home indicator so Next stays tappable. */
+  .bottom-pager {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    padding: 6px 8px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom));
+    background: #1f2a44;
+    border-top: 2px solid #0d1530;
+    box-shadow: 0 -2px 6px rgba(0,0,0,.25);
+  }
+  .bottom-pager .navbtn {
+    flex: 1 1 0;
+    margin: 0 4px;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  /* Keep the last line of the chapter above the fixed bottom bar: pad the
+     content column by the bar's height (incl. the safe-area inset) so nothing
+     is hidden behind it. */
+  #book-content #sbo-rt-content {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom));
   }
 }
 

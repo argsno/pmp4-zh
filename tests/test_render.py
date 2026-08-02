@@ -480,6 +480,25 @@ def test_nav_buttons_are_localized():
     assert ">Home<" not in result.zh_html
 
 
+def test_bottom_pager_is_carried_to_translated_sites_and_localized():
+    """The fixed bottom pager lives inside <header>, so the renderer copies it
+    to the zh/bilingual sites verbatim and localizes only its .navbtn labels —
+    the Prev / Next links are intra-site relatives that stay as English paths."""
+    page = make_page('<p id="p1">Some prose here.</p>')
+    data = translations_for(page, {"Some prose here.": "这里有一些正文。"},
+                            page="Ch001", nav=NAV)
+
+    result = render(page, data, glossary=NO_GLOSSARY)
+
+    for html in (result.zh_html, result.bilingual_html):
+        assert '<nav class="bottom-pager"' in html
+        assert "上一页" in html and "下一页" in html
+        # The Next link points at that site's own Ch002.html (copied verbatim).
+        assert 'href="Ch002.html">下一页 &#8250;</a>' in html
+        # No second language switch is introduced by the pager.
+        assert html.count('class="langswitch"') == 1
+
+
 def test_every_page_carries_a_language_switch_to_the_same_chapter():
     page = make_page('<p id="p1">Some prose here.</p>')
     data = translations_for(page, {"Some prose here.": "这里有一些正文。"},

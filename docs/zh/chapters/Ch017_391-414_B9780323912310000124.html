@@ -364,6 +364,10 @@
 
     </div>
     <div class="langswitch"><a class="langbtn" href="../../chapters/Ch017_391-414_B9780323912310000124.html">EN</a><span class="langbtn active">中</span><a class="langbtn" href="../../bilingual/chapters/Ch017_391-414_B9780323912310000124.html">对照</a></div>
+  <nav class="bottom-pager" aria-label="Chapter navigation">
+    <a class="navbtn" href="Ch016_355-388_B9780323912310000240.html#st0125">&#8249; 上一页</a>
+    <a class="navbtn" href="Ch017_391-414_B9780323912310000124.html#st0010">下一页 &#8250;</a>
+  </nav>
   </div>
 </header><div id="book-content"><div id="sbo-rt-content"><section role="doc-chapter" epub:type="chapter" id="c0017">
 <a id="Ch017_391-414_B9780323912310000124"></a><div id="page_391" aria-label="Page 391" epub:type="pagebreak" role="doc-pagebreak"></div><div id="CN"><a id="Ch017_391-414_B9780323912310000124titl"></a>Chapter 17</div><h1 class="chaptitle" epub:type="title" id="tit0010">迭代式磁共振成像重建</h1><section role="doc-abstract" class="abstract" epub:type="preamble"><a id="ab0010"></a><h2 class="h1hd" id="st0010">摘要</h2><p class="abspara" id="sp0105">在本章中，我们介绍将一个循环密集的应用——磁共振成像的迭代重建——从串行形式进行并行化与优化的关键步骤。我们首先讨论并行化的合理组织方式：分散方法（scatter approach）与汇聚方法（gather approach）。我们说明，从分散方法转变为汇聚方法，是避免原子操作的关键，因为原子操作会显著降低并行执行的性能。我们还讨论了实现汇聚式并行化所需的实用技术，即循环分裂与循环交换。我们进一步介绍了一些优化技术的应用，例如将数组元素提升到寄存器中、为输入元素使用常量内存/缓存，以及使用硬件函数来提升并行核函数的性能。</p></section><section epub:type="keyword"><a id="kys0010"></a><h3 class="h2hd" id="st0015">关键词</h3><p class="keywords">统计估计方法；矩阵-向量乘法；线性方程组求解器；迭代法；MRI；非笛卡儿扫描轨迹；分散式并行化；汇聚式并行化；循环分裂；循环交换；跨迭代依赖；常量内存；常量缓存；信噪比；三角函数</p></section><nav role="doc-toc" epub:type="toc" id="outline"><h2 class="h1hd" id="st0020">本章概要</h2><a id="li0010"></a><p class="chapoutlhd">概要</p><div class="outlchap"><ul>

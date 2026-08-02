@@ -340,28 +340,29 @@ def test_build_i18n_never_imports_the_builder():
         assert "from build_site" not in source, name
 
 
-def test_topnav_css_keeps_the_bar_in_place_at_every_width(fake_epub):
+def test_topnav_css_pinned_on_desktop_but_scrolls_away_on_mobile(fake_epub):
     web, translations = fake_epub
     assert build_site.main() == 1
     css = (web / "topnav.css").read_text(encoding="utf-8")
 
-    # One sticky bar for every viewport: nothing shifts it out of the way
-    # while the reader scrolls a chapter.
+    # Desktop: one sticky bar pinned to the top while the reader scrolls.
     base = css.split("@media", 1)[0]
     assert "position: sticky;" in base
 
-    # No trace of the scroll-away behaviour anywhere in the sheet — no hidden
-    # state to toggle, no transform to slide it with, and so no Reduce Motion
-    # opt-out to write.
+    # The scroll-away is plain positioning, not an animation: nowhere does the
+    # sheet hide the bar with a class toggle, slide it with a transform, or opt
+    # out of a transition under Reduce Motion.
     assert "nav-hidden" not in css
     assert "translateY" not in css
     assert "prefers-reduced-motion" not in css
 
-    # The ≤640px block reorders the bar's contents into rows and nothing
-    # more: the bar itself is given no rules at any breakpoint, so there is
-    # nowhere for a mobile-only position or animation to creep back in.
+    # ≤640px: the bar is no longer pinned, so it scrolls away with the content
+    # (position: static), and the fixed bottom pager takes over navigation.
     m640 = _media_body(css, 640)
-    assert ".topnav" not in m640
+    assert ".topnav {" in m640
+    assert "position: static;" in m640
+    assert ".bottom-pager {" in m640
+    assert "position: fixed;" in m640
 
 
 def test_topnav_js_only_wires_the_chapter_dropdown(fake_epub):
@@ -382,6 +383,75 @@ def test_topnav_js_only_wires_the_chapter_dropdown(fake_epub):
                  "requestAnimationFrame", "pageYOffset", "nav-hidden",
                  "touchstart", "focus-within"):
         assert gone not in js, gone
+
+
+def test_chapter_pages_carry_a_bottom_pager_landing_does_not(fake_epub):
+    web, translations = fake_epub
+    assert build_site.main() == 1
+
+    # A chapter page carries a fixed bottom pager with Prev / Next...
+    ch001 = (web / "chapters" / "Ch001.html").read_text(encoding="utf-8")
+    assert '<nav class="bottom-pager" aria-label="Chapter navigation">' in ch001
+    # ...and the landing page carries none (it has no prev/next to page through).
+    landing = (web / "index.html").read_text(encoding="utf-8")
+    assert "bottom-pager" not in landing
+
+
+def test_bottom_pager_disables_prev_at_first_and_next_at_last(fake_epub):
+    web, translations = fake_epub
+    assert build_site.main() == 1
+
+    # Ch001 is the first chapter: Prev is disabled (a span, not a link) and
+    # Next reaches Ch002.
+    ch001 = (web / "chapters" / "Ch001.html").read_text(encoding="utf-8")
+    assert '<span class="navbtn disabled">&#8249; Prev</span>' in ch001
+    assert ('<a class="navbtn" href="Ch002.html">Next &#8250;</a>' in ch001)
+
+    # Ch002 is the last chapter: Next is disabled and Prev reaches Ch001.
+    ch002 = (web / "chapters" / "Ch002.html").read_text(encoding="utf-8")
+    assert '<span class="navbtn disabled">Next &#8250;</span>' in ch002
+    assert ('<a class="navbtn" href="Ch001.html">&#8249; Prev</a>' in ch002)
+
+
+def test_bottom_pager_uses_relative_links_and_propagates_to_zh_bilingual(fake_epub):
+    web, translations = fake_epub
+    build_site.main()                       # English site; nothing translated yet
+    translate(web, translations, ["Ch001", "Ch002"])
+    assert build_site.main() == 0           # both chapters render to zh/bilingual
+
+    # The pager is carried over to the other sites by the renderer (it lives
+    # inside <header>), and its labels are localized like the top bar's.  The
+    # Prev / Next links are intra-site relatives copied verbatim, so each site's
+    # pager points at that site's own siblings.
+    for site in ("zh", "bilingual"):
+        page = (web / site / "chapters" / "Ch001.html").read_text(
+            encoding="utf-8")
+        assert '<nav class="bottom-pager"' in page
+        assert "上一页" in page
+        assert "下一页" in page
+        assert ('<a class="navbtn" href="Ch002.html">下一页 &#8250;</a>'
+                in page)
+
+
+def test_topnav_css_bottom_pager_is_fixed_with_safe_area_and_content_gap(fake_epub):
+    web, translations = fake_epub
+    assert build_site.main() == 1
+    css = (web / "topnav.css").read_text(encoding="utf-8")
+
+    # Hidden on desktop — the sticky top bar already has Prev / Next there.
+    base = css.split("@media", 1)[0]
+    assert ".bottom-pager {" in base
+    assert "display: none;" in base
+
+    # ≤640px: pinned to the viewport bottom (not the document), kept clear of
+    # the iPhone home indicator, and the content column gains a matching
+    # padding so the last line is never hidden behind it.
+    m640 = _media_body(css, 640)
+    assert "position: fixed;" in m640
+    assert "left: 0;" in m640 and "right: 0;" in m640 and "bottom: 0;" in m640
+    assert "env(safe-area-inset-bottom)" in m640
+    assert "#book-content #sbo-rt-content {" in m640
+    assert "padding-bottom: calc(56px + env(safe-area-inset-bottom));" in m640
 
 
 def test_rebuild_keeps_the_language_sites_sharing_the_mobile_assets(fake_epub):
