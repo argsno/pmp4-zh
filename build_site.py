@@ -89,6 +89,12 @@ def parse_nav():
     return groups, flat
 
 
+# Module-level nav structures, populated by main().  Declared here (empty) so
+# make_header can be exercised standalone — e.g. by unit tests — without a full
+# build having run first.
+groups, flat, pages = [], [], []
+
+
 # ---------------------------------------------------------------------------
 # 2. Top navigation bar HTML
 # ---------------------------------------------------------------------------
@@ -122,19 +128,22 @@ def make_header(current, prefix, home_url):
     bottom_pager = ""
     if current is not None:
         idx = None
-        for i, (_, f) in enumerate(flat):
-            if f.split("#")[0] == current:
+        for i, f in enumerate(pages):
+            if f == current:
                 idx = i
                 break
         if idx is not None:
-            prev = flat[idx - 1] if idx > 0 else None
-            nxt = flat[idx + 1] if idx < len(flat) - 1 else None
+            # `pages` is the chapter/part-level reading order (deduped from the
+            # subsection-level `flat`), so Prev/Next jump whole pages, not the
+            # next sub-section of the same chapter.
+            prev = pages[idx - 1] if idx > 0 else None
+            nxt = pages[idx + 1] if idx < len(pages) - 1 else None
             prev_html = ('<a class="navbtn" href="%s%s">&#8249; Prev</a>'
-                         % (prefix, prev[1])) if prev else \
-                        '<span class="navbtn disabled">&#8249; Prev</span>'
+                         % (prefix, prev)) if prev else \
+                        '<a class="navbtn" href="%s">&#8249; Prev</a>' % home_url
             next_html = ('<a class="navbtn" href="%s%s">Next &#8250;</a>'
-                         % (prefix, nxt[1])) if nxt else \
-                        '<span class="navbtn disabled">Next &#8250;</span>'
+                         % (prefix, nxt)) if nxt else \
+                        '<a class="navbtn" href="%s">Next &#8250;</a>' % home_url
             nav_btns = prev_html + "\n    " + next_html + "\n"
             # The bottom pager lives inside the header so the i18n renderer
             # carries it to the zh/bilingual sites verbatim — only the .navbtn
@@ -551,8 +560,17 @@ def main():
     itself is broken.  A skipped page is a problem someone will fix; the build
     command must not pretend the three sites are complete.
     """
-    global groups, flat
+    global groups, flat, pages
     groups, flat = parse_nav()
+    # Chapter/part-level reading order: `flat` lists every sub-section, so a
+    # Prev/Next computed against it would land on the next sub-section of the
+    # same page.  Deduping on the base file yields the page-level order used
+    # for Prev/Next navigation.
+    pages = []
+    for _, f in flat:
+        base = f.split("#")[0]
+        if base not in pages:
+            pages.append(base)
     os.makedirs(OUT, exist_ok=True)
     copy_assets()
     convert_chapters()

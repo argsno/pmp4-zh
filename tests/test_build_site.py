@@ -7,6 +7,7 @@ import `build_i18n`, never the other way round.
 """
 import json
 import os
+import re
 
 import pytest
 
@@ -397,20 +398,63 @@ def test_chapter_pages_carry_a_bottom_pager_landing_does_not(fake_epub):
     assert "bottom-pager" not in landing
 
 
-def test_bottom_pager_disables_prev_at_first_and_next_at_last(fake_epub):
+def test_bottom_pager_links_home_at_first_and_last(fake_epub):
     web, translations = fake_epub
     assert build_site.main() == 1
 
-    # Ch001 is the first chapter: Prev is disabled (a span, not a link) and
-    # Next reaches Ch002.
+    # Ch001 is the first chapter: Prev points Home (an active link, not a
+    # dead disabled span) and Next reaches Ch002.
     ch001 = (web / "chapters" / "Ch001.html").read_text(encoding="utf-8")
-    assert '<span class="navbtn disabled">&#8249; Prev</span>' in ch001
+    assert '<a class="navbtn" href="../index.html">&#8249; Prev</a>' in ch001
     assert ('<a class="navbtn" href="Ch002.html">Next &#8250;</a>' in ch001)
 
-    # Ch002 is the last chapter: Next is disabled and Prev reaches Ch001.
+    # Ch002 is the last chapter: Next points Home and Prev reaches Ch001.
     ch002 = (web / "chapters" / "Ch002.html").read_text(encoding="utf-8")
-    assert '<span class="navbtn disabled">Next &#8250;</span>' in ch002
+    assert '<a class="navbtn" href="../index.html">Next &#8250;</a>' in ch002
     assert ('<a class="navbtn" href="Ch001.html">&#8249; Prev</a>' in ch002)
+
+
+def test_pager_next_jumps_to_next_chapter_not_same_chapter_subsection(monkeypatch):
+    """Regression for the self-link bug: `flat` lists every sub-section, so a
+    Prev/Next computed against it would land on the next sub-section of the
+    *same* page.  The pager must jump whole chapters instead, and the first /
+    last pages must link Home rather than render dead disabled spans."""
+    # Stub the subsection-level order parse_nav() would produce for two
+    # chapters that each contain sub-sections (the real EPUB shape).
+    flat = [
+        ("Cover", "Cover.html"),
+        ("Chapter 1. Introduction", "Ch001.html#st0010"),
+        ("1.1", "Ch001.html#s0010"),
+        ("Chapter 2. Threads", "Ch002.html#st0010"),
+        ("2.1", "Ch002.html#s0010"),
+    ]
+    pages = []
+    for _, f in flat:
+        base = f.split("#")[0]
+        if base not in pages:
+            pages.append(base)
+    monkeypatch.setattr(build_site, "flat", flat, raising=False)
+    monkeypatch.setattr(build_site, "pages", pages, raising=False)
+    monkeypatch.setattr(build_site, "groups", [], raising=False)
+
+    # Next from Ch001 must reach Ch002 — never back into Ch001.
+    ch1 = build_site.make_header("Ch001.html", prefix="", home_url="../index.html")
+    next_href = next(m.group(1) for m in re.finditer(
+        r'<a class="navbtn" href="([^"]*)">([^<]*)</a>', ch1)
+        if "Next" in m.group(2))
+    assert next_href == "Ch002.html", next_href
+
+    # Prev from Ch002 must reach Ch001, not a sub-section of Ch002.
+    ch2 = build_site.make_header("Ch002.html", prefix="", home_url="../index.html")
+    prev_href = next(m.group(1) for m in re.finditer(
+        r'<a class="navbtn" href="([^"]*)">([^<]*)</a>', ch2)
+        if "Prev" in m.group(2))
+    assert prev_href == "Ch001.html", prev_href
+
+    # Edges link Home, not disabled spans.
+    cover = build_site.make_header("Cover.html", prefix="", home_url="../index.html")
+    assert '<a class="navbtn" href="../index.html">&#8249; Prev</a>' in cover
+    assert '<a class="navbtn" href="../index.html">Next &#8250;</a>' in ch2
 
 
 def test_bottom_pager_uses_relative_links_and_propagates_to_zh_bilingual(fake_epub):
